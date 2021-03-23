@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO ThreadX
+summary: Azure RTOS ThreadX è un sistema operativo in tempo reale (RTOS, Real-Time Operating System) avanzato, progettato in modo specifico per applicazioni profondamente incorporate.
+metadata:
+  title: Che cos'è Azure RTO ThreadX?
+  description: Azure RTOS ThreadX è un sistema operativo in tempo reale (RTOS, Real-Time Operating System) avanzato, progettato in modo specifico per applicazioni profondamente incorporate.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 0c1a69535f8d3b61702dd862801540b8d0bf35b3
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797928"
+landingContent:
+- title: Introduzione ad Azure RTO ThreadX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO ThreadX?
+      url: overview-threadx.md
+- title: Introduzione ad Azure RTO ThreadX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida dell'utente di Azure RTO ThreadX
+      url: about-this-guide.md

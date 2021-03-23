@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO FileX
+summary: Azure RTO FileX è un file system compatibile con le prestazioni elevate, che è compatibile con le tabelle di allocazione file (FAT), completamente integrato con Azure RTO ThreadX e disponibile per tutti i processori supportati. Analogamente ad Azure RTO ThreadX, Azure RTO FileX è progettato per avere un footprint ridotto e prestazioni elevate, rendendolo ideale per le applicazioni di oggi profondamente incorporate che richiedono operazioni di gestione file. FileX supporta la maggior parte dei supporti fisici, tra cui RAM, Azure RTO USBX, SD CARD e NAND/NOR Flash Memory tramite Azure RTO LevelX.
+metadata:
+  title: Che cos'è Azure RTO FileX?
+  description: Azure RTO FileX è un file system compatibile con le prestazioni elevate, che è compatibile con le tabelle di allocazione file (FAT), completamente integrato con Azure RTO ThreadX e disponibile per tutti i processori supportati. Analogamente ad Azure RTO ThreadX, Azure RTO FileX è progettato per avere un footprint ridotto e prestazioni elevate, rendendolo ideale per le applicazioni di oggi profondamente incorporate che richiedono operazioni di gestione file. FileX supporta la maggior parte dei supporti fisici, tra cui RAM, Azure RTO USBX, SD CARD e NAND/NOR Flash Memory tramite Azure RTO LevelX.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 05/19/2020
+  ms.openlocfilehash: bf7fd9f842c363b753f8acd52f54b9f8e462616c
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797898"
+landingContent:
+- title: Introduzione ad Azure RTO FileX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO FileX?
+      url: overview-filex.md
+- title: Introduzione ad Azure RTO FileX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida dell'utente di Azure RTO FileX
+      url: about-this-guide.md

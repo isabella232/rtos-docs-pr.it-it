@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO GUIX
+summary: Azure RTO GUIX è un pacchetto di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi embedded.
+metadata:
+  title: Che cos'è Azure RTO GUIX?
+  description: Azure RTO GUIX è un pacchetto di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi embedded.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 5e3215a54a9d1d23e7f238e4bc6ffeafffdc75b4
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797892"
+landingContent:
+- title: Introduzione ad Azure RTO GUIX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO GUIX?
+      url: overview-guix.md
+- title: Introduzione ad Azure RTO GUIX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida dell'utente di Azure RTO GUIX
+      url: about-guix.md
+- title: Introduzione ad Azure RTO GUIX Studio
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida Avvio rapido di Azure RTO GUIX Studio
+      url: guix-studio-quick-start.md
+    - text: Manuale dell'utente di Azure RTO GUIX Studio
+      url: about-guix-studio.md
+    - text: Programma di installazione di Azure RTO GUIX Studio
+      url: https://aka.ms/azrtos-guix-installer

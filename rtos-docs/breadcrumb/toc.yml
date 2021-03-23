@@ -1,0 +1,33 @@
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+    - name: Azure
+      tocHref: /azure/
+      topicHref: /azure/index
+      items:
+        - name: Microsoft Azure RTO
+          tocHref: /azure/rtos/
+          topicHref: /azure/rtos/index
+          items:
+            - name: Azure RTOS ThreadX
+              tocHref: /azure/rtos/threadx/
+              topicHref: /azure/rtos/threadx/index
+            - name: Azure RTOS FileX
+              tocHref: /azure/rtos/filex/
+              topicHref: /azure/rtos/filex/index
+            - name: Azure RTOS GUIX
+              tocHref: /azure/rtos/guix/
+              topicHref: /azure/rtos/guix/index
+            - name: Azure RTOS TraceX
+              tocHref: /azure/rtos/tracex/
+              topicHref: /azure/rtos/tracex/index
+            - name: Azure RTOS NetX
+              tocHref: /azure/rtos/netx/
+              topicHref: /azure/rtos/netx/index
+            - name: Azure RTOS NetX Duo
+              tocHref: /azure/rtos/netx-duo/
+              topicHref: /azure/rtos/netx-duo/index
+            - name: Azure RTOS USBX
+              tocHref: /azure/rtos/usbx/
+              topicHref: /azure/rtos/usbx/index

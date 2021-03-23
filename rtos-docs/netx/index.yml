@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO NetX
+summary: Azure RTO NetX è un'implementazione ad alte prestazioni di standard di protocollo TCP/IP, completamente integrato con Azure RTO ThreadX e disponibile per tutti i processori supportati.
+metadata:
+  title: Che cos'è Azure RTO NetX?
+  description: Azure RTO NetX è un'implementazione ad alte prestazioni di standard di protocollo TCP/IP, completamente integrato con Azure RTO ThreadX e disponibile per tutti i processori supportati.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: e8af2831320e21bd0e3a197125f97991b14125b8
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797862"
+landingContent:
+- title: Introduzione ad Azure RTO NetX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO NetX?
+      url: overview-netx.md
+- title: Introduzione ad Azure RTO NetX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida dell'utente di Azure RTO NetX
+      url: about-this-guide.md

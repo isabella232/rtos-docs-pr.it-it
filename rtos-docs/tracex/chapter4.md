@@ -1,0 +1,107 @@
+---
+title: Capitolo 4-analisi delle prestazioni di TraceX in Azure RTO
+description: Questo capitolo descrive lo strumento di analisi delle prestazioni di Azure RTO TraceX.
+author: philmea
+ms.service: rtos
+ms.topic: article
+ms.date: 5/19/2020
+ms.author: philmea
+ms.openlocfilehash: 6cf1b5bd5349efd97c3afc8a9e7f57f477f06f8f
+ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.translationtype: MT
+ms.contentlocale: it-IT
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104823441"
+---
+# <a name="chapter-4---azure-rtos-tracex-performance-analysis"></a><span data-ttu-id="3f7fc-103">Capitolo 4-analisi delle prestazioni di TraceX in Azure RTO</span><span class="sxs-lookup"><span data-stu-id="3f7fc-103">Chapter 4 - Azure RTOS TraceX performance analysis</span></span>
+
+<span data-ttu-id="3f7fc-104">Questo capitolo descrive lo strumento di analisi delle prestazioni TraceX di Azure RTO:</span><span class="sxs-lookup"><span data-stu-id="3f7fc-104">This chapter describes the Azure RTOS TraceX performance analysis tool:</span></span>
+
+## <a name="performance-analysis"></a><span data-ttu-id="3f7fc-105">Analisi delle prestazioni</span><span class="sxs-lookup"><span data-stu-id="3f7fc-105">Performance Analysis</span></span>
+
+<span data-ttu-id="3f7fc-106">TraceX fornisce l'analisi delle prestazioni incorporata dei file di traccia.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-106">TraceX provides built-in performance analysis of trace files.</span></span> <span data-ttu-id="3f7fc-107">*Sono prontamente* disponibili informazioni quali il *profilo di esecuzione*, i *servizi più diffusi*, l' *utilizzo dello stack di thread* e varie *statistiche sulle prestazioni,* incluse le statistiche FILEX e NETX.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-107">Information such as the *execution profile*, *popular services*, *thread stack usage*, and various *performance statistics,* including FileX and NetX statistics *,* are readily available.</span></span> <span data-ttu-id="3f7fc-108">Queste informazioni sono disponibili tramite la voce di menu ***Visualizza*** .</span><span class="sxs-lookup"><span data-stu-id="3f7fc-108">This information is available via the ***View*** menu item.</span></span> 
+
+
+## <a name="execution-profile"></a><span data-ttu-id="3f7fc-109">Profilo di esecuzione</span><span class="sxs-lookup"><span data-stu-id="3f7fc-109">Execution Profile</span></span>
+
+<span data-ttu-id="3f7fc-110">Selezionando il pulsante ***Genera profilo di esecuzione** _ o _*_Visualizza-esecuzione_\*_ profilo viene visualizzato il profilo di esecuzione TraceX per il file di traccia attualmente caricato.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-110">Selecting the ***Generate Execution Profile** _ button or _*_View -Execution Profile_\*_ presents the TraceX execution profile for the currently loaded trace file.</span></span> <span data-ttu-id="3f7fc-111">Il profilo di esecuzione associato alla traccia dimostrativa ThreadX di esempio è illustrato in _ \* figura 19 \* \*.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-111">The execution profile associated with the sample ThreadX demonstration trace is shown in _\*Figure 19\*\*.</span></span>
+
+![Screenshot del profilo di esecuzione associato alla traccia dimostrativa di ThreadX di esempio.](./media/user-guide/execution_profile.png)
+
+<span data-ttu-id="3f7fc-113">**FIGURA 19**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-113">**FIGURE 19**</span></span>
+
+<span data-ttu-id="3f7fc-114">L'esempio illustrato nella **Figura 19** indica che quasi il 45% del tempo di elaborazione si trova all'interno del **_thread 2_*_ e quasi il 51% del tempo di elaborazione si trova all'interno di _*_thread 1_** questo è logico poiché la maggior parte della traccia Mostra i thread che inviano e ricevono messaggi.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-114">The example shown in **Figure 19** indicates that nearly 45% of the processing time is inside of **_thread 2_*_ and nearly 51% of the processing time is inside of _*_thread 1_** This is logical since the bulk of the trace shows these threads sending and receiving messages.</span></span> <span data-ttu-id="3f7fc-115">In questo esempio, i contesti di esecuzione rimanenti hanno solo una piccola quantità di tempo di esecuzione.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-115">The remaining execution contexts have only a small amount of execution time in this example.</span></span>
+
+## <a name="popular-services"></a><span data-ttu-id="3f7fc-116">Servizi più diffusi</span><span class="sxs-lookup"><span data-stu-id="3f7fc-116">Popular Services</span></span>
+
+<span data-ttu-id="3f7fc-117">Selecting \***View->Popular Services** _ presenta i servizi più diffusi nel file di traccia attualmente caricato.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-117">Selecting \***View ->Popular Services** _ presents the popular services in the currently loaded trace file.</span></span> <span data-ttu-id="3f7fc-118">Per impostazione predefinita, queste informazioni vengono visualizzate per l'intero sistema.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-118">By default, this information is displayed for the entire system.</span></span> <span data-ttu-id="3f7fc-119">Tuttavia, sono disponibili anche i servizi più diffusi per thread specifici.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-119">However, the popular services for specific threads are also available.</span></span> <span data-ttu-id="3f7fc-120">I servizi più diffusi nella traccia dimostrativa ThreadX di esempio sono illustrati in _ \* figure 20 \* \*.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-120">The popular services in the sample ThreadX demonstration trace are shown in _\*Figure 20\*\*.</span></span>
+
+![Screenshot dei servizi più diffusi nella traccia dimostrativa ThreadX di esempio.](./media/user-guide/popular_services.png)
+
+<span data-ttu-id="3f7fc-122">**FIGURA 20**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-122">**FIGURE 20**</span></span>
+
+<span data-ttu-id="3f7fc-123">L'esempio illustrato nella **Figura 20** indica che **_tx_queue_send_*_ e _*_tx_queue_receive_** sono i due servizi più diffusi in questa traccia.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-123">The example shown in **Figure 20** indicates that **_tx_queue_send_*_ and _*_tx_queue_receive_** are the two most popular services in this trace.</span></span> <span data-ttu-id="3f7fc-124">Questo comportamento è coerente con il comportamento della dimostrazione ThreadX standard da cui questa traccia è stata acquisita.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-124">This is consistent with the behavior of the standard ThreadX demonstration from which this trace was captured.</span></span>
+
+<span data-ttu-id="3f7fc-125">Per questa analisi è possibile selezionare thread specifici usando l'elenco di selezione a discesa nella parte superiore della finestra.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-125">Specific threads can be selected for this analysis by using the drop down selection list at the top of this window.</span></span> <span data-ttu-id="3f7fc-126">**Nella figura 21** è illustrata questa analisi per il **_thread 3_**.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-126">**Figure 21** shows this analysis for **_thread 3_**.</span></span>
+
+![Screenshot dell'analisi per un TraceX Popular Services.](./media/user-guide/popular_services_thread3.png)
+
+<span data-ttu-id="3f7fc-128">**FIGURA 21**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-128">**FIGURE 21**</span></span>
+
+## <a name="thread-stack-usage-analysis-for-thread-3"></a><span data-ttu-id="3f7fc-129">Utilizzo dello stack di thread</span><span class="sxs-lookup"><span data-stu-id="3f7fc-129">Thread Stack Usage</span></span> ![Analisi per il thread 3.](./media/user-guide/screen_shot_17.png)
+
+<span data-ttu-id="3f7fc-131">Selezionando il pulsante ***genera utilizzo stack thread** _ o _*_Visualizza-> utilizzo stack thread_\*_ viene visualizzato l'utilizzo dello stack per ogni thread nel file di traccia.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-131">Selecting the ***Generate Thread Stack Usage** _ button or _*_View -> Thread Stack Usage_\*_ presents the stack usage for each thread in the trace file.</span></span> <span data-ttu-id="3f7fc-132">Questa operazione viene eseguita da ThreadX, incluso il puntatore dello stack del thread corrente in molte delle voci di traccia del file.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-132">This is accomplished by ThreadX including the current thread stack pointer in many of the trace entries in the file.</span></span> <span data-ttu-id="3f7fc-133">Un utilizzo dello stack pari al 100% indica che si è verificato un overflow dello stack ed è necessario correggerlo nell'applicazione.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-133">A stack usage of 100% indicates the stack has overflowed and must be corrected in the application.</span></span> <span data-ttu-id="3f7fc-134">Se non è presente alcuna esecuzione del thread in questo file di traccia, l'utilizzo dello stack per il thread viene visualizzato allo 0%.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-134">If there is no thread execution within this trace file, the stack usage for that thread is shown at 0%.</span></span> <span data-ttu-id="3f7fc-135">L'utilizzo dello stack di thread nella traccia dimostrativa ThreadX di esempio è illustrato in _ \* figura 22 \* \*.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-135">The thread stack usage in the sample ThreadX demonstration trace is shown in _\*Figure 22\*\*.</span></span>
+
+![Screenshot dell'utilizzo dello stack di thread TraceX.](./media/user-guide/thread_stack_usage.png)
+
+<span data-ttu-id="3f7fc-137">**FIGURA 22**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-137">**FIGURE 22**</span></span>
+
+<span data-ttu-id="3f7fc-138">Nell'esempio illustrato nella **Figura 22** viene indicato che la maggior parte dei thread in questa traccia ha un utilizzo dello stack compreso tra il 9% e il 12%.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-138">The example shown in **Figure 22** indicates that most threads in this trace have between 9% and 12% stack usage.</span></span>
+
+## <a name="performance-statistics"></a><span data-ttu-id="3f7fc-139">Statistiche sulle prestazioni</span><span class="sxs-lookup"><span data-stu-id="3f7fc-139">Performance Statistics</span></span>
+
+<span data-ttu-id="3f7fc-140">Selezionando il pulsante ***genera statistiche prestazioni** _ o _ *_Visualizza-> statistiche prestazioni_** vengono visualizzate le statistiche sulle prestazioni del file di traccia attualmente caricato.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-140">Selecting the ***Generate Performance Statistics** _ button or _ *_View -> Performance Statistics_** presents the performance statistics of the currently loaded trace file.</span></span> <span data-ttu-id="3f7fc-141">Per impostazione predefinita, queste informazioni vengono visualizzate per l'intero sistema.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-141">By default, this information is displayed for the entire system.</span></span> <span data-ttu-id="3f7fc-142">Tuttavia, le statistiche sulle prestazioni sono disponibili anche per ogni thread specifico.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-142">However, the performance statistics are also available for each specific thread.</span></span>
+
+<span data-ttu-id="3f7fc-143">Le statistiche sulle prestazioni della traccia dimostrativa ThreadX di esempio sono illustrate nella **Figura 23**.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-143">The performance statistics of the sample ThreadX demonstration trace are shown in **Figure 23**.</span></span>
+
+![Screenshot delle statistiche sulle prestazioni di TraceX.](./media/user-guide/performance_statistics.png)
+
+<span data-ttu-id="3f7fc-145">**FIGURA 23**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-145">**FIGURE 23**</span></span>
+
+<span data-ttu-id="3f7fc-146">L'esempio illustrato nella **Figura 23** indica che sono presenti 18 cambi di contesto in questo file di traccia, oltre a cinque interruzioni di thread, a 16 sospensioni dei thread, a 19 riprese dei thread e a tre interruzioni.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-146">The example shown in **Figure 23** indicates that there were 18 context switches in this trace file, as well as five thread preemptions, 16 thread suspensions, 19 thread resumptions, and three interrupts.</span></span> <span data-ttu-id="3f7fc-147">Non sono state trovate inversioni di priorità in questo file di traccia.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-147">There were no priority inversions found in this trace file.</span></span> <span data-ttu-id="3f7fc-148">Si noti che esistono due categorie di inversioni di priorità, ovvero *deterministiche* e non *deterministiche*.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-148">Notice there are two categories of priority inversions, namely, *deterministic* and *nondeterministic*.</span></span> <span data-ttu-id="3f7fc-149">Le inversioni con priorità deterministica sono inversione di priorità in cui un thread è bloccato su un mutex di proprietà di un thread con priorità inferiore.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-149">Deterministic priority inversions are priority inversion in which a thread is blocked on a mutex owned by a lower priority thread.</span></span> <span data-ttu-id="3f7fc-150">Un'inversione di priorità non deterministica è la posizione in cui viene eseguito un thread con priorità inferiore differente durante un'inversione di priorità deterministica.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-150">An nondeterministic priority inversion is where a different lower priority thread runs during a deterministic priority inversion.</span></span> <span data-ttu-id="3f7fc-151">In un secondo momento può causare un comportamento imprevisto dell'applicazione e deve essere studiato attentamente.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-151">The later can cause unforeseen timing behavior in the application and should be studied carefully.</span></span>
+
+## <a name="filex-statistics"></a><span data-ttu-id="3f7fc-152">Statistiche FileX</span><span class="sxs-lookup"><span data-stu-id="3f7fc-152">FileX Statistics</span></span>
+
+<span data-ttu-id="3f7fc-153">Selezionando \***View-> FILEX Statistics** _ vengono visualizzate le statistiche sulle prestazioni di filex del file di traccia attualmente caricato.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-153">Selecting \***View -> FileX Statistics** _ presents the FileX performance statistics of the currently loaded trace file.</span></span> <span data-ttu-id="3f7fc-154">Queste informazioni vengono visualizzate per l'intero sistema, su tutti aperti. oggetti/media.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-154">This information is displayed for the entire system, on all opened ../media objects.</span></span> <span data-ttu-id="3f7fc-155">Le statistiche sulle prestazioni della traccia dimostrativa FileX di esempio sono visualizzate in _ \* figura 24 \* \*.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-155">The performance statistics of the sample FileX demonstration trace are shown in _\*Figure 24\*\*.</span></span>
+
+![Screenshot delle statistiche di FileX.](./media/user-guide/filex_statistics.png)
+
+<span data-ttu-id="3f7fc-157">**FIGURA 24**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-157">**FIGURE 24**</span></span>
+
+<span data-ttu-id="3f7fc-158">L'esempio illustrato nella **Figura 27** indica che sono presenti 19. /media si apre, 19.. /media chiude, 19.. /Media Scarica, 18 letture directory, 19 Scritture directory e 18 mancati riscontri nella cache di directory.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-158">The example shown in **Figure 27** indicates there were 19 ../media opens, 19 ../media closes, 19 ../media flushes, 18 directory reads, 19 directory writes, and 18 directory cache misses.</span></span> <span data-ttu-id="3f7fc-159">È possibile visualizzare le informazioni aggiuntivi scorrendo verso il basso nella finestra statistiche.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-159">Additonal information can be viewed by scrolling down in the statistics window.</span></span>
+
+## <a name="netx-statistics"></a><span data-ttu-id="3f7fc-160">Statistiche NetX</span><span class="sxs-lookup"><span data-stu-id="3f7fc-160">NetX Statistics</span></span>
+
+<span data-ttu-id="3f7fc-161">Selezionando \***View-NETX Statistics** _ vengono visualizzate le statistiche sulle prestazioni di NETX del file di traccia attualmente caricato.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-161">Selecting \***View -NetX Statistics** _ presents the NetX performance statistics of the currently loaded trace file.</span></span> <span data-ttu-id="3f7fc-162">Queste informazioni vengono visualizzate per l'intero sistema.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-162">This information is displayed for the entire system.</span></span> <span data-ttu-id="3f7fc-163">Le statistiche sulle prestazioni della traccia dimostrativa NetX di esempio sono illustrate in _ \* figure 25 \* \*.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-163">The performance statistics of the sample NetX demonstration trace are shown in _\*Figure 25\*\*.</span></span>
+
+![Screenshot delle statistiche di NetX.](./media/user-guide/netx_statistics.png)
+
+<span data-ttu-id="3f7fc-165">**FIGURA 25**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-165">**FIGURE 25**</span></span>
+
+<span data-ttu-id="3f7fc-166">L'esempio illustrato nella **Figura 25** indica che non sono presenti eventi ARP, ping o UDP, ma sono stati inviati 30 pacchetti ip, 1.368 byte IP inviati, 30 pacchetti IP ricevuti e 1.360 byte IP ricevuti.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-166">The example shown in **Figure 25** indicates there were no ARP, Ping, or UDP events, but there were 30 IP packets sent, 1,368 IP bytes sent, 30 IP packets received, and 1,360 IP bytes received.</span></span>
+
+## <a name="trace-file-information"></a><span data-ttu-id="3f7fc-167">Informazioni sul file di traccia</span><span class="sxs-lookup"><span data-stu-id="3f7fc-167">Trace File Information</span></span>
+
+<span data-ttu-id="3f7fc-168">Selezionare \***Visualizza-> informazioni sul file di traccia** _ presenta alcune informazioni di base sul file di traccia aperto.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-168">Selecting \***View -> Trace File Information** _ presents some basic information about the opened trace file.</span></span> <span data-ttu-id="3f7fc-169">Queste informazioni includono l'ordine dei byte del file, le dimensioni dell'origine dell'ora, il numero massimo di byte per ogni nome di oggetto e l'indirizzo di base di tutti i puntatori del file di traccia.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-169">This information includes the byte order of the file, size of the time source, maximum number of bytes for each object name, and the base address of all trace file pointers.</span></span> <span data-ttu-id="3f7fc-170">_ *Figure 26*\* Visualizza le informazioni sul file di traccia per il file di traccia standard **_demo_threadx. TRX_** .</span><span class="sxs-lookup"><span data-stu-id="3f7fc-170">_ *Figure 26*\* shows the trace file information for the standard **_demo_threadx.trx_** trace file.</span></span>
+
+![Screenshot delle informazioni sul file TraceX.](./media/user-guide/trace_file_info.png)
+
+<span data-ttu-id="3f7fc-172">**FIGURA 26**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-172">**FIGURE 26**</span></span>
+
+## <a name="raw-trace-dump"></a><span data-ttu-id="3f7fc-173">Dump traccia RAW</span><span class="sxs-lookup"><span data-stu-id="3f7fc-173">Raw Trace Dump</span></span>
+
+<span data-ttu-id="3f7fc-174">Selezionando \***View-> RAW Trace dump** _ viene visualizzata una finestra di dialogo per assegnare un nome al file contenente il dump di traccia non elaborato.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-174">Selecting \***View -> Raw Trace Dump** _ presents a dialog to name the file containing the raw trace dump.</span></span> <span data-ttu-id="3f7fc-175">Una volta immesso il nome e il percorso del file, TraceX compila il file di traccia non elaborato in formato testo e avvia _*_notepad.exe_*_ per visualizzarlo.</span><span class="sxs-lookup"><span data-stu-id="3f7fc-175">After the file name and path are entered, TraceX builds the raw trace file in text format and launches _*_notepad.exe_*_ to display it.</span></span> <span data-ttu-id="3f7fc-176">_ *Figura 27*\* Visualizza il dump del file di traccia non elaborato per il file di traccia standard **_demo_threadx. TRX_** .</span><span class="sxs-lookup"><span data-stu-id="3f7fc-176">_ *Figure 27*\* shows the raw trace file dump for the standard **_demo_threadx.trx_** trace file.</span></span>
+
+![Screenshot del dump di traccia non elaborato.](./media/user-guide/raw_trace_dump.png)
+
+<span data-ttu-id="3f7fc-178">**FIGURA 27**</span><span class="sxs-lookup"><span data-stu-id="3f7fc-178">**FIGURE 27**</span></span>

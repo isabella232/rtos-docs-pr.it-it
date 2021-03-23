@@ -1,0 +1,33 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO TraceX
+summary: Azure RTO TraceX è uno strumento di analisi basato su Windows. Fornisce agli sviluppatori incorporati una visualizzazione grafica degli eventi di sistema in tempo reale e consente loro di visualizzare e comprendere meglio il comportamento dei sistemi in tempo reale.
+metadata:
+  title: Che cos'è Azure RTO TraceX?
+  description: Azure RTO TraceX è uno strumento di analisi basato su Windows. Fornisce agli sviluppatori incorporati una visualizzazione grafica degli eventi di sistema in tempo reale e consente loro di visualizzare e comprendere meglio il comportamento dei sistemi in tempo reale.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 021890aefbfdcdda14dd66483cc76f81d400c0d6
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797942"
+landingContent:
+- title: Introduzione ad Azure RTO TraceX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO TraceX?
+      url: overview-tracex.md
+- title: Introduzione ad Azure RTO TraceX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida dell'utente di Azure RTO TraceX
+      url: about-this-guide.md
+    - text: Programma di installazione di Azure RTO TraceX
+      url: https://aka.ms/azrtos-tracex-installer

@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO LevelX
+summary: Azure RTO LevelX offre funzionalità di livellamento NAND e NOR Flash per le applicazioni incorporate.
+metadata:
+  title: Che cos'è Azure RTO LevelX?
+  description: Azure RTO LevelX offre funzionalità di livellamento NAND e NOR Flash per le applicazioni incorporate.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 07/10/2020
+  ms.openlocfilehash: 27ce4d34d53b2a6daec651dd83c648024aad0291
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797880"
+landingContent:
+- title: Introduzione ad Azure RTO LevelX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO LevelX?
+      url: chapter1.md
+- title: Installare e usare Azure RTO LevelX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Guida dell'utente di Azure RTO LevelX
+      url: chapter2.md

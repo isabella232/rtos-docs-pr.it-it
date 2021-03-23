@@ -1,0 +1,34 @@
+- name: Documentazione di Microsoft Azure RTO
+  href: index.yml
+- name: Panoramica di Microsoft Azure RTO
+  href: overview-rtos.md
+- name: Guide introduttive
+  href: getting-started.md
+- name: Repository RTO Microsoft Azure
+  href: 'https://github.com/azure-rtos/'
+- name: Servizi correlati
+  items:
+    - name: Defender per Internet delle cose-RTO (anteprima)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Componenti Microsoft Azure RTO
+  items:
+    - name: Microsoft Azure RTO
+      href: ./index.yml
+    - name: ThreadX
+      href: ./threadx/index.yml
+    - name: Moduli ThreadX
+      href: ./threadx-modules/index.yml
+    - name: NetX Duo
+      href: ./netx-duo/index.yml
+    - name: NetX
+      href: ./netx/index.yml
+    - name: GUIX
+      href: ./guix/index.yml
+    - name: FileX
+      href: ./filex/index.yml
+    - name: LevelX
+      href: ./levelx/index.yml
+    - name: USBX
+      href: ./usbx/index.yml
+    - name: TraceX
+      href: ./tracex/index.yml

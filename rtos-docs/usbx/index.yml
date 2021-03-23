@@ -1,0 +1,33 @@
+### YamlMime:Landing
+title: Documentazione di Azure RTO USBX
+summary: Azure RTO USBX è un host USB a prestazioni elevate, un dispositivo e uno stack embedded on-the-go (OTG). Azure RTO USBX è completamente integrato con Azure RTO ThreadX ed è disponibile per tutti i processori supportati da Azure RTO ThreadX.
+metadata:
+  title: Che cos'è Azure RTO USBX?
+  description: Azure RTO USBX è un host USB a prestazioni elevate, un dispositivo e uno stack embedded on-the-go (OTG). Azure RTO USBX è completamente integrato con Azure RTO ThreadX ed è disponibile per tutti i processori supportati da Azure RTO ThreadX.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 05ff41048304d3cb66b74cbf342de664e8ad88ab
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797945"
+landingContent:
+- title: Introduzione ad Azure RTO USBX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Che cos'è Azure RTO USBX?
+      url: overview-usbx.md
+- title: Introduzione ad Azure RTO USBX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Manuale dell'utente dello stack di dispositivi USBX di Azure RTO
+      url: usbx-device-stack-about.md
+    - text: Guida dell'utente dello stack host di Azure RTO USBX
+      url: usbx-host-stack-about.md

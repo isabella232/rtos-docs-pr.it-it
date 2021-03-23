@@ -1,0 +1,34 @@
+---
+title: Manuale dell'utente di GUIX Studio
+description: In questa guida vengono fornite informazioni complete su GUIX studio, l'ambiente di sviluppo dell'interfaccia utente rapido basato su Microsoft Windows appositamente progettato per la libreria di runtime GUIX di Microsoft.
+author: philmea
+ms.author: philmea
+ms.date: 5/19/2020
+ms.service: rtos
+ms.topic: article
+ms.openlocfilehash: 6a5d628581d4c6b44ff093bac45790d6e2755349
+ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.translationtype: MT
+ms.contentlocale: it-IT
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104823075"
+---
+# <a name="chapter-1-introduction-to-azure-rtos-guix-studio"></a><span data-ttu-id="5f9a3-103">Capitolo 1: introduzione ad Azure RTO GUIX Studio</span><span class="sxs-lookup"><span data-stu-id="5f9a3-103">Chapter 1: Introduction to Azure RTOS GUIX Studio</span></span>
+
+<span data-ttu-id="5f9a3-104">Azure RTO GUIX studio è un ambiente di sviluppo di interfaccia utente rapido basato su Microsoft Windows appositamente progettato per la libreria di runtime GUIX di Microsoft.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-104">Azure RTOS GUIX Studio is a Microsoft Windows-based rapid UI development environment specifically designed for the GUIX runtime library from Microsoft.</span></span>
+
+<span data-ttu-id="5f9a3-105">Gli sviluppatori di interfacce utente Embedded possono utilizzare la finestra di progettazione della schermata di GUIX Studio WYSIWYG per creare e aggiornare rapidamente l'interfaccia utente incorporata utilizzando l'ambiente di runtime GUIX.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-105">Embedded UI Developers can utilize the GUIX Studio WYSIWYG screen designer to quickly create and update their embedded UI using the GUIX run-time environment.</span></span> <span data-ttu-id="5f9a3-106">Le progettazioni di GUIX Studio vengono salvate e mantenute in un file di progetto di GUIX studio, con estensione GXP.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-106">GUIX Studio designs are saved and maintained in a GUIX Studio project file, which has the extension .gxp.</span></span> <span data-ttu-id="5f9a3-107">Quando la progettazione è pronta per l'esecuzione nella destinazione, GUIX Studio genera il codice C che contiene tutte le informazioni e il codice dell'interfaccia utente necessari.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-107">When your design is ready for execution on the target, GUIX Studio generates C code that contains all the necessary UI information and code.</span></span>
+
+## <a name="guix-studio-requirements"></a><span data-ttu-id="5f9a3-108">Requisiti di GUIX Studio</span><span class="sxs-lookup"><span data-stu-id="5f9a3-108">GUIX Studio Requirements</span></span>
+
+<span data-ttu-id="5f9a3-109">Per funzionare correttamente, GUIX studio di Microsoft richiede *Windows XP* (o versione successiva).</span><span class="sxs-lookup"><span data-stu-id="5f9a3-109">In order to function properly, Microsoft's GUIX Studio requires *Windows XP* (or above).</span></span> <span data-ttu-id="5f9a3-110">Il sistema deve avere almeno 200 MB di RAM, 2 GB di spazio disponibile su disco rigido e una visualizzazione minima di 1024x768 con 256 colori.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-110">The system should have a minimum of 200MB of RAM, 2GB of available hard-disk space, and a minimum display of 1024x768 with 256 colors.</span></span> <span data-ttu-id="5f9a3-111">Inoltre, l'applicazione incorporata deve essere in esecuzione in *threadX/GUIX v 6.0* o versione successiva.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-111">In addition, the embedded application must be running on *ThreadX/GUIX V6.0* or later.</span></span>
+
+<span data-ttu-id="5f9a3-112">Se si desidera essere in grado di compilare ed eseguire l'applicazione dell'interfaccia utente incorporata come eseguibile di Microsoft Windows autonomo, sarà necessario anche un compilatore o un ambiente di compilazione in grado di compilare codice sorgente C per produrre un eseguibile di Microsoft Windows.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-112">If you would like to be able to build and run the embedded UI application as a stand-alone Microsoft Windows executable, you will also need a compiler or build environment capable of compiling C source code to produce a Microsoft Windows executable.</span></span> <span data-ttu-id="5f9a3-113">Il pacchetto di valutazione incluso in GUIX Studio include anche le soluzioni e i file di progetto compatibili con Visual Studio 2019 per ognuna delle applicazioni di esempio fornite.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-113">The evaluation package included with GUIX Studio also includes Visual Studio 2019 compatible project files and solutions for each of the provided example applications.</span></span> <span data-ttu-id="5f9a3-114">Se si usa un compilatore diverso, sarà necessario creare i file di progetto personalizzati o creare file ai fini della compilazione delle applicazioni di esempio oppure contattare il supporto tecnico all'indirizzo https://aka.ms/azrtos-support .</span><span class="sxs-lookup"><span data-stu-id="5f9a3-114">If you are using a different compiler, you will need to create your own project files or make files for the purposes of building your example applications, or contact support at https://aka.ms/azrtos-support.</span></span>
+
+## <a name="guix-studio-constraints"></a><span data-ttu-id="5f9a3-115">Vincoli di GUIX Studio</span><span class="sxs-lookup"><span data-stu-id="5f9a3-115">GUIX Studio Constraints</span></span>
+
+<span data-ttu-id="5f9a3-116">Lo strumento di progettazione dell'interfaccia utente di GUIX studio presenta diversi vincoli, come indicato di seguito:</span><span class="sxs-lookup"><span data-stu-id="5f9a3-116">The GUIX Studio UI design tool has several constraints, as follows:</span></span>
+
+- <span data-ttu-id="5f9a3-117">Viene visualizzato un massimo di 4 per progetto.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-117">A maximum of 4 displays per project.</span></span>
+- <span data-ttu-id="5f9a3-118">Un massimo di 100.000 widget per ogni progetto di GUIX Studio.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-118">A maximum of 100,000 widgets per GUIX Studio project.</span></span>
+- <span data-ttu-id="5f9a3-119">Un massimo di 100.000 risorse distinte, ad esempio, colori, tipi di carattere, pixelmaps, stringhe e così via.</span><span class="sxs-lookup"><span data-stu-id="5f9a3-119">A maximum of 100,000 distinct resources, e.g., colors, fonts, pixelmaps, strings, etc.</span></span>
