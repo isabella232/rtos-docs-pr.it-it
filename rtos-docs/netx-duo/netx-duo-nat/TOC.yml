@@ -1,0 +1,10 @@
+- name: Guida dell'utente di Azure RTO NetX Duo Network Address Translation
+  items:
+    - name: Ch. 1-Introduzione a Network Address Translation
+      href: chapter1.md
+    - name: Ch. 2-installazione e uso di NAT
+      href: chapter2.md
+    - name: Ch. 3-opzioni di configurazione NAT
+      href: chapter3.md
+    - name: Ch. 4-Descrizione dei servizi NAT
+      href: chapter4.md

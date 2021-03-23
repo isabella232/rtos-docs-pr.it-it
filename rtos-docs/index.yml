@@ -1,0 +1,121 @@
+### YamlMime:Hub
+title: Documentazione di Microsoft Azure RTO
+summary: Esplorare la documentazione di Azure RTO.
+brand: azure
+metadata:
+  title: Hub della documentazione di Microsoft Azure RTO
+  description: Esplorare la documentazione di Azure RTO.
+  ms.service: rtos
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 12f6535be21d072fd9500c43d7a10f5f7bf0b10a
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: it-IT
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797886"
+highlightedContent:
+  items:
+  - title: Che cos'è Azure RTO?
+    itemType: overview
+    url: overview-rtos.md
+  - title: Introduzione allo sviluppo di dispositivi embedded
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/iot-develop/quickstart-device-development
+  - title: Scaricare il codice sorgente in GitHub
+    itemType: download
+    url: https://github.com/azure-rtos/
+  - title: Defender per Internet delle cose-RTO (anteprima)
+    itemType: overview
+    url: https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos
+conceptualContent:
+  title: Azure RTOS
+  summary: Crea applicazioni e dispositivi perimetrali molto embedded.
+  items:
+  - title: Compilare l'applicazione incorporata
+    links:
+    - url: ./threadx/overview-threadx.md
+      itemType: overview
+      text: Che cos'è Azure RTO ThreadX?
+    - url: ./threadx/about-this-guide.md
+      itemType: how-to-guide
+      text: Esplorazione del manuale dell'utente
+    footerLink:
+      url: ./threadx/index.yml
+      text: Altre informazioni
+  - title: Abilita gestione file
+    links:
+    - url: ./filex/overview-filex.md
+      itemType: overview
+      text: Che cos'è Azure RTO FileX?
+    - url: ./filex/about-this-guide.md
+      itemType: how-to-guide
+      text: Esplorazione del manuale dell'utente
+    footerLink:
+      url: ./filex/index.yml
+      text: Altre informazioni
+  - title: Integra elementi grafici
+    links:
+    - url: ./guix/overview-guix.md
+      itemType: overview
+      text: Che cos'è Azure RTO GUIX?
+    - url: ./guix/about-guix.md
+      itemType: how-to-guide
+      text: Esplorazione del manuale dell'utente
+    footerLink:
+      url: ./guix/index.yml
+      text: Altre informazioni
+  - title: Eseguire il debug e risolvere i problemi
+    links:
+    - url: ./tracex/overview-tracex.md
+      itemType: overview
+      text: Che cos'è Azure RTO TraceX?
+    footerLink:
+      url: ./tracex/index.yml
+      text: Altre informazioni
+  - title: Abilitare la connettività alla rete
+    links:
+    - url: ./netx/overview-netx.md
+      itemType: overview
+      text: Che cos'è Azure RTO NetX?
+    - url: ./netx/about-this-guide.md
+      itemType: how-to-guide
+      text: Esplorazione del manuale dell'utente
+    footerLink:
+      url: ./netx/index.yml
+      text: Altre informazioni
+  - title: Abilitare la connettività di rete e le funzionalità IPv6
+    links:
+    - url: ./netx-duo/overview-netx-duo.md
+      itemType: overview
+      text: Che cos'è Azure RTO NetX Duo?
+    - url: ./netx-duo/about-this-guide.md
+      itemType: how-to-guide
+      text: Esplorazione del manuale dell'utente
+    footerLink:
+      url: ./netx-duo/index.yml
+      text: Altre informazioni
+  - title: Interfaccia con dispositivi USB
+    links:
+    - url: ./usbx/overview-usbx.md
+      itemType: overview
+      text: Che cos'è Azure RTO USBX?
+    - url: ./usbx/usbx-device-stack-about.md
+      itemType: how-to-guide
+      text: Esplorare la guida per l'utente dello stack di dispositivi
+    - url: ./usbx/usbx-host-stack-about.md
+      itemType: how-to-guide
+      text: Esplorazione del manuale dell'utente dello stack host
+    footerLink:
+      url: ./usbx/index.yml
+      text: Altre informazioni
+  - title: Fornire il livellamento della memoria flash
+    links:
+    - url: ./levelx/chapter1.md
+      itemType: overview
+      text: Che cos'è Azure RTO LevelX?
+    footerLink:
+      url: ./levelx/index.yml
+      text: Altre informazioni

@@ -1,0 +1,275 @@
+- name: Documentazione di Azure RTO NetX Duo
+  href: index.yml
+- name: Panoramica di NetX Duo
+  href: overview-netx-duo.md
+- name: Manuale dell'utente di NetX Duo
+  expanded: true
+  items:
+    - name: Informazioni sulla guida
+      href: about-this-guide.md
+    - name: Ch. 1-Introduzione a NetX Duo
+      href: chapter1.md
+    - name: Ch. 2-installazione e uso di NetX Duo
+      href: chapter2.md
+    - name: Ch. 3-componenti funzionali di NetX Duo
+      href: chapter3.md
+    - name: Ch. 4-Descrizione dei servizi NetX Duo
+      href: chapter4.md
+    - name: Ch. 5-NetX Duo-driver di rete
+      href: chapter5.md
+    - name: App. A-NetX Duo Services
+      href: appendix-a.md
+    - name: App. Costanti B-NetX Duo
+      href: appendix-b.md
+    - name: App. Tipi di dati C-NetX Duo
+      href: appendix-c.md
+    - name: App. API socket compatibile con D-BSD
+      href: appendix-d.md
+    - name: App. Codici di caratteri E-ASCII
+      href: appendix-e.md
+- name: Addons NetX Duo
+  items:
+    - name: Manuale dell'utente di NetX Duo AutoIP
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo AutoIP
+          href: netx-duo-auto-ip/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo AutoIP
+          href: netx-duo-auto-ip/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi NetX Duo AutoIP
+          href: netx-duo-auto-ip/chapter3.md
+    - name: Manuale dell'utente di NetX Duo BSD Services
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo BSD
+          href: netx-duo-bsd/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo BSD
+          href: netx-duo-bsd/chapter2.md
+        - name: Ch. 3-NetX Duo BSD Services
+          href: netx-duo-bsd/chapter3.md
+    - name: Guida dell'utente di crittografia NetX
+      items:
+        - name: Ch. 1-Introduzione a NetX Crypto
+          href: ../netx/netx-crypto/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Crypto
+          href: ../netx/netx-crypto/chapter2.md
+        - name: Ch. 3-componenti funzionali di NetX Crypto
+          href: ../netx/netx-crypto/chapter3.md
+        - name: Ch. 3-Descrizione di NetX Crypto API
+          href: ../netx/netx-crypto/chapter4.md
+    - name: Manuale dell'utente del client DHCP di NetX Duo
+      items:
+        - name: Ch. 1-Introduzione al client DHCP NetX Duo
+          href: netx-duo-dhcp-client/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client DHCP NetX Duo
+          href: netx-duo-dhcp-client/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi client DHCP di NetX Duo
+          href: netx-duo-dhcp-client/chapter3.md
+        - name: App. Descrizione della funzionalità di ripristino dello stato per i servizi client DHCP di NetX Duo
+          href: netx-duo-dhcp-client/appendixA.md
+    - name: Manuale dell'utente del server DHCP NetX Duo
+      items:
+        - name: Ch. 1-Introduzione al server DHCP NetX Duo
+          href: netx-duo-dhcp-server/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del server DHCP NetX Duo
+          href: netx-duo-dhcp-server/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi server DHCP di NetX Duo
+          href: netx-duo-dhcp-server/chapter3.md
+    - name: Manuale dell'utente del client NetX Duo DHCPv6
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo DHCPv6 client
+          href: netx-duo-dhcpv6-client/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client DHCPv6 NetX Duo
+          href: netx-duo-dhcpv6-client/chapter2.md
+        - name: Ch. 3-opzioni di configurazione di NetX Duo DHCPv6
+          href: netx-duo-dhcpv6-client/chapter3.md
+        - name: Ch. 4-servizi client DHCPv6 NetX Duo
+          href: netx-duo-dhcpv6-client/chapter4.md
+        - name: App. Descrizione della funzionalità di stato di ripristino
+          href: netx-duo-dhcpv6-client/appendix-a.md
+    - name: Manuale dell'utente del server NetX Duo DHCPv6
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo DHCPv6 server
+          href: netx-duo-dhcpv6-server/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del server DHCPv6 NetX Duo
+          href: netx-duo-dhcpv6-server/chapter2.md
+        - name: Ch. 3-opzioni di configurazione del server NetX Duo DHCPv6
+          href: netx-duo-dhcpv6-server/chapter3.md
+        - name: Ch. 4-servizi server DHCPv6 NetX Duo
+          href: netx-duo-dhcpv6-server/chapter4.md
+        - name: App. Codici opzionali a-NetX Duo DHCPv6
+          href: netx-duo-dhcpv6-server/appendix-a.md
+        - name: App. Codice di stato del server DHCPv6 B-NetX Duo
+          href: netx-duo-dhcpv6-server/appendix-b.md
+        - name: App. C-NetX Duo-identificatori univoci DHCPv6 (Duid)
+          href: netx-duo-dhcpv6-server/appendix-c.md
+        - name: App. Esempio di server DHCPv6 D-Advanced NetX Duo
+          href: netx-duo-dhcpv6-server/appendix-d.md
+    - name: Manuale dell'utente del client DNS di NetX Duo
+      items:
+        - name: Ch. 1-Introduzione al client DNS NetX Duo
+          href: netx-duo-dns/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client DNS NetX Duo
+          href: netx-duo-dns/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi client DNS di NetX Duo
+          href: netx-duo-dns/chapter3.md
+    - name: Manuale dell'utente FTP di NetX Duo
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo FTP
+          href: netx-duo-ftp/chapter1.md
+        - name: Ch. 2-installazione e utilizzo di FTP
+          href: netx-duo-ftp/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi FTP
+          href: netx-duo-ftp/chapter3.md
+    - name: Manuale dell'utente HTTP di NetX Duo
+      items:
+        - name: Capitolo 1-Introduzione a NetX Duo HTTP
+          href: netx-duo-http/chapter1.md
+        - name: Capitolo 2-installazione e uso di NetX Duo HTTP
+          href: netx-duo-http/chapter2.md
+        - name: Capitolo 3-Descrizione dei servizi HTTP NetX
+          href: netx-duo-http/chapter3.md
+    - name: Manuale dell'utente di NetX Duo MDN/DNS-SD
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo MDN/DNS-SD
+          href: netx-duo-mdns/chapter1.md
+        - name: Ch. 2-installazione e utilizzo di MDN
+          href: netx-duo-mdns/chapter2.md
+        - name: Ch. 3-Descrizione della cache interna del servizio
+          href: netx-duo-mdns/chapter3.md
+        - name: Ch. 4-Descrizione dei servizi MDN
+          href: netx-duo-mdns/chapter4.md
+    - name: Manuale dell'utente del client NetX Duo MQTT
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo MQTT client
+          href: netx-duo-mqtt/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo MQTT client
+          href: netx-duo-mqtt/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi client NetX Duo MQTT
+          href: netx-duo-mqtt/chapter3.md
+    - name: Manuale dell'utente NAT di NetX Duo
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo NAT
+          href: chapter1.md
+        - name: Ch. 2-installazione e uso di NAT
+          href: chapter2.md
+        - name: Ch. 3-opzioni di configurazione NAT
+          href: chapter3.md
+        - name: Ch. 4-Descrizione dei servizi NAT
+          href: chapter4.md
+    - name: Manuale dell'utente del client POP3 di NetX Duo
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo POP3 client
+          href: netx-duo-pop3-client/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client POP3 NetX Duo
+          href: netx-duo-pop3-client/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi client POP3
+          href: netx-duo-pop3-client/chapter3.md
+    - name: Manuale dell'utente di NetX Duo PPP
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo PPP
+          href: netx-duo-ppp/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo PPP
+          href: netx-duo-ppp/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi PPP NetX Duo
+          href: netx-duo-ppp/chapter3.md
+    - name: Manuale dell'utente del client SMTP NetX Duo
+      items:
+        - name: Ch. 1-Introduzione al client SMTP NetX Duo
+          href: netx-duo-smtp-client/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client SMTP NetX Duo
+          href: netx-duo-smtp-client/chapter2.md
+        - name: Ch. 3-Descrizione client dei servizi client SMTP
+          href: netx-duo-smtp-client/chapter3.md
+    - name: Manuale dell'utente di NetX Duo SNMP
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo SNMP
+          href: netx-duo-snmp/chapter1.md
+        - name: Ch. 2-installazione e uso dell'agente SNMP NetX Duo
+          href: netx-duo-snmp/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi dell'agente SNMP di NetX Duo
+          href: netx-duo-snmp/chapter3.md
+    - name: NetX Duo SNTP client
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo SNTP client
+          href: netx-duo-sntp-client/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo SNTP client
+          href: netx-duo-sntp-client/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi client NetX Duo SNTP
+          href: netx-duo-sntp-client/chapter3.md
+        - name: App. Codici di errore irreversibili NetX Duo SNTP
+          href: netx-duo-sntp-client/appendix-a.md
+    - name: Manuale dell'utente di NetX Duo Telnet
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo Telnet
+          href: netx-duo-telnet/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo Telnet
+          href: netx-duo-telnet/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi Telnet NetX Duo
+          href: netx-duo-telnet/chapter3.md
+    - name: TFTP NetX Duo
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo TFTP
+          href: netx-duo-tftp/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo TFTP
+          href: netx-duo-tftp/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi TFTP NetX Duo
+          href: netx-duo-tftp/chapter3.md
+    - name: Manuale dell'utente di NetX Duo Web HTTP e HTTPS
+      items:
+        - name: Ch. 1-Introduzione a NetX Duo HTTP e HTTPS
+          href: netx-duo-web-http/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Duo HTTP e HTTPS
+          href: netx-duo-web-http/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi HTTP
+          href: netx-duo-web-http/chapter3.md
+    - name: Manuale dell'utente di NetX Secure DTLS
+      items:
+        - name: Ch. 1-Introduzione a NetX Secure DTLS
+          href: netx-secure-dtls/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Secure DTLS
+          href: netx-secure-dtls/chapter2.md
+        - name: Ch. 3-Descrizione funzionale di NetX Secure DTLS
+          href: netx-secure-dtls/chapter3.md
+        - name: Ch. 4-Descrizione dei servizi NetX Secure DTLS
+          href: netx-secure-dtls/chapter4.md
+        - name: App. A-NetX Secure DTLS return/error codici
+          href: netx-secure-dtls/appendix-a.md
+    - name: Manuale dell'utente di NetX Secure TLS
+      items:
+        - name: Ch. 1-Introduzione a NetX Secure
+          href: netx-secure-tls/chapter1.md
+        - name: Ch. 2-installazione e uso di NetX Secure
+          href: netx-secure-tls/chapter2.md
+        - name: Ch. 3-Descrizione funzionale di NetX Secure
+          href: netx-secure-tls/chapter3.md
+        - name: Ch. 4-Descrizione dei servizi NetX Secure
+          href: netx-secure-tls/chapter4.md
+        - name: App. A-NetX codici di errore/restituiti protetti
+          href: netx-secure-tls/appendix-a.md
+- name: Repository NetX Duo
+  href: 'https://github.com/azure-rtos/netxduo'
+- name: Servizi correlati
+  items:
+    - name: Defender per Internet delle cose-RTO (anteprima)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Componenti Microsoft Azure RTO
+  items:
+    - name: Microsoft Azure RTO
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: Moduli ThreadX
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUIX
+      href: ../guix/index.yml
+    - name: FileX
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: TraceX
+      href: ../tracex/index.yml
