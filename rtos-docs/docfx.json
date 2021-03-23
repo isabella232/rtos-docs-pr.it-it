@@ -47,7 +47,8 @@
       "extendBreadcrumb": true,
       "feedback_system": "None",
       "uhfHeaderId": "Azure",
-      "searchScope": ["Azure RTOS"]
+      "searchScope": ["Azure RTOS"],
+      "bilingual_type": "hover over"
     },
     "fileMetadata": {
       "searchScope": { 
