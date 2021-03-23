@@ -20,8 +20,8 @@
   ],
   "sync_notification_subscribers": [],
   "branches_to_filter": [
-    "live-sxs",
-    "main-sxs"
+    "live",
+    "master"
   ],
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,
@@ -46,14 +46,21 @@
       "branch": "live",
       "branch_mapping": {
         "live": "live",
-        "main": "main"
+        "master": "master"
       }
     }
   ],
   "branch_target_mapping": {
+    "live-sxs": [
+      "Publish",
+      "Pdf"
+    ],
     "live": [
       "Publish",
-      "Intellisense",
+      "Pdf"
+    ],
+    "main": [
+      "Publish",
       "Pdf"
     ]
   },
