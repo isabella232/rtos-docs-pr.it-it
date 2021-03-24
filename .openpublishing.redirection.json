@@ -1,0 +1,9 @@
+{
+  "redirections": [
+    {
+      "source_path_from_root": "/rtos-docs/getting-started.md",
+      "redirect_url": "/azure/iot-develop/quickstart-device-development",
+      "redirect_document_id": false
+    }
+  ]
+}
