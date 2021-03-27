@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 3c3769c3ddf0eef73546627f1f50fa3d11b16948
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7dd3485f112bce379ab7d6b11a808605bca191a0
+ms.sourcegitcommit: 1d90854d1da01f4b65e54d732ee9190b57a531e1
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823060"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568998"
 ---
 # <a name="chapter-4-guix-studio-resources"></a>Capitolo 4: risorse di GUIX Studio
 
@@ -193,6 +193,24 @@ Quando tutte le opzioni sono impostate nel modo desiderato, fare clic sul pulsan
 Per aggiungere una nuova risorsa mappa pixel, nella `Pixelmaps` sezione del ***visualizzazione risorse*** Selezionare il pulsante seguente:
 
 ![Pulsante Aggiungi nuova mappa pixel.](./media/guix-studio/image50.jpg)
+
+**Modifica Pixelmap batch**
+
+Per modificare le proprietà di un gruppo di pixelmaps, fare clic con il pulsante destro del mouse sulla cartella o sul gruppo Pixelmap, quindi scegliere **modifica menu Pixelmap** per richiamare la finestra di dialogo **modifica Pixelmap/i** .
+
+![Screenshot della finestra di dialogo modifica mappe MultiPixel.](./media/guix-studio/batch_pixelmap_edit.jpg)
+
+Descrizione dello stato della casella di controllo:
+
+![Pulsante selezionato.](./media/guix-studio/checkbox_checked.jpg)
+Questo stato indica che la proprietà è selezionata per tutti pixelmaps, è possibile deselezionare il pulsante per modificare la proprietà per tutti i pixelmaps.
+
+![Pulsante deselezionato.](./media/guix-studio/checkbox_unchecked.jpg)
+Questo stato indica che la proprietà è deselezionata per tutti pixelmaps, è possibile selezionare il pulsante per modificare la proprietà per tutti i pixelmaps.
+
+![Pulsante non determinato.](./media/guix-studio/checkbox_undetermined.jpg)
+Questo stato indica che lo stato di pixelmaps è diverso per la proprietà, è possibile selezionare o deselezionare il pulsante per modificare la proprietà per tutti pixelmaps; in caso contrario, la proprietà rimane invariata.
+
 
 ## <a name="string-resources"></a>Risorse di stringa
 
