@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8104f00e192486f57fe9c22b2c83aa9a22954739
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 035492644a911eba3b1c62a79572bc7d4c55f6dd
+ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824317"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106082218"
 ---
 # <a name="chapter-2---usbx-device-class-considerations"></a>Capitolo 2-Considerazioni sulle classi di dispositivi USBX
 
@@ -1228,7 +1228,7 @@ L'inizializzazione della classe audio prevede le parti seguenti.
        .ux_device_class_audio_control_process = demo_audio20_request_process;
 
    /* Initialize the device Audio class. This class owns interfaces starting with 0. */
-   status = ux_device_stack_class_register(_ux_system_slave_class_cdc_acm_name,
+   status = ux_device_stack_class_register(_ux_system_slave_class_audio_name,
        ux_device_class_audio_entry, 1, 0, &audio_parameter);
    if(status!=UX_SUCCESS)
        return;
