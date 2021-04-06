@@ -1,17 +1,17 @@
 ---
 title: Capitolo 2-installazione dello stack di dispositivi USBX di Azure RTO
-description: Informazioni su come installare USBX.
+description: Informazioni su come installare lo stack di dispositivi USBX.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 097fdd3c6f09c666ec3ad6eda9e5ba3fa159cb4d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 62f036af27c5da29baf9cba58b5b26631167c3a1
+ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824353"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106377153"
 ---
 # <a name="chapter-2---azure-rtos-usbx-device-stack-installation"></a>Capitolo 2-installazione dello stack di dispositivi USBX di Azure RTO
 

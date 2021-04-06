@@ -1,17 +1,17 @@
 ---
 title: Capitolo 1-Introduzione ad Azure RTO USBX stack host
-description: USBX è uno stack USB completo per applicazioni con Deep embedded. Questo capitolo introduce USBX, che descrive le applicazioni e i vantaggi.
+description: Questo capitolo introduce lo stack host USBX, che descrive le applicazioni e i vantaggi.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 9ee49903e764e20316438be16b47d2d9208b1363
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a9fdd86d47bd4680409cc550c87bc6f456d146a9
+ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824449"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106377051"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-usbx-host-stack"></a>Capitolo 1-Introduzione ad Azure RTO USBX stack host
 
