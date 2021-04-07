@@ -137,6 +137,16 @@
           href: netx-duo-mdns/chapter3.md
         - name: Ch. 4-Descrizione dei servizi MDN
           href: netx-duo-mdns/chapter4.md
+    - name: Manuale dell'utente del client NetX Duo LWM2M
+      items:
+        - name: Ch. 1-Introduzione al client LWM2M
+          href: netx-duo-lwm2m/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client LWM2M
+          href: netx-duo-lwm2m/chapter2.md
+        - name: Ch. 3-Descrizione funzionale del client LWM2M
+          href: netx-duo-lwm2m/chapter3.md
+        - name: Ch. 4-Descrizione dei servizi client di LWM2M
+          href: netx-duo-lwm2m/chapter4.md
     - name: Manuale dell'utente del client NetX Duo MQTT
       items:
         - name: Ch. 1-Introduzione a NetX Duo MQTT client
@@ -171,6 +181,14 @@
           href: netx-duo-ppp/chapter2.md
         - name: Ch. 3-Descrizione dei servizi PPP NetX Duo
           href: netx-duo-ppp/chapter3.md
+    - name: Manuale dell'utente di NetX Duo PTP
+      items:
+        - name: Ch. 1-Introduzione al client PTP NetX Duo
+          href: netx-duo-ptp-client/chapter1.md
+        - name: Ch. 2-installazione e utilizzo del client PTP NetX Duo
+          href: netx-duo-ptp-client/chapter2.md
+        - name: Ch. 3-Descrizione dei servizi client PTP NetX Duo
+          href: netx-duo-ptp-client/chapter3.md
     - name: Manuale dell'utente del client SMTP NetX Duo
       items:
         - name: Ch. 1-Introduzione al client SMTP NetX Duo
