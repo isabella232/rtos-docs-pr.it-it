@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 0ebcebdd2b227ed8d9ccf8b3078b716f90f35bef
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 640d9ed4c8037d3af6c5f45158c9496ad1258a3c
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821464"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550100"
 ---
 # <a name="about-this-filex-user-guide"></a>Informazioni su questo manuale dell'utente di FileX
 
@@ -56,6 +56,7 @@ Questa guida contiene informazioni complete su Azure RTO FileX, il file system i
 Oltre ai tipi di dati personalizzati della struttura di controllo FileX di Azure RTO, è disponibile una serie di tipi di dati speciali usati nelle interfacce di chiamata del servizio FileX di Azure RTO. Questi tipi di dati speciali vengono mappati direttamente ai tipi di dati del compilatore C sottostante. Questa operazione viene eseguita per garantire la portabilità tra diversi compilatori C. L'implementazione esatta viene ereditata da Azure RTO ThreadX ed è disponibile nel file tx_port. h incluso nella distribuzione ThreadX di Azure RTO.
 
 Di seguito è riportato un elenco dei tipi di dati delle chiamate al servizio FileX di Azure RTO e dei relativi significati.
+
 | Tipo  | Descrizione  |
 |---|---|
 | **UINT** | Unsigned Integer di base. Questo tipo deve supportare i dati senza segno a 8 bit; viene tuttavia eseguito il mapping al tipo di dati senza segno più pratico. |

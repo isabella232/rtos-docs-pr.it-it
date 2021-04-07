@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2057b86e6f44912fe8ca349cdf0ad2cc10f5c4cd
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 53ffc900debd3bfaa1a38d792ddf294b2ce92461
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823105"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550304"
 ---
 # <a name="chapter-3---functional-overview-of-guix"></a>Capitolo 3-Panoramica funzionale di GUIX
 
@@ -310,7 +310,7 @@ Infine, i blocchi di controllo per le schermate e i widget GUIX possono essere a
 
 Le API GUIX sono divise e organizzate in diversi gruppi di base che corrispondono ai componenti fondamentali del sistema GUIX. I componenti fondamentali includono:
 
-| <!-- -->    | <!-- -->    |
+| Componenti  | Descrizione  |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GX_SYSTEM  | Componente di sistema GUIX, responsabile di inizializzazione, eventi, timer, tabelle di stringhe e gestione della gerarchia dei widget visibile.                                                                                                                                                                                                                                                                      |
 | GX_CANVAS  | Area di disegno. Un'area di disegno può essere un'astrazione sottile del buffer dei frame hardware oppure può anche essere un'area di disegno della memoria pura. Il tipo di area di disegno è determinato dai parametri passati alla funzione API gx_canvas_create.                                                                                                                                                                                   |

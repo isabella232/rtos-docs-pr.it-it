@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 468f1dc8a8334dc89064594b29dc8cfabd7d8fae
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 347bd83fa8c72ced2e8678a92ec5c5f8393c136d
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822883"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550202"
 ---
 # <a name="chapter-3-functional-description-of-azure-rtos-netx-secure-dtls"></a>Capitolo 3: Descrizione funzionale di Azure RTO NetX Secure DTLS
 
@@ -64,14 +64,14 @@ Qualsiasi record di handshake DTLS valido deve avere un'intestazione di handshak
 
 I campi dell'intestazione del record di handshake DTLS sono definiti come segue:
 
-| Campo di intestazione TLS | Scopo |
+| Campo di intestazione TLS | Scopo  |
 | ---------------- | ------------------------------------------------ |
 | **Tipo di messaggio a 8 bit** | Questo campo contiene il tipo di record DTLS da inviare. I tipi validi sono i seguenti:<br />-ChangeCipherSpec: 0x14<br />-Avviso: 0x15<br />-Handshake: 0x16<br />-Dati applicazione: 0x17 |
 |  **Epoch a 16 bit** | Questo campo contiene il DTLS "Epoch", che è un contatore incrementato ogni volta che viene modificato lo stato di crittografia, ad esempio quando si generano nuove chiavi di sessione. |
 |  **Numero di sequenza a 48 bit** | Questo campo contiene un numero di sequenza che identifica questo record specifico. Viene usato da DTLS per gestire l'ordinamento dei record e verificare la necessità di ritrasmissione. |
 |  **Versione del protocollo a 16 bit** | Questo campo contiene la versione del protocollo DTLS. I valori validi sono i seguenti:<br />-DTLS 1,1:0xFEFD |
 | **Lunghezza a 16 bit** | Questo campo contiene la lunghezza dei dati incapsulati nel record DTLS. |
-| **Tipo di handshake a 8 bit** | Questo campo contiene il tipo di messaggio di handshake. I valori validi sono i seguenti:<br />-HelloRequest: 0x00<br />-ClientHello: 0x01<br />-ServerHello: 0x02<br />-Certificato: 0x0B<br />-ServerKeyExchange: 0x0C<br />-CertificateRequest: 0x0D<br />-ServerHelloDone: 0x0E<br />-CertificateVerify: 0x0F<br />-ClientKeyExchange: 0x10<br />- Operazione terminata | 0x14 |
+| **Tipo di handshake a 8 bit** | Questo campo contiene il tipo di messaggio di handshake. I valori validi sono i seguenti:<br />-HelloRequest: 0x00<br />-ClientHello: 0x01<br />-ServerHello: 0x02<br />-Certificato: 0x0B<br />-ServerKeyExchange: 0x0C<br />-CertificateRequest: 0x0D<br />-ServerHelloDone: 0x0E<br />-CertificateVerify: 0x0F<br />-ClientKeyExchange: 0x10<br />-Operazione completata: 0x14 |
 | **Lunghezza a 24 bit** | Questo campo contiene la lunghezza dei dati del messaggio di handshake. |
 | **Numero di sequenza a 16 bit** | Questo campo contiene un numero di sequenza. |
 

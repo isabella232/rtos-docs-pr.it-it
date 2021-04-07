@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 03a10aeb65017befaf5e7b440046dbff9f9252ef
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: dc7775cdde8f1aa89ca650561713f54ac6c069eb
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823114"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550219"
 ---
 # <a name="appendix-i---guix-information-structures"></a>Appendice I-strutture di informazioni GUIX 
 
@@ -27,10 +27,7 @@ typedef struct GX_BIDI_TEXT_INFO_STRUCT
     GX_VALUE  gx_bidi_text_info_display_width;
 } GX_BIDI_TEXT_INFO;
 ```
-
-### <a name="members"></a>Membri
-
-|                                    |                                                            |
+| Membri | Descrizione |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_text_info_text**               | Testo da riordinare |
 | **gx_bidi_text_info_font**               | Tipo di carattere utilizzato per visualizzare il testo, impostarlo su GX_NULL se non è necessaria l'interruzioni di riga |
@@ -49,9 +46,7 @@ typedef struct GX_BIDI_RESOLVED_TEXT_INFO_STRUCT
 } GX_BIDI_RESOLVED_TEXT_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                    |                                                            |
+| Membri | Descrizione |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_resolved_text_info_text**             | Puntatore alla matrice del testo bidi riordinato |
 | **gx_bidi_resolved_text_info_total_lines**      | Righe totali del testo bidi risolto per un paragrafo |
@@ -73,9 +68,8 @@ typedef struct GX_CIRCULAR_GAUGE_INFO_STRUCT
     GX_RESOURCE_ID  gx_circular_gauge_info_needle_pixelmap;
 } GX_CIRCULAR_GAUGE_INFO;
 ```
-### <a name="members"></a>Membri
 
-|                                                  |                                              |
+| Membri | Descrizione |
 | ------------------------------------------------ | -------------------------------------------- |
 | **gx_circular_gauge_info_animation_steps**       | Passaggi totali durante i quali viene spostata l'ago quando si passa dall'angolo della lancetta corrente a un angolo della lancetta appena assegnato |
 | **gx_circular_gauge_info_animation_delay**       | Il numero di tick dell'orologio GUIX di ritardo tra i passaggi di animazione |
@@ -112,9 +106,7 @@ typedef struct GX_LINE_CHART_INFO_STRUCT
 } GX_LINE_CHART_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                    |                                                            |
+| Membri | Descrizione |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_line_chart_min_val**          | Valore minimo dei dati, utilizzato per calcolare il ridimensionamento
 | **gx_line_chart_max_val**          | Valore massimo dei dati, utilizzato per calcolare il ridimensionamento |
@@ -140,9 +132,7 @@ typedef struct GX_MOUSE_CURSOR_INFO_STRUCT
 } GX_MOUSE_CURSOR_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                    |                                                            |
+| Membri | Descrizione |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_mouse_cursor_image_id**       | ID risorsa dell'immagine del mouse |
 | **gx_mouse_cursor_hotspot_x**      | Offset dal lato sinistro dell'immagine del mouse all'area sensibile dell'immagine del mouse |
@@ -160,9 +150,7 @@ typedef struct GX_PEN_CONFIGURATION_STRUCT
 }GX_PEN_CONFIGURATION;
 ```
 
-### <a name="members"></a>Membri
-
-|                                              |                                                  |
+| Membri | Descrizione |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_pen_configuration_min_drag_dist**       | Lunghezza minima del trascinamento per ogni ciclo del timer GUIX per attivare un evento FLICK. Chiamare GX_FIXED_VAL_MAKE per creare un valore del tipo di dati a virgola fissa |
 | **gx_pen_configuration_max_pen_speed_ticks** | Velocità massima di trascinamento nei cicli del timer GUIX per attivare un evento FLICK | 
@@ -180,9 +168,7 @@ typedef struct GX_PIXELMAP_SLIDER_INFO_STRUCT
 } GX_PIXELMAP_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                                       |                                          |
+| Membri | Descrizione |
 | ----------------------------------------------------- | ---------------------------------------- |
 | **gx_pixelmap_slider_info_lower_background_pixelmap** | ID di risorsa di Pixelmap per riempire lo sfondo prima della lancetta. Se il Pixelmap in background superiore non è impostato, viene usato per riempire lo sfondo sia prima che dopo la lancetta |
 | **gx_pixelmap_slider_info_upper_background_pixelmap** | ID di risorsa di Pixelmap per riempire lo sfondo dopo l'ago |
@@ -206,9 +192,7 @@ typedef struct GX_PROGRESS_BAR_INFO_STRUCT
 } GX_PROGRESS_BAR_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                              |                                                  |
+| Membri | Descrizione |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_progress_bar_info_min_val**             | Valore minimo segnalato |
 | **gx_progress_bar_info_max_val**             | Valore massimo segnalato |
@@ -242,9 +226,7 @@ typedef struct GX_RADIAL_PROGRESS_BAR_INFO_STRUCT
 } GX_RADIAL_PROGRESS_BAR_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                                   |                                              |
+| Membri | Descrizione |
 | ------------------------------------------------- | -------------------------------------------- |
 | **gx_radial_progress_bar_info_xcenter**           | Posizione del widget nella coordinata x |
 | **gx_radial_progress_bar_info_ycenter**           | Posizione del widget nella coordinata y  |
@@ -281,9 +263,7 @@ typedef struct GX_RADIAL_SLIDER_INFO_STRUCT
 } GX_RADIAL_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                               |                                                  |
+| Membri | Descrizione |
 | --------------------------------------------- | ------------------------------------------------ |
 **gx_radial_slider_info_xcenter**               | Distanza tra la parte sinistra del widget del dispositivo di scorrimento e il centro di rotazione della lancetta del dispositivo di scorrimento |
 | **gx_radial_slider_info_ycenter**             | Distanza dalla parte superiore del widget del dispositivo di scorrimento al centro di rotazione della lancetta del dispositivo di scorrimento |
@@ -311,9 +291,7 @@ typedef struct GX_RECTANGLE_STRUCT
 } GX_RECTANGLE;
 ```
 
-### <a name="members"></a>Membri
-
-|                                  |                         |
+| Membri | Descrizione |
 | -------------------------------- | ------------------------|
 | **gx_rectangle_left**            | A sinistra del rettangolo   |  
 | **gx_rectangle_top**             | Parte superiore del rettangolo    | 
@@ -334,9 +312,7 @@ typedef struct GX_RICH_TEXT_FONTS_STRUCT
 } GX_RICH_TEXT_FONTS;
 ```
 
-### <a name="members"></a>Membri
-
-|                                    |                                                            |
+| Membri | Descrizione |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_rich_text_fonts_normal_id**   | ID risorsa del tipo di carattere testo normale |
 | **gx_rich_text_fonts_bold_id**     | ID risorsa del tipo di carattere testo in grassetto |
@@ -357,9 +333,7 @@ typedef struct GX_SCROLL_INFO_STRUCT
 } GX_SCROLL_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                         |                               |
+| Membri | Descrizione |
 | ----------------------- | ----------------------------- |
 | **gx_scroll_value**     | Posizione di scorrimento corrente       |
 | **gx_scroll_minimum**   | Posizione minima segnalata     |
@@ -389,9 +363,7 @@ typedef struct GX_SCROLLBAR_APPEARANCE_STRUCT
 } GX_SCROLLBAR_APPEARANCE;
 ```
 
-### <a name="members"></a>Membri
-
-|                                          |                                                       |
+| Membri | Descrizione |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_scroll_width**                      | Larghezza del widget della barra di scorrimento, in pixel |
 | **gx_scroll_thumb_width**                | Larghezza del pulsante Thumb che scorre la barra di scorrimento, in pixel. Questo valore è in genere un numero di pixel inferiore alla lunghezza totale della barra di scorrimento |
@@ -426,9 +398,7 @@ typedef struct GX_SLIDER_INFO_STRUCT
 } GX_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Membri
-
-|                                         |                                                        |
+| Membri | Descrizione |
 | --------------------------------------- | ------------------------------------------------------ |
 | **gx_slider_info_min_val**              | Valore minimo segnalato |
 | **gx_slider_info_max_val**              | Valore massimo segnalato |
@@ -456,9 +426,7 @@ typedef struct GX_SPRITE_FRAME_STRUCT
 } GX_SPRITE_FRAME;
 ```
 
-### <a name="members"></a>Membri
-
-|                                          |                                                       |
+| Membri | Descrizione |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_sprite_frame_pixelmap**             | ID risorsa del Pixelmap da visualizzare per questo frame. L'ID può essere 0. |
 | **gx_sprite_frame_x_offset**             | Offset dal widget sprite a sinistra per visualizzare il pixelmap |

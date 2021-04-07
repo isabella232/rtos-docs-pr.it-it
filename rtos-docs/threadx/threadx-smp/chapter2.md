@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 53d73789d93cac7bed241a54b1dde20b8610ef13
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cc352ebd7965c84c341d25dfa7bff2671dfb5e66
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822472"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550253"
 ---
 # <a name="chapter-2---installation--use-of-azure-rtos-threadx-smp"></a>Capitolo 2-installazione & uso di Azure RTO ThreadX SMP
 
@@ -51,7 +51,7 @@ Questo PDF fornisce una semplice procedura in quattro passaggi per l'esecuzione 
 
 File di testo contenente informazioni specifiche sulla porta SMP di ThreadX, incluse le informazioni sul processore di destinazione e gli strumenti di sviluppo.
 
-|                 |                     |
+| Strumento | Descrizione |
 | -------------- | ------------------------------------------------------------------------------------------------- |
 | **tx_api. h**  | File di intestazione C contenente tutti gli equivalenti di sistema, le strutture di dati e i prototipi di servizio.             |
 | **tx_port. h** | File di intestazione C contenente tutte le strutture e le definizioni dei dati dello strumento di sviluppo e del targetspecific. |

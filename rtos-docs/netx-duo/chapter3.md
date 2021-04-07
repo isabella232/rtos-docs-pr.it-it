@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 07e51643c828afc8e6c0b968e78380316e84ccd7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 31900c7b822c88079e4b9fe28a8a388d20f819aa
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822115"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106549845"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-netx-duo"></a>Capitolo 3-componenti funzionali di Azure RTO NetX Duo
 
@@ -204,7 +204,7 @@ I campi dell'intestazione del pacchetto sono definiti nel modo seguente. Si noti
 > [!CAUTION]
 > *Per motivi di prestazioni, NetX Duo presuppone che, quando il pacchetto viene passato ai servizi di NetX Duo per la trasmissione, il puntatore anteposto punti all'indirizzo allineato a parole lunghe.*
 
-|   |   |
+| Intestazione pacchetto | Scopo |
 |---|---|
 |***nx_packet_append_ptr** _|Questo campo punta alla fine dei dati attualmente presenti nell'area del payload del pacchetto. Deve trovarsi tra la posizione di memoria a cui punta _nx_packet_prepend_ptr * e *nx_packet_data_end.* La differenza tra questo campo e il campo *nx_packet_prepend_ptr* rappresenta la quantità di dati in questo pacchetto.|
 |***nx_packet_packet_pad** _|Questo campo definisce la lunghezza del riempimento in parole a 4 byte per ottenere il requisito di allineamento desiderato. Questo campo viene rimosso se _*_NX_PACKET_HEADER_PAD_*_ non è definito. In alternativa, è possibile usare _*_NX_PACKET_ALIGNMENT_*_ anziché definire _nx_packet_header_pad. *|
@@ -794,7 +794,7 @@ Si noti che il prefisso di questo indirizzo IPv6 è **2001:0123:4567:89AB**, che
 
 La struttura NXD_ADDRESS include anche indirizzi IPv4. Un indirizzo IP di **192.1.168.10** (**0xC001A80A**) archiviato in global_ipv4_address avrà il layout di memoria seguente:
 
-|Campo |Valore |
+|Campo |valore |
 |---|---|
 |global_ipv4_address global_ipv4_address.nxd_ip_version |NX_IP_VERSION_V4|
 |global_ipv4_address global_ipv4_address.nxd_ip_address. v4 |0xC001A80A|

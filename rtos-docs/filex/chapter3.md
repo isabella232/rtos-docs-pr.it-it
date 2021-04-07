@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1e1e1a1dbd844d811c7ee3122113f28162639fb4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a94344a7079e3f0e3e451bc678c369fee543aef6
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821437"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550168"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-filex"></a>Capitolo 3-componenti funzionali di Azure RTO FileX
 
@@ -42,6 +42,7 @@ L'offset esatto del settore delle altre aree nella visualizzazione del settore l
 - **Settori per cluster** Il campo *settori per cluster* nel record di avvio multimediale definisce il numero di settori assegnati a un cluster. Il cluster è l'elemento di allocazione fondamentale in un file system compatibile con FAT. Tutte le informazioni sui file e le sottodirectory vengono allocate dai cluster disponibili del supporto come determinato dalla tabella di allocazione file (FAT).
 
     **TABELLA 1. Record di avvio multimediale FileX**
+    
     |Offset  |Campo  |Numero di byte|
     |----------|-----------|------------|
     |0x00|Istruzione Jump (E9, XX, XX o EB, XX, 90)|3|
@@ -161,6 +162,7 @@ Le prime due voci della tabella FAT non vengono utilizzate e in genere presentan
 La voce FAT numero 2 rappresenta il primo cluster nell'area dati del supporto. Il contenuto di ogni voce del cluster determina se è gratuito o parte di un elenco collegato di cluster allocati per un file o una sottodirectory. Se la voce del cluster contiene un'altra voce del cluster valida, il cluster viene allocato e il relativo valore punta al cluster successivo allocato nella catena del cluster.
 
 Le possibili voci del cluster sono definite come segue.
+
 |Significato|FAT a 12 bit|FAT a 16 bit|FAT 32 bit| exFAT|
 |----------|-----------|------------|-------|------|
 |Cluster gratuito|0x000|0x0000|0x00000000|0x00000000|
@@ -283,26 +285,26 @@ FileX supporta entrambi i formati di nome 8,3 e Windows Long File Name (LFN). Ol
 
     **TABELLA 4. Voce directory nome file lungo**
 
-    |Offset|Campo|Numero di byte|
+    | Offset | Campo | Numero di byte |
     |------------|-----------|------------|
-    0x00|Campo ordinale|1|
-    0x01|Carattere Unicode 1|2|
-    0x03|Carattere Unicode 2|2|
-    0x05|Carattere Unicode 3|2|
-    0x07|Carattere Unicode 4|2|
-    0x09|Carattere Unicode 5|2|
-    0x0B|Attributi LFN|1|
-    0x0C|Tipo LFN (riservato sempre 0)|1|
-    0x0D|Checksum LFN|1|
-    0x0E|Carattere Unicode 6|2|
-    0x10|Carattere Unicode 7|2|
-    0x12|Carattere Unicode 8|2|
-    0x14|Carattere Unicode 9|2|
-    0x16|Carattere Unicode 10|2|
-    0x18|Carattere Unicode 11|2|
-    0x1A|Cluster LFN (non usato sempre 0)|2|
-    0x1C|Carattere Unicode 12|2|
-    0x1E|Carattere Unicode |13|2|
+    | 0x00 | Campo ordinale | 1 |
+    | 0x01 | Carattere Unicode 1 | 2 |
+    | 0x03 | Carattere Unicode 2 | 2 |
+    | 0x05 | Carattere Unicode 3 | 2 |
+    | 0x07 | Carattere Unicode 4 | 2 |
+    | 0x09 | Carattere Unicode 5 | 2 |
+    | 0x0B | Attributi LFN | 1 |
+    | 0x0C | Tipo LFN (riservato sempre 0) | 1 |
+    | 0x0D | Checksum LFN | 1 |
+    | 0x0E | Carattere Unicode 6 | 2 | 
+    | 0x10 | Carattere Unicode 7 | 2 |
+    | 0x12 | Carattere Unicode 8 | 2 |
+    | 0x14 | Carattere Unicode 9 | 2 |
+    | 0x16 | Carattere Unicode 10 | 2 |
+    | 0x18 | Carattere Unicode 11 | 2 |
+    | 0x1A | Cluster LFN (non usato sempre 0) | 2 |
+    | 0x1C | Carattere Unicode 12 | 2 |
+    | 0x1E | Carattere Unicode 13 | 2 |
 
 - **Carattere Unicode**
 
@@ -472,6 +474,7 @@ La tabella seguente include una descrizione della voce di directory dell'estensi
 - **Flag**
 
     Questo campo contiene una serie di bit che specificano varie proprietà:
+    
     |Bit del flag|Significato    |
     |-----------------|-----------|
     |0x01            |Questo campo indica se l'allocazione dei cluster è possibile o meno. Questo campo deve essere 1.|

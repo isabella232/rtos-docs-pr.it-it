@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b44822b9d8f16208cf470a84013be5a5ff833325
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8f2ef697f68a269b24a34147a4bc076b8a2b1660
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822442"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550083"
 ---
 # <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Capitolo 5-driver I/O per Azure RTO FileX
 
@@ -93,8 +93,7 @@ FileX scrive uno o più settori nel supporto fisico inviando una richiesta di sc
 |fx_media_driver_sectors|Numero di settori da scrivere|
 |fx_media_driver_buffer|Buffer di origine per i settori da scrivere|
 |fx_media_driver_system_write| Impostare su FX_TRUE se viene richiesto un settore di sistema (FAT o settore di directory). In caso contrario, FX_FALSE se viene richiesto un settore di dati di file.|
-|fx_media_driver_sector_type|Definisce il tipo esplicito di settore richiesto, come indicato di seguito:
-FX_FAT_SECTOR (2) FX_DIRECTORY_SECTOR (3) FX_DATA_SECTOR (4) |
+|fx_media_driver_sector_type|Definisce il tipo esplicito di settore richiesto, come indicato di seguito:<br> <br>FX_FAT_SECTOR (2) <br> FX_DIRECTORY_SECTOR (3) <br>FX_DATA_SECTOR (4).|
 
 ### <a name="driver-flush"></a>Scaricamento driver
 

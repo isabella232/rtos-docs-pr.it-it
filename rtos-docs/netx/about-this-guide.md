@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8e1c23892c4360ddc8783b04ae8f23e371899f1d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 01077e3315e87b918cdfd47423d8e0c1b6bbdbbd
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822823"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550270"
 ---
 # <a name="about-the-azure-rtos-netx-user-guide"></a>Informazioni sul manuale dell'utente di Azure RTO NetX
 
@@ -47,7 +47,7 @@ Oltre ai tipi di dati della struttura di controllo NetX di Azure RTO personalizz
 
 Di seguito è riportato un elenco dei tipi di dati delle chiamate al servizio NetX di Azure RTO e dei relativi significati:
 
-| <!-- -->    | <!-- -->    |
+| Tipi di dati | Descrizione  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | **UINT**  | Unsigned Integer di base. Questo tipo deve supportare i dati senza segno a 32 bit; viene tuttavia eseguito il mapping al tipo di dati senza segno più pratico. |
 | **ULONG** | Tipo long senza segno. Questo tipo deve supportare i dati senza segno a 32 bit.                                                                      |

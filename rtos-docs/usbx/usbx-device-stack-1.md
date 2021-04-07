@@ -1,17 +1,17 @@
 ---
 title: Capitolo 1-Introduzione ad Azure RTO USBX Device stack
-description: Questo capitolo introduce lo stack di dispositivi USBX, che descrive le applicazioni e i vantaggi.
+description: USBX è uno stack USB completo per applicazioni con Deep embedded. Questo capitolo introduce USBX, che descrive i vantaggi e le applicazioni.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 383651bb0af42842329ad15b212e597f63a916aa
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: 8b1e08130d4531fd82629378761cd5b1752f0a07
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377068"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550287"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-usbx-device-stack"></a>Capitolo 1-Introduzione ad Azure RTO USBX Device stack
 

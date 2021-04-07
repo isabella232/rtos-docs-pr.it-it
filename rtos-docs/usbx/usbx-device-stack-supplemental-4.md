@@ -1,17 +1,17 @@
 ---
 title: 'Capitolo 4: implementazione di USBX PictBridge'
-description: UBSX supporta l'implementazione di PictBridge completa sia nell'host che nel dispositivo. PictBridge si trova sopra la classe USBX PIMA su entrambi i lati.
+description: UBSX supporta l'implementazione di PictBridge completa sia sul dispositivo che sull'host. PictBridge si trova sopra la classe USBX PIMA su entrambi i lati.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2ef1809dac046d49b15aba000cabed6c9fd458a3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4fdf1e46a7123c10d17e11d09c1b16c2f68f4a31
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824458"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550236"
 ---
 # <a name="chapter-4---usbx-pictbridge-implementation"></a>Capitolo 4: implementazione di USBX PictBridge
 
@@ -263,7 +263,7 @@ Questa classe è il livello generico PTP situato tra lo stack USB e il livello P
 
 Il passaggio successivo consiste nell'inizializzare i valori predefiniti di PictBridge per i servizi di stampa come indicato di seguito:
 
-| Campo PictBridge       | Valore                                  |
+| Campo PictBridge       | valore                                  |
 |------------------------|----------------------------------------|
 | DpsVersion [0]          | 0x00010000                             |
 | DpsVersion [1]          | 0x00010001                             |

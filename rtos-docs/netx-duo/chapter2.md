@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 457eca2144bb0cba7cae63aa007e9cb658bbcd96
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8ee9d16c71d6c207de2098d688d49e6482c8b780
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822934"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550151"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Capitolo 2-installazione e uso di Azure RTO NetX Duo
 
@@ -71,6 +71,7 @@ L'uso di NetX Duo è facile. In pratica, il codice dell'applicazione deve includ
 Di seguito sono riportati i quattro semplici passaggi necessari per creare un'applicazione NetX Duo:
 
 [!div class="mx-tdCol2BreakAll"]
+
 | Passaggio  | Descrizione  |
 |---|---|
 |Passaggio &nbsp; 1: |Includere il file ***nx_api. h*** in tutti i file dell'applicazione che usano i servizi o le strutture di dati di NETX Duo.|

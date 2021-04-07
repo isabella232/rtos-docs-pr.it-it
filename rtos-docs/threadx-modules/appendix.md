@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b54b8b094e608052fdbfc392d93a57ebb34515ed
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c2324a2057bf2ddb2d255b2ff611d34fc664560a
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823306"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106549811"
 ---
 # <a name="appendix---port-specific-examples"></a>Appendice-Esempi specifici della porta
 
@@ -69,7 +69,7 @@ _txm_module_preamble:
 
 #### <a name="module-properties-for-arm11-using-gcc"></a>Proprietà dei moduli per ARM11 con GCC
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | [23-0] | 0 | Riservato
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
@@ -379,7 +379,7 @@ __txm_module_preamble
 
 #### <a name="module-properties-for-arm11-using-ac5"></a>Proprietà del modulo per ARM11 con AC5
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | [23-0] | 0 | Riservato
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
@@ -490,7 +490,7 @@ __txm_module_preamble
 
 #### <a name="module-properties-for-cortex-a7-using-ac5"></a>Proprietà dei moduli per Cortex-A7 con AC5
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | [23-1] | 0 | Riservato
@@ -542,6 +542,7 @@ armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x80000000 --first tx_i
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-A7 con AC5
 
 Per configurare le impostazioni di memoria condivisa, è possibile usare gli attributi seguenti:
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MMU_ATTRIBUTE_XN | Esegui mai |
@@ -631,7 +632,7 @@ __txm_module_preamble
 
 #### <a name="module-properties-for-cortex-m3-using-ac5"></a>Proprietà dei moduli per Cortex-M3 con AC5
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -684,6 +685,7 @@ armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con AC5
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -759,7 +761,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m3-using-ac6"></a>Proprietà dei moduli per Cortex-M3 con AC6
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -800,6 +802,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con AC6
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -872,7 +875,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m3-using-gnu"></a>Proprietà dei moduli per Cortex-M3 con GNU
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1137,6 +1140,7 @@ arm-none-eabi-ld -A cortex-m3 -ereset_handler -T sample_threadx.ld tx_simulator_
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con GNU
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -1221,7 +1225,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m3-using-iar"></a>Proprietà dei moduli per Cortex-M3 con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1316,6 +1320,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con IAR
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -1397,7 +1402,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m33-using-ac6"></a>Proprietà dei moduli per Cortex-M33 con AC6
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1467,7 +1472,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 
 #### <a name="module-properties-for-cortex-m33-using-gnu"></a>Proprietà dei moduli per Cortex-M33 con GNU
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1572,7 +1577,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m33-using-iar"></a>Proprietà dei moduli per Cortex-M33 con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1751,7 +1756,7 @@ __txm_module_preamble
 
 #### <a name="module-properties-for-cortex-m4-using-ac5"></a>Proprietà dei moduli per Cortex-M4 con AC5
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1804,6 +1809,7 @@ armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con AC5
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -1879,7 +1885,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m4-using-ac6"></a>Proprietà dei moduli per Cortex-M4 con AC6
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -1920,6 +1926,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con AC6
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -1991,7 +1998,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m4-using-gnu"></a>Proprietà dei moduli per Cortex-M4 con GNU
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -2257,6 +2264,7 @@ arm-none-eabi-gcc -g -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=vfpv4 -mthumb -T sam
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con GNU
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -2341,7 +2349,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m4-using-iar"></a>Proprietà dei moduli per Cortex-M4 con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -2436,6 +2444,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con IAR
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -2520,7 +2529,7 @@ __txm_module_preamble
 
 #### <a name="module-properties-for-cortex-m7-using-ac5"></a>Proprietà dei moduli per Cortex-M7 con AC5
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -2577,7 +2586,7 @@ armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_i
 
 #### <a name="module-properties-for-cortex-m7-using-ac6"></a>Proprietà dei moduli per Cortex-M7 con AC6
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -2618,6 +2627,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con AC6
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -2626,7 +2636,7 @@ Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
 
 #### <a name="module-properties-for-cortex-m7-using-gnu"></a>Proprietà dei moduli per Cortex-M7 con GNU
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -2891,6 +2901,7 @@ arm-none-eabi-gcc -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -no
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con GNU
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -2975,7 +2986,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m7-using-iar"></a>Proprietà dei moduli per Cortex-M7 con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -3064,6 +3075,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con IAR
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -3136,7 +3148,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-r4-using-ac6"></a>Proprietà dei moduli per Cortex-R4 con AC6
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | [23-1] | 0 | Riservato
@@ -3191,6 +3203,7 @@ armlink -d -o demo_threadx_module_manager.axf --elf --scatter=demo_threadx.scat 
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-R4 con AC6
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -3264,7 +3277,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-r4-using-iar"></a>Proprietà dei moduli per Cortex-R4 con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | [23-1] | 0 | Riservato
@@ -3348,6 +3361,7 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-R4 con IAR
 
 Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+
 | Parametro attribute | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
@@ -3411,7 +3425,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-mcf544xx-using-ghs"></a>Proprietà del modulo per MCF544xx con GHS
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione da MMU<br />Protezione da MMU (è necessario selezionare la modalità utente) |
@@ -3575,7 +3589,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-rx63-using-iar"></a>Proprietà del modulo per RX63 con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
@@ -3772,7 +3786,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-rx65n-using-iar"></a>Proprietà del modulo per RX65N con IAR
 
-| bit | Valore | Significato |
+| bit | valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |

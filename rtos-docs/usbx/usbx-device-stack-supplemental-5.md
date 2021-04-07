@@ -1,17 +1,17 @@
 ---
 title: Capitolo 5-USBX OTG
-description: USBX supporta le funzionalità di OTG di USB quando un controller USB compatibile con OTG è disponibile nella progettazione dell'hardware.
+description: Informazioni su come USBX supporta le funzionalità di OTG di USB quando è disponibile un controller USB compatibile con OTG nell'hardware design.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: da562fd843c6ef0fd17f0d979ca57bd37572748d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 64a3c44f84b9ffca31d9e616d14d3d5d87c56bd7
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823318"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550321"
 ---
 # <a name="chapter-5---usbx-otg"></a>Capitolo 5-USBX OTG
 
@@ -40,7 +40,7 @@ Diversamente da quanto avviene con un'implementazione USB normale, il gruppo OTG
 
 Il gestore dei ruoli USB riceve i comandi per modificare lo stato del dispositivo USB. Ci sono diversi Stati che richiedono transizioni da e verso:
 
-| State                    | Valore | Descrizione                                           |
+| State                    | valore | Descrizione                                           |
 | ------------------------ | ----- | ----------------------------------------------------- |
 | UX_OTG_IDLE            | 0     | Il dispositivo è inattivo. Non connesso ad alcun elemento |
 | UX_OTG_IDLE_TO_HOST  | 1     | Il dispositivo è connesso a un connettore di tipo             |
