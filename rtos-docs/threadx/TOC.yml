@@ -59,12 +59,6 @@
       href: ./threadx-smp/appendix-c.md
     - name: App. Codici di caratteri D-ASCII
       href: ./threadx-smp/appendix-d.md
-- name: Supplemento manuale dell'utente di ThreadX Execution profile kit per ARMv8-M
-  items:
-    - name: Ch. 1-Introduzione al kit del profilo di esecuzione
-      href: ./epk_user_guide/chapter1.md
-    - name: Ch. 2-riferimenti alle API del kit del profilo di esecuzione
-      href: ./epk_user_guide/chapter2.md
 - name: Repository ThreadX
   href: 'https://github.com/azure-rtos/threadx'
 - name: Servizi correlati
