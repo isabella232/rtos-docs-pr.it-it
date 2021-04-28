@@ -1,60 +1,170 @@
 ---
-title: Che cos'è Microsoft Azure RTO?
-description: Azure RTO è un sistema operativo in tempo reale (RTO) per i dispositivi Internet e i dispositivi perimetrali basati su unità di microcontroller (MCU).
+title: Che cos'Microsoft Azure RTOS?
+description: Azure RTOS è un sistema operativo in tempo reale (RTOS) per dispositivi IoT e perimetrali basati su unità microcontroller (MKU).
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 3b1c63135f6069652d7f66fc976b9d770a4dfeb2
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c902289b487c439da4ef5138319fe09d74a2347f
+ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822502"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108171275"
 ---
-# <a name="what-is-microsoft-azure-rtos"></a>Che cos'è Microsoft Azure RTO
+# <a name="what-is-microsoft-azure-rtos"></a>Che cos'Microsoft Azure RTOS?
 
-Azure RTO è un sistema operativo in tempo reale (RTO) per i dispositivi Internet e i dispositivi perimetrali basati su unità di microcontroller (MCU). Azure RTO è progettato per supportare i dispositivi con la massima costrizione (alimentato da batteria e con meno di 64 KB di memoria flash).
- 
-Azure RTO è già certificato per diversi standard di sicurezza. Sono incluse le certificazioni IEC 61508 SIL 4, IEC 62304 Class C e ISO 26262 ASIL D. Anche Azure RTO ThreadX è certificato 178.
+Azure RTOS è un sistema operativo in tempo reale (RTOS) per dispositivi Internet delle cose (IoT) e perimetrali basati su unità microcontroller (MKU). Azure RTOS è progettato per supportare i dispositivi più vincolati (alimentato a batteria e con meno di 64 KB di memoria flash).
 
-Azure RTO offre un ambiente EAL4 + Common criteri di sicurezza con certificazione, inclusa la sicurezza completa a livello IP tramite IPsec e la sicurezza a livello di socket tramite TLS e DTLS. La libreria di crittografia software ha raggiunto la certificazione FIPS 140-2. Vengono inoltre sfruttate le funzionalità di crittografia hardware, la protezione della memoria tramite i moduli ThreadX e il supporto per le funzionalità di sicurezza TrustZone ARMv8-M di ARM.
+Azure RTOS è precertificato per un'ampia gamma di standard di sicurezza. Sono incluse le certificazioni IEC 61508 SIL 4, IEC 62304 Classe C e ISO 26262 ASIL D. Azure RTOS ThreadX è certificato anche per DO-178.
 
-## <a name="components-of-azure-rtos"></a>Componenti di Azure RTO
+Azure RTOS un ambiente certificato per la sicurezza con criteri comuni EAL4+, inclusa la sicurezza completa del livello IP tramite IPsec e la sicurezza del livello socket tramite TLS e DTLS. La nostra libreria di crittografia software ha ottenuto la certificazione FIPS 140-2. Vengono anche sfruttate le funzionalità di crittografia hardware, la protezione della memoria tramite Moduli ThreadX e il supporto per le funzionalità di sicurezza ARMv8-M trustZone di ARM.
 
-La piattaforma Azure RTO è la raccolta di soluzioni in fase di esecuzione, tra cui Azure RTO ThreadX, Azure RTO FileX, Azure RTO GUIX, Azure RTO NetX, Azure RTO NetX Duo e Azure RTO USBX.
+## <a name="components-of-azure-rtos"></a>Componenti di Azure RTOS
+
+La piattaforma Azure RTOS è la raccolta di soluzioni di run-time tra cui Azure RTOS ThreadX, Azure RTOS FileX, Azure RTOS GUIX, Azure RTOS NetX, Azure RTOS NetX Duo e Azure RTOS USBX.
 
 ### <a name="azure-rtos-threadx"></a>Azure RTOS ThreadX
 
-Azure RTOS ThreadX è un sistema operativo in tempo reale (RTOS, Real-Time Operating System) avanzato, progettato in modo specifico per applicazioni profondamente incorporate. Tra i vari vantaggi offerti da Azure RTO ThreadX sono disponibili funzionalità di pianificazione avanzate, passaggio di messaggi, gestione degli interrupt e servizi di messaggistica. Azure RTO ThreadX offre molte funzionalità avanzate, tra cui l'architettura picokernel, la pianificazione delle soglie di precedenza, il concatenamento degli eventi e un set completo di servizi di sistema.
+Azure RTOS ThreadX è un sistema operativo in tempo reale (RTOS, Real-Time Operating System) avanzato, progettato in modo specifico per applicazioni profondamente incorporate. Tra i diversi vantaggi offerti Azure RTOS ThreadX sono le funzionalità di pianificazione avanzate, il passaggio di messaggi, la gestione delle interruzioni e i servizi di messaggistica. Azure RTOS ThreadX offre molte funzionalità avanzate, tra cui l'architettura del picokernel, la pianificazione delle soglie di preemption, il concatenamento degli eventi e un set avanzato di servizi di sistema.
 
 ### <a name="azure-rtos-filex"></a>Azure RTOS FileX
 
-Azure RTO FileX è una file system a prestazioni elevate compatibili con FAT. È completamente integrato con Azure RTO ThreadX ed è disponibile per tutti i processori supportati. Analogamente ad Azure RTO ThreadX, Azure RTO FileX è progettato per avere un footprint ridotto e prestazioni elevate, rendendolo ideale per le applicazioni di oggi profondamente incorporate che richiedono operazioni sui file. Azure RTO FileX supporta la maggior parte dei supporti fisici, tra cui RAM disk, USBX, SD CARD e NAND/NOR Flash Memory tramite Azure RTO LevelX.
+Azure RTOS FileX è un sistema compatibile con FAT ad file system. È completamente integrato con Azure RTOS ThreadX ed è disponibile per tutti i processori supportati. Come Azure RTOS ThreadX, Azure RTOS FileX è progettato per avere un footprint ridotto e prestazioni elevate, rendendolo ideale per le applicazioni attualmente incorporate che richiedono operazioni su file. Azure RTOS FileX supporta la maggior parte dei supporti fisici, inclusi dischi RAM, USBX, SD CARD e memorie flash NAND/NOR tramite Azure RTOS LevelX.
 
 ### <a name="azure-rtos-guix"></a>Azure RTOS GUIX
 
-Azure RTO GUIX è un pacchetto di interfaccia utente grafica di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi embedded. Diversamente dalle alternative, Azure RTO GUIX è piccolo, veloce e facilmente portabile in qualsiasi configurazione hardware in grado di supportare l'output grafico. Azure RTO GUIX offre anche un'eccezionale attrattiva visiva e un'API intuitiva e potente per lo sviluppo di interfacce utente a livello di applicazione.
+Azure RTOS GUIX è un pacchetto di interfaccia utente grafica di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi incorporati. A differenza delle alternative, Azure RTOS GUIX è piccolo, veloce e facilmente portabile in praticamente qualsiasi configurazione hardware in grado di supportare l'output grafico. Azure RTOS GUIX offre anche un'eccezionale funzionalità visiva e un'API intuitiva e potente per lo sviluppo dell'interfaccia utente a livello di applicazione.
 
 ### <a name="azure-rtos-netx"></a>Azure RTOS NetX
 
-Azure RTO NetX è un'implementazione a prestazioni elevate degli standard del protocollo TCP/IP. È completamente integrato con Azure RTO ThreadX ed è disponibile per tutti i processori supportati. Azure RTO NetX ha un'architettura piconet univoca. Combinato con un'API di copia zero, lo rende perfetto per le applicazioni di oggi profondamente incorporate che richiedono la connettività di rete.
+Azure RTOS NetX è un'implementazione ad alte prestazioni degli standard del protocollo TCP/IP. È completamente integrato con Azure RTOS ThreadX ed è disponibile per tutti i processori supportati. Azure RTOS NetX ha un'architettura Piconet univoca. In combinazione con un'API a copia zero, è una soluzione ideale per le applicazioni attualmente incorporate che richiedono connettività di rete.
 
 ### <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure RTO NetX Duo è uno stack di rete TCP/IP avanzato e di livello industriale progettato in modo specifico per applicazioni incorporate, in tempo reale e in tempo reale. Azure RTO NetX Duo è uno stack di rete IPv4 e IPv6 duale, mentre NetX è lo stack di rete IPv4 originale, essenzialmente un subset di Azure RTO NetX Duo.
+Azure RTOS NetX Duo è uno stack di rete TCP/IP di livello industriale avanzato progettato specificamente per applicazioni IoT, real-time e deep embedded. Azure RTOS NetX Duo è un doppio stack di rete IPv4 e IPv6, mentre NetX è lo stack di rete IPv4 originale, essenzialmente un subset di Azure RTOS NetX Duo.
 
 ### <a name="azure-rtos-usbx"></a>Azure RTOS USBX
 
-Azure RTO USBX è un host USB a prestazioni elevate, un dispositivo e uno stack embedded on-the-go (OTG). È completamente integrato con ThreadX ed è disponibile per tutti i processori supportati da Azure RTO ThreadX. Analogamente ad Azure RTO ThreadX, Azure RTO USBX è progettato per avere un footprint ridotto e prestazioni elevate, rendendolo ideale per applicazioni con Deep embedded che richiedono un'interfaccia con i dispositivi USB.
+Azure RTOS USBX è un host, un dispositivo e uno stack incorporato OTG (On-The-Go) USB ad alte prestazioni. È completamente integrato con ThreadX ed è disponibile per tutti Azure RTOS processori supportati da ThreadX. Come Azure RTOS ThreadX, Azure RTOS USBX è progettato per avere un footprint ridotto e prestazioni elevate, rendendolo ideale per applicazioni con incorporata profonda che richiedono un'interfaccia con dispositivi USB.
 
 ### <a name="windows-tools"></a>Strumenti di Windows
 
-Azure RTO GUIX Studio fornisce un ambiente di progettazione di applicazioni GUI completo, che facilita la creazione e la manutenzione di tutti gli elementi grafici nell'interfaccia utente grafica dell'applicazione. Azure RTO GUIX Studio genera automaticamente il codice C compatibile con la libreria RTO GUIX di Azure, pronto per essere compilato ed eseguito nella destinazione.
+Azure RTOS GUIX Studio offre un ambiente di progettazione di applicazioni GUI completo, facilitando la creazione e la manutenzione di tutti gli elementi grafici nell'interfaccia utente grafica dell'applicazione. Azure RTOS GUIX Studio genera automaticamente codice C compatibile con la libreria GUIX Azure RTOS, pronta per essere compilata ed eseguita nella destinazione.
 
-Azure RTO TraceX è uno strumento di analisi basato su host che offre agli sviluppatori una visualizzazione grafica degli eventi di sistema in tempo reale e consente loro di visualizzare e comprendere meglio il comportamento dei sistemi in tempo reale.
+Azure RTOS TraceX è uno strumento di analisi basato su host che offre agli sviluppatori una visualizzazione grafica degli eventi di sistema in tempo reale e consente di visualizzare e comprendere meglio il comportamento dei sistemi in tempo reale.
 
-## <a name="in-the-context-of-azure-iot"></a>Nel contesto di Azure
+## <a name="the-azure-rtos-advantage"></a>Vantaggio Azure RTOS
+Azure RTOS offre i vantaggi seguenti rispetto ad altri sistemi operativi in tempo reale.
 
-Oltre a connettersi direttamente ad Azure o a connettersi indirettamente tramite Azure IoT Edge, Azure RTO è disponibile anche su dispositivi Azure Sphere. La combinazione di RTO e Azure Sphere di Azure offrirà insieme l'elaborazione e la protezione in tempo reale di livello più efficace in un unico dispositivo.
+### <a name="intuitive-and-consistent-api-design"></a>Progettazione di API intuitiva e coerente
+
+* API intuitiva e coerente.
+* Convenzione di denominazione sostantivo-verbo.
+* Tutte le API hanno un prefisso iniziale, ad esempio *tx_* per ThreadX e *nx_* per FileX, per identificare facilmente il componente Azure RTOS a cui appartengono.
+* Le API di blocco hanno un timeout del thread facoltativo
+* Molte API sono disponibili direttamente dagli ISR delle applicazioni.
+- Callback di notifica utente facoltativi per operazioni su file e supporti.
+* Modello di programmazione basato su eventi (API).
+
+### <a name="high-efficiency"></a>Efficienza elevata
+
+- Footprint del codice ridotto.
+- Footprint del codice scalabile in base ai servizi usati.
+- Precertificato da TUV e UL a IEC 61508 SIL 4, IEC 62304 Classe C, ISO 26262 ASIL D e EN 50128 SW-SIL4.
+- Esecuzione rapida.
+
+### <a name="fastest-time-to-market"></a>Time-to-market più veloce
+
+Azure RTOS facile da installare, apprendere, usare, eseguire il debug, verificare, certificare e gestire. Di conseguenza, Azure RTOS è uno dei sistemi operativi in tempo reale più diffusi per i dispositivi IoT incorporati, inclusi molti soc di Broadcom, Gainspan e così via. Il vantaggio del time-to-market coerente si basa su:
+
+* Disponibilità completa del codice sorgente.
+* API di facile utilizzo.
+* Set di funzionalità completo e avanzato.
+
+### <a name="one-simple-license"></a>Una licenza semplice
+
+Non sono necessari costi per l'uso e il test del codice sorgente e nessun costo per le licenze di produzione quando vengono distribuiti in dispositivi con licenza preliminare, tutti gli altri dispositivi necessitano di una licenza annuale semplice.
+
+### <a name="full-highest-quality-source-code"></a>Codice sorgente completo e di alta qualità
+
+Nel corso degli anni, Azure RTOS codice sorgente ha impostato la barra sulla qualità e sulla facilità di comprensione. Inoltre, la convenzione di avere una funzione per ogni file offre una navigazione semplice all'origine.
+
+### <a name="pre-certified-by-tuv-and-ul-to-many-safety-standards"></a>Precertificato da TUV e UL per molti standard di sicurezza
+
+Azure RTOS è stato certificato da SGS-TUV Saar per l'uso in sistemi critici per la sicurezza, in base a IEC-61508 SIL 4, IEC-62304 SW Safety Class C, ISO 26262 ASIL D ed EN 50128. La certificazione conferma che Azure RTOS può essere usato nello sviluppo di software correlato alla sicurezza per i più elevati livelli di integrità della sicurezza di IEC-61508, IEC-62304, ISO 26262 ed EN 50128 per la "Sicurezza funzionale dei sistemi elettrici, elettronici e programmabili correlati alla sicurezza elettronica". SGS-TUV Saar, formata da una joint-venture di Germania SGS-Group e TUV Saarland, è diventata la principale società indipendente e accreditata per il test, il controllo, la verifica e la certificazione di software incorporato per sistemi correlati alla sicurezza in tutto il mondo. Lo standard di sicurezza industriale IEC 61508 e tutti gli standard derivati da esso, tra cui IEC-62304, ISO 26262 ed EN 50128, vengono usati per garantire la sicurezza funzionale dei dispositivi medici elettrici, elettronici e programmabili correlati alla sicurezza elettronica, sistemi di controllo dei processi, macchinari industriali, automobili e sistemi di controllo delle automobili e delle automobili.
+
+:::image type="content" source="media/partener-logo-sgs-tuv-saar.png" alt-text="Certificazione SGS-TUV":::
+
+Azure RTOS è stato riconosciuto dall'UL per la conformità agli standard di sicurezza UL 60730-1 Annex H, CSA E60730-1 Annex H, IEC 60730-1 Annex H, UL 60335-1 Annex R, IEC 60335-1 Annex R e UL 1998 standard di sicurezza per il software in componenti programmabili. UL è una società globale indipendente e di scienze di sicurezza con più di un secolo di esperienza nell'innovazione delle soluzioni di sicurezza, dall'adozione pubblica dell'elettricità alle innovazioni in materia di sostenibile, energia sostenibile e nanotecnologia.
+
+:::image type="content" source="media/cru-logo-certification.png" alt-text="Certificazione UL CRU":::
+
+Gli artefatti (certificato, manuale di sicurezza, report di test e così via) associati alle certificazioni TUV e UL sono disponibili per la vendita.
+
+Nei casi in cui l'applicazione richiede una certificazione aggiuntiva, microsoft offre un servizio di certificazione per fornire la certificazione chiavi in volta a vari standard usando la piattaforma hardware effettiva e coprendo anche il codice dell'applicazione. Per altre informazioni sul servizio di certificazione, contattare Microsoft.
+
+### <a name="eal4-common-criteria-security-certification"></a>Certificazione di sicurezza EAL4+ Common Criteria
+
+Azure RTOS ha ottenuto la certificazione di sicurezza EAL4+ Common Criteria. Target of Evaluation (TOE) include Azure RTOS ThreadX, Azure RTOS NetX Duo, Azure RTOS NetX Secure TLS e Azure RTOS NetX MQTT. Rappresenta i protocolli IoT più comuni richiesti da sensori, dispositivi, router perimetrali e gateway con deep embedded.
+
+:::image type="content" source="media/eal-logo-certification.png" alt-text="Certificazione EAL":::
+
+La struttura di valutazione della sicurezza IT usata per la certificazione di sicurezza Microsoft Azure RTOS SC è Brightsight BV e l'autorità di certificazione è SERTIT.
+
+### <a name="fips-140-2-validated"></a>FIPS 140-2 convalidato
+
+Azure RTOS librerie di crittografia hanno ottenuto la certificazione FIPS 140-2 (Federal Information Processing Standardization 140-2) per il software, che specifica i requisiti per i moduli di crittografia. FIPS 140-2 richiede che tutte le agenzie governative federali e i reparti che usano la sicurezza basata su crittografia soddisfino standard specifici correlati alla complessità e alle funzionalità di crittografia. Questi standard di sicurezza basati su crittografia sono riconosciuti anche in Canada e nell'Unione Europa.
+
+Il lab di valutazione di Information Security usato per Azure RTOS crypto è stato atsec e l'autorità di certificazione è [Il National Institute of Standards and Technology (NIST).](https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3394)
+
+### <a name="supports-most-popular-architectures"></a>Supporta le architetture più comuni
+
+Azure RTOS sui microprocessori a 32/64 bit più diffusi, out-of-the-box, completamente testati e completamente supportati, incluse le architetture avanzate seguenti:
+
+**Dispositivi analogici:** SHARC, Blackfin, CM4xx
+
+**Andes Core**: RISC-V
+
+**Ambiqmicro:** MKU Apollo
+
+**ARM:** ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64 bit/R4/R5, TrustZone ARMv8-M
+
+**Cadenza:** Xtensa, Diamond
+
+**CEVA:** PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
+
+**Cypress**: RISC-V
+
+**EnSilica:** eSi-RISC
+
+**Infineon:** XMC1000, XMC4000, TriCore
+
+**Intel; Intel FPGA:** x36/Pentium, XScale, NIOS II, Ciclone, Arria 10
+
+**Microchip:** AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
+
+**Microsemi**: RISC-V
+
+**NXP:** LPC, ARM7, ARM9, PowerPC, 68 K, i.MX, ColdFire, Kinetis Cortex-M3/M4
+
+**Renesas:** SH, HS, V850, RX, RZ, Synergy
+
+**Silicon Labs**: EFM32
+
+**Synopsys:** ARC 600, 700, ARC EM, ARC HS
+
+**ST:** STM32, ARM7, ARM9, Cortex-M3/M4/M7
+
+**Tl:** C5xxx, C6xxx, Stellaris, Sitara, Tiva-C
+
+**Wave Computing:** MIPS32 4K, 24 K, 34 K, 1004 K, MIPS64 5K, microAptiv, interAptiv, proAptiv, M-Class
+
+**Xilinx:** MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
+
+*Tutte le cifre relative a tempi e dimensioni elencate sono stime e possono essere diverse nella piattaforma di sviluppo.*
+
+## <a name="in-the-context-of-azure-iot"></a>Nel contesto di Azure IoT
+
+Oltre a connettersi direttamente Azure IoT o connettersi indirettamente tramite Azure IoT Edge, Azure RTOS è disponibile anche nei Azure Sphere mobili. La combinazione di Azure RTOS e Azure Sphere l'elaborazione in tempo reale e la sicurezza migliori in un unico dispositivo.
