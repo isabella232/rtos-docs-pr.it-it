@@ -20,7 +20,7 @@
   ],
   "sync_notification_subscribers": [],
   "branches_to_filter": [
-    "live",
+    "live-sxs",
     "master"
   ],
   "continue_with_document_error": true,
