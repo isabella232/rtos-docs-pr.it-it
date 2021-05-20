@@ -6,28 +6,28 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2513c1b6f349260c615abbc4056fb856005446c9
-ms.sourcegitcommit: 5c870219b8e7e3f303acc8ddc70320ef3506a3f0
+ms.openlocfilehash: b07e275468484ccc905655dcd13197de42b2ac86
+ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110027963"
+ms.lasthandoff: 05/20/2021
+ms.locfileid: "110223410"
 ---
 # <a name="chapter-4---description-of-guix-services"></a>Capitolo 4 - Descrizione dei servizi GUIX
 
 Questo capitolo contiene una descrizione di tutti i servizi GUIX (elencati di seguito) in ordine alfabetico.  
 
-Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **GX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati. 
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **grassetto** non sono interessati dalla definizione **di GX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati. 
 
 | **Servizio GUIX**                      | **Descrizione**                                                                             |
 | -------------------------------------- | -------------------------------------------------------------------------------------------- |
 | gx_accordion_menu_create            | Menu Crea accordion                                                                        |
 | gx_accordion_menu_draw              | Menu Disegna accordion                                                                          |
-| gx_accordion_menu_event_process    | Evento di menu Elabora accordion                                                                 |
+| gx_accordion_menu_event_process    | Elaborare l'evento di menu accordion                                                                 |
 | gx_accordion_menu_position          | Voci di menu Posizione                                                                          |
 | gx_animation_canvas_define          | Fornire memoria a un controller di animazione per un canvas da usare per le animazioni successive. |
 | gx_animation_create                  | Creare un controller di animazione                                                               |
-| gx_animation_delete                  | Eliminare un controller di animazione                                                               |
+| gx_animation_delete                  | Eliminare uno o più controller di animazione |
 | gx_animation_drag_disable           | Disabilitare l'hook dell'animazione di trascinamento dello schermo                                                           |
 | gx_animation_drag_enable            | Abilitare l'hook dell'animazione di trascinamento dello schermo                                                            |
 | gx_animation_landing_speed_set     | Impostare la velocità di destinazione per l'animazione di trascinamento dello schermo                                                  |
@@ -35,12 +35,12 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_animation_stop                    | Sospendere una sequenza di animazione                                                                |
 | gx_binres_language_count_get      |  Recuperare il numero di lingue da un file di risorse binario                                          |
 | gx_binres_language_info_load      |  Leggere le informazioni sul nome e sulle dimensioni della lingua dal file di risorse binario.                           |
-| gx_binres_language_table_load      | (deprecato) Caricare una tabella del linguaggio dal buffer di dati delle risorse binarie                          |
-| gx_binres_language_table_load_ext | Caricare una tabella del linguaggio dal buffer di dati delle risorse binarie                                       |
-| gx_binres_theme_load                | Caricare un tema dal buffer di dati delle risorse binarie                                                |
+| gx_binres_language_table_load      | (deprecato) Caricare una tabella della lingua dal buffer dei dati delle risorse binarie                          |
+| gx_binres_language_table_load_ext | Caricare una tabella della lingua dal buffer dei dati delle risorse binarie                                       |
+| gx_binres_theme_load                | Caricare un tema dal buffer dei dati delle risorse binarie                                                |
 | gx_brush_default                     | Inizializzare il pennello corrente ai valori predefiniti                                                         |
 | gx_brush_define                      | Definire il pennello                                                                                 |
-| gx_button_background_draw           | Sfondo del pulsante Disegna                                                                       |
+| gx_button_background_draw           | Disegnare lo sfondo del pulsante                                                                       |
 | gx_button_create                     | Pulsante Crea                                                                                |
 | gx_button_deselect                   | Pulsante Deseleziona                                                                              |
 | gx_button_draw                       | Pulsante Di disegno                                                                                  |
@@ -71,14 +71,14 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_canvas_rectangle_draw           | Disegnare un rettangolo                                    |
 | gx_canvas_rotated_text_draw       | (deprecato) Disegnare il testo ruotato intorno al punto centrale |
 | gx_canvas_rotated_text_draw_ext  | Disegnare il testo ruotato intorno al punto centrale              |
-| gx_canvas_shift                     | Maiusc canvas by x,y                               |
+| gx_canvas_shift                     | Maiusc canvas di x,y                               |
 | gx_canvas_show                      | Rendere visibile un'area di disegno                             |
 | gx_canvas_text_draw                | (deprecato) Disegnare testo                            |
 | gx_canvas_text_draw_ext           | Disegnare testo                                         |
 | gx_checkbox_create                  | Creare una casella di controllo                                 |
 | gx_checkbox_draw                    | Disegnare una casella di controllo                                   |
-| gx_checkbox_event_process          | Funzione di elaborazione dell'evento Checkbox                   |
-| gx_checkbox_pixelmap_set           | Assegnare la mappa pixel delle caselle di controllo                          |
+| gx_checkbox_event_process          | Funzione del processo dell'evento Checkbox                   |
+| gx_checkbox_pixelmap_set           | Assegnare la mappa pixel della casella di controllo                          |
 | gx_checkbox_select                  | Selezionare la casella di controllo                                   |
 | gx_circular_gauge_angle_get       | Recuperare l'angolo della lanceta del widget del misuratore                |
 | gx_circular_gauge_angle_set       | Assegnare l'angolo della lanceta del widget del misuratore                  |
@@ -86,7 +86,7 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_circular_gauge_background_draw | Disegnare lo sfondo del misuratore circolare                    |
 | gx_circular_gauge_create           | Creare un widget misuratore circolare                    |
 | gx_circular_gauge_draw             | Disegnare un widget del misuratore circolare                      |
-| gx_circular_gauge_event_process   | Elaborare l'evento del misuratore circolare                      |
+| gx_circular_gauge_event_process   | Elaborare un evento misuratore circolare                      |
 | gx_context_brush_default            | Impostare il pennello del contesto corrente                                      |
 | gx_context_brush_define             | Definire il pennello del contesto corrente                                       |
 | gx_context_brush_get                | Ottiene il pennello del contesto corrente                                          |
@@ -130,7 +130,7 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_drop_list_popup_set                  | Impostare la finestra popup per l'elenco a discesa                                                |
 | gx_generic_scroll_wheel_children_position | Posizionare gli elementi figlio nella rotellina di scorrimento generica |
 | gx_generic_scroll_wheel_create| Creare un widget della rotellina di scorrimento generico |
-| gx_generic_scroll_wheel_draw | Disegnare il widget della rotellina di scorrimento generico |
+| gx_generic_scroll_wheel_draw | Disegnare un widget della rotellina di scorrimento generico |
 | gx_generic_scroll_wheel_event_process| Elaborare l'evento della rotellina di scorrimento generico|
 | gx_generic_scroll_wheel_row_height_set| Impostare l'altezza della riga per la rotellina di scorrimento generica|
 | gx_generic_scroll_wheel_total_rows_set| Impostare il totale delle righe per la rotellina di scorrimento generica |
@@ -155,9 +155,9 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_image_reader_palette_set             | Definire la tavolozza del lettore di immagini                                           |
 | gx_image_reader_start                    | Avviare il processo di decompressione e conversione                           |
 | gx_line_chart_axis_draw                 | Disegnare un grafico a linee con asse x,y                                              |
-| gx_line_chart_create                     | Creare un GX_LINE_CHART istanza                                       |
+| gx_line_chart_create                     | Creare GX_LINE_CHART istanza                                       |
 | gx_line_chart_data_draw                 | Disegnare una linea di dati del grafico a linee                                             |
-| gx_line_chart_draw                       | Disegno del grafico a linee predefinito                                            |
+| gx_line_chart_draw                       | Disegno grafico a linee predefinito                                            |
 | gx_line_chart_update                     | Forzare l'aggiornamento dei dati del grafico a linee                                       |
 | gx_line_chart_y_scale_calculate        | Calcolare la scala dei valori dei dati dell'asse y in coordinate pixel.           |
 | gx_menu_create                            | Menu Crea                                                           |
@@ -165,15 +165,15 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_menu_event_process                     | Evento del menu Elabora                                                    |
 | gx_menu_insert                                | Inserire un nuovo elemento                                                               |
 | gx_menu_remove                                | Rimuovere un elemento                                                                  |
-| gx_menu_text_draw                            | Disegnare il testo del menu                                                                  |
+| gx_menu_text_draw                            | Testo del menu Di disegno                                                                  |
 | gx_menu_text_offset_set                     | Impostare l'offset di disegno del testo del menu                                                       |
 | gx_multi_line_text_button_create           | Pulsante Crea testo su più righe                                                   |
 | gx_multi_line_text_button_draw             | Pulsante Disegna testo su più righe                                                     |
 | gx_multi_line_text_button_event_process   | Impostare il tipo di carattere per il pulsante di testo su più righe                                             |
-| gx_multi_line_text_button_text_draw       | Parte del disegno di testo                                                 |
+| gx_multi_line_text_button_text_draw       | Parte di disegno del testo del disegno                                                 |
 | gx_multi_line_text_button_text_id_set    | Pulsante Imposta stringa di sistema su testo                                                |
-| gx_multi_line_text_button_text_set        | Assegnare una stringa definita dall'utente al pulsante di testo (deprecato)                          |
-| gx_multi_line_text_button_text_set_ext   | Pulsante Assegna stringa definita dall'utente al testo                                       |
+| gx_multi_line_text_button_text_set        | Assegnare una stringa definita dall'utente al pulsante di testo (deprecata)                          |
+| gx_multi_line_text_button_text_set_ext   | Assegnare una stringa definita dall'utente al pulsante di testo                                       |
 | gx_multi_line_text_input_backspace         | Eliminare il carattere prima della posizione del cursore di input di testo su più righe               |
 | gx_multi_line_text_input_buffer_get       | Recupera le informazioni sul buffer del widget di input di testo                               |
 | gx_multi_line_text_input_buffer_clear     | Elimina tutti i caratteri dal buffer di input di testo                               |
@@ -187,9 +187,9 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_multi_line_text_input_event_process    | Elaborare testo di input di testo su più righe                                              |
 | gx_multi_line_text_input_fill_color_set  | Impostare i colori di riempimento per l'input di testo su più righe                                       |
 | gx_multi_line_text_input_home              | Spostare il cursore di input di testo su più righe all'inizio della riga corrente              |
-| gx_multi_line_text_input_left_arrow       | Spostare il cursore di input di testo su più righe a sinistra di un carattere                         |
-| gx_multi_line_text_input_right_arrow      | Spostare il cursore di input di testo su più righe a destra di un carattere                        |
-| gx_multi_line_text_input_style_add        | Aggiungere flag di stile di testo su più righe                                                 |
+| gx_multi_line_text_input_left_arrow       | Spostare il cursore di input di testo su più righe verso sinistra di un carattere                         |
+| gx_multi_line_text_input_right_arrow      | Spostare il cursore di input di testo su più righe di un carattere verso destra                        |
+| gx_multi_line_text_input_style_add        | Aggiungere flag di stile testo su più righe                                                 |
 | gx_multi_line_text_input_style_remove     | Rimuovere i flag di stile del testo su più righe                                              |
 | gx_multi_line_text_input_style_set        | Assegnare flag di stile di testo su più righe                                              |
 | gx_multi_line_text_input_text_color_set  | Assegnare i colori del testo per l'input di testo su più righe                                    |
@@ -197,8 +197,8 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_multi_line_text_input_text_set         | Assegnare testo all'input di testo su più righe (deprecato)                               |
 | gx_multi_line_text_input_text_set_ext          | Assegnare testo all'input di testo su più righe                         |
 | gx_multi_line_text_input_up_arrow               | Spostare il cursore di input di testo su più righe alla riga precedente       |
-| gx_multi_line_text_view_create                   | Creare una visualizzazione testo su più righe                                  |
-| gx_multi_line_text_view_event_process           | Elaborare un evento di visualizzazione del testo su più righe                           |
+| gx_multi_line_text_view_create                   | Creare una visualizzazione di testo su più righe                                  |
+| gx_multi_line_text_view_event_process           | Elaborare un evento di visualizzazione di testo su più righe                           |
 | gx_multi_line_text_view_font_set                | Impostare il tipo di carattere usato nella visualizzazione testo su più righe                        |
 | gx_multi_line_text_view_line_space_set         | Impostare lo spazio riga per la visualizzazione testo su più righe                          |
 | gx_multi_line_text_view_scroll_info_get        | Ottenere informazioni di scorrimento della visualizzazione testo su più righe                         |
@@ -209,20 +209,20 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_multi_line_text_view_whitespace_set          | Impostare lo spazio vuoto per la visualizzazione di testo su più righe                          |
 | gx_numeric_pixelmap_prompt_create                 | Richiesta di creazione di una mappa pixel numerica                               |
 | gx_numeric_pixelmap_prompt_format_ function_set | Eseguire l'override della funzione format del prompt della mappa pixel numerica          |
-| gx_numeric_pixelmap_prompt_value_set             | Impostare il valore numerico della richiesta                                     |
-| gx_numeric_prompt_create                           | Creare una richiesta numerica                                        |
+| gx_numeric_pixelmap_prompt_value_set             | Impostare il valore numerico del prompt                                     |
+| gx_numeric_prompt_create                           | Creare un prompt numerico                                        |
 | gx_numeric_prompt_format_function_set            | Eseguire l'override della funzione format del prompt numerico                   |
-| gx_numeric_prompt_value_set                       | Impostare il valore numerico della richiesta                                     |
-| gx_numeric_scroll_wheel_create                    | Creare un widget per la rotellina di scorrimento numerica                           |
+| gx_numeric_prompt_value_set                       | Impostare il valore numerico del prompt                                     |
+| gx_numeric_scroll_wheel_create                    | Creare un widget della rotellina di scorrimento numerica                           |
 | gx_numeric_scroll_wheel_range_set                | Assegnare l'intervallo di valori della rotellina di scorrimento                              |
 | gx_pixelmap_button_create                          | Pulsante Crea mappa pixel                                       |
 | gx_pixelmap_button_draw                            | Pulsante Disegna mappa pixel                                         |
-| gx_pixelmap_button_event_process                  | Elaborazione degli eventi del pulsante Mappa pixel                             |
-| gx_pixelmap_button_pixelmap_set                   | Pulsante Imposta mappa pixel nella mappa pixel                              |
-| gx_pixelmap_prompt_create                          | Creare una richiesta di mappa pixel                                       |
-| gx_pixelmap_prompt_draw                            | Richiesta di disegno di una mappa pixel                                         |
+| gx_pixelmap_button_event_process                  | Elaborazione dell'evento del pulsante Pixelmap                             |
+| gx_pixelmap_button_pixelmap_set                   | Impostare la mappa pixel nel pulsante mappa pixel                              |
+| gx_pixelmap_prompt_create                          | Richiesta di creazione mappa pixel                                       |
+| gx_pixelmap_prompt_draw                            | Prompt di disegno mappa pixel                                         |
 | gx_pixelmap_prompt_pixelmap_set                   | Impostare la mappa pixel nel prompt della mappa pixel                              |
-| gx_pixelmap_slider_create                          | Creare un dispositivo di scorrimento della mappa pixel                                       |
+| gx_pixelmap_slider_create                          | Creare il dispositivo di scorrimento della mappa pixel                                       |
 | gx_pixelmap_slider_draw                            | Disegnare il dispositivo di scorrimento della mappa pixel                                         |
 | gx_pixelmap_slider_event_process        | Elaborazione degli eventi del dispositivo di scorrimento della mappa pixel       |
 | gx_pixelmap_slider_pixelmap_set         | Impostare la mappa pixel nel dispositivo di scorrimento della mappa pixel        |
@@ -237,15 +237,15 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_progress_bar_text_color_set         | Impostare il colore del testo dell'indicatore di stato            |
 | gx_progress_bar_text_draw               | Disegnare il testo dell'indicatore di stato                 |
 | gx_progress_bar_value_set               | Impostare il valore dell'indicatore di stato                 |
-| gx_prompt_create                          | Create prompt (Crea prompt)                          |
+| gx_prompt_create                          | Richiesta di creazione                          |
 | gx_prompt_draw                            | Prompt di disegno                            |
-| gx_prompt_event_process                   | Evento di richiesta di elaborazione                   |
+| gx_prompt_event_process                   | Evento di richiesta del processo                   |
 | gx_prompt_font_set                       | Impostare il tipo di carattere della richiesta                        |
 | gx_prompt_text_color_set                | Impostare il colore del testo della richiesta                  |
-| gx_prompt_text_draw                      | Parte del disegno del testo del prompt    |
+| gx_prompt_text_draw                      | Parte del disegno di testo del disegno del prompt    |
 | gx_prompt_text_get                       | Ottenere il testo della richiesta (deprecato)           |
 | gx_prompt_text_get_ext                  | Ottenere il testo della richiesta                        |
-| gx_prompt_text_id_set                   | Impostare la richiesta con la stringa di testo di sistema     |
+| gx_prompt_text_id_set                   | Impostare la richiesta con una stringa di testo di sistema     |
 | gx_prompt_text_set                       | Impostare il testo della richiesta (deprecato)           |
 | gx_prompt_text_set_ext                  | Impostare il testo della richiesta                        |
 | gx_radial_progress_bar_anchor_set      | Impostare l'angolo iniziale                     |
@@ -253,7 +253,7 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_radial_progress_bar_create           | Creare un indicatore di stato radiale           |
 | gx_radial_progress_bar_draw             | Disegnare un indicatore di stato radiale             |
 | gx_radial_progress_bar_event_process   | Elaborare l'evento dell'indicatore di stato radiale      |
-| gx_radial_progress_bar_font_set        | Impostare il tipo di carattere dell'indicatore di stato radiale           |
+| gx_radial_progress_bar_font_set        | Impostare il carattere dell'indicatore di stato radiale           |
 | gx_radial_progress_bar_info_set        | Impostare le informazioni sull'indicatore di stato radiale    |
 | gx_radial_progress_bar_text_color_set | Impostare il colore del testo dell'indicatore di stato radiale     |
 | gx_radial_progress_bar_text_draw       | Disegnare il testo dell'indicatore di stato radiale          |
@@ -261,7 +261,7 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_radio_button_create                   | Pulsante di opzione Crea                    |
 | gx_radio_button_draw                     | Pulsante di opzione Disegna                      |
 | gx_radio_button_pixelmap_set            | Impostare la mappa pixel nel pulsante di opzione           |
-| gx_radial_slider_anchor_angles_set     | Impostare l'elenco degli angoli di ancoraggio del dispositivo di scorrimento radiale    |
+| gx_radial_slider_anchor_angles_set     | Impostare l'elenco di angoli di ancoraggio del dispositivo di scorrimento radiale    |
 | gx_radial_slider_angle_set              | Impostare l'angolo del dispositivo di scorrimento radiale                |
 | gx_radial_slider_animation_set          | Impostare le informazioni sull'animazione del dispositivo di scorrimento radiale       |
 | gx_radial_slider_animation_start               | Impostare l'angolo del dispositivo di scorrimento radiale con l'animazione                      |
@@ -272,42 +272,42 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_radial_slider_info_set                      | Impostare le informazioni sul dispositivo di scorrimento radiale                               |
 | gx_radial_slider_pixelmap_set                  | Impostare le mappe pixel del dispositivo di scorrimento radiale                                 |
 | gx_rich_text_view_create                       | Creare una visualizzazione RTF                                     |
-| gx_rich_text_view_draw                         | Disegnare una visualizzazione RTF                                         |
-| gx_rich_text_view_set_fonts                    | Impostare i tipi di carattere della visualizzazione TESTO RTF                                    |
+| gx_rich_text_view_draw                         | Disegnare la visualizzazione RTF                                         |
+| gx_rich_text_view_set_fonts                    | Impostare i tipi di carattere della visualizzazione RTF                                    |
 | gx_rich_text_view_text_draw                    | Disegnare testo in visualizzazione RTF                                    |
 | gx_screen_stack_create                          | Creare il blocco di controllo dello stack dello schermo GUIX e l'area di memoria. |
-| gx_screen_stack_pop                             | Espulsa la schermata superiore dallo stack di schermate.                   |
+| gx_screen_stack_pop                             | Visualizzare la schermata superiore dallo stack dello schermo.                   |
 | gx_screen_stack_push                            | Eseguire il push della schermata corrente nello stack dello schermo.                |
 | gx_screen_stack_reset                           | Reimpostare lo stack dello schermo                                      |
-| gx_scroll_wheel_create                          | Creare un widget della rotellina di scorrimento di base                             |
+| gx_scroll_wheel_create                          | Creare il widget della rotellina di scorrimento di base                             |
 | gx_scroll_wheel_event_process                  | Elaborazione degli eventi della rotellina di scorrimento                               |
-| gx_scroll_wheel_gradient_alpha_set            | Modificare la sfumatura di sovrapposizione della rotellina di scorrimento                        |
+| gx_scroll_wheel_gradient_alpha_set            | Modificare la sfumatura di sovrimpressione della rotellina di scorrimento                        |
 | gx_scroll_wheel_row_height_set                | Assegnare l'altezza della riga della rotellina di scorrimento                              |
-| gx_scroll_wheel_selected_background_set       | Assegnare un'immagine di sfondo per la riga selezionata                    |
-| gx_scroll_wheel_selected_get                   | Recuperare l'indice di riga selezionato                                 |
-| gx_scroll_wheel_selected_set                   | Assegnare l'indice di riga selezionato                                   |
+| gx_scroll_wheel_selected_background_set       | Assegna immagine di sfondo per la riga selezionata                    |
+| gx_scroll_wheel_selected_get                   | Recupera indice di riga selezionato                                 |
+| gx_scroll_wheel_selected_set                   | Assegna indice di riga selezionato                                   |
 | gx_scroll_wheel_speed_set                      | Assegnare la velocità di scorrimento                                      |
 | gx_scroll_wheel_total_rows_set                | Assegnare il numero totale di righe disponibili                       |
 | gx_scrollbar_draw                                | Disegnare la barra di scorrimento                                              |
-| gx_scrollbar_event_process                      | Evento della barra di scorrimento del processo                                     |
+| gx_scrollbar_event_process                      | Elaborare l'evento della barra di scorrimento                                     |
 | gx_scrollbar_limit_check                        | Controllare il limite della barra di scorrimento                                       |
 | gx_scrollbar_reset                               | Reimposta barra di scorrimento                                             |
 | gx_scrollbar_value_set                          | Assegnare il valore della barra di scorrimento                                      |
 | gx_single_line_text_input_backspace           | Gestire il carattere backspace                                  |
-| gx_single_line_text_input_buffer_clear       | Cancellare il buffer di caratteri                                  |
+| gx_single_line_text_input_buffer_clear       | Cancellare il buffer dei caratteri                                  |
 | gx_single_line_text_input_buffer_get         | Recuperare il puntatore del buffer                                     |
 | gx_single_line_text_input_character_delete   | Carattere di eliminazione                                            |
 | gx_single_line_text_input_character_insert   | Inserisci carattere                                            |
 | gx_single_line_text_input_create              | Creare un input di testo a riga singola                               |
 | gx_single_line_text_input_draw                | Creare un widget di input di testo a riga singola                          |
-| gx_single_line_text_input_draw_position_get | Recuperare la posizione iniziale del disegno del testo                           |
+| gx_single_line_text_input_draw_position_get | Recuperare la posizione iniziale di disegno del testo                           |
 | gx_single_line_text_input_end                 | Spostare il cursore alla fine                                          |
 | gx_single_line_text_input_event_process      | Elaborazione di eventi di input di testo                                 |
 | gx_single_line_text_input_fill_color_set    | Impostare i colori di riempimento per l'input di testo a riga singola                  |
 | gx_single_line_text_input_home                | Spostare il cursore nella home page                                         |
-| gx_single_line_text_input_left_arrow         | Tasto freccia SINISTRA                                       |
+| gx_single_line_text_input_left_arrow         | Gestire il tasto freccia SINISTRA                                       |
 | gx_single_line_text_input_position_get       | Ottenere la posizione del cursore                                         |
-| gx_single_line_text_input_right_arrow        | Maneggiare il tasto freccia DESTRA                                      |
+| gx_single_line_text_input_right_arrow        | Gestire il tasto freccia DESTRA                                      |
 | gx_single_line_text_input_style_add          | Aggiungere flag di stile                                             |
 | gx_single_line_text_input_style_remove       | Rimuovere i flag di stile                                          |
 | gx_single_line_text_input_style_set          | Assegnare flag di stile                                          |
@@ -317,11 +317,11 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_single_line_text_input_text_set_ext    | Impostare il testo di input di testo a riga singola                                 |
 | gx_slider_create                          | Crea dispositivo di scorrimento                                                   |
 | gx_slider_draw                            | Dispositivo di scorrimento di disegno                                                     |
-| gx_slider_event_process                   | Evento dispositivo di scorrimento del processo                                            |
+| gx_slider_event_process                   | Evento del dispositivo di scorrimento del processo                                            |
 | gx_slider_info_set                        | Impostare il blocco di informazioni sul dispositivo di scorrimento                                    |
-| gx_slider_needle_draw                     | Disegnare l'ago del dispositivo di scorrimento                                              |
-| gx_slider_needle_position_get             | Ottenere la posizione dell'ago del dispositivo di scorrimento                                      |
-| gx_slider_tickmarks_draw                  | Disegnare i segni di graduazione del dispositivo di scorrimento                                           |
+| gx_slider_needle_draw                     | Lance del dispositivo di scorrimento di disegno                                              |
+| gx_slider_needle_position_get             | Ottenere la posizione della lanceta del dispositivo di scorrimento                                      |
+| gx_slider_tickmarks_draw                  | Disegnare segni di graduazione del dispositivo di scorrimento                                           |
 | gx_slider_travel_get                      | Ottenere lo scorrimento del dispositivo di scorrimento                                               |
 | gx_slider_value_calculate                 | Calcolare il valore del dispositivo di scorrimento                                          |
 | gx_slider_value_set                       | Impostare il valore del dispositivo di scorrimento                                                |
@@ -338,71 +338,71 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_studio_widget_create                   | Creare un widget definito in Studio                             |
 | gx_studio_named_widget_create             | Creare una schermata definita in Studio                             |
 | gx_studio_display_configure               | Creare e `GX_DISPLAY` inizializzare `GX_CANVAS` , e `GX_WINDOW_ROOT` |
-| gx_system_active_language_set             | Assegnare l'ID lingua attiva                                       |
+| gx_system_active_language_set             | Assegnare l'ID lingua attivo                                       |
 | gx_system_canvas_refresh                  | Forzare l'aggiornamento (disegno) di aree di disegno dirty                       |
 | gx_system_dirty_mark                      | Contrassegnare l'area dirty                                                 |
 | gx_system_dirty_partial_add               | Contrassegnare l'area parziale come dirty                                         |
 | gx_system_draw_context_get                | Ottenere il contesto di disegno                                             |
 | gx_system_event_fold                      | Foldevent                                                       |
 | gx_system_event_send                      | Invia evento                                                      |
-| gx_system_focus_claim                     | Stato attivo dell'attestazione                                                     |
+| gx_system_focus_claim                     | Stato attivo per le attestazioni                                                     |
 | gx_system_initialize                      | Inizializzare GUIX                                                 |
-| gx_system_language_table_get              | Recuperare la tabella della lingua                                         |
-| gx_system_language_table_set              | Assegnare la tabella della lingua                                           |
-| gx_system_memory_allocator_set            | Assegnare allocatore/deallocazione di memoria                            |
+| gx_system_language_table_get              | Recuperare la tabella del linguaggio                                         |
+| gx_system_language_table_set              | Assegnare la tabella delle lingue                                           |
+| gx_system_memory_allocator_set            | Assegnare l'allocatore di memoria/deallocazione                            |
 | gx_system_pen_configure                  | Impostare la configurazione della penna                                  |
-| gx_system_screen_stack_create           | Creare il controllo stack dello schermo                            |
+| gx_system_screen_stack_create           | Creare il controllo dello stack dello schermo                            |
 | gx_system_screen_stack_get              | Recuperare i puntatori dello stack dello schermo                         |
-| gx_system_screen_stack_pop              | Pop-top screen from screen stack                       |
-| gx_system_screen_stack_push             | Push dello schermo indicato nello stack di schermate              |
+| gx_system_screen_stack_pop              | Pop-top screen from screen stack (Pop top screen from screen stack)                       |
+| gx_system_screen_stack_push             | Eseguire il push dello schermo indicato nello stack di schermate              |
 | gx_system_screen_stack_reset            | Reimpostare lo stack dello schermo                                 |
 | gx_system_scroll_appearance_get         | Ottenere l'aspetto dello scorrimento                                  |
-| gx_system_scroll_appearance_set         | Impostare l'aspetto di scorrimento                                  |
+| gx_system_scroll_appearance_set         | Impostare l'aspetto dello scorrimento                                  |
 | gx_system_start                           | Avviare GUIX                                             |
 | gx_system_string_get                     | Ottenere una stringa                                             |
-| gx_system_string_table_get              | Ottenere una tabella di stringhe                                       |
-| gx_system_string_table_set              | Impostare una tabella di stringhe                                       |
+| gx_system_string_table_get              | Ottenere la tabella delle stringhe                                       |
+| gx_system_string_table_set              | Impostare la tabella delle stringhe                                       |
 | gx_system_string_width_get              | Ottenere la larghezza della stringa (deprecata)                          |
 | gx_system_string_width_get_ext         | Ottenere la larghezza della stringa                                       |
 | gx_system_theme_install                  | Installare le tabelle font/color/pixelmap                     |
-| gx_system_timer_start                    | Avviare il timer                                            |
-| gx_system_timer_stop                     | Arrestare il timer                                             |
+| gx_system_timer_start                    | Timer di avvio                                            |
+| gx_system_timer_stop                     | Arresta timer                                             |
 | gx_system_version_string_get            | Recuperare la stringa di versione della libreria GUIX (deprecata)      |
 | gx_system_version_string_get_ext       | Recuperare la stringa di versione della libreria GUIX                   |
-| gx_system_widget_find                    | Widget Trova                                            |
+| gx_system_widget_find                    | Trovare un widget                                            |
 | gx_text_button_create                    | Pulsante Crea testo                                     |
 | gx_text_button_draw                      | Pulsante Disegna testo                                       |
 | gx_text_button_event_process             | Evento del pulsante Elabora testo                              |
 | gx_text_button_font_set                 | Impostare il tipo di carattere per il pulsante di testo                               |
 | gx_text_button_text_color_set          | Impostare il colore del pulsante di testo                                  |
-| gx_text_button_text_draw                | Parte del disegno di testo del disegno di pulsanti                 |
+| gx_text_button_text_draw                | Parte del disegno di testo del disegno di un pulsante                 |
 | gx_text_button_text_get                 | Ottenere il testo usato nel pulsante di testo (deprecato)              |
-| gx_text_button_text_get_ext            | Pulsante Per ottenere il testo usato nel testo                           |
-| gx_text_button_text_id_set             | Pulsante Assegna stringa di sistema a testo                    |
-| gx_text_button_text_set                 | Assegnare una stringa definita dall'utente al pulsante di testo (deprecata) |
-| gx_text_button_text_set_ext            | Assegnare una stringa definita dall'utente al pulsante di testo              |
+| gx_text_button_text_get_ext            | Pulsante Ottieni testo usato nel pulsante di testo                           |
+| gx_text_button_text_id_set             | Assegnare la stringa di sistema al pulsante di testo                    |
+| gx_text_button_text_set                 | Assegnare una stringa definita dall'utente al pulsante di testo (deprecato) |
+| gx_text_button_text_set_ext            | Pulsante Assegna stringa definita dall'utente al testo              |
 | gx_text_scroll_wheel_callback_set      | Assegnare il callback di recupero della stringa (deprecato)          |
 | gx_text_scroll_wheel_callback_set_ext | Assegnare il callback di recupero della stringa                       |
 | gx_text_scroll_wheel_create             | Creare la rotellina di scorrimento del testo di base                          |
-| gx_text_scroll_wheel_draw               | Funzione di disegno con rotellina di scorrimento testuale                  |
-| gx_text_scroll_wheel_event_process      | Elaborare l'evento della rotellina di scorrimento del testo                        |
-| gx_text_scroll_wheel_font_set          | Assegnare i tipi di carattere della rotellina di scorrimento del testo                         |
-| gx_text_scroll_wheel_text_color_set   | Assegnare i colori del testo della rotellina di scorrimento del testo                   |
+| gx_text_scroll_wheel_draw               | Funzione di disegno con rotellina del testo                  |
+| gx_text_scroll_wheel_event_process      | Elaborare l'evento della rotellina del testo                        |
+| gx_text_scroll_wheel_font_set          | Assegnare i tipi di carattere della rotellina del testo                         |
+| gx_text_scroll_wheel_text_color_set   | Assegnare i colori del testo della rotellina del testo                   |
 | gx_tree_view_create                    | Creare una visualizzazione albero                          |
 | gx_tree_view_draw                      | Disegnare una visualizzazione albero                              |
 | gx_tree_view_event_process            | Evento di visualizzazione albero del processo                     |
 | gx_tree-view_indentation_set           | Impostare il rientro della visualizzazione albero                   |
-| gx_tree_view_position                  | Posizionare gli elementi della visualizzazione albero                    |
+| gx_tree_view_position                  | Elementi della visualizzazione albero delle posizioni                    |
 | gx_tree_view_root_line_color_set    | Impostare il colore della linea radice della visualizzazione albero               |
 | gx_tree_view_root_pixelmap_set       | Impostare le mappe pixel radice della visualizzazione albero                |
 | gx_tree_view_selected_get             | Recuperare l'elemento selezionato                      |
 | gx_tree_view_selected_set             | Impostare l'elemento selezionato                           |
-| gx_utility_canvas_to_bmp              | Convertire la memoria canvas in formato bitmap      |
+| gx_utility_canvas_to_bmp              | Convertire la memoria dell'area di disegno in formato bitmap      |
 | gx_utility_circle_point_get           | Punto di calcolo su un cerchio               |
-| gx_utility_gradient_create             | Creare una mappa pixel sfumato                  |
-| gx_utility_gradient_delete              | Eliminare una mappa pixel sfumato                  |
+| gx_utility_gradient_create             | Creare una mappa dei pixel sfumato                  |
+| gx_utility_gradient_delete              | Eliminare una mappa pixel sfumatura                  |
 | gx_utility_ltoa                         | Convertire long integer in ASCII               |
-| gx_utility_math_acos                   | Coseno dell'arco di calcolo                          |
+| gx_utility_math_acos                   | Calcolare l'arcoseno                          |
 | gx_utility_math_asin                   | Seno dell'arco di calcolo                             |
 | gx_utility_math_cos                    | Coseno di calcolo                              |
 | gx_utility_math_sin                    | Seno di calcolo                                |
@@ -459,9 +459,9 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_widget_find                      | Trovare un widget                                                               |
 | gx_widget_first_child_get         | Restituire il puntatore al primo elemento figlio                                             |
 | gx_widget_focus_next               | Spostare lo stato attivo per l'input al widget successivo                                           |
-| gx_widget_focus_previous           | Spostare lo stato attivo per l'input al widget precedente                                       |
+| gx_widget_focus_previous           | Spostare lo stato attivo per l'input nel widget precedente                                       |
 | gx_widget_font_get                 | Risolvere l'ID carattere in un puntatore del tipo di carattere per un widget visibile                    |
-| gx_widget_free                      | Memoria del blocco di controllo widget disponibile                                          |
+| gx_widget_free                      | Liberare memoria dei blocchi di controllo widget                                          |
 | gx_widget_front_move               | Spostare il widget in primo piano                                                      |
 | gx_widget_height_get               | Ottenere l'altezza del widget                                                         |
 | gx_widget_hide                      | Nascondi widget                                                               |
@@ -469,14 +469,14 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **G
 | gx_widget_next_sibling_get        | Restituire il puntatore all'elemento di pari livello successivo                                            |
 | gx_widget_parent_get               | Restituire il puntatore al widget padre                                           |
 | gx_widget_pixelmap_get             | Risolvere l'ID mappa pixel in un puntatore della mappa pixel per un widget visibile            |
-| gx_widget_previous_sibling_get    | Restituisce il puntatore all'elemento di pari livello precedente                                        |
+| gx_widget_previous_sibling_get    | Restituire il puntatore all'elemento di pari livello precedente                                        |
 | gx_widget_resize                    | Ridimensionare il widget                                                             |
 | gx_widget_shift                     | Widget Maiusc                                                              |
 | gx_widget_show                      | Mostra widget                                                               |
 | gx_widget_status_add               | Aggiungere lo stato del widget                                                         |
 | gx_widget_status_get               | Recuperare i flag di stato del widget                                              |
 | gx_widget_status_remove            | Rimuovere lo stato del widget                                                      |
-| gx_widget_string_get               | Recuperare la stringa associata all'ID stringa per il widget visibile (deprecata) |
+| gx_widget_string_get               | Recuperare la stringa associata all'ID stringa per il widget visibile (deprecato) |
 | gx_widget_string_get_ext          | Recuperare la stringa associata all'ID stringa per il widget visibile.             |
 | gx_widget_status_test              | Stato del widget di test                                                        |
 | gx_widget_style_add                | Aggiungere lo stile del widget                                                          |
@@ -527,7 +527,7 @@ UINT gx_accordion_menu_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un menu accordion come specificato e collega il menu accordion al widget padre fornito. Un menu a accordion è un widget di visualizzazione dei menu che espanda o comprimi. Accetta tutti i tipi di widget come voci di menu figlio. I menu accordion possono essere annidati, ovvero è possibile creare diversi livelli di profondità dei menu.
+Questo servizio crea un menu accordion come specificato e collega il menu accordion al widget padre fornito. Un menu a accordion è un widget di visualizzazione del menu espandinte/compriminte. Accetta tutti i tipi di widget come voci di menu figlio. I menu accordion possono essere annidati, ovvero è possibile creare diversi livelli di profondità dei menu.
 
 Per inserire una voce figlio in un widget voce di menu, è consigliabile GX_MENU widget come voce di menu padre.
 
@@ -541,11 +541,11 @@ Suggerimenti per la creazione di un menu a accordion a livello singolo:
 
 Suggerimenti per la creazione di menu a più livelli per la accordion:
 
-1.  Creare un menu a accordion.
+1.  Creare un menu accordion.
 
 2.  Associare GX_MENU widget di tipo al menu accordion.
 
-3.  Associare GX_ACCORDION_MENU tipo widget al GX_MENU tipo padre.
+3.  Associare GX_ACCORDION_MENU tipo di widget al GX_MENU tipo padre.
 
 4.  Associare voci di menu al GX_ACCORDION_MENU tipo padre, come descritto nella creazione del menu a accordion a livello singolo.
 
@@ -560,10 +560,10 @@ Suggerimenti per la creazione di menu a più livelli per la accordion:
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione riuscita del menu accordion
+- **GX_SUCCESS** (0x00) Creazione del menu accordion completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -626,7 +626,7 @@ VOID gx_accordion_menu_draw(GX_ACCORDION_MENU *accordion);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il menu a accordi specificato. Questo servizio viene in genere chiamato internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposto all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget di menu accordion personalizzati.
+Questo servizio disegna il menu a accordion specificato. Questo servizio viene in genere chiamato internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposto all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget di menu accordion personalizzati.
 
 ### <a name="parameters"></a>Parametri
 
@@ -634,7 +634,7 @@ Questo servizio disegna il menu a accordi specificato. Questo servizio viene in 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -692,7 +692,7 @@ Questo servizio gestisce GX_EVENT_PEN_DOWN e GX_EVENT_PEN_UP eventi per espander
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful accordion menu event process
+- **GX_SUCCESS** (0x00) Processo evento di menu accordion riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -753,7 +753,7 @@ UINT gx_accordion_menu_position(GX_ACCORDION_MENU *accordion);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona le voci di menu per il menu accordion. Questa funzione viene in genere chiamata internamente quando il menu accordion diventa visibile. Se si desidera inserire/rimuovere elementi da e verso un menu a forma di accordion o modificare gli stili di espansione dell'elemento figlio, questa funzione deve essere chiamata per riposizionare gli elementi figlio.
+Questo servizio posiziona le voci di menu per il menu accordion. Questa funzione viene in genere chiamata internamente quando il menu accordion diventa visibile. Se si desidera inserire/rimuovere elementi da e verso un menu a forma di accordion o modificare gli stili di espansione dell'elemento figlio, è necessario chiamare questa funzione per riposizionare gli elementi figlio.
 
 ### <a name="parameters"></a>Parametri
 
@@ -868,11 +868,11 @@ if (status == GX_SUCCESS)
 
 ### <a name="see-also"></a>Vedere anche
 
-- gx_animation_create,
+- gx_animation_create
 - gx_animation_delete
-- gx_animation_drag_disable,
+- gx_animation_drag_disable
 - gx_animation_drag_enable
-- gx_animation_landing_speed_set,
+- gx_animation_landing_speed_set
 - gx_animation_start
 - gx_animation_stop
 
@@ -897,7 +897,7 @@ Questo servizio crea un controller di animazione. Il controller viene inizializz
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del controller di animazione completata
+- **GX_SUCCESS** (0x00) Controller di animazione creato correttamente
 - **GX_ALREADY_CREATED** blocco di controllo (0x13) già inizializzato
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -917,7 +917,7 @@ gx_system_animation_get(&animation);
 
 if (animation)
 {
-    status = gx_animation_create(&animation);
+    status = gx_animation_create(animation);
 }
 
 /* If status is GX_SUCCESS the new animation controller was successfully created and initialized. */
@@ -926,8 +926,81 @@ if (animation)
 
 ### <a name="see-also"></a>Vedere anche
 
-- gx_animation_canvas_define,
+- gx_animation_canvas_define
 - gx_animation_delete
+- gx_animation_drag_disable
+- gx_animation_drag_enable
+- gx_animation_start
+- gx_animation_landing_speed_set
+- gx_animation_stop
+- gx_system_animation_get
+- gx_system_animation_free
+
+## <a name="gx_animation_delete"></a>gx_animation_delete
+
+Eliminare uno o più controller di animazione
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_animation_delete(GX_ANIMATION *animation, GX_WIDGET *parent);
+```
+
+### <a name="description"></a>Descrizione
+
+Questo servizio elimina una sequenza di animazione se il puntatore di animazione di input è impostato; in caso contrario, elimina tutte le animazioni che appartengono al widget padre specificato.
+
+### <a name="parameters"></a>Parametri
+
+- **animazione** Puntatore al blocco di controllo dell'animazione
+- **padre** Puntatore al widget padre
+
+
+### <a name="return-values"></a>Valori restituiti
+
+- **GX_SUCCESS** (0x00) Eliminazione dei controller di animazione completata
+- **GX_PTR_ERROR** (0x07) Puntatore non valido
+
+### <a name="allowed-from"></a>Consentito da
+
+Inizializzazione e thread
+
+### <a name="example"></a>Esempio
+
+- Eliminare un'animazione
+
+```C
+GX_ANIMATION *animation;
+
+/* Allocate an animaton control from system pool */
+gx_system_animation_get(&animation);
+
+if (animation)
+{
+    /* Create an animation.  */
+    gx_animation_create(animation);
+
+    /* Delete an animation.  */
+    status = gx_animation_delete(animation, GX_NULL);
+}
+
+/* If status is GX_SUCCESS the animation controller was successfully deleted and returned back to system animation pool. */
+
+```
+
+- Eliminare più animazioni
+```C
+
+status = gx_animation_delete(GX_NULL, parent);
+
+/* If status is GX_SUCCESS all the animations belong to the parent were successfully deleted. */
+
+```
+
+### <a name="see-also"></a>Vedere anche
+
+- gx_animation_canvas_define,
+- gx_animation_create
 - gx_animation_drag_disable,
 - gx_animation_drag_enable
 - gx_animation_start
@@ -983,14 +1056,15 @@ status = gx_animation_drag_disable(&animation, animation_parent);
 
 ### <a name="see-also"></a>Vedere anche
 
-- gx_animation_canvas_define,
-- gx__animation_create
+- gx_animation_canvas_define
+- gx_animation_create
+- gx_animation_delete
 - gx_animation_drag_enable
-- gx_animation_landing_speed_set,
-- gx__animation_start
+- gx_animation_landing_speed_set
+- gx_animation_start
 - gx_animation_stop
-- gx_system_animation_get,
-- gx__system_animation_free
+- gx_system_animation_get
+- gx_system_animation_free
 
 ## <a name="gx_animation_drag_enable"></a>gx_animation_drag_enable
 
@@ -1007,7 +1081,7 @@ UINT gx_animation_drag_enable(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la funzione del processo dell'evento di animazione del trascinamento della schermata definita internamente come routine hook della funzione del processo eventi predefinita di un widget. La funzione di processo dell'evento di animazione del trascinamento della schermata gestisce gli eventi per un'animazione di trascinamento dello schermo.
+Questo servizio imposta la funzione del processo dell'evento di animazione del trascinamento della schermata definita internamente come routine hook della funzione del processo eventi predefinita di un widget. La funzione di elaborazione dell'evento di animazione del trascinamento della schermata gestisce gli eventi per un'animazione di trascinamento dello schermo.
 
 La procedura hook di trascinamento dello schermo diventa il gestore predefinito per gli eventi di input penna inviati al widget di destinazione. La funzione di elaborazione degli eventi del widget originale viene chiamata in modo a catena di marsy dopo aver verificato la presenza di tipi di evento di input di trascinamento dello schermo.
 
@@ -1019,11 +1093,11 @@ La procedura hook di trascinamento dello schermo diventa il gestore predefinito 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito
+- **GX_SUCCESS** (0x00) Successful
 - **GX_INVALID_STATUS** (0x26) Stato dell'animazione non valido
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_VALUE** (0x22) Valore non valido
-- **GX_INVALID_WIDGET** (0x12) Elenco di schermate scorrevolo non è disponibile
+- **GX_INVALID_WIDGET(0x12)** Elenco di schermate scorrevolo non è disponibile
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1062,13 +1136,14 @@ status = gx_animation_drag_enable(&animation, animation_parent,
 
 ### <a name="see-also"></a>Vedere anche
 
-- gx_animation_canvas_define,
-- gx__animation_create
-- gx_animation_drag_disable,
-- gx__animation_landing_speed_set
-- gx_animation_start,
-- gx__animation_stop,
-- gx__system_animation_get
+- gx_animation_canvas_define
+- gx_animation_create
+- gx_animation_delete
+- gx_animation_drag_disable
+- gx_animation_landing_speed_set
+- gx_animation_start
+- gx_animation_stop
+- gx_system_animation_get
 - gx_system_animation_free
 
 ## <a name="gx_animation_landing_speed_set"></a>gx_animation_landing_speed_set
@@ -1112,13 +1187,14 @@ status = gx_animation_landing_peed_set(&my_animation, 20);
 
 ### <a name="see-also"></a>Vedere anche
 
-- gx_animation_canvas_define,
-- gx__animation_create
-- gx_animation_slide_disable,
-- gx__animation_slide_enable
-- gx_animation_start,
-- gx__animation_stop,
-- gx__system_animation_get
+- gx_animation_canvas_define
+- gx_animation_create
+- gx_animation_delete
+- gx_animation_slide_disable
+- gx_animation_slide_enable
+- gx_animation_start
+- gx_animation_stop
+- gx_system_animation_get
 - gx_system_animation_free
 
 ## <a name="gx_animation_start"></a>gx_animation_start
@@ -1144,11 +1220,11 @@ La GX_ANIMATION_INFO definisce i parametri dell'animazione da eseguire. Per una 
 ### <a name="parameters"></a>Parametri
 
 - **animazione** Puntatore al blocco di controllo dell'animazione
-- **parametri** Puntatore alla struttura dei parametri
+- **params** Puntatore alla struttura dei parametri
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito
+- **GX_SUCCESS** (0x00) Successful
 - **GX_INVALID_VALUE** (0x22) Parametro non valido
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Destinazione animazione non valida
@@ -1213,7 +1289,7 @@ UINT gx_animation_stop(GX_ANIMATION *animation);
 
 ### <a name="description"></a>Descrizione
 
-Arrestare un'animazione avviata in precedenza. Se il puntatore del blocco di controllo dell'animazione è stato allocato usando gx_system_animation_get, l'applicazione può usare nuovamente il blocco di controllo o restituirlo al pool di sistema usando gx_system_animation_free().
+Arrestare un'animazione avviata in precedenza. Se il puntatore a blocco di controllo dell'animazione è stato allocato usando gx_system_animation_get, l'applicazione può usare nuovamente il blocco di controllo o restituirlo al pool di sistema usando gx_system_animation_free().
 
 ### <a name="parameters"></a>Parametri
 
@@ -1242,12 +1318,13 @@ status = gx_animation_stop(&animation);
 
 ### <a name="see-also"></a>Vedere anche
 
-- gx_animation_canvas_define,
-- gx__animation_create
-- gx_animation_drag_disable,
-- gx__animation_drag_enable
-- gx_animation_start,
-- gx__system_animation_get
+- gx_animation_canvas_define
+- gx_animation_create
+- gx_animation_delete
+- gx_animation_drag_disable
+- gx_animation_drag_enable
+- gx_animation_start
+- gx_system_animation_get
 - gx_system_animation_free
 
 ## <a name="gx_binres_language_count_get"></a>gx_binres_language_count_get
@@ -1273,7 +1350,7 @@ Questo servizio analizza un'intestazione di dati di risorsa binaria per restitui
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito
+- **GX_SUCCESS** (0x00) Successful
 - **GX_INVALID_FORMAT** (0x24) Risorsa binaria non valida
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -1398,10 +1475,10 @@ La tabella del linguaggio restituita definisce una o più tabelle di stringhe, o
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito
+- **GX_SUCCESS** (0x00) Successful
 - **GX_INVALID_FORMAT** (0x24) Risorsa binaria non valida
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_SYSTEM_MEMPRY_ERROR** (0x30) Allocatore di memoria o funzione libera non è definito
+- **GX_SYSTEM_MEMPRY_ERROR** allocatore di memoria (0x30) o funzione libera non è definito
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1440,9 +1517,9 @@ UINT gx_binres_language_table_load_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una struttura di tabella del linguaggio contenente puntatori alle risorse della tabella, le strutture di dati generate puntano ai dati delle risorse "sul posto", non copiano i dati delle risorse. I dati della risorsa devono essere inseriti in una posizione di memoria di accesso generale e l'indirizzo di base di questa posizione di memoria viene passato a questa API.
+Questo servizio crea una struttura di tabella del linguaggio contenente puntatori alle risorse della tabella, le strutture di dati generate puntano ai dati delle risorse "sul posto", non copiano i dati delle risorse. I dati delle risorse devono essere inseriti in una posizione di memoria di accesso generale e l'indirizzo di base di questa posizione di memoria viene passato a questa API.
 
-Questo servizio richiede un blocco di memoria allocato in fase di esecuzione di dimensioni sufficienti per contenere la struttura della tabella del linguaggio e pertanto l'API gx_system_memory_allocator_set deve essere richiamata una volta prima che questo servizio venga richiesto.
+Questo servizio richiede un blocco di memoria allocato in fase di esecuzione di dimensioni sufficienti per contenere la struttura della tabella del linguaggio e pertanto l'API gx_system_memory_allocator_set deve essere richiamata una volta prima che venga richiesto questo servizio.
 
 La tabella delle lingue restituita definisce una o più tabelle di stringhe, ciascuna delle quali contiene puntatori a risorse di tipo stringa nella memoria dei dati delle risorse.
 
@@ -1453,10 +1530,10 @@ La tabella delle lingue restituita definisce una o più tabelle di stringhe, cia
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito
+- **GX_SUCCESS** (0x00) Successful
 - **GX_INVALID_FORMAT** (0x24) Risorsa binaria non valida
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_SYSTEM_MEMPRY_ERROR** (0x30) Allocatore di memoria o funzione libera non è definito
+- **GX_SYSTEM_MEMPRY_ERROR** allocatore di memoria (0x30) o funzione libera non è definito
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1595,7 +1672,7 @@ Questo servizio definisce un pennello con il colore della linea, il colore di ri
 - **pennello** Puntatore al blocco di controllo del pennello
 - **line_color** Colore della linea del pennello. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
 - **fill_color** Colore del riempimento del pennello. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
-- **style** Stile del pennello. **L'appendice D** descrive gli stili dei pennelli supportati. Gli stili dei pennelli possono essere combinati in un'unica variabile usando l'operazione OR bit per bit.
+- **style** Stile del pennello. **L'appendice D** descrive gli stili del pennello supportati. Gli stili del pennello possono essere combinati in un'unica variabile usando l'operazione OR bit per bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -1640,7 +1717,7 @@ Questo servizio disegna lo sfondo del pulsante. Questa funzione viene in genere 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1768,7 +1845,7 @@ Questo servizio deseleziona il pulsante specificato e genera un evento segnale a
 
 | Stile pulsante              | Segnale                     |
 |---------------------------|----------------------------|
-| Nessuno                      | GX_EVENT_CLICKED         |
+| nessuno                      | GX_EVENT_CLICKED         |
 | GX_STYLE_BUTTON_RADIO  | GX_EVENT_RADIO_DESELECT |
 | GX_STYLE_BUTTON_TOGGLE | GX_EVENT_TOGGLE_OFF     |
 
@@ -1827,7 +1904,7 @@ VOID gx_button_draw(GX_BUTTON *button);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il pulsante specificato. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per i widget dei pulsanti personalizzati.
+Questo servizio disegna il pulsante specificato. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget di pulsanti personalizzati.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1835,7 +1912,7 @@ Questo servizio disegna il pulsante specificato. Questa funzione viene in genere
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1895,7 +1972,7 @@ Questo servizio elabora un evento per il pulsante specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Processo dell'evento del pulsante Operazione riuscita
+- **GX_SUCCESS** (0x00) Processo dell'evento pulsante Operazione riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -2022,11 +2099,11 @@ UINT gx_canvas_alpha_set(
 
 Questo servizio imposta il valore di alpha blend per l'area di disegno specificata. I valori alfa dell'area di disegno possono variare da 0 (trasparente) a 255 (completamente opaco).
 
-La fusione delle aree di disegno sovrapposte richiede il supporto del livello grafico hardware o del software tramite la creazione di un'area di disegno composita.
+La fusione di aree di disegno sovrapposte richiede il supporto del livello grafico hardware o del software tramite la creazione di un'area di disegno composita.
 
-Il supporto hardware per la fusione di canvas viene abilitato richiamando l'API gx_canvas_hardware_layer_bind() prima di impostare il valore alfa dell'area di disegno. Quando un'area di disegno è associata a un livello grafico hardware, la chiamata all'API gx_canvas_alpha_set() richiama direttamente i servizi di fusione del livello di grafica hardware.
+Il supporto hardware per la fusione di canvas è abilitato richiamando l'API gx_canvas_hardware_layer_bind() prima di impostare il valore alfa dell'area di disegno. Quando un'area di disegno è associata a un livello di grafica hardware, la chiamata all'API gx_canvas_alpha_set() richiama direttamente i servizi di fusione del livello di grafica hardware.
 
-Per usare il supporto software per la fusione di aree di disegno, l'applicazione deve creare un'area di disegno con stile GX_CANVAS_COMPOSITE, in cui tutte le altre aree di disegno gestite vengono composte prima della visualizzazione finale. Il supporto software per la fusione di canvas viene fornito solo quando si esegue con un driver di visualizzazione di 16 bpp o una profondità di colore superiore.
+Per usare il supporto software per la fusione di canvas, l'applicazione deve creare un'area di disegno con uno stile GX_CANVAS_COMPOSITE, in cui tutti gli altri canvas gestiti vengono compositi prima della visualizzazione finale. Il supporto software per la fusione di canvas viene fornito solo quando si esegue con un driver di visualizzazione di 16 bpp o una profondità di colore superiore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2250,7 +2327,7 @@ status = gx_canvas_circle_draw(100, 100, 50);
 
 ## <a name="gx_canvas_create"></a>gx_canvas_create
 
-Creare un'area di disegno
+Creare un canvas
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2277,25 +2354,25 @@ Questo servizio crea l'area di disegno con le proprietà specificate e la memori
 - **display** Puntatore alla visualizzazione creata in precedenza
 - **type** Tipo di area di disegnoI tipi di canvas includono:
 - **GX_CANVAS_SIMPLE:** Area di disegno della memoria usata per il disegno fuori schermo.
-- **GX_CANVAS_MANAGED:** Area di disegno che viene scaricata automaticamente nella visualizzazione attiva, come parte del processo di compilazione composito o come parte dell'operazione di attivazione/disattivazione del buffer per le architetture a area di disegno singola.
+- **GX_CANVAS_MANAGED:** Area di disegno che viene scaricata automaticamente nella visualizzazione attiva, nell'ambito del processo di compilazione composita o come parte dell'operazione di attivazione/disattivazione del buffer per le architetture a canvas singolo.
 - **GX_CANVAS_VISIBLE:** Questo flag può essere usato per attivare e disattivare un'area di disegno, senza perdere il contenuto del disegno dell'area di disegno.
 - **GX_CANVAS_MODIFIED:** Riservato per un uso futuro.
-- **GX_CANVAS_COMPOSITE:** Questo flag viene usato dall'applicazione quando si configura un sistema con più canvas che compose più canvas gestite nell'area di disegno composita e il composito è guidato al buffer dei frame hardware.
+- **GX_CANVAS_COMPOSITE:** Questo flag viene usato dall'applicazione quando si configura un sistema con più canvas che compose più canvas gestite nell'area di disegno composita e il composito è guidato dal buffer dei frame hardware.
 - **width** Larghezza in pixel
-- **altezza** Altezza in pixel
-- **memory_area** Area di memoria per l'area di disegno. Questo valore può
+- **height** Altezza in pixel
+- **memory_area** Area di memoria per canvas. Questo valore può
 - **GX_NULL** al momento della creazione dell'area di disegno
 - **e** successivamente inizializzati usando gx_canvas_memory_define
-- **memory_size** Dimensione dell'area di memoria in byte oppure 0 se la memoria dell'area di disegno verrà definita dopo la creazione dell'area di disegno.
+- **memory_size** Dimensione dell'area di memoria in byte oppure 0 se la memoria canvas verrà definita dopo la creazione dell'area di disegno.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Creazione canvas riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_CANVAS_SIZE** (0x1C) Dimensioni del blocco di controllo canvas non valide
-- **GX_INVALID_TYPE** (0x1B) Tipo di area di disegno non valido
+- **GX_INVALID_TYPE** (0x1B) Tipo di canvas non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2337,7 +2414,7 @@ UINT gx_canvas_delete(GX_CANVAS *canvas);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elimina l'area di disegno. L'area di disegno viene rimossa dall'elenco collegato interno di canvas gestito da GUIX.
+Questo servizio elimina l'area di disegno. L'area di disegno viene rimossa dall'elenco collegato interno dell'area di disegno gestita da GUIX.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2374,7 +2451,7 @@ status = gx_canvas_delete (&my_canvas);
 
 ## <a name="gx_canvas_drawing_complete"></a>gx_canvas_drawing_complete
 
-Completare il disegno dell'area di disegno
+Disegno completo dell'area di disegno
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2388,18 +2465,18 @@ UINT gx_canvas_drawing_complete(
 
 Questo servizio consente a GUIX di sapere che il disegno dell'applicazione nell'area di disegno specificata è completo.
 
-L'applicazione può usare questo servizio per forzare il disegno immediato in un'area di disegno. In questo modo l'area di disegno viene scaricata nel buffer dei frame visibile e/o viene attivata un'operazione di attivazione/disattivazione dei bug, a seconda dell'architettura della memoria di sistema.
+L'applicazione può usare questo servizio per forzare il disegno immediato in un'area di disegno. In questo modo l'area di disegno viene scaricata nel buffer dei frame visibile e/o viene attivata un'operazione di attivazione/disattivazione bugger, a seconda dell'architettura della memoria di sistema.
 
 Questo servizio deve essere chiamato solo dall'applicazione per chiudere una sequenza di disegno iniziata con gx_canvas_drawing_initiate().
 
 ### <a name="parameters"></a>Parametri
 
 - **canvas** Puntatore al blocco di controllo canvas
-- **scaricamento** Se **_GX_TRUE_**, le modifiche all'area di disegno vengono scaricate nella visualizzazione
+- **scaricamento** Se **_GX_TRUE_**, le modifiche dell'area di disegno vengono scaricate nella visualizzazione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Completamento del disegno riuscito
+- **GX_SUCCESS** (0x00) Completamento disegno riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -2440,18 +2517,18 @@ UINT gx_canvas_drawing_initiate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia il disegno nell'area di disegno specificata. Questo servizio viene chiamato internamente come parte dell'operazione di disegno posticipata eseguita automaticamente da GUIX quando è necessario aggiornare un'area di disegno. Tuttavia, all'applicazione è consentito ignorare l'algoritmo di disegno posticipato GUIX ed eseguire il disegno immediato e diretto su un'area di disegno chiamando prima gx_canvas_drawing_inititate, quindi chiamando le funzioni di disegno desiderate, quindi chiamando gx_canvas_drawing_complete().
+Questo servizio avvia il disegno nell'area di disegno specificata. Questo servizio viene chiamato internamente come parte dell'operazione di disegno posticipata eseguita automaticamente da GUIX quando un canvas deve essere aggiornato. Tuttavia, all'applicazione è consentito ignorare l'algoritmo di disegno posticipato GUIX ed eseguire il disegno immediato e diretto su un'area di disegno chiamando prima gx_canvas_drawing_inititate, quindi chiamando le funzioni di disegno desiderate, quindi chiamando gx_canvas_drawing_complete().
 
 ### <a name="parameters"></a>Parametri
 
 - **canvas** Puntatore al blocco di controllo canvas
-- **who** Puntatore al blocco di controllo del widget del chiamante. Questo parametro viene usato per inizializzare i parametri di visualizzazione e ritaglio del disegno per le operazioni di disegno successive.
-- **dirty_area** Area in cui disegnare. Questo parametro viene passato dal chiamante per indicare l'area in cui il chiamante vuole ritagliare tutte le operazioni di disegno. Si tratta in genere dell'area contrassegnata in precedenza come dirty, ma il chiamante è libero di espandere o comprimere l'area di ritaglio.
+- **chi** Puntatore al blocco di controllo widget del chiamante. Questo parametro viene usato per inizializzare i parametri di ritaglio e visualizzazione del disegno per le operazioni di disegno successive.
+- **dirty_area** Area in cui disegnare. Questo parametro viene passato dal chiamante per indicare l'area in cui il chiamante vuole ritagliare tutte le operazioni di disegno. Questa è in genere l'area precedentemente contrassegnata come dirty, ma il chiamante è libero di espandere o contrarsi l'area di ritaglio.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Avvio del disegno riuscito
-- **GX_DRAW_NESTING_EXCEEDED** (0x05) Supera il numero massimo di annidamento
+- **GX_DRAW_NESTING_EXCEEDED** (0x05) Superare il numero massimo di annidamento
 - **GX_NO_VIEW** (0x03) Nessun viewport per il chiamante
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
@@ -2503,12 +2580,12 @@ Questo servizio disegna un'ellisse nell'area di disegno usando il pennello corre
 
 - **xcenter** x-coord del centro dell'ellisse
 - **ycenter** y-coord del centro dell'ellisse
-- **a** Lunghezza dell'asse semi-principale
+- **Lunghezza** dell'asse semi-principale
 - **b** Lunghezza dell'asse semi-secondario
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Disegno del cerchio riuscito
+- **GX_SUCCESS** (0x00) Disegno cerchio riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_VALUE** (0x22) Valore non valido
 - **GX_INVALID_CONTEXT** (0x06) Nessun contesto di disegno aperto
@@ -2556,21 +2633,21 @@ UINT gx_canvas_hardware_layer_bind(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio associa un'area di disegno GUIX a un livello grafico hardware. Questo servizio è necessario solo per i dispositivi hardware che supportano più livelli di grafica hardware.
+Questo servizio associa un'area di disegno GUIX a un livello di grafica hardware. Questo servizio è necessario solo per i dispositivi hardware che supportano più livelli di grafica hardware.
 
-L'associazione di un'area di disegno a un livello di grafica hardware comporta l'implementazione diretta delle API gx_canvas_show(), gx_canvas_hide(), gx_canvas_alpha_set() e gx_canvas_offset_set() dai servizi driver di visualizzazione hardware.
+Associando un'area di disegno a un livello di grafica hardware, le API gx_canvas_show(), gx_canvas_hide()), gx_canvas_alpha_set() e gx_canvas_offset_set() vengono implementate direttamente dai servizi del driver di visualizzazione hardware.
 
-Se il driver di visualizzazione hardware non supporta più livelli di grafica, questo servizio avrà esito negativo GX_INVALID_DISPLAY.
+Se il driver di visualizzazione hardware non supporta più livelli di grafica, questo servizio non restituirà GX_INVALID_DISPLAY.
 
 ### <a name="parameters"></a>Parametri
 
 - **Canvas** da implementare nell'hardware
-- **livello** di grafica hardware del livello
+- **livello** hardware livello grafico
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Associazione riuscita
-- **GX_INVALID_DISPLAY** (0x1D) Servizio livello di visualizzazione non è definito
+- **GX_SUCCESS** (0x00) Binding riuscito
+- **GX_INVALID_DISPLAY** (0x1D) Il servizio Livello di visualizzazione non è definito
 - **GX_PTR_ERROR** (0x17) Puntatori non validi
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_CANVAS** (0x20) Area di disegno non valida
@@ -2615,7 +2692,7 @@ Questo servizio nasconde un canvas GUIX. Se l'area di disegno è stata associata
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Nascondi riuscito
+- **GX_SUCCESS** (0x00) Operazione riuscita
 - **GX_INVALID_CANVAS** (0x20) Area di disegno non valida
 - **GX_PTR_ERROR** (0x17) Puntatori non validi
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
@@ -2661,7 +2738,7 @@ UINT gx_canvas_line_draw(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna una linea nell'area di disegno usando il pennello corrente. La linea viene ritagliata nell'area di disegno non valida.
+Questo servizio disegna una linea nell'area di disegno usando il pennello corrente. La riga viene ritagliata nell'area di disegno non valida.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2676,7 +2753,7 @@ Questo servizio disegna una linea nell'area di disegno usando il pennello corren
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_CONTEXT** (0x06) Nessun contesto di disegno aperto
-- **GX_INVALID_WIDTH** (0x1E) Larghezza pennello non valida
+- **GX_INVALID_WIDTH** (0x1E) Larghezza del pennello non valida
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2707,7 +2784,7 @@ status = gx_canvas_line_draw(0, 1, 320, 480);
 
 ## <a name="gx_canvas_memory_define"></a>gx_canvas_memory_define
 
-Definire la memoria dell'area di disegno
+Definire la memoria canvas
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2720,13 +2797,13 @@ UINT gx_canvas_memory_define(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio può essere usato per assegnare l'indirizzo di memoria canvas dopo la creazione dell'area di disegno.
+Questo servizio può essere usato per assegnare l'indirizzo di memoria del canvas dopo la creazione dell'area di disegno.
 
 ### <a name="parameters"></a>Parametri
 
 - **canvas** Puntatore all'area di disegno creata in precedenza
 - **memoria** Indirizzo di memoria canvas
-- **memsize** Dimensioni in byte del blocco di memoria canvas
+- **memsize** Dimensioni del blocco di memoria canvas in byte
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -2778,7 +2855,7 @@ Questo servizio definisce le informazioni del mouse per l'area di disegno specif
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful mouse info set (Set di informazioni mouse riuscito)
+- **GX_SUCCESS** (0x00) Set di informazioni mouse riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 
@@ -2829,7 +2906,7 @@ Questo servizio rende il cursore del mouse nascosto dall'area di disegno specifi
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Nascondi cursore del mouse riuscito
-- **GX_FAILURE** (0X10) Nascondere il cursore del mouse non riuscito
+- **GX_FAILURE** (0X10) Nascosto cursore del mouse non riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 
@@ -2867,7 +2944,7 @@ UINT gx_canvas_mouse_show(GX_CANVAS *canvas);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rende visibile il cursore del mouse per l'area di disegno specificata. Questo servizio richiede GX_MOUSE_SUPPORT essere definito. L gx_canvas_mouse_define API deve essere richiamata per definire l'immagine del cursore del mouse prima che venga richiesto questo servizio.
+Questo servizio rende visibile il cursore del mouse per l'area di disegno specificata. Questo servizio richiede GX_MOUSE_SUPPORT essere definito. L gx_canvas_mouse_define aPI deve essere richiamata per definire l'immagine del cursore del mouse prima che venga richiesto questo servizio.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2875,7 +2952,7 @@ Questo servizio rende visibile il cursore del mouse per l'area di disegno specif
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di informazioni mouse riuscito
+- **GX_SUCCESS** (0x00) Successful mouse info set
 - **GX_FAILURE** (0X10) Visualizzazione del cursore del mouse non riuscita
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
@@ -2923,7 +3000,7 @@ Se l'area di disegno è stata associata a un livello di grafica hardware usando 
 
 - **canvas** Puntatore al blocco di controllo canvas
 - **Coordinata x** X dell'offset
-- **Coordinata** Y Y dell'offset
+- **Coordinata Y** y dell'offset
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -2975,11 +3052,11 @@ UINT gx_canvas_pie_draw(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna una torta nell'area di disegno usando il pennello del contesto di disegno corrente. La torta viene ritagliata nell'area di disegno non valida. Questo servizio richiede la definizione dell'GX_ARC_DRAWING_SUPPORT di configurazione.
+Questo servizio disegna una torta nell'area di disegno usando il pennello del contesto di disegno corrente. La torta viene ritagliata nell'area di disegno non valida. Questo servizio richiede che l'GX_ARC_DRAWING_SUPPORT di configurazione sia definita.
 
 ### <a name="parameters"></a>Parametri
 
-- **xcenter** x-position del centro della torta
+- **xcenter** x-position of center of the pie
 - **ycenter** y-position of center of the pie
 - **r** Raggio della torta
 - **start_angle** Angolo iniziale della torta
@@ -2987,7 +3064,7 @@ Questo servizio disegna una torta nell'area di disegno usando il pennello del co
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Disegno dell'arco riuscito
+- **GX_SUCCESS** (0x00) Disegno di arco riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_VALUE** (0x22) Valore non valido
 - **GX_INVALID_CONTEXT** (0x06) Nessun contesto di disegno aperto
@@ -3022,7 +3099,7 @@ status = gx_canvas_pie_draw(100, 100, 50, 0, 90);
 ## <a name="gx_canvas_pixel_draw"></a>gx_canvas_pixel_draw
 
 
-Pixel di disegno
+Disegnare pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3032,9 +3109,9 @@ UINT gx_canvas_pixel_draw(GX_POINT position);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un pixel nell'area di disegno usando il colore della linea del pennello del contesto di disegno corrente. Se l'opzione GX_BRUSH_ALPHA_SUPPORT è definita, unire il pixel con , altrimenti disegnare il pixel come completamente opaco.
+Questo servizio disegna un pixel nell'area di disegno usando il colore della linea del pennello del contesto di disegno corrente. Se l'opzione GX_BRUSH_ALPHA_SUPPORT è definita, unire il pixel con l'oggetto in caso contrario, disegnare il pixel come completamente opaco.
 
-- **punto** x, posizione y del pixel da disegnare
+- **posizione** del punto x,y del pixel da disegnare
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3084,7 +3161,7 @@ gx_canvas_drawing_complete(mycanvas, GX_TRUE);
 
 ## <a name="gx_canvas_pixelmap_blend"></a>gx_canvas_pixelmap_blend
 
-Blend pixelmap
+Mappa pixel blend
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3098,13 +3175,13 @@ UINT gx_canvas_pixelmap_blend(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio combina una mappa pixel con lo sfondo dell'area di disegno. Il rapporto di fusione viene specificato dal chiamante. Il valore alfa può essere compreso tra 0 (completamente trasparente) e 255 (completamente opaco). La mappa pixel può includere anche un canale alfa interno, combinato con il valore di fusione in ingresso. Questo servizio è supportato solo dai driver di visualizzazione in esecuzione a una profondità di colore di 16 bpp e versioni successive.
+Questo servizio combina una mappa pixel con lo sfondo dell'area di disegno. Il rapporto di fusione viene specificato dal chiamante. Il valore alfa può variare da 0 (completamente trasparente) a 255 (completamente opaco). La mappa pixel può includere anche un canale alfa interno, combinato con il valore di fusione in ingresso. Questo servizio è supportato solo dai driver di visualizzazione che eseguono a una profondità di colore di 16 bpp e superiore.
 
 ### <a name="parameters"></a>Parametri
 
 - **x_start** Posizione x iniziale della mappa pixel
 - **y_end** Posizione y iniziale della mappa pixel
-- **mappa pixel** Puntatore alla mappa pixel
+- **pixelmap** Puntatore alla mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3159,7 +3236,7 @@ Questo servizio disegna una mappa pixel nell'area di disegno.
 
 - **x_start** Posizione x iniziale della mappa pixel
 - **y_end** Posizione y iniziale della mappa pixel
-- **pixelmap** Puntatore alla mappa pixel
+- **mappa pixel** Puntatore alla mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3190,7 +3267,7 @@ status = gx_canvas_pixelmap_draw(10, 20, &my_pixelmap);
 
 ## <a name="gx_canvas_pixelmap_get"></a>gx_canvas_pixelmap_get
 
-Ottenere una mappa pixel dell'area di disegno
+Ottenere la mappa pixel dell'area di disegno
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3200,15 +3277,15 @@ UINT gx_canvas_pixelmap_get(GX_PIXELMAP *pixelmap);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce una struttura GX_PIXELMAP che punta ai dati dell'area di disegno. Il formato della mappa pixel è impostato sul formato di colore di visualizzazione corrente.
+Questo servizio restituisce una GX_PIXELMAP che punta ai dati dell'area di disegno. Il formato della mappa pixel è impostato sul formato di colore di visualizzazione corrente.
 
 ### <a name="parameters"></a>Parametri
 
-- **mappa pixel** Mappa pixel restituita
+- **pixelmap** Mappa pixel restituita
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere una mappa pixel riuscita
+- **GX_SUCCESS** (0x00) Ottenere la mappa pixel riuscita
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -3252,7 +3329,7 @@ UINT gx_canvas_pixelmap_rotate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ruota una mappa pixel in base all'angolo specificato ed esegue il rendering della mappa pixel direttamente nell'area di disegno durante l'esecuzione della rotazione. Questo servizio è diverso da gx_utility_pixelmap_rotate perché il rendering dell'output della rotazione viene eseguito direttamente nella memoria dell'area di disegno e la mappa pixel ruotata non viene restituita al chiamante.
+Questo servizio ruota una mappa pixel in base all'angolo specificato ed esegue il rendering della mappa pixel direttamente nell'area di disegno durante l'esecuzione della rotazione. Questo servizio è diverso gx_utility_pixelmap_rotate perché viene eseguito direttamente il rendering dell'output della rotazione nella memoria canvas e la mappa pixel ruotata non viene restituita al chiamante.
 
 Il vantaggio di questo servizio rispetto gx_utility_pixelmap_rotate è che non è necessaria memoria aggiuntiva per contenere la mappa pixel ruotata. Lo svantaggio è che il codice di rotazione deve essere eseguito ogni volta che viene disegnata la mappa pixel.
 
@@ -3262,10 +3339,10 @@ La convalida del ritaglio e del viewport viene applicata durante il rendering de
 
 - **x_position** Posizione x iniziale della mappa pixel
 - **y_position** Posizione y iniziale della mappa pixel
-- **pixelmap** Puntatore alla mappa pixel
-- **angolo** Angolo di rotazione
+- **mappa pixel** Puntatore alla mappa pixel
+- **angolo** Angolo da ruotare
 - **rot_cx** X-coord del centro di rotazione. Se questo valore è impostato su -1, il centro dell'immagine viene usato come centro di rotazione.
-- **rot_cy** Asse Y del centro di rotazione. Se questo valore è impostato su -1, il centro dell'immagine viene usato come centro di rotazione.
+- **rot_cy** Y-coord del centro di rotazione. Se questo valore è impostato su -1, il centro dell'immagine viene usato come centro di rotazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3313,8 +3390,8 @@ Questo servizio riempie un rettangolo all'interno di un'area di disegno con la m
 
 ### <a name="parameters"></a>Parametri
 
-- **fill** Area da affiancare con mappa pixel
-- **mappa pixel** Puntatore alla mappa pixel
+- **fill** Area da affiancare con la mappa pixel
+- **pixelmap** Puntatore alla mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3482,16 +3559,16 @@ Questa API è stata deprecata a favore o gx_canvas_rotated_text_draw_ext(). Anch
 
 Questo servizio disegna testo nell'area di disegno. Il testo viene disegnato ruotato intorno al punto centrale richiesto. Il tipo di carattere del contesto di disegno corrente e il colore della linea del contesto di disegno vengono usati per eseguire il rendering del testo.
 
-Questo servizio usa la funzione gx_utility_string_to_alphamap per eseguire il rendering della stringa di testo in una mappa pixel temporanea a 8bpp contenente solo valori alfa. Il servizio ruota quindi la mappa alfa usando la funzione gx_utility_pixelmap_rotate. Dopo il rendering della mappa alfa finale nell'area di disegno, questo servizio libera la mappa alfamap temporanea e la memoria associata.
+Questo servizio usa la funzione gx_utility_string_to_alphamap per eseguire il rendering della stringa di testo in una mappa pixel di 8bpp temporanea contenente solo valori alfa. Il servizio ruota quindi la mappa alfa usando la funzione gx_utility_pixelmap_rotate. Dopo il rendering della mappa alfa finale nell'area di disegno, questo servizio libera la mappa alfa temporanea e la memoria associata.
 
-Poiché è necessaria una mappa alfa temporanea per eseguire il rendering del testo ruotato, l'applicazione deve configurare il gx_system_memory_allocator tramite l'API gx_system_memory_allocator_set() chiamante prima di tentare di disegnare testo ruotato.
+Poiché è necessaria una mappa alfa temporanea per eseguire il rendering del testo ruotato, l'applicazione deve configurare il gx_system_memory_allocator dall'API gx_system_memory_allocator_set() chiamante prima di tentare di disegnare testo ruotato.
 
-Questo servizio deve essere usato solo per eseguire il rendering del testo ruotato "una sola volta". Se la stessa stringa di testo verrà disegnata più volte in posizioni diverse o in angoli di rotazione diversi, è più efficiente usare la funzione di utilità gx_utility_string_to_alphamap() per creare la mappa alfanumerico una sola volta, quindi usare gx_utility_pixelmap_rotate più volte per ruotare ripetutamente la mappa alfa risultante.
+Questo servizio deve essere usato solo per eseguire il rendering del testo ruotato "una sola volta". Se la stessa stringa di testo verrà disegnata più volte in posizioni diverse o angolazioni di rotazione diverse, è più efficiente usare la funzione di utilità gx_utility_string_to_alphamap() per creare la mappa alfa del testo una sola volta, quindi usare gx_utility_pixelmap_rotate più volte per ruotare ripetutamente la mappa alfa risultante.
 
 ### <a name="parameters"></a>Parametri
 
 - **text** Stringa di testo da disegnare
-- **xCenter** Positon centrale intorno al quale verrà ruotato il testo.
+- **xCenter** Positone centrale intorno al quale verrà ruotato il testo.
 - **yCenter** Posizione centrale intorno alla quale verrà ruotato il testo.
 - **angolo** Angolo di rotazione del testo desiderato, in gradi.
 
@@ -3560,16 +3637,16 @@ UINT gx_canvas_rotated_text_draw_ext(
 
 Questo servizio disegna testo nell'area di disegno. Il testo viene disegnato ruotato intorno al punto centrale richiesto. Il tipo di carattere del contesto di disegno corrente e il colore della linea del contesto di disegno vengono usati per eseguire il rendering del testo.
 
-Questo servizio usa la funzione gx_utility_string_to_alphamap per eseguire il rendering della stringa di testo in una mappa pixel di 8bpp temporanea contenente solo valori alfa. Il servizio ruota quindi la mappa alfa usando la funzione gx_utility_pixelmap_rotate. Dopo il rendering della mappa alfa finale nell'area di disegno, questo servizio libera la mappa alfa temporanea e la memoria associata.
+Questo servizio usa la funzione gx_utility_string_to_alphamap per eseguire il rendering della stringa di testo in una pixelmap di 8bpp temporanea contenente solo valori alfa. Il servizio ruota quindi la mappa alfa usando la funzione gx_utility_pixelmap_rotate. Dopo il rendering della mappa alfa finale nell'area di disegno, questo servizio libera la mappa alfamap temporanea e la memoria associata.
 
-Poiché è necessaria una mappa alfa temporanea per eseguire il rendering del testo  ruotato, l'applicazione deve configurare il gx_system_memory_allocator dall'API gx_system_memory_allocator_set chiamante prima di tentare di disegnare testo ruotato.
+Poiché è necessaria una mappa alfa temporanea per eseguire il rendering del testo ruotato, l'applicazione deve configurare il gx_system_memory_allocator tramite l'API ***gx_system_memory_allocator_set*** chiamante prima di tentare di disegnare testo ruotato.
 
-Questo servizio deve essere usato solo per eseguire il rendering del testo ruotato "una sola volta". Se la stessa stringa di testo verrà disegnata più volte in posizioni diverse o angolazioni di rotazione diverse, è più efficiente usare la funzione di utilità gx_utility_string_to_alphamap() per creare la mappa alfa del testo una sola volta, quindi usare gx_utility_pixelmap_rotate più volte per ruotare ripetutamente la mappa alfa risultante.
+Questo servizio deve essere usato solo per eseguire il rendering del testo ruotato "una sola volta". Se la stessa stringa di testo verrà disegnata più volte in posizioni diverse o in angoli di rotazione diversi, è più efficiente usare la funzione di utilità gx_utility_string_to_alphamap() per creare la mappa alfanumerico una sola volta, quindi usare gx_utility_pixelmap_rotate più volte per ruotare ripetutamente la mappa alfa risultante.
 
 ### <a name="parameters"></a>Parametri
 
 - **text** Stringa di testo da disegnare
-- **xCenter** Positon centrale intorno al quale verrà ruotato il testo.
+- **xCenter** Positone centrale intorno al quale verrà ruotato il testo.
 - **yCenter** Posizione centrale intorno alla quale verrà ruotato il testo.
 - **angolo** Angolo di rotazione del testo desiderato, in gradi.
 
@@ -3579,7 +3656,7 @@ Questo servizio deve essere usato solo per eseguire il rendering del testo ruota
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_CONTEXT** (0x06) Contesto di disegno non valido
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) Memoria insufficiente o gx_system_memory_allocator non è stata assegnata.
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) Memoria disponibile insufficiente o gx_system_memory_allocator non è stata assegnata.
 - **GX_INVALID_STRING_LENGTH** (0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
@@ -3627,7 +3704,7 @@ void my_window_draw(GX_WINDOW *window)
 ## <a name="gx_canvas_shift"></a>gx_canvas_shift
 
 
-Maiusc canvas by x,y
+Maiusc canvas di x,y
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3645,11 +3722,11 @@ Questo servizio sposta l'offset dell'area di disegno specificato in base alla qu
 
 - **canvas** Puntatore al blocco di controllo canvas
 - **x** Pixel da spostare sull'asse X
-- **y** Pixel da spostare sull'asse Y
+- **Pixel y** da spostare sull'asse Y
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostamento dell'area di disegno riuscito
+- **GX_SUCCESS** (0x00) Spostamento nell'area di disegno completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_CANVAS** (0x20) Area di disegno non valida
@@ -3689,7 +3766,7 @@ UINT gx_canvas_show(GX_CANVAS *canvas);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rende visibile un canvas. Se l'area di disegno è stata associata in precedenza a un livello di grafica hardware usando l'API gx_canvas_hardware_layer_bind(), il servizio gx_canvas_show() viene implementato direttamente usando il supporto hardware.
+Questo servizio rende visibile un'area di disegno. Se l'area di disegno è stata associata in precedenza a un livello di grafica hardware usando l'API gx_canvas_hardware_layer_bind(), il servizio gx_canvas_show() viene implementato direttamente usando il supporto hardware.
 
 ### <a name="parameters"></a>Parametri
 
@@ -3745,7 +3822,7 @@ Questo servizio disegna testo nell'area di disegno. Questa API, anche se ancora 
 
 ### <a name="parameters"></a>Parametri
 
-- **x_start** Coordinata x iniziale per il testo
+- **x_start** Avvio della coordinata x per il testo
 - **y_start** Coordinata y iniziale per il testo
 - **string** Puntatore alla stringa da disegnare
 - **length** Se length >= 0, limita il numero di caratteri disegnati alla lunghezza. Se la lunghezza < 0, viene disegnata l'intera stringa fino al carattere di terminazione NULL.
@@ -3809,7 +3886,7 @@ Questo servizio disegna testo nell'area di disegno.
 
 ### <a name="parameters"></a>Parametri
 
-- **x_start** Coordinata x iniziale per il testo
+- **x_start** Avvio della coordinata x per il testo
 - **y_start** Coordinata y iniziale per il testo
 - **string** Puntatore alla stringa da disegnare
 
@@ -3874,14 +3951,14 @@ UINT gx_checkbox_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget casella di controllo con le proprietà specificate. GX_CHECKBOX deriva da GX_TEXT_BUTTON e tutti i gx_text_button possono essere usati con GX_CHECKBOX widget.
+Questo servizio crea un widget di caselle di controllo con le proprietà specificate. GX_CHECKBOX deriva da GX_TEXT_BUTTON e tutti i gx_text_button possono essere usati con GX_CHECKBOX widget.
 
 ### <a name="parameters"></a>Parametri
 
-- **casella di controllo** Puntatore al nome del blocco di controllo casella di controllo Nome logico del widget della casella di controllo
-- **padre** Puntatore al widget padre
+- **Casella di controllo** Puntatore al nome del blocco di controllo della casella di controllo Nome logico del widget della casella di controllo
+- **elemento padre** Puntatore al widget padre
 - **text_id** ID risorsa del testo della casella di controllo
-- **style** Stile della casella di controllo. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **style** Stile della casella di controllo. **L'Appendice D** contiene stili generali predefiniti per tutti i widget, nonché stili specifici del widget.
 - **checkbox_id** Casella di controllo ID definito dall'applicazione
 - **size** Dimensioni della casella di controllo
 
@@ -3927,15 +4004,15 @@ VOID gx_checkbox_draw(GX_CHECKBOX *checkbox);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna la casella di controllo specificata. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per i widget delle caselle di controllo personalizzati.
+Questo servizio disegna la casella di controllo specificata. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget casella di controllo personalizzati.
 
 ### <a name="parameters"></a>Parametri
 
-- **Casella di controllo** Puntatore al blocco di controllo della casella di controllo
+- **casella di controllo** Puntatore al blocco di controllo della casella di controllo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3984,7 +4061,7 @@ Questo servizio elabora un evento per la casella di controllo specificata. Quest
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Processo evento casella di controllo riuscito
+- **GX_SUCCESS** (0x00) Processo dell'evento della casella di controllo Operazione riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -4047,7 +4124,7 @@ Questo servizio assegna le mappe pixel che devono essere visualizzate dalla case
 
 ### <a name="parameters"></a>Parametri
 
-- **casella di controllo** Puntatore al blocco di controllo della casella di controllo
+- **Casella di controllo** Puntatore al blocco di controllo della casella di controllo
 - **unchecked_id** Mappa pixel usata per lo stato deselezionato
 - **checked_id** Mappa pixel usata per lo stato selezionato
 - **unchecked_disabled_id** Mappa pixel usata per una casella di controllo disabilitata e deselezionata
@@ -4146,7 +4223,7 @@ Questo servizio recupera l'angolo corrente della lanceta del widget del misurato
 ### <a name="parameters"></a>Parametri
 
 - **misuratore** Puntatore al blocco di controllo del misuratore circolare
-- **angolo** Angolo della lancetto corrente da recuperare
+- **angolo** Angolo della lanceta corrente da recuperare
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -4197,11 +4274,11 @@ Questo servizio imposta l'angolo di destinazione di un widget del misuratore cir
 ### <a name="parameters"></a>Parametri
 
 - **misuratore** Puntatore al blocco di controllo del misuratore circolare
-- **angolo** Angolo della lanceta di destinazione
+- **angolo** Angolo dell'ago di destinazione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful angle set
+- **GX_SUCCESS** (0x00) Set di angolazioni riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -4303,7 +4380,7 @@ Questo servizio disegna lo sfondo del misuratore circolare specificato. Questo s
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -4354,7 +4431,7 @@ Questo servizio crea un widget misuratore circolare con le proprietà specificat
 - **misuratore** Puntatore al blocco di controllo del misuratore circolare
 - **name** Nome logico del widget misuratore circolare
 - **padre** Puntatore al widget padre
-- **info** Puntatore alla struttura delle informazioni del misuratore. **L'appendice I** contiene la definizione GX_CIRCULAR_GAUGE_INFO struttura
+- **info** Puntatore alla struttura delle informazioni del misuratore. **Appendice I contiene** la definizione per GX_CIRCULAR_GAUGE_INFO struttura
 - **background_id** ID risorsa della mappa pixel di sfondo del misuratore circolare
 - **style** Stile del misuratore circolare. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **circular_gauge_id** ID definito dall'applicazione del misuratore circolare
@@ -4367,7 +4444,7 @@ Questo servizio crea un widget misuratore circolare con le proprietà specificat
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo non valide
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -4424,7 +4501,7 @@ Questo servizio disegna il misuratore circolare specificato. Questa funzione vie
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -4534,7 +4611,7 @@ Questo servizio imposta il pennello del contesto di disegno specificato sul valo
 
 ### <a name="parameters"></a>Parametri
 
-- **context** Puntatore al blocco di controllo del contesto
+- **contesto** Puntatore al blocco di controllo di contesto
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -4591,7 +4668,7 @@ Questo servizio definisce il pennello del contesto di disegno corrente.
 
 ### <a name="parameters"></a>Parametri
 
-- **line_color_id** ID risorsa del colore della linea. **L'appendice B** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **line_color_id** ID risorsa del colore della linea. **L'appendice B** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 - **fill_color_id** ID risorsa del colore di riempimento. **L'appendice B** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 - **style** Stile del pennello. **L'appendice D** descrive gli stili del pennello supportati. Gli stili del pennello possono essere combinati in un'unica variabile usando l'operazione OR bit per bit.
 
@@ -4711,7 +4788,7 @@ La maschera del motivo del pennello è attualmente supportata solo per le linee 
 
 ### <a name="parameters"></a>Parametri
 
-- **modello** Modello da usare per il pennello. Si tratta di un semplice modello di on/off esadecimale da usare per il disegno della linea del modello.
+- **modello** Modello da usare per il pennello. Si tratta di un semplice modello di on/off esadecimale da usare per il disegno di linee con motivo.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -4827,7 +4904,7 @@ status = gx_context_brush_set(my_brush);
 ## <a name="gx_context_brush_style_set"></a>gx_context_brush_style_set
 
 
-Impostare lo stile del pennello del contesto di disegno corrente
+Imposta lo stile del pennello del contesto di disegno corrente
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4995,7 +5072,7 @@ status = gx_context_color_get(MY_BLACK_COLOR_ID, &color_value);
 
 ## <a name="gx_context_fill_color_set"></a>gx_context_fill_color_set
 
-Imposta il colore di riempimento del contesto di disegno corrente
+Impostare il colore di riempimento del contesto di disegno corrente
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5009,11 +5086,11 @@ Questo servizio imposta il colore di riempimento del pennello attivo nel contest
 
 ### <a name="parameters"></a>Parametri
 
-- **fill_color_id** ID risorsa del colore di riempimento del contesto corrente. **L'appendice B** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **fill_color_id** ID risorsa del colore di riempimento del contesto corrente. **L'appendice B** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori di riempimento contesto riuscito
+- **GX_SUCCESS** (0x00) Set di colori di riempimento del contesto riuscito
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
 - **GX_INVALID_CONTEXT** (0x06) Nessun contesto di disegno attivo
 
@@ -5107,7 +5184,7 @@ status = gx_context_font_get(MY_MIDSIZE_FONT, &my_font);
 
 ## <a name="gx_context_font_set"></a>gx_context_font_set
 
-Imposta il tipo di carattere del contesto di disegno corrente
+Impostare il tipo di carattere del contesto di disegno corrente
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5174,7 +5251,7 @@ Questo servizio imposta il colore della linea del pennello attivo nel contesto d
 
 ### <a name="parameters"></a>Parametri
 
-- **line_color_id** Colore della linea del contesto corrente. **L'appendice B** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **line_color_id** Colore della linea del contesto corrente. **L'appendice B** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -5225,7 +5302,7 @@ UINT gx_context_pixelmap_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il puntatore della mappa pixel associato all'ID mappa pixel indicato.
+Questo servizio recupera il puntatore della mappa pixel associato all'ID della mappa pixel indicato.
 
 ### <a name="parameters"></a>Parametri
 
@@ -5234,7 +5311,7 @@ Questo servizio recupera il puntatore della mappa pixel associato all'ID mappa p
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Recuperato correttamente la mappa pixel
+- **GX_SUCCESS** (0x00) La mappa pixel è stata recuperata correttamente
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
 - **GX_INVALID_CONTEXT** (0x06) Nessun contesto di disegno attivo
 - **GX_PTR_ERROR** (0x07) Puntatore mappa pixel non valido
@@ -5272,7 +5349,7 @@ status = gx_context_pixelmap_get(MY_PIXELMAP_ID, &map);
 
 ## <a name="gx_context_pixelmap_set"></a>gx_context_pixelmap_set
 
-Imposta la mappa pixel del contesto di disegno corrente
+Impostare la mappa pixel del contesto di disegno corrente
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5342,8 +5419,8 @@ Questo servizio definisce il pennello non elaborato del contesto dello schermo c
 
 ### <a name="parameters"></a>Parametri
 
-- **line_color** Colore della linea in formato colore ARGB non elaborato a 32 bit. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
-- **fill_color** Colore di riempimento in formato arGB non elaborato a 32 bit. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
+- **line_color** Colore della linea nel formato colore ARGB non elaborato a 32 bit. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
+- **fill_color** Colore di riempimento in formato colore ARGB non elaborato a 32 bit. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
 - **style** Stile del pennello. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 
 ### <a name="return-values"></a>Valori restituiti
@@ -5397,7 +5474,7 @@ Questo servizio imposta il colore di riempimento non elaborato del contesto dell
 
 ### <a name="parameters"></a>Parametri
 
-- **line_color** Colore della linea. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
+- **line_color** Colore della linea. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -5435,7 +5512,7 @@ status = gx_context_raw_fill_color_set(GX_COLOR_BLACK);
 
 ## <a name="gx_context_raw_line_color_set"></a>gx_context_raw_line_color_set
 
-Imposta il colore della linea non elaborata del contesto di disegno corrente
+Impostare il colore della linea non elaborata del contesto di disegno corrente
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5449,11 +5526,11 @@ Questo servizio imposta il colore della linea del pennello attivo nel contesto d
 
 ### <a name="parameters"></a>Parametri
 
-- **line_color** Colore del valore della linea. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
+- **line_color** Colore del valore della linea. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori della linea non elaborata di contesto riuscito
+- **GX_SUCCESS** (0x00) Set di colori della linea non elaborata del contesto riuscito
 - **GX_INVALID_CONTEXT** (0X06) Nessun contesto di disegno attivo
 
 ### <a name="allowed-from"></a>Consentito da
@@ -5505,7 +5582,7 @@ Questa API deprecata restituisce la stringa associata all'ID stringa specificato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori della linea non elaborata del contesto riuscito
+- **GX_SUCCESS** (0x00) Set di colori della linea non elaborata di contesto riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_CONTEXT** (0X06) Nessun contesto di disegno attivo
@@ -5530,7 +5607,7 @@ status = gx_context_string_get(GX_ID_ERROR, &text);
 
 ## <a name="gx_context_string_get_ext"></a>gx_context_string_get_ext
 
-Recupera la stringa associata all'ID stringa specificato.
+Recuperare la stringa associata all'ID stringa specificato.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5542,16 +5619,16 @@ UINT gx_context_string_get_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce la stringa associata a un ID stringa specificato. Questo servizio può essere richiamato solo quando è presente un contesto di disegno attivo, ad esempio dall'interno della funzione di disegno di un widget. Questo servizio identifica l'area di disegno attiva e visualizza e recupera la stringa dall'istanza di visualizzazione individuata.
+Questo servizio restituisce la stringa associata a un ID stringa specificato. Questo servizio può essere richiamato solo quando è presente un contesto di disegno attivo, ad esempio dall'interno della funzione di disegno di un widget. Questo servizio identifica l'area di disegno attiva e la visualizzazione e recupera la stringa dall'istanza di visualizzazione individuata.
 
 ### <a name="parameters"></a>Parametri
 
-- **string_id** ID stringa usato per identificare la stringa, come generato da GUIX Studio nel file di intestazione delle risorse dell'applicazione.
-- **return_string** Indirizzo della GX_STRING in cui verranno restituiti il puntatore di stringa e la lunghezza della stringa.
+- **string_id** ID stringa usato per identificare la stringa, come generato da GUIX Studio nel file di intestazione della risorsa dell'applicazione.
+- **return_string** Indirizzo della GX_STRING variabile in cui verranno restituiti il puntatore di stringa e la lunghezza della stringa.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori della linea non elaborata di contesto riuscito
+- **GX_SUCCESS** (0x00) Set di colori della linea non elaborata del contesto riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_CONTEXT** (0X06) Nessun contesto di disegno attivo
@@ -5603,14 +5680,14 @@ UINT gx_display_active_language_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna la lingua attualmente attiva per la visualizzazione indicata. L'indice della lingua corrisponde alle lingue definite nella tabella della lingua di visualizzazione e non è un identificatore di lingua ANSI.
+Questo servizio assegna la lingua attualmente attiva per la visualizzazione indicata. L'indice della lingua corrisponde alle lingue definite nella tabella delle lingue di visualizzazione e non è un identificatore di lingua ANSI.
 
-Diversi display in un sistema a più schermi possono eseguire lingue attive diverse. Prima di usare questa API, è necessario assegnare la tabella della lingua di visualizzazione. Quando una visualizzazione viene inizializzata gx_studio_display_configure, la tabella della lingua viene installata automaticamente e l'applicazione passa l'indice della lingua attiva.
+Diversi schermi in un sistema a più schermi possono eseguire diverse lingue attive. Prima di usare questa API, è necessario assegnare la tabella della lingua di visualizzazione. Quando una visualizzazione viene inizializzata usando gx_studio_display_configure, la tabella delle lingue viene installata automaticamente e l'applicazione passa l'indice della lingua attiva.
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
-- **language** Indice della lingua attiva
+- **display** Puntatore al blocco di controllo di visualizzazione
+- **lingua** Indice della lingua attiva
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -5639,7 +5716,7 @@ status = gx_display_active_language_set(&my_display,
 
 ## <a name="gx_display_color_set"></a>gx_display_color_set
 
-Rias assegnare un valore di colore
+Riass assegnare un valore di colore
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5652,11 +5729,11 @@ UINT gx_display_color_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna nuovamente il valore del colore associato all'ID colore specificato. Può essere usato per modificare la tabella dei colori di una visualizzazione senza fornire una tabella dei colori completamente nuova. Il valore del colore specificato deve essere nel formato nativo supportato dalla visualizzazione.
+Questo servizio riassegnerà il valore del colore associato all'ID colore specificato. Può essere usato per modificare la tabella dei colori di un display senza fornire una tabella dei colori completamente nuova. Il valore del colore fornito deve essere nel formato nativo supportato dalla visualizzazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
 - **color_id** ID colore da riassegnare
 - **new_color** Valore del colore da assegnare a color_id slot
 
@@ -5703,7 +5780,7 @@ Questo servizio riassegnerà la tabella dei colori che verrà usata dalla visual
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **display** Puntatore al blocco di controllo di visualizzazione
 - **color_table** Matrice di valori di colore in formato nativo di visualizzazione.
 - **color_count** Indica il numero di voci nella tabella dei colori
 
@@ -5735,7 +5812,7 @@ status = gx_display_color_table_set(&my_display, default_table, 32);
 
 ## <a name="gx_display_create"></a>gx_display_create
 
-Creare una visualizzazione
+Creare la visualizzazione
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5754,17 +5831,17 @@ Questo servizio crea una visualizzazione e chiama la funzione di configurazione 
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **display** Puntatore al blocco di controllo di visualizzazione
 - **name** Nome della visualizzazione
 - **display_driver_setup** Puntatore alla funzione di configurazione del driver di visualizzazione
 - **optional_driver_info** Puntatore alle informazioni facoltative sul driver
 - **color_format** Formato dei colori, come definito **nell'appendice C**
 - **width** Numero di pixel sull'asse x
-- **height** Numero di pixel sull'asse y
+- **altezza** Numero di pixel sull'asse y
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione visualizzazione riuscita
+- **GX_SUCCESS** (0x00) Creazione della visualizzazione completata
 - **GX_SYSTEM_ERROR** (0xFE) Non è possibile configurare la visualizzazione
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
@@ -5798,7 +5875,7 @@ status = gx_display_create(&my_display, “my display”,
 ## <a name="gx_display_delete"></a>gx_display_delete
 
 
-Eliminazione della visualizzazione
+Eliminare la visualizzazione
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5814,7 +5891,7 @@ Questo servizio arresta una visualizzazione e pulisce le risorse allocate.
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
 - **display_driver_cleanup** Puntatore alla funzione di pulizia del driver di visualizzazione
 
 ### <a name="return-values"></a>Valori restituiti
@@ -5855,7 +5932,7 @@ status = gx_display_delete(&my_display, driver_cleanup_callback);
 
 ## <a name="gx_display_font_table_set"></a>gx_display_font_table_set
 
-Assegnare la tabella dei caratteri di visualizzazione
+Assegnare la tabella dei tipi di carattere visualizzati
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5868,17 +5945,17 @@ UINT gx_display_font_table_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio riassegnerà la tabella dei tipi di carattere che verrà usata dalla visualizzazione. Questo servizio viene in genere richiamato dalla funzione di configurazione della visualizzazione generata da GUIX Studio, ma può essere chiamato anche dal software dell'applicazione.
+Questo servizio assegna nuovamente la tabella dei tipi di carattere che deve essere usata dalla visualizzazione. Questo servizio viene in genere richiamato dalla funzione di configurazione della visualizzazione generata da GUIX Studio, ma può essere chiamato anche dal software dell'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **display** Puntatore al blocco di controllo di visualizzazione
 - **font_table** Matrice di GX_FONT puntatori.
 - **table_size** Numero di tipi di carattere nella tabella
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -5919,20 +5996,20 @@ UINT gx_display_language_table_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera la tabella delle lingue dalla visualizzazione indicata. Questo servizio può essere usato da un'applicazione per modificare la tabella delle lingue di visualizzazione, in fase di esecuzione, usando stringhe definite in modo dinamico.
+Questo servizio recupera la tabella della lingua dalla visualizzazione indicata. Questo servizio può essere usato da un'applicazione per modificare la tabella della lingua di visualizzazione, in fase di esecuzione, usando stringhe definite dinamicamente.
 
-Questa API è deprecata e supportata solo per le applicazioni che usano la tabella del linguaggio obsoleto, ovvero il file di risorse generato da Studio viene generato per la versione della libreria precedente alla versione 5.6. Le nuove applicazioni devono usare gx_display_language_table_get_ext().
+Questa API è deprecata e supportata solo per le applicazioni che usano la tabella del linguaggio di stile precedente, ad esempio il file di risorse generato da Studio viene generato per la versione della libreria precedente alla versione 5.6. Le nuove applicazioni devono usare gx_display_language_table_get_ext().
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
-- **tabella** Indirizzo per la ricezione del puntatore di tabella
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **tabella** Indirizzo per ricevere il puntatore di tabella
 - **language_count** Indirizzo per la ricezione del numero di lingue
 - **string_table_size** Indirizzo per la ricezione delle dimensioni della tabella delle stringhe
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -5977,18 +6054,18 @@ UINT gx_display_language_table_get_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera la tabella della lingua dalla visualizzazione indicata. Questo servizio può essere usato da un'applicazione per modificare la tabella della lingua di visualizzazione, in fase di esecuzione, usando stringhe definite dinamicamente.
+Questo servizio recupera la tabella delle lingue dalla visualizzazione indicata. Questo servizio può essere usato da un'applicazione per modificare la tabella delle lingue di visualizzazione, in fase di esecuzione, usando stringhe definite in modo dinamico.
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
-- **tabella** Indirizzo per ricevere il puntatore di tabella
+- **display** Puntatore al blocco di controllo di visualizzazione
+- **tabella** Indirizzo per la ricezione del puntatore di tabella
 - **language_count** Indirizzo per la ricezione del numero di lingue
 - **string_table_size** Indirizzo per la ricezione delle dimensioni della tabella delle stringhe
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -6032,20 +6109,20 @@ UINT gx_display_language_table_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio è deprecato e le nuove applicazioni devono usare gx_display_language_table_set_ext(). Questo servizio è supportato solo per la compatibilità con i file di risorse generati da Studio che hanno come destinazione versioni della libreria precedenti alla versione 5.6.
+Questo servizio è deprecato e le nuove applicazioni devono usare gx_display_language_table_set_ext(). Questo servizio è supportato solo per la compatibilità con i file di risorse generate da Studio che hanno come destinazione le versioni della libreria precedenti alla versione 5.6.
 
-Questo servizio assegna la tabella della lingua che verrà usata dalla visualizzazione. Questo servizio viene in genere richiamato dalla funzione generata da GUIX Studio gx_studio_display_configure, ma può essere chiamato anche dal software dell'applicazione.
+Questo servizio assegna la tabella della lingua che deve essere usata dalla visualizzazione. Questo servizio viene in genere richiamato dalla funzione generata da GUIX Studio gx_studio_display_configure, ma può essere chiamato anche dal software dell'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
 - **tabella** Tabella delle lingue
-- **number_of_languages** Numero di colonne nella tabella specificata
+- **number_of_languages** Numero di colonne nella tabella fornita
 - **number_of_strings** Numero di stringhe in ogni colonna della tabella
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -6092,14 +6169,14 @@ L'assegnazione della tabella del linguaggio di runtime viene in genere eseguita 
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **display** Puntatore al blocco di controllo di visualizzazione
 - **tabella** Tabella delle lingue
 - **number_of_languages** Numero di colonne nella tabella specificata
 - **number_of_strings** Numero di stringhe in ogni colonna della tabella
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_STRING_LENGTH** (0x34) Lunghezza stringa non valida
@@ -6127,7 +6204,7 @@ status = gx_display_language_table_set_ext(&my_display,
 
 ## <a name="gx_display_pixelmap_table_set"></a>gx_display_pixelmap_table_set
 
-Assegnare la tabella dei caratteri di visualizzazione
+Assegnare la tabella dei tipi di carattere visualizzati
 
 ### <a name="prototype"></a>Prototipo
 
@@ -6140,11 +6217,11 @@ UINT gx_display_pixelmap_table_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio riassegnerà la tabella della mappa pixel che verrà usata dalla visualizzazione. Questo servizio viene in genere richiamato dalla funzione di configurazione della visualizzazione generata da Studio, ma può essere chiamato anche dal software dell'applicazione.
+Questo servizio riassegnerà la tabella pixelmap che verrà usata dalla visualizzazione. Questo servizio viene in genere richiamato dalla funzione di configurazione della visualizzazione generata da Studio, ma può essere chiamato anche dal software dell'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **display** Puntatore al blocco di controllo di visualizzazione
 - **pixelmap_table** Matrice di GX_PIXELMAP puntatori.
 - **table_size** Numero di mappe pixel nella tabella
 
@@ -6198,7 +6275,7 @@ Gli ID stringa vengono generati da GUIX Studio e si trovano nel file di intestaz
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
 - **string_id** ID stringa, generato da GUIX Studio.
 - **string** Indirizzo della variabile puntatore di stringa
 
@@ -6252,11 +6329,11 @@ Gli ID stringa vengono generati da GUIX Studio e si trovano nel file di intestaz
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **display** Puntatore al blocco di controllo di visualizzazione
 - **string_id** ID stringa, generato da GUIX Studio.
 - **string** Indirizzo della GX_STRING variabile in
-- **che string.gx_string_ptr** e
-- **string.gx_string_length** restituito.
+- **che** string.gx_string_ptr e
+- **string.gx_string_length** verrà restituito .
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -6310,14 +6387,14 @@ Questo servizio recupera la tabella di stringhe associata alla lingua attiva. Qu
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
-- **lingua** Colonna della tabella da recuperare.
-- **tabella** Indirizzo della variabile da restituire come puntatore.
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
+- **language** Colonna della tabella da recuperare.
+- **tabella** Indirizzo della variabile da restituire puntatore.
 - **table_size** Indirizzo della variabile per restituire le dimensioni della tabella
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_NOT_FOUND** (0x09) Indice di lingua non valido
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
@@ -6366,14 +6443,14 @@ Questo servizio recupera la tabella di stringhe associata alla lingua attiva. Qu
 
 ### <a name="parameters"></a>Parametri
 
-- **visualizzazione** Puntatore per visualizzare il blocco di controllo
-- **language** Colonna della tabella da recuperare.
-- **tabella** Indirizzo della variabile da restituire puntatore.
+- **display** Puntatore al blocco di controllo di visualizzazione
+- **lingua** Colonna della tabella da recuperare.
+- **tabella** Indirizzo della variabile da restituire come puntatore.
 - **table_size** Indirizzo della variabile per restituire le dimensioni della tabella
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere riuscito
+- **GX_SUCCESS** (0x00) Set di tabelle dei tipi di carattere completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_NOT_FOUND** (0x09) Indice di lingua non valido
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
@@ -6416,11 +6493,11 @@ UINT gx_display_theme_install(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio installa i temi nella visualizzazione specificata. Questo servizio viene in genere richiamato dalla funzione di configurazione della visualizzazione generata da Studio, ma può anche essere chiamato dal software dell'applicazione.
+Questo servizio installa i temi nella visualizzazione specificata. Questo servizio viene in genere richiamato dalla funzione di configurazione dello schermo generata da Studio, ma può essere chiamato anche dal software dell'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **display** Puntatore al blocco di controllo di visualizzazione
+- **visualizzazione** Puntatore per visualizzare il blocco di controllo
 - **theme_table** Tabella dei temi da installare
 
 ### <a name="return-values"></a>Valori restituiti
@@ -6510,7 +6587,7 @@ Questo servizio chiude l'elenco popup dell'elenco a discesa specificato.
 
 ### <a name="parameters"></a>Parametri
 
-- **drop_list** Puntatore al blocco di controllo dell'elenco a discesa
+- **drop_list** Puntatore al blocco di controllo elenco a discesa
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -6563,13 +6640,13 @@ UINT gx_drop_list_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un elenco a discesa. Un elenco a discesa è una combinazione del widget elenco a discesa e di un elenco verticale popup visualizzato all'apertura dell'elenco a discesa. L'elenco verticale popup viene creato automaticamente quando viene creato il widget elenco a discesa e visualizzato o nascosto rispettivamente quando il widget elenco a discesa viene aperto o chiuso.
+Questo servizio crea un elenco a discesa. Un elenco a discesa è una combinazione del widget dell'elenco a discesa e di un elenco verticale popup che viene visualizzato all'apertura dell'elenco a discesa. L'elenco verticale popup viene creato automaticamente quando viene creato il widget dell'elenco a discesa e visualizzato o nascosto rispettivamente quando il widget dell'elenco a discesa viene aperto o chiuso.
 
-Il widget elenco a discesa supporta due mappe pixel associate. Il primo, descritto come "Sfondo elenco" nella visualizzazione delle proprietà di Studio, è la mappa pixel dello sfondo facoltativa che viene visualizzata come sfondo dell'elenco verticale visualizzato quando viene aperto il widget elenco a discesa. La seconda mappa pixel, descritta come "Immagine di sfondo" nella visualizzazione delle proprietà di Studio, è un'immagine facoltativa visualizzata come sfondo dell'elenco a discesa stesso.
+Il widget dell'elenco a discesa supporta due mappe pixel associate. Il primo, descritto come "List Wallpaper" (Sfondo elenco) nella visualizzazione delle proprietà di Studio, è la mappa pixel dello sfondo facoltativa visualizzata come sfondo dell'elenco verticale visualizzato all'apertura del widget dell'elenco a discesa. La seconda mappa pixel, descritta come "Immagine di sfondo" nella visualizzazione delle proprietà di Studio, è un'immagine facoltativa visualizzata come sfondo dell'elenco a discesa stesso.
 
-Un widget elenco a discesa può avere (ma non è necessario) un widget figlio usato per aprire e chiudere l'elenco a discesa. Si tratta in genere di un widget icona o pulsante, ma anche un widget personalizzato può essere usato come interruttore di apertura/chiusura per l'elenco a discesa padre. L'impostazione chiave che fa funzionare questo widget figlio nell'elenco a discesa è che questo widget figlio deve avere l'ID del widget predefinito ID_DROP_LIST_BUTTON.
+Un widget elenco a discesa può avere (ma non è obbligatorio) un widget figlio usato per aprire e chiudere l'elenco a discesa. Si tratta in genere di un widget di icona o pulsante, ma anche un widget personalizzato può essere usato come interruttore di apertura/chiusura per l'elenco a discesa padre. L'impostazione chiave che fa sì che questo widget figlio operino nell'elenco a discesa è che questo widget figlio deve avere l'ID del widget predefinito ID_DROP_LIST_BUTTON.
 
-Per definire un widget figlio che aprirà e chiuderà l'elenco a discesa, primaaggiungi e il widget figlio all'elenco a discesa e posiziona questo elemento figlio all'interno dell'elenco a discesa come desiderato:
+Per definire un widget figlio che aprirà e chiuderà l'elenco a discesa, aggiungere innanzitutto il widget e il widget figlio all'elenco a discesa e posizionare l'elemento figlio all'interno dell'elenco a discesa in base alle esigenze:
 
 ![Screenshot dell'elenco a discesa.](./media/guix/image6.jpg)
 
@@ -6578,11 +6655,11 @@ Usare quindi la visualizzazione delle proprietà di Studio per assegnare a quest
 ![Screenshot della visualizzazione delle proprietà di Studio.](./media/guix/image7.jpg)
 
 ### <a name="parameters"></a>Parametri
-- **drop_list** Puntatore al blocco di controllo dell'elenco a discesa
+- **drop_list** Puntatore al blocco di controllo elenco a discesa
 - **name** Nome dell'elenco a discesa
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **total_rows** Numero totale di righe nell'elenco a discesa
-- **open_height** Altezza dell'elenco verticale visualizzato all'apertura dell'elenco a discesa.
+- **open_height** Altezza dell'elenco verticale visualizzata all'apertura dell'elenco a discesa.
 - **callback** Funzione chiamata dall'elenco verticale quando si scorre l'elenco. Per altre informazioni, vedere GX_VERTICAL_LIST documentazione di .
 - **style** Stile del bordo dell'elenco a discesa.
 - **drop_list_id** ID definito dall'applicazione dell'elenco a discesa
@@ -6590,10 +6667,10 @@ Usare quindi la visualizzazione delle proprietà di Studio per assegnare a quest
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione dell'elenco a discesa riuscita
+- **GX_SUCCESS** (0x00) Creazione dell'elenco a discesa completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -6633,7 +6710,7 @@ status = gx_drop_list_create(&my_drop_list,
 ## <a name="gx_drop_list_event_process"></a>gx_drop_list_event_process
 
 
-Evento dell'elenco a discesa del processo
+Evento dell'elenco di rilascio del processo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -6649,12 +6726,12 @@ Questo servizio elabora un evento per l'elenco a discesa.
 
 ### <a name="parameters"></a>Parametri
 
-- **drop_list** Blocco di controllo widget elenco a discesa
-- **evento** Puntatore all'evento da elaborare
+- **drop_list** Blocco di controllo widget per l'elenco di rilascio
+- **event** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Elaborazione dell'evento elenco a discesa completata
+- **GX_SUCCESS** (0x00) Correttamente elaborato l'evento di elenco a discesa
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -6758,12 +6835,12 @@ UINT gx_drop_list_pixelmap_set(
 
 ### <a name="description"></a>Descrizione
 
-Assegnare un'immagine di sfondo all'elenco a discesa. Questa mappa pixel viene usata come sfondo per il widget dell'elenco a discesa e non per l'elenco verticale popup visualizzato all'apertura dell'elenco. Per assegnare una mappa pixel al popup dell'elenco a discesa, è necessario prima chiamare gx_drop_list_popup_get per recuperare un puntatore all'elenco popup e quindi usare gx_window_wallpaper_set() per assegnare una mappa pixel a questo elenco popup.
+Assegnare un'immagine di sfondo all'elenco a discesa. Questa mappa pixel viene usata come sfondo per il widget dell'elenco a discesa e non per l'elenco verticale popup visualizzato all'apertura dell'elenco. Per assegnare una mappa pixel al popup dell'elenco a discesa, è necessario chiamare prima gx_drop_list_popup_get per recuperare un puntatore all'elenco popup e quindi usare gx_window_wallpaper_set() per assegnare una mappa pixel a questo elenco popup.
 
 ### <a name="parameters"></a>Parametri
 
-- **drop_list** Puntatore al blocco di controllo dell'elenco a discesa
-- **id** ID risorsa per la mappa pixlemap
+- **drop_list** Puntatore al blocco di controllo elenco a discesa
+- **ID** risorsa per pixlemap
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -6813,16 +6890,16 @@ UINT gx_drop_list_popup_get(
 
 ### <a name="description"></a>Descrizione
 
-Un widget elenco a discesa è costituito dal widget dell'elenco a discesa stesso e da un elenco verticale popup visualizzato all'apertura del widget elenco a discesa. Questo servizio recupera un puntatore al componente elenco verticale dell'elenco a discesa, consentendo all'applicazione di richiamare i servizi API direttamente in questo elenco verticale.
+Un widget elenco a discesa è costituito dal widget dell'elenco a discesa stesso e da un elenco verticale popup che viene visualizzato all'apertura del widget dell'elenco a discesa. Questo servizio recupera un puntatore al componente elenco verticale dell'elenco a discesa, consentendo all'applicazione di richiamare i servizi API direttamente in questo elenco verticale.
 
 ### <a name="parameters"></a>Parametri
 
-- **drop_list** Puntatore al blocco di controllo elenco a discesa
+- **drop_list** Puntatore al blocco di controllo dell'elenco a discesa
 - **return_list** Puntatore all'elenco verticale archiviato nell'elenco a discesa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Elenco verticale popup recuperato correttamente
+- **GX_SUCCESS** (0x00) Elenco verticale popup recuperato
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -6864,11 +6941,11 @@ Questa funzione posiziona gli elementi figlio per la rotellina di scorrimento ge
 
 ### <a name="parameters"></a>Parametri
 
-- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Correttamente posizionato gli elementi figlio per la rotellina di scorrimento generica
+- **GX_SUCCESS** (0x00) Correttamente posizionati gli elementi figlio per la rotellina di scorrimento generica
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -6923,21 +7000,21 @@ UINT gx_generic_scroll_wheel_create(
 
 Questo servizio crea un widget della rotellina di scorrimento generico.
 
-Una rotellina di scorrimento generica è un tipo di widget della rotellina di scorrimento costituito da widget figlio. Sono disponibili anche altri tipi di widget della rotellina di scorrimento. Per altre informazioni sulla gerarchia dei widget della rotellina di scorrimento, sui tipi di widget e sulla derivazione dei widget, vedere l'API gx_scroll_wheel_create().
+Una rotellina di scorrimento generica è un tipo di widget della rotellina di scorrimento costituito da widget figlio. Sono disponibili anche altri tipi di widget della rotellina di scorrimento. Per altre informazioni sulla gerarchia del widget della rotellina di scorrimento, sui tipi di widget e sulla derivazione dei widget, vedere l'API gx_scroll_wheel_create().
 
 GX_GENERIC_SCROLL_WHEEL deriva da GX_SCROLL_WHEEL e supporta tutti gx_scroll_wheel servizi.
 
-Tutti i tipi di rotellina di scorrimento generano GX_EVENT_LIST_SELECT eventi padre quando la rotellina di scorrimento viene scorre.
+Tutti i tipi di rotellina di scorrimento GX_EVENT_LIST_SELECT eventi al relativo elemento padre quando viene scorreta la rotellina di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
 - **name** Nome logico del widget della rotellina di scorrimento generico
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **total_rows** Totale righe della rotellina di scorrimento.
-- **callback** Funzione di callback per creare una riga del widget. Può essere GX_NULL se il numero di righe totali corrisponde al conteggio figlio. Deve essere fornito per il riutilizzo dei widget quando il numero di elementi figlio è minore del numero di righe totali o GX_STYLE_WRAP è impostato lo stile. In questo caso assicurarsi che il numero di elementi figlio sia maggiore di 1 rispetto al numero di righe visibili.
-- **style** Stile della rotellina di scorrimento generica. **L'Appendice D** contiene gli stili generali predefiniti per tutti i widget e gli stili specifici dei widget.
-- **id ID** definito dall'applicazione della rotellina di scorrimento generica
+- **callback** Funzione di callback per creare una riga del widget. Può essere GX_NULL se il numero di righe totali corrisponde al conteggio figlio. Deve essere fornito per il riutilizzo del widget quando il numero di elementi figlio è minore del numero di righe totali o GX_STYLE_WRAP è impostato lo stile. In questo caso assicurarsi che il numero di elementi figlio sia maggiore di 1 rispetto al numero di righe visibili.
+- **style** Stile della rotellina di scorrimento generica. **L'appendice D** contiene stili generali predefiniti per tutti i widget e gli stili specifici del widget.
+- **ID** ID definito dall'applicazione della rotellina di scorrimento generica
 - **size** Dimensioni del widget della rotellina di scorrimento generico
 
 ### <a name="return-values"></a>Valori restituiti
@@ -6945,7 +7022,7 @@ Tutti i tipi di rotellina di scorrimento generano GX_EVENT_LIST_SELECT eventi pa
 - **GX_SUCCESS** (0x00) Creazione della rotellina di scorrimento generica completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_VALUE** (0x22) Numero di righe non valido
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
@@ -7023,11 +7100,11 @@ Questo servizio disegna una rotellina di scorrimento generica. Questo servizio v
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -7078,8 +7155,8 @@ Questo servizio elabora un evento per questa finestra.
 
 ### <a name="parameters"></a>Parametri
 
-- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **event** Puntatore all'evento da elaborare
+- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **evento** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -7153,7 +7230,7 @@ Questo servizio assegna l'altezza della riga per ogni riga della rotellina di sc
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
 - **row_height** Valore dell'altezza della riga, in pixel.
 
 ### <a name="return-values"></a>Valori restituiti
@@ -7210,8 +7287,8 @@ Questo servizio assegna o modifica il numero totale di righe della rotellina di 
 
 ### <a name="parameters"></a>Parametri
 
-- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **total_rows** Numero totale di righe wheel da presentare all'utente.
+- **rotellina** Puntatore al blocco generico di controllo della rotellina di scorrimento generico
+- **total_rows** Numero totale di righe della ruota da presentare all'utente.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -7260,7 +7337,7 @@ UINT gx_horizontal_list_children_position(GX_HORIZONTAL_LIST *horizontal_list);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione posiziona gli elementi figlio per l'elenco orizzontale. Questa funzione viene chiamata automaticamente quando l'elenco riceve l'evento GX_EVENT_SHOW, ma deve essere chiamato direttamente se l'elenco viene modificato dopo che è stato reso visibile.
+Questa funzione posiziona gli elementi figlio per l'elenco orizzontale. Questa funzione viene chiamata automaticamente quando l'elenco riceve l'evento GX_EVENT_SHOW, ma deve essere chiamata direttamente se l'elenco viene modificato dopo che è stato reso visibile.
 
 ### <a name="parameters"></a>Parametri
 
@@ -7268,7 +7345,7 @@ Questa funzione posiziona gli elementi figlio per l'elenco orizzontale. Questa f
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Correttamente sono stati posizionati gli elementi figlio per l'elenco orizzontale
+- **GX_SUCCESS** (0x00) Correttamente ha posizionato gli elementi figlio per l'elenco orizzontale
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -7323,8 +7400,8 @@ Questo servizio crea un elenco orizzontale.
 
 - **horizontal_list** Blocco di controllo widget elenco orizzontale
 - **name** Nome dell'elenco orizzontale
-- **elemento padre** Puntatore al widget padre
-- **total_columns** Numero totale di lune nell'elenco orizzontale
+- **padre** Puntatore al widget padre
+- **total_columns** Numero totale di comumns nell'elenco orizzontale
 - **callback** Si tratta di un puntatore a una funzione di callback fornita dall'applicazione. La funzione di callback viene richiamata quando viene eseguito lo scorrimento dell'elenco orizzontale per creare gli elementi dell'elenco appena visibili. In questo modo l'elenco orizzontale può visualizzare qualsiasi tipo di widget definito dall'utente come elementi dell'elenco.
 - **style** Stile del widget della barra di scorrimento. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **horizontal_list_id** ID definito dall'applicazione dell'elenco orizzontale
@@ -7335,7 +7412,7 @@ Questo servizio crea un elenco orizzontale.
 - **GX_SUCCESS** (0x00) Creazione dell'elenco orizzontale completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_VALUE** (0x22) Numero di colonne non valido
 
@@ -7366,7 +7443,7 @@ status = gx_horizontal_list_create(&my_list, “my_list”, &my_parent,
 ## <a name="gx_horizontal_list_event_process"></a>gx_horizontal_list_event_process
 
 
-Elaborare l'evento dell'elenco orizzontale
+Elaborare un evento elenco orizzontale
 
 ### <a name="prototype"></a>Prototipo
 
@@ -7452,7 +7529,7 @@ Questo servizio imposta l'indice iniziale per l'elenco orizzontale.
 ### <a name="parameters"></a>Parametri
 
 - **elenco** Blocco di controllo widget elenco orizzontale
-- **index** Nuovo indice principale
+- **index** Nuovo indice superiore
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -7499,7 +7576,7 @@ UINT gx_horizontal_list_selected_index_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce l'indice delle voci dell'elenco selezionato dell'elenco orizzontale.
+Questo servizio restituisce l'indice delle voci di elenco selezionato dell'elenco orizzontale.
 
 ### <a name="parameters"></a>Parametri
 
@@ -7508,7 +7585,7 @@ Questo servizio restituisce l'indice delle voci dell'elenco selezionato dell'ele
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) È stata ottenuta la voce dell'elenco orizzontale
+- **GX_SUCCESS** (0x00) Riuscito ha ottenuto la voce di elenco orizzontale
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -7561,8 +7638,8 @@ Questo servizio assegna la voce selezionata in un elenco orizzontale. Se necessa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente la voce di elenco orizzontale
-- **GX_FAILURE** (0x10) Non è compreso nell'intervallo valido
+- **GX_SUCCESS** (0x00) Impostare correttamente la voce dell'elenco orizzontale
+- **GX_FAILURE** (0x10) L'indice non è in un intervallo valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -7605,16 +7682,16 @@ UINT gx_horizontal_list_selected_widget_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce la voce di elenco selezionata dell'elenco orizzontale. Si noti che se l'elenco orizzontale include più righe rispetto ai widget figlio e la voce selezionata è stata scorrendo dalla visualizzazione, questa API restituirà GX_NULL perché i widget figlio vengono usati nuovamente durante lo scorrimento del contenuto dell'elenco. La gx_horizontal_list_selected_index_get funzione restituirà in modo affidabile l'indice dell'elemento selezionato, anche se tale elemento è stato scorrendo dalla visualizzazione.
+Questo servizio restituisce la voce di elenco selezionata dell'elenco orizzontale. Si noti che se l'elenco orizzontale contiene più righe rispetto ai widget figlio e la voce selezionata è stata scorreta dalla visualizzazione, questa API restituirà GX_NULL perché i widget figlio vengono usati nuovamente durante lo scorrimento del contenuto dell'elenco. La gx_horizontal_list_selected_index_get restituisce in modo affidabile l'indice dell'elemento selezionato, anche se tale elemento è stato scorrevole dalla visualizzazione.
 
 ### <a name="parameters"></a>Parametri
 
 - **horizontal_list** Blocco di controllo widget elenco orizzontale
-- **return_list_entry** Destinazione per il widget per la voce dell'elenco di restituzione
+- **return_list_entry** Destinazione per il widget di immissione dell'elenco di restituzione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) È stata ottenuta la voce dell'elenco orizzontale
+- **GX_SUCCESS** (0x00) Riuscito ha ottenuto la voce di elenco orizzontale
 - **GX_FAILURE** (0x10) Il widget selezionato è stato scorrendo dalla visualizzazione in un elenco con più righe rispetto agli elementi figlio client.
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
@@ -7668,7 +7745,7 @@ Questo servizio assegna il numero totale di colonne che devono essere visualizza
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Conteggio colonne assegnate con esito positivo
+- **GX_SUCCESS** (0x00) Conteggio colonne assegnate correttamente
 - **GX_CALLER_ERROR** (0x10) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_VALUE** (0x22) Valore conteggio non valido
@@ -7713,19 +7790,19 @@ UINT gx_horizontal_scrollbar_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una barra di scorrimento orizzontale. L'ID per una barra di scorrimento orizzontale è predefinito (perché una finestra deve sapere come intercettare gli eventi da essa) e le dimensioni sono automatiche (perché deve riempire la larghezza del client della finestra padre). Se si decide di consentire le barre di scorrimento dell'area client, sarà necessario aggiungere un'altra funzione di creazione con i parametri id e size.
+Questo servizio crea una barra di scorrimento orizzontale. L'ID per una barra di scorrimento orizzontale è predefinito (perché una finestra deve sapere come intercettare gli eventi) e le dimensioni sono automatiche (perché deve riempire la larghezza client della finestra padre). Se si decide di consentire le barre di scorrimento dell'area client, sarà necessario aggiungere un'altra funzione create con i parametri id e size.
 
 ### <a name="parameters"></a>Parametri
 
 - **barra di scorrimento** Blocco di controllo widget della barra di scorrimento
 - **name** Nome della barra di scorrimento
-- **padre** Puntatore al widget padre
-- **aspetto** La struttura dell'aspetto definisce l'aspetto della barra di scorrimento. Se questo valore è GX_NULL, la barra di scorrimento userà l'aspetto predefinito della barra di scorrimento definito da gx_system_scroll_appearance_get. Fare riferimento **all'appendice I** per la definizione della GX_SCROLLBAR_APPEARANCE struttura.
-- **Stile** Stile del widget della barra di scorrimento. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **elemento padre** Puntatore al widget padre
+- **aspetto** La struttura dell'aspetto definisce l'aspetto della barra di scorrimento. Se questo valore è GX_NULL, la barra di scorrimento userà l'aspetto predefinito della barra di scorrimento definito da gx_system_scroll_appearance_get. Fare riferimento **all'Appendice I** per la definizione della GX_SCROLLBAR_APPEARANCE struttura.
+- **Stile** Stile del widget della barra di scorrimento. **L'Appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione corretta della barra di scorrimento orizzontale
+- **GX_SUCCESS** (0x00) Creazione della barra di scorrimento orizzontale riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_ALREADY_CREATED** (0x13) Widget già creato
@@ -7780,9 +7857,9 @@ GX_ICON_BUTTON deriva da GX_BUTTON e supporta tutti i gx_button API.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo del pulsante icona
-- **name** Nome logico del widget del pulsante icona
-- **elemento padre** Puntatore al widget padre
+- **pulsante** Puntatore al blocco di controllo pulsante icona
+- **name** Nome logico del widget pulsante icona
+- **padre** Puntatore al widget padre
 - **icon_id** ID risorsa dell'icona
 - **style** Stile dell'icona. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **icon_button_id** ID del pulsante icona definito dall'applicazione
@@ -7793,7 +7870,7 @@ GX_ICON_BUTTON deriva da GX_BUTTON e supporta tutti i gx_button API.
 - **GX_SUCCESS** (0x00) Pulsante icona Creazione completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -7843,15 +7920,15 @@ VOID gx_icon_button_draw(GX_ICON_BUTTON *button);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il pulsante icona. Questa funzione viene in genere chiamata internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma viene esposta anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno del pulsante icona predefinito come base di disegno personalizzata.
+Questo servizio disegna il pulsante icona. Questa funzione viene in genere chiamata internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma viene esposta anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno predefinito del pulsante icona come base di disegno personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo del pulsante icona
+- **pulsante** Puntatore al blocco di controllo pulsante icona
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -7907,12 +7984,12 @@ Questo servizio assegna una nuova mappa pixel al widget del pulsante icona.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo pulsante icona
+- **pulsante** Puntatore al blocco di controllo del pulsante icona
 - **icon_id** ID risorsa della mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente la mappa pixel del pulsante icona
+- **GX_SUCCESS** (0x00) Mappa pixel del pulsante icona impostata correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -7969,7 +8046,7 @@ Questo servizio disegna lo sfondo del widget icona specificato. Questo servizio 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8025,19 +8102,19 @@ Questo servizio crea il widget icona specificato.
 
 - **icona** Puntatore al blocco di controllo icona
 - **name** Nome logico del widget icona
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **pixelmap_id** ID risorsa della mappa pixel
 - **style** Stile dell'icona
-- **icon_id** ID definito dall'applicazione dell'icona
-- **x** Posizione della coordinata x iniziale
-- **y** Posizione della coordinata y iniziale
+- **icon_id** ID dell'icona definito dall'applicazione
+- **x** Posizione iniziale della coordinata x
+- **y** Posizione iniziale della coordinata y
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione dell'icona completata
+- **GX_SUCCESS** (0x00) Creazione icona riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -8074,7 +8151,7 @@ VOID gx_icon_draw(GX_ICON *icon);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il widget icona specificato. Questo servizio viene in genere chiamato internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma viene esposto anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno dell'icona predefinito come base di disegno personalizzata.
+Questo servizio disegna il widget icona specificato. Questo servizio viene in genere chiamato internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma è esposto anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno dell'icona predefinita come base di disegno personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8082,7 +8159,7 @@ Questo servizio disegna il widget icona specificato. Questo servizio viene in ge
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8131,7 +8208,7 @@ Questo servizio gestisce gli eventi inviati a GX_ICON widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Evento icona Elaborazione riuscita
+- **GX_SUCCESS** (0x00) Evento icona Elaborato correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -8185,7 +8262,7 @@ Questo servizio imposta la mappa pixel per il widget icona specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di pixel delle icone riuscito
+- **GX_SUCCESS** (0x00) Set di mappe pixel icona riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -8228,7 +8305,7 @@ UINT gx_image_reader_create(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione crea un lettore/decodificatore di immagini non elaborato di runtime. Attualmente sono supportati solo i tipi di immagine non elaborati jpeg e png. Questo servizio richiede GX_SOFTWARE_DECODER_SUPPORT essere definito.
+Questa funzione crea un lettore/decodificatore di immagini non elaborati di runtime. Attualmente sono supportati solo i tipi di immagine non elaborata jpeg e png. Questo servizio richiede GX_SOFTWARE_DECODER_SUPPORT essere definito.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8240,9 +8317,9 @@ Questa funzione crea un lettore/decodificatore di immagini non elaborato di runt
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del lettore di immagini riuscita
+- **GX_SUCCESS** (0x00) Creazione riuscita del lettore di immagini
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_INVALID_VALUE** (0x22) Dimensioni dei dati non valide
+- **GX_INVALID_VALUE** (0x22) Dimensioni dati non valide
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8289,13 +8366,13 @@ UINT gx_image_reader_palette_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la tavolozza per il blocco di controllo lettore di immagini. Questo servizio richiede GX_SOFTWARE_DECODER_SUPPORT essere definito.
+Questo servizio imposta il riquadro per il blocco di controllo del lettore di immagini. Questo servizio richiede GX_SOFTWARE_DECODER_SUPPORT essere definito.
 
 ### <a name="parameters"></a>Parametri
 
 - **image_reader** Blocco di controllo lettore di immagini
-- **pal** Puntatore alla tavolozza
-- **palsize** Dimensioni della tavolozza
+- **pal** Puntatore al riquadro
+- **palsize** Dimensioni del riquadro
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -8336,18 +8413,18 @@ UINT gx_image_reader_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio decodifica un'immagine non elaborata in un formato di colore specificato. Attualmente sono supportati solo i tipi di immagine non elaborati jpeg e png. Questa operazione GX_SOFTWARE_DECODER_SUPPORT deve essere definita.
+Questo servizio decodifica un'immagine non elaborata in un formato di colore specificato. Attualmente sono supportati solo i tipi di immagine non elaborata jpeg e png. Questa operazione GX_SOFTWARE_DECODER_SUPPORT deve essere definita.
 
 ### <a name="parameters"></a>Parametri
 
 - **image_reader** Blocco di controllo lettore di immagini
-- **mappa pixel** Mappa pixel di output
+- **pixelmap** Mappa pixel di output
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Decodifica dell'immagine riuscita
-- **GX_SYSTEM_MEMORY_ERROR** allocatore di memoria (0x30) non è definito o l'allocazione di memoria non è riuscita
-- **GX_NOT_SUPPORTED** (0x28) Il tipo di immagine di input o il formato del colore di output non è supportato
+- **GX_SYSTEM_MEMORY_ERROR** allocatore di memoria (0x30) non è definito o l'allocazione della memoria non è riuscita
+- **GX_NOT_SUPPORTED** (0x28) Tipo di immagine di input o formato del colore di output non è supportato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -8387,7 +8464,7 @@ VOID gx_line_chart_axis_draw(GX_LINE_CHART *chart);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna l'asse x,y di un grafico a linee. I colori dell'asse e i parametri dello spessore di linea vengono recuperati dalla struttura delle informazioni del grafico a linee.
+Questo servizio disegna l'asse x,y di un grafico a linee. I colori dell'asse e i parametri di larghezza delle linee vengono recuperati dalla struttura delle informazioni del grafico a linee.
 
 Questo servizio viene in genere chiamato internamente dalla funzione gx_line_chart_draw, ma viene esposto all'applicazione per facilitare la scrittura di funzioni di disegno personalizzate.
 
@@ -8397,7 +8474,7 @@ Questo servizio viene in genere chiamato internamente dalla funzione gx_line_cha
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8450,9 +8527,9 @@ UINT gx_line_chart_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una finestra del grafico a linee. I parametri di disegno e i dati del grafico vengono passati tramite la GX_LINE_CHART_INFO grafico.
+Questo servizio crea una finestra del grafico a linee. I parametri di disegno del grafico e i dati del grafico vengono passati tramite la GX_LINE_CHART_INFO grafico.
 
-GX_LINE_CHART è basato GX_WINDOW e supporta tutte le API GX_WINDOW.
+GX_LINE_CHART è basato su GX_WINDOW e supporta tutte le API GX_WINDOW applicazioni.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8466,11 +8543,11 @@ GX_LINE_CHART è basato GX_WINDOW e supporta tutte le API GX_WINDOW.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del grafico a linee completata
+- **GX_SUCCESS** (0x00) Creazione del grafico a linee riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8531,7 +8608,7 @@ VOID gx_line_chart_data_draw(GX_LINE_CHART *chart);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna la linea di dati del grafico a linee. I colori delle linee e i parametri dello spessore di linea vengono recuperati dalla struttura delle informazioni del grafico a linee.
+Questo servizio disegna la linea dei dati del grafico a linee. I colori delle linee e i parametri di larghezza delle linee vengono recuperati dalla struttura delle informazioni del grafico a linee.
 
 Questo servizio viene in genere chiamato internamente dalla funzione gx_line_chart_draw, ma viene esposto all'applicazione per facilitare la scrittura di funzioni di disegno personalizzate.
 
@@ -8541,7 +8618,7 @@ Questo servizio viene in genere chiamato internamente dalla funzione gx_line_cha
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8587,7 +8664,7 @@ UINT gx_line_chart_draw(GX_LINE_CHART *chart);
 
 ### <a name="description"></a>Descrizione
 
-Si tratta della funzione di disegno del grafico a linee predefinita, che disegna l'asse del grafico e la linea dati. Le applicazioni forniscono in genere una funzione di disegno personalizzata per sostituire il disegno predefinito per aggiungere elementi come segni di graduazione, scala o altre informazioni all'asse del grafico e alla linea di dati disegnata dal widget del grafico a linee di base.
+Si tratta della funzione di disegno del grafico a linee predefinita, che disegna l'asse del grafico e la linea dei dati. Le applicazioni forniscono in genere una funzione di disegno personalizzata per sostituire il disegno predefinito per aggiungere elementi quali segni di graduazione, scala o altre informazioni all'asse del grafico e alla linea di dati disegnata dal widget del grafico a linee di base.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8595,7 +8672,7 @@ Si tratta della funzione di disegno del grafico a linee predefinita, che disegna
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8690,7 +8767,7 @@ UINT gx_line_chart_y_scale_calculate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio calcola il valore di scala a virgola fissa usato per tracciare i valori dei dati sull'asse Y del grafico. I chart_info parametri e il rettangolo di delimitazione del grafico vengono usati per calcolare questo valore di scala.
+Questo servizio calcola il valore di scala a virgola fissa usato per tracciare i valori dei dati sull'asse Y del grafico. I chart_info e il rettangolo di delimitazione del grafico vengono usati per calcolare questo valore di ridimensionamento.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8745,7 +8822,7 @@ UINT gx_menu_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un menu come specificato e associa il menu al widget padre fornito. Accetta tutti i tipi di widget come voce di menu figlio. Per inserire un widget come voce di menu figlio, **chiamare gx_menu_insert**.
+Questo servizio crea un menu come specificato e associa il menu al widget padre fornito. Accetta tutti i tipi di widget come voce di menu figlio. Per inserire un widget come voce di menu figlio, chiamare **gx_menu_insert**.
 
 GX_MENU deriva da GX_PIXELMAP_PROMPT e supporta tutti i gx_pixelmap_prompt API.
 
@@ -8753,19 +8830,19 @@ GX_MENU deriva da GX_PIXELMAP_PROMPT e supporta tutti i gx_pixelmap_prompt API.
 
 - **menu** Puntatore al blocco di controllo menu
 - **name** Nome del menu
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **text_id** ID risorsa del testo
 - **fill_id** ID risorsa di riempimento
 - **style** Stile del widget. **L'Appendice D** contiene stili generali predefiniti per tutti i widget, nonché stili specifici del widget.
-- **menu_id** ID definito dall'applicazione del menu
+- **menu_id** ID del menu definito dall'applicazione
 - **size** Dimensioni del menu
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del menu completata
+- **GX_SUCCESS** (0x00) Creazione del menu riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -8819,7 +8896,7 @@ Questo servizio disegna il menu specificato. Questa funzione viene in genere chi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -8873,7 +8950,7 @@ Questo servizio elabora un evento per il menu specificato. Questo servizio deve 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Processo evento di menu riuscito
+- **GX_SUCCESS** (0x00) Processo dell'evento di menu Operazione riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x23) Widget non valido
@@ -9031,7 +9108,7 @@ status = gx_menu_remove(&my_menu, &my_widget);
 ## <a name="gx_menu_text_draw"></a>gx_menu_text_draw
 
 
-Disegnare il testo del menu
+Testo del menu Di disegno
 
 ### <a name="prototype"></a>Prototipo
 
@@ -9049,7 +9126,7 @@ Questo servizio disegna il testo di un menu. Questa funzione viene in genere chi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -9112,7 +9189,7 @@ Questo servizio imposta l'offset di visualizzazione x, y per il testo del menu.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Offset di disegno testo del menu impostato correttamente
+- **GX_SUCCESS** (0x00) Offset di disegno del testo del menu impostato correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -9162,13 +9239,13 @@ UINT gx_multi_line_text_button_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget pulsante di testo su più righe. Un pulsante di testo su più righe visualizza il testo del pulsante su 1-n righe. Il numero massimo di righe è definito dalla costante GX_MULTI_LINE_TEXT_BUTTON_MAX_LINES, che per impostazione predefinita è 4. Le interruzioni di riga vengono impostate dalle coppie ritorno a capo e/o ritorno a capo e avanzamento riga all'interno della stringa di testo assegnata al pulsante di testo su più righe.
+Questo servizio crea un widget di pulsanti di testo su più righe. Un pulsante di testo su più righe visualizza il testo del pulsante su 1-n righe. Il numero massimo di righe è definito dalla costante GX_MULTI_LINE_TEXT_BUTTON_MAX_LINES, che per impostazione predefinita è 4. Le interruzioni di riga vengono impostate da coppie di ritorno a capo e/o ritorno a capo + avanzamento riga all'interno della stringa di testo assegnata al pulsante di testo su più righe.
 
 GX_MULTI_LINE_TEXT_BUTTON deriva da GX_TEXT_BUTTON e supporta tutti i gx_text_button API.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button** Puntatore al blocco di controllo pulsante di testo
+- **text_button** Puntatore al blocco di controllo del pulsante di testo
 - **name** Nome logico del pulsante di testo
 - **padre** Puntatore al widget padre del pulsante
 - **text_id** ID risorsa del testo
@@ -9178,10 +9255,10 @@ GX_MULTI_LINE_TEXT_BUTTON deriva da GX_TEXT_BUTTON e supporta tutti i gx_text_bu
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del pulsante di testo su più righe riuscita
+- **GX_SUCCESS** (0x00) Creazione riuscita del pulsante testo su più righe
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -9222,15 +9299,15 @@ VOID gx_multi_line_text_button_draw(GX_MULTI_LINE_TEXT_BUTTON *button);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il pulsante di testo su più righe. Questa funzione viene in genere chiamata internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma viene esposta anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno predefinito del pulsante di testo su più righe come base di disegno personalizzata.
+Questo servizio disegna il pulsante di testo su più righe. Questa funzione viene in genere chiamata internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma viene esposta anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno predefinito di un pulsante di testo su più righe come base di disegno personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo pulsante di testo
+- **pulsante** Puntatore al blocco di controllo del pulsante di testo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -9273,11 +9350,11 @@ UINT gx_multi_line_text_button_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio è la funzione di gestione degli eventi predefinita per il widget del pulsante di testo su più righe. Questa funzione è resa accessibile alle applicazioni che vogliono fornire la gestione degli eventi personalizzata per un widget del pulsante di testo.
+Questo servizio è la funzione di gestione degli eventi predefinita per il widget del pulsante di testo su più righe. Questa funzione è resa accessibile alle applicazioni che vogliono fornire la gestione personalizzata degli eventi per un widget di pulsanti di testo.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo pulsante di testo
+- **pulsante** Puntatore al blocco di controllo del pulsante di testo
 - **event_ptr** Evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
@@ -9332,15 +9409,15 @@ VOID gx_multi_line_text_button_text_draw(GX_MULTI_LINE_TEXT_BUTTON *text_button)
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione di supporto disegna la parte di testo di un pulsante di testo su più righe. Questa funzione viene chiamata internamente da gx_multi_line_text_button_draw() e viene fornita come API separata per comodità per le applicazioni che definiscono una funzione personalizzata di disegno di pulsanti di testo su più righe. Le applicazioni che vogliono personalizzare il disegno dello sfondo del pulsante possono fornire la funzione di disegno personalizzata e richiamare il servizio multi_line_text_button_text_draw come parte del disegno personalizzato per disegnare il testo del pulsante sullo sfondo.
+Questa funzione di supporto disegna la parte di testo di un pulsante di testo su più righe. Questa funzione viene chiamata internamente da gx_multi_line_text_button_draw() e viene fornita come API separata per comodità per le applicazioni che definiscono una funzione personalizzata di disegno di pulsanti di testo su più righe. Le applicazioni che vogliono personalizzare il disegno in background del pulsante possono fornire la funzione di disegno personalizzata e richiamare il servizio multi_line_text_button_text_draw come parte del disegno personalizzato per disegnare il testo del pulsante sullo sfondo.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button** Puntatore al blocco di controllo del pulsante di testo
+- **text_button** Puntatore al blocco di controllo pulsante di testo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -9391,7 +9468,7 @@ Questo servizio imposta l'ID risorsa stringa specificato sul pulsante di testo. 
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button** Puntatore al blocco di controllo pulsante di testo
+- **text_button** Puntatore al blocco di controllo del pulsante di testo
 - **string_id** ID risorsa della stringa
 
 ### <a name="return-values"></a>Valori restituiti
@@ -9440,19 +9517,19 @@ UINT gx_mult_line_text_button_text_set(
 
 Questo servizio è deprecato a favore di gx_multi_line_text_button_text_set_ext().
 
-Questo servizio assegna la stringa specificata al pulsante di testo. Se il widget text_button è stato creato con style GX_STYLE_TEXT_COPY, crea una copia privata della stringa di testo assegnata e pertanto l'API gx_system_memmory_allocate_set deve essere richiamata una volta prima che venga richiesto questo servizio. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio assegna la stringa specificata al pulsante di testo. Se il widget text_button è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata e pertanto l'API gx_system_memmory_allocate_set deve essere richiamata una volta prima che venga richiesto questo servizio. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button** Puntatore al blocco di controllo del pulsante di testo
-- **puntatore** di testo alla stringa con terminazione NULL
+- **text_button** Puntatore al blocco di controllo pulsante di testo
+- **Puntatore** di testo alla stringa con terminazione NULL
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Impostare correttamente il testo sul pulsante
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_MEMORY_ERROR** allocatore di memoria 0x30 (0x30) non è definito
+- **GX_MEMORY_ERROR** (0x30) Allocatore di memoria non definito
 - **GX_INVALID_STRING_LENGTH** (0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
@@ -9494,11 +9571,11 @@ UINT gx_mult_line_text_button_text_set_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna la stringa specificata al pulsante di testo. Se il widget text_button è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata e pertanto l'API gx_system_memmory_allocate_set deve essere richiamata una volta prima che venga richiesto questo servizio. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio assegna la stringa specificata al pulsante di testo. Se il widget text_button è stato creato con style GX_STYLE_TEXT_COPY, crea una copia privata della stringa di testo assegnata e pertanto l'API gx_system_memmory_allocate_set deve essere richiamata una volta prima che venga richiesto questo servizio. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button** Puntatore al blocco di controllo pulsante di testo
+- **text_button** Puntatore al blocco di controllo del pulsante di testo
 - **Puntatore** di stringa GX_STRING variabile
 
 ### <a name="return-values"></a>Valori restituiti
@@ -9506,7 +9583,7 @@ Questo servizio assegna la stringa specificata al pulsante di testo. Se il widge
 - **GX_SUCCESS** (0x00) Impostare correttamente il testo sul pulsante
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_MEMORY_ERROR** (0x30) Allocatore di memoria non definito
+- **GX_MEMORY_ERROR** allocatore di memoria 0x30 (0x30) non è definito
 - **GX_INVALID_STRING_LENGTH** (0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
@@ -9630,7 +9707,7 @@ Questo servizio elimina tutti i caratteri dal buffer di input di testo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Buffer di input di testo su più righe completato
+- **GX_SUCCESS** (0x00) Cancellazione del buffer di input di testo su più righe completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -9708,7 +9785,7 @@ Questo servizio recupera le informazioni sul buffer di un widget di input di tes
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere testo su più righe
+- **GX_SUCCESS** (0x00) Ottenere testo su più righe riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -9782,7 +9859,7 @@ UINT gx_multi_line_text_input_char_insert(
 
 Questa API è deprecata e sostituita da gx_multi_line_text_input_char_insert_ext().
 
-Questo servizio inserisce una stringa di caratteri nel buffer della stringa di input di testo su più righe nella posizione corrente del cursore. Questo servizio viene chiamato internamente quando viene ricevuto un evento di tasto in giù specifico, ma può anche essere richiamato dall'applicazione.
+Questo servizio inserisce una stringa di caratteri nel buffer della stringa di input di testo su più righe nella posizione corrente del cursore. Questo servizio viene chiamato internamente quando viene ricevuto un evento key down specifico, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -9792,7 +9869,7 @@ Questo servizio inserisce una stringa di caratteri nel buffer della stringa di i
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Correttamente inserita la stringa di caratteri
+- **GX_SUCCESS** (0x00) È stata inserita correttamente la stringa di caratteri
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -9843,7 +9920,7 @@ Questo servizio inserisce una stringa di caratteri nel buffer della stringa di i
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) È stata inserita correttamente la stringa di caratteri
+- **GX_SUCCESS** (0x00) Correttamente inserita la stringa di caratteri
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -9929,16 +10006,16 @@ GX_MULTI_LINE_TEXT_INPUT deriva da GX_MULTI_LINE_TEXT_VIEW e supporta tutti gx_m
 
 - **text_input** Blocco di controllo widget di input di testo su più righe
 - **name** Nome del widget di input di testo
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **input_buffer** Puntatore al buffer di input di testo
 - **buffer_size** Dimensioni del buffer di input di testo in byte
 - **style** Stile del widget di input di testo. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
-- **text_input_id** ID definito dall'applicazione dell'input di testo
+- **text_input_id** ID di input di testo definito dall'applicazione
 - **size** Dimensioni del widget di input di testo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione dell'input di testo su più righe completata
+- **GX_SUCCESS** (0x00) Creazione di input di testo su più righe completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_ALREADY_CREATED** (0x13) Widget già creato
@@ -10081,7 +10158,7 @@ status = gx_multi_line_text_input_cursor_pos_get(&my_text_input,
 ## <a name="gx_multi_line_text_input_delete"></a>gx_multi_line_text_input_delete
 
 
-Eliminare il carattere nella posizione del cursore di input di testo su più righe
+Eliminare il carattere in corrispondenza della posizione del cursore di input di testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -10172,7 +10249,7 @@ Questo servizio posiziona il cursore del widget di input di testo su più righe 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il cursore di input di testo è stato spostato nella riga successiva
+- **GX_SUCCESS** (0x00) Il cursore di input del testo è stato spostato correttamente nella riga successiva
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -10237,7 +10314,7 @@ UINT gx_multi_line_text_input_end(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il cursore del widget di input di testo su più righe alla fine della riga di stringa corrente. Questo servizio viene chiamato internamente quando viene ricevuto un evento di chiusura del tasto DIS, ma può anche essere richiamato dall'applicazione.
+Questo servizio posiziona il cursore del widget di input di testo su più righe alla fine della riga di stringa corrente. Questo servizio viene chiamato internamente quando viene ricevuto un evento end key down, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -10245,7 +10322,7 @@ Questo servizio posiziona il cursore del widget di input di testo su più righe 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostato correttamente il cursore di input di testo alla fine della riga corrente
+- **GX_SUCCESS** (0x00) Il cursore di input del testo è stato spostato correttamente alla fine della riga corrente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -10311,7 +10388,7 @@ UINT gx_multi_line_text_input_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio è la funzione di gestione degli eventi predefinita per il widget di input di testo su più righe. Questa funzione è resa accessibile alle applicazioni che vogliono fornire la gestione personalizzata degli eventi per un widget di input di testo su più righe.
+Questo servizio è la funzione di gestione degli eventi predefinita per il widget di input di testo su più righe. Questa funzione è resa accessibile alle applicazioni che vogliono fornire la gestione degli eventi personalizzata per un widget di input di testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -10401,7 +10478,7 @@ UINT gx_multi_line_text_input_fill_color_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna colori di riempimento per il widget di input di testo su più righe.
+Questo servizio assegna i colori di riempimento per il widget di input di testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -10489,7 +10566,7 @@ Questo servizio sposta la posizione del cursore di input di testo all'inizio del
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostato il cursore all'inizio della riga corrente
+- **GX_SUCCESS** (0x00) Il cursore è stato spostato correttamente all'inizio della riga corrente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -10553,7 +10630,7 @@ UINT gx_multi_line_text_input_left_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio sposta il cursore di input di testo su più righe di un carattere a sinistra. Questo servizio viene chiamato internamente quando viene ricevuto un evento di tasto di scelta, ma può anche essere richiamato dall'applicazione.
+Questo servizio sposta il cursore di input di testo su più righe di un carattere a sinistra. Questo servizio viene chiamato internamente quando viene ricevuto un evento di sinistra verso il basso, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -10561,7 +10638,7 @@ Questo servizio sposta il cursore di input di testo su più righe di un caratter
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostato correttamente il cursore a sinistra
+- **GX_SUCCESS** (0x00) Il cursore è stato spostato correttamente a sinistra
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -10617,7 +10694,7 @@ status = gx_multi_line_text_input_left_arrow(&my_text_input);
 ## <a name="gx_multi_line_text_input_right_arrow"></a>gx_multi_line_text_input_right_arrow
 
 
-Spostare il cursore di input di testo della riga di un carattere a destra
+Spostare il cursore di input del testo della riga mult di un carattere a destra
 
 ### <a name="prototype"></a>Prototipo
 
@@ -10627,7 +10704,7 @@ UINT gx_multi_line_text_input_right_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio sposta il cursore di input di testo su più righe di un carattere a destra. Questo servizio viene chiamato internamente quando viene ricevuto un evento di tasto di scelta, ma può essere richiamato anche dall'applicazione.
+Questo servizio sposta il cursore di input di testo su più righe di un carattere a destra. Questo servizio viene chiamato internamente quando viene ricevuto un evento right key down, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -10635,7 +10712,7 @@ Questo servizio sposta il cursore di input di testo su più righe di un caratter
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il cursore è stato spostato a destra
+- **GX_SUCCESS** (0x00) Il cursore è stato spostato correttamente a destra
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -10706,11 +10783,11 @@ Questo servizio aggiunge stili a un widget di input di testo su più righe.
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo su più righe
-- **style** Stili da aggiungere. **L'Appendice D** contiene stili generali predefiniti per tutti i widget
+- **style** Stili da aggiungere. **L'appendice D** contiene stili generali predefiniti per tutti i widget
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Aggiunta dello stile di input di testo multilinea completato
+- **GX_SUCCESS** (0x00) Aggiunta dello stile di input di testo su più righe completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -10781,11 +10858,11 @@ Questo servizio rimuove gli stili specificati dal widget di input di testo su pi
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo su più righe
-- **style** Stili da rimuovere. **L'Appendice D** contiene stili generali predefiniti per tutti i widget
+- **style** Stili da rimuovere. **L'appendice D** contiene stili generali predefiniti per tutti i widget
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione di input di testo su più righe completata
+- **GX_SUCCESS** (0x00) Creazione dell'input di testo su più righe completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -10838,7 +10915,7 @@ status = gx_multi_line_text_input_style_remove(&my_text_input,
 
 ## <a name="gx_multi_line_text_input_style_set"></a>gx_multi_line_text_input_style_set
 
-Impostare stili di input di testo su più righe
+Impostare gli stili di input di testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -10855,7 +10932,7 @@ Questo servizio imposta gli stili per un widget di input di testo su più righe.
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo su più righe
-- **style** Stili da impostare. **L'Appendice D** contiene stili generali predefiniti per tutti i widget
+- **style** Stili da impostare. **L'appendice D** contiene stili generali predefiniti per tutti i widget
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -10933,7 +11010,7 @@ Questo servizio assegna i colori del testo per il widget di input di testo su pi
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo su più righe
-- **normal_fill_color_id** ID risorsa del colore del testo normale usato nello stato normale
+- **normal_fill_color_id** ID risorsa del colore normale del testo usato nello stato normale
 - **selected_text_color_id** ID risorsa del colore del testo selezionato usato quando il widget ottiene lo stato attivo
 - **disabled_text_color_id** ID risorsa del colore del testo disabilitato usato quando GX_STYLE_ENABLED non è attivo
 - **readonly_text_color_id** ID risorsa del colore del testo di sola lettura usato quando sono GX_STYLE_ENABLED e GX_STYLE_TEXT_INPUT_READONLY sono attive
@@ -11009,7 +11086,7 @@ UINT gx_multi_line_text_input_text_select(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio seleziona il testo di input di testo su più righe con il contrassegno di inizio e l'indice del contrassegno di fine specificati ed evidenzia il testo selezionato con i colori di riempimento e di testo selezionati.
+Questo servizio seleziona il testo di input di testo su più righe con il segno di inizio e l'indice del segno di fine specificati ed evidenzia il testo selezionato con i colori di riempimento e testo selezionati.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11090,12 +11167,12 @@ UINT gx_mult_line_text_input_text_set(
 
 Questa API è deprecata e sostituita da gx_multi_line_text_input_text_set_ext().
 
-Questo servizio assegna la stringa specificata all'input di testo su più righe. Se le multi_line_text_input buffer di input del widget sono inferiori alla lunghezza della stringa, la stringa verrà troncata.
+Questo servizio assegna la stringa specificata all'input di testo su più righe. Se la multi_line_text_input buffer di input del widget è inferiore alla lunghezza della stringa, la stringa verrà troncata.
 
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Puntatore al blocco di controllo di input di testo su più righe
-- **Puntatore** di testo alla stringa con terminazione NULL
+- **puntatore** di testo alla stringa con terminazione NULL
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -11137,7 +11214,7 @@ UINT gx_mult_line_text_input_text_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna la stringa specificata all'input di testo su più righe. Se le multi_line_text_input buffer di input del widget sono inferiori alla lunghezza della stringa, la stringa verrà troncata.
+Questo servizio assegna la stringa specificata all'input di testo su più righe. Se la multi_line_text_input buffer di input del widget è inferiore alla lunghezza della stringa, la stringa verrà troncata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11215,7 +11292,7 @@ UINT gx_multi_line_text_input_up_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio sposta il cursore di input di testo su più righe alla riga di testo precedente. Questo servizio viene chiamato internamente quando viene ricevuto un evento verso l'alto verso il basso, ma può anche essere richiamato dall'applicazione.
+Questo servizio sposta il cursore di input di testo su più righe alla riga di testo precedente. Questo servizio viene chiamato internamente quando viene ricevuto un evento freccia SU verso il basso, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11278,7 +11355,7 @@ status = gx_multi_line_text_input_up_arrow(&my_text_input);
 ## <a name="gx_multi_line_text_view_create"></a>gx_multi_line_text_view_create
 
 
-Creare una visualizzazione di testo su più righe
+Creare una visualizzazione testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -11296,7 +11373,7 @@ UINT gx_multi_line_text_view_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un GX_MULTI_LINE_TEXT_VIEW widget. Questo tipo di widget deriva da GX_WINDOW e pertanto tutti gx_window servizi API possono essere utilizzati anche con questo tipo di widget.
+Questo servizio crea un GX_MULTI_LINE_TEXT_VIEW personalizzato. Questo tipo di widget deriva da GX_WINDOW e pertanto tutti i gx_window API possono essere utilizzati anche con questo tipo di widget.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11310,10 +11387,10 @@ Questo servizio crea un GX_MULTI_LINE_TEXT_VIEW widget. Questo tipo di widget de
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del widget di visualizzazione del testo su più righe completata
+- **GX_SUCCESS** (0x00) Widget di visualizzazione testo su più righe creato correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -11368,7 +11445,7 @@ status = gx_multi_line_text_view_create(&my_text_view,
 ## <a name="gx_multi_line_text_view_draw"></a>gx_multi_line_text_view_draw
 
 
-Disegnare un widget di visualizzazione del testo su più righe
+Disegnare un widget di visualizzazione testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -11378,7 +11455,7 @@ VOID gx_multi_line_text_view_draw(GX_MULTI_LINE_TEXT_VIEW * text_view);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un widget di visualizzazione del testo su più righe. Questo servizio viene in genere chiamato internamente durante l'aggiornamento dell'area di disegno, ma può essere chiamato anche da funzioni di disegno personalizzate della visualizzazione testo su più righe.
+Questo servizio disegna un widget di visualizzazione testo su più righe. Questo servizio viene in genere chiamato internamente durante l'aggiornamento dell'area di disegno, ma può essere chiamato anche da funzioni di disegno personalizzate della visualizzazione testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11386,7 +11463,7 @@ Questo servizio disegna un widget di visualizzazione del testo su più righe. Qu
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -11442,7 +11519,7 @@ VOID my_multi_line_text_view_draw(GX_MULTI_LINE_TEXT_VIEW *view)
 ## <a name="gx_multi_line_text_view_event_process"></a>gx_multi_line_text_view_event_process
 
 
-Elaborare un evento di visualizzazione del testo su più righe
+Elaborare l'evento di visualizzazione del testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -11454,16 +11531,16 @@ UINT gx_multi_line_text_view_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento per un widget di visualizzazione del testo su più righe.
+Questo servizio elabora un evento per un widget di visualizzazione testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
 - **text_view** Blocco di controllo widget visualizzazione testo su più righe
-- **event** Puntatore all'evento da elaborare
+- **evento** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful multi-line text view event process (Processo evento di visualizzazione testo multilinea riuscito)
+- **GX_SUCCESS** (0x00) Processo eventi di visualizzazione testo su più righe riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -11540,7 +11617,7 @@ UINT gx_multi_line_text_view_text_id_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il tipo di carattere di un widget di visualizzazione del testo su più righe.
+Questo servizio imposta il tipo di carattere di un widget di visualizzazione testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11549,7 +11626,7 @@ Questo servizio imposta il tipo di carattere di un widget di visualizzazione del
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente il tipo di carattere per la visualizzazione testo su più righe
+- **GX_SUCCESS** (0x00) Impostare correttamente il tipo di carattere per la visualizzazione di testo su più righe
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -11602,7 +11679,7 @@ status = gx_multi_line_text_view_font_set(&my_text_view, FONT_ID);
 ## <a name="gx_multi_line_text_view_line_space_set"></a>gx_multi_line_text_view_line_space_set
 
 
-Impostare lo spazio riga per la visualizzazione testo su più righe
+Impostare lo spazio riga della visualizzazione testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -11614,7 +11691,7 @@ UINT gx_multi_line_text_view_line_space_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la spaziatura tra le righe di testo per il widget di visualizzazione del testo su più righe.
+Questo servizio imposta la spaziatura tra le righe di testo per il widget visualizzazione testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11623,7 +11700,7 @@ Questo servizio imposta la spaziatura tra le righe di testo per il widget di vis
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente il valore dello spazio riga per la visualizzazione testo su più righe
+- **GX_SUCCESS** (0x00) Impostare correttamente il valore dello spazio riga per la visualizzazione di testo su più righe
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -11771,13 +11848,13 @@ Questo servizio assegna il colore del testo al widget di visualizzazione del tes
 ### <a name="parameters"></a>Parametri
 
 - **text_view** Blocco di controllo widget visualizzazione testo su più righe
-- **normal_text_color_id** ID risorsa del colore del testo normale usato nello stato normale
+- **normal_text_color_id** ID risorsa del colore normale del testo usato nello stato normale
 - **selected_text_color_id** ID risorsa del colore del testo selezionato usato quando il widget ottiene lo stato attivo
-- **disabled_text_color_id** ID risorsa del colore del testo disabilitato che ha GX_STYLE_ENABLED non è attivo
+- **disabled_text_color_id** L'ID risorsa del colore del testo disabilitato che GX_STYLE_ENABLED non è attivo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente i colori per la visualizzazione testo su più righe
+- **GX_SUCCESS** (0x00) Impostare correttamente i colori per la visualizzazione di testo su più righe
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -11845,7 +11922,7 @@ UINT gx_multi_line_text_view_text_id_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'ID risorsa di una stringa sul widget di visualizzazione del testo su più righe.
+Questo servizio imposta l'ID risorsa di una stringa sul widget di visualizzazione testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11920,7 +11997,7 @@ UINT gx_multi_line_text_view_text_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna una stringa di testo al widget di visualizzazione del testo su più righe. Se il widget text_view è stato creato con il GX_STYLE_TEXT_COPY di stile, crea una copia privata della stringa di testo assegnata e pertanto l'API gx_system_memory_allocate_set deve essere richiamata una volta prima che venga richiesto questo servizio. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa assegnata deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio assegna una stringa di testo al widget visualizzazione testo su più righe. Se il widget text_view è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata e pertanto l'API gx_system_memory_allocate_set deve essere richiamata una volta prima che venga richiesto questo servizio. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa assegnata deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 ### <a name="parameters"></a>Parametri
 
@@ -11930,7 +12007,7 @@ Questo servizio assegna una stringa di testo al widget di visualizzazione del te
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Impostare correttamente la stringa per la visualizzazione di testo su più righe
-- **GX_SYSTEM_MEMORY_ERROR** allocatore di memoria (0x30) non è definito o l'allocazione della memoria non è riuscita
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) Allocatore di memoria non definito o allocazione di memoria non riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -11983,7 +12060,7 @@ status = gx_multi_line_text_view_text_set(&my_text_view, “my string”);
 ## <a name="gx_multi_line_text_view_whitespace_set"></a>gx_multi_line_text_view_whitespace_set
 
 
-Impostare lo spazio vuoto per la visualizzazione di testo su più righe
+Impostare spazi vuoti per la visualizzazione di testo su più righe
 
 ### <a name="prototype"></a>Prototipo
 
@@ -11995,7 +12072,7 @@ UINT gx_multi_line_text_view_whitespace_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la spaziatura tra le strutture del widget e l'area client per un widget di visualizzazione del testo su più righe.
+Questo servizio imposta la spaziatura tra i contorni dei widget e l'area client per un widget di visualizzazione testo su più righe.
 
 ### <a name="parameters"></a>Parametri
 
@@ -12004,7 +12081,7 @@ Questo servizio imposta la spaziatura tra le strutture del widget e l'area clien
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente gli spazi vuoti per la visualizzazione testo su più righe
+- **GX_SUCCESS** (0x00) Impostare correttamente lo spazio vuoto per la visualizzazione di testo su più righe
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -12057,7 +12134,7 @@ status = gx_multi_line_text_view_whitespace_set(&my_text_view, 2);
 ## <a name="gx_numeric_pixelmap_prompt_create"></a>gx_numeric_pixelmap_prompt_create
 
 
-Richiesta di creazione di una mappa pixel numerica
+Creare una richiesta di mappa pixel numerica
 
 ### <a name="prototype"></a>Prototipo
 
@@ -12072,7 +12149,7 @@ UINT gx_numeric_pixelmap_prompt_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget di richiesta di mappa pixel numerica. Un numeric_pixelmap_prompt è semplicemente un pixelmap_prompt che mantiene il proprio buffer e fornisce un'API gx_numeric_pixelmap_prompt_value_set(INT), la dimensione del buffer è definita dalla costante GX_NUMERIC_PROMPT_BUFFER_SIZE, che per impostazione predefinita è 16.
+Questo servizio crea un widget di richiesta pixelmap numerico. Un numeric_pixelmap_prompt è solo un pixelmap_prompt che mantiene il proprio buffer e fornisce un'API gx_numeric_pixelmap_prompt_value_set(INT), la dimensione del buffer è definita dalla costante GX_NUMERIC_PROMPT_BUFFER_SIZE, che per impostazione predefinita è 16.
 
 GX_NUMERIC_PIXELMAP_PROMPT deriva da GX_PIXELMAP_PROMPT e supporta tutti i gx_pixelmap_prompt API.
 
@@ -12080,19 +12157,19 @@ GX_NUMERIC_PIXELMAP_PROMPT deriva da GX_PIXELMAP_PROMPT e supporta tutti i gx_pi
 
 - **prompt** Blocco di controllo della richiesta di mappa pixel numerica
 - **name** Nome del prompt
-- **elemento padre** Blocco di controllo widget padre
-- **text_id** ID della stringa di risorsa
+- **padre** Blocco di controllo widget padre
+- **text_id** ID stringa di risorsa
 - **fill_id** ID mappa pixel per l'area di riempimento
-- **style** Stile della richiesta di mappa pixel numerica, **l'Appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **style** Stile del prompt della mappa pixel numerica, **l'Appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **pixelmap_prompt_id** ID del prompt definito dall'applicazione
 - **size** Dimensioni del prompt della mappa pixel numerica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creare correttamente il prompt di pixlemap numerico
+- **GX_SUCCESS** prompt (0x00) Successfully create numeric pixlemap (Creazione della mappa pixlemap numerica completata)
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -12132,7 +12209,7 @@ UINT gx_numeric_pixelmap_format_function_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue l'override della funzione di formato predefinita del widget di richiesta pixlemap numerico. La funzione di formato predefinita converte il valore di richiesta della mappa pixel numerica in una stringa e lo archivia nel buffer privato del widget. Questo servizio consente all'applicazione di definire la propria funzione di formato per formattare e archiviare il valore numerico della richiesta pixelmap nel buffer privato del widget.
+Questo servizio esegue l'override della funzione di formato predefinita del widget di richiesta della mappa pixlemap numerica. La funzione format predefinita converte il valore di richiesta numeric pixelmap in una stringa e lo archivia nel buffer privato del widget. Questo servizio consente all'applicazione di definire la propria funzione di formato per formattare e archiviare il valore di richiesta della mappa pixel numerica nel buffer privato del widget.
 
 ### <a name="parameters"></a>Parametri
 
@@ -12141,7 +12218,7 @@ Questo servizio esegue l'override della funzione di formato predefinita del widg
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente la funzione numeric pixlemap prompt format
+- **GX_SUCCESS** (0x00) Funzione numerica di formato di richiesta pixlemap
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -12196,7 +12273,7 @@ UINT gx_numeric_pixelmap_prompt_value_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio un valore intero a una richiesta di mappa pixel numerica.
+Questo servizio consente di ottenere un valore intero in una richiesta di pixelmap numerica.
 
 ### <a name="parameters"></a>Parametri
 
@@ -12230,7 +12307,7 @@ status = gx_numeric_pixelmap_prompt_value_set(&my_numeric_pix_prompt, 1000);
 ## <a name="gx_numeric_prompt_create"></a>gx_numeric_prompt_create
 
 
-Creare una richiesta numerica
+Creare un prompt numerico
 
 ### <a name="prototype"></a>Prototipo
 
@@ -12251,20 +12328,20 @@ GX_NUMERIC_PROMPT deriva da GX_PROMPT e supporta tutti i gx_prompt API.
 
 ### <a name="parameters"></a>Parametri
 
-- **prompt** Blocco di controllo della richiesta numerica
+- **prompt** Blocco di controllo prompt numerico
 - **name** Nome del prompt
-- **padre** Blocco di controllo widget padre
-- **text_id** ID stringa di risorsa
-- **style** Stile della richiesta numerica, **l'appendice D** contiene stili generali predefiniti per tutti i widget, nonché stili specifici del widget.
-- **prompt_id** ID definito dall'applicazione del prompt
+- **elemento padre** Blocco di controllo widget padre
+- **text_id** ID della stringa di risorsa
+- **style** Stile della richiesta numerica, **l'Appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **prompt_id** ID del prompt definito dall'applicazione
 - **size** Dimensioni della richiesta numerica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione corretta del prompt numerico
+- **GX_SUCCESS** (0x00) Creazione richiesta numerica completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -12303,7 +12380,7 @@ UINT gx_numeric_format_function_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue l'override della funzione di formato predefinita di un widget di richiesta numerica. La funzione di formato predefinita converte il valore di richiesta numerico in una stringa e lo archivia nel buffer privato del widget. Questo servizio consente all'applicazione di definire la propria funzione di formato per formattare e archiviare il valore numerico della richiesta nel buffer privato del widget.
+Questo servizio esegue l'override della funzione di formato predefinita di un widget di richiesta numerica. La funzione di formato predefinita converte il valore di richiesta numerico in una stringa e lo archivia nel buffer privato del widget. Questo servizio consente all'applicazione di definire una propria funzione di formato per formattare e archiviare il valore numerico della richiesta nel buffer privato del widget.
 
 ### <a name="parameters"></a>Parametri
 
@@ -12352,7 +12429,7 @@ status = gx_numeric_prompt_format_function_set(&my_numeric_prompt,
 ## <a name="gx_numeric_prompt_value_set"></a>gx_numeric_prompt_value_set
 
 
-Impostare il valore numerico della richiesta
+Impostare il valore numerico del prompt
 
 ### <a name="prototype"></a>Prototipo
 
@@ -12373,7 +12450,7 @@ Questo servizio imposta un valore intero su un prompt numerico.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente il valore numerico della richiesta
+- **GX_SUCCESS** (0x00) Impostare correttamente il valore di richiesta numerica
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -12403,21 +12480,21 @@ Creare una rotellina di scorrimento numerica
 ### <a name="prototype"></a>Prototipo
 
 
-UINT gx_numeric_scroll_wheel_create( GX_NUMERIC_SCROLL_WHEEL *wheel, GX_CONST GX_CHAR *name, GX_WIDGET *parent, INT start_val, INT end_val, stile ULONG, USHORT wheel_id, GX_CONST GX_RECTANGLE *size);
+UINT gx_numeric_scroll_wheel_create( GX_NUMERIC_SCROLL_WHEEL *wheel, GX_CONST GX_CHAR *name, GX_WIDGET *parent, INT start_val, INT end_val, ULONG style, USHORT wheel_id, GX_CONST GX_RECTANGLE *size);
 
 ### <a name="description"></a>Descrizione
 
 Questo servizio crea un widget della rotellina di scorrimento numerico.
 
-Una rotellina di scorrimento numerica è un tipo di widget della rotellina di scorrimento usato in modo specifico per la visualizzazione di un intervallo di numeri. Sono disponibili anche altri tipi di widget della rotellina di scorrimento. Fare riferimento all'API gx_scroll_wheel_create() per altre informazioni sulla gerarchia dei widget della rotellina di scorrimento, sui tipi di widget e sulla derivazione dei widget.
+Una rotellina di scorrimento numerica è un tipo di widget della rotellina di scorrimento usato in modo specifico per visualizzare un intervallo di numeri. Sono disponibili anche altri tipi di widget della rotellina di scorrimento. Fare riferimento all'API gx_scroll_wheel_create() per altre informazioni sulla gerarchia del widget della rotellina di scorrimento, sui tipi di widget e sulla derivazione dei widget.
 
 GX_NUMERIC_SCROLL_WHEEL deriva da GX_TEXT_SCROLL_WHEEL e supporta tutti i gx_text_scroll_wheel e gx_scroll_wheel servizi.
 
-Tutti i tipi di rotellina di scorrimento generano GX_EVENT_LIST_SELECT eventi padre quando la rotellina di scorrimento viene scorre.
+Tutti i tipi di rotellina di scorrimento GX_EVENT_LIST_SELECT eventi al relativo elemento padre quando viene scorreta la rotellina di scorrimento.
 
-Una rotellina di scorrimento numerica avrà per impostazione predefinita abs(end_val – start_val) + 1 riga. In altre parole, la rotellina di scorrimento visualizza ogni valore compreso tra start_val e end_val, incrementando o decrementando di 1 con ogni riga. Si noti start_val può essere maggiore o minore di end_val, a seconda del modo in cui l'applicazione vuole che venga visualizzato l'intervallo.
+Per impostazione predefinita, una rotellina di scorrimento numerica avrà abs(end_val - start_val) + 1 riga. In altre parole, la rotellina di scorrimento visualizza ogni valore compreso tra start_val e end_val, incrementando o decrementando di 1 con ogni riga. Si noti start_val può essere maggiore o minore di end_val, a seconda del modo in cui l'applicazione vuole visualizzare l'intervallo.
 
-Se l'applicazione vuole modificare l'incremento di riga, può eseguire questa operazione chiamando gx_scroll_wheel_total_rows_set() dopo aver creato la rotellina di scorrimento numerica. Ad esempio, un'applicazione che vuole creare una rotellina di scorrimento che visualizza i valori anni da 1980 a 2020, incrementando di 5, potrebbe eseguire questa operazione:
+Se l'applicazione vuole modificare l'incremento della riga, può eseguire questa operazione chiamando gx_scroll_wheel_total_rows_set() dopo aver creato la rotellina di scorrimento numerica. Ad esempio, un'applicazione che vuole creare una rotellina di scorrimento che visualizza i valori anni dal 1980 al 2020, incrementando di 5, potrebbe eseguire questa operazione:
 
 ```C
 gx_numeric_scroll_wheel_create(&wheel, GX_NULL, parent, 1980,
@@ -12431,13 +12508,13 @@ gx_scroll_wheel_total_rows_set(&wheel, 9);
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento numerico
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento numerico
 - **name** Nome logico del widget del pulsante mappa pixel
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **start_val** Valore numerico iniziale
 - **end_val** Valore numerico finale
 - **style** Stile della casella di controllo. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
-- **wheel_id** ID della rotellina di scorrimento definito dall'applicazione
+- **wheel_id** ID definito dall'applicazione della rotellina di scorrimento
 - **size** Dimensioni del widget della rotellina di scorrimento
 
 ### <a name="return-values"></a>Valori restituiti
@@ -12445,7 +12522,7 @@ gx_scroll_wheel_total_rows_set(&wheel, 9);
 - **GX_SUCCESS** (0x00) Creazione della rotellina di scorrimento numerica completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -12505,13 +12582,13 @@ gx_numeric_scroll_wheel_range_set(
 
 Questo servizio modifica l'intervallo di valori consentiti e visualizzati da un widget della rotellina di scorrimento numerico.
 
-Una rotellina di scorrimento numerica è un tipo di widget della rotellina di scorrimento usato in modo specifico per la visualizzazione di un intervallo di numeri. Sono disponibili anche altri tipi di widget della rotellina di scorrimento. Fare riferimento all'API gx_scroll_wheel_create() per altre informazioni sulla gerarchia dei widget della rotellina di scorrimento, sui tipi di widget e sulla derivazione dei widget.
+Una rotellina di scorrimento numerica è un tipo di widget della rotellina di scorrimento usato in modo specifico per visualizzare un intervallo di numeri. Sono disponibili anche altri tipi di widget della rotellina di scorrimento. Fare riferimento all'API gx_scroll_wheel_create() per altre informazioni sulla gerarchia del widget della rotellina di scorrimento, sui tipi di widget e sulla derivazione dei widget.
 
-Richiamando questa API, le righe totali della rotellina di scorrimento vengono reimpostate su abs(end_val – start_val) + 1, ovvero la rotellina di scorrimento verrà incrementata di 1 per ogni riga. Per modificare questa impostazione, l'applicazione può chiamare gx_scroll_wheel_total_rows_set() per modificare il numero totale di righe, modificando in modo efficace l'incremento del valore tra le righe.
+Richiamando questa API, le righe totali della rotellina di scorrimento vengono reimpostate su abs(end_val – start_val) + 1, ovvero la rotellina di scorrimento verrà incrementata di 1 per ogni riga. Per modificare questa impostazione, l'applicazione può chiamare gx_scroll_wheel_total_rows_set() per modificare il numero totale di righe, modificando di fatto l'incremento del valore tra le righe.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento numerico
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento numerico
 - **start_val** Valore numerico iniziale 
 - **end_val** Valore numerico finale
 
@@ -12577,28 +12654,28 @@ UINT gx_pixelmap_button_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget pulsante mappa pixel.
+Questo servizio crea un widget del pulsante mappa pixel.
 
 GX_PIXELMAP_BUTTON deriva da GX_BUTTON e supporta tutti gx_button servizi.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo del pulsante mappa pixel
+- **pulsante** Puntatore al blocco di controllo del pulsante della mappa pixel
 - **name** Nome logico del widget del pulsante mappa pixel
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **normal_id** ID risorsa stato normale
 - **selected_id** ID risorsa stato selezionato
 - **disabled_id** ID risorsa stato disabilitato
 - **style** Stile della casella di controllo. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **pixelmap_button_id** ID definito dall'applicazione del pulsante pixelmap
-- **size** Dimensioni del pulsante mappa pixel
+- **size** Dimensioni del pulsante della mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Pulsante Mappa pixel creata correttamente
+- **GX_SUCCESS** (0x00) Creazione mappa pixel completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -12655,15 +12732,15 @@ VOID gx_pixelmap_button_draw(GX_PIXELMAP_BUTTON *button);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un widget pulsante mappa pixel. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget di pulsanti mappa pixel personalizzati.
+Questo servizio disegna un widget del pulsante mappa pixel. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per i widget personalizzati dei pulsanti della mappa pixel.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo del pulsante mappa pixel
+- **pulsante** Puntatore al blocco di controllo del pulsante della mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -12709,7 +12786,7 @@ VOID my_pixelmap_button_draw(GX_PIXELMAP_BUTTON *button)
 ## <a name="gx_pixelmap_button_event_process"></a>gx_pixelmap_button_event_process
 
 
-Elaborazione degli eventi del pulsante Mappa pixel
+Elaborazione dell'evento del pulsante Pixelmap
 
 ### <a name="prototype"></a>Prototipo
 
@@ -12725,12 +12802,12 @@ Questo servizio fornisce la gestione degli eventi predefinita per il tipo di wid
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo del pulsante della mappa pixel
+- **pulsante** Puntatore al blocco di controllo del pulsante mappa pixel
 - **event_ptr** Puntatore a GX_EVENT struttura
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Disegno del pulsante mappa pixel riuscito
+- **GX_SUCCESS** (0x00) Disegno riuscito del pulsante mappa pixel
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -12803,7 +12880,7 @@ Questo servizio imposta le mappe pixel sul pulsante mappa pixel.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito imposta la mappa pixel sul pulsante
+- **GX_SUCCESS** (0x00) Operazione riuscita imposta la mappa pixel sul pulsante
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -12848,7 +12925,7 @@ status = gx_pixelmap_button_pixelmap_set (&my_pixelmap_button,
 ## <a name="gx_pixelmap_prompt_create"></a>gx_pixelmap_prompt_create
 
 
-Creare una richiesta di mappa pixel
+Richiesta di creazione mappa pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -12866,26 +12943,26 @@ UINT gx_pixelmap_prompt_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget di richiesta pixelmap. Un prompt della mappa pixel è diverso da un GX_PROMPT standard in quanto disegna lo sfondo del prompt usando le mappe pixel. La funzione create accetta un ID mappa pixel, la mappa pixel di riempimento dello stato normale. Al prompt della mappa pixel possono essere assegnate fino a sei mappe pixel.
+Questo servizio crea un widget di richiesta di mappa pixel. Un prompt della mappa pixel è diverso da un GX_PROMPT standard perché disegna lo sfondo della richiesta usando le mappe pixel. La funzione create accetta un ID mappa pixel, la mappa pixel di riempimento dello stato normale. Al prompt della mappa pixel possono essere assegnate fino a sei mappe pixel.
 
 ### <a name="parameters"></a>Parametri
 
-- **prompt** Puntatore al blocco di controllo della richiesta di mappa pixel
-- **name** Nome logico del widget di richiesta pixelmap
-- **padre** Puntatore al widget padre
+- **prompt** Puntatore al blocco di controllo della richiesta della mappa pixel
+- **name** Nome logico del widget di richiesta della mappa pixel
+- **elemento padre** Puntatore al widget padre
 - **text_id** ID risorsa del testo
 - **fill_id** ID risorsa di riempimento
 - **style** Stile della casella di controllo. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **pixelmap_prompt_id** ID definito dall'applicazione del prompt della mappa pixel
-- **size** Dimensioni del prompt della mappa pixel
+- **size** Dimensioni della richiesta di mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione della mappa pixel riuscita
+- **GX_SUCCESS** (0x00) Creazione della richiesta di mappa pixel riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -12925,7 +13002,7 @@ status = gx_pixelmap_prompt_create(&my_pixelmap_prompt,
 ## <a name="gx_pixelmap_prompt_draw"></a>gx_pixelmap_prompt_draw
 
 
-Richiesta di disegno di una mappa pixel
+Prompt di disegno mappa pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -12935,15 +13012,15 @@ VOID gx_pixelmap_prompt_draw(GX_PIXELMAP_PROMPT *prompt);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un widget di richiesta pixelmap. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget di richiesta mappa pixel personalizzati.
+Questo servizio disegna un widget di richiesta di mappa pixel. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per i widget di richiesta della mappa pixel personalizzati.
 
 ### <a name="parameters"></a>Parametri
 
-- **prompt** Puntatore al blocco di controllo della richiesta di mappa pixel
+- **prompt** Puntatore al blocco di controllo della richiesta della mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -12983,7 +13060,7 @@ VOID my_pixelmap_button_draw(GX_PIXELMAP_PROMPT *prompt)
 ## <a name="gx_pixelmap_prompt_pixelmap_set"></a>gx_pixelmap_prompt_pixelmap_set
 
 
-Assegnare mappe pixel alla richiesta
+Assegnare le mappe pixel al prompt
 
 ### <a name="prototype"></a>Prototipo
 
@@ -13000,15 +13077,15 @@ UINT gx_pixelmap_prompt_pixelmap_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna gli ID della mappa pixel al prompt della mappa pixel. Gli ID pixelmap sinistro, di riempimento e destro vengono usati per consentire all'applicazione di usare un set di mappe pixel per richieste di varie larghezze, ma un'altezza comune da risparmiare sui requisiti di archiviazione. Se gli ID sinistro e destro non vengono usati, devono essere impostati su 0. Se il prompt deve disegnare se stesso in modo diverso quando ottiene lo stato attivo per l'input, a tale scopo vengono usati gli ID mappa pixel selezionati. Se gli ID selezionati non vengono usati o sono uguali agli ID normali, impostarli su 0.
+Questo servizio assegna gli ID della mappa pixel al prompt della mappa pixel. Gli ID pixelmap sinistro, di riempimento e destro vengono usati per consentire all'applicazione di usare un set di pixelmap per richieste di varie larghezze, ma un'altezza comune per risparmiare sui requisiti di archiviazione. Se gli ID sinistro e destro non vengono usati, devono essere impostati su 0. Se la richiesta deve essere disegnata in modo diverso quando ottiene lo stato attivo per l'input, gli ID mappa pixel selezionati vengono usati a tale scopo. Se gli ID selezionati non vengono usati o sono uguali agli ID normali, impostarli su 0.
 
 ### <a name="parameters"></a>Parametri
 
-- **prompt** Puntatore al blocco di controllo della richiesta della mappa pixel
+- **prompt** Puntatore al blocco di controllo della richiesta di mappa pixel
 - **normal_left_id** ID risorsa della mappa pixel da usare sul lato sinistro nello stato normale
 - **normal_fill_id** ID risorsa della mappa pixel da usare come riempimento affiancato nello stato normale
 - **normal_right_id** ID risorsa della mappa pixel da usare sul lato destro nello stato normale
-- **selected_left_id** ID risorsa della mappa pixel da usare sul lato sinistro nello stato selezionato
+- **selected_left_id** ID risorsa della mappa pixel da usare a sinistra nello stato selezionato
 - **selected_fill_id** ID risorsa della mappa pixel da usare come riempimento affiancato nello stato selezionato
 - **selected_right_id** ID risorsa della mappa pixel da usare sul lato destro nello stato selezionato
 
@@ -13060,7 +13137,7 @@ status = gx_pixelmap_prompt_pixelmap_set (&my_prompt,
 ## <a name="gx_pixelmap_slider_create"></a>gx_pixelmap_slider_create
 
 
-Creare il dispositivo di scorrimento della mappa pixel
+Creare un dispositivo di scorrimento della mappa pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -13076,25 +13153,25 @@ UINT gx_pixelmap_slider_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget del dispositivo di scorrimento della mappa pixel.
+Questo servizio crea un widget dispositivo di scorrimento pixelmap.
 
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore al blocco di controllo del dispositivo di scorrimento della mappa pixel
 - **name** Nome logico del widget del dispositivo di scorrimento della mappa pixel
-- **elemento padre** Puntatore al widget padre
-- **info** Puntatore a una GX_SLIDER_INFO che contiene valori che definiscono il valore minimo del dispositivo di scorrimento, il valore massimo, il valore corrente e i limiti della lance. **Appendice I contiene** la definizione per GX_SLIDER_INFO struttura.
-- **pixelmap_info** Puntatore a una GX_PIXELMAP_SLIDER_INFO che definisce le mappe pixel usate per disegnare lo sfondo e la lanceta del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_PIXELMAP_SLIDER_INFO struttura. Lo sfondo del dispositivo di scorrimento può usare una o due mappe pixel. Se disponibile, lo sfondo non cambia quando si sposta la lanceta. Se vengono definiti due sfondi, lo sfondo prima della lanceta usa la prima mappa pixel di sfondo e lo sfondo dopo la lanceta usa la seconda mappa pixel di sfondo.
+- **padre** Puntatore al widget padre
+- **info** Puntatore a una GX_SLIDER_INFO che contiene valori che definiscono il valore minimo del dispositivo di scorrimento, il valore massimo, il valore corrente e i limiti dell'ago. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
+- **pixelmap_info** Puntatore a una GX_PIXELMAP_SLIDER_INFO struttura che definisce le mappe pixel usate per disegnare lo sfondo e l'ago del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_PIXELMAP_SLIDER_INFO struttura. Lo sfondo del dispositivo di scorrimento può usare una o due mappe pixel. Se disponibile, lo sfondo non cambia quando si sposta l'ago. Se vengono definiti due sfondi, lo sfondo prima della lanceta usa la prima mappa pixel di sfondo e lo sfondo dopo la lanceta usa la seconda mappa pixel di sfondo.
 - **style** Stile del dispositivo di scorrimento. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **pixelmap_slider_id** ID definito dall'applicazione del dispositivo di scorrimento della mappa pixel
-- **size** Dimensioni della richiesta di mappa pixel
+- **size** Dimensioni del prompt della mappa pixel
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Dispositivo di scorrimento mappa pixel creato correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -13170,7 +13247,7 @@ VOID gx_pixelmap_slider_draw(GX_PIXELMAP_SLIDER *slider);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un widget del dispositivo di scorrimento della mappa pixel. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per i widget personalizzati del dispositivo di scorrimento della mappa pixel.
+Questo servizio disegna un widget dispositivo di scorrimento pixelmap. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget dispositivo di scorrimento mappa pixel personalizzati.
 
 ### <a name="parameters"></a>Parametri
 
@@ -13178,7 +13255,7 @@ Questo servizio disegna un widget del dispositivo di scorrimento della mappa pix
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -13223,7 +13300,7 @@ VOID my_pixelmap_slider_draw(GX_PIXELMAP_SLIDER *pixelmap_slider)
 ## <a name="gx_pixelmap_slider_event_process"></a>gx_pixelmap_slider_event_process
 
 
-Elaborare l'evento del dispositivo di scorrimento della mappa pixel
+Elaborare l'evento dispositivo di scorrimento della mappa pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -13240,7 +13317,7 @@ Questo servizio elabora un evento per il widget del dispositivo di scorrimento d
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore alla mappa pixel
-- **Evento del** blocco del controllo dispositivo di scorrimento Puntatore all'evento da elaborare
+- **slider** control block event Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -13302,7 +13379,7 @@ UINT my_event_hanlder(GX_PIXELMAP_SLIDER *pixelmap_slider, GX_EVENT *event_ptr)
 ## <a name="gx_pixelmap_slider_pixelmap_set"></a>gx_pixelmap_slider_pixelmap_set
 
 
-Assegnare le mappe pixel al dispositivo di scorrimento
+Assegnare mappe pixel al dispositivo di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -13319,11 +13396,11 @@ Questo servizio imposta le mappe pixel sul dispositivo di scorrimento della mapp
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore al blocco di controllo del dispositivo di scorrimento della mappa pixel
-- **pixinfo** Puntatore a una GX_PIXELMAP_SLIDER_INFO struttura che definisce le mappe pixel usate per disegnare lo sfondo e l'ago del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_PIXELMAP_SLIDER_INFO struttura. Lo sfondo del dispositivo di scorrimento può usare una o due mappe pixel. Se disponibile, lo sfondo non cambia quando si sposta l'ago. Se sono definiti due sfondi, lo sfondo prima dell'ago usa la prima mappa pixel di sfondo e lo sfondo dopo l'ago usa la seconda mappa pixel di sfondo.
+- **pixinfo** Puntatore a una GX_PIXELMAP_SLIDER_INFO che definisce le mappe pixel usate per disegnare lo sfondo e la lanceta del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_PIXELMAP_SLIDER_INFO struttura. Lo sfondo del dispositivo di scorrimento può usare una o due mappe pixel. Se disponibile, lo sfondo non cambia quando si sposta la lanceta. Se vengono definiti due sfondi, lo sfondo prima della lanceta usa la prima mappa pixel di sfondo e lo sfondo dopo la lanceta usa la seconda mappa pixel di sfondo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Operazione riuscita imposta la mappa pixel sul dispositivo di scorrimento
+- **GX_SUCCESS** (0x00) Riuscito imposta la mappa pixel sul dispositivo di scorrimento
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -13395,7 +13472,7 @@ Questo servizio disegna lo sfondo dell'indicatore di stato specificato. Questa f
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -13450,13 +13527,13 @@ UINT gx_progress_bar_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget indicatore di stato.
+Questo servizio crea un widget dell'indicatore di stato.
 
 ### <a name="parameters"></a>Parametri
 
 - **progress_bar** Blocco di controllo indicatore di stato
 - **name** Nome logico
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **progress_bar_info** Puntatore a una GX_PROGRESS_BAR_INFO struttura . **L'appendice I** contiene la definizione GX_PROGRESS_BAR_INFO struttura.
 - **style** Stile dell'indicatore di stato. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **progress_bar_id** ID definito dall'applicazione dell'indicatore di stato
@@ -13467,7 +13544,7 @@ Questo servizio crea un widget indicatore di stato.
 - **GX_SUCCESS** (0x00) Creazione dell'indicatore di stato completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
 
@@ -13527,7 +13604,7 @@ VOID gx_progress_bar_draw(GX_PROGRESS_BAR *progress_bar);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un widget indicatore di stato. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget dell'indicatore di stato personalizzati.
+Questo servizio disegna un widget dell'indicatore di stato. Questa funzione viene in genere chiamata internamente dal meccanismo di aggiornamento dell'area di disegno GUIX, ma viene esposta all'applicazione per facilitare l'implementazione di funzioni di disegno personalizzate per widget personalizzati dell'indicatore di stato.
 
 ### <a name="parameters"></a>Parametri
 
@@ -13535,7 +13612,7 @@ Questo servizio disegna un widget indicatore di stato. Questa funzione viene in 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -13586,7 +13663,7 @@ Questo servizio elabora un evento dell'indicatore di stato.
 
 ### <a name="parameters"></a>Parametri
 
-- **progress_bar** Blocco di controllo indicatore di stato
+- **progress_bar** Blocco di controllo dell'indicatore di stato
 - **event_ptr** Puntatore a GX_EVENT struttura
 
 ### <a name="return-values"></a>Valori restituiti
@@ -13708,7 +13785,7 @@ Questo servizio reimposta la struttura delle informazioni di un widget dell'indi
 
 ### <a name="parameters"></a>Parametri
 
-- **progress_bar** Blocco di controllo indicatore di stato
+- **progress_bar** Blocco di controllo dell'indicatore di stato
 - **info** Puntatore a una GX_PROGRESS_BAR_INFO struttura . **L'appendice I** contiene la definizione GX_PROGRESS_BAR_INFO struttura.
 
 ### <a name="return-values"></a>Valori restituiti
@@ -13879,7 +13956,7 @@ Questo servizio imposta il colore del testo di un widget dell'indicatore di stat
 
 ### <a name="parameters"></a>Parametri
 
-- **progress_bar** Blocco di controllo indicatore di stato
+- **progress_bar** Blocco di controllo dell'indicatore di stato
 - **normal_text_color** ID risorsa del colore del testo normale usato nello stato normale
 - **selected_text_color** ID risorsa del colore del testo selezionato usato quando il widget ottiene lo stato attivo
 - **disabled_text_color** ID risorsa del colore del testo disabilitato usato quando GX_STYLE_ENABLED non è attivo
@@ -13939,7 +14016,7 @@ Questo servizio disegna il testo dell'indicatore di stato specificato. Questa fu
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -13989,16 +14066,16 @@ UINT gx_progress_bar_value_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna il valore corrente dell'indicatore di stato. Il widget dell'indicatore di stato viene automaticamente invalidato e ridisegnato quando viene modificato il valore dell'indicatore di stato.
+Questo servizio assegna il valore corrente dell'indicatore di stato. Il widget dell'indicatore di stato invaliderà e ridisegnerà automaticamente se stesso quando il valore dell'indicatore di stato viene modificato.
 
 ### <a name="parameters"></a>Parametri
 
-- **progress_bar** Blocco di controllo indicatore di stato
+- **progress_bar** Blocco di controllo dell'indicatore di stato
 - **value** Valore corrente dell'indicatore di stato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito impostare il valore dell'indicatore di stato
+- **GX_SUCCESS** (0x00) Impostare correttamente il valore dell'indicatore di stato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -14054,7 +14131,7 @@ GX_PROMPT deriva da GX_WIDGET e supporta tutti gx_widget servizi.
 
 - **Puntatore** al widget padre
 - **text_id** ID risorsa del testo della richiesta
-- **style** Stile del prompt. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **style** Stile della richiesta. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **prompt_id** ID definito dall'applicazione del prompt
 - **size** Dimensioni del prompt
 
@@ -14063,7 +14140,7 @@ GX_PROMPT deriva da GX_WIDGET e supporta tutti gx_widget servizi.
 - **GX_SUCCESS** (0x00) Creazione richiesta riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -14115,7 +14192,7 @@ Questo servizio disegna un widget di richiesta. Questo servizio viene chiamato i
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -14151,7 +14228,7 @@ VOID my_prompt_draw(GX_PROMPT *prompt)
 ## <a name="gx_prompt_event_process"></a>gx_prompt_event_process
 
 
-Evento di richiesta di elaborazione
+Evento di richiesta del processo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -14161,11 +14238,11 @@ UINT gx_prompt_event_process(GX_PROMPT *prompt, GX_EVENT *event_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento per il prompt specificato. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione degli eventi di richiesta personalizzata.
+Questo servizio elabora un evento per la richiesta specificata. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione personalizzata degli eventi di richiesta.
 
 ### <a name="parameters"></a>Parametri
 
-- **prompt** Puntatore al blocco di controllo prompt
+- **prompt** Puntatore al blocco di controllo della richiesta
 - **event_ptr** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
@@ -14293,9 +14370,9 @@ Questo servizio imposta il colore del testo di un widget di richiesta.
 ### <a name="parameters"></a>Parametri
 
 - **prompt** Puntatore al blocco di controllo del widget di richiesta
-- **normal_color** ID risorsa di colore per il testo normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **selected_color** ID risorsa del colore per il testo selezionato, usato quando il widget ottiene lo stato attivo. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **disabled_color** ID risorsa del colore per il testo disabilitato, usato quando GX_STYLE_ENABLED non è attivo. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **normal_color** ID risorsa di colore per il testo normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **selected_color** ID risorsa di colore per il testo selezionato, usato quando il widget ottiene lo stato attivo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **disabled_color** ID risorsa di colore per il testo disabilitato, usato quando GX_STYLE_ENABLED non è attivo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -14346,7 +14423,7 @@ VOID gx_prompt_text_draw(GX_PROMPT *prompt);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione di supporto disegna la parte di testo di un prompt. Questa funzione viene chiamata internamente da gx_prompt_draw() e viene fornita come API separata per praticità per le applicazioni che definiscono una funzione di disegno prompt personalizzata. Le applicazioni che vogliono personalizzare il disegno in background del prompt possono fornire la funzione di disegno personalizzata e richiamare il servizio gx_prompt_text_draw come parte del disegno personalizzato per disegnare il testo della richiesta sullo sfondo.
+Questa funzione di supporto disegna la parte di testo di un prompt. Questa funzione viene chiamata internamente da gx_prompt_draw() e viene fornita come API separata per comodità per le applicazioni che definiscono una funzione di disegno di prompt personalizzata. Le applicazioni che vogliono personalizzare il disegno dello sfondo della richiesta possono fornire la funzione di disegno personalizzata e richiamare il servizio gx_prompt_text_draw come parte del disegno personalizzato per disegnare il testo della richiesta sullo sfondo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -14354,7 +14431,7 @@ Questa funzione di supporto disegna la parte di testo di un prompt. Questa funzi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -14415,7 +14492,7 @@ Questo servizio ottiene il testo di un widget di richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful prompt text get
+- **GX_SUCCESS** (0x00) Messaggio di richiesta riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -14472,7 +14549,7 @@ Questo servizio ottiene la stringa di un widget di richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Messaggio di richiesta riuscito
+- **GX_SUCCESS** (0x00) Successful prompt text get
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -14529,7 +14606,7 @@ Questo servizio imposta l'ID stringa per il widget di richiesta di testo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful prompt text ID set
+- **GX_SUCCESS** (0x00) Set di ID di testo di richiesta riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
@@ -14577,7 +14654,7 @@ UINT gx_prompt_text_set(
 
 Questo servizio è stato deprecato a favore di gx_prompt_text_set_ext().
 
-Questo servizio imposta il testo di un widget di richiesta. Se il widget di richiesta è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio imposta il testo di un widget di richiesta. Se il widget di richiesta è stato creato con GX_STYLE_TEXT_COPY stile, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 GX_PROMPT deriva da GX_WIDGET e pertanto tutti i gx_widget API possono essere usati con GX_PROMPT.
 
@@ -14588,7 +14665,7 @@ GX_PROMPT deriva da GX_WIDGET e pertanto tutti i gx_widget API possono essere us
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di testo di richiesta riuscito
+- **GX_SUCCESS** (0x00) Set di testo della richiesta con esito positivo
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_SYSTEM_MEMORY_ERROR** (0x30) La funzione di allocazione della memoria non è definita
@@ -14634,7 +14711,7 @@ UINT gx_prompt_text_set_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il testo di un widget di richiesta. Se il widget di richiesta è stato creato con GX_STYLE_TEXT_COPY stile, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio imposta il testo di un widget di richiesta. Se il widget di richiesta è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 GX_PROMPT deriva da GX_WIDGET e pertanto tutti i gx_widget API possono essere usati con GX_PROMPT.
 
@@ -14645,7 +14722,7 @@ GX_PROMPT deriva da GX_WIDGET e pertanto tutti i gx_widget API possono essere us
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di testo della richiesta con esito positivo
+- **GX_SUCCESS** (0x00) Set di testo di richiesta riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_SYSTEM_MEMORY_ERROR** (0x30) La funzione di allocazione della memoria non è definita
@@ -14700,7 +14777,7 @@ Questo servizio imposta l'angolo iniziale per l'indicatore di stato radiale.
 
 ### <a name="parameters"></a>Parametri
 
-- **indicatore di** stato Puntatore al blocco di controllo dell'indicatore di stato radiale
+- indicatore di stato **Puntatore** al blocco di controllo dell'indicatore di stato radiale
 - **angolo** Angolo iniziale dell'arco circolare
 
 ### <a name="return-values"></a>Valori restituiti
@@ -14750,7 +14827,7 @@ VOID gx_radial_progress_bar_background_draw(GX_RADIAL_PROGRESS_BAR *progress_bar
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna uno sfondo dell'indicatore di stato radiale. A questo servizio viene fatto riferimento internamente dalla funzione gx_radial_progress_bar_draw, ma viene esposto per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione personalizzata di disegno dell'indicatore di stato radiale
+Questo servizio disegna uno sfondo di un indicatore di stato radiale. Questo servizio fa riferimento internamente alla funzione gx_radial_progress_bar_draw, ma viene esposto per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione di disegno dell'indicatore di stato radiale personalizzata
 
 ### <a name="parameters"></a>Parametri
 
@@ -14758,7 +14835,7 @@ Questo servizio disegna uno sfondo dell'indicatore di stato radiale. A questo se
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -14813,26 +14890,26 @@ UINT gx_radial_progress_bar_create(
 
 Questo servizio crea un indicatore di stato radiale.
 
-Se l'GX_STYLE_ENABLED stile del widget viene applicato all'indicatore di stato, l'indicatore di stato accetterà pen_down, pen_drag e pen_up input per modificare il valore corrente dell'indicatore di stato.
+Se lo stile del widget GX_STYLE_ENABLED viene applicato all'indicatore di stato, l'indicatore di stato accetterà input pen_down, pen_drag e pen_up per modificare il valore corrente dell'indicatore di stato.
 
 Lo stile del widget GX_STYLE_PROGRESS_TEXT_DRAW può essere usato per abilitare il disegno del valore dell'indicatore di stato come testo all'interno dell'area dell'indicatore di stato. Se questo stile viene usato in combinazione con lo stile GX_STYLE_PROGRESS_PERCENT, il valore dell'indicatore di stato viene visualizzato come percentuale. In caso contrario, il valore dell'indicatore di stato viene visualizzato come valore angolare corrente.
 
 ### <a name="parameters"></a>Parametri
 
 - **indicatore di stato** Puntatore al controllo indicatore di stato radiale
-- **indicatore di** stato Puntatore al blocco di controllo dell'indicatore di stato radiale
+- indicatore di stato **Puntatore** al blocco di controllo dell'indicatore di stato radiale
 - **name** Nome dell'indicatore di stato radiale
 - **padre** Puntatore al widget padre
 - **info** Puntatore a una GX_RADIAL_PROGRESS_BAR struttura . **L'appendice I** contiene la definizione GX_RADIAL_PROGRESS_BAR struttura.
 - **style** Stile dell'indicatore di stato radiale
-- **id ID** dell'indicatore di stato definito dall'applicazione
+- **id ID** definito dall'applicazione dell'indicatore di stato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione dell'indicatore di stato radiale completata
+- **GX_SUCCESS** (0x00) Creazione dell'indicatore di stato radiale riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -14898,7 +14975,7 @@ VOID gx_radial_progress_bar_draw(GX_RADIAL_PROGRESS_BAR *progress_bar);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un indicatore di stato radiale. Questo servizio viene usato internamente a cui fa riferimento la funzione gx_radial_progress_bar_create, ma viene esposto per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione di disegno dell'indicatore di stato radiale personalizzata.
+Questo servizio disegna un indicatore di stato radiale. Questo servizio viene usato internamente come riferimento dalla funzione gx_radial_progress_bar_create, ma viene esposto per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione personalizzata di disegno dell'indicatore di stato radiale.
 
 ### <a name="parameters"></a>Parametri
 
@@ -14906,7 +14983,7 @@ Questo servizio disegna un indicatore di stato radiale. Questo servizio viene us
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -14966,7 +15043,7 @@ Questo servizio elabora un evento dell'indicatore di stato radiale. Questa funzi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito processo dell'indicatore di stato radiale
+- **GX_SUCCESS** (0x00) Processo evento dell'indicatore di stato radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -15030,12 +15107,12 @@ Questo servizio imposta il tipo di carattere di un widget dell'indicatore di sta
 
 ### <a name="parameters"></a>Parametri
 
-- **indicatore di** stato Puntatore al blocco di controllo dell'indicatore di stato radiale
+- indicatore di stato **Puntatore** al blocco di controllo dell'indicatore di stato radiale
 - **font_id** ID risorsa del tipo di carattere
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di caratteri dell'indicatore di stato radiale riuscito
+- **GX_SUCCESS** (0x00) Set di caratteri dell'indicatore di stato radiale completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -15084,12 +15161,12 @@ Questo servizio reimposta i parametri di informazioni assegnati all'indicatore d
 
 ### <a name="parameters"></a>Parametri
 
-- indicatore di stato **Puntatore** al blocco di controllo dell'indicatore di stato radiale
+- **indicatore di** stato Puntatore al blocco di controllo dell'indicatore di stato radiale
 - **info** Puntatore alla struttura delle informazioni sull'indicatore di stato radiale. **L'appendice I** contiene la definizione GX_RADIAL_PROGRESS_BAR_INFO struttura.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful radial progress bar info set (Set di informazioni sull'indicatore di stato radiale riuscito)
+- **GX_SUCCESS** (0x00) Set di informazioni sull'indicatore di stato radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -15157,14 +15234,14 @@ UINT gx_radial_progress_bar_text_color_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il colore del testo dell'indicatore di stato radiale. Questo valore viene usato solo se è impostato GX_STYLE_PROGRESS_TEXT_DRAW stile.
+Questo servizio imposta il colore del testo dell'indicatore di stato radiale. Questo valore viene usato solo se lo stile GX_STYLE_PROGRESS_TEXT_DRAW è impostato.
 
 ### <a name="parameters"></a>Parametri
 
-- **indicatore di** stato Puntatore al blocco di controllo dell'indicatore di stato radiale
-- **normal_color** ID risorsa del colore del testo nello stato normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **selected_color** ID risorsa del colore del testo quando il widget ottiene lo stato attivo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **disabled_color** ID risorsa del colore del testo quando lo stile GX_STYLE_ENABLED non è impostato. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- indicatore di stato **Puntatore** al blocco di controllo dell'indicatore di stato radiale
+- **normal_color** ID risorsa del colore del testo nello stato normale. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **selected_color** ID risorsa del colore del testo quando il widget ottiene lo stato attivo. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **disabled_color** ID risorsa del colore del testo quando lo stile GX_STYLE_ENABLED non è impostato. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -15214,7 +15291,7 @@ VOID gx_radial_progress_bar_text_draw(GX_RADIAL_PROGRESS_BAR *progress_bar);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il testo dell'indicatore di stato radiale specificato. Questa funzione viene chiamata internamente come parte di gx_radial_progress_bar_draw(), ma viene esposta all'applicazione per supportare i casi in cui l'applicazione definisce una funzione personalizzata di disegno dell'indicatore di stato.
+Questo servizio disegna il testo dell'indicatore di stato radiale specificato. Questa funzione viene chiamata internamente come parte del gx_radial_progress_bar_draw(), ma viene esposta all'applicazione per supportare i casi in cui l'applicazione definisce una funzione di disegno personalizzata dell'indicatore di stato.
 
 ### <a name="parameters"></a>Parametri
 
@@ -15222,7 +15299,7 @@ Questo servizio disegna il testo dell'indicatore di stato radiale specificato. Q
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -15280,16 +15357,16 @@ Questo servizio imposta il valore dell'indicatore di stato radiale. Il valore as
 
 L'indicatore di stato viene disegnato in modo che il valore corrente indichi il delta angolare tra la posizione di ancoraggio e il punto finale dell'arco superiore. I valori negativi determinano il disegnato dell'arco in senso orario a partire dalla posizione di ancoraggio. Il valore corrente positivo fa sì che l'arco sia disegnato in senso antiorario a partire dalla posizione di ancoraggio.
 
-Ad esempio, per disegnare un arco a partire dalla parte superiore dell'arco (posizione 12 ore) e terminando a destra (posizione delle tre ore), assegnare un valore di ancoraggio di 90 gradi e un valore corrente di -90 gradi.
+Ad esempio, per disegnare un arco a partire dalla parte superiore dell'arco (posizione delle ore 12) e terminando a destra (posizione delle tre ore), assegnare un valore di ancoraggio di 90 gradi e un valore corrente di -90 gradi.
 
 ### <a name="parameters"></a>Parametri
 
-- **indicatore di** stato Puntatore al blocco di controllo dell'indicatore di stato radiale
+- indicatore di stato **Puntatore** al blocco di controllo dell'indicatore di stato radiale
 - **value** Nuovo valore dell'indicatore di stato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Valore dell'indicatore di stato radiale riuscito impostato
+- **GX_SUCCESS** (0x00) Impostato il valore dell'indicatore di stato radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatori non validi
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -15341,13 +15418,13 @@ UINT gx_radio_button_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget di pulsante di opzione. GX_RADIO_BUTTON deriva da GX_TEXT_BUTTON e pertanto tutti i servizi gx_text_button sono supportati anche da questo tipo di widget.
+Questo servizio crea un widget pulsante di opzione. GX_RADIO_BUTTON deriva da GX_TEXT_BUTTON e pertanto tutti gx_text_button servizi sono supportati anche da questo tipo di widget.
 
 ### <a name="parameters"></a>Parametri
 
-- **pulsante** Puntatore al blocco di controllo del pulsante di opzione
+- **pulsante** Puntatore al blocco di controllo pulsante di opzione
 - **name** Nome logico del widget del pulsante di opzione
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **text_id** ID risorsa del pulsante di opzione
 - **style** Stile del pulsante di opzione. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **radio_button_id** ID del pulsante di opzione definito dall'applicazione
@@ -15358,8 +15435,8 @@ Questo servizio crea un widget di pulsante di opzione. GX_RADIO_BUTTON deriva da
 - **GX_SUCCESS** (0x00) Creazione del pulsante di opzione riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
-- **GX_INVALID_** SIZE (0x19) Dimensioni del blocco di controllo widget non valide
+- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_INVALID_** DIMENSIONI (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -15406,7 +15483,7 @@ VOID gx_radio_button_draw(GX_RADIO_BUTTON *button);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un widget di pulsante di opzione. Questo servizio viene chiamato internamente dall'aggiornamento dell'area di disegno GUIX, ma può essere chiamato anche da funzioni di disegno sottoposte a override.
+Questo servizio disegna un widget pulsante di opzione. Questo servizio viene chiamato internamente dall'aggiornamento dell'area di disegno GUIX, ma può essere chiamato anche da funzioni di disegno sottoposte a override.
 
 ### <a name="parameters"></a>Parametri
 
@@ -15414,7 +15491,7 @@ Questo servizio disegna un widget di pulsante di opzione. Questo servizio viene 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -15478,7 +15555,7 @@ Questo servizio assegna le mappe pixel che devono essere visualizzate dal pulsan
 - **off_id** Mappa pixel usata per lo stato disattivato del pulsante di opzione
 - **on_id** Mappa pixel usata per il pulsante di opzione sullo stato
 - **off_disabled_id** Mappa pixel usata per lo stato disabilitato e disattivato del pulsante di opzione
-- **on_disabled_id** Mappa pixel usata per il pulsante di opzione disabilitato e nello stato
+- **on_disabled_id** Mappa pixel usata per il pulsante di opzione disabilitato e in stato
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -15523,7 +15600,7 @@ status = gx_radio_button_pixelmap_set(&my_radio_button,
 ## <a name="gx_radial_slider_anchor_angles_set"></a>gx_radial_slider_anchor_angles_set
 
 
-Impostare l'elenco di ancoraggi del dispositivo di scorrimento radiale
+Impostare l'elenco di ancoraggio del dispositivo di scorrimento radiale
 
 ### <a name="prototype"></a>Prototipo
 
@@ -15540,13 +15617,13 @@ Questo servizio imposta gli angoli di ancoraggio per il dispositivo di scorrimen
 
 ### <a name="parameters"></a>Parametri
 
-- **dispositivo di scorrimento** Blocco di controllo dispositivo di scorrimento radiale
-- **anchor_angles** Elenco di angoli da impostare
+- **dispositivo di scorrimento** Blocco di controllo del dispositivo di scorrimento radiale
+- **anchor_angles** Elenco angolare da impostare
 - **anchor_count** Conteggio degli angoli di ancoraggio
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare gli angoli di ancoraggio con esito positivo
+- **GX_SUCCESS** (0x00) Angoli di ancoraggio riusciti impostati
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 - **GX_INVALID_VALUE** (0x22) Elenco di ancoraggio non valido
@@ -15605,7 +15682,7 @@ Questo servizio imposta il nuovo valore dell'angolo per il dispositivo di scorri
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore al blocco di controllo del dispositivo di scorrimento radiale
-- **new_angle** Nuovo valore angolare da impostare
+- **new_angle** Nuovo valore dell'angolo da impostare
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -15656,7 +15733,7 @@ UINT gx_radial_slider_animation_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta i passaggi di animazione, il tempo di ritardo e gli stili di animazione per l'animazione radiale della lanceta del dispositivo di scorrimento.
+Questo servizio imposta i passaggi di animazione, il tempo di ritardo e gli stili di animazione per l'animazione dell'ago del dispositivo di scorrimento radiale.
 
 ### <a name="parameters"></a>Parametri
 
@@ -15698,7 +15775,7 @@ Questo servizio imposta i passaggi di animazione, il tempo di ritardo e gli stil
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di animazioni con dispositivo di scorrimento radiale riuscito
+- **GX_SUCCESS** (0x00) Set di animazioni del dispositivo di scorrimento radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -15757,16 +15834,16 @@ UINT gx_radial_slider_animation_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia un'animazione per spostare l'ago del dispositivo di scorrimento dalla posizione corrente alla posizione specificata.
+Questo servizio avvia un'animazione per spostare la lanceta del dispositivo di scorrimento dalla posizione corrente alla posizione specificata.
 
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore al blocco di controllo del dispositivo di scorrimento radiale
-- **target_angle** Valore dell'angolo di destinazione
+- **target_angle** Valore angolo di destinazione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Avvio dell'animazione del dispositivo di scorrimento radiale riuscito
+- **GX_SUCCESS** (0x00) Inizio dell'animazione del dispositivo di scorrimento radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -15800,7 +15877,7 @@ status = gx_radial_slider_animation_start(&my_radial_slider, 90);
 ## <a name="gx_radial_slider_create"></a>gx_radial_slider_create
 
 
-Creare un dispositivo di scorrimento radiale
+Crea dispositivo di scorrimento radiale
 
 ### <a name="prototype"></a>Prototipo
 
@@ -15817,14 +15894,14 @@ UINT gx_radial_slider_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget di dispositivo di scorrimento radiale.
+Questo servizio crea un widget dispositivo di scorrimento radiale.
 
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore al blocco di controllo del dispositivo di scorrimento radiale
 - **name** Nome logico del widget del dispositivo di scorrimento radiale
-- **elemento padre** Puntatore al widget padre
-- **info** Definizione dell'aspetto del dispositivo di scorrimento radiale, **Appendice I** che contiene la definizione GX_RADIAL_SLIDER_INFO.
+- **padre** Puntatore al widget padre
+- **info** Definizione dell'aspetto del dispositivo di scorrimento radiale, **Appendice I** contiene la definizione GX_RADIAL_SLIDER_INFO.
 - **style** Stile del pulsante di opzione. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **radio_button_id** ID definito dall'applicazione del dispositivo di scorrimento radiale
 - **size** Dimensioni del dispositivo di scorrimento radiale
@@ -15926,7 +16003,7 @@ Questo servizio disegna un dispositivo di scorrimento radiale. Questo servizio v
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -15974,7 +16051,7 @@ UINT gx_radial_slider_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento di dispositivo di scorrimento radiale. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione personalizzata degli eventi del dispositivo di scorrimento radiale.
+Questo servizio elabora un evento di dispositivo di scorrimento radiale. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione degli eventi del dispositivo di scorrimento radiale personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -15983,7 +16060,7 @@ Questo servizio elabora un evento di dispositivo di scorrimento radiale. Questo 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful radial slider event process (Processo evento dispositivo di scorrimento radiale riuscito)
+- **GX_SUCCESS** (0x00) Processo di evento del dispositivo di scorrimento radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -16031,7 +16108,7 @@ UINT my_event_process(GX_RADIAL_SLIDER *slider,
 ## <a name="gx_radial_slider_info_get"></a>gx_radial_slider_info_get
 
 
-Recuperare le informazioni sul dispositivo di scorrimento radiale
+Recuperare informazioni sul dispositivo di scorrimento radiale
 
 ### <a name="prototype"></a>Prototipo
 
@@ -16043,7 +16120,7 @@ UINT gx_radial_slider_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il puntatore alle informazioni sul dispositivo di scorrimento radiale.
+Questo servizio recupera l'indicatore di misura delle informazioni sul dispositivo di scorrimento radiale.
 
 ### <a name="parameters"></a>Parametri
 
@@ -16189,17 +16266,17 @@ UINT gx_radial_slider_pixelmap_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta lo sfondo del dispositivo di scorrimento radiale e le mappe pixel dell'ago.
+Questo servizio imposta lo sfondo del dispositivo di scorrimento radiale e le mappe pixel delle lance.
 
 ### <a name="parameters"></a>Parametri
 
 - **dispositivo di scorrimento** Puntatore al blocco di controllo del dispositivo di scorrimento radiale
 - **background_pixelmap** ID risorsa della mappa pixel di sfondo
-- **needle_pixelmap** ID risorsa della mappa pixel dell'ago
+- **needle_pixelmap** ID risorsa della mappa pixel della lanceta
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di pixel del dispositivo di scorrimento radiale riuscito
+- **GX_SUCCESS** (0x00) Set di mappe pixel del dispositivo di scorrimento radiale riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -16256,7 +16333,7 @@ Questo servizio crea una visualizzazione RTF come specificato.
 - **\<b>\</b>** Impostare il tipo di carattere del testo con l'ID carattere in grassetto specificato dall'utente
 - **\<i>\</i>** Impostare il tipo di carattere del testo con l'ID carattere corsivo specificato dall'utente
 - **\<u>\</u>** Abilitare la sottolineatura del testo
-- **\<f GX_FONT_ID>\</f>** Impostare il tipo di carattere del testo con l'ID del tipo di carattere specificato
+- **\<f GX_FONT_ID>\</f>** Impostare il tipo di carattere del testo con l'ID carattere specificato
 - **\<c GX_COLOR_ID>\</c>** Impostare il tipo di carattere del testo con l'ID colore specificato
 - **\<hc GX_COLOR_ID>\</hc>** Impostare l'ID colore specificato per l'evidenziazione del testo
 - **\<align left/right/center>\</align>** Impostare l'allineamento del testo
@@ -16264,22 +16341,22 @@ Questo servizio crea una visualizzazione RTF come specificato.
 **Esempi di formattazione dell'utilizzo dei tag:**
 
 - \<b>Testo in grassetto<\b>
-- \<i>Si tratta del testo in corsivo<\i>
-- \<u>Si tratta di testo con sottolineatura<\u>
+- \<i>Questo è il testo in corsivo<\i>
+- \<u>Testo con sottolineatura<\u>
 - \<f 0>Questo ID carattere di testo è impostato su 0<\f>
 - \<c 1>Questo ID colore del testo è impostato su 1<\c>
 - \<hc 2>Questo ID colore di evidenziazione del testo è impostato su 2<\hc>
-- \<align left> Questo testo viene allineato a sinistra<\allineare>
+- \<align left> Questo testo è allineato a<\align>
 
 ### <a name="parameters"></a>Parametri
 
-- **text_view** Puntatore al blocco di controllo di visualizzazione TESTO RTF
-- **name** Nome della visualizzazione RTF
-- **padre** Puntatore al widget padre
+- **text_view** Puntatore al blocco di controllo di visualizzazione RTF
+- **name** Nome della visualizzazione TESTO RTF
+- **elemento padre** Puntatore al widget padre
 - **text_id** ID risorsa della stringa di testo
 - **tipi di carattere** Puntatore alle informazioni sul tipo di carattere della visualizzazione RTF. **Apendix I contiene** la definizione per GX_RICH_TEXT_FONTS struttura.
-- **style** Stile del widget. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
-- **ID** ID definito dall'applicazione della visualizzazione RTF
+- **style** Stile del widget. **L'Appendice D** contiene stili generali predefiniti per tutti i widget, nonché stili specifici del widget.
+- **id** ID definito dall'applicazione della visualizzazione RTF
 - **size** Dimensioni della visualizzazione RTF
 
 ### <a name="return-values"></a>Valori restituiti
@@ -16287,7 +16364,7 @@ Questo servizio crea una visualizzazione RTF come specificato.
 - **GX_SUCCESS** (0x00) Creazione corretta della visualizzazione RTF
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 
 ### <a name="allowed-from"></a>Consentito da
@@ -16321,7 +16398,7 @@ status = gx_rich_text_view_create(&rich_view, “my_rich_view”,
 
 ```
 
-L'applicazione demo demo_guix_widget_types, fornita come parte dell'installazione di GUIX Studio, fornisce un esempio completo dell'uso del widget di visualizzazione testo RTF.
+L'applicazione demo demo_guix_widget_types, fornita come parte dell'installazione di GUIX Studio, fornisce un esempio completo dell'uso del widget di visualizzazione rtf.
 
 ### <a name="see-also"></a>Vedere anche
 
@@ -16332,7 +16409,7 @@ L'applicazione demo demo_guix_widget_types, fornita come parte dell'installazion
 ## <a name="gx_rich_text_view_draw"></a>gx_rich_text_view_draw
 
 
-Disegnare una visualizzazione RTF
+Disegnare la visualizzazione RTF
 
 ### <a name="prototype"></a>Prototipo
 
@@ -16342,15 +16419,15 @@ VOID gx_rich_text_view_draw(GX_RICH_TEXT_VIEW *text_view);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il widget di visualizzazione rtf specificato. Questo servizio viene in genere chiamato internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma viene esposto anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno della visualizzazione RTF predefinito come base di disegno personalizzata.
+Questo servizio disegna il widget di visualizzazione rtf specificato. Questo servizio viene in genere chiamato internamente da GUIX come parte di un'operazione di aggiornamento dell'area di disegno, ma è esposto anche all'applicazione che potrebbe voler fornire una funzione di disegno personalizzata e richiamare il disegno della visualizzazione RTF predefinito come base di disegno personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_view** Puntatore al blocco di controllo widget di visualizzazione RTF
+- **text_view** Puntatore al blocco di controllo widget visualizzazione RTF
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -16392,8 +16469,8 @@ Questo servizio imposta i tipi di carattere di un widget di visualizzazione test
 
 ### <a name="parameters"></a>Parametri
 
-- **text_view** Puntatore al blocco di controllo widget visualizzazione TESTO RTF
-- **tipi di carattere** Puntatore alle informazioni sul tipo di carattere della visualizzazione RTF. **Apendix I contiene** le definizioni da GX_RICH_TEXT_FONTS struttura.
+- **text_view** Puntatore al blocco di controllo widget di visualizzazione RTF
+- **tipi di carattere** Puntatore alle informazioni sul tipo di carattere della visualizzazione RTF. **Apendix I contiene** le definizioni GX_RICH_TEXT_FONTS struttura.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -16442,7 +16519,7 @@ VOID gx_rich_text_view_text_draw(GX_RICH_TEXT_VIEW *text_view);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione di supporto disegna la parte di testo di una visualizzazione RTF. Questa funzione viene chiamata internamente da gx_rich_text_view_draw() e viene fornita come API separata per praticità per le applicazioni che definiscono una funzione di disegno di visualizzazione di testo RTF personalizzata. Le applicazioni che vogliono personalizzare il disegno in background della visualizzazione RTF possono fornire la funzione di disegno personalizzata e richiamare il servizio gx_rich_text_view_text_draw come parte del disegno personalizzato per disegnare il testo della visualizzazione RTF sullo sfondo.
+Questa funzione di supporto disegna la parte di testo di una visualizzazione RTF. Questa funzione viene chiamata internamente da gx_rich_text_view_draw() e viene fornita come API separata per comodità per le applicazioni che definiscono una funzione di disegno personalizzata per la visualizzazione di testo RTF. Le applicazioni che desiderano personalizzare il disegno dello sfondo della visualizzazione TESTO RTF possono fornire la funzione di disegno personalizzata e richiamare il servizio gx_rich_text_view_text_draw come parte del disegno personalizzato per disegnare il testo della visualizzazione TESTO RTF sullo sfondo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -16450,7 +16527,7 @@ Questa funzione di supporto disegna la parte di testo di una visualizzazione RTF
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -16495,10 +16572,10 @@ UINT gx_screen_stack_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio inizializza uno stack di schermate. L'applicazione deve definire il blocco di memoria e le dimensioni del buffer usati per implementare la funzionalità dello stack dello schermo.
+Questo servizio inizializza uno stack di schermate. L'applicazione deve definire il blocco di memoria e le dimensioni del buffer usate per implementare la funzionalità dello stack dello schermo.
 
 > [!NOTE]
-> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_create(). Questa versione viene fornita solo per compatibilità con le versioni precedenti della libreria.*
+> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_create(). Questa versione viene fornita solo per la compatibilità con le versioni precedenti della libreria.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -16550,10 +16627,10 @@ UINT gx_screen_stack_pop(GX_SCREEN_STACK_CONTROL *control);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove la voce più in alto dallo stack dello schermo e collega la schermata selezionata al padre precedente. Questa API scollega anche tutti gli elementi figlio esistenti dall'elemento padre.
+Questo servizio rimuove la voce in primo piano dallo stack di schermate e collega la schermata esettata al padre precedente. Questa API disconnette anche tutti gli elementi figlio esistenti dall'elemento padre.
 
 > [!NOTE]
-> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_pop(). Questa versione viene fornita solo per la compatibilità con le versioni precedenti della libreria.*
+> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_pop(). Questa versione viene fornita solo per compatibilità con le versioni precedenti della libreria.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -16561,7 +16638,7 @@ Questo servizio rimuove la voce più in alto dallo stack dello schermo e collega
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Popup dello stack dello schermo riuscito
+- **GX_SUCCESS** (0x00) Popup dello stack di schermate completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -16588,7 +16665,7 @@ status = gx_screen_stack_pop(&my_stack_control);
 ## <a name="gx_screen_stack_push"></a>gx_screen_stack_push
 
 
-Eseguire il push della schermata e dei relativi elementi padre da impilare
+Eseguire il push della schermata e dei relativi elementi padre nello stack
 
 ### <a name="prototype"></a>Prototipo
 
@@ -16605,12 +16682,12 @@ Questo servizio scollega lo schermo dal relativo elemento padre e inserisce il p
 
 
 > [!NOTE]
-> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_pop(). Questa versione viene fornita solo per la compatibilità con le versioni precedenti della libreria.*
+> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_pop(). Questa versione viene fornita solo per compatibilità con le versioni precedenti della libreria.*
 
 ### <a name="parameters"></a>Parametri
 
 - **controllo** Blocco di controllo dello stack dello schermo
-- **schermata** Puntatore a schermo da eseguire il push
+- **schermata** Puntatore dello schermo da eseguire il push
 - **new_screen** Puntatore della nuova schermata
 
 ### <a name="return-values"></a>Valori restituiti
@@ -16655,7 +16732,7 @@ UINT gx_screen_stack_reset(GX_SCREEN_STACK_CONTROL *control);
 Questo servizio rimuove tutte le voci dallo stack di schermate.
 
 > [!NOTE]
-> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_pop(). Questa versione viene fornita solo per compatibilità con le versioni precedenti della libreria.*
+> *Questa API è obsoleta e viene sostituita con gx_system_screen_stack_pop(). Questa versione viene fornita solo per la compatibilità con le versioni precedenti della libreria.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -16663,7 +16740,7 @@ Questo servizio rimuove tutte le voci dallo stack di schermate.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione casella di scorrimento riuscita
+- **GX_SUCCESS** (0x00) Creazione della casella di scorrimento riuscita
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -16704,16 +16781,16 @@ Questo servizio crea una rotellina a scorrimento. Questo servizio viene in gener
 
 ### <a name="parameters"></a>Parametri
 
-- **scroll_thumb** Blocco di controllo del widget a scorrimento
-- **padre** Puntatore alla barra di scorrimento padre
+- **scroll_thumb** Blocco di controllo del widget scroll thumb
+- **elemento padre** Puntatore alla barra di scorrimento padre
 - **style** Stile del widget della barra di scorrimento. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione della casella di scorrimento riuscita
+- **GX_SUCCESS** (0x00) Creazione casella di scorrimento riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
 
@@ -16741,7 +16818,7 @@ status = gx_scroll_thumb_create(&my_scroll_thumb, &my_scrollbar,
 ## <a name="gx_scroll_thumb_draw"></a>gx_scroll_thumb_draw
 
 
-Disegnare la casella di scorrimento
+Disegnare il cursore di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -16759,7 +16836,7 @@ Questo servizio disegna una rotellina di scorrimento. Questo servizio viene chia
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -16787,7 +16864,7 @@ VOID my_scroll_thumb_draw(GX_SCROLL_THUMB *thumb)
 ## <a name="gx_scroll_thumb_event_process"></a>gx_scroll_thumb_event_process
 
 
-Elaborare l'evento del cursore di scorrimento
+Elaborare l'evento thumb di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -16799,16 +16876,16 @@ UINT gx_scroll_thumb_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio gestisce gli eventi inviati a una rotellina del cursore della barra di scorrimento. Questo servizio viene in genere usato internamente da GUIX, ma viene reso pubblico per facilitare l'implementazione di comportamenti personalizzati della barra di scorrimento.
+Questo servizio gestisce gli eventi inviati a una rotellina di scorrimento della barra di scorrimento. Questo servizio viene in genere usato internamente da GUIX, ma viene reso pubblico per facilitare l'implementazione di comportamenti personalizzati della barra di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **scroll_thumb** Blocco di controllo del widget scroll thumb
-- **event** Puntatore all'evento da elaborare
+- **scroll_thumb** Blocco di controllo del widget a scorrimento
+- **evento** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful scroll thumb event process (Processo dell'evento scroll thumb riuscito)
+- **GX_SUCCESS** (0x00) Processo dell'evento scroll thumb riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -16867,20 +16944,20 @@ UINT gx_scroll_wheel_create(
 
 Questo servizio crea un widget della rotellina di scorrimento di base.
 
-Una rotellina di scorrimento di base è il widget di base per tutti i  tipi di widget della rotellina di scorrimento, inclusi i widget **gx_generic_scroll_wheel** **e gx_text_scroll_wheel,** che è la base per i widget gx_numeric_scroll_wheel e **gx_string_ scroll_wheel** di scorrimento. Il widget della rotellina di scorrimento di base fornisce la gestione degli eventi, l'animazione di scorrimento e il calcolo delle righe selezionate per tutti i tipi di widget della rotellina di scorrimento.
+Una rotellina di scorrimento di base è il widget di base per tutti i  tipi di widget della rotellina di scorrimento, inclusi i widget **gx_generic_scroll_wheel** **e gx_text_scroll_wheel,** che è la base per i widget gx_numeric_scroll_wheel e **gx_string_ scroll_wheel.** Il widget della rotellina di scorrimento di base fornisce la gestione degli eventi, l'animazione di scorrimento e il calcolo delle righe selezionate per tutti i tipi di widget della rotellina di scorrimento.
 
-Le applicazioni in genere non creano un'istanza di un widget della rotellina di scorrimento generico, poiché questo tipo di widget non fornisce alcuna funzione di disegno. Tuttavia, viene fornito l'accesso a questa API per assistere le applicazioni che devono creare un tipo di widget della rotellina di scorrimento personalizzato.
+Le applicazioni in genere non creano un'istanza di un widget della rotellina di scorrimento generico, poiché questo tipo di widget non fornisce alcuna funzione di disegno. Tuttavia, l'accesso a questa API viene fornito per assistere le applicazioni che devono creare un tipo di widget della rotellina di scorrimento personalizzato.
 
 GX_SCROLL_WHEEL è basato su GX_WINDOW e pertanto tutte le API GX_WINDOW possono essere usate con GX_SCROLL_WHEEL e widget derivati da GX_SCROLL_WHEEL.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
 - **name** Nome del widget assegnato dall'applicazione
-- **padre** Widget padre o GX_NULL
+- **elemento padre** Widget padre o GX_NULL
 - **total_rows** Totale righe disponibili
 - **style** Flag di stile del widget
-- **ID ID** widget assegnato dall'applicazione
+- **id ID** widget assegnato dall'applicazione
 - **size** Rettangolo che definisce le dimensioni iniziali del widget.
 
 ### <a name="return-values"></a>Valori restituiti
@@ -16889,7 +16966,7 @@ GX_SCROLL_WHEEL è basato su GX_WINDOW e pertanto tutte le API GX_WINDOW possono
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo non valide
-- **GX_ALREADY_CREATED** (0x13) Widget creato
+- **GX_ALREADY_CREATED** (0x13) Creato
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -16954,16 +17031,16 @@ UINT gx_scroll_wheel_event_process(
 
 Questo servizio fornisce la gestione degli eventi di input di base per tutti i tipi di widget della rotellina di scorrimento.
 
-Questa funzione viene esposta al software dell'applicazione per facilitare le applicazioni che devono creare un tipo di widget della rotellina di scorrimento personalizzato. Le applicazioni forniscono spesso la propria funzione di elaborazione degli eventi, ma richiamano l'elaborazione generica degli eventi per i widget ruota per gli eventi che non devono personalizzare.
+Questa funzione viene esposta al software applicativo per agevolare le applicazioni che devono creare un tipo di widget della rotellina di scorrimento personalizzato. Le applicazioni forniscono spesso la propria funzione di elaborazione degli eventi, ma richiamano l'elaborazione generica degli eventi per i widget wheel per gli eventi che non devono personalizzare.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **evento** GX_EVENT puntatore
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **event** GX_EVENT puntatore
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Processo di evento della rotellina di scorrimento
+- **GX_SUCCESS** (0x00) Successfully scroll wheel event process (Processo evento rotellina di scorrimento completato)
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -17021,7 +17098,7 @@ UINT custom_scroll_wheel_event_process(CUSTOM_SCROLL_WHEEL *wheel,
 ## <a name="gx_scroll_wheel_gradient_alpha_set"></a>gx_scroll_wheel_gradient_alpha_set
 
 
-Assegnare valori alfa sfumatura per la sfumatura di sovrimpressione facoltativa
+Assegnare valori alfa della sfumatura per la sfumatura di sovrimpressione facoltativa
 
 ### <a name="prototype"></a>Prototipo
 
@@ -17036,21 +17113,21 @@ UINT gx_scroll_wheel_gradient_alpha_set(
 
 Questo servizio definisce i valori alfa iniziale e finale per una sovrimpressione sfumatura facoltativa del widget della rotellina di scorrimento.
 
-Tutti i widget della rotellina di scorrimento supportano un effetto "dissolvenza" delle righe della rotellina di scorrimento come righe vicino al bordo superiore e inferiore del widget della rotellina di scorrimento. Questo effetto di dissolvenza viene ottenuto disegnando una mappa pixel sfumatura sulle righe della rotellina di scorrimento, che fanno sembrare che le righe si sfumatono mentre le righe vengono disegnate nella parte superiore e inferiore del widget della rotellina di scorrimento.
+Tutti i widget della rotellina di scorrimento supportano un effetto "dissolvenza" delle righe della rotellina di scorrimento come righe vicino al bordo superiore e inferiore del widget della rotellina di scorrimento. Questo effetto di dissolvenza viene ottenuto disegnando una mappa di pixel sfumato sulle righe della rotellina di scorrimento, in modo che le righe appaiano in dissolvenza orizzontale man mano che le righe vengono disegnate nella parte superiore e inferiore del widget della rotellina di scorrimento.
 
-Questo servizio API consente all'applicazione di modificare l'intensità dell'effetto dissolvente o disabilitare completamente questo effetto impostando i valori alfa di inizio e fine su 0.
+Questo servizio API consente all'applicazione di modificare l'intensità dell'effetto dissolvente o disabilitare completamente questo effetto impostando i valori alfa iniziale e finale su 0.
 
-La mappa pixel sfumatura viene creata in fase di esecuzione quando la rotellina di scorrimento diventa inizialmente visibile. A tale scopo, è necessario che sia stato definito un servizio di allocazione di memoria di runtime _gx_system_memory_allocator_set(). Se non è stata definita alcuna funzione allocatore di memoria, l'immagine sfumato non verrà creata e non sarà disponibile alcun effetto di dissolvenza.
+La mappa dei pixel sfumatura viene creata in fase di esecuzione quando la rotellina di scorrimento diventa inizialmente visibile. A questo scopo è necessario che sia stato definito un servizio di allocazione di memoria di runtime usando _gx_system_memory_allocator_set(). Se non è stata definita alcuna funzione allocatore di memoria, l'immagine sfumato non verrà creata e non sarà disponibile alcun effetto di dissolvenza.
 
 ### <a name="parameters"></a>Parametri
 
 - **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
 - **start_alpha** Valore alfa iniziale della sfumatura di sovrimpressione.
-- **end_alpha** Valore alfa finale della sfumatura sovrapposta.
+- **end_alpha** Valore alfa finale della sfumatura di sovrimpressione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente il valore alfa della sfumatura della rotellina di scorrimento
+- **GX_SUCCESS** (0x00) Impostare correttamente la sfumatura alfa della rotellina di scorrimento
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -17103,11 +17180,11 @@ UINT gx_scroll_wheel_row_height_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna l'altezza della riga per ogni riga della rotellina di scorrimento. Si noti che se la rotellina di scorrimento ha uno stile GX_STYLE_TEXT_SCROLL_WHEEL_ROUND, l'altezza della riga passa attraverso una trasformazione che riduce in modo efficace l'altezza della riga quando la riga si avvicina al bordo superiore o inferiore della rotellina.
+Questo servizio assegna l'altezza della riga per ogni riga della rotellina di scorrimento. Si noti che se la rotellina di scorrimento ha stile GX_STYLE_TEXT_SCROLL_WHEEL_ROUND, l'altezza della riga passa attraverso una trasformazione che riduce in modo efficace l'altezza della riga quando la riga si avvicina al bordo superiore o inferiore della rotellina.
 
 ### <a name="parameters"></a>Parametri
 
-- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
 - **row_height** Valore dell'altezza della riga, in pixel.
 
 ### <a name="return-values"></a>Valori restituiti
@@ -17154,7 +17231,7 @@ pixels. */
 ## <a name="gx_scroll_wheel_selected_background_set"></a>gx_scroll_wheel_selected_background_set
 
 
-Assegnare l'immagine di sfondo per la riga selezionata della rotellina
+Assegnare l'immagine di sfondo per la riga selezionata con la rotellina del mouse
 
 ### <a name="prototype"></a>Prototipo
 
@@ -17218,7 +17295,7 @@ assigned. */
 ## <a name="gx_scroll_wheel_selected_get"></a>gx_scroll_wheel_selected_get
 
 
-Recuperare la riga della rotellina attualmente selezionata
+Recupera la riga della rotellina attualmente selezionata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -17230,16 +17307,16 @@ UINT gx_scroll_wheel_selected_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una query sulla rotellina di scorrimento per recuperare la riga attualmente selezionata. Il chiamante deve passare la posizione per restituire l'indice di riga selezionato come secondo parametro per questa funzione.
+Questo servizio esegue una query sulla rotellina di scorrimento per recuperare la riga attualmente selezionata. Il chiamante deve passare la posizione per restituire l'indice di riga selezionato come secondo parametro a questa funzione.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **riga** Posizione in cui verrà restituito il valore di riga selezionato.
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **row** Posizione in cui verrà restituito il valore di riga selezionato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Recuperato correttamente la riga della rotellina selezionata
+- **GX_SUCCESS** (0x00) È stata recuperata la riga della ruota selezionata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x19) Widget non valido
@@ -17282,7 +17359,7 @@ the row variable. */
 ## <a name="gx_scroll_wheel_selected_set"></a>gx_scroll_wheel_selected_set
 
 
-Assegnare la riga selezionata della rotellina di scorrimento
+Assegnare la riga della rotellina di scorrimento selezionata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -17299,7 +17376,7 @@ Questo servizio assegna la riga della rotellina di scorrimento attualmente selez
 ### <a name="parameters"></a>Parametri
 
 - **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **riga** Riga della rotellina di scorrimento da selezionare.
+- **row** Riga della rotellina di scorrimento da selezionare.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -17364,8 +17441,8 @@ Questo servizio assegna la velocità di scorrimento per il widget della rotellin
 
 ### <a name="parameters"></a>Parametri
 
-- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **start_speed_rate** Frequenza di scorrimento della velocità di avvio alla velocità di scorrimento rapido.
+- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **start_speed_rate** Velocità di scorrimento della velocità iniziale alla velocità di scorrimento rapido.
 - **end_speed_rate** Velocità di scorrimento della velocità finale alla velocità di scorrimento rapido
 - **max_steps** Numero massimo di passaggi per lo scorrimento.
 - **ritardo** Tempo di ritardo di ogni passaggio.
@@ -17428,16 +17505,16 @@ UINT gx_scroll_wheel_total_rows_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna il numero di righe disponibili nella rotellina di scorrimento indicata. Il widget della rotellina di scorrimento riceve in genere il contenuto della riga dall'applicazione sotto forma di una matrice di stringhe o di dati stringa forniti dall'utente. Questa API informa la rotellina del numero totale di righe che devono essere presentate all'utente.
+Questo servizio assegna il numero di righe disponibili nella rotellina di scorrimento indicata. Il widget della rotellina di scorrimento riceve in genere il contenuto della riga dall'applicazione sotto forma di matrice di stringhe o dati stringa forniti dall'utente. Questa API informa la rotellina di scorrimento del numero totale di righe che devono essere presentate all'utente.
 
 ### <a name="parameters"></a>Parametri
 
-- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento generico
-- **total_rows** Numero totale di righe wheel da presentare all'utente.
+- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento generico
+- **total_rows** Numero totale di righe della ruota da presentare all'utente.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente la riga del totale della rotellina di scorrimento
+- **GX_SUCCESS** (0x00) Impostare correttamente la riga totale della rotellina di scorrimento
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -17488,7 +17565,7 @@ VOID gx_scrollbar_draw(GX_SCROLLBAR *scrollbar);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna una barra di scorrimento. Per i widget della barra di scorrimento verticale e orizzontale viene usata una funzione di disegno comune. Questo servizio viene chiamato internamente dall'aggiornamento dell'area di disegno GUIX, ma può essere chiamato anche da funzioni di disegno sottoposte a override.
+Questo servizio disegna una barra di scorrimento. Una funzione di disegno comune viene usata per i widget della barra di scorrimento verticale e orizzontale. Questo servizio viene chiamato internamente dall'aggiornamento dell'area di disegno GUIX, ma può essere chiamato anche da funzioni di disegno sottoposte a override.
 
 ### <a name="parameters"></a>Parametri
 
@@ -17496,7 +17573,7 @@ Questo servizio disegna una barra di scorrimento. Per i widget della barra di sc
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -17527,7 +17604,7 @@ VOID my_scrollbar_draw(GX_SCROLLBAR *scrollbar)
 ## <a name="gx_scrollbar_event_process"></a>gx_scrollbar_event_process
 
 
-Evento della barra di scorrimento del processo
+Elaborare l'evento della barra di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -17539,16 +17616,16 @@ UINT gx_scrollbar_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento della barra di scorrimento. Una funzione di gestione degli eventi comune usata per i widget della barra di scorrimento verticale e orizzontale.
+Questo servizio elabora un evento della barra di scorrimento. Funzione comune di gestione degli eventi usata per i widget della barra di scorrimento verticale e orizzontale.
 
 ### <a name="parameters"></a>Parametri
 
 - **barra di scorrimento** Blocco di controllo widget della barra di scorrimento
-- **event** Puntatore all'evento da elaborare
+- **evento** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Operazione riuscita della barra di scorrimento
+- **GX_SUCCESS** (0x00) Processo evento barra di scorrimento riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -17709,7 +17786,7 @@ UINT gx_scrollbar_value_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna il valore corrente della barra di scorrimento. Un GX_EVENT_VERTICAL_SCROLL o GX_EVENT_HORIZONTAL_SCROLL verrà generato un evento nella finestra padre.
+Questo servizio assegna il valore corrente della barra di scorrimento. Un GX_EVENT_VERTICAL_SCROLL o GX_EVENT_HORIZONTAL_SCROLL evento verrà generato nella finestra padre.
 
 ### <a name="parameters"></a>Parametri
 
@@ -17718,7 +17795,7 @@ Questo servizio assegna il valore corrente della barra di scorrimento. Un GX_EVE
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Operazione riuscita della barra di scorrimento
+- **GX_SUCCESS** (0x00) Processo evento barra di scorrimento riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -17760,7 +17837,7 @@ UINT gx_single_line_text_input_backspace(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elimina il carattere prima della posizione del cursore di input di testo. Questo servizio viene chiamato internamente quando viene ricevuto un evento backspace key down, ma può anche essere richiamato dall'applicazione.
+Questo servizio elimina il carattere prima della posizione del cursore di input di testo. Questo servizio viene chiamato internamente quando viene ricevuto un evento di backspace key down, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -17768,7 +17845,7 @@ Questo servizio elimina il carattere prima della posizione del cursore di input 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione dell'input di testo a riga singola completata
+- **GX_SUCCESS** (0x00) Creazione di input di testo a riga singola riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x23) Widget non valido
@@ -17831,7 +17908,7 @@ Questo servizio elimina tutti i caratteri dal buffer di input di testo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Cancellato correttamente il buffer di input di testo a riga singola
+- **GX_SUCCESS** (0x00) Cancellare correttamente il buffer di input di testo a riga singola
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -17948,7 +18025,7 @@ status = gx_single_line_text_input_buffer_get(&my_text_input,
 ## <a name="gx_single_line_text_input_character_delete"></a>gx_single_line_text_input_character_delete
 
 
-Eliminare il carattere in corrispondenza della posizione corrente del cursore
+Eliminare il carattere nella posizione corrente del cursore
 
 ### <a name="prototype"></a>Prototipo
 
@@ -18099,22 +18176,22 @@ UINT gx_single_line_text_input_create(
 
 Questo servizio crea un widget di input di testo. Il chiamante deve fornire spazio di archiviazione per la stringa di input e indicare la lunghezza massima della stringa.
 
-GX_SINGLE_LINE_TEXT_INPUT deriva da GX_PROMPT e pertanto tutti gx_prompt servizi possono essere usati con GX_SINGLE_LINE_TEXT_INPUT widget.
+GX_SINGLE_LINE_TEXT_INPUT deriva da GX_PROMPT e pertanto tutti i gx_prompt possono essere usati con GX_SINGLE_LINE_TEXT_INPUT widget.
 
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo a riga singola
 - **name** Nome logico del widget facoltativo
-- **padre** Widget padre facoltativo
+- **elemento padre** Widget padre facoltativo
 - **input_buffer** Archiviazione per la stringa di input
-- **buffer_size** Dimensioni dell'area di archiviazione delle stringhe di input, in byte.
+- **buffer_size** Dimensioni dell'area di archiviazione della stringa di input, in byte.
 - **style** Flag di stile di input di testo
 - **text_input_id** ID facoltativo del widget di input
 - **size** Rettangolo che definisce le dimensioni iniziali del widget
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione dell'input di testo a riga singola completata
+- **GX_SUCCESS** (0x00) Creazione di input di testo a riga singola riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_ALREADY_CREATED** (0x13) Widget già creato
@@ -18187,7 +18264,7 @@ Questo servizio disegna un widget di input di testo. Questo servizio viene in ge
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -18233,7 +18310,7 @@ VOID my_sl_text_input_draw(GX_SINGLE_LINE_TEXT_INPUT *input)
 ## <a name="gx_single_line_text_input_draw_position_get"></a>gx_single_line_text_input_draw_position_get
 
 
-Recuperare la posizione iniziale di disegno del testo
+Recuperare la posizione iniziale del disegno del testo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -18250,12 +18327,12 @@ Questo servizio recupera la posizione iniziale di disegno del testo di input di 
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo a riga singola
-- **xpos** Recuperata la posizione iniziale di disegno nella coordinata x
-- **ypos** Recuperata la posizione iniziale di disegno nella coordinata y
+- **xpos** Recuperata la posizione iniziale del disegno nella coordinata x
+- **ypos** Recuperata la posizione iniziale del disegno nella coordinata y
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostare correttamente il cursore di input di testo alla fine
+- **GX_SUCCESS** (0x00) Spostare correttamente il cursore di input del testo alla fine
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -18320,7 +18397,7 @@ UINT gx_single_line_text_input_end(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il cursore del widget di input di testo alla fine della stringa di input. Questo servizio viene chiamato internamente quando viene ricevuto un evento di chiusura del tasto DIS, ma può anche essere richiamato dall'applicazione.
+Questo servizio posiziona il cursore del widget di input di testo alla fine della stringa di input. Questo servizio viene chiamato internamente quando viene ricevuto un evento end key down, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -18328,7 +18405,7 @@ Questo servizio posiziona il cursore del widget di input di testo alla fine dell
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostare correttamente il cursore di input di testo alla fine
+- **GX_SUCCESS** (0x00) Spostare correttamente il cursore di input del testo alla fine
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -18384,7 +18461,7 @@ UINT gx_single_line_text_input_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento di input di testo a riga singola. Questa funzione fa riferimento internamente alla funzione gx_single_line_text_input_create, ma viene esposta per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione di elaborazione dell'evento di input di testo a riga singola personalizzata.
+Questo servizio elabora un evento di input di testo a riga singola. Questa funzione fa riferimento internamente alla funzione gx_single_line_text_input_create, ma viene esposta per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione di elaborazione personalizzata dell'evento di input di testo a riga singola.
 
 ### <a name="parameters"></a>Parametri
 
@@ -18475,10 +18552,10 @@ Questo servizio imposta il colore di riempimento dell'input di testo a riga sing
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Puntatore al blocco di controllo di input di testo a riga singola
-- **normal_fill_color_id** ID risorsa del colore di riempimento del widget nello stato normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **selected_fill_color_id** ID risorsa del colore di riempimento del widget quando il widget ottiene lo stato attivo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **disabled_fill_color_id** ID risorsa del colore di riempimento del widget quando lo stile GX_STYLE_ENABLED non è impostato. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **readonly_fill_color_id** ID risorsa del colore di riempimento del widget quando sono impostati GX_STYLE_ENABLED e GX_STYLE_TEXT_INPUT_READYONLY di stile. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **normal_fill_color_id** ID risorsa del colore di riempimento del widget nello stato normale. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **selected_fill_color_id** ID risorsa del colore di riempimento del widget quando il widget ottiene lo stato attivo. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **disabled_fill_color_id** ID risorsa del colore di riempimento del widget quando lo stile GX_STYLE_ENABLED non è impostato. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **readonly_fill_color_id** ID risorsa del colore di riempimento del widget quando sono impostati GX_STYLE_ENABLED e GX_STYLE_TEXT_INPUT_READYONLY stile. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -18610,7 +18687,7 @@ Questo servizio sposta il cursore di input di testo di un carattere a sinistra. 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il cursore è stato spostato correttamente a sinistra
+- **GX_SUCCESS** (0x00) Spostato correttamente il cursore a sinistra
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -18653,7 +18730,7 @@ status = gx_single_line_text_input_left_arrow(&my_text_input);
 
 ## <a name="gx_single_line_text_input_position_get"></a>gx_single_line_text_input_position_get
 
-Spostare il cursore in posizione pixel
+Spostare il cursore nella posizione dei pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -18730,7 +18807,7 @@ UINT gx_single_line_text_input_right_arrow(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio sposta il cursore di input di testo di un carattere a destra. Questo servizio viene chiamato internamente quando viene ricevuto un evento di tasto di scelta, ma può essere richiamato anche dall'applicazione.
+Questo servizio sposta il cursore di input di testo di un carattere a destra. Questo servizio viene chiamato internamente quando viene ricevuto un evento right key down, ma può anche essere richiamato dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -18738,7 +18815,7 @@ Questo servizio sposta il cursore di input di testo di un carattere a destra. Qu
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il cursore è stato spostato a destra
+- **GX_SUCCESS** (0x00) Il cursore è stato spostato correttamente a destra
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -18798,11 +18875,11 @@ Questo servizio aggiunge gli stili specificati al widget di input di testo a rig
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo a riga singola
-- **style** Nuovo stile da aggiungere. **L'appendice D** contiene stili generali predefiniti per tutti i widget
+- **style** Nuovo stile da aggiungere. **L'Appendice D** contiene stili generali predefiniti per tutti i widget
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Aggiunta dello stile al widget completata
+- **GX_SUCCESS** (0x00) Aggiunta di stile al widget completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -18862,11 +18939,11 @@ Questo servizio rimuove gli stili specificati dal widget di input di testo a rig
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo a riga singola
-- **style** Stili da rimuovere. **L'appendice D** contiene stili generali predefiniti per tutti i widget
+- **style** Stili da rimuovere. **L'Appendice D** contiene stili generali predefiniti per tutti i widget
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Gli stili sono stati rimossi correttamente dal widget
+- **GX_SUCCESS** (0x00) Rimozione degli stili dal widget completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -18926,11 +19003,11 @@ Questo servizio imposta gli stili specificati sul widget di input di testo a rig
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Blocco di controllo widget di input di testo a riga singola
-- **Flag di** stile da assegnare
+- **flag di** stile da assegnare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente lo stile di input di testo
+- **GX_SUCCESS** (0x00) Impostare correttamente lo stile di input del testo
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -18993,14 +19070,14 @@ Questo servizio imposta il colore del testo dell'input di testo a riga singola.
 ### <a name="parameters"></a>Parametri
 
 - **text_input** Puntatore al blocco di controllo di input di testo a riga singola
-- **normal_text_color_id** ID risorsa del colore del testo nello stato normale. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **selected_text_color_id** ID risorsa del colore del testo quando il widget ottiene lo stato attivo. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **disabled_text_color_id** ID risorsa del colore del testo quando lo stile GX_STYLE_ENABLED non è impostato. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **readonly_text_color_id** ID risorsa del colore del testo quando sono impostati sia lo stile GX_STYLE_ENABLED che GX_STYLE_TEXT_INPUT_READONLY testo. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **normal_text_color_id** ID risorsa del colore del testo nello stato normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **selected_text_color_id** ID risorsa del colore del testo quando il widget ottiene lo stato attivo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **disabled_text_color_id** ID risorsa del colore del testo quando lo stile GX_STYLE_ENABLED non è impostato. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **readonly_text_color_id** ID risorsa del colore del testo quando sono impostati sia GX_STYLE_ENABLED che GX_STYLE_TEXT_INPUT_READONLY testo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori testo di input di testo a riga singola riuscito
+- **GX_SUCCESS** (0x00) Set di colori testo di input testo a riga singola riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -19059,7 +19136,7 @@ UINT gx_single_line_text_input_text_color_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio seleziona il testo con il contrassegno di inizio e l'indice del contrassegno di fine specificati ed evidenzia il testo selezionato con i colori di riempimento e di testo selezionati.
+Questo servizio seleziona il testo con il segno di inizio e l'indice del segno di fine specificati ed evidenzia il testo selezionato con i colori di riempimento e di testo selezionati.
 
 ### <a name="parameters"></a>Parametri
 
@@ -19069,7 +19146,7 @@ Questo servizio seleziona il testo con il contrassegno di inizio e l'indice del 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Selezione del testo di input di testo a riga singola riuscita
+- **GX_SUCCESS** (0x00) Selezione del testo di input di testo a riga singola completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -19137,7 +19214,7 @@ Questo servizio imposta il testo dell'input di testo a riga singola.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori testo di input di testo a riga singola riuscito
+- **GX_SUCCESS** (0x00) Set di colori testo di input testo a riga singola riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -19187,7 +19264,7 @@ Questo servizio imposta il testo dell'input di testo a riga singola.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Set di colori testo di input di testo a riga singola riuscito
+- **GX_SUCCESS** (0x00) Set di colori testo di input testo a riga singola riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -19258,21 +19335,21 @@ GX_SLIDER deriva da GX_WIDGET e pertanto tutti i gx_widget API possono essere us
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo del widget Slider
+- **slider:** blocco di controllo widget dispositivo di scorrimento
 - **name:** nome del dispositivo di scorrimento
 - **parent:** puntatore al widget padre
-- **tick_count:** Numero di segni di graduazione del dispositivo di scorrimento
-- **slider_info:** puntatore alle informazioni sul dispositivo di scorrimento, ovvero una struttura usata per superare i limiti del valore del dispositivo di scorrimento, le dimensioni e la posizione della lanceta del dispositivo di scorrimento e altri parametri del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
-- **style:** stile del dispositivo di scorrimento. **L'Appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
-- **slider_id:** ID del dispositivo di scorrimento definito dall'applicazione
-- **size:** dimensioni del dispositivo di scorrimento
+- **tick_count**: Numero di segni di graduazione del dispositivo di scorrimento
+- **slider_info:** puntatore alle informazioni sul dispositivo di scorrimento, ovvero una struttura usata per passare i limiti del valore del dispositivo di scorrimento, le dimensioni e la posizione dell'ago del dispositivo di scorrimento e altri parametri del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
+- **style:** stile del dispositivo di scorrimento. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **slider_id:** ID definito dall'applicazione del dispositivo di scorrimento
+- **size**: Dimensioni del dispositivo di scorrimento
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Creazione del dispositivo di scorrimento riuscita
+- **GX_SUCCESS:**(0x00) Creazione del dispositivo di scorrimento completata
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
-- **GX_ALREADY_CREATED:**(0x13) Widget già creato
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_ALREADY_CREATED**: (0x13) Widget già creato
 - **GX_INVALID_SIZE:**(0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET:**(0x12) Widget padre non valido
 
@@ -19341,7 +19418,7 @@ Questo servizio disegna un dispositivo di scorrimento. Questo servizio viene usa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -19378,7 +19455,7 @@ VOID my_slider_draw(GX_SLIDER *slider)
 
 ## <a name="gx_slider_event_process"></a>gx_slider_event_process
 
-Evento dispositivo di scorrimento del processo
+Evento del dispositivo di scorrimento del processo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -19390,7 +19467,7 @@ UINT gx_slider_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento dispositivo di scorrimento. Questa funzione fa riferimento internamente alla funzione gx_slider_create, ma viene esposta per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione personalizzata di elaborazione degli eventi del dispositivo di scorrimento.
+Questo servizio elabora un evento dispositivo di scorrimento. Questa funzione fa riferimento internamente alla funzione gx_slider_create, ma viene esposta per l'uso da parte dell'applicazione nei casi in cui l'applicazione definisce una funzione di elaborazione degli eventi del dispositivo di scorrimento personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -19401,7 +19478,7 @@ Questo servizio elabora un evento dispositivo di scorrimento. Questa funzione fa
 
 - **GX_SUCCESS:**(0x00) Processo evento dispositivo di scorrimento riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -19461,18 +19538,18 @@ UINT gx_slider_info_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna al dispositivo di scorrimento indicato le informazioni sul dispositivo di scorrimento specificate, ad esempio minimo, massimo dispositivo di scorrimento e valore corrente del dispositivo di scorrimento. Il dispositivo di scorrimento aggiornerà la posizione della lanceta e lo ridisegnerà in base alle nuove informazioni sul dispositivo di scorrimento.
+Questo servizio assegna al dispositivo di scorrimento indicato le informazioni sul dispositivo di scorrimento specificate, ad esempio minimo, massimo dispositivo di scorrimento e valore corrente del dispositivo di scorrimento. Il dispositivo di scorrimento aggiornerà la posizione dell'ago e lo ridisegnerà in base alle nuove informazioni sul dispositivo di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo del widget Slider
+- **slider:** blocco di controllo widget dispositivo di scorrimento
 - **info:** puntatore alla struttura delle informazioni del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Impostare correttamente le informazioni sul dispositivo di scorrimento
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -19519,7 +19596,7 @@ status = gx_slider_info_set (&my_slider, &my_slider_info);
 
 ## <a name="gx_slider_needle_draw"></a>gx_slider_needle_draw
 
-Disegnare l'ago del dispositivo di scorrimento
+Lance del dispositivo di scorrimento di disegno
 
 ### <a name="prototype"></a>Prototipo
 
@@ -19529,15 +19606,15 @@ VOID gx_slider_needle_draw(GX_SLIDER *slider);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna un ago del dispositivo di scorrimento. Questo servizio viene chiamato automaticamente dalla funzione gx_slider_draw, ma può anche essere richiamato dall'applicazione come parte di una funzione personalizzata di disegno del dispositivo di scorrimento.
+Questo servizio disegna una lanceta del dispositivo di scorrimento. Questo servizio viene chiamato automaticamente dalla funzione gx_slider_draw, ma può anche essere richiamato dall'applicazione come parte di una funzione personalizzata di disegno del dispositivo di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo widget dispositivo di scorrimento
+- **slider:** blocco di controllo del widget Slider
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -19577,7 +19654,7 @@ VOID my_slider_draw(GX_SLIDER *slider)
 
 ## <a name="gx_slider_needle_position_get"></a>gx_slider_needle_position_get
 
-Ottenere la posizione della lanceta del dispositivo di scorrimento
+Ottenere la posizione dell'ago del dispositivo di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -19590,19 +19667,19 @@ UINT gx_slider_needle_position_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio calcola la posizione della lanceta del dispositivo di scorrimento in base al valore corrente del dispositivo di scorrimento.
+Questo servizio calcola la posizione dell'ago del dispositivo di scorrimento in base al valore corrente del dispositivo di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo del widget Slider
-- **slider_info:** puntatore alla struttura delle informazioni del dispositivo di scorrimento che definisce i limiti del dispositivo di scorrimento, la dimensione e l'offset della lanceta e altri parametri del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
-- **return_position:** Puntatore alla destinazione per la posizione della lanceta
+- **slider:** blocco di controllo widget dispositivo di scorrimento
+- **slider_info:** puntatore alla struttura delle informazioni sul dispositivo di scorrimento che definisce i limiti del dispositivo di scorrimento, le dimensioni e l'offset dell'ago e altri parametri del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
+- **return_position:** puntatore alla destinazione per la posizione dell'ago
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Posizione della lanceta del dispositivo di scorrimento riuscita
+- **GX_SUCCESS:**(0x00) Posizione dell'ago del dispositivo di scorrimento riuscita
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 - **GX_INVALID_VALUE:**(0x22) Informazioni dispositivo di scorrimento non valide
 
@@ -19640,7 +19717,7 @@ status = gx_slider_needle_posistion_get(&my_slider, &slider_info,
 
 ## <a name="gx_slider_tickmarks_draw"></a>gx_slider_tickmarks_draw
 
-Disegnare i segni di graduazione del dispositivo di scorrimento
+Disegnare segni di graduazione del dispositivo di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -19654,11 +19731,11 @@ Questo servizio disegna i segni di graduazione del dispositivo di scorrimento. Q
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo widget dispositivo di scorrimento
+- **slider:** blocco di controllo del widget Slider
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -19712,18 +19789,18 @@ UINT gx_slider_travel_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ottiene il dispositivo di scorrimento.
+Questo servizio ottiene lo scorrimento del dispositivo di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo del widget Slider
+- **slider:** blocco di controllo widget dispositivo di scorrimento
 - **info:** puntatore alla struttura delle informazioni del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_SLIDER_INFO struttura.
-- **return_min_travel:** Puntatore alla destinazione per il valore minimo di viaggio</td>
-- **return_max_travell:** Puntatore alla destinazione per il valore massimo di viaggio</td>
+- **return_min_travel:** puntatore alla destinazione per il valore minimo di viaggio</td>
+- **return_max_travell:** puntatore alla destinazione per il valore massimo di viaggio</td>
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successful slider travel get
+- **GX_SUCCESS:**(0x00) Ottenere il dispositivo di scorrimento riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
@@ -19774,19 +19851,19 @@ UINT gx_slider_value_calculate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio calcola il valore del dispositivo di scorrimento in base alla posizione dell'ago del dispositivo di scorrimento. Questa funzione viene chiamata internamente da GUIX quando l'utente sposta l'ago del dispositivo di scorrimento, ma può anche essere richiamata dall'applicazione quando implementa un widget dispositivo di scorrimento personalizzato.
+Questo servizio calcola il valore del dispositivo di scorrimento in base alla posizione dell'ago del dispositivo di scorrimento. Questa funzione viene chiamata internamente da GUIX quando l'utente sposta l'ago del dispositivo di scorrimento, ma può anche essere richiamata dall'applicazione durante l'implementazione di un widget dispositivo di scorrimento personalizzato.
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo del widget Slider
-- **info:** puntatore alle informazioni del dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_LISDER_INFO struttura.
-- **new_position:** Nuova posizione del dispositivo di scorrimento
+- **slider:** blocco di controllo widget dispositivo di scorrimento
+- **info:** puntatore alle informazioni sul dispositivo di scorrimento. **L'appendice I** contiene la definizione GX_LISDER_INFO struttura.
+- **new_position:** nuova posizione del dispositivo di scorrimento
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Calcolo del valore del dispositivo di scorrimento riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 - **GX_INVALID_VALUE:**(0x22) Informazioni dispositivo di scorrimento non valide
 
@@ -19836,19 +19913,19 @@ UINT gx_slider_value_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il valore del dispositivo di scorrimento. Questa API può essere chiamata dall'applicazione per spostare un ago del dispositivo di scorrimento sotto il controllo del programma, ignorando la necessità di input dell'utente per trascinare l'ago del dispositivo di scorrimento.
+Questo servizio imposta il valore del dispositivo di scorrimento. Questa API può essere chiamata dall'applicazione per spostare una lanceta del dispositivo di scorrimento sotto il controllo del programma, ignorando la necessità di input dell'utente per trascinare la lanceta del dispositivo di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **slider:** blocco di controllo widget dispositivo di scorrimento
-- **info:** puntatore alla struttura delle informazioni del dispositivo di scorrimento. **Appendice I contiene** la definizione per GX_SLIDER_INFO struttura
-- **new_value:** nuovo valore del dispositivo di scorrimento
+- **slider:** blocco di controllo del widget Slider
+- **info:** puntatore alla struttura delle informazioni del dispositivo di scorrimento. **Appendice I contenente** la definizione GX_SLIDER_INFO struttura
+- **new_value:** Nuovo valore del dispositivo di scorrimento
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Valore del dispositivo di scorrimento riuscito impostato
+- **GX_SUCCESS:**(0x00) Impostare il valore del dispositivo di scorrimento Riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -19899,11 +19976,11 @@ UINT gx_sprite_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget GX_SPRITE personalizzato. Uno sprite viene usato per visualizzare una sequenza di mappe pixel come in un'animazione o può essere usato come widget di visualizzazione di mappe pixel a più stati.
+Questo servizio crea un GX_SPRITE widget. Uno sprite viene usato per visualizzare una sequenza di pixelmap come in un'animazione o può essere usato come widget di visualizzazione di una mappa pixel a più stati.
 
 GX_SPRITE deriva da GX_WIDGET e supporta tutti i gx_widget API.
 
-Il widget GX_SPRITE richiede una matrice di GX_SPRITE_FRAME per definire l'animazione sprite. **L'appendice I** contiene la definizione GX_PRITE_FRAME struttura.
+Il GX_SPRITE widget richiede una matrice di GX_SPRITE_FRAME per definire l'animazione dello sprite. **L'appendice I** contiene la definizione GX_PRITE_FRAME struttura.
 
 ### <a name="parameters"></a>Parametri
 
@@ -19912,15 +19989,15 @@ Il widget GX_SPRITE richiede una matrice di GX_SPRITE_FRAME per definire l'anima
 - **parent:** puntatore al widget padre
 - **frame_list:** matrice di GX_SPRITE_FRAME struttura
 - **frame_count**: specifica il numero di voci nella matrice dell'elenco di frame
-- **style**: stile dello sprite. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
-- **sprite_id:** ID definito dall'applicazione di sprite
+- **style:** stile dello sprite. **L'Appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **sprite_id:** ID di sprite definito dall'applicazione
 - **size:** dimensioni dello sprite
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Creazione sprite riuscita
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_ALREADY_CREATED:**(0x13) Widget già creato
 - **GX_INVALID_WIDGET:**(0x12) Widget padre non valido
 
@@ -19963,7 +20040,7 @@ UINT gx_sprite_current_frame_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna il frame dello sprite corrente. Se un widget GX_SPRITE non è in esecuzione automaticamente, può essere usato come luce di stato controllata dal programma, visualizzando la mappa pixel dei fotogrammi con comando.
+Questo servizio assegna il frame dello sprite corrente. Se un GX_SPRITE widget non è in esecuzione automaticamente, può essere usato come luce di stato controllata dal programma, visualizzando la mappa pixel dei fotogrammi eseguita.
 
 ### <a name="parameters"></a>Parametri
 
@@ -19972,9 +20049,9 @@ Questo servizio assegna il frame dello sprite corrente. Se un widget GX_SPRITE n
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Successful
+- **GX_SUCCESS**: (0x00) Riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -20018,13 +20095,13 @@ Questo servizio può essere usato per assegnare o rias assegnare l'elenco di fra
 
 - **sprite:** blocco di controllo del widget Sprite
 - **frame_list:** matrice di GX_SPRITE_FRAME o di GX_NULL se non è presente alcun elenco di frame.
-- **frame_count**: Numero di frame nella matrice dell'elenco di frame
+- **frame_count:** Numero di frame nella matrice dell'elenco di frame
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Set di elenchi di frame sprite riuscito
+- **GX_SUCCESS:**(0x00) Set di elenchi di frame sprite riusciti
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -20061,12 +20138,12 @@ UINT gx_sprite_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia una sequenza di esecuzione automatica sprite. Il widget sprite scorrerà i fotogrammi dello sprite fino a raggiungere l'ultimo fotogramma o verrà eseguito in modo continuo se lo stile GX_SPRITE_LOOP è impostato.
+Questo servizio avvia una sequenza di esecuzione automatica degli sprite. Il widget sprite scorrerà i fotogrammi dello sprite fino a quando non viene raggiunto l'ultimo fotogramma o verrà eseguito continuamente se lo stile GX_SPRITE_LOOP è impostato.
 
 ### <a name="parameters"></a>Parametri
 
 - **sprite:** blocco di controllo del widget Sprite
-- **frame:** frame sprite iniziale da visualizzare, in genere frame 0
+- **frame:** frame sprite iniziale da visualizzare, in genere il frame 0
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -20097,7 +20174,7 @@ status = gx_sprite_start(&my_sprite, 0);
 
 ## <a name="gx_sprite_stop"></a>gx_sprite_stop
 
-Arrestare una sequenza di esecuzione di sprite
+Arrestare una sequenza di esecuzione sprite
 
 ### <a name="prototype"></a>Prototipo
 
@@ -20107,7 +20184,7 @@ UINT gx_sprite_stop(GX_SPRITE *sprite);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio arresta una sequenza di esecuzione automatica degli sprite.
+Questo servizio arresta una sequenza di esecuzione automatica sprite.
 
 ### <a name="parameters"></a>Parametri
 
@@ -20115,9 +20192,9 @@ Questo servizio arresta una sequenza di esecuzione automatica degli sprite.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Arresto dell'esecuzione sprite completato
+- **GX_SUCCESS:**(0x00) L'esecuzione di sprite è stata arrestata correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -20162,29 +20239,29 @@ UINT gx_string_scroll_wheel_create(
 
 Questo servizio crea una rotellina di scorrimento di tipo stringa.
 
-GX_STRING_SCROLL_WHEEL deriva da GX_TEXT_SCROLL_WHEEL e quindi tutte le gx_text_scroll_wheel API possono essere usate con GX_STRING_SCROLL_WHEEL widget.
+GX_STRING_SCROLL_WHEEL deriva da GX_TEXT_SCROLL_WHEEL e pertanto tutte le gx_text_scroll_wheel API possono essere usate con GX_STRING_SCROLL_WHEEL widget.
 
-L'applicazione può passare una semplice matrice di stringhe alla funzione create che definisce le stringhe che verranno visualizzate dalla rotellina di scorrimento oppure l'applicazione può passare GX_NULL come parametro string_list e chiamare l'API per fornire una matrice di ID `gx_string_scroll_wheel_string_id_list_set()` stringa. Se si usa quest'ultimo metodo, la rotellina di scorrimento delle stringhe cambia automaticamente le stringhe visualizzate se viene modificata la lingua dell'applicazione attiva.
+L'applicazione può passare una semplice matrice di stringhe alla funzione create che definisce le stringhe che verranno visualizzate dalla rotellina di scorrimento oppure l'applicazione può passare GX_NULL come parametro string_list e chiamare l'API per fornire una matrice di ID `gx_string_scroll_wheel_string_id_list_set()` stringa. Se si usa quest'ultimo metodo, la rotellina di scorrimento della stringa cambia automaticamente le stringhe visualizzate se viene modificata la lingua dell'applicazione attiva.
 
-In alternativa, se le stringhe da visualizzare non sono definite in modo statico o non conoscono al momento della creazione della rotellina di scorrimento, l'applicazione può passare GX_NULL come parametro dell'elenco di stringhe e chiamare la funzione API gx_text_scroll_wheel_callback_set() per definire una funzione di callback che fornirà le stringhe da visualizzare in tempo reale in base alle esigenze.
+In alternativa, se le stringhe da visualizzare non sono definite in modo statico o non sono state definite al momento della creazione della rotellina di scorrimento, l'applicazione può passare GX_NULL come parametro dell'elenco di stringhe e chiamare la funzione API gx_text_scroll_wheel_callback_set() per definire una funzione di callback che fornirà le stringhe da visualizzare in tempo reale in base alle esigenze.
 
 ### <a name="parameters"></a>Parametri
 
 - **wheel:** indirizzo del blocco di controllo della rotellina di scorrimento della stringa
 - **name:** nome del widget definito dall'applicazione
-- **parent:** ruota padre o GX_NULL
-- **total_rows:** totale righe da presentare all'utente
+- **parent:** padre della rotellina o GX_NULL
+- **total_rows:** Totale righe da presentare all'utente
 - **string_list:** matrice di stringhe definita in modo statico o GX_NULL
-- **style**: flag di stile desiderati
+- **style:** flag di stile desiderati
 - **ID:** flag di stile della rotellina definiti dall'applicazione
 - **size:** dimensioni iniziali della rotellina di scorrimento
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Creazione corretta della rotellina di scorrimento delle stringhe
+- **GX_SUCCESS:**(0x00) Creazione della rotellina di scorrimento della stringa completata
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR (0x07): puntatore** non valido
-- **GX_ALREADY_CREATED:**(0x13) Widget già creato
+- **GX_ALREADY_CREATED**: (0x13) Widget già creato
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -20253,16 +20330,16 @@ UINT gx_string_scroll_wheel_string_id_list_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento per la rotellina di scorrimento della stringa specificata. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione personalizzata degli eventi della rotellina di scorrimento delle stringhe.
+Questo servizio elabora un evento per la rotellina di scorrimento della stringa specificata. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione personalizzata dell'evento della rotellina di scorrimento della stringa.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento della stringa
+- **wheel** Puntatore al blocco di controllo della rotellina di scorrimento della stringa
 - **event_ptr** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Processo di evento della rotellina di scorrimento delle stringhe riuscito
+- **GX_SUCCESS** (0x00) Processo dell'evento della rotellina di scorrimento della stringa riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -20329,21 +20406,21 @@ UINT gx_string_scroll_wheel_string_id_list_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna una matrice di ID stringa a un widget della rotellina di scorrimento della stringa. Questo metodo di assegnazione di stringhe a una rotellina di scorrimento di stringhe è consigliato se le stringhe sono definite in modo statico e il widget deve funzionare in più lingue. Se questa API deve essere usata, il widget della rotellina di scorrimento deve prima essere creato con un GX_NULL di stringhe.
+Questo servizio assegna una matrice di ID stringa a un widget della rotellina di scorrimento della stringa. Questo metodo di assegnazione di stringhe a una rotellina di scorrimento delle stringhe è consigliato se le stringhe sono definite in modo statico e il widget deve operare in più lingue. Se questa API deve essere usata, il widget della rotellina di scorrimento deve prima essere creato con un GX_NULL di stringhe.
 
 ### <a name="parameters"></a>Parametri
 
 - **wheel:** indirizzo del blocco di controllo della rotellina di scorrimento della stringa
 - **string_id_list:** matrice di ID stringa
-- **id_count**: dimensioni dell'elenco di ID.
+- **id_count**: dimensione dell'elenco di ID.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successfully set string ID array (Matrice ID stringa completata)
+- **GX_SUCCESS**: (0x00) Matrice id stringa impostata correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
-- **GX_INVALID_VALUE:** 0x22) Dimensioni elenco ID non valide
+- **GX_INVALID_VALUE**: 0x22) Dimensioni elenco ID non valide
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20406,23 +20483,23 @@ UINT gx_string_scroll_wheel_string_list_set(
 
 ### <a name="description"></a>Descrizione
 
-In questo modo viene assegnata una matrice di stringhe a un widget della rotellina di scorrimento della stringa. Può essere usato per modificare le stringhe visualizzate dopo la creazione iniziale del widget.
+In questo modo viene assegnata una matrice di stringhe a un widget della rotellina di scorrimento delle stringhe. Può essere usato per modificare le stringhe visualizzate dopo la creazione iniziale del widget.
 
 Si noti string_scroll_wheel non supporta GX_STYLE_TEXT_COPY e pertanto la matrice di stringhe passate in questa funzione deve essere definita in modo statico dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
 - **wheel:** indirizzo del blocco di controllo della rotellina di scorrimento della stringa
-- **string_list:** Matrice di puntatori di stringa
-- **string_count**: dimensioni della matrice di stringhe.
+- **string_list**: Matrice di puntatori di stringa
+- **string_count**: dimensione della matrice di stringhe.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successfully changed strings for scroll wheel (Modifica delle stringhe per la rotellina di scorrimento completata)
+- **GX_SUCCESS**: (0x00) Le stringhe per la rotellina di scorrimento sono state modificate correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
-- **GX_INVALID_VALUE:**(0x22) Dimensioni elenco stringhe non valide
+- **GX_INVALID_VALUE:**(0x22) Dimensioni dell'elenco di stringhe non valide
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20485,18 +20562,18 @@ GX_WIDGET *gx_studio_widget_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget e gli elementi figlio del widget usando una specifica del widget definita nel file di specifiche generato da GUIX Studio. Questa funzione evita la ricerca "per nome" della funzione simile `gx_studio_named_widget_create()` .
+Questo servizio crea un widget e gli elementi figlio del widget usando una specifica del widget definita all'interno del file di specifiche generato da GUIX Studio. Questa funzione evita la ricerca "per nome" della funzione simile `gx_studio_named_widget_create()` .
 
-La GX_STUDIO_WIDGET struttura è definita nel file di intestazione delle specifiche dell'applicazione generato da GUIX Studio.
+La GX_STUDIO_WIDGET è definita nel file di intestazione delle specifiche dell'applicazione generato da GUIX Studio.
 
-Per i widget allocati in modo statico, il blocco di controllo widget è definito nel file specifications.c generato e dato il nome del widget definito in GUIX Studio. Per i widget allocati dinamicamente, l'applicazione deve passare GX_NULL come indirizzo del blocco di controllo del widget e la funzione tenterà di allocare dinamicamente il blocco di controllo widget usando la funzione , definita anche da e fornita `gx_system_memory_allocate()` dall'applicazione.
+Per i widget allocati in modo statico, il blocco di controllo del widget è definito nel file specifications.c generato e dato il nome del widget definito in GUIX Studio. Per i widget allocati dinamicamente, l'applicazione deve passare GX_NULL come indirizzo del blocco di controllo del widget e la funzione tenterà di allocare dinamicamente il blocco di controllo del widget usando la funzione , definita anche da e fornita `gx_system_memory_allocate()` dall'applicazione.
 
 Per fare riferimento direttamente alla definizione del widget GUIX Studio all'interno del file delle specifiche generate, è necessario seguire la convenzione di denominazione utilizzata dal generatore di codice di GUI Studio. La GX_STUDIO_WIDGET generata all'interno del file specifications.c viene sempre denominata in base a questa convenzione: <widget_name>_define, in cui il campo <widget_name> può essere ripetuto più volte se il widget è figlio di un widget figlio.
 
 ### <a name="parameters"></a>Parametri
 
 - **controllo** Puntatore al blocco di controllo widget o GX_NULL se allocato dinamicamente.
-- **definizione** Struttura delle definizioni dei widget generati da Studio
+- **definizione** Struttura di definizione del widget generata da Studio
 - **puntatore** padre all'elemento padre del widget, se presente
 
 ### <a name="return-values"></a>Valori restituiti
@@ -20543,7 +20620,7 @@ UINT *gx_studio_named_widget_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget e gli elementi figlio del widget usando una specifica del widget definita all'interno del file di specifiche generato da GUIX Studio.
+Questo servizio crea un widget e gli elementi figlio del widget usando una specifica del widget definita nel file di specifiche generato da GUIX Studio.
 
 Questa funzione API viene usata per creare schermate di primo livello usando il nome della schermata specificato nell'applicazione GUIX Studio come identificatore di definizione del widget.
 
@@ -20551,12 +20628,12 @@ Questa funzione API viene usata per creare schermate di primo livello usando il 
 
 - **name:** nome della schermata come definito all'interno dell'applicazione GUIX Studio.
 - **parent:** puntatore all'elemento padre del widget, se presente
-- **new_widget:** posizione in cui restituire il puntatore del widget creato
+- **new_widget:** posizione per restituire il puntatore del widget creato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Successful
-- **GX_FAILURE:**(0x11) Non è stato possibile trovare il widget denominato
+- **GX_SUCCESS**: (0x00) Riuscito
+- **GX_FAILURE:**(0x11) Widget denominato non trovato
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20598,22 +20675,22 @@ UINT *gx_studio_display_configure(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio inizializza un GX_DISPLAY in modo che sia pronto per l'uso. Questa funzione consolida le funzioni per inizializzare GX_DISPLAY blocco di controllo, creare un canvas per adattarlo alla visualizzazione e creare una finestra radice per l'area di disegno. Questa funzione installa anche la lingua e il tema della risorsa richiesti dopo l'inizializzazione della visualizzazione.
+Questo servizio inizializza un GX_DISPLAY in modo che sia pronto per l'uso. Questa funzione consolida le funzioni per inizializzare un blocco di GX_DISPLAY, creare un canvas per adattarlo alla visualizzazione e creare una finestra radice per l'area di disegno. Questa funzione installa anche la lingua e il tema della risorsa richiesti dopo l'inizializzazione della visualizzazione.
 
-Questa funzione consolida il lavoro di programmazione più comunemente necessario per preparare una visualizzazione per l'uso. La funzione richiama le funzioni gx_display_create(), gx_display_color_table_set, gx_display_font_table_set, gx_display_pixelmap_table_set, gx_system_language_table_set, gx_system_active_language_set, gx_system_scroll_appearance_set, gx_canvas_create e gx_window_root_create, tutte o alcune delle quali sarebbero altrimenti richieste dal programma dell'applicazione.
+Questa funzione consolida il lavoro di programmazione più comunemente richiesto per preparare una visualizzazione per l'uso. La funzione richiama le funzioni gx_display_create(), gx_display_color_table_set, gx_display_font_table_set, gx_display_pixelmap_table_set, gx_system_language_table_set, gx_system_active_language_set, gx_system_scroll_appearance_set, gx_canvas_create e gx_window_root_create, tutte o alcune delle quali sarebbero altrimenti richieste dal programma dell'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **display**: indice nella tabella di visualizzazione, che corrisponde alle definizioni di visualizzazione nel file di progetto di Studio.
-- **driver:** puntatore alla funzione di inizializzazione del driver di visualizzazione. Questa funzione viene richiamata per inizializzare i puntatori a funzione indiretti GX_DISPLAY blocco di controllo, nonché per eseguire qualsiasi configurazione hardware necessaria.
-- **language:** indice della tabella della lingua iniziale
+- **display:** indice nella tabella di visualizzazione, che corrisponde alle definizioni di visualizzazione nel file di progetto di Studio.
+- **driver:** puntatore alla funzione di inizializzazione del driver di visualizzazione. Questa funzione viene richiamata per inizializzare i puntatori a funzione indiretti del blocco di controllo GX_DISPLAY, nonché per eseguire qualsiasi configurazione hardware necessaria.
+- **language:** indice iniziale della tabella delle lingue
 - **language:** indice iniziale del tema
 - **root:** puntatore alla variabile in cui restituire l'indirizzo della finestra radice o GX_NULL.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Riuscito
-- **GX_FAILURE:**(0x11) Impossibile inizializzare la visualizzazione
+- **GX_SUCCESS**: (0x00) Successful
+- **GX_FAILURE:** Non è stato 0x11 inizializzare la visualizzazione (0x11)
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20664,14 +20741,14 @@ Questo servizio imposta la lingua corrente. L'indice della lingua deve essere mi
 
 ### <a name="parameters"></a>Parametri
 
-- **language:** indice della lingua, definito nel file di intestazione delle risorse.
+- **language**: indice della lingua, definito nel file di intestazione della risorsa.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Successfully set active language (Impostazione della lingua attiva completata)
-- **GX_CALLER_ERROR:**** (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**** (0x07) Puntatore non valido
-- **GX_INVALID_VALUE:**** (0x22) Indice di lingua non valido
+- **GX_SUCCESS**: (0x00) Impostare correttamente la lingua attiva
+- **GX_CALLER_ERROR**: ** (0x11) Chiamante non valido di questa funzione
+- **GX_PTR_ERROR**: ** (0x07) Puntatore non valido
+- **GX_INVALID_VALUE**: ** (0x22) Indice di lingua non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20704,20 +20781,20 @@ UINT gx_system_animation_get(GX_ANIMATION **animation);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio può essere usato per ottenere un blocco di controllo di animazione da un pool di tali blocchi di controllo gestiti dal gx_system componente. Il pool di blocchi di controllo dell'animazione e i servizi API correlati vengono forniti solo se la costante GX_ANIMATION_POOL_SIZE è definita con un valore 0. L'impostazione predefinita per questo valore è 6, ovvero il pool di blocchi di controllo dell'animazione di sistema contiene dimensioni GX_ANIMATION blocco di controllo.
+Questo servizio può essere usato per ottenere un blocco di controllo di animazione da un pool di tali blocchi di controllo gestiti dal gx_system di animazione. Il pool di blocchi di controllo dell'animazione e i servizi API correlati vengono forniti solo se la costante GX_ANIMATION_POOL_SIZE è definita con un valore 0. L'impostazione predefinita per questo valore è 6, ovvero il pool di blocchi di controllo dell'animazione di sistema contiene dimensioni GX_ANIMATION blocco di controllo.
 
-Un blocco di controllo di animazione allocato tramite questa API viene restituito automaticamente al pool gratuito se l'animazione viene eseguita fino al completamento. Se l'animazione viene arrestata usando gx_animation_stop o non viene avviata a causa di un errore restituito, il blocco di controllo dell'animazione deve essere restituito al pool gratuito dall'applicazione usando gx_system_animation_free.
+Se l'animazione viene eseguita fino al completamento, un blocco di controllo dell'animazione allocato tramite questa API viene restituito automaticamente al pool gratuito. Se l'animazione viene arrestata usando gx_animation_stop o non viene avviata a causa di un errore restituito, il blocco di controllo dell'animazione deve essere restituito al pool gratuito dall'applicazione usando gx_system_animation_free.
 
 ### <a name="parameters"></a>Parametri
 
-- **animation:** indirizzo del puntatore per ricevere GX_ANIMATION puntatore.
+- **animation:** indirizzo del puntatore a ricevere GX_ANIMATION puntatore.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Ottenuto correttamente il blocco di controllo dell'animazione
+- **GX_SUCCESS**: (0x00) È stato ottenuto il blocco di controllo dell'animazione
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore di animazione non valido
-- **GX_OUT_OF_ANIMATIONS**: (0x31) Pool di animazioni di sistema esaurito
+- **GX_PTR_ERROR:**(0x07) Puntatore di animazione non valido
+- **GX_OUT_OF_ANIMATIONS:**(0x31) Pool di animazione di sistema esaurito
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20757,11 +20834,11 @@ UINT gx_system_animation_free(GX_ANIMATION *animation);
 
 Questo servizio può essere usato per restituire un blocco di controllo dell'animazione al pool di sistema. Il pool di blocchi di controllo dell'animazione e i servizi API correlati vengono forniti solo se la costante GX_ANIMATION_POOL_SIZE è definita con un valore 0. L'impostazione predefinita per questo valore è 6, ovvero il pool di blocchi di controllo dell'animazione di sistema contiene dimensioni GX_ANIMATION blocco di controllo.
 
-Un blocco di controllo dell'animazione allocato gx_system_animation_get() viene restituito automaticamente al pool libero se l'animazione viene eseguita fino al completamento. Il tentativo di restituire un blocco di controllo dell'animazione al pool libero che è già stato restituito al pool libero non ha alcun effetto.
+Un blocco di controllo di animazione allocato usando gx_system_animation_get() viene restituito automaticamente al pool gratuito se l'animazione viene eseguita fino al completamento. Il tentativo di restituire un blocco di controllo dell'animazione al pool gratuito già restituito al pool gratuito non ha alcun effetto.
 
-Se l'animazione viene arrestata usando gx_animation_stop o non viene avviata a causa di un errore restituito, il blocco di controllo dell'animazione ottenuto tramite gx_system_animation_get() deve essere restituito al pool libero dall'applicazione usando gx_system_animation_free().
+Se l'animazione viene arrestata usando gx_animation_stop o non viene avviata a causa di un errore restituito, il blocco di controllo dell'animazione ottenuto usando gx_system_animation_get() deve essere restituito al pool gratuito dall'applicazione usando gx_system_animation_free().
 
-Un'animazione deve essere in stato IDLE prima di poter essere restituita al pool libero. Un'animazione si trova nello stato IDLE quando non è stata avviata, quando viene arrestata o quando viene eseguita fino al completamento.
+Un'animazione deve essere in stato IDLE prima di poter essere restituita al pool gratuito. Un'animazione è nello stato IDLE quando non è stata avviata, quando viene arrestata o quando viene eseguita fino al completamento.
 
 ### <a name="parameters"></a>Parametri
 
@@ -20769,9 +20846,9 @@ Un'animazione deve essere in stato IDLE prima di poter essere restituita al pool
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:** blocco di animazione 0x00 (0x00) rilasciato correttamente
+- **GX_SUCCESS:**(0x00) blocco di animazione rilasciato in modo non intenzionale
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore di animazione non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore di animazione non valido
 - **GX_INVALID_ANIMATION**: (0x32) L'animazione non è IDLE o non è stata allocata dal pool di sistema
 
 ### <a name="allowed-from"></a>Consentito da
@@ -20806,7 +20883,7 @@ if (status == GX_SUCCESS)
 
 ## <a name="gx_system_bidi_text_disable"></a>gx_system_bidi_text_disable
 
-Disabilitare il supporto dinamico del testo bidirezionale
+Disabilitare il supporto del testo bidirezionale dinamico
 
 ### <a name="prototype"></a>Prototipo
 
@@ -20816,15 +20893,15 @@ UINT gx_system_bidi_text_disable(VOID);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disabilita il supporto dinamico del testo bidirezionale. Questo servizio richiede GX_DYNAMIC_BIDI_TEXT_SUPPORT essere definito durante la compilazione della libreria GUIX ed è necessario solo se è necessario riordinare in fase di esecuzione i dati di stringa BiDi. La maggior parte delle applicazioni usa GUIX Studio per produrre stringhe di testo BiDi riordinate correttamente.
+Questo servizio disabilita il supporto del testo bidirezionale dinamico. Questo servizio richiede GX_DYNAMIC_BIDI_TEXT_SUPPORT essere definito durante la compilazione della libreria GUIX ed è necessario solo se è necessario riordinare in fase di esecuzione i dati di stringa BiDi. La maggior parte delle applicazioni usa GUIX Studio per produrre stringhe di testo BiDi riordinate correttamente.
 
 ### <a name="parameters"></a>Parametri
 
-**Nessuna**
+**Nessuno**
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il supporto del testo bidi è stato disabilitato correttamente
+- **GX_SUCCESS** (0x00) Correttamente disabilitato il supporto per il testo dell'offerta
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20847,7 +20924,7 @@ status = gx_system_bidi_text_disable();
 
 ## <a name="gx_system_bidi_text_enable"></a>gx_system_bidi_text_enable
 
-Abilitare il supporto dinamico del testo bidi
+Abilitare il supporto dinamico per il testo dell'offerta
 
 ### <a name="prototype"></a>Prototipo
 
@@ -20861,11 +20938,11 @@ Questo servizio abilita il supporto dinamico del testo bidirezionale. Questo ser
 
 ### <a name="parameters"></a>Parametri
 
-**Nessuna**
+**Nessuno**
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Supporto del testo bidi abilitato correttamente
+- **GX_SUCCESS:**(0x00) Successfully enabled offeri text support
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -20898,15 +20975,15 @@ UINT gx_system_canvas_refresh(VOID);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio forza un ridisegno immediato di tutti i widget e le aree di disegno dirty. Questo servizio viene in genere richiamato internamente dal componente di sistema GUIX, ma può essere chiamato dall'applicazione per forzare un'operazione immediata di ridisegno del sistema.
+Questo servizio forza un ridisegno immediato di tutti i widget e le aree di disegno dirty. Questo servizio viene in genere richiamato internamente dal componente di sistema GUIX, ma può essere chiamato dall'applicazione per forzare un'operazione di ridisegno immediato del sistema.
 
 ### <a name="parameters"></a>Parametri
 
-**Nessuna**
+**Nessuno**
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Blocco di animazione rilasciato correttamente
+- **GX_SUCCESS**: (0x00) Blocco di animazione rilasciato correttamente
 - **GX_INVALID_CANVAS**: (0x20) Nessun canvas creato
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 
@@ -20961,7 +21038,7 @@ UINT gx_system_dirty_mark(GX_WIDGET *widget);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio contrassegna l'area di questo widget come dirty. In questo modo, il widget viene accodato per il ridisegno al termine dell'elaborazione degli eventi di sistema.
+Questo servizio contrassegna l'area di questo widget come dirty. In questo modo, il widget viene accodato in modo efficace per il ridisegno quando l'elaborazione degli eventi di sistema è stata completata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -20969,9 +21046,9 @@ Questo servizio contrassegna l'area di questo widget come dirty. In questo modo,
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Widget contrassegnato correttamente come dirty
+- **GX_SUCCESS:**(0x00) Il widget è stato contrassegnato come dirty
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -21028,20 +21105,20 @@ UINT gx_system_dirty_partial_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio contrassegna l'area parziale di questo widget come dirty. In questo modo il widget viene accodato per il ridisegno tramite l'operazione di aggiornamento dell'area di disegno GUIX al termine dell'elaborazione degli eventi di sistema.
+Questo servizio contrassegna l'area parziale di questo widget come dirty. Il widget viene accodato per essere ridisegnato dall'operazione di aggiornamento dell'area di disegno GUIX al termine dell'elaborazione degli eventi di sistema.
 
 ### <a name="parameters"></a>Parametri
 
 - **widget:** puntatore al blocco di controllo widget
-- **dirty_area:** area dirty del widget per contrassegnare dirty
+- **dirty_area:** Area dirty del widget per contrassegnare dirty
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Segno di area dirty parziale riuscito
+- **GX_SUCCESS:**(0x00) Segno di area dirty parziale riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
-- **GX_INVALID_SIZE**: (0x19) Dimensioni non valide dell'area dirty
+- **GX_INVALID_SIZE**: (0x19) Dimensioni dell'area dirty non valide
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21101,11 +21178,11 @@ Questo servizio restituisce un puntatore al contesto di disegno corrente.
 
 ### <a name="parameters"></a>Parametri
 
-- **current_context:** puntatore alla destinazione per il puntatore del contesto di disegno corrente
+- **current_context:** Puntatore alla destinazione per il puntatore del contesto di disegno corrente
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Get del contesto corrente riuscito
+- **GX_SUCCESS:**(0x00) Successful current context get
 - **GX_PTR_ERROR**:0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -21165,7 +21242,7 @@ UINT gx_system_event_fold(GX_EVENT *event);
 
 Questo servizio cerca nella coda di eventi GUIX un evento dello stesso tipo. Se esiste un evento dello stesso tipo, il payload dell'evento viene aggiornato in modo che corrisponda al nuovo evento. Se non viene trovato alcun evento corrispondente, gx_system_event_send viene chiamata la funzione per aggiungere il nuovo evento alla fine della coda di eventi.
 
-Questa funzione viene comunemente usata dai driver di input tocco rapido per impedire il riempimento della coda di eventi con più PEN_DRAG eventi. Questa funzione può anche essere chiamata dall'applicazione per impedire l'aggiunta di più eventi dello stesso tipo alla coda di eventi GUIX.
+Questa funzione viene comunemente usata dai driver di input con tocco rapido per impedire il riempimento della coda di eventi con più PEN_DRAG eventi. Questa funzione può anche essere chiamata dall'applicazione per impedire l'aggiunta di più eventi dello stesso tipo alla coda di eventi GUIX.
 
 ### <a name="parameters"></a>Parametri
 
@@ -21175,7 +21252,7 @@ Questa funzione viene comunemente usata dai driver di input tocco rapido per imp
 
 - **GX_SUCCESS:**(0x00) Invio di eventi riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21245,9 +21322,9 @@ Questo servizio invia l'evento specificato nella coda di eventi di sistema GUIX.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Invio di eventi riuscito
+- **GX_SUCCESS**: (0x00) Invio dell'evento riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21301,7 +21378,7 @@ status = gx_system_event_send(&new_event);
 
 ## <a name="gx_system_focus_claim"></a>gx_system_focus_claim
 
-Stato attivo per le attestazioni
+Stato attivo dell'attestazione
 
 ### <a name="prototype"></a>Prototipo
 
@@ -21319,9 +21396,9 @@ Questo servizio rivendica lo stato attivo per il widget specificato. Se in prece
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Attestazione di stato attivo riuscita
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
-- **GX_NO_CHANGE:** il widget (0x08) è già proprietario dello stato attivo
+- **GX_SUCCESS:**(0x00) Attestazione dello stato attivo riuscita
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_NO_CHANGE:**(0x08) Il widget è già proprietario dello stato attivo
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_WIDGET**: (0x12 Widget non valido
 
@@ -21381,11 +21458,11 @@ Questo servizio inizializza GUIX. Questo servizio deve essere richiamato prima d
 
 ### <a name="parameters"></a>Parametri
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Inizializzazione del sistema riuscita
+- **GX_SUCCESS:**(0x00) Inizializzazione del sistema riuscita
 - **GX_SYSTEM_ERROR:**(0xFE) Dimensioni del blocco GX_EVENT controllo non valide o coda eventi/mutex/creazione thread non riuscita.
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 
@@ -21443,19 +21520,19 @@ UINT gx_system_language_table_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera la tabella della lingua attiva. Questa funzione è deprecata a favore di gx_display_language_table_get. Tutte le nuove applicazioni devono usare gx_display_language_table_get.
+Questo servizio recupera la tabella del linguaggio attivo. Questa funzione è deprecata a favore di gx_display_language_table_get. Tutte le nuove applicazioni devono usare gx_display_language_table_get.
 
 ### <a name="parameters"></a>Parametri
 
-- **language_table:** indirizzo del puntatore per restituire la tabella del linguaggio.
-- **languages_count:** indirizzo della variabile per restituire le colonne della tabella.
+- **language_table**: indirizzo del puntatore per restituire la tabella del linguaggio.
+- **languages_count**: indirizzo della variabile per restituire le colonne della tabella.
 - **string_count**: indirizzo del puntatore per restituire le righe della tabella.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Tabella del linguaggio attivo recuperata correttamente
+- **GX_SUCCESS:**(0x00) Successfully retrieved active language table
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21483,7 +21560,7 @@ status = gx_system_language_table_get(&language_table,
 
 ## <a name="gx_system_language_table_set"></a>gx_system_language_table_set
 
-Assegnare la tabella del linguaggio attivo
+Assegnare la tabella della lingua attiva
 
 ### <a name="prototype"></a>Prototipo
 
@@ -21506,9 +21583,9 @@ Questo servizio installa la tabella del linguaggio attivo. Questa funzione è st
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Tabella della lingua impostata correttamente
+- **GX_SUCCESS**: (0x00) Tabella della lingua impostata correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21544,29 +21621,29 @@ UINT gx_system_memory_allocator_set(VOID *(allocate)(ULONG size),
 
 Questo servizio assegna la funzione di callback fornita dall'applicazione per l'allocazione e la deallocazione di memoria dinamica.
 
-Se l'applicazione non richiede alcun servizio GUIX che usa l'allocazione dinamica della memoria, non è necessario chiamare questo servizio.
+Se l'applicazione non richiede alcun servizio GUIX che usa l'allocazione di memoria dinamica, non è necessario chiamare questo servizio.
 
 Se usato, questo servizio deve essere chiamato dopo gx_system_initialize() che cancella i puntatori al servizio GUIX e prima di qualsiasi servizio GUIX che richiede l'uso dell'allocazione dinamica della memoria.
 
-I servizi GUIX che richiedono un'allocazione di memoria di runtime e un servizio di deallocazione includono:
+I servizi GUIX che richiedono un servizio di allocazione e deallocazione della memoria di runtime includono:
 
-- Caricamento di risorse binarie dall'archiviazione esterna nell'ambiente di runtime GUIX.
-- Decodificatore di immagini jpeg di runtime software.
-- Decodificatore di immagini png di runtime software.
+- Caricamento di risorse binarie da una risorsa di archiviazione esterna nell'ambiente di runtime GUIX.
+- Decodificatore di immagini JPEG del runtime software.
+- Decodificatore di immagine PNG del runtime software.
 - Uso di widget di testo con GX_STYLE_TEXT_COPY.
 - Funzioni di utilità di ridimensionamento e rotazione pixemap di runtime.
-- Allocazione del blocco della schermata di runtime e del controllo widget.
+- Allocazione dei blocchi di controllo del widget e della schermata di runtime.
 
 ### <a name="parameters"></a>Parametri
 
-- **allocator**: funzione allocatore di memoria
-- **release:** funzione senza memoria
+- **allocator:** funzione allocatore di memoria
+- **release:** funzione libera da memoria
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Funzione di allocazione memoria assegnata correttamente
+- **GX_SUCCESS:**(0x00) Funzione di allocazione memoria assegnata correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21574,7 +21651,7 @@ Inizializzazione e thread
 
 ### <a name="example"></a>Esempio
 
-Nell'esempio seguente viene utilizzato un pool di byte ThreadX per implementare un'allocazione dinamica di memoria threadsafe e un servizio di deallocazione della memoria.
+Nell'esempio seguente viene utilizzato un pool di byte ThreadX per implementare un servizio di allocazione e deallocazione di memoria dinamica threadsafe.
 
 ```C
 TX_BYTE_POOL memory_pool;
@@ -21656,19 +21733,19 @@ UINT gx_system_pen_configure(GX_PEN_CONFIGURATION *pen_configuration);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la configurazione della penna per controllare i parametri di velocità e distanza della penna usati per attivare la generazione di GX_EVENT_FLICK di eventi.
+Questo servizio imposta la configurazione della penna per controllare i parametri relativi alla velocità e alla distanza della penna usati per attivare la generazione di GX_EVENT_FLICK di eventi.
 
 Il gx_pen_configuration_min_drag_dist di GX_PEN_CONFIGURATION è un tipo di dati a virgola fissa ed è necessario usare GX_FIXED_VAL_MAKE(value) per eseguire la conversione da INT a GX_FIXED_VAL. Ad esempio, se si vuole impostare la distanza di trascinamento minima su 0,5 pixel per tick, è necessario impostare la gx_pen_configuration_min_drag_dist su `GX_FIXED_VAL_MAKE(1) / 2` .
 
-In GUIX versioni 5.4.0 e precedenti, il membro gx_pen_configuration_min_drag_dist di GX_PEN_CONFIGURATION era di tipo (INT << 8) anziché GX_FIXED_VAL tipo. Se il progetto con la libreria GUIX versione 5.4.0 usa questa API, è necessario modificare il parametro min_drag_dist o #define GUIX_5_4_0_COMPATIBILITY durante la compilazione della libreria GUIX.
+Nelle versioni GUIX 5.4.0 e precedenti, il membro gx_pen_configuration_min_drag_dist di GX_PEN_CONFIGURATION era di tipo (INT << 8) anziché GX_FIXED_VAL tipo. Se il progetto con la libreria GUIX della versione 5.4.0 usa questa API, sarà necessario modificare il parametro min_drag_dist o il #define GUIX_5_4_0_COMPATIBILITY quando si compila la libreria GUIX.
 
 ### <a name="parameters"></a>Parametri
 
-- **pen_configuration** Puntatore alla struttura di configurazione della penna. **L'appendice I** contiene la definizione GX_PEN_CONFIGURATION struttura
+- **pen_configuration** Puntatore alla struttura di configurazione della penna. **Appendice I contenente** la definizione GX_PEN_CONFIGURATION struttura
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Configurazione della penna completata
+- **GX_SUCCESS:**(0x00) Successfully set pen configuration (Configurazione penna completata)
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 
 ### <a name="allowed-from"></a>Consentito da
@@ -21724,9 +21801,9 @@ Se l'applicazione intende utilizzare i servizi dello stack dello schermo, è nec
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Creazione completata
+- **GX_SUCCESS**: (0x00) Creazione completata
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21758,7 +21835,7 @@ and ready for use. */
 
 ## <a name="gx_system_screen_stack_get"></a>gx_system_screen_stack_get
 
-Visualizzare i puntatori dello stack dello schermo in primo piano
+Visualizzare i puntatori dello stack dello schermo più in alto
 
 ### <a name="prototype"></a>Prototipo
 
@@ -21770,16 +21847,16 @@ UINT gx_system_screen_stack_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione popola i puntatori dello stack dello schermo in primo piano e restituisce tali puntatori al chiamante. Questa funzione è diversa gx_system_screen_stack_pop() perché la schermata estratta non viene ricollegare automaticamente all'elemento padre precedente. I puntatori vengono invece es estratto dallo stack e restituiti al chiamante, consentendo al chiamante di collegare o rimuovere la schermata restituita in base alle esigenze.
+Questa funzione popola i puntatori dello stack dello schermo più in alto e restituisce tali puntatori al chiamante. Questa funzione è diversa da gx_system_screen_stack_pop() perché la schermata selezionata non viene ricollegare automaticamente all'elemento padre precedente. I puntatori vengono invece eliminati dallo stack e restituiti al chiamante, consentendo al chiamante di associare o rimuovere la schermata restituita in base alle esigenze.
 
 ### <a name="parameters"></a>Parametri
 
 - **popped_parent:** posizione in cui archiviare il puntatore del widget padre.
-- **popped_screen:** posizione in cui archiviare il puntatore dello schermo estratto.
+- **popped_screen:** posizione in cui archiviare il puntatore dello schermo visualizzato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Recupero corretto dei puntatori dello stack dello schermo
+- **GX_SUCCESS**: (0x00) Recupero corretto dei puntatori dello stack dello schermo
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_FAILURE:**(0x10) Stack di schermate non valido o vuoto
@@ -21813,7 +21890,7 @@ popped_screen hold the topmost screen stack pointers. */
 
 ## <a name="gx_system_screen_stack_pop"></a>gx_system_screen_stack_pop
 
-Pop la voce più in alto dallo stack dello schermo del sistema
+Espulsa la voce in alto dallo stack dello schermo del sistema
 
 ### <a name="prototype"></a>Prototipo
 
@@ -21823,7 +21900,7 @@ UINT gx_system_screen_stack_pop();
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione pops the topmost entry fo the screen stack and automatically attaches the popped screen to the popped parent widget( Questa funzione pops the topmost entry fo the screen stack and automatically attaches the popped screen to the popped parent widget.
+Questa funzione apre la voce più in alto nello stack dello schermo e collega automaticamente la schermata espulsa al widget padre estratto.
 
 ### <a name="parameters"></a>Parametri
 
@@ -21831,10 +21908,10 @@ Questa funzione pops the topmost entry fo the screen stack and automatically att
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Recupero riuscito dei puntatori dello stack dello schermo
+- **GX_SUCCESS:**(0x00) Recupero riuscito dei puntatori dello stack dello schermo
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
-- **GX_FAILURE**: (0x10) Stack di schermate non valido o vuoto
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_FAILURE:**(0x10) Stack di schermate non valido o vuoto
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21861,7 +21938,7 @@ popped from the stack and re-attached to the previous parent. */
 
 ## <a name="gx_system_screen_stack_push"></a>gx_system_screen_stack_push
 
-Eseguire il push di un widget e del puntatore padre nello stack dello schermo
+Eseguire il push di un widget e di un puntatore padre nello stack dello schermo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -21871,7 +21948,7 @@ UINT gx_system_screen_stack_push(GX_WIDGET *screen)
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio inserisce un puntatore al widget indicato, che in genere è una schermata di primo livello, nello stack di schermate. Se il widget ha un elemento padre, viene scollegato dall'elemento padre. Viene anche inserito il puntatore del widget padre nello stack dello schermo. Il widget padre può essere NULL, vale a dire che una schermata non visibile o collegata a un elemento padre può essere inserita nello stack dello schermo. Se viene eseguito il push di un widget senza elemento padre nello stack dello schermo, è necessario usare l'API screen_stack_get() per recuperare il puntatore dello schermo inserito, invece di usare l'API screen_stack_pop(), che tenta di ricollegare il widget estratto all'elemento padre precedente.
+Questo servizio inserisce un puntatore al widget indicato, che in genere è una schermata di primo livello, nello stack dello schermo. Se il widget ha un elemento padre, viene scollegato dall'elemento padre. Viene anche inserito il puntatore del widget padre nello stack dello schermo. Il widget padre può essere NULL, ovvero una schermata non visibile o collegata ad alcun elemento padre può essere inserita nello stack dello schermo. Se viene eseguito il push di un widget senza elemento padre nello stack dello schermo, è necessario usare l'API screen_stack_get() per recuperare il puntatore dello schermo inserito, anziché usare l'API screen_stack_pop(), che tenta di ricollegare il widget estratto al padre precedente.
 
 ### <a name="parameters"></a>Parametri
 
@@ -21879,9 +21956,9 @@ Questo servizio inserisce un puntatore al widget indicato, che in genere è una 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Ottenere correttamente l'aspetto della barra di scorrimento
+- **GX_SUCCESS**: (0x00) Ottenere correttamente l'aspetto della barra di scorrimento
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21925,9 +22002,9 @@ Questa funzione rimuove tutte le voci dallo stack dello schermo del sistema. Se 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Ottenere correttamente l'aspetto della barra di scorrimento
+- **GX_SUCCESS:**(0x00) Ottenere correttamente l'aspetto della barra di scorrimento
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -21968,12 +22045,12 @@ Questo servizio ottiene l'aspetto della barra di scorrimento.
 
 ### <a name="parameters"></a>Parametri
 
-- **style**: stile della barra di `GX_SCROLLBAR_HORIZONTAL` scorrimento: o `GX_SCROLLBAR_VERTICAL`
-- **return_appearance:** puntatore alla destinazione per l'aspetto. **Appendice I** contiene la definizione GX_SCROLLBAR_APPERANCE
+- **style:** stile della barra di scorrimento: `GX_SCROLLBAR_HORIZONTAL` o `GX_SCROLLBAR_VERTICAL`
+- **return_appearance:** puntatore alla destinazione per l'aspetto. **Appendice I contenente** la definizione GX_SCROLLBAR_APPERANCE
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Ottenere correttamente l'aspetto della barra di scorrimento
+- **GX_SUCCESS:**(0x00) Ottenere correttamente l'aspetto della barra di scorrimento
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR**: (0x07) Puntatore non valido
 
@@ -22022,7 +22099,7 @@ appearance. */
 
 ## <a name="gx_system_scroll_appearance_set"></a>gx_system_scroll_appearance_set
 
-Impostare l'aspetto dello scorrimento
+Impostare l'aspetto di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -22034,18 +22111,18 @@ UINT gx_system_scroll_appearance_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'aspetto di scorrimento predefinito. Quando viene creato uno scorrimento, questa struttura dell'aspetto viene usata a meno che l'applicazione non fornisce una versione personalizzata.
+Questo servizio imposta l'aspetto di scorrimento predefinito. Quando viene creato uno scorrimento, questa struttura di aspetto viene usata a meno che l'applicazione non fornisce una versione personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
-- **style**: stile di `GX_SCROLLBAR_HORIZONTAL` scorrimento o `GX_SCROLLBAR_VERTICAL`
-- **appearance:** puntatore alla struttura dell'aspetto inizializzato con vari attributi di aspetto della barra di scorrimento. Fare riferimento **all'appendice I** per la definizione della GX_SCROLLBAR_APPEARANCE struttura.
+- **style:** stile di scorrimento `GX_SCROLLBAR_HORIZONTAL` o `GX_SCROLLBAR_VERTICAL`
+- **appearance:** puntatore alla struttura dell'aspetto inizializzato con vari attributi di aspetto della barra di scorrimento. Fare riferimento **all'Appendice I** per la definizione della GX_SCROLLBAR_APPEARANCE struttura.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Impostare correttamente l'aspetto dello scorrimento
+- **GX_SUCCESS:**(0x00) Impostare correttamente l'aspetto di scorrimento
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -22112,11 +22189,11 @@ UINT gx_system_start(VOID);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia l'elaborazione GUIX. In circostanze normali questa funzione non restituisce mai , ma inizia invece a elaborare la coda di eventi GUIX. Quando la coda di eventi GUIX è vuota, questo servizio sospende il thread chiamante fino all'arrivo di nuovi eventi nella coda di eventi GUIX.
+Questo servizio avvia l'elaborazione GUIX. In circostanze normali questa funzione non viene mai restituita, ma inizia invece a elaborare la coda di eventi GUIX. Quando la coda di eventi GUIX è vuota, questo servizio sospende il thread chiamante fino all'arrivo di nuovi eventi nella coda di eventi GUIX.
 
 ### <a name="parameters"></a>Parametri
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -22181,11 +22258,11 @@ Questo servizio ottiene la stringa per l'ID risorsa specificato, usando la prima
 ### <a name="parameters"></a>Parametri
 
 - **string_id:** ID risorsa stringa
-- **return_string:** Puntatore al puntatore di destinazione della stringa
+- **return_string:** puntatore al puntatore di destinazione della stringa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successful string get
+- **GX_SUCCESS:**(0x00) Ottenere una stringa corretta
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR (0x07): puntatore** non valido
 - **GX_INVALID_RESOURCE_ID:**(0x33) ID risorsa non valido
@@ -22230,13 +22307,13 @@ Questo servizio recupera la tabella di stringhe per la lingua richiesta dalla pr
 
 ### <a name="parameters"></a>Parametri
 
-- **language**: Indice della lingua
-- **string_table:** puntatore allo spazio di archiviazione del puntatore alla tabella di stringhe oppure NULL se il chiamante non deve ottenere il puntatore alla tabella di stringhe.
-- **get_size:** puntatore all'archiviazione per il numero di stringhe nella tabella di stringhe oppure NULL se il chiamante non deve ottenere il numero di stringhe nella tabella di stringhe.
+- **language:** indice della lingua
+- **string_table:** puntatore allo spazio di archiviazione del puntatore della tabella di stringhe o NULL se il chiamante non deve ottenere il puntatore alla tabella di stringhe.
+- **get_size:** puntatore all'archiviazione per il numero di stringhe nella tabella di stringhe o NULL se il chiamante non deve ottenere il numero di stringhe nella tabella di stringhe.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Tabella di stringhe riuscita get
+- **GX_SUCCESS:**(0x00) Successful string table get
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 
 ### <a name="allowed-from"></a>Consentito da
@@ -22281,21 +22358,21 @@ UINT gx_system_string_width_get(
 
 Questo servizio è deprecato a favore di gx_system_string_width_get_ext().
 
-Questo servizio calcola la larghezza di visualizzazione della stringa fornita in pixel usando il tipo di carattere specificato. Se il string_length parametro è >= 0, nel calcolo viene incluso solo il numero di richieste di caratteri. Se il string_length parametro è -1, nel calcolo viene usata l'intera stringa fino al carattere di terminazione NULL.
+Questo servizio calcola la larghezza di visualizzazione della stringa fornita in pixel usando il tipo di carattere specificato. Se il string_length è >= 0, nel calcolo viene incluso solo il numero di richieste di caratteri. Se il string_length parametro è -1, nel calcolo viene usata l'intera stringa fino al carattere di terminazione NULL.
 
 ### <a name="parameters"></a>Parametri
 
 - **font:** puntatore al tipo di carattere della stringa
-- **string:** puntatore alla stringa
+- **string:** puntatore a stringa
 - **string_length**: Lunghezza della stringa
 - **return_width:** destinazione per la larghezza della stringa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successful string width get
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_SUCCESS:**(0x00) Ottenere la larghezza della stringa riuscita
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_INVALID_FONT:**(0x16) Carattere non valido
+- **GX_INVALID_FONT**: (0x16) Carattere non valido
 - **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
@@ -22338,16 +22415,16 @@ Questo servizio calcola la larghezza di visualizzazione della stringa fornita in
 ### <a name="parameters"></a>Parametri
 
 - **font:** puntatore al tipo di carattere della stringa
-- **string:** puntatore a stringa
+- **string:** puntatore alla stringa
 - **return_width:** destinazione per la larghezza della stringa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Ottenere la larghezza della stringa riuscita
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_SUCCESS:**(0x00) Successful string width get
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_CALLER_ERROR**: 0x11) Chiamante non valido di questa funzione
-- **GX_INVALID_FONT**: (0x16) Carattere non valido
-- **GX_INVALID_STRING_LENGTH**: (0x34) Lunghezza stringa non valida
+- **GX_INVALID_FONT:**(0x16) Carattere non valido
+- **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -22390,7 +22467,7 @@ status = gx_system_string_width_get_ext(&my_font,
 
 ## <a name="gx_system_timer_start"></a>gx_system_timer_start
 
-Timer di avvio
+Avviare il timer
 
 ### <a name="prototype"></a>Prototipo
 
@@ -22410,8 +22487,8 @@ Questo servizio avvia un timer per il widget specificato. La costante GX_MAX_ACT
 
 - **owner:** puntatore al blocco di controllo widget
 - **timer_id**: ID del timer
-- **initial_ticks:** tick di scadenza iniziali
-- **reschedule_ticks:** Tick di scadenza periodici
+- **initial_ticks**: tick di scadenza iniziale
+- **reschedule_ticks:** tick di scadenza periodici
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -22457,7 +22534,7 @@ started. */
 
 ## <a name="gx_system_timer_stop"></a>gx_system_timer_stop
 
-Arresta timer
+Arrestare il timer
 
 ### <a name="prototype"></a>Prototipo
 
@@ -22469,19 +22546,19 @@ UINT gx_system_timer_stop(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio arresta il timer con il timer_id specificato associato al widget chiamante. Per arrestare tutti i timer collegati a un particolare widget, l'applicazione può passare timer_id valore 0.
+Questo servizio arresta il timer con il timer_id specificato associato al widget chiamante. Per arrestare tutti i timer collegati a un determinato widget, l'applicazione può passare il valore timer_id 0.
 
 ### <a name="parameters"></a>Parametri
 
 - **owner:** puntatore al blocco di controllo widget
-- **timer_id:** ID del timer o 0 per tutti i timer
+- **timer_id**: ID del timer o 0 per tutti i timer
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Arresto timer riuscito
-- **GX_NOT_FOUND:** ID timer (0x09) non trovato
+- **GX_SUCCESS**: (0x00) Arresto timer riuscito
+- **GX_NOT_FOUND:**(0x09) ID timer non trovato
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -22539,8 +22616,8 @@ Questo servizio recupera la stringa di versione della libreria GUIX.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) La stringa di versione è stata recuperata correttamente
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_SUCCESS:**(0x00) Successfully retrieved version string
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -22580,8 +22657,8 @@ Questo servizio recupera la stringa di versione della libreria GUIX.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successfully retrieved version string
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_SUCCESS**: (0x00) La stringa di versione è stata recuperata correttamente
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
@@ -22626,7 +22703,7 @@ status = gx_system_version_string_get_ext(&version);
 
 ## <a name="gx_system_widget_find"></a>gx_system_widget_find
 
-Trovare un widget
+Widget Trova
 
 ### <a name="prototype"></a>Prototipo
 
@@ -22639,19 +22716,19 @@ UINT gx_system_widget_find(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio cerca l'ID widget specificato. A gx_widget_find(), questa funzione cerca gli elementi figlio di tutte le finestre radice definite nel sistema, ovvero si tratta di una ricerca esaustiva di tutti i widget visibili. Se si conosce l'elemento padre del widget che si sta cercando, usare gx_widget_find() .
+Questo servizio cerca l'ID widget specificato. A gx_widget_find(), questa funzione cerca gli elementi figlio di tutte le finestre radice definite nel sistema, ovvero si tratta di una ricerca esaustiva di tutti i widget visibili. Se si conosce l'elemento padre del widget che si sta cercando, usare gx_widget_find().
 
 ### <a name="parameters"></a>Parametri
 
 - **widget_id:** ID widget da cercare
-- **search_level**: definisce il livello di annidamento ricorsivo in cui vengono cercati i widget figlio. Se questo valore è 0, vengono cercati solo gli elementi figlio immediati di ogni finestra radice. Se questo valore è GX_SEARCH_DEPTH_INFINITE, la funzione annida in tutti gli elementi figlio che cercano l'ID del widget richiesto. Per qualsiasi altro valore > 0, il livello di ricerca definisce la profondità della ricerca dell'ID widget richiesto da parte di questa funzione.
+- **search_level**: definisce il livello di annidamento ricorsivo in cui vengono cercati i widget figlio. Se questo valore è 0, vengono cercati solo gli elementi figlio immediati di ogni finestra radice. Se questo valore è GX_SEARCH_DEPTH_INFINITE, la funzione annida in tutti gli elementi figlio che cercano l'ID del widget richiesto. Per qualsiasi altro valore > 0, il livello di ricerca definisce la profondità della ricerca dell'ID widget richiesto da questa funzione.
 - **return_search_result:** Puntatore alla destinazione per il widget trovato
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Ricerca widget riuscita
 - **GX_NOT_FOUND:**(0x09) ID widget non trovato
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -22716,26 +22793,26 @@ UINT gx_text_button_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un widget pulsante di testo.
+Questo servizio crea un widget di pulsante di testo.
 
 GX_TEXT_BUTTON deriva da GX_BUTTON e supporta tutti i gx_button API.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** puntatore al blocco di controllo pulsante di testo
+- **text_button:** Puntatore al blocco di controllo del pulsante di testo
 - **name:** nome logico del pulsante di testo
 - **parent:** puntatore al widget padre del pulsante
 - **text_id:** ID risorsa del testo
 - **style**: stile del pulsante di testo. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
-- **text_button_id:** ID del pulsante di testo definito dall'applicazione
-- **size:** dimensioni del pulsante
+- **text_button_id:** ID definito dall'applicazione del pulsante di testo
+- **size**: dimensioni del pulsante
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Creazione del pulsante Di testo riuscito
+- **GX_SUCCESS**: (0x00) Creazione del pulsante Di testo riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
-- **GX_ALREADY_CREATED:**(0x13) Widget già creato
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_ALREADY_CREATED**: (0x13) Widget già creato
 - **GX_INVALID_SIZE:**(0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET:**(0x12) Widget padre non valido
 
@@ -22804,7 +22881,7 @@ Questo servizio disegna il pulsante di testo. Questo servizio viene in genere ch
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -22860,12 +22937,12 @@ Questo servizio elabora un evento per il pulsante di testo specificato. Questo s
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button** Puntatore al blocco di controllo del pulsante di testo
+- **text_button** Puntatore al blocco di controllo pulsante di testo
 - **event_ptr** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Operazione riuscita del pulsante di testo
+- **GX_SUCCESS** (0x00) Processo evento pulsante di testo riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -22940,9 +23017,9 @@ Questo servizio assegna un tipo di carattere al pulsante specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Impostare correttamente il tipo di carattere
+- **GX_SUCCESS**: (0x00) Impostare correttamente il tipo di carattere
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -22998,10 +23075,10 @@ Questo servizio imposta il colore del pulsante di testo.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** puntatore al blocco di controllo pulsante di testo
-- **normal_text_color_id:** ID risorsa del testo normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **selected_text_color_id:** ID risorsa del testo selezionato. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **disabled_text_color_id:** ID risorsa di colore per il testo disabilitato. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **text_button:** Puntatore al blocco di controllo del pulsante di testo
+- **normal_text_color_id:** ID risorsa del testo normale. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **selected_text_color_id:** ID risorsa del testo selezionato. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **disabled_text_color_id:** ID risorsa del colore per il testo disabilitato. **L'Appendice A** contiene gli ID risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -23057,15 +23134,15 @@ VOID gx_text_button_text_draw(GX_TEXT_BUTTON *text_button);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione di supporto disegna la parte di testo di un pulsante di testo. Questa funzione viene chiamata internamente da gx_text_button_draw e viene fornita come API separata per praticità per le applicazioni che definiscono una funzione di disegno di pulsanti personalizzata. Le applicazioni che vogliono personalizzare il disegno in background del pulsante possono fornire la funzione di disegno personalizzata e richiamare il servizio gx_text_button_text_draw come parte del disegno personalizzato per disegnare il testo del pulsante sullo sfondo.
+Questa funzione di supporto disegna la parte di testo di un pulsante di testo. Questa funzione viene chiamata internamente da gx_text_button_draw e viene fornita come API separata per comodità per le applicazioni che definiscono una funzione personalizzata di disegno di pulsanti. Le applicazioni che vogliono personalizzare il disegno dello sfondo del pulsante possono fornire la funzione di disegno personalizzata e richiamare il servizio gx_text_button_text_draw come parte del disegno personalizzato per disegnare il testo del pulsante sullo sfondo.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** puntatore al blocco di controllo pulsante di testo
+- **text_button:** Puntatore al blocco di controllo del pulsante di testo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -23126,14 +23203,14 @@ Questo servizio recupera la stringa specificata dal pulsante di testo.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** Puntatore al blocco di controllo del pulsante di testo
-- **return_text**: Puntatore alla stringa recuperata dal pulsante di testo
+- **text_button:** puntatore al blocco di controllo pulsante di testo
+- **return_text:** puntatore alla stringa recuperata dal pulsante di testo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Ottenere il testo dal pulsante
+- **GX_SUCCESS**: (0x00) Ottenere correttamente il testo dal pulsante
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -23174,7 +23251,7 @@ Questo servizio recupera la stringa specificata dal pulsante di testo.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** Puntatore al blocco di controllo del pulsante di testo
+- **text_button:** puntatore al blocco di controllo pulsante di testo
 - **return_string:** puntatore alla stringa recuperata dal pulsante di testo
 
 ### <a name="return-values"></a>Valori restituiti
@@ -23236,14 +23313,14 @@ Questo servizio imposta l'ID risorsa stringa specificato sul pulsante di testo.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** Puntatore al blocco di controllo del pulsante di testo
-- **string_id**: ID risorsa della stringa
+- **text_button:** puntatore al blocco di controllo pulsante di testo
+- **string_id:** ID risorsa della stringa
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS**: (0x00) Impostare correttamente l'ID risorsa stringa sul pulsante di testo
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 - **GX_INVALID_RESOURCE_ID:**(0x33) ID stringa non valido
 
@@ -23297,21 +23374,21 @@ UINT gx_text_button_text_set(
 
 Questo servizio è deprecato a favore di gx_text_button_text_set_ext().
 
-Questo servizio assegna la stringa specificata al pulsante di testo. Se il text_button widget è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio assegna la stringa specificata al pulsante di testo. Se il widget text_button è stato creato con GX_STYLE_TEXT_COPY stile, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** puntatore al blocco di controllo pulsante di testo
-- **text**: puntatore alla stringa con terminazione NULL
+- **text_button:** Puntatore al blocco di controllo del pulsante di testo
+- **text:** puntatore alla stringa con terminazione NULL
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS**: (0x00) Impostare correttamente il testo sul pulsante
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 - **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
-- **GX_INVALID_STRING_LENGTH**: (0x34) Lunghezza stringa non valida
+- **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -23349,18 +23426,18 @@ UINT gx_text_button_text_set_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna la stringa specificata al pulsante di testo. Se il widget text_button è stato creato con GX_STYLE_TEXT_COPY stile, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
+Questo servizio assegna la stringa specificata al pulsante di testo. Se il text_button widget è stato creato con stile GX_STYLE_TEXT_COPY, il widget crea una copia privata della stringa di testo assegnata. Se GX_STYLE_TEXT_COPY non è attivo, il widget non crea una copia privata della stringa in ingresso e pertanto la stringa deve essere allocata in modo statico o globale, ad esempio potrebbe non essere una variabile automatica o temporanea.
 
 ### <a name="parameters"></a>Parametri
 
-- **text_button:** Puntatore al blocco di controllo del pulsante di testo
-- **string**: puntatore alla variabile GX_STRING
+- **text_button:** puntatore al blocco di controllo pulsante di testo
+- **string:** puntatore alla variabile GX_STRING
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS**: (0x00) Impostare correttamente il testo sul pulsante
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 - **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
 - **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
@@ -23405,7 +23482,7 @@ status = gx_text_button_text_set_ext(&my_text_button, &new_string);
 
 ## <a name="gx_text_input_cursor_blink_interval_set"></a>gx_text_input_cursor_blink_interval_set
 
-Impostare l'intervallo di lampeggiamento del cursore
+Impostare l'intervallo di intermittenza del cursore
 
 ### <a name="prototype"></a>Prototipo
 
@@ -23417,7 +23494,7 @@ UINT gx_text_input_cursor_blink_interval_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il valore dell'intervallo di lampeggiamento del cursore.
+Questo servizio imposta il valore dell'intervallo di intermittenza del cursore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -23428,7 +23505,7 @@ Questo servizio imposta il valore dell'intervallo di lampeggiamento del cursore.
 
 - **GX_SUCCESS**: (0x00) Impostare correttamente l'intervallo di lampeggiamento del cursore
 - **GX_PTR_ERROR**: (0x07) Puntatore non valido
-- **GX_INVALID_VALUE:**(0x22) Blink interval value not valid (Intervallo di lampeggiamento non valido)
+- **GX_INVALID_VALUE:**(0x22) Valore intervallo di lampeggiamento non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -23475,13 +23552,13 @@ Questo servizio imposta l'altezza del cursore.
 ### <a name="parameters"></a>Parametri
 
 - **cursor_input:** Blocco di controllo cursore
-- **height** Valore da impostare
+- **altezza** Valore da impostare
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Impostare correttamente l'altezza del cursore
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
-- **GX_INVALID_VALUE:**(0x22) Height value not valid
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_INVALID_VALUE:**(0x22) Valore Height non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -23533,7 +23610,7 @@ Questo servizio imposta la larghezza del cursore.
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Impostare correttamente la larghezza del cursore
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_VALUE:**(0x22) Valore Width non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -23579,13 +23656,13 @@ UINT gx_text_scroll_wheel_callback_set(
 
 Questo servizio è deprecato a favore di gx_text_scroll_wheel_callback_set_ext().
 
-Questo servizio assegna la funzione di callback che verrà richiamata da una rotellina di scorrimento del tipo di testo per determinare la stringa di testo da visualizzare in ogni riga della rotellina di scorrimento.
+Questo servizio assegna la funzione di callback che verrà richiamata da una rotellina di scorrimento di tipo testo per determinare la stringa di testo da visualizzare in ogni riga della rotellina di scorrimento.
 
-Per GX_NUMERIC_SCROLL_WHEEL e GX_STRING_SCROLL_WHEEL, vengono fornite funzioni di callback predefinite e l'applicazione non deve apportare modifiche per usare queste implementazioni predefinite.
+Per GX_NUMERIC_SCROLL_WHEEL e GX_STRING_SCROLL_WHEEL, vengono fornite funzioni di callback predefinite e l'applicazione non deve apportare alcuna modifica per usare queste implementazioni predefinite.
 
 Questa API viene fornita per consentire all'applicazione di personalizzare la formattazione o altri parametri della stringa visualizzata in ogni riga del widget della rotellina di scorrimento.
 
-La funzione di callback riceverà come input un puntatore al blocco di controllo della rotellina di scorrimento e al numero di riga visualizzato. La funzione deve restituire un puntatore a una stringa di testo.
+La funzione di callback riceverà come input un puntatore al blocco di controllo della rotellina di scorrimento e il numero di riga visualizzato. La funzione deve restituire un puntatore a una stringa di testo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -23594,8 +23671,8 @@ La funzione di callback riceverà come input un puntatore al blocco di controllo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Callback impostato correttamente
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_SUCCESS:**(0x00) Impostare correttamente il callback
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -23654,7 +23731,7 @@ been set. */
 
 ## <a name="gx_text_scroll_wheel_callback_set_ext"></a>gx_text_scroll_wheel_callback_set_ext
 
-Assegnare la funzione di callback della rotellina di scorrimento del tipo di testo
+Assegnare la funzione di callback della rotellina di scorrimento di tipo testo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -23666,23 +23743,23 @@ UINT gx_text_scroll_wheel_callback_set_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna la funzione di callback che verrà richiamata da una rotellina di scorrimento del tipo di testo per determinare la stringa di testo da visualizzare in ogni riga della rotellina di scorrimento.
+Questo servizio assegna la funzione di callback che verrà richiamata da una rotellina di scorrimento di tipo testo per determinare la stringa di testo da visualizzare in ogni riga della rotellina di scorrimento.
 
-Per GX_NUMERIC_SCROLL_WHEEL e GX_STRING_SCROLL_WHEEL, vengono fornite funzioni di callback predefinite e l'applicazione non deve apportare modifiche per usare queste implementazioni predefinite.
+Per GX_NUMERIC_SCROLL_WHEEL e GX_STRING_SCROLL_WHEEL, vengono fornite funzioni di callback predefinite e l'applicazione non deve apportare alcuna modifica per usare queste implementazioni predefinite.
 
 Questa API viene fornita per consentire all'applicazione di personalizzare la formattazione o altri parametri della stringa visualizzata in ogni riga del widget della rotellina di scorrimento.
 
-La funzione di callback riceverà come input un puntatore al blocco di controllo della rotellina di scorrimento e al numero di riga visualizzato. La funzione deve restituire un puntatore a una stringa di testo.
+La funzione di callback riceverà come input un puntatore al blocco di controllo della rotellina di scorrimento e il numero di riga visualizzato. La funzione deve restituire un puntatore a una stringa di testo.
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Indirizzo del blocco di controllo della rotellina di scorrimento della stringa
+- **wheel** Indirizzo del blocco di controllo della rotellina di scorrimento della stringa
 - **callback** Puntatore alla funzione di callback
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Callback impostato correttamente
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -23764,23 +23841,23 @@ UINT gx_text_scroll_wheel_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una rotellina di scorrimento del testo. La rotellina di scorrimento del testo è un widget di base per i widget GX_STRING_SCROLL_WHEEL e GX_NUMERIC_SCROLL_WHEEL tipo di testo. Questa funzione viene chiamata internamente da gx_string_scroll_wheel_create e gx_numeric_scroll_wheel_create e viene fornita come API separata per praticità per le applicazioni che definiscono un widget della rotellina di scorrimento personalizzato.
+Questo servizio crea una rotellina di scorrimento del testo. La rotellina di scorrimento del testo è un widget di base GX_STRING_SCROLL_WHEEL e GX_NUMERIC_SCROLL_WHEEL widget di tipo. Questa funzione viene chiamata internamente da gx_string_scroll_wheel_create e gx_numeric_scroll_wheel_create e viene fornita come API separata per praticità per le applicazioni che definiscono un widget della rotellina di scorrimento personalizzato.
 
 ### <a name="parameters"></a>Parametri
 
 - **wheel:** indirizzo del blocco di controllo della rotellina di scorrimento del testo
 - **name:** nome del widget definito dall'applicazione
-- **parent:** padre della rotellina o GX_NULL
-- **total_rows:** Totale righe da presentare all'utente
+- **parent:** ruota padre o GX_NULL
+- **total_rows:** totale righe da presentare all'utente
 - **style:** flag di stile desiderati
 - **ID:** flag di stile della rotellina definiti dall'applicazione
 - **size:** dimensioni iniziali della rotellina di scorrimento
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Creazione corretta della rotellina di scorrimento del testo
+- **GX_SUCCESS**: (0x00) Rotellina di scorrimento testo creata correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_ALREADY_CREATED:**(0x13) Widget già creato
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
@@ -23857,7 +23934,7 @@ VOID gx_text_scroll_wheel_draw(GX_TEXT_SCROLL_WHEEL *wheel);
 
 ### <a name="description"></a>Descrizione
 
-Questa è la funzione di disegno predefinita per tutti i tipi di rotellina in base GX_TEXT_SCROLL_WHEEL. Questa funzione può essere sottoposta a override dalle applicazioni che richiedono la personalizzazione dell'aspetto del disegno della rotellina di scorrimento del testo.
+Si tratta della funzione di disegno predefinita per tutti i tipi di ruota in base GX_TEXT_SCROLL_WHEEL. Questa funzione può essere sottoposta a override dalle applicazioni che richiedono la personalizzazione dell'aspetto del disegno della rotellina di scorrimento del testo.
 
 GX_STRING_SCROLL_WHEEL e GX_NUMERIC_SCROLL_WHEEL sono entrambi basati su o derivati da GX_TEXT_SCROLL_WHEEL.
 
@@ -23867,7 +23944,7 @@ GX_STRING_SCROLL_WHEEL e GX_NUMERIC_SCROLL_WHEEL sono entrambi basati su o deriv
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -23907,7 +23984,7 @@ UINT my_wheel_draw(GX_TEXT_SCROLL_WHEEL *wheel)
 ## <a name="gx_text_scroll_wheel_event_process"></a>gx_text_scroll_wheel_event_process
 
 
-Elaborare l'evento della rotellina di scorrimento del testo
+Elaborare l'evento della rotellina del testo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -23921,12 +23998,12 @@ Questo servizio elabora un evento per la rotellina di scorrimento del testo spec
 
 ### <a name="parameters"></a>Parametri
 
-- **rotellina** Puntatore al blocco di controllo della rotellina di scorrimento del testo
+- **wheel** Puntatore al blocco di controllo della rotellina del testo
 - **event_ptr** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Processo di evento della rotellina di scorrimento del testo riuscito
+- **GX_SUCCESS** (0x00) Successful text scroll wheel event process
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -23979,7 +24056,7 @@ UINT custom_text_scroll_wheel_event_process(GX_TEXT_SCROLL_WHEEL *wheel, GX_EVEN
 
 ## <a name="gx_text_scroll_wheel_font_set"></a>gx_text_scroll_wheel_font_set
 
-Assegnare i tipi di carattere usati per disegnare le righe della rotellina del mouse
+Assegnare i tipi di carattere usati per disegnare le righe della rotellina di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -23992,7 +24069,7 @@ UINT gx_text_scroll_font_set(
 
 ### <a name="description"></a>Descrizione
 
-Assegnare i tipi di carattere che usano per disegnare il testo di un widget basato sulla rotellina di scorrimento del testo.
+Assegnare i tipi di carattere utilizzati per disegnare il testo di un widget basato sulla rotellina di scorrimento del testo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -24055,20 +24132,20 @@ UINT gx_text_scroll_wheel_text_color_set(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione assegna i colori del testo usati per disegnare righe della rotellina di scorrimento basate su testo.
+Questa funzione assegna i colori del testo usati per disegnare una rotellina di scorrimento basata sul testo.
 
 ### <a name="parameters"></a>Parametri
 
 - **wheel:** indirizzo del blocco di controllo della rotellina di scorrimento della stringa
-- **normal_text_color:** Colore usato per disegnare righe non selezionate
+- **normal_text_color:** colore usato per disegnare righe non selezionate
 - **selected_text_color:** colore usato per disegnare la riga selezionata.
 - **disabled_text_color:** colore usato per disegnare testo per il widget disabilitato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Successfully assigned scroll wheel text color (Colore testo della rotellina di scorrimento assegnato correttamente)
+- **GX_SUCCESS**: (0x00) Colore del testo della rotellina di scorrimento assegnato correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24124,16 +24201,16 @@ UINT gx_tree_view_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una visualizzazione albero come specificato e associa la visualizzazione albero al widget padre fornito. Accetta tutti i tipi di widget come voce di menu figlio. È consigliabile usare un GX_MENU tipo widget come voce di menu figlio.
+Questo servizio crea una visualizzazione albero come specificato e associa la visualizzazione albero al widget padre fornito. Accetta tutti i tipi di widget come voce di menu figlio. È consigliabile usare un widget GX_MENU tipo come voce di menu figlio.
 
 GX_TREE_VIEW deriva da GX_WINDOW e supporta tutti i gx_window API.
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
-- **name**: nome della visualizzazione albero
+- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **name:** nome della visualizzazione albero
 - **parent:** puntatore al widget padre
-- **style**: stile del widget. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
+- **style:** stile del widget. **L'Appendice D** contiene stili generali predefiniti per tutti i widget, nonché stili specifici del widget.
 - **menu_id:** ID definito dall'applicazione della visualizzazione albero
 - **size**: dimensioni della visualizzazione albero
 
@@ -24141,8 +24218,8 @@ GX_TREE_VIEW deriva da GX_WINDOW e supporta tutti i gx_window API.
 
 - **GX_SUCCESS**: (0x00) Creazione della visualizzazione albero riuscita
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
-- **GX_ALREADY_CREATED:**(0x13) Widget già creato
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_ALREADY_CREATED**: (0x13) Widget già creato
 - **GX_INVALID_SIZE:**(0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
@@ -24179,7 +24256,7 @@ status = gx_tree_view_create(&my_tree_view,
 
 ## <a name="gx_tree_view_draw"></a>gx_tree_view_draw
 
-Disegnare la visualizzazione albero
+Disegnare una visualizzazione albero
 
 ### <a name="prototype"></a>Prototipo
 
@@ -24193,11 +24270,11 @@ Questo servizio disegna la visualizzazione albero specificata. Questa funzione v
 
 ### <a name="parameters"></a>Parametri
 
-- **albero** Puntatore al blocco di controllo della visualizzazione struttura ad albero
+- **albero di** Puntatore al blocco di controllo della visualizzazione struttura ad albero
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -24246,18 +24323,18 @@ UINT gx_tree_view_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elabora un evento per la visualizzazione albero specificata. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione personalizzata degli eventi della visualizzazione albero.
+Questo servizio elabora un evento per la visualizzazione albero specificata. Questo servizio deve essere chiamato come gestore eventi predefinito da qualsiasi funzione di elaborazione degli eventi della visualizzazione albero personalizzata.
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
 - **event_ptr:** puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Evento di visualizzazione albero processo riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24324,14 +24401,14 @@ Questo servizio imposta il rientro per la visualizzazione albero.
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
-- **indentation**: rientro da impostare
+- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **rientro:** rientro da impostare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Impostare correttamente il rientro della visualizzazione albero
+- **GX_SUCCESS:**(0x00) Impostare correttamente il rientro della visualizzazione albero
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24366,7 +24443,7 @@ has been set to 10. */
 
 ## <a name="gx_tree_view_position"></a>gx_tree_view_position
 
-Posizionare gli elementi della visualizzazione albero
+Elementi della visualizzazione albero delle posizioni
 
 ### <a name="prototype"></a>Prototipo
 
@@ -24380,13 +24457,13 @@ Questo servizio posiziona gli elementi della visualizzazione albero.
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Correttamente posizionato elementi della visualizzazione albero
+- **GX_SUCCESS**: (0x00) Elementi della visualizzazione albero posizionati correttamente
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24437,14 +24514,14 @@ Questo servizio assegna il colore della linea radice per la visualizzazione albe
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
+- **tree:** puntatore al blocco di controllo della visualizzazione albero
 - **color_id:** ID risorsa del colore della linea radice
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Impostare correttamente il colore della linea radice
+- **GX_SUCCESS:**(0x00) Successful set root line color (Impostazione del colore della linea radice riuscita)
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24498,7 +24575,7 @@ Questo servizio assegna l'espansione e la compressione della mappa pixel per la 
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
 - **expand_map_id:** ID risorsa della mappa pixel di espansione
 - **collapse_map_id:** ID risorsa della mappa pixel compressa
 
@@ -24506,7 +24583,7 @@ Questo servizio assegna l'espansione e la compressione della mappa pixel per la 
 
 - **GX_SUCCESS:**(0x00) Successfully set root pixelmap (Impostazione della mappa pixel radice completata)
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24559,13 +24636,13 @@ Questo servizio recupera l'elemento selezionato corrente della visualizzazione a
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
 - **selected:** puntatore al puntatore del widget selezionato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Successfully retrieved selected item (Recupero dell'elemento selezionato completato)
-- **GX_PTR_ERROR:**(0x07) Puntatore non valido
+- **GX_SUCCESS**: (0x00) Recuperato correttamente l'elemento selezionato
+- **GX_PTR_ERROR**: (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24619,14 +24696,14 @@ Questo servizio imposta l'elemento selezionato per la visualizzazione albero.
 
 ### <a name="parameters"></a>Parametri
 
-- **tree:** puntatore al blocco di controllo della visualizzazione struttura ad albero
-- **selected**: puntatore al nuovo elemento selezionato
+- **tree:** puntatore al blocco di controllo della visualizzazione albero
+- **selected:** puntatore al nuovo elemento selezionato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Menu Di disegno riuscito
+- **GX_SUCCESS:**(0x00) Menu Di disegno riuscito
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
-- **GX_PTR_ERROR**: (0x07) Puntatore non valido
+- **GX_PTR_ERROR:**(0x07) Puntatore non valido
 - **GX_INVALID_WIDGET:**(0x12) Widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24674,17 +24751,17 @@ UINT gx_utility_canvas_to_bmp(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio converte la memoria canvas in file bitmap.
+Questo servizio converte la memoria dell'area di disegno in un file bitmap.
 
 ### <a name="parameters"></a>Parametri
 
 - **canvas:** puntatore a blocco del controllo Canvas
 - **rect:** rettangolo da convertire
-- **write_data:** Puntatore alla funzione di callback in cui scrivere i dati
+- **write_data:** Puntatore a funzione di callback in cui scrivere i dati
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Conversione di un valore intero in stringa completata
+- **GX_SUCCESS:**(0x00) Conversione del valore integer in stringa completata
 - **GX_PTR_ERROR:**(0x07) Puntatore al buffer restituito non valido
 - **GX_INVALID_SIZE:**(0x19) Dimensioni del buffer restituito non valide
 
@@ -24768,9 +24845,9 @@ Questo servizio calcola il punto su un cerchio in base al centro, al raggio e al
 
 - **xCenter:** coordinata x del centro del cerchio
 - **yCenter:** coordinata y del centro del cerchio
-- **radius:** raggio del cerchio
-- **angle:** angolo in base al quale calcolare il punto perimetrale del cerchio, in gradi
-- **point**: indirizzo della GX_POINT in cui archiviare la coordinata x,y calcolata
+- **radius:** raggio cerchio
+- **angle:** angolo in base al quale calcolare il punto perimetrale circolare, in gradi
+- **point:** indirizzo della GX_POINT in cui archiviare la coordinata x,y calcolata
 - **end_alpha:** valore alfa finale
 
 ### <a name="return-values"></a>Valori restituiti
@@ -24818,7 +24895,7 @@ GX_POINT point;
 
 ## <a name="gx_utility_gradient_create"></a>gx_utility_gradient_create
 
-Creare una mappa dei pixel sfumato
+Creare una mappa pixel sfumatura
 
 ### <a name="prototype"></a>Prototipo
 
@@ -24834,24 +24911,24 @@ INT gx_utility_gradient_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una mappa pixel sfumato in fase di esecuzione. Un'immagine sfumato può essere usata per eseguire effetti di dissolvenza e altre interessanti modifiche visive.
+Questo servizio crea una mappa pixel sfumatura in fase di esecuzione. Un'immagine sfumato può essere usata per eseguire effetti di dissolvenza e altre interessanti modifiche visive.
 
 La larghezza e l'altezza della sfumatura richiesta non possono essere inferiori a 2x2 pixel.
 
-GUIX gestisce internamente un elenco di sfumature create e questa funzione cerca innanzitutto l'elenco delle sfumature per trovare una mappa pixel con sfumatura corrispondente prima di creare una nuova mappa pixel. In altre parole, la stessa mappa pixel sfumatura è necessaria più volte, viene effettivamente creata una sola mappa pixel e ogni sfumatura che richiede questa mappa pixel condivide la mappa pixel creata.
+GUIX gestisce internamente un elenco di sfumature create e questa funzione cerca prima di tutto nell'elenco delle sfumature una mappa pixel corrispondente prima di creare una nuova mappa pixel. In altre parole, la stessa mappa pixel sfumatura è necessaria più volte, viene effettivamente creata una sola mappa pixel e ogni sfumatura che richiede questa mappa pixel condivide la mappa pixel creata.
 
-Questa API richiede che la funzione gx_system_memory_allocator definita per consentire l'allocazione della memoria di runtime.
+Questa API richiede che la gx_system_memory_allocator definita per consentire l'allocazione della memoria di runtime.
 
-I flag di tipo sfumatura includono GX_GRADIENT_TYPE_ALPHA e GX_GRADIENT_TYPE_MIRROR. Sono GX_GRADIENT_TYPE_ALPHA attualmente supportate solo le sfumature di tipo . Questo flag di tipo deve essere impostato. Il flag GX_GRADIENT_TYPE_MORROR è facoltativo e, se impostato, indica alla logica di creazione della sfumatura di creare una sfumatura che cambia da start_alpha a end_alpha e torna a start_alpha. In caso contrario, viene creata una sfumatura lineare.
+I flag di tipo sfumatura includono GX_GRADIENT_TYPE_ALPHA e GX_GRADIENT_TYPE_MIRROR. Attualmente GX_GRADIENT_TYPE_ALPHA sono attualmente supportate solo le sfumature di tipo di dati, ad esempio questo flag di tipo deve essere impostato. Il flag GX_GRADIENT_TYPE_MORROR è facoltativo e, se impostato, indica alla logica di creazione della sfumatura di creare una sfumatura che cambia da start_alpha a end_alpha e di nuovo a start_alpha. In caso contrario, viene creata una sfumatura lineare.
 
 ### <a name="parameters"></a>Parametri
 
 - **gradient:** puntatore alla struttura del blocco di controllo sfumatura
 - **width:** larghezza della mappa pixel richiesta
 - **height:** altezza della mappa pixel richiesta
-- **type**: Tipo di sfumatura richiesto
-- **start_alpha**: Valore alfa iniziale
-- **end_alpha:** valore alfa finale
+- **type:** tipo di sfumatura richiesto
+- **start_alpha:** Valore alfa iniziale
+- **end_alpha:** Valore alfa finale
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -24861,7 +24938,7 @@ I flag di tipo sfumatura includono GX_GRADIENT_TYPE_ALPHA e GX_GRADIENT_TYPE_MIR
 - **GX_FAILURE:** allocatore di memoria (0x10) non definito o allocazione di memoria non riuscita
 - **GX_CALLER_ERROR**: (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR:**(0x07) Puntatore sfumatura non valido<
-- **GX_INVALID_VALUE**: (0x22) Valore di larghezza e altezza non valido
+- **GX_INVALID_VALUE:**(0x22) Valore larghezza e altezza non valido
 - **GX_INVALID_TYPE:**(0x1B) Tipo di sfumatura non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -24912,7 +24989,7 @@ INT gx_utility_gradient_delete(GX_GRADIENT *gradient);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elimina una sfumatura creata in precedenza. Se la mappa pixel associata a questa sfumatura non è in uso da altre sfumature, verranno eliminati anche i dati della mappa pixel.
+Questo servizio elimina una sfumatura creata in precedenza. Se la mappa pixel associata a questa sfumatura non è utilizzata da altre sfumature, verranno eliminati anche i dati della mappa pixel.
 
 ### <a name="parameters"></a>Parametri
 
@@ -24975,17 +25052,17 @@ UINT gx_utility_itoa(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio converte un long integer in una stringa ASCII.
+Questo servizio converte un long integer valore in una stringa ASCII.
 
 ### <a name="parameters"></a>Parametri
 
-- **value**: valore intero lungo da convertire
-- **return_buffer:** Buffer di destinazione per la stringa ASCII
-- **return_buffer_size**: Dimensioni del buffer di destinazione
+- **value:** valore intero lungo da convertire
+- **return_buffer:** buffer di destinazione per la stringa ASCII
+- **return_buffer_size**: dimensioni del buffer di destinazione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Conversione di un valore intero in stringa completata
+- **GX_SUCCESS:**(0x00) Conversione del valore integer in stringa completata
 - **GX_PTR_ERROR:**(0x07) Puntatore al buffer restituito non valido
 - **GX_INVALID_SIZE:**(0x19) Dimensioni del buffer restituito non valide
 
@@ -25028,7 +25105,7 @@ representation of “my_value”. */
 
 ## <a name="gx_utility_math_acos"></a>gx_utility_math_acos
 
-Coseno dell'arco di calcolo
+Calcolare l'arcoseno
 
 ### <a name="prototype"></a>Prototipo
 
@@ -25038,22 +25115,22 @@ INT gx_utility_math_acos(GX_FIXED_VAL x);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio calcola il valore dell'angolo dell'arco coseno x.
+Questo servizio calcola il valore dell'angolo dell'arcoseno x.
 
-Il valore di input è un tipo di dati a virgola fissa, GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL tipo. Ad esempio, se si vuole calcolare l'arco coseno di 0,5, eseguire l'input come GX_FIXED_VAL_MAKE(1) / 2.
+Il valore di input è un tipo di dati a virgola fissa. Chiamare GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL tipo. Ad esempio, se si vuole calcolare l'arcoseno di 0,5, eseguire l'input come GX_FIXED_VAL_MAKE(1) / 2.
 
-In GUIX versione 5.4.0 o versione minore, il tipo di valore di input di questa funzione è INT e il valore è limitato all'intervallo [-256, 256]. L'applicazione deve ridimensionare il valore dall'intervallo [-1, 1] all'intervallo [-256, 256] prima di richiamare questo servizio. Se il progetto con versione GUIX uguale o precedente alla 5.4.0 fa riferimento a questa API e si vuole aggiornare il progetto con la libreria guix più recente. Sono disponibili due opzioni:
+In GUIX versione 5.4.0 o versione minore, il tipo di valore di input di questa funzione è INT e il valore è limitato all'intervallo [-256, 256]. L'applicazione deve ridimensionare il valore dall'intervallo [-1, 1] all'intervallo [-256, 256] prima di richiamare questo servizio. Se il progetto con versione GUIX uguale o minore di 5.4.0 fa riferimento a questa API e si vuole aggiornare il progetto con la libreria guix più recente. Sono disponibili due opzioni:
 
 1. Correggere il valore di input di questa chiamata API per usare GX_FIXED_VAL valore del tipo di dati.
 1. Definire GUIX_5_4_0_COMPATIBILITY.
 
 ### <a name="parameters"></a>Parametri
 
-- **x**: valore di cui viene calcolato l'arcoseno
+- **x**: valore di cui viene calcolato il coseno dell'arco
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **angle:** valore dell'angolo dell'arcoseno x
+- **angle:** valore angolare dell'arco coseno x
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -25106,11 +25183,11 @@ INT gx_utility_math_asin(GX_FIXED_VAL x);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio calcola il valore dell'angolo del seno dell'arco x.
+Questo servizio calcola il valore dell'angolo dell'arco seno x.
 
-Il valore di input è un tipo di dati a virgola fissa, GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL tipo. Ad esempio, se si vuole calcolare il sin arco di 0,5, eseguire l'input come GX_FIXED_VAL_MAKE(1) / 2.
+Il valore di input è un tipo di dati a virgola fissa. Chiamare GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL tipo. Ad esempio, se si vuole calcolare l'arco sin di 0,5, eseguire l'input GX_FIXED_VAL_MAKE(1) / 2.
 
-In GUIX versione 5.4.0 o versione minore, il tipo di valore di input di questa funzione è INT e il valore è limitato all'intervallo [-256, 256]. L'applicazione deve ridimensionare il valore dall'intervallo [-1, 1] all'intervallo [-256, 256] prima di richiamare questo servizio. Se il progetto con versione GUIX è uguale o minore di 5.4.0 e si vuole aggiornare il progetto con la libreria guix più recente. Sono disponibili due opzioni:
+Nella versione 5.4.0 o versione precedente GUIX il tipo di valore di input di questa funzione è INT e il valore è limitato all'intervallo [-256, 256]. L'applicazione deve ridimensionare il valore dall'intervallo [-1, 1] all'intervallo [-256, 256] prima di richiamare questo servizio. Se il progetto con versione GUIX è uguale o minore di 5.4.0 e si vuole aggiornare il progetto con la libreria guix più recente. Sono disponibili due opzioni:
 
 1. Correggere il valore di input di questa chiamata API per usare GX_FIXED_VAL valore del tipo di dati.
 1. Definire GUIX_5_4_0_COMPATIBILITY.
@@ -25121,7 +25198,7 @@ In GUIX versione 5.4.0 o versione minore, il tipo di valore di input di questa f
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **angle:** valore angolare del seno dell'arco x
+- **angle:** valore angolo del seno dell'arco x
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -25176,18 +25253,18 @@ GX_FIXED_VAL gx_utility_math_cos(GX_FIXED_VAL angle);
 
 Questo servizio calcola il coseno dell'angolo fornito.
 
-Il valore di input è un tipo di dati a virgola fissa. Chiamare GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL. Ad esempio, se si vuole calcolare il coseno di 90 gradi, eseguire l'input GX_FIXED_VAL_MAKE(90).
+Il valore di input è un tipo di dati a virgola fissa, GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL. Ad esempio, se si vuole calcolare il coseno di 90 gradi, eseguire l'input GX_FIXED_VAL_MAKE(90).
 
-Il valore restituito è un tipo di dati a virgola fissa. Chiamare GX_FIXED_VAL_TO_INT per eseguire la conversione da GX_FIXED_VAL a INT.
+Il valore restituito è un tipo di dati a virgola fissa, GX_FIXED_VAL_TO_INT per eseguire la conversione da GX_FIXED_VAL a INT.
 
-Nella versione GUIX 5.4.0 o versione precedente il valore di input e il tipo di valore restituito di questo servizio sono INT, il valore di input e il valore restituito vengono ingranditi di 256. Di conseguenza, l'applicazione deve ridimensionare il valore dell'angolo di 256 prima di richiamare questo servizio. Se il progetto con la versione GUIX è uguale o inferiore alla 5.4.0 e si vuole aggiornare il progetto con la libreria guix più recente, sono disponibili due opzioni.
+Nella versione GUIX 5.4.0 o versione precedente il valore di input e il tipo di valore restituito di questo servizio sono INT, il valore di input e il valore restituito vengono ingranditi di 256. L'applicazione deve quindi ridimensionare il valore dell'angolo di 256 prima di richiamare questo servizio. Se il progetto con la versione GUIX è uguale o inferiore alla 5.4.0 e si vuole aggiornare il progetto con la libreria guix più recente, sono disponibili due opzioni.
 
 1. Correggere il valore di input e la gestione al valore restituito di questa chiamata API per usare GX_FIXED_VAL valore del tipo di data.
 1. Definire GUIX_5_4_0_COMPATIBILITY.
 
 ### <a name="parameters"></a>Parametri
 
-- **angle:** angolo di calcolo del coseno
+- **angle:** angolo di cui calcolare il coseno
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -25248,18 +25325,18 @@ GX_FIXED_VAL gx_utility_math_sin(GX_FIXED_VAL angle);
 
 Questo servizio calcola il seno dell'angolo fornito.
 
-Il valore di input è un tipo di dati a virgola fissa. Chiamare GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL. Ad esempio, se si vuole calcolare il seno di 90 gradi, eseguire l'input GX_FIXED_VAL_MAKE(90). 
+Il valore di input è un tipo di dati a virgola fissa, GX_FIXED_VAL_MAKE per eseguire la conversione da INT a GX_FIXED_VAL. Ad esempio, se si vuole calcolare il seno di 90 gradi, eseguire l'input GX_FIXED_VAL_MAKE(90). 
 
-Il valore restituito è un tipo di dati a virgola fissa. Chiamare GX_FIXED_VAL_TO_INT per eseguire la conversione da GX_FIXED_VAL a INT.
+Il valore restituito è un tipo di dati a virgola fissa, GX_FIXED_VAL_TO_INT per eseguire la conversione da GX_FIXED_VAL a INT.
 
-Nella versione 5.4.0 o versione precedente GUIX il valore di input e il tipo di valore restituito sono INT, il valore di input e il valore restituito vengono ingranditi di 256. L'applicazione deve quindi ridimensionare il valore dell'angolo di 256 prima di richiamare questo servizio. Se il progetto con versione GUIX è uguale o inferiore alla 5.4.0 e si vuole aggiornare il progetto con la libreria guix più recente, sono disponibili due opzioni.
+In GUIX versione 5.4.0 o versione minore, il valore di input e il tipo di valore restituito sono INT, il valore di input e il valore restituito vengono ingranditi di 256. Pertanto, l'applicazione deve ridimensionare il valore dell'angolo di 256 prima di richiamare questo servizio. Se il progetto con versione GUIX è uguale o minore di 5.4.0 e si vuole aggiornare il progetto con la libreria guix più recente, sono disponibili due opzioni.
 
 1. Correggere il valore di input e la consegna al valore restituito di questa chiamata API per usare GX_FIXED_VAL valore del tipo di dati.
 1. Definire GUIX_5_4_0_COMPATIBILITY.
 
 ### <a name="parameters"></a>Parametri
 
-- **angle:** angolo di cui calcolare il seno
+- **angle:** angolo di calcolo del seno
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -25371,25 +25448,25 @@ UINT gx_utility_bidi_paragraph_reorder(GX_BIDI_TEXT_INFO *input_info,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio riordina il testo BiDi nell'ordine di visualizzazione. Se vengono specificati il tipo di carattere di disegno del testo e la larghezza di visualizzazione, l'interruzione di riga verrà applicata per prima, il processo di riordinamento verrà applicato in base a ogni riga. Se il testo fornito contiene più paragrafi, il servizio suddividerà il testo in paragrafi, il risultato dell'interruzione di riga e del riordinamento di ogni paragrafo verrà collegato come elenco.
+Questo servizio riordina il testo BiDi nell'ordine di visualizzazione. Se vengono specificati il carattere di disegno del testo e la larghezza di visualizzazione, l'interruzione di riga verrà applicata per prima, il processo di riordino verrà applicato in base a ogni riga. Se il testo fornito contiene più paragrafi, il servizio suddividerà il testo in paragrafi, il risultato dell'interruzione di riga e del riordino di ogni paragrafo verrà collegato come elenco.
 
 ### <a name="parameters"></a>Parametri
 
 - **input_info:** puntatore alle informazioni per l'interruzione di riga e il riordinamento del testo
-- **resolved_info_head**: Puntatore all'elenco collegato che contiene i risultati di interruzione di riga e riordinamento di ogni paragrafo del testo fornito
+- **resolved_info_head:** puntatore all'elenco collegato che contiene i risultati di interruzione di riga e riordinamento di ogni paragrafo del testo fornito
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Riordino del testo dell'offerta riuscito
 - **GX_PTR_ERROR:**(0x07) Puntatori di input non validi
-- **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
+- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocatore di memoria non definito o allocazione di memoria non riuscita
 
 ### <a name="allowed-from"></a>Consentito da
 
 Tutti
 
 ### <a name="example"></a>Esempio
-#### <a name="draw-single-line-bidi-text-to-canvas"></a>Disegnare testo bidi a riga singola nell'area di disegno
+#### <a name="draw-single-line-bidi-text-to-canvas"></a>Disegnare il testo dell'offerta a riga singola nell'area di disegno
 ```C
 VOID custom_widget_draw(GX_WIDGET *widget)
 {
@@ -25417,7 +25494,7 @@ VOID custom_widget_draw(GX_WIDGET *widget)
     }
 }
 ```
-#### <a name="draw-multi-line-bidi-text-to-canvas"></a>Disegnare testo di offerte su più righe nell'area di disegno
+#### <a name="draw-multi-line-bidi-text-to-canvas"></a>Disegnare testo dell'offerta su più righe nell'area di disegno
 ```C
 VOID custom_widget_draw(GX_WIDGET *widget)
 {
@@ -25464,7 +25541,7 @@ VOID custom_widget_draw(GX_WIDGET *widget)
 }
 ```
 
-#### <a name="draw-multi-paragraph-bidi-text-to-canvas"></a>Disegnare testo a più paragrafi nell'area di disegno
+#### <a name="draw-multi-paragraph-bidi-text-to-canvas"></a>Disegnare testo dell'offerta a più paragrafi nell'area di disegno
 ```C
 VOID custom_widget_draw(GX_WIDGET *widget)
 {
@@ -25544,9 +25621,9 @@ Questo servizio elimina l'elenco di informazioni risolte restituito da gx_utilit
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Eliminazione del testo risolta correttamente
-- **GX_PTR_ERROR**: (0x07) Puntatori di input non validi
-- **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
+- **GX_SUCCESS:**(0x00) Eliminazione testo risolta riuscita
+- **GX_PTR_ERROR:**(0x07) Puntatori di input non validi
+- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocatore di memoria non definito o allocazione di memoria non riuscita
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -25614,11 +25691,11 @@ Questo servizio richiede l'uso preventivo gx_system_memory_allocator_set, per co
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Ridimensionamento della mappa pixel riuscito
-- **GX_PTR_ERROR:**(0x07) Puntatore alla mappa pixel di origine o destinazione non valido
-- **GX_INVALID_VALUE:**(0x22) Valore di larghezza o altezza non valido
+- **GX_SUCCESS:**(0x00) Ridimensionamento mappa pixel riuscito
+- **GX_PTR_ERROR**: (0x07) Puntatore di origine o mappa pixel di destinazione non valido
+- **GX_INVALID_VALUE:**(0x22) Valore larghezza o altezza non valido
 - **GX_NOT_SUPPORTED:**(0x28) La mappa pixel di origine è in formato compresso
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocatore di memoria non definito o allocazione di memoria non riuscita
+- **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -25680,16 +25757,16 @@ Questo servizio richiede l'uso preventivo gx_system_memory_allocator_set, per co
 - **src:** mappa pixel da ruotare
 - **angle:** angolo di rotazione in gradi
 - **destination:** buffer di destinazione per la mappa pixel risultante
-- **rot_cx:** recuperata la coordinata x del centro di rotazione rispetto alla mappa pixel di destinazione. Deve essere avviata con la coordinata x del centro di rotazione rispetto alla mappa pixel di origine. Se rot_cx è GX_NULL, il valore non verrà recuperato.
+- **rot_cx:** recuperata la coordinata x del centro di rotazione rispetto alla mappa pixel di destinazione. Deve essere avviato con la coordinata x del centro di rotazione rispetto alla mappa pixel di origine. Se rot_cx è GX_NULL, il valore non verrà recuperato.
 - **rot_cy:** recuperata la coordinata y del centro di rotazione rispetto alla mappa pixel di destinazione. Deve essere avviato con la coordinata y del centro di rotazione rispetto alla mappa pixel di origine. Se rot_cy è GX_NULL, il valore non verrà recuperato.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS:**(0x00) Rotazione riuscita della mappa pixel
 - **GX_PTR_ERROR**: (0x07) Puntatore di origine o mappa pixel di destinazione non valido
-- **GX_INVALID_VALUE:**(0x22) Il valore di Angle è 0
-- **GX_INVALID_FORMAT:**(0x28) La mappa pixel di origine è in formato compresso, che non è supportato
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocatore di memoria non definito o allocazione di memoria non riuscita
+- **GX_INVALID_VALUE:**(0x22) Il valore angolo è 0
+- **GX_INVALID_FORMAT:**(0x28) La mappa pixel di origine è in formato compresso, che non è supportata
+- **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -25744,23 +25821,23 @@ UINT gx_utility_pixelmap_simple_rotate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ruota una mappa pixel di 90 gradi, 180 gradi o 270 gradi.
+Questo servizio ruota una mappa pixel di 90 gradi, 180 o 270 gradi.
 
 ### <a name="parameters"></a>Parametri
 
 - **src:** mappa pixel da ruotare
 - **angle:** angolo di rotazione in gradi
 - **destination:** buffer di destinazione per la mappa pixel risultante
-- **rot_cx:** recuperata la coordinata x del centro di rotazione rispetto alla mappa pixel di destinazione. Deve essere avviata con la coordinata x del centro di rotazione rispetto alla mappa pixel di origine. Se rot_cx è GX_NULL, il valore non verrà recuperato.
+- **rot_cx:** recuperata la coordinata x del centro di rotazione rispetto alla mappa pixel di destinazione. Deve essere avviato con la coordinata x del centro di rotazione rispetto alla mappa pixel di origine. Se rot_cx è GX_NULL, il valore non verrà recuperato.
 **rot_cy:** recuperata la coordinata y del centro di rotazione rispetto alla mappa pixel di destinazione. Deve essere avviato con la coordinata y del centro di rotazione rispetto alla mappa pixel di origine. Se rot_cy è GX_NULL, il valore non verrà recuperato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Rotazione riuscita della mappa pixel
-- **GX_PTR_ERROR**: (0x07) Puntatore di origine o mappa pixel di destinazione non valido
-- **GX_INVALID_VALUE:**(0x22) Il valore angolo è 0 o non è un angolo semplice come 90, 180, 270
-- **GX_INVALID_FORMAT:**(0x28) La mappa pixel di origine è in formato compresso, che non è supportata
-- **GX_SYSTEM_MEMORY_ERROR:** allocatore di memoria (0x30) non definito o allocazione di memoria non riuscita
+- **GX_SUCCESS:**(0x00) Rotazione della mappa pixel riuscita
+- **GX_PTR_ERROR:**(0x07) Puntatore alla mappa pixel di origine o destinazione non valido
+- **GX_INVALID_VALUE**: (0x22) Il valore di Angle è 0 o non è un angolo semplice come 90, 180, 270
+- **GX_INVALID_FORMAT:**(0x28) La mappa pixel di origine è in formato compresso, che non è supportato
+- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocatore di memoria non definito o allocazione di memoria non riuscita
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -25817,11 +25894,11 @@ Questo servizio centra il rettangolo all'interno di un altro rettangolo.
 ### <a name="parameters"></a>Parametri
 
 - **rectangle:** rettangolo da centrare
-- **within_rectangle: Rettangolo** da centrare all'interno
+- **within_rectangle:** Rettangolo da centrare all'interno
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Correttamente centrato il rettangolo
+- **GX_SUCCESS**: (0x00) Centrato correttamente il rettangolo
 - **GX_PTR_ERROR:**(0x07) Puntatore rettangolo di input non valido
 - **GX_INVALID_SIZE:**(0x19) Dimensioni del rettangolo non valide
 
@@ -25946,12 +26023,12 @@ Questo servizio combina il primo e il secondo rettangolo nel primo rettangolo. I
 ### <a name="parameters"></a>Parametri
 
 - **first_rectangle:** primo rettangolo e rettangolo combinato
-- **second_rectangle**: secondo rettangolo
+- **second_rectangle:** Secondo rettangolo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Combinato correttamente due rettangoli
-- **GX_PTR_ERROR**: (0x07) Puntatore di input non valido
+- **GX_SUCCESS**: (0x00) Combinazione riuscita di due rettangoli
+- **GX_PTR_ERROR:**(0x07) Puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -26007,16 +26084,16 @@ GX_BOOL gx_utility_rectangle_compare(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio confronta il primo e il secondo rettangolo. Se sono uguali, viene restituito GX_TRUE valore .
+Questo servizio confronta il primo e il secondo rettangolo. Se sono uguali, viene restituito GX_TRUE valore.
 
 ### <a name="parameters"></a>Parametri
 
-- **first_rectangle:** Primo rettangolo
-- **second_rectangle:** Secondo rettangolo
+- **first_rectangle**: primo rettangolo
+- **second_rectangle**: secondo rettangolo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **result:** GX_TRUE se i rettangoli sono uguali, in caso GX_FALSE viene restituito .
+- **result**: GX_TRUE se i rettangoli sono uguali, in caso GX_FALSE viene restituito .
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -26072,14 +26149,14 @@ Questo servizio definisce un rettangolo come specificato.
 
 - **rectangle:** blocco di controllo Rectangle
 - **left:** coordinata più a sinistra
-- **top:** coordinata più in alto
+- **top:** coordinata superiore maggiore
 - **right:** coordinata più a destra
-- **bottom:** coordinata più in basso
+- **bottom:** coordinata inferiore maggiore
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Definito correttamente un rettangolo
-- **GX_PTR_ERROR**: (0x07) Puntatore rettangolo non valido
+- **GX_SUCCESS**: (0x00) Definizione di un rettangolo completata
+- **GX_PTR_ERROR:**(0x07) Puntatore rettangolo non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -26135,9 +26212,9 @@ Questo servizio rileva qualsiasi sovrapposizione dei rettangoli forniti. Se vien
 
 ### <a name="parameters"></a>Parametri
 
-- **first_rectangle:** Primo rettangolo
-- **second_rectangle:** Secondo rettangolo
-- **return_overlap_area:** Area rettangolare sovrapposta
+- **first_rectangle**: primo rettangolo
+- **second_rectangle**: secondo rettangolo
+- **return_overlap_area:** area rettangolare sovrapposta
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -26263,7 +26340,7 @@ Questo servizio aumenta le dimensioni del rettangolo come specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS:**(0x00) Ridimensionato correttamente il rettangolo
+- **GX_SUCCESS:**(0x00) Il rettangolo è stato ridimensionato correttamente
 - **GX_PTR_ERROR:**(0x07) Puntatore rettangolo di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -26318,12 +26395,12 @@ Questo servizio sposta il rettangolo in base ai valori specificati.
 ### <a name="parameters"></a>Parametri
 
 - **rectangle:** rettangolo da spostare
-- **x_shif**: Numero di pixel da spostare sull'asse x
-- **y_shift:** Numero di pixel da spostare sull'asse y
+- **x_shif:** numero di pixel da spostare sull'asse x
+- **y_shift:** numero di pixel da spostare sull'asse y
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Spostato correttamente il rettangolo
+- **GX_SUCCESS:**(0x00) Spostato correttamente il rettangolo
 - **GX_PTR_ERROR:**(0x07) Puntatore rettangolo di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
@@ -26361,7 +26438,7 @@ status = gx_utility_rectangle_shift(&my_rectangle, 10, 20);
 
 ## <a name="gx_utility_string_to_alphamap"></a>gx_utility_string_to_alphamap
 
-Eseguire il rendering della stringa in una mappa pixel di tipo alfamap a 8bpp (deprecata)
+Eseguire il rendering della stringa in una mappa pixelmap di tipo alfamap 8bpp (deprecata)
 
 ### <a name="prototype"></a>Prototipo
 
@@ -26376,24 +26453,24 @@ UINT gx_utility_string_to_alphamap(
 
 Questo servizio è stato deprecato a favore di gx_utility_string_to_alphamap_ext().
 
-Questo servizio esegue il rendering di una stringa di testo in una mappa alfa, che è una forma speciale di pixelmap di 8bpp contenente solo valori alfa. Questo servizio viene in genere usato insieme a gx_utility_pixelmap_rotate e gx_canvas_pixelmap_draw per disegnare testo ruotato nell'area di disegno.
+Questo servizio esegue il rendering di una stringa di testo in una mappa alfa, che è una forma speciale di pixelmap 8bpp contenente solo valori alfa. Questo servizio viene in genere usato insieme gx_utility_pixelmap_rotate e gx_canvas_pixelmap_draw per disegnare testo ruotato nell'area di disegno.
 
-Questo servizio calcola le dimensioni della memoria necessarie per la mappa alfa risultante e richiama la funzione gx_system_memory_allocator() definita dall'applicazione per allocare dinamicamente memoria. L'applicazione deve chiamare gx_system_memory_allocator_set() a un certo punto, in genere durante l'avvio del programma, prima di usare questo servizio.
+Questo servizio calcola le dimensioni della memoria necessarie per la mappa alfa risultante e richiama la funzione gx_system_memory_allocator() definita dall'applicazione per allocare in modo dinamico la memoria. L'applicazione deve chiamare gx_system_memory_allocator_set() a un certo punto, in genere durante l'avvio del programma, prima di usare questo servizio.
 
-Se una stringa di testo deve essere ruotata e disegnata nell'area di disegno una sola volta, il gx_canvas_rotated_text_draw() viene fornito come alternativa. gx_canvas_rotated_text_draw() chiamerà gx_utility_string_to_alphamap(), gx_utility_pixelmap_rotate() e gx_canvas_pixelmap_draw() per eseguire il rendering del testo ruotato in un'unica operazione. Tuttavia, se lo stesso testo verrà disegnato più volte ruotato in diversi angoli, è più efficiente creare la mappa alfa una volta usando l'API gx_utility_string_to_alphmap, quindi ruotare la mappa alfa risultante più volte in base alle esigenze.
+Se una stringa di testo deve essere ruotata e disegnata nell'area di disegno una sola volta, il servizio gx_canvas_rotated_text_draw() viene fornito come alternativa. gx_canvas_rotated_text_draw() chiamerà gx_utility_string_to_alphamap(), gx_utility_pixelmap_rotate() e gx_canvas_pixelmap_draw() per eseguire il rendering del testo ruotato in un'unica operazione. Tuttavia, se lo stesso testo verrà disegnato più volte ruotato in diversi angoli, è più efficiente creare la mappa alfa una volta usando l'API gx_utility_string_to_alphmap, quindi ruotare la mappa alfa risultante più volte in base alle esigenze.
 
 ### <a name="parameters"></a>Parametri
 
-- **text**: stringa di testo di cui eseguire il rendering in alphamap
+- **text:** stringa di testo di cui eseguire il rendering in alphamap
 - **font:** tipo di carattere da utilizzare per il rendering del testo
-- **return_map:** puntatore al GX_PIXELMAP da restituire al chiamante.
+- **return_map**: puntatore al GX_PIXELMAP da restituire al chiamante.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Il rendering di una stringa di testo in una mappa alfa è stato completato correttamente
-- **GX_PTR_ERROR**: (0x07) Puntatore di input non valido
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) L'allocazione di memoria/funzione gratuita non è definita
-- **GX_INVALID_STRING_LENGTH**: (0x34) Lunghezza stringa non valida
+- **GX_SUCCESS**: (0x00) Rendering di una stringa di testo in una mappa alfa
+- **GX_PTR_ERROR:**(0x07) Puntatore di input non valido
+- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocazione di memoria/funzione libera non definita
+- **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -26440,7 +26517,7 @@ gx_canvas_pixelmap_draw(200, 200, &rotated_text);
 
 ## <a name="gx_utility_string_to_alphamap_ext"></a>gx_utility_string_to_alphamap_ext
 
-Eseguire il rendering della stringa in una mappa pixel di tipo alfamap 8bpp
+Eseguire il rendering della stringa in una mappa pixel di tipo alfamap a 8bpp
 
 ### <a name="prototype"></a>Prototipo
 
@@ -26453,23 +26530,23 @@ UINT gx_utility_string_to_alphamap_ext(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue il rendering di una stringa di testo in una mappa alfa, che è una forma speciale di pixelmap 8bpp contenente solo valori alfa. Questo servizio viene in genere usato insieme gx_utility_pixelmap_rotate e gx_canvas_pixelmap_draw per disegnare testo ruotato nell'area di disegno.
+Questo servizio esegue il rendering di una stringa di testo in una mappa alfa, che è una forma speciale di pixelmap di 8bpp contenente solo valori alfa. Questo servizio viene in genere usato insieme a gx_utility_pixelmap_rotate e gx_canvas_pixelmap_draw per disegnare testo ruotato nell'area di disegno.
 
 Questo servizio calcola le dimensioni della memoria necessarie per la mappa alfa risultante e richiama la funzione gx_system_memory_allocator() definita dall'applicazione per allocare in modo dinamico la memoria. L'applicazione deve chiamare gx_system_memory_allocator_set() a un certo punto, in genere durante l'avvio del programma, prima di usare questo servizio.
 
-Se una stringa di testo deve essere ruotata e disegnata nell'area di disegno una sola volta, il servizio gx_canvas_rotated_text_draw() viene fornito come alternativa. gx_canvas_rotated_text_draw() chiamerà gx_utility_string_to_alphamap(), gx_utility_pixelmap_rotate() e gx_canvas_pixelmap_draw() per eseguire il rendering del testo ruotato in un'unica operazione. Tuttavia, se lo stesso testo verrà disegnato più volte ruotato in diversi angoli, è più efficiente creare la mappa alfa una volta usando l'API gx_utility_string_to_alphmap, quindi ruotare la mappa alfa risultante più volte in base alle esigenze.
+Se una stringa di testo deve essere ruotata e disegnata nell'area di disegno una sola volta, il gx_canvas_rotated_text_draw() viene fornito come alternativa. gx_canvas_rotated_text_draw() chiamerà gx_utility_string_to_alphamap(), gx_utility_pixelmap_rotate() e gx_canvas_pixelmap_draw() per eseguire il rendering del testo ruotato in un'unica operazione. Tuttavia, se lo stesso testo verrà disegnato più volte ruotato in diversi angoli, è più efficiente creare la mappa alfa una volta usando l'API gx_utility_string_to_alphmap, quindi ruotare la mappa alfa risultante più volte in base alle esigenze.
 
 ### <a name="parameters"></a>Parametri
 
 - **string:** stringa di testo di cui eseguire il rendering in alphamap
 - **font:** tipo di carattere da utilizzare per il rendering del testo
-- **return_map**: puntatore al GX_PIXELMAP da restituire al chiamante.
+- **return_map:** puntatore al GX_PIXELMAP da restituire al chiamante.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS**: (0x00) Rendering di una stringa di testo in una mappa alfa
+- **GX_SUCCESS**: (0x00) Il rendering di una stringa di testo in una mappa alfa è stato completato correttamente
 - **GX_PTR_ERROR:**(0x07) Puntatore di input non valido
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Allocazione di memoria/funzione libera non definita
+- **GX_SYSTEM_MEMORY_ERROR:**(0x30) L'allocazione di memoria/funzione gratuita non è definita
 - **GX_INVALID_STRING_LENGTH:**(0x34) Lunghezza stringa non valida
 
 ### <a name="allowed-from"></a>Consentito da
@@ -26552,7 +26629,7 @@ Questa funzione posiziona gli elementi figlio per l'elenco verticale.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Correttamente posizionati gli elementi figlio per l'elenco verticale
+- **GX_SUCCESS** (0x00) Correttamente posizionato gli elementi figlio per l'elenco verticale
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -26606,7 +26683,7 @@ GX_VERTICAL_LIST deriva da GX_WINDOW e supporta tutti i gx_window API.
 
 - **vertical_list** Blocco di controllo widget elenco verticale
 - **name** Nome dell'elenco verticale
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **total_rows** Numero totale di righe nell'elenco verticale
 - **callback** Funzione che verrà chiamata dall'elenco verticale quando si scorre l'elenco. Il chiamante deve inizialmente creare un numero GX_WIDGET elementi figlio basati su per riempire le righe dell'elenco visibili. Durante lo scorrimento dell'elenco, questa funzione viene chiamata per creare nuovamente gli elementi figlio dell'elenco corrispondenti all'indice dell'elenco fornito
 - **style** Stile del widget della barra di scorrimento. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
@@ -26615,10 +26692,10 @@ GX_VERTICAL_LIST deriva da GX_WINDOW e supporta tutti i gx_window API.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) L'elenco verticale è stato creato correttamente
+- **GX_SUCCESS** (0x00) Creazione dell'elenco verticale completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_VALUE** (0x22) Numero di righe non valide
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -26649,7 +26726,7 @@ status = gx_vertical_list_create(&my_list, “my_list”, &my_parent,
 - gx_vertical_list_total_rows_set
 
 ## <a name="gx_vertical_list_event_process"></a>gx_vertical_list_event_process
-### <a name="process-vertical-list-event"></a>Elaborare un evento elenco verticale
+### <a name="process-vertical-list-event"></a>Elaborare l'evento dell'elenco verticale
 
 ### <a name="prototype"></a>Prototipo
 
@@ -26665,11 +26742,11 @@ Questo servizio elabora un evento per l'elenco verticale.
 ### <a name="parameters"></a>Parametri
 
 - **elenco** Blocco di controllo widget elenco verticale
-- **event** Puntatore all'evento da elaborare
+- **evento** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successfully processed the vertical list event (Elaborazione dell'evento elenco verticale completata)
+- **GX_SUCCESS** (0x00) L'evento elenco verticale è stato elaborato correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -26714,7 +26791,7 @@ Questo servizio imposta l'indice iniziale per l'elenco verticale.
 ### <a name="parameters"></a>Parametri
 
 - **elenco** Blocco di controllo widget elenco verticale
-- **index** Nuovo indice superiore
+- **index** Nuovo indice principale
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -26768,7 +26845,7 @@ Questo servizio restituisce l'indice selezionato dell'elenco verticale
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere correttamente la voce di elenco verticale
+- **GX_SUCCESS** (0x00) Ottenere correttamente la voce dell'elenco verticale
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -26818,11 +26895,11 @@ Questo servizio assegna la voce selezionata in un elenco verticale. Se necessari
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostare correttamente la voce dell'elenco verticale
+- **GX_SUCCESS** (0x00) Impostare correttamente la voce di elenco verticale
 - **GX_FAILURE** (0x10) Indice di input non trovato nell'elenco
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_INVALID_WIDGET** (0x12) Widget elenco verticale o voce di elenco non valido
+- **GX_INVALID_WIDGET** (0x12) Elenco verticale o voce di elenco non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -26867,7 +26944,7 @@ Questo servizio restituisce il widget selezionato dell'elenco verticale. Si noti
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere correttamente la voce di elenco verticale
+- **GX_SUCCESS** (0x00) Ottenere correttamente la voce dell'elenco verticale
 - **GX_FAILURE** (0x10) Il widget selezionato è stato scorrendo dalla visualizzazione.
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -26973,10 +27050,10 @@ Questo servizio crea una barra di scorrimento verticale.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione della barra di scorrimento verticale riuscita
+- **GX_SUCCESS** (0x00) Creazione corretta della barra di scorrimento verticale
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Già creato
+- **GX_ALREADY_CREATED** (0x13) Widget già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
 
@@ -27015,7 +27092,7 @@ UINT gx_widget_allocate(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca dinamicamente un blocco di controllo widget chiamando la funzione di allocazione di memoria definita dall'applicazione. Questo servizio viene usato principalmente dalle funzioni generate da GUIX Studio per allocare dinamicamente il blocco di controllo quando la proprietà "Allocazione dinamica" è selezionata nella visualizzazione delle proprietà di GUIX Studio.
+Questo servizio alloca dinamicamente un blocco di controllo widget chiamando la funzione di allocazione di memoria definita dall'applicazione. Questo servizio viene usato principalmente dalle funzioni generate da GUIX Studio per allocare dinamicamente il blocco di controllo quando la proprietà "Allocazione dinamica" viene selezionata nella visualizzazione delle proprietà di GUIX Studio.
 
 ### <a name="parameters"></a>Parametri
 
@@ -27024,8 +27101,8 @@ Questo servizio alloca dinamicamente un blocco di controllo widget chiamando la 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito allocazione widget
-- **GX_SYSTEM_MEMORY_ERROR** allocatore di memoria (0x30) non è definito o l'allocazione di memoria non è riuscita
+- **GX_SUCCESS** (0x00) Allocazione widget riuscita
+- **GX_SYSTEM_MEMORY_ERROR** allocatore di memoria (0x30) non è definito o l'allocazione della memoria non è riuscita
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_MEMORY_SIZE** (0x29) Dimensioni della memoria non valide
 
@@ -27083,7 +27160,7 @@ status = gx_widget_allocate(&button, sizeof(GX_TEXT_BUTTON));
 - gx_widget_width_get
 
 ## <a name="gx_widget_attach"></a>gx_widget_attach
-### <a name="attach-widget-to-its-parent"></a>Collegare un widget al relativo elemento padre
+### <a name="attach-widget-to-its-parent"></a>Collegare il widget al relativo elemento padre
 
 ### <a name="prototype"></a>Prototipo
 
@@ -27096,11 +27173,11 @@ UINT gx_widget_attach(
 
 Questo servizio collega il widget all'elemento padre specificato. Se il widget è già collegato a un altro elemento padre, viene prima scollegato. Se il widget è già collegato allo stesso elemento padre, la funzione non esegue alcuna operazione.
 
-Il widget diventa l'elemento figlio principale del relativo elemento padre in termini di ordinamento z. Se i widget di pari livello si sovrappongono, questo widget viene disegnato sopra gli elementi di pari livello. Per inserire il nuovo widget nella parte posteriore dell'ordine z, usare gx_widget_back_attach o gx_widget_back_move.
+Il widget diventa l'elemento figlio in primo piano dell'elemento padre in termini di ordinamento z. Se i widget di pari livello si sovrappongono, questo widget viene disegnato sopra gli elementi di pari livello. Per inserire il nuovo widget nella parte posteriore dell'ordine z, usare gx_widget_back_attach o gx_widget_back_move.
 
 ### <a name="parameters"></a>Parametri
 
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **widget** Puntatore al widget figlio
 
 ### <a name="return-values"></a>Valori restituiti
@@ -27172,7 +27249,7 @@ VOID gx_widget_background_draw(GX_WIDGET *widget);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un riempimento a tinta unita dello sfondo di un widget. Questo servizio viene chiamato automaticamente dalla funzione gx_widget_draw, ma può anche essere richiamato dall'applicazione come parte di una funzione di disegno di widget personalizzata.
+Questo servizio esegue un riempimento a tinta unita dello sfondo di un widget. Questo servizio viene chiamato automaticamente dalla funzione gx_widget_draw, ma può anche essere richiamato dall'applicazione come parte di una funzione di disegno personalizzata del widget.
 
 ### <a name="parameters"></a>Parametri
 
@@ -27180,7 +27257,7 @@ Questo servizio esegue un riempimento a tinta unita dello sfondo di un widget. Q
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -27242,7 +27319,7 @@ VOID my_widget_draw(GX_WIDGET * widget)
 - gx_widget_width_get
 
 ## <a name="gx_widget_back_attach"></a>gx_widget_back_attach
-### <a name="attach-widget-to-its-parent"></a>Collegare un widget al relativo elemento padre
+### <a name="attach-widget-to-its-parent"></a>Collegare il widget al relativo elemento padre
 
 ### <a name="prototype"></a>Prototipo
 
@@ -27255,11 +27332,11 @@ UINT gx_widget_back_attach(
 
 Questo servizio collega il widget all'elemento padre specificato. Se il widget è già collegato a un altro elemento padre, viene prima scollegato. Se il widget è già collegato allo stesso elemento padre, la funzione non esegue alcuna operazione.
 
-Il widget diventa l'elemento figlio più indietro del padre in termini di ordinamento z. Se i widget di pari livello si sovrappongono, questo widget viene disegnato dietro tali widget. Per inserire il nuovo widget all'inizio dell'ordine z, usare gx_widget_attach o gx_widget_front_move.
+Il widget diventa l'elemento figlio più indietro del relativo elemento padre in termini di ordinamento z. Se i widget di pari livello si sovrappongono, questo widget viene disegnato dietro questi elementi di pari livello. Per posizionare il nuovo widget davanti all'ordine z, usare gx_widget_attach o gx_widget_front_move.
 
 ### <a name="parameters"></a>Parametri
 
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **widget** Puntatore al widget figlio
 
 ### <a name="return-values"></a>Valori restituiti
@@ -27332,16 +27409,16 @@ UINT gx_widget_back_move(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio sposta il widget di nuovo nell'ordine Z dei widget figlio dell'elemento padre.
+Questo servizio sposta il widget sul retro nell'ordine Z dei widget figlio dell'elemento padre.
 
 ### <a name="parameters"></a>Parametri
 
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **return_widget_moved** Puntatore alla destinazione per il flag che indica che il widget è stato spostato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il widget Successful (Operazione riuscita) viene spostato in avanti
+- **GX_SUCCESS** (0x00) Spostamento riuscito del widget sul retro
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_NO_CHANGE** (0x08) Non vengono applicate modifiche
@@ -27422,8 +27499,8 @@ Questo servizio sposta un blocco rettangolare di pixel. Questo servizio viene sp
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostamento riuscito del widget sul retro
-- **GX_INVALID_CANVAS** (0x20) Canvas widget non trovato
+- **GX_SUCCESS** (0x00) Il widget Successful (Operazione riuscita) viene spostato in avanti
+- **GX_INVALID_CANVAS** (0x20) Area di disegno widget non trovata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -27495,19 +27572,19 @@ VOID gx_widget_border_draw(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna il bordo del widget. Questo servizio viene in genere richiamato come parte di una funzione di disegno del widget. Questo servizio interpreta i flag di stile del bordo del widget per non disegnare alcun bordo, un bordo sottile, un bordo in rilievo, un bordo incassato o un bordo spesso.
+Questo servizio disegna il bordo del widget. Questo servizio viene in genere richiamato come parte di una funzione di disegno del widget. Questo servizio interpreta i flag di stile del bordo del widget in modo da non disegnare alcun bordo, un bordo sottile, un bordo in rilievo, un bordo a forma di blu o un bordo spesso.
 
 ### <a name="parameters"></a>Parametri
 
 - **widget** Puntatore al widget
-- **border_color** Colore del bordo. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
-- **upper_fill** Colore del riempimento superiore. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
+- **border_color** Colore del bordo. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
+- **upper_fill** Colore del riempimento superiore. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
 - **lower_fill** Colore del riempimento inferiore. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
 - **fill** Questo flag booleano indica se l'area del widget deve essere riempita con i colori di riempimento forniti. Se questo valore è GX_FALSE, viene disegnato solo il bordo del widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -27591,7 +27668,7 @@ Questo servizio imposta lo stile del bordo del widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Correttamente impostato lo stile del bordo del widget
+- **GX_SUCCESS** (0x00) Set di stili del bordo del widget riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -27660,7 +27737,7 @@ UINT gx_widget_border_width_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ottiene lo spessore del bordo del widget.
+Questo servizio ottiene la larghezza del bordo del widget.
 
 ### <a name="parameters"></a>Parametri
 
@@ -27669,7 +27746,7 @@ Questo servizio ottiene lo spessore del bordo del widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) È stato recuperato correttamente lo spessore del bordo
+- **GX_SUCCESS** (0x00) Recuperato correttamente lo spessore del bordo
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -27738,7 +27815,7 @@ UINT gx_widget_canvas_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce un puntatore all'area di disegno in cui viene eseguito il rendering del widget.
+Questo servizio restituisce un puntatore all'area di disegno in cui viene eseguito il rendering di questo widget.
 
 ### <a name="parameters"></a>Parametri
 
@@ -27747,8 +27824,8 @@ Questo servizio restituisce un puntatore all'area di disegno in cui viene esegui
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Operazione riuscita nell'area di disegno del widget
-- **GX_FAILURE** (0x10) Area di disegno widget non trovata
+- **GX_SUCCESS** (0x00) Operazione riuscita dell'area di disegno del widget
+- **GX_FAILURE** (0x10) Canvas widget non trovato
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -27822,13 +27899,13 @@ Questo servizio rileva se il widget è un elemento figlio del widget padre. Ques
 
 ### <a name="parameters"></a>Parametri
 
-- **padre** Puntatore al widget padre
-- **child** Puntatore al widget figlio
+- **elemento padre** Puntatore al widget padre
+- **figlio** Puntatore al widget figlio
 - **return_detect** Puntatore alla destinazione per il rilevamento
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Rilevamento figlio del widget riuscito
+- **GX_SUCCESS** (0x00) Rilevamento dei widget figlio riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget padre o figlio non valido
 
@@ -27895,7 +27972,7 @@ VOID gx_widget_children_draw(GX_WIDGET *widget);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna tutti gli elementi figlio del widget padre. Questo servizio viene in genere richiamato da tutte le funzioni di disegno di widget standard per disegnare tutti i widget figlio esistenti e deve essere richiamato da qualsiasi funzione di disegno personalizzata per consentire l'associazione di widget figlio al tipo di widget padre personalizzato.
+Questo servizio disegna tutti gli elementi figlio del widget padre. Questo servizio viene in genere richiamato da tutte le funzioni di disegno standard dei widget per disegnare tutti i widget figlio esistenti e deve essere richiamato da qualsiasi funzione di disegno personalizzata per consentire il collegamento dei widget figlio al tipo di widget padre personalizzato.
 
 ### <a name="parameters"></a>Parametri
 
@@ -27903,7 +27980,7 @@ Questo servizio disegna tutti gli elementi figlio del widget padre. Questo servi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -27989,7 +28066,7 @@ Questo servizio calcola l'area client del widget sottraendo la larghezza del bor
 - **GX_SUCCESS** (0x00) Operazione riuscita dell'area client del widget
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
-- **GX_INVALID_VALUE** (0x22) Il bordo del widget non è valido
+- **GX_INVALID_VALUE** (0x22) Del widget non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -28057,19 +28134,19 @@ UINT gx_widget_color_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ottiene il colore associato all'ID risorsa fornito. Questo servizio deve essere chiamato solo dai widget visibili.
+Questo servizio ottiene il colore associato all'ID risorsa fornito. Questo servizio deve essere chiamato solo da widget visibili.
 
 ### <a name="parameters"></a>Parametri
 
 - **widget** Puntatore al blocco di controllo widget
 - **resource_id** ID risorsa di colore. **L'appendice B** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
-- **return_color** Puntatore alla destinazione per il colore. **L'Appendice A** contiene colori predefiniti. Si noti che anche l'applicazione può aggiungere colori personalizzati.
+- **return_color** Puntatore alla destinazione per il colore. **L'appendice A** contiene colori predefiniti. Si noti che l'applicazione può aggiungere anche colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful color get
+- **GX_SUCCESS** (0x00) Ottenere il colore corretto
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
-- **GX_INVALID_CANVAS** (0x20) Area di disegno widget non valida o widget invisibile
+- **GX_INVALID_CANVAS** (0x20) L'area di disegno del widget non è valida o il widget non è visibile
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -28115,17 +28192,17 @@ Questo servizio crea un widget.
 
 - **widget** Puntatore al widget
 - **name** Nome logico del widget
-- **elemento padre** Puntatore al widget padre
+- **padre** Puntatore al widget padre
 - **style** Stile. **L'appendice D** contiene stili generali predefiniti per tutti i widget e stili specifici del widget.
 - **widget_id** ID del widget definito dall'applicazione
 - **size** Dimensioni del widget
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Creazione del widget completata
+- **GX_SUCCESS** (0x00) Creazione widget riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_ALREADY_CREATED** (0x13) Widget già creato
+- **GX_ALREADY_CREATED** (0x13) Già creato
 - **GX_INVALID_SIZE** (0x19) Dimensioni del blocco di controllo widget non valide
 - **GX_INVALID_WIDGET** (0x12) Widget padre non valido
 
@@ -28197,7 +28274,7 @@ UINT gx_widget_created_test(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio verifica se il widget è stato creato in precedenza. Se non vengono rilevati errori, questa funzione restituisce GX_SUCCESS, indipendentemente dal fatto che il widget sia ancora stato creato o meno. Il risultato del test si trova nel puntatore return_test test.
+Questo servizio verifica se il widget è stato creato in precedenza. Se non si verificano errori, questa funzione restituisce GX_SUCCESS, indipendentemente dal fatto che il widget sia stato ancora creato o meno. Il risultato del test si trova nel puntatore return_test test.
 
 ### <a name="parameters"></a>Parametri
 
@@ -28263,7 +28340,7 @@ GX_TRUE, the widget “my_widget” has been created. */
 - gx_widget_width_get
 
 ## <a name="gx_widget_delete"></a>gx_widget_delete
-### <a name="delete-widget"></a>Eliminare un widget
+### <a name="delete-widget"></a>Elimina widget
 
 ### <a name="prototype"></a>Prototipo
 
@@ -28273,7 +28350,7 @@ UINT gx_widget_delete(GX_WIDGET *widget);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elimina il widget. Se il blocco di controllo widget viene allocato dinamicamente, il gx_system_memory_free viene richiamato per liberare l'archiviazione allocata dinamicamente.
+Questo servizio elimina il widget. Se il blocco di controllo widget viene allocato dinamicamente, il gx_system_memory_free viene richiamato per liberare spazio di archiviazione allocato dinamicamente.
 
 ### <a name="parameters"></a>Parametri
 
@@ -28281,7 +28358,7 @@ Questo servizio elimina il widget. Se il blocco di controllo widget viene alloca
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Eliminazione del widget GX_CALLER_ERROR (0x11) Chiamante non valido di questa funzione
+- **GX_SUCCESS** (0x00) Eliminazione widget riuscita GX_CALLER_ERROR (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 - **GX_SYSTEM_MEMORY_ERROR** (0x30) La funzione memory free non è definita
@@ -28355,7 +28432,7 @@ Questo servizio scollega il widget dal relativo elemento padre.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Scollegamento del widget riuscito GX_CALLER_ERROR (0x11) Chiamante non valido di questa funzione
+- **GX_SUCCESS** (0x00) Scollegamento del widget GX_CALLER_ERROR (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -28428,7 +28505,7 @@ Questo servizio disegna il widget. Questa funzione viene in genere chiamata inte
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -28507,7 +28584,7 @@ Questo servizio esegue l'override della funzione di disegno predefinita del widg
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Riuscito l'override della funzione di disegno del widget
+- **GX_SUCCESS** (0x00) Override della funzione di disegno del widget riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -28581,21 +28658,21 @@ UINT gx_widget_event_generate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio genera un GX_SIGNAL di evento, che è un tipo o una classe specifica di GX_EVENT. gx_widget_event_generate() codifica l'ID widget a 16 bit, insieme all'oggetto passato event_type, in un singolo valore GX_EVENT.gx_event_type a 32 bit. Il parametro value viene codificato nell'oggetto gx_event. gx_event_payload.gx_event_longdata.
+Questo servizio genera un GX_SIGNAL di evento, che è un tipo o una classe di GX_EVENT. gx_widget_event_generate() codifica l'ID del widget a 16 bit, insieme a quello passato in event_type, in un singolo valore GX_EVENT.gx_event_type a 32 bit. Il parametro value viene codificato nella classe gx_event. gx_event_payload.gx_event_longdata.
 
-Il campo event.gx_event_target viene sempre caricato con l'elemento padre del widget chiamante, ovvero l'evento generato viene sempre inviato per primo all'elemento padre del widget di generazione.
+Il campo event.gx_event_target generato viene sempre caricato con l'elemento padre del widget chiamante, ovvero l'evento generato viene sempre inviato per primo all'elemento padre del widget di generazione.
 
-Si noti che gx_widget_event_generate deve essere usato solo per inviare GX_SIGNAL di eventi di intervallo. Per tutti gli altri tipi di evento, inclusi i tipi di evento definiti dall'utente, usare l'API gx_system_event_send(), che concede il controllo completo su ogni campo dell'evento inserito nella coda di eventi GUIX.
+Si noti gx_widget_event_generate usare solo per inviare tipi di evento GX_SIGNAL intervallo. Per tutti gli altri tipi di evento, inclusi i tipi di evento definiti dall'utente, usare l'API gx_system_event_send(), che concede il controllo completo su ogni campo dell'evento inserito nella coda di eventi GUIX.
 
 ### <a name="parameters"></a>Parametri
 
 - **widget** Puntatore al widget
 - **event_type** Tipo di evento. **L'appendice E** contiene eventi GUIX predefiniti. Altri eventi possono essere aggiunti dall'applicazione.
-- **value** Informazioni aggiuntive sull'evento
+- **value** Informazioni aggiuntive sugli eventi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Generazione di eventi widget riuscita
+- **GX_SUCCESS** (0x00) Generazione di eventi widget con esito positivo
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -28652,7 +28729,7 @@ status = gx_widget_event_generate(&my_widget, GX_EVENT_REDRAW, 0);
 - gx_system_event_send
 
 ## <a name="gx_widget_event_process"></a>gx_widget_event_process
-### <a name="process-widget-event"></a>Evento del widget Di elaborazione
+### <a name="process-widget-event"></a>Evento del widget Process
 
 ### <a name="prototype"></a>Prototipo
 
@@ -28664,16 +28741,16 @@ UINT gx_widget_event_process(
 
 ### <a name="description"></a>Descrizione
 
-Si tratta della funzione di elaborazione degli eventi predefinita per tutti i widget. Quando viene scritta una funzione di elaborazione eventi personalizzata, l'azione predefinita per qualsiasi tipo di evento deve sempre essere passare l'evento al tipo di widget su cui si basa un widget. I widget basati sul passaggio più semplice GX_WIDGET tipo usano gx_widget_event_process come funzione di elaborazione degli eventi predefinita.
+Si tratta della funzione di elaborazione degli eventi predefinita per tutti i widget. Quando viene scritta una funzione di elaborazione di eventi personalizzata, l'azione predefinita per qualsiasi tipo di evento deve sempre essere passare l'evento al tipo di widget su cui si basa un widget. I widget basati sul tipo di dati più semplice GX_WIDGET tipo usano gx_widget_event_process come funzione di elaborazione degli eventi predefinita.
 
 ### <a name="parameters"></a>Parametri
 
 - **widget** Puntatore al widget
-- **evento** Puntatore all'evento da elaborare
+- **event** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Elaborazione degli eventi del widget completata
+- **GX_SUCCESS** (0x00) Elaborazione degli eventi del widget con esito positivo
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -28750,7 +28827,7 @@ Questo servizio esegue l'override della funzione di elaborazione degli eventi de
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Override di elaborazione eventi widget riuscito
+- **GX_SUCCESS** (0x00) Override elaborazione eventi widget riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -28826,7 +28903,7 @@ status = gx_widget_event_process_set((GX_WIDGET *)&my_tree_view,
 - gx_widget_width_get
 
 ## <a name="gx_widget_event_to_parent"></a>gx_widget_event_to_parent
-### <a name="send-event-to-widgets-parent"></a>Inviare l'evento all'elemento padre del widget
+### <a name="send-event-to-widgets-parent"></a>Inviare l'evento al padre del widget
 
 ### <a name="prototype"></a>Prototipo
 
@@ -28919,9 +28996,9 @@ Questo servizio imposta i colori di sfondo del widget.
 ### <a name="parameters"></a>Parametri
 
 - **widget** Puntatore al widget
-- **normal_color_id** ID risorsa del colore di riempimento nello stato normale. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **selected_color_id** ID risorsa del colore di riempimento quando il widget ottiene lo stato attivo. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
-- **disabled_color_id** ID risorsa del colore di riempimento quando lo stile GX_STYLE_ENABLED non è impostato. **L'Appendice A** contiene id risorsa di colore predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa colore personalizzati.
+- **normal_color_id** ID risorsa del colore di riempimento nello stato normale. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **selected_color_id** ID risorsa del colore di riempimento quando il widget ottiene lo stato attivo. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
+- **disabled_color_id** ID risorsa del colore di riempimento quando il colore GX_STYLE_ENABLED non è impostato. **L'appendice A** contiene ID risorsa a colori predefiniti. Si noti che l'applicazione può aggiungere anche ID risorsa a colori personalizzati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -28998,19 +29075,19 @@ UINT gx_widget_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio cerca nei figli dell'elemento padre specificato un widget con il valore ID richiesto.
+Questo servizio cerca gli elementi figlio dell'elemento padre specificato cercando un widget con il valore ID richiesto.
 
 ### <a name="parameters"></a>Parametri
 
-- **elemento padre** Puntatore al widget padre da cui viene avviata la ricerca
+- **padre** Puntatore al widget padre da cui viene avviata la ricerca
 - **widget_id** ID widget da cercare
-- **search_depth** Definisce il livello di annidamento ricorsivo in cui la funzione ricercherà i widget figlio. Se questo valore è <= 0, vengono cercati solo gli elementi figlio immediati del widget padre. Se questo valore è GX_SEARCH_DEPTH_INFINITE, tutti gli elementi figlio di tutti i widget figlio vengono cercati in modo esaustivo. Per qualsiasi altro valore > 0, questo valore limita il livello di annidato che questa funzione ricercherà nei widget figlio cercando l'ID del widget richiesto.
+- **search_depth** Definisce il livello di annidamento ricorsivo in cui la funzione ricercherà i widget figlio. Se questo valore è <= 0, vengono cercati solo gli elementi figlio immediati del widget padre. Se questo valore è GX_SEARCH_DEPTH_INFINITE, tutti gli elementi figlio di tutti i widget figlio vengono cercati in modo esaustivo. Per qualsiasi altro valore > 0, questo valore limita la profondità della ricerca dell'ID widget richiesto da parte di questa funzione nei widget figlio.
 - **return_widget** Puntatore alla destinazione per il widget trovato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Trovato widget riuscito
-- **GX_NOT_FOUND** (0x09) Widget not fount
+- **GX_SUCCESS** (0x00) Ricerca widget riuscita
+- **GX_NOT_FOUND** (0x09) Widget non disponibile
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -29083,7 +29160,7 @@ GUIX gestisce un elenco strutturato ad albero di widget padre e figlio. Questo s
 
 ### <a name="parameters"></a>Parametri
 
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **widget_return** Puntatore per restituire il puntatore del widget
 
 ### <a name="return-values"></a>Valori restituiti
@@ -29141,7 +29218,7 @@ Questo servizio sposta lo stato attivo sul widget di pari livello successivo nel
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** stato attivo (0x00) è stato spostato
+- **GX_SUCCESS** stato attivo (0x00)
 - **GX_FAILURE** stato attivo (0x00) non è stato spostato
 - **GX_PTR_ERROR** (0x07) Puntatore del widget non valido
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
@@ -29165,7 +29242,7 @@ widget in the navigation order */
 - gx_widget_focus_previous
 
 ## <a name="gx_widget_focus_previous"></a>gx_widget_focus_previous
-### <a name="move-focus-to-previous-widget-in-navigation-order"></a>Spostare lo stato attivo al widget precedente nell'ordine di spostamento
+### <a name="move-focus-to-previous-widget-in-navigation-order"></a>Spostare lo stato attivo sul widget precedente nell'ordine di spostamento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -29183,7 +29260,7 @@ Questo servizio sposta lo stato attivo sul widget precedente nell'ordine di navi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** stato attivo (0x00) è stato spostato
+- **GX_SUCCESS** stato attivo (0x00)
 - **GX_FAILURE** stato attivo (0x00) non è stato spostato
 
 ### <a name="allowed-from"></a>Consentito da
@@ -29216,7 +29293,7 @@ UINT gx_widget_font_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il tipo di carattere associato all'ID risorsa specificato dalla tabella dei tipi di carattere dello schermo in cui è visibile questo widget. Questa funzione deve essere chiamata solo da un widget visibile.
+Questo servizio recupera il tipo di carattere associato all'ID risorsa specificato dalla tabella dei tipi di carattere della visualizzazione in cui è visibile questo widget. Questa funzione deve essere chiamata solo da un widget visibile.
 
 ### <a name="parameters"></a>Parametri
 
@@ -29228,7 +29305,7 @@ Questo servizio recupera il tipo di carattere associato all'ID risorsa specifica
 
 - **GX_SUCCESS** (0x00) Il tipo di carattere è stato recuperato correttamente
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
-- **GX_INVALID_CANVAS** (0x20) L'area di disegno del widget non è valida o il widget non è visibile
+- **GX_INVALID_CANVAS** (0x20) Area di disegno del widget non valida o widget invisibile
 - **GX_PTR_ERROR** (0x07) Puntatore del widget non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -29270,7 +29347,7 @@ Questo servizio rilascia la memoria associata a un blocco di controllo widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Il widget È stato liberato
+- **GX_SUCCESS** (0x00) Widget liberato correttamente
 - **GX_SYSTEM_MEMPRY_ERROR** (0x30) La funzione memory free non è definita
 - **GX_PTR_ERROR** (0x07) Puntatore del widget non valido
 
@@ -29345,7 +29422,7 @@ UINT gx_widget_front_move(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio sposta il widget in primo piano nell'elenco padre in ordine Z dei widget figlio.
+Questo servizio sposta il widget in primo piano nell'elenco degli ordini Z padre dei widget figlio.
 
 ### <a name="parameters"></a>Parametri
 
@@ -29354,9 +29431,9 @@ Questo servizio sposta il widget in primo piano nell'elenco padre in ordine Z de
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostamento in primo piano del widget Riuscito
+- **GX_SUCCESS** (0x00) Spostamento del widget riuscito in primo piano
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
-- **GX_NO_CHANGE** (0x08) già in primo piano
+- **GX_NO_CHANGE** (0x08) Widget già in primo piano
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -29435,7 +29512,7 @@ Questo servizio ottiene l'altezza del widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful widget height get
+- **GX_SUCCESS** (0x00) L'altezza del widget è riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -29583,7 +29660,7 @@ GUIX gestisce un elenco strutturato ad albero di widget padre e figlio. Questo s
 
 ### <a name="parameters"></a>Parametri
 
-- **padre** Puntatore al widget padre
+- **elemento padre** Puntatore al widget padre
 - **widget_return** Puntatore per restituire il puntatore del widget
 
 ### <a name="return-values"></a>Valori restituiti
@@ -29734,7 +29811,7 @@ GX_WIDGET *get_parent(GX_WIDGET *current)
 - gx_widget_top_visible_child_find
 
 ## <a name="gx_widget_pixelmap_get"></a>gx_widget_pixelmap_get
-### <a name="get-pixelmap"></a>Ottenere una mappa pixel
+### <a name="get-pixelmap"></a>Ottenere la mappa pixel
 
 ### <a name="prototype"></a>Prototipo
 
@@ -29757,9 +29834,9 @@ Questo servizio ottiene la mappa pixel associata all'ID risorsa fornito. Questo 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere una mappa pixel riuscita
+- **GX_SUCCESS** (0x00) Ottenere la mappa pixel riuscita
 - **GX_INVALID_RESOURCE_ID** (0x33) ID risorsa non valido
-- **GX_INVALID_CANVAS** (0x20) L'area di disegno del widget non è valida o il widget non è visibile
+- **GX_INVALID_CANVAS** (0x20) Area di disegno del widget non valida o widget invisibile
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -29945,7 +30022,7 @@ Questo servizio sposta il widget e facoltativamente lo contrassegna come dirty.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Spostamento del widget GX_CALLER_ERROR (0x11) Chiamante non valido di questa funzione
+- **GX_SUCCESS** (0x00) Spostamento del widget riuscito GX_CALLER_ERROR (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -30019,7 +30096,7 @@ Questo servizio mostra il widget. Il widget diventerà visibile solo se è colle
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Visualizzazione del widget Completata
+- **GX_SUCCESS** (0x00) Visualizzazione del widget Operazione riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30096,7 +30173,7 @@ Questo servizio aggiunge qualsiasi combinazione di flag di stato al widget speci
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Aggiunta stato widget riuscito
+- **GX_SUCCESS** (0x00) Aggiunta dello stato del widget completata
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -30172,7 +30249,7 @@ Questo servizio recupera i flag di stato dal widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Stato del widget Operazione riuscita
+- **GX_SUCCESS** (0x00) Stato del widget riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -30241,7 +30318,7 @@ UINT gx_widget_status_remove(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove i flag di stato specificati dalla variabile di stato interna dei widget.
+Questo servizio rimuove i flag di stato specificati dalla variabile di stato interna widgets.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30328,7 +30405,7 @@ Questo servizio verifica i flag di stato del widget specificato e archivia il ri
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Test di stato del widget completato
+- **GX_SUCCESS** (0x00) Test di stato del widget riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -30374,7 +30451,7 @@ UINT gx_widget_string_get(
 
 Questo servizio è deprecato a favore di gx_widget_string_get_ext().
 
-Questo servizio restituisce la voce della tabella di stringhe per il valore ID stringa specificato. Questo servizio è simile a gx_display_string_get, ma la visualizzazione attiva viene determinata automaticamente anziché passata dal chiamante. Questo servizio può essere usato solo per i widget visibili, ovvero la visualizzazione associata a questo widget è nota.
+Questo servizio restituisce la voce della tabella di stringhe per il valore ID stringa specificato. Questo servizio è simile a gx_display_string_get, ad eccezione del fatto che la visualizzazione attiva viene determinata automaticamente anziché essere passata dal chiamante. Questo servizio può essere usato solo per i widget visibili, ovvero la visualizzazione associata a questo widget è nota.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30422,7 +30499,7 @@ UINT gx_widget_string_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce la voce della tabella di stringhe per il valore ID stringa specificato. Questo servizio è simile a gx_display_string_get, ad eccezione del fatto che la visualizzazione attiva viene determinata automaticamente anziché essere passata dal chiamante. Questo servizio può essere usato solo per i widget visibili, ovvero la visualizzazione associata a questo widget è nota.
+Questo servizio restituisce la voce della tabella di stringhe per il valore ID stringa specificato. Questo servizio è simile a gx_display_string_get, ad eccezione del fatto che la visualizzazione attiva viene determinata automaticamente anziché passata dal chiamante. Questo servizio può essere usato solo per i widget visibili, ovvero la visualizzazione associata a questo widget è nota.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30432,7 +30509,7 @@ Questo servizio restituisce la voce della tabella di stringhe per il valore ID s
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Test di stato del widget completato
+- **GX_SUCCESS** (0x00) Test di stato del widget riuscito
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -30473,11 +30550,11 @@ UINT gx_widget_style_add(
 
 Questo servizio aggiunge uno stile al widget. Vengono inoltre eseguite le azioni seguenti.
 
-Se lo stile aggiunto è GX_STYLE_TRANSPARENT, verrà aggiunto GX_STATUS_TRANSPARENT stato.
+Se lo stile aggiunto è GX_STYLE_TRANSPARENT, verrà GX_STATUS_TRANSPARENT stato.
 
-Se lo stile aggiunto è GX_STYLE_ENABLED, verrà aggiunto GX_STATUS_SELECTABLE stato.
+Se lo stile aggiunto è GX_STYLE_ENABLED, verrà GX_STATUS_SELECTABLE stato.
 
-Se il widget è visibile, viene invalidato automaticamente e accodato per il ridisegno.
+Se il widget è visibile, viene automaticamente invalidato e accodato per il ridisegno.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30486,7 +30563,7 @@ Se il widget è visibile, viene invalidato automaticamente e accodato per il rid
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Aggiunta dello stile del widget completata
+- **GX_SUCCESS** (0x00) Aggiunta dello stile del widget Completato
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30564,7 +30641,7 @@ Questo servizio recupera il flag di stile dal widget.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Recuperato correttamente lo stile del widget
+- **GX_SUCCESS** (0x00) Successfully retrieved widget style (Recupero dello stile del widget completato)
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30640,7 +30717,7 @@ Se lo stile rimosso è GX_STYLE_TRANSPARENT, lo stato GX_STATUS_TRANSPARENT verr
 
 Se lo stile rimosso è GX_STYLE_ENABLED, lo stato GX_STATUS_SELECTABLE verrà rimosso.
 
-Se il widget è visibile, viene automaticamente invalidato e accodato per il ridisegno.
+Se il widget è visibile, viene invalidato automaticamente e accodato per il ridisegno.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30649,7 +30726,7 @@ Se il widget è visibile, viene automaticamente invalidato e accodato per il rid
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Rimozione dello stile del widget Operazione riuscita
+- **GX_SUCCESS** (0x00) Rimozione dello stile del widget completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30721,11 +30798,11 @@ UINT gx_widget_style_set(
 
 Questo servizio imposta uno stile per il widget.
 
-Se lo stile impostato include GX_STYLE_TRANSPARENT, lo stato GX_STATUS_TRANSPARENT verrà aggiunto. In caso contrario, lo stato verrà rimosso.
+Se lo stile del set GX_STYLE_TRANSPARENT, lo stato GX_STATUS_TRANSPARENT verrà aggiunto, in caso contrario lo stato verrà rimosso.
 
-Se lo stile impostato include GX_STYLE_ENABLED, lo stato GX_STATUS_SELECTABLE verrà aggiunto. In caso contrario, lo stato verrà rimosso.
+Se lo stile del set GX_STYLE_ENABLED, lo stato GX_STATUS_SELECTABLE verrà aggiunto, in caso contrario lo stato verrà rimosso.
 
-Se il widget è visibile, viene automaticamente invalidato e accodato per il ridisegno.
+Se il widget è visibile, viene invalidato automaticamente e accodato per il ridisegno.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30734,7 +30811,7 @@ Se il widget è visibile, viene automaticamente invalidato e accodato per il rid
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful widget style set
+- **GX_SUCCESS** (0x00) Set di stili widget riuscito
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30810,7 +30887,7 @@ UINT gx_widget_text_blend(
 
 Questo servizio è deprecato a favore di gx_widget_text_blend_ext().
 
-Questo servizio combina il testo specificato su un widget usando il pennello corrente e l'allineamento del testo.
+Questo servizio unisce il testo specificato su un widget usando il pennello corrente e l'allineamento del testo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -30824,7 +30901,7 @@ Questo servizio combina il testo specificato su un widget usando il pennello cor
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere la larghezza del widget con esito positivo
+- **GX_SUCCESS** (0x00) Successful widget width get
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30882,7 +30959,7 @@ Questo servizio esegue il rendering di una stringa sul widget specificato usando
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful widget width get
+- **GX_SUCCESS** (0x00) Ottenere la larghezza del widget con esito positivo
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -30945,7 +31022,7 @@ Questo servizio disegna il testo specificato su un widget usando il pennello cor
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -31001,7 +31078,7 @@ Questo servizio disegna il testo specificato su un widget usando il pennello cor
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -31048,7 +31125,7 @@ VOID gx_widget_text_id_draw(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio disegna testo su un widget in base a un ID di testo.
+Questo servizio disegna testo su un widget dato un ID di testo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -31061,7 +31138,7 @@ Questo servizio disegna testo su un widget in base a un ID di testo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -31088,7 +31165,7 @@ VOID my_custom_widget_draw(GX_WIDGET *widget)
 - gx_widget_text_draw
 
 ## <a name="gx_widget_top_visible_child_find"></a>gx_widget_top_visible_child_find
-### <a name="return-pointer-to-visible-child-that-is-top-of-z-order"></a>Restituire il puntatore all'elemento figlio visibile che si trova all'inizio dell'ordine Z
+### <a name="return-pointer-to-visible-child-that-is-top-of-z-order"></a>Restituisce il puntatore all'elemento figlio visibile all'inizio dell'ordine Z
 
 ### <a name="prototype"></a>Prototipo
 
@@ -31168,7 +31245,7 @@ Questo servizio cerca un widget del tipo richiesto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ottenere la larghezza del widget con esito positivo
+- **GX_SUCCESS** (0x00) Successful widget width get
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -31328,7 +31405,7 @@ Questo servizio ottiene l'altezza client della finestra.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful window client height get (Altezza client finestra riuscita)
+- **GX_SUCCESS** (0x00) Operazione riuscita dell'altezza del client della finestra
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -31366,7 +31443,7 @@ status = gx_window_client_height_get(&my_window,
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_client_scroll"></a>gx_window_client_scroll
-### <a name="scroll-window-clients"></a>Client della finestra di scorrimento
+### <a name="scroll-window-clients"></a>Client finestra di scorrimento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -31379,7 +31456,7 @@ UINT gx_window_client_scroll(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio scorre i client della finestra in base alla quantità specificata.
+Questo servizio scorre i client finestra in base alla quantità specificata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -31437,7 +31514,7 @@ UINT gx_window_client_width_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ottiene la larghezza del client della finestra specificata.
+Questo servizio ottiene la larghezza client della finestra specificata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -31446,7 +31523,7 @@ Questo servizio ottiene la larghezza del client della finestra specificata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successful window client width get (Larghezza client finestra riuscita)
+- **GX_SUCCESS** (0x00) Ottenere la larghezza del client della finestra riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -31483,7 +31560,7 @@ status = gx_window_client_width_get(&my_window, &my_client_width);
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_close"></a>gx_window_close
-### <a name="close-modal-window"></a>Chiudere la finestra modale
+### <a name="close-modal-window"></a>Chiudere una finestra modale
 
 ### <a name="prototype"></a>Prototipo
 
@@ -31493,7 +31570,7 @@ UINT gx_window_close(GX_WINDOW *window);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio forza la disconnessione di una finestra modale dal relativo elemento padre e la restituzione dal ciclo di esecuzione modale.
+Questo servizio forza la disconnessione di una finestra modale dall'elemento padre e la restituzione dal ciclo di esecuzione modale.
 
 ### <a name="parameters"></a>Parametri
 
@@ -31501,7 +31578,7 @@ Questo servizio forza la disconnessione di una finestra modale dal relativo elem
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Finestra Chiusa correttamente
+- **GX_SUCCESS** (0x00) Chiusura completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -31628,7 +31705,7 @@ Questo servizio disegna una finestra. Questo servizio viene in genere chiamato i
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **Nessuna**
+- **Nessuno**
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -31666,7 +31743,7 @@ VOID my_custom_window_draw(GX_WINDOW *window)
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_event_process"></a>gx_window_event_process
-### <a name="process-window-event"></a>Evento della finestra di elaborazione
+### <a name="process-window-event"></a>Evento della finestra di processo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -31683,11 +31760,11 @@ Questo servizio elabora un evento per questa finestra.
 ### <a name="parameters"></a>Parametri
 
 - **finestra** Puntatore al blocco di controllo della finestra
-- **evento** Puntatore all'evento da elaborare
+- **event** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Elaborazione degli eventi della finestra completata
+- **GX_SUCCESS** (0x00) Elaborazione degli eventi finestra riuscita
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -31739,7 +31816,7 @@ UINT custom_window_event_process(GX_WINDOW *window,
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_execute"></a>gx_window_execute
-### <a name="modally-execute-a-window"></a>Eseguire una finestra modale
+### <a name="modally-execute-a-window"></a>Esecuzione modale di una finestra
 
 ### <a name="prototype"></a>Prototipo
 
@@ -31751,9 +31828,9 @@ UINT gx_window_execute(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una finestra come modale. Qualsiasi input dell'utente (eventi penna e così via) all'esterno dell'area client della finestra verrà ignorato. Si noti che questa funzione entra in un ciclo di esecuzione di blocco continuo e non torna al chiamante fino al termine dell'esecuzione del modello.
+Questo servizio esegue una finestra in modo modale. Qualsiasi input utente (eventi penna e così via) all'esterno dell'area client della finestra verrà ignorato. Si noti che questa funzione entra in un ciclo di esecuzione di blocco continuo e non restituisce al chiamante fino a quando l'esecuzione del modello non viene terminata.
 
-L'esecuzione modale termina quando l'elaborazione dell'evento per qualsiasi evento ricevuto restituisce un valore di stato diverso da zero o quando viene richiamata la gx_window_close'API. Il codice restituito per l'elaborazione di eventi diverso da zero viene restituito al chiamante tramite il return_ptr passato a questa API
+L'esecuzione modale termina quando l'elaborazione dell'evento per qualsiasi evento ricevuto restituisce un valore di stato diverso da zero o quando viene richiamata la funzione API gx_window_close chiamata. Il codice restituito per l'elaborazione di eventi diverso da zero viene restituito al chiamante tramite il return_ptr passato a questa API
 
 ### <a name="parameters"></a>Parametri
 
@@ -31873,7 +31950,7 @@ Questo servizio elimina una finestra radice.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) La finestra radice è stata eliminata correttamente
+- **GX_SUCCESS** (0x00) Successfully deleted root window (Eliminazione della finestra radice completata)
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -31927,11 +32004,11 @@ Questo servizio elabora gli eventi per la finestra radice specificata.
 ### <a name="parameters"></a>Parametri
 
 - **root_window** Puntatore al blocco di controllo della finestra radice
-- **event** Puntatore all'evento da elaborare
+- **evento** Puntatore all'evento da elaborare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Successfully processed root window event (Elaborazione dell'evento della finestra radice completata)
+- **GX_SUCCESS** (0x00) L'evento della finestra radice è stato elaborato correttamente
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 
@@ -32004,7 +32081,7 @@ Questo servizio trova la finestra radice per il widget specificato.
 ### <a name="return-values"></a>Valori restituiti
 
 - **GX_SUCCESS** (0x00) Ricerca della finestra radice riuscita
-- **GX_FAILURE** (0x00) Finestra radice non esistente
+- **GX_FAILURE** radice (0x00) non esiste
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -32058,7 +32135,7 @@ Questo servizio ottiene le informazioni sullo scorrimento della finestra.
 
 - **finestra** Puntatore alla finestra
 - **style** GX_SCROLLBAR_HORIZONTAL o GX_SCROLLBAR_VERTICAL
-- **return_scroll_info** Puntatore alla destinazione per le informazioni di scorrimento. La finestra padre inizializza questa struttura per informare la barra di scorrimento delle dimensioni totali della finestra padre, dell'area visualizzabile e dell'incremento e dei limiti di scorrimento. L'implementazione predefinita usa l'area client di Windows come area visualizzabile e scorre in base ai pixel, ma l'implementazione personalizzata della finestra può usare i parametri di scorrimento. **L'appendice I** contiene la definizione della GX_SCROLL_INFO struttura
+- **return_scroll_info** Puntatore alla destinazione per le informazioni di scorrimento. La finestra padre inizializza questa struttura per informare la barra di scorrimento delle dimensioni totali della finestra padre, dell'area visualizzabile e dell'incremento e dei limiti di scorrimento. L'implementazione predefinita usa l'area client di Windows come area visualizzabile e scorre in pixel, ma l'implementazione personalizzata della finestra può utilizzare i parametri di scorrimento. **L'appendice I** contiene la definizione della GX_SCROLL_INFO struttura
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -32100,7 +32177,7 @@ status = gx_window_scroll_info_get(&my_window,
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_scrollbar_find"></a>gx_window_scrollbar_find
-### <a name="find-window-scrollbar"></a>Barra di scorrimento della finestra Trova
+### <a name="find-window-scrollbar"></a>Trovare la barra di scorrimento della finestra
 
 ### <a name="prototype"></a>Prototipo
 
@@ -32123,7 +32200,7 @@ Questo servizio trova la barra di scorrimento per la finestra specificata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Ricerca riuscita della barra di scorrimento della finestra
+- **GX_SUCCESS** (0x00) Ricerca della barra di scorrimento della finestra riuscita
 - **GX_NOT_FOUND** (0x09) Barra di scorrimento non trovata
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
@@ -32182,7 +32259,7 @@ Questo servizio ottiene lo sfondo per la finestra specificata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Operazione riuscita dello sfondo della finestra
+- **GX_SUCCESS** (0x00) Ottenere lo sfondo della finestra con esito positivo
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
 
@@ -32238,11 +32315,11 @@ Questo servizio imposta lo sfondo per la finestra specificata.
 
 - **finestra** Puntatore alla finestra
 - **wallpaper_id** ID risorsa dello sfondo da usare
-- **riquadro** Lo sfondo è affiancato se GX_TRUE; in caso contrario, lo sfondo non è affiancato
+- **riquadro** Lo sfondo viene affiancato se GX_TRUE, in caso contrario lo sfondo non viene affiancato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **GX_SUCCESS** (0x00) Impostazione dello sfondo della finestra riuscita
+- **GX_SUCCESS** (0x00) Impostazione dello sfondo della finestra completata
 - **GX_CALLER_ERROR** (0x11) Chiamante non valido di questa funzione
 - **GX_PTR_ERROR** (0x07) Puntatore non valido
 - **GX_INVALID_WIDGET** (0x12) Widget non valido
