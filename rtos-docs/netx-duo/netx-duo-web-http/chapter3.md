@@ -1,30 +1,30 @@
 ---
-title: Capitolo 3-Descrizione dei servizi HTTP
+title: Capitolo 3 - Descrizione dei servizi HTTP
 description: Questo capitolo contiene una descrizione di tutti i servizi HTTP Web NetX (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 30168ad5a564b0f4c0a8c999046c5103385f4f90
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6bb2743f05c5b56331d1c0e948601ad23bf340d1
+ms.sourcegitcommit: 95f4ae0842a486fec8f10d1480203695faa9592d
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822889"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111875273"
 ---
-# <a name="chapter-3---description-of-http-services"></a>Capitolo 3-Descrizione dei servizi HTTP
+# <a name="chapter-3---description-of-http-services"></a>Capitolo 3 - Descrizione dei servizi HTTP
 
 Questo capitolo contiene una descrizione di tutti i servizi HTTP Web NetX (elencati di seguito) in ordine alfabetico.
 
 > [!NOTE]
-> Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+> Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **grassetto** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 ## <a name="http-and-https-client-api"></a>API client HTTP e HTTPS
 
 ## <a name="nx_web_http_client_connect"></a>nx_web_http_client_connect
 
-Aprire un socket di testo non crittografato in un server HTTP per le richieste personalizzate
+Aprire un socket di testo non crittografato a un server HTTP per le richieste personalizzate
 
 ### <a name="prototype"></a>Prototipo
 
@@ -36,29 +36,29 @@ UINT nx_web_http_client_connect(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per HTTP **in testo non** crittografato.
 
-Questo servizio apre un socket TCP non crittografato a un server HTTP, ma non invia alcuna richiesta. Le richieste vengono create con n *x_web_http_client_request_initialize ()* e inviate utilizzando *nx_web_http_client_request_send ()*. È possibile aggiungere intestazioni HTTP personalizzate alla richiesta utilizzando *nx_web_http_client_request_header_add ()*.
+Questo servizio apre un socket TCP in testo non crittografato a un server HTTP, ma non invia alcuna richiesta. Le richieste vengono create con n *x_web_http_client_request_initialize()* e inviate *usando nx_web_http_client_request_send().* È possibile aggiungere intestazioni HTTP personalizzate alla richiesta *usando nx_web_http_client_request_header_add().*
 
-L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta. **Questo consente richieste HTTP personalizzate destinate ad applicazioni specifiche.**
+L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta. **Ciò consente richieste HTTP personalizzate destinate ad applicazioni specifiche.**
 
 > [!NOTE]
-> I metodi nx_web_http_client_ * _start sono forniti per praticità (ad esempio, *nx_web_http_client_get_start*()) e gestiscono la generazione di richieste e la connessione socket. È possibile usare tali servizi invece di *nx_web_http_client_connect ()* e le routine correlate se non sono necessarie intestazioni HTTP personalizzate nelle richieste.
+> I nx_web_http_client_*_start vengono forniti per praticità (ad esempio, nx_web_http_client_get_start ()) *e* gestiscono la generazione della richiesta e la connessione socket. È possibile usare questi servizi *anziché nx_web_http_client_connect()* e le routine correlate se non sono necessarie intestazioni HTTP personalizzate nelle richieste.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **server_ip** Indirizzo IP del server HTTP remoto.
-- **SERVER_PORT** Porta sul server HTTP remoto, ad esempio 80 per HTTP.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa delle operazioni di rete sottostanti. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta nel server HTTP remoto (ad esempio 80 per HTTP).
+- **wait_option** Definisce per quanto tempo il servizio attenderà le operazioni di rete sottostanti. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) connessione riuscita del socket TCP.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_WEB_HTTP_NOT_READY (0x3000A) è già in corso un'altra richiesta.
+- **NX_SUCCESS** (0x00) Connessione riuscita del socket TCP.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_WEB_HTTP_NOT_READY (0x3000A) Un'altra richiesta è già in corso.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -79,7 +79,7 @@ nx_web_http_client_connect(&my_client, &server_ip_address,
 /* Create a new GET request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -94,7 +94,7 @@ status = nx_web_http_client_request_header_add(&my_client, "Server", 6,
 status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -120,21 +120,21 @@ UINT nx_web_http_client_create(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza del client HTTP nell'istanza IP specificata. L'istanza del client può essere utilizzata sia per HTTP che per HTTPS. Per ulteriori informazioni sull'avvio di un'istanza HTTP o HTTPS, vedere i servizi *nx_web_http_client_connect ()* e *nx_web_http_client_secure_connect ()* . Vedere anche l'API per * nx_web_http_client_get_ * *, *nx_web_http_client_put_ * *, *nx_web_http_client_post_** per le chiamate semplici di metodi get, put e post.
+Questo servizio crea un'istanza del client HTTP nell'istanza IP specificata. L'istanza client può essere usata per HTTP o HTTPS. Vedere i servizi *nx_web_http_client_connect()* *e nx_web_http_client_secure_connect()* per altre informazioni sull'avvio di un'istanza HTTP o HTTPS. Fare riferimento anche all'API per *nx_web_http_client_get_**, *nx_web_http_client_put_**, *nx_web_http_client_post_** per le semplici chiamate dei metodi GET, PUT e POST.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **client_name** Nome dell'istanza del client HTTP.
 - **ip_ptr** Puntatore all'istanza IP.
-- **pool_ptr** Puntatore al pool di pacchetti predefinito. Si noti che i pacchetti in questo pool devono avere un payload sufficientemente grande per gestire l'intestazione della risposta completa. Questa impostazione è definita da *NX_WEB_HTTP_CLIENT_MIN_PACKET_SIZE* in *nx_web_http_client. h*.
+- **pool_ptr** Puntatore al pool di pacchetti predefinito. Si noti che i pacchetti in questo pool devono avere un payload sufficientemente grande da gestire l'intestazione di risposta completa. Questo valore è definito da *NX_WEB_HTTP_CLIENT_MIN_PACKET_SIZE* in *nx_web_http_client.h*.
 - **window_size** Dimensioni della finestra di ricezione del socket TCP del client.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione client HTTP riuscita **NX_SUCCESS** (0x00)
-- NX_PTR_ERROR (0x16) puntatore HTTP, ip_ptr o pool di pacchetti non valido
-- Dimensioni del payload NX_WEB_HTTP_POOL_ERROR (0x30009) non valide nel pool di pacchetti
+- **NX_SUCCESS** (0x00) Creazione client HTTP riuscita
+- NX_PTR_ERROR (0x16) HTTP, ip_ptr o puntatore del pool di pacchetti non valido
+- NX_WEB_HTTP_POOL_ERROR (0x30009) Dimensioni del payload non valide nel pool di pacchetti
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -152,7 +152,7 @@ status = nx_web_http_client_create(&my_client, "my client", &ip_0, &pool_0, 8192
 
 ## <a name="nx_web_http_client_delete"></a>nx_web_http_client_delete
 
-Eliminare un'istanza client HTTP
+Eliminare un'istanza del client HTTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -162,7 +162,7 @@ UINT nx_web_http_client_delete(NX_WEB_HTTP_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del client HTTP creata in precedenza.
+Questo servizio elimina un'istanza del client HTTP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -170,9 +170,9 @@ Questo servizio Elimina un'istanza del client HTTP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione client HTTP riuscita **NX_SUCCESS** (0x00)
-- NX_PTR_ERROR (0x16) puntatore HTTP non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Eliminazione del client HTTP riuscita
+- NX_PTR_ERROR (0x16) Puntatore HTTP non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -190,7 +190,7 @@ status = nx_web_http_client_delete(&my_client);
 
 ## <a name="nx_web_http_client_delete_start"></a>nx_web_http_client_delete_start
 
-Avvia una richiesta di eliminazione HTTP non crittografata
+Avviare una richiesta HTTP DELETE in testo non crittografato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -203,36 +203,36 @@ UINT nx_web_http_client_delete_start(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per HTTP **in testo non** crittografato.
 
-Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta del server.
+Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta del server.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-Questa API è deprecata. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_delete_start_extended ()*.
+Questa API è deprecata. Gli sviluppatori sono invitati a *usare nx_web_http_client_delete_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta di eliminazione client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta DELETE del client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -258,7 +258,7 @@ status = nx_web_http_client_delete_start(&my_client, &server_ip_address,
 
 ## <a name="nx_web_http_client_delete_start_extended"></a>nx_web_http_client_delete_start_extended
 
-Avvia una richiesta di eliminazione HTTP non crittografata
+Avviare una richiesta HTTP DELETE in testo non crittografato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -273,42 +273,42 @@ UINT nx_web_http_client_delete_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per **HTTP in testo non** crittografato.
 
-Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta del server.
+Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "resource" sull'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta del server.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_delete_start* (). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_delete_start* (). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta di eliminazione client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta DELETE client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Errore interno del client HTTP
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP che comunica con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -338,7 +338,7 @@ status = nx_web_http_client_delete_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_delete_secure_start"></a>nx_web_http_client_delete_secure_start
 
-Avviare una richiesta di eliminazione HTTPS crittografata
+Avviare una richiesta HTTPS DELETE crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -354,37 +354,37 @@ UINT nx_web_http_client_delete_secure_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta del server.
+Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "resource" sull'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta del server.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_delete_secure_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_delete_secure_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta. la risorsa deve essere con terminazione NULL.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta. la risorsa deve essere con terminazione NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta di eliminazione client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta DELETE client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Errore interno del client HTTP
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP che comunica con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -409,7 +409,7 @@ status = nx_web_http_client_delete_secure_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_delete_secure_start_extended"></a>nx_web_http_client_delete_secure_start_extended
 
-Avviare una richiesta di eliminazione HTTPS crittografata
+Avviare una richiesta HTTPS DELETE crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -426,43 +426,43 @@ UINT nx_web_http_client_delete_secure_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta del server.
+Questo servizio tenta di inviare una richiesta DELETE per la risorsa specificata dal puntatore "resource" sull'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta del server.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_delete_secure_start*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_delete_secure_start*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta. la risorsa deve essere con terminazione NULL.
+- **server_port** Porta nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta. la risorsa deve essere con terminazione NULL.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta di eliminazione client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta DELETE client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Errore interno del client HTTP
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) Errore del client HTTP che comunica con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 
 ### <a name="allowed-from"></a>Consentito da
@@ -491,7 +491,7 @@ status = nx_web_http_client_delete_secure_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_get_start"></a>nx_web_http_client_get_start
 
-Avvia una richiesta HTTP GET non crittografata
+Avviare una richiesta HTTP GET in testo non crittografato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -504,36 +504,36 @@ UINT nx_web_http_client_get_start(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per **HTTP in testo non** crittografato.
 
-Questo servizio tenta di ottenere la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può effettuare più chiamate a *nx_web_http_client_response_body_get ()* per recuperare i pacchetti di dati corrispondenti al contenuto della risorsa richiesta.
+Questo servizio tenta di ottenere la risorsa specificata dal puntatore "resource" sull'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può eseguire più chiamate *a nx_web_http_client_response_body_get()* per recuperare pacchetti di dati corrispondenti al contenuto della risorsa richiesto.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_get_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_get_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato il messaggio di avvio Get client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di avvio HTTP Client GET inviato correttamente
+- **NX_WEB_HTTP_ERROR** (0x30000) Errore interno del client HTTP
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) Errore del client HTTP che comunica con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -559,7 +559,7 @@ status = nx_web_http_client_get_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_get_start_extended"></a>nx_web_http_client_get_start_extended
 
-Avvia una richiesta HTTP GET non crittografata
+Avviare una richiesta HTTP GET in testo non crittografato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -574,42 +574,42 @@ UINT nx_web_http_client_get_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per **HTTP in testo non** crittografato.
 
-Questo servizio tenta di ottenere la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può effettuare più chiamate a *nx_web_http_client_response_body_get ()* per recuperare i pacchetti di dati corrispondenti al contenuto della risorsa richiesta.
+Questo servizio tenta di ottenere la risorsa specificata dal puntatore "resource" sull'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può eseguire più chiamate *a nx_web_http_client_response_body_get()* per recuperare pacchetti di dati corrispondenti al contenuto della risorsa richiesto.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_get_start*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_get_start*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato il messaggio di avvio Get client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di avvio HTTP Client GET inviato correttamente
+- **NX_WEB_HTTP_ERROR** (0x30000) Errore interno del client HTTP
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) Errore del client HTTP che comunica con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -654,37 +654,37 @@ UINT nx_web_http_client_get_secure_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di ottenere la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può effettuare più chiamate a *nx_web_http_client_response_body_get ()* per recuperare i pacchetti di dati corrispondenti al contenuto della risorsa richiesta.
+Questo servizio tenta di ottenere la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi effettuare più chiamate *a nx_web_http_client_response_body_get()* per recuperare pacchetti di dati corrispondenti al contenuto della risorsa richiesto.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_get_secure_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_get_secure_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **server_port** Porta nel server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali ,ad esempio i certificati.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato il messaggio di avvio Get client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di avvio HTTP Client GET
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -728,43 +728,43 @@ UINT nx_web_http_client_get_secure_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di ottenere la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può effettuare più chiamate a *nx_web_http_client_response_body_get ()* per recuperare i pacchetti di dati corrispondenti al contenuto della risorsa richiesta.
+Questo servizio tenta di ottenere la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi effettuare più chiamate *a nx_web_http_client_response_body_get()* per recuperare pacchetti di dati corrispondenti al contenuto della risorsa richiesto.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
+Le stringhe di risorsa, host, nome utente e password devono avere terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_secure_start*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_secure_start*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della password per l'autenticazione.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali ,ad esempio i certificati.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato il messaggio di avvio Get client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di avvio HTTP Client GET
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -794,7 +794,7 @@ status = nx_web_http_client_get_secure_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_head_start"></a>nx_web_http_client_head_start
 
-Avvia una richiesta HEAD HTTP non crittografata
+Avviare una richiesta HTTP HEAD in testo non crittografato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -807,36 +807,36 @@ UINT nx_web_http_client_head_start(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per HTTP **in testo non** crittografato.
 
-Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta.
+Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_head_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_head_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **server_port** Porta nel server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta Head client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta HEAD client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -862,7 +862,7 @@ status = nx_web_http_client_head_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_head_start_extended"></a>nx_web_http_client_head_start_extended
 
-Avvia una richiesta HEAD HTTP non crittografata
+Avviare una richiesta HTTP HEAD in testo non crittografato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -877,42 +877,42 @@ UINT nx_web_http_client_head_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per HTTP **in testo non** crittografato.
 
-Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta.
+Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
+Le stringhe di risorsa, host, nome utente e password devono avere terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_head_start*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_head_start*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della password per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta Head client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta HEAD client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -941,7 +941,7 @@ status = nx_web_http_client_head_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_head_secure_start"></a>nx_web_http_client_head_secure_start
 
-Avviare una richiesta HEAD HTTPS crittografata
+Avviare una richiesta HTTPS HEAD crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -957,37 +957,37 @@ UINT nx_web_http_client_head_secure_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta del server corrispondente al contenuto della risorsa richiesta.
+Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta del server corrispondente al contenuto della risorsa richiesta.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_head_secure_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_head_secure_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **server_port** Porta nel server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali ,ad esempio i certificati.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta Head client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta HEAD client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1013,7 +1013,7 @@ status = nx_web_http_client_head_secure_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_head_secure_start_extended"></a>nx_web_http_client_head_secure_start_extended
 
-Avviare una richiesta HEAD HTTPS crittografata
+Avviare una richiesta HTTPS HEAD crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1030,43 +1030,43 @@ CHAR *host, UINT host_length, CHAR *username,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "Resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può chiamare *nx_web_http_client_response_body_get ()* per recuperare la risposta del server corrispondente al contenuto della risorsa richiesta.
+Questo servizio tenta di recuperare i metadati HEAD per la risorsa specificata dal puntatore "resource" nell'istanza del client HTTP creata in precedenza. Se questa routine restituisce NX_SUCCESS, l'applicazione può quindi chiamare *nx_web_http_client_response_body_get()* per recuperare la risposta del server corrispondente al contenuto della risorsa richiesta.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio di richieste Get.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` GET.
 
-Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
+Le stringhe di risorsa, host, nome utente e password devono avere terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_head_secure_start*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_head_secure_start*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta nel server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della password per l'autenticazione.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali ,ad esempio i certificati.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato un messaggio di richiesta Head client http
-- Errore del client HTTP interno **NX_WEB_HTTP_ERROR** (0x30000)
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_FAILED** (0x30002) errore client HTTP che comunica con il server http.
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Messaggio di richiesta HEAD client HTTP
+- **NX_WEB_HTTP_ERROR** (0x30000) Internal HTTP Client (Errore interno del client HTTP)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- **NX_WEB_HTTP_FAILED** (0x30002) errore del client HTTP durante la comunicazione con il server HTTP.
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1095,7 +1095,7 @@ status = nx_web_http_client_head_secure_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_request_packet_allocate"></a>nx_web_http_client_request_packet_allocate
 
-Allocare un pacchetto HTTP (S)
+Allocare un pacchetto HTTP(S)
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1108,25 +1108,25 @@ UINT nx_web_http_client_request_packet_allocate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di allocare un pacchetto per HTTP (S) client.
+Questo servizio tenta di allocare un pacchetto per HTTP(S) client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **packet_ptr** Puntatore al pacchetto allocato.
-- **WAIT_OPTION** Definisce il tempo di attesa in cicli se non sono disponibili pacchetti nel pool di pacchetti. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce il tempo di attesa in tick se non sono disponibili pacchetti nel pool di pacchetti. Le opzioni di attesa sono definite come segue:
   - **NX_NO_WAIT** (0x00000000)
   - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-  - **timeout nei cicli (da 0x00000001 a** 0xfffffffe)
+  - **timeout in tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Allocazione pacchetto riuscita **NX_SUCCESS** (0x00)
-- **NX_NO_PACKET** (0x01) non sono disponibili pacchetti
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al *tx_thread_wait_abort*.
-- Le dimensioni del pacchetto **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non supportano il protocollo.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Corretta allocazione pacchetti
+- **NX_NO_PACKET** (0x01) Nessun pacchetto disponibile
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a *tx_thread_wait_abort*.
+- **NX_INVALID_PARAMETERS** (0x4D) Le dimensioni del pacchetto non supportano il protocollo.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1159,36 +1159,36 @@ UINT nx_web_http_client_post_start(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per HTTP **in testo non** crittografato.
 
-Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTP nell'indirizzo IP e nella porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTP all'indirizzo IP e alla porta forniti. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure a un altro URL, ad esempio se il server HTTP indica che supporta il riferimento alle richieste `http://abc.website.com/index.htm` PUT.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_post_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_post_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa da inviare al server.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **server_port** Porta TCP sul server HTTP remoto.
+- **risorsa** Puntatore alla stringa URL per la risorsa da inviare al server.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente la richiesta post
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Successfully sent POST request
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** nome utente (0x30012) troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1229,42 +1229,42 @@ UINT nx_web_http_client_post_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per HTTP **in testo non** crittografato.
 
-Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTP nell'indirizzo IP e nella porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTP all'indirizzo IP e alla porta forniti. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_post_start* (). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_post_start* (). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente la richiesta post
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta POST è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1293,7 +1293,7 @@ status = nx_web_http_client_post_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_post_secure_start"></a>nx_web_http_client_post_secure_start
 
-Avvia una richiesta POST HTTPS crittografata
+Avviare una richiesta HTTPS POST crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1310,37 +1310,37 @@ UINT nx_web_http_client_post_secure_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTPS nell'indirizzo IP e nella porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet ()* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTPS all'indirizzo IP e alla porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve eseguire chiamate successive alla routine *nx_web_http_client_put_packet()* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_post_secure_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_post_secure_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa da inviare al server.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa da inviare al server.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente la richiesta post
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta POST è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1367,7 +1367,7 @@ status = nx_web_http_client_put_secure_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_post_secure_start_extended"></a>nx_web_http_client_post_secure_start_extended
 
-Avvia una richiesta POST HTTPS crittografata
+Avviare una richiesta HTTPS POST crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1384,43 +1384,43 @@ UINT nx_web_http_client_post_secure_start_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTPS nell'indirizzo IP e nella porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet ()* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta POST con la risorsa specificata al server HTTPS all'indirizzo IP e alla porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve eseguire chiamate successive alla routine *nx_web_http_client_put_packet()* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_post_secure_start* (). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_post_secure_start* (). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente la richiesta post
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta POST è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1450,7 +1450,7 @@ status = nx_web_http_client_put_secure_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_put_start"></a>nx_web_http_client_put_start
 
-Avvia una richiesta HTTP PUT
+Avviare una richiesta HTTP PUT
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1464,36 +1464,36 @@ UINT nx_web_http_client_put_start(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per **HTTP in testo non** crittografato.
 
-Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTP in corrispondenza dell'indirizzo IP e della porta forniti. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet ()* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTP all'indirizzo IP e alla porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve eseguire chiamate successive alla routine *nx_web_http_client_put_packet()* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta le richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_put_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_put_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa da inviare al server.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa da inviare al server.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato una richiesta PUT
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta PUT è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1520,7 +1520,7 @@ status = nx_web_http_client_put_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_put_start_extended"></a>nx_web_http_client_put_start_extended
 
-Avvia una richiesta HTTP PUT
+Avviare una richiesta HTTP PUT
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1535,42 +1535,42 @@ UINT nx_web_http_client_put_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per http non **crittografato** .
+Questo metodo è per **HTTP in testo non** crittografato.
 
-Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTP in corrispondenza dell'indirizzo IP e della porta forniti. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet ()* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTP all'indirizzo IP e alla porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve eseguire chiamate successive alla routine *nx_web_http_client_put_packet()* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta le richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_put_start* (). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_put_start* (). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato una richiesta PUT
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta PUT è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1600,7 +1600,7 @@ status = nx_web_http_client_put_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_put_secure_start"></a>nx_web_http_client_put_secure_start
 
-Avviare una richiesta PUT HTTPS crittografata
+Avviare una richiesta HTTPS PUT crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1617,37 +1617,37 @@ UINT nx_web_http_client_put_secure_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTPS nell'indirizzo IP e nella porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet ()* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTPS all'indirizzo IP e alla porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve eseguire chiamate successive alla routine *nx_web_http_client_put_packet()* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta le richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_put_secure_start_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_put_secure_start_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa da inviare al server.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa da inviare al server.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato una richiesta PUT
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta PUT è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1674,7 +1674,7 @@ status = nx_web_http_client_put_secure_start(&my_client, &server_ip_addr,
 
 ## <a name="nx_web_http_client_put_secure_start_extended"></a>nx_web_http_client_put_secure_start_extended
 
-Avviare una richiesta PUT HTTPS crittografata
+Avviare una richiesta HTTPS PUT crittografata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1691,43 +1691,43 @@ UINT nx_web_http_client_put_secure_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTPS nell'indirizzo IP e nella porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve effettuare chiamate successive alla routine *nx_web_http_client_put_packet ()* per inviare il contenuto della risorsa al server http.
+Questo servizio tenta di inviare una richiesta PUT con la risorsa specificata al server HTTPS all'indirizzo IP e alla porta specificati. Se questa routine ha esito positivo, il codice dell'applicazione deve eseguire chiamate successive alla routine *nx_web_http_client_put_packet()* per inviare il contenuto della risorsa al server HTTP.
 
-Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm" oppure può fare riferimento a un altro URL, ad esempio `http://abc.website.com/index.htm` se il server HTTP indica che supporta il rinvio delle richieste PUT.
+Si noti che la stringa di risorsa può fare riferimento a un file locale, ad esempio "/index.htm", oppure può fare riferimento a un altro URL, ad esempio se il server HTTP indica che supporta richieste PUT di `http://abc.website.com/index.htm` riferimento.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_put_secure_start*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_put_secure_start*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **ip_address** Indirizzo IP del server HTTP.
-- **SERVER_PORT** Porta TCP sul server HTTP remoto.
-- **risorsa** di Puntatore alla stringa URL per la risorsa richiesta.
+- **server_port** Porta TCP nel server HTTP remoto.
+- **resource** Puntatore alla stringa URL per la risorsa richiesta.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
+- **username** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive a *nx_web_http_client_put_packet ()* deve essere uguale a questo valore.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della stringa della password per l'autenticazione.
+- **total_bytes** Byte totali della risorsa inviata. Si noti che la lunghezza combinata di tutti i pacchetti inviati tramite chiamate successive *a nx_web_http_client_put_packet()* deve essere uguale a questo valore.
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato una richiesta PUT
-- Nome utente di **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) troppo grande per il buffer
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_SIZE_ERROR (0x09) dimensioni totali non valide della risorsa
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) La richiesta PUT è stata inviata correttamente
+- **NX_WEB_HTTP_USERNAME_TOO_LONG** (0x30012) Nome utente troppo grande per il buffer
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_SIZE_ERROR (0x09) Dimensioni totali della risorsa non valide
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1757,7 +1757,7 @@ status = nx_web_http_client_put_secure_start_extended(&my_client,
 
 ## <a name="nx_web_http_client_put_packet"></a>nx_web_http_client_put_packet
 
-Invia pacchetto di dati di risorse successivo
+Inviare il pacchetto di dati della risorsa successivo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1768,29 +1768,29 @@ UINT nx_web_http_client_put_packet(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di inviare il pacchetto successivo di contenuto di risorse al server HTTP per le operazioni PUT e POST. Si noti che questa routine deve essere chiamata ripetutamente fino a quando la lunghezza combinata dei pacchetti inviati è uguale alla "total_bytes" specificata nella chiamata *nx_web_http_client_put_start ()* o *nx_web_http_client_post_start ()* precedente (o nelle versioni sicure corrispondenti).
+Questo servizio tenta di inviare il pacchetto successivo di contenuto delle risorse al server HTTP per operazioni PUT e POST. Si noti che questa routine deve essere chiamata in modo ripetitivo fino a quando la lunghezza combinata dei pacchetti inviati non è uguale al "total_bytes" specificato nella chiamata *nx_web_http_client_put_start()* *o nx_web_http_client_post_start()* precedente (o nelle versioni sicure corrispondenti).
 
-Questo servizio controlla anche la presenza di una risposta dal server nel caso in cui si sia verificato un problema durante il tentativo di stabilire la connessione HTTP (o HTTPS).
+Questo servizio verifica anche la presenza di una risposta dal server nel caso in cui si sia verificato un problema durante la connessione HTTP (o HTTPS).
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **packet_ptr** Puntatore al contenuto successivo della risorsa da inviare al server HTTP.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il pacchetto client HTTP è stato inviato **NX_SUCCESS** (0x00).
-- Client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non pronto
-- **NX_WEB_HTTP_REQUEST_UNSUCCESSFUL_CODE** (0X3000E) ha ricevuto il codice di errore del server * *
-- Lunghezza del pacchetto **NX_WEB_HTTP_BAD_PACKET_LENGTH** (0X3000D) non valida
-- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) nome e/o password non validi
-- Il server **NX_WEB_HTTP_INCOMPLETE_PUT_ERROR** (0x3000F) risponde prima del completamento dell'operazione Put
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Pacchetto di NX_INVALID_PACKET (0x12) troppo piccolo per l'intestazione TCP
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Il pacchetto client HTTP è stato inviato correttamente.
+- **NX_WEB_HTTP_NOT_READY** (0x3000A) Client HTTP non pronto
+- **NX_WEB_HTTP_REQUEST_UNSUCCESSFUL_CODE** (0x3000E) Codice di errore del server ricevuto**
+- **NX_WEB_HTTP_BAD_PACKET_LENGTH** (0x3000D) Lunghezza del pacchetto non valida
+- **NX_WEB_HTTP_AUTHENTICATION_ERROR** (0x3000B) Nome e/o password non validi
+- **NX_WEB_HTTP_INCOMPLETE_PUT_ERROR** (0x3000F) Il server risponde prima del completamento di PUT
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_INVALID_PACKET (0x12) Pacchetto troppo piccolo per l'intestazione TCP
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1810,7 +1810,7 @@ status = nx_web_http_client_put_packet(&client_ptr, packet_ptr, NX_WAIT_FOREVER)
 
 ## <a name="nx_web_http_client_request_chunked_set"></a>nx_web_http_client_request_chunked_set
 
-Imposta il trasferimento Chunked per la richiesta HTTP (S)
+Impostare il trasferimento in blocchi per la richiesta HTTP(S)
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1822,21 +1822,21 @@ UINT nx_web_http_client_request_chunked_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio usa la codifica di trasferimento Chunked per inviare una richiesta HTTP (S) personalizzata al server specificato nella chiamata *nx_web_http_client_connect ()* o *nx_web_http_client_secure_connect ()* che ha precedentemente stabilito la connessione socket all'host remoto.
+Questo servizio usa la codifica di trasferimento in blocchi per inviare una richiesta HTTP(S) personalizzata al server specificato nella chiamata *nx_web_http_client_connect()* o *nx_web_http_client_secure_connect()* che ha stabilito in precedenza la connessione socket all'host remoto.
 
 > [!NOTE]
-> Se l'applicazione usa la codifica di trasferimento Chunked per inviare un pacchetto di dati di richiesta, deve chiamare questo servizio dopo aver chiamato *nx_web_http_client_request_packet_allocate*() e prima di chiamare *nx_web_http_client_reqeust_packet_send* ().
+> Se l'applicazione usa la codifica di trasferimento in blocchi per inviare un pacchetto di dati della richiesta, deve chiamare questo servizio *dopo* aver chiamato nx_web_http_client_request_packet_allocate () e prima di chiamare nx_web_http_client_reqeust_packet_send *().*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **chunk_size** Dimensione dei blocchi-dati in ottetti.
-- **packet_ptr** Puntatore ai pacchetti di dati della richiesta HTTP (S).
+- **chunk_size** Dimensioni dei dati in blocchi in ottetti.
+- **packet_ptr** Puntatore al pacchetto di dati della richiesta HTTP(S).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato la suddivisione in blocchi.
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Impostato correttamente in blocchi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1853,7 +1853,8 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 
 /* Create a PUT request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
-    NX_WEB_HTTP_METHOD_PUT, "https://192.168.1.150/test.txt ",
+    NX_WEB_HTTP_METHOD_PUT,
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_TRUE,
     NX_NULL, /* username */
@@ -1871,7 +1872,7 @@ nx_web_http_client_request_packet_allocate(&my_client,
 /* Set the chunked transfer. */
 status = nx_web_http_client_request_chunked_set(&my_client, 128, my_packet);
 
-/* At this point, user can fill the data into my_packet. *./
+/* At this point, user can fill the data into my_packet. */
 nx_packet_data_append(my_packet, data_ptr, data_size,
     packet_pool, NX_WAIT_FOREVER);
 
@@ -1896,28 +1897,28 @@ UINT nx_web_http_client_request_header_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un'intestazione personalizzata (sotto forma di nome e valore del campo) a una richiesta HTTP personalizzata creata con n *x_web_http_client_request_initialize ()*.
+Questo servizio aggiunge un'intestazione personalizzata (sotto forma di nome e valore di campo) a una richiesta HTTP personalizzata creata con n *x_web_http_client_request_initialize()*.
 
-L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta. **Questo consente richieste HTTP personalizzate destinate ad applicazioni specifiche.**
+L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta. **Ciò consente richieste HTTP personalizzate destinate ad applicazioni specifiche.**
 
 > [!NOTE]
-> I \* metodi di _start nx_web_http_client_ sono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme a *nx_web_http_client_request_initialize ())* per creare e inviare richieste HTTP.
+> I nx_web_http_client_ \* _start vengono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme *a nx_web_http_client_request_initialize())* per creare e inviare richieste HTTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **FIELD_NAME** Stringa del nome del campo (ad esempio "Content-Type").
-- **name_length** Lunghezza della stringa del nome del campo in byte.
-- **FIELD_VALUE** Stringa del valore del campo (ad esempio "Application/ottetto-Stream").
-- **value_length** Lunghezza della stringa valore in byte.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **field_name** Stringa del nome del campo ,ad esempio "Content-Type".
+- **name_length** Lunghezza in byte della stringa del nome di campo.
+- **field_value** Stringa del valore del campo ,ad esempio "application/octet-stream".
+- **value_length** Lunghezza della stringa del valore in byte.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) aggiunta dell'intestazione da richiedere.
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Aggiunta dell'intestazione alla richiesta completata.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1935,7 +1936,7 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -1951,7 +1952,7 @@ status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server
     by repeatedly calling *nx_web_http_client_response_body_get()*
-    until the entire response is retrieved. *./
+    until the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -1980,40 +1981,40 @@ UINT nx_web_http_client_request_initialize(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una richiesta HTTP personalizzata e la associa all'istanza del client HTTP. Diversamente dalla nx_web_http_client_get_start più semplice *()* (insieme ai metodi per put, post e le versioni sicure associate di tali API), la richiesta personalizzata non viene inviata finché non viene chiamato il servizio *nx_web_http_client_request_send ()* .
+Questo servizio crea una richiesta HTTP personalizzata e la associa all'istanza del client HTTP. A differenza di *nx_web_http_client_get_start()* più semplice (insieme ai metodi per PUT, POST e le versioni protette associate di tali API), la richiesta personalizzata non viene inviata fino a quando non viene chiamato *il servizio nx_web_http_client_request_send().*
 
-L'utilizzo di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta utilizzando il servizio ***nx_web_http_client_request_header_add ()*** . Questo consente richieste HTTP personalizzate destinate ad applicazioni specifiche.
+L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta usando ***il servizio nx_web_http_client_request_header_add().*** Ciò consente richieste HTTP personalizzate destinate ad applicazioni specifiche.
 
 > [!NOTE]
-> I \* metodi di _start nx_web_http_client_ sono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme a *nx_web_http_client_request_send ())* per creare e inviare richieste HTTP.
+> I nx_web_http_client_ \* _start vengono forniti per praticità. Tutte queste funzioni usano questa routine internamente (insieme *a nx_web_http_client_request_send())* per creare e inviare richieste HTTP.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_client_request_initialize_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_client_request_initialize_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **Metodo** Metodo di richiesta HTTP da utilizzare. Le opzioni sono definite come segue:
+- **metodo** Metodo di richiesta HTTP da utilizzare. Le opzioni sono definite nel modo seguente:
   - **NX_WEB_HTTP_METHOD_NONE (0x0)**
   - **NX_WEB_HTTP_METHOD_GET (0x1)**
   - **NX_WEB_HTTP_METHOD_PUT (0x2)**
   - **NX_WEB_HTTP_METHOD_POST (0x3)**
   - **NX_WEB_HTTP_METHOD_DELETE (0x4)**
   - **NX_WEB_HTTP_METHOD_HEAD (0x5)**
-- **risorsa** di Nome della risorsa da trasferire.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
-- **input_size** Dimensioni dei dati di input per PUT e POST. Passaggio 0 per altre operazioni.
-- **transfer_encoding_trunked** Parametro riservato per il futuro supporto per trasferimento con trunking.
-- **nome utente** Nome utente per le risorse protette.
-- **password** di Password per le risorse protette.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **resource** Nome della risorsa da trasferire.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
+- **input_size** Dimensioni dei dati di input per PUT e POST. Passare 0 per altre operazioni.
+- **transfer_encoding_trunked** Parametro riservato per il supporto del trasferimento trunk futuro.
+- **username** Nome utente per le risorse protette.
+- **password** Password per le risorse protette.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) inizializzazione della richiesta completata.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_WEB_HTTP_METHOD_ERROR (0x30014) mancano alcune informazioni necessarie, ad esempio input_size per PUT o POST.
+- **NX_SUCCESS** (0x00) Inizializzazione della richiesta completata.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_WEB_HTTP_METHOD_ERROR (0x30014) Mancano alcune informazioni necessarie (ad esempio, input_size per PUT o POST).
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2042,7 +2043,7 @@ nx_web_http_client_request_initialize(&my_client,
 status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. */
 get_status = NX_SUCCESS;
 
 while(get_status != NX_WEB_HTTP_GET_DONE)
@@ -2061,55 +2062,57 @@ Inizializzare una richiesta HTTP personalizzata
 ### <a name="prototype"></a>Prototipo
 
 ```C
-UINT nx_web_http_client_request_initialize(
-    NX_WEB_HTTP_CLIENT *client_ptr,
-    UINT method, CHAR *resource, CHAR *host,
+UINT nx_web_http_client_request_initialize_extended(
+    NX_WEB_HTTP_CLIENT *client_ptr, UINT method,
+    CHAR *resource, UINT resource_length,
+    CHAR *host, UINT host_length,
     UINT input_size, UINT transfer_encoding_trunked,
-    CHAR *username, CHAR *password, UINT wait_option);
+    CHAR *username, UINT username_length,
+    CHAR *password, UINT password_length, UINT wait_option);
 ```
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una richiesta HTTP personalizzata e la associa all'istanza del client HTTP. Diversamente dalla nx_web_http_client_get_start più semplice *()* (insieme ai metodi per put, post e le versioni sicure associate di tali API), la richiesta personalizzata non viene inviata finché non viene chiamato il servizio *nx_web_http_client_request_send ()* .
+Questo servizio crea una richiesta HTTP personalizzata e la associa all'istanza del client HTTP. A differenza di *nx_web_http_client_get_start()* più semplice (insieme ai metodi per PUT, POST e le versioni protette associate di tali API), la richiesta personalizzata non viene inviata fino a quando non viene chiamato *il servizio nx_web_http_client_request_send().*
 
-L'utilizzo di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta utilizzando il servizio ***nx_web_http_client_request_header_add ()*** . Questo consente richieste HTTP personalizzate destinate ad applicazioni specifiche.
+L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta usando ***il servizio nx_web_http_client_request_header_add().*** Ciò consente richieste HTTP personalizzate destinate ad applicazioni specifiche.
 
 > [!NOTE]
-> I \* metodi di _start nx_web_http_client_ sono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme a *nx_web_http_client_request_send ())* per creare e inviare richieste HTTP.
+> I nx_web_http_client_ \* _start vengono forniti per praticità. Tutte queste funzioni usano questa routine internamente (insieme *a nx_web_http_client_request_send())* per creare e inviare richieste HTTP.
 
 Le stringhe di risorsa, host, nome utente e password devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_client_request_initialize*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_client_request_initialize*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **Metodo** Metodo di richiesta HTTP da utilizzare. Le opzioni sono definite come segue:
+- **metodo** Metodo di richiesta HTTP da utilizzare. Le opzioni sono definite nel modo seguente:
   - **NX_WEB_HTTP_METHOD_NONE (0x0)**
   - **NX_WEB_HTTP_METHOD_GET (0x1)**
   - **NX_WEB_HTTP_METHOD_PUT (0x2)**
   - **NX_WEB_HTTP_METHOD_POST (0x3)**
   - **NX_WEB_HTTP_METHOD_DELETE (0x4)**
   - **NX_WEB_HTTP_METHOD_HEAD (0x5)**
-- **risorsa** di Nome della risorsa da trasferire.
+- **risorsa** Nome della risorsa da trasferire.
 - **resource_length** Lunghezza della stringa della risorsa richiesta.
-- **host** di Stringa con terminazione null del nome di dominio del server. Questa stringa viene trasmessa nel campo dell'intestazione host HTTP. La stringa host non può essere NULL.
+- **host** Stringa con terminazione Null del nome di dominio del server. Questa stringa viene trasmessa nel campo intestazione host HTTP. La stringa host non può essere NULL.
 - **host_length** Lunghezza della stringa dell'host.
-- **input_size** Dimensioni dei dati di input per PUT e POST. Passaggio 0 per altre operazioni.
-- **transfer_encoding_trunked** Parametro riservato per il futuro supporto per trasferimento con trunking.
+- **input_size** Dimensioni dei dati di input per PUT e POST. Passare 0 per altre operazioni.
+- **transfer_encoding_trunked** Parametro riservato per il supporto futuro del trasferimento trunked.
 - **nome utente** Puntatore al nome utente facoltativo per l'autenticazione.
 - **username_length** Lunghezza della stringa del nome utente per l'autenticazione.
-- **password** di Puntatore alla password facoltativa per l'autenticazione.
-- **password_length** Lunghezza della stringa di password per l'autenticazione.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **password** Puntatore alla password facoltativa per l'autenticazione.
+- **password_length** Lunghezza della password per l'autenticazione.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) inizializzazione della richiesta completata.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_WEB_HTTP_METHOD_ERROR (0x30014) mancano alcune informazioni necessarie, ad esempio input_size per PUT o POST.
+- **NX_SUCCESS** (0x00) Inizializzazione della richiesta completata.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_WEB_HTTP_METHOD_ERROR (0x30014) Mancano alcune informazioni necessarie (ad esempio, input_size per PUT o POST).
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2141,7 +2144,7 @@ status = nx_web_http_client_request_send(&my_client, 1000);
 
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. */
 get_status = NX_SUCCESS;
 while(get_status != NX_WEB_HTTP_GET_DONE)
 {
@@ -2154,7 +2157,7 @@ while(get_status != NX_WEB_HTTP_GET_DONE)
 
 ## <a name="nx_web_http_client_request_packet_send"></a>nx_web_http_client_request_packet_send
 
-Invia pacchetto di dati di richiesta HTTP (S) al server remoto
+Inviare il pacchetto di dati della richiesta HTTP(S) al server remoto
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2167,20 +2170,20 @@ UINT nx_web_http_client_request_packet_send(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto di dati di richiesta HTTP (S) personalizzato creato con *nx_web_http_client_request_packet_allocate* () al server specificato nella chiamata *nx_web_http_client_connect ()* o *nx_web_http_client_secure_connect (*) che ha precedentemente stabilito la connessione socket all'host remoto.
+Questo servizio invia un pacchetto di dati di richiesta HTTP(S) personalizzato creato con *nx_web_http_client_request_packet_allocate* () al server specificato nella chiamata *nx_web_http_client_connect()* o *nx_web_http_client_secure_connect(*) che ha stabilito in precedenza la connessione socket all'host remoto.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **packet_ptr** Puntatore ai pacchetti di dati della richiesta HTTP (S).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **packet_ptr** Puntatore al pacchetto di dati della richiesta HTTP(S).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) invio del pacchetto di dati della richiesta riuscito.
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Invio riuscito del pacchetto di dati della richiesta.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2197,7 +2200,7 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 /* Create a PUT request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_PUT,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     128, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -2212,7 +2215,7 @@ nx_web_http_client_request_packet_allocate(&my_client,
     &my_packet,
     NX_WAIT_FOREVER);
 
-/* At this point, user can fill the data into my_packet. *./
+/* At this point, user can fill the data into my_packet. */
 nx_packet_data_append(my_packet, data_ptr, data_size,
     packet_pool, NX_WAIT_FOREVER);
 
@@ -2236,24 +2239,24 @@ UINT nx_web_http_client_request_send(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia una richiesta HTTP personalizzata creata con *nx_web_http_client_request_initialize ()* al server specificato nell' *nx_web_http_client_connect ()* o *nx_web_http_client_secure_connect ()* entrambi i quali hanno stabilito in precedenza la connessione al socket per l'host remoto.
+Questo servizio invia una richiesta HTTP personalizzata creata con *nx_web_http_client_request_initialize()* al server specificato in *nx_web_http_client_connect()* o *nx_web_http_client_secure_connect()* che hanno stabilito in precedenza la connessione socket all'host remoto.
 
-L'utilizzo di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta utilizzando il servizio ***nx_web_http_client_request_header_add ()*** . Questo consente richieste HTTP personalizzate destinate ad applicazioni specifiche.
+L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta ***usando il servizio nx_web_http_client_request_header_add().*** Ciò consente richieste HTTP personalizzate destinate ad applicazioni specifiche.
 
 > [!NOTE]
-> I \* metodi di _start nx_web_http_client_ sono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme a *nx_web_http_client_request_initialize ())* per creare e inviare richieste HTTP.
+> I nx_web_http_client_ \* _start vengono forniti per praticità. Tutte queste funzioni usano questa routine internamente (insieme *a nx_web_http_client_request_initialize())* per creare e inviare richieste HTTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) invio della richiesta riuscita.
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Invio della richiesta riuscito.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2270,7 +2273,7 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 /* Create a new GET request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -2282,7 +2285,7 @@ status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by
     repeatedly calling *nx_web_http_client_response_body_get* until
-    the entire response is retrieved. *./
+    the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -2297,7 +2300,7 @@ while(get_status != NX_WEB_HTTP_GET_DONE)
 
 ## <a name="nx_web_http_client_response_body_get"></a>nx_web_http_client_response_body_get
 
-Ottenere il pacchetto di dati di risorse successivo
+Ottenere il pacchetto di dati della risorsa successivo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2310,63 +2313,63 @@ UINT nx_web_http_client_response_body_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il pacchetto successivo di contenuto della risorsa richiesta dalla chiamata precedente a *nx_web_http_client_get_start ()* o *nx_web_http_client_get_secure_start ()* . Le chiamate successive a questa routine devono essere apportate fino a quando non viene ricevuto lo stato di restituzione del NX_WEB_HTTP_GET_DONE.
+Questo servizio recupera il pacchetto successivo di contenuto della risorsa richiesta dalla chiamata *nx_web_http_client_get_start()* *o nx_web_http_client_get_secure_start().* Le chiamate successive a questa routine devono essere effettuate fino a quando non viene ricevuto lo NX_WEB_HTTP_GET_DONE restituito.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **packet_ptr** Destinazione per il puntatore del pacchetto che contiene il contenuto parziale delle risorse.
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **packet_ptr** Destinazione per il puntatore al pacchetto contenente contenuto parziale della risorsa.
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite come segue:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) La selezione NX_WAIT_FOREVER causa la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha esito positivo Get del pacchetto client http.
-- **NX_WEB_HTTP_GET_DONE** (0X3000C) client HTTP Get packet is done
-- Il client HTTP **NX_WEB_HTTP_NOT_READY** (0x3000A) non è in modalità Get.
-- Lunghezza del pacchetto **NX_WEB_HTTP_BAD_PACKET_LENGTH** (0X3000D) non valida
-- **NX_WEB_HTTP_STATUS_CODE_CONTINUE** (0x3001A) codice di stato HTTP 100 continua
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_SWITCHING_PROTOCOLS** (0x3001B) 101 scambio di protocolli
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_CREATED** (0x3001C) 201 creato
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_ACCEPTED** (0x3001D) 202 accettato
-- **NX_WEB_HTTP_STATUS_CODE_NON_AUTH_INFO** (0x3001E) codice di stato HTTP 203 informazioni non autorevoli
-- **NX_WEB_HTTP_STATUS_CODE_NO_CONTENT** (0x3001F) codice di stato HTTP 204 nessun contenuto
-- **NX_WEB_HTTP_STATUS_CODE_RESET_CONTENT** (0x30020) codice di stato HTTP 205 Reimposta contenuto
-- **NX_WEB_HTTP_STATUS_CODE_PARTIAL_CONTENT** (0x30021) codice di stato HTTP 206 contenuto parziale
-- Codice di stato HTTP **NX_WEB_HTTP_STATUS_CODE_MULTIPLE_CHOICES** (0x30022) 300 opzioni multiple
-- Il codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_MOVED_PERMANETLY** (0x30023) 301 è stato spostato in modo permanente
-- Codice di stato HTTP **NX_WEB_HTTP_STATUS_CODE_FOUND** (0x30024) 302 trovato
-- **NX_WEB_HTTP_STATUS_CODE_SEE_OTHER** (0x30025) codice di stato HTTP 303 vedere altro
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_NOT_MODIFIED** (0x30026) 304 non modificato
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_USE_PROXY** (0x30027) 305 uso del proxy
-- **NX_WEB_HTTP_STATUS_CODE_TEMPORARY_REDIRECT** (0x30028) codice di stato HTTP 307 Reindirizzamento temporaneo
-- **NX_WEB_HTTP_STATUS_CODE_BAD_REQUEST** (0x30029) codice di stato HTTP 400 richiesta non valida
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_UNAUTHORIZED** (0x3002A) 401 non autorizzato
-- **NX_WEB_HTTP_STATUS_CODE_PAYMENT_REQUIRED** (0x3002B) codice di stato HTTP 402 pagamento obbligatorio
-- Codice di stato HTTP **NX_WEB_HTTP_STATUS_CODE_FORBIDDEN** (0x3002C) 403 non consentito
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_NOT_FOUND** (0x3002D) 404 non trovato
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_METHOD_NOT_ALLOWED** (0x3002E) 405 non consentito
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_NOT_ACCEPTABLE** (0x3002F) 406 non accettabile
-- **NX_WEB_HTTP_STATUS_CODE_PROXY_AUTH_REQUIRED** (0x30030) codice di stato HTTP 407 Autenticazione proxy necessaria
-- **NX_WEB_HTTP_STATUS_CODE_REQUEST_TIMEOUT** (0x30031) codice di stato HTTP 408 Timeout richieste
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_CONFLICT** (0x30032) 409 conflitto
-- Codice di stato HTTP **NX_WEB_HTTP_STATUS_CODE_GONE** (0x30033) 410 andato
-- **NX_WEB_HTTP_STATUS_CODE_LENGTH_REQUIRED** (0x30034) codice di stato http 411 lunghezza richiesta
-- **NX_WEB_HTTP_STATUS_CODE_PRECONDITION_FAILED** (0x30035) codice di stato HTTP 412 Precondizione non riuscita
-- **NX_WEB_HTTP_STATUS_CODE_ENTITY_TOO_LARGE** (0x30036) codice di stato HTTP 413 entità richiesta troppo grande
-- **NX_WEB_HTTP_STATUS_CODE_URL_TOO_LARGE** (0x30037) codice di stato HTTP 414 URL richiesta troppo grande
-- **NX_WEB_HTTP_STATUS_CODE_UNSUPPORTED_MEDIA** (0x30038) codice di stato HTTP 415 tipo di supporto non supportato
-- **NX_WEB_HTTP_STATUS_CODE_RANGE_NOT_SATISFY** (0x30039) codice di stato HTTP 416 intervallo richiesto non Impossibile attenersi all'
-- **NX_WEB_HTTP_STATUS_CODE_EXPECTATION_FAILED** (0x3003A) codice di stato HTTP 417 previsione non riuscita
-- Codice di stato HTTP **NX_WEB_HTTP_STATUS_CODE_INTERNAL_ERROR** (0x3003B) 500 errore interno del server
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_NOT_IMPLEMENTED** (0x3003C) 501 non implementato
-- Codice di stato HTTP di **NX_WEB_HTTP_STATUS_CODE_BAD_GATEWAY** (0x3003D) 502 gateway errato
-- **NX_WEB_HTTP_STATUS_CODE_SERVICE_UNAVAILABLE** (0x3003E) codice di stato HTTP 503 servizio non disponibile
-- **NX_WEB_HTTP_STATUS_CODE_GATEWAY_TIMEOUT** (0x3003F) codice di stato HTTP 504 il timeout del gateway
-- **NX_WEB_HTTP_STATUS_CODE_VERSION_ERROR** (0x30040) codice di stato HTTP 505 versione http non supportata
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Riuscito a ottenere il pacchetto client HTTP.
+- **NX_WEB_HTTP_GET_DONE** il pacchetto get del client HTTP 0x3000C (0x3000C)
+- **NX_WEB_HTTP_NOT_READY** client HTTP (0x3000A) non in modalità get.
+- **NX_WEB_HTTP_BAD_PACKET_LENGTH** (0x3000D) Lunghezza pacchetto non valida
+- **NX_WEB_HTTP_STATUS_CODE_CONTINUE** (0x3001A) Codice di stato HTTP 100 Continua
+- **NX_WEB_HTTP_STATUS_CODE_SWITCHING_PROTOCOLS** (0x3001B) Codice di stato HTTP 101 Switching Protocols
+- **NX_WEB_HTTP_STATUS_CODE_CREATED** (0x3001C) Codice di stato HTTP 201 creato
+- **NX_WEB_HTTP_STATUS_CODE_ACCEPTED** (0x3001D) Codice di stato HTTP 202 Accettato
+- **NX_WEB_HTTP_STATUS_CODE_NON_AUTH_INFO** (0x3001E) Codice di stato HTTP 203 - Informazioni non autorevoli
+- **NX_WEB_HTTP_STATUS_CODE_NO_CONTENT** (0x3001F) Codice di stato HTTP 204 Nessun contenuto
+- **NX_WEB_HTTP_STATUS_CODE_RESET_CONTENT** (0x30020) Codice di stato HTTP 205 Reset Content
+- **NX_WEB_HTTP_STATUS_CODE_PARTIAL_CONTENT** (0x30021) codice di stato HTTP 206 Partial Content
+- **NX_WEB_HTTP_STATUS_CODE_MULTIPLE_CHOICES** (0x30022) Codice di stato HTTP 300 Scelte multiple
+- **NX_WEB_HTTP_STATUS_CODE_MOVED_PERMANETLY** (0x30023) Codice di stato HTTP 301 Spostato in modo permanente
+- **NX_WEB_HTTP_STATUS_CODE_FOUND** (0x30024) Codice di stato HTTP 302 Trovato
+- **NX_WEB_HTTP_STATUS_CODE_SEE_OTHER** (0x30025) Codice di stato HTTP 303 Vedere altro
+- **NX_WEB_HTTP_STATUS_CODE_NOT_MODIFIED** (0x30026) Codice di stato HTTP 304 Non modificato
+- **NX_WEB_HTTP_STATUS_CODE_USE_PROXY** (0x30027) Codice di stato HTTP 305 Usare il proxy
+- **NX_WEB_HTTP_STATUS_CODE_TEMPORARY_REDIRECT** (0x30028) Codice di stato HTTP 307 Reindirizzamento temporaneo
+- **NX_WEB_HTTP_STATUS_CODE_BAD_REQUEST** (0x30029) Codice di stato HTTP 400 Richiesta non valida
+- **NX_WEB_HTTP_STATUS_CODE_UNAUTHORIZED** (0x3002A) Codice di stato HTTP 401 Non autorizzato
+- **NX_WEB_HTTP_STATUS_CODE_PAYMENT_REQUIRED** (0x3002B) Codice di stato HTTP 402 Pagamento obbligatorio
+- **NX_WEB_HTTP_STATUS_CODE_FORBIDDEN** (0x3002C) Codice di stato HTTP 403 Accesso negato
+- **NX_WEB_HTTP_STATUS_CODE_NOT_FOUND** (0x3002D) Codice di stato HTTP 404 Non trovato
+- **NX_WEB_HTTP_STATUS_CODE_METHOD_NOT_ALLOWED** (0x3002E) Codice di stato HTTP 405 Metodo non consentito
+- **NX_WEB_HTTP_STATUS_CODE_NOT_ACCEPTABLE** (0x3002F) Codice di stato HTTP 406 Non accettabile
+- **NX_WEB_HTTP_STATUS_CODE_PROXY_AUTH_REQUIRED** (0x30030) Codice di stato HTTP 407 Proxy Authentication Required
+- **NX_WEB_HTTP_STATUS_CODE_REQUEST_TIMEOUT** (0x30031) Codice di stato HTTP 408 Timeout richiesta
+- **NX_WEB_HTTP_STATUS_CODE_CONFLICT** (0x30032) Conflitto del codice di stato HTTP 409
+- **NX_WEB_HTTP_STATUS_CODE_GONE** (0x30033) Codice di stato HTTP 410 Gone
+- **NX_WEB_HTTP_STATUS_CODE_LENGTH_REQUIRED** (0x30034) Codice di stato HTTP 411 Lunghezza richiesta
+- **NX_WEB_HTTP_STATUS_CODE_PRECONDITION_FAILED** (0x30035) Codice di stato HTTP 412 Precondizione non riuscita
+- **NX_WEB_HTTP_STATUS_CODE_ENTITY_TOO_LARGE** (0x30036) Codice di stato HTTP 413 Entità richiesta troppo grande
+- **NX_WEB_HTTP_STATUS_CODE_URL_TOO_LARGE** (0x30037) Codice di stato HTTP 414 URL richiesta troppo grande
+- **NX_WEB_HTTP_STATUS_CODE_UNSUPPORTED_MEDIA** (0x30038) Codice di stato HTTP 415 Tipo di supporto non supportato
+- **NX_WEB_HTTP_STATUS_CODE_RANGE_NOT_SATISFY** (0x30039) Codice di stato HTTP 416 Intervallo richiesto non soddisfabile
+- **NX_WEB_HTTP_STATUS_CODE_EXPECTATION_FAILED** (0x3003A) Codice di stato HTTP 417 Previsione non riuscita
+- **NX_WEB_HTTP_STATUS_CODE_INTERNAL_ERROR** (0x3003B) Codice di stato HTTP 500 Errore interno del server
+- **NX_WEB_HTTP_STATUS_CODE_NOT_IMPLEMENTED** (0x3003C) Codice di stato HTTP 501 Non implementato
+- **NX_WEB_HTTP_STATUS_CODE_BAD_GATEWAY** (0x3003D) Codice di stato HTTP 502 Gateway non valido
+- **NX_WEB_HTTP_STATUS_CODE_SERVICE_UNAVAILABLE** (0x3003E) Codice di stato HTTP 503 Servizio non disponibile
+- **NX_WEB_HTTP_STATUS_CODE_GATEWAY_TIMEOUT** (0x3003F) Codice di stato HTTP 504 Timeout del gateway
+- **NX_WEB_HTTP_STATUS_CODE_VERSION_ERROR** (0x30040) Codice di stato HTTP 505 Versione HTTP non supportata
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2386,7 +2389,7 @@ status = nx_web_http_client_response_body_get(&my_client, &next_packet, 1000);
 
 ## <a name="nx_web_http_client_response_header_callback_set"></a>nx_web_http_client_response_header_callback_set
 
-Imposta callback da richiamare durante l'elaborazione di intestazioni HTTP
+Impostare il callback da richiamare durante l'elaborazione delle intestazioni HTTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2400,18 +2403,18 @@ UINT nx_web_http_client_response_header_callback_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna un callback che verrà richiamato ogni volta che il client HTTP NetX Web elabora un'intestazione HTTP in una risposta in ingresso da un server HTTP remoto. Il callback viene richiamato una volta per ogni intestazione nella risposta mentre viene elaborata. Il callback consente a un'applicazione client HTTP di accedere a ciascuna delle intestazioni nella risposta del server HTTP per eseguire qualsiasi azione desiderata oltre l'elaborazione di base che il client HTTP Web di NetX esegue.
+Questo servizio assegna un callback che verrà richiamato ogni volta che il client HTTP Web NetX elabora un'intestazione HTTP in una risposta in ingresso da un server HTTP remoto. Il callback viene richiamato una volta per ogni intestazione nella risposta durante l'elaborazione. Il callback consente a un'applicazione client HTTP di accedere a ognuna delle intestazioni nella risposta del server HTTP per eseguire le azioni desiderate oltre all'elaborazione di base del client HTTP Web NetX.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 **client_ptr** Puntatore al blocco di controllo client HTTP.
 
-**callback_function** Callback richiamato durante l'elaborazione dell'intestazione della risposta. Il callback viene richiamato con il nome e il valore del campo come stringhe (e le relative lunghezze). Ad esempio, l'intestazione "Content-length: 100" provocherebbe la chiamata della funzione con "Content-Length" per *FIELD_NAME* e la stringa "100" per *FIELD_VALUE*.
+**callback_function** Callback richiamato durante l'elaborazione dell'intestazione della risposta. Il callback viene richiamato con il nome e il valore del campo come stringhe (e le relative lunghezze). Ad esempio, l'intestazione "Content-Length: 100" causerebbe la chiamata della funzione con "Content-Length" per *field_name* e la stringa "100" per *field_value*.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) assegnazione riuscita del callback.
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Assegnazione riuscita del callback.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2455,7 +2458,7 @@ status = nx_web_http_client_get_start(&my_client, IP_ADDRESS(1,2,3,5),
 
 ## <a name="nx_web_http_client_secure_connect"></a>nx_web_http_client_secure_connect
 
-Aprire una sessione TLS in un server HTTPS per le richieste personalizzate
+Aprire una sessione TLS in un server HTTPS per richieste personalizzate
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2469,30 +2472,30 @@ UINT nx_web_http_client_secure_connect(NX_WEB_HTTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo metodo è per HTTPS **protetto da TLS** .
+Questo metodo è per **HTTPS protetto da** TLS.
 
-Questo servizio apre una sessione TLS protetta in un server HTTPS, ma non invia alcuna richiesta. Le richieste vengono create con n *x_web_http_client_request_initialize ()* e inviate utilizzando *nx_web_http_client_request_send ()*. È possibile aggiungere intestazioni HTTP personalizzate alla richiesta utilizzando *nx_web_http_client_request_header_add ()*.
+Questo servizio apre una sessione TLS protetta a un server HTTPS, ma non invia alcuna richiesta. Le richieste vengono create con n *x_web_http_client_request_initialize()* e inviate *usando nx_web_http_client_request_send()*. È possibile aggiungere intestazioni HTTP personalizzate alla richiesta *usando nx_web_http_client_request_header_add()*.
 
-L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta. **Questo consente richieste HTTP personalizzate destinate ad applicazioni specifiche.**
+L'uso di questo servizio consente a un'applicazione di aggiungere un numero qualsiasi di intestazioni personalizzate alla richiesta. **Ciò consente richieste HTTP personalizzate destinate ad applicazioni specifiche.**
 
 > [!NOTE]
-> I \* metodi di _start nx_web_http_client_ sono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme a *nx_web_http_client_request_initialize ())* per creare e inviare richieste HTTP.
+> I nx_web_http_client_ \* _start vengono forniti per praticità. Queste funzioni usano tutte questa routine internamente (insieme *a nx_web_http_client_request_initialize())* per creare e inviare richieste HTTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
 - **server_ip** Indirizzo IP del server HTTPS remoto.
-- **SERVER_PORT** Porta sul server HTTPS remoto, ad esempio 443 per HTTPS.
-- **tls_setup** Callback utilizzato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio certificati).
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della richiesta di avvio del client HTTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
+- **server_port** Porta nel server HTTPS remoto (ad esempio, 443 per HTTPS).
+- **tls_setup** Callback usato per configurare la configurazione TLS. L'applicazione definisce questo callback per inizializzare la crittografia TLS e le credenziali (ad esempio i certificati).
+- **wait_option** Definisce per quanto tempo il servizio attenderà la richiesta di avvio get del client HTTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) connessione riuscita della sessione TLS.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_WEB_HTTP_NOT_READY (0x3000A) è già in corso un'altra richiesta.
+- **NX_SUCCESS** (0x00) Connessione della sessione TLS riuscita.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_WEB_HTTP_NOT_READY (0x3000A) Un'altra richiesta è già in corso.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2513,7 +2516,7 @@ nx_web_http_client_secure_connect(&my_client, &server_ip_addr,
 /* Create a new GET request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -2528,7 +2531,7 @@ status = nx_web_http_client_request_header_add(&my_client, "Server", 6,
 status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -2544,7 +2547,7 @@ while(get_status != NX_WEB_HTTP_GET_DONE)
 
 ## <a name="nx_web_http_server_cache_info_callback_set"></a>nx_web_http_server_cache_info_callback_set
 
-Impostare il callback per il recupero della validità e della data massima dell'URL
+Impostare il callback per recuperare la data e l'età ma massima dell'URL
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2558,19 +2561,19 @@ UINT nx_web_http_server_cache_info_callback_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il servizio di callback richiamato per ottenere la data di validità massima e dell'Ultima modifica della risorsa specificata.
+Questo servizio imposta il servizio di callback richiamato per ottenere la validità massima e la data dell'ultima modifica della risorsa specificata.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
 - **cache_info_get** Puntatore al callback
-- **max_age** Puntatore alla durata massima di una risorsa
-- **dati** di Puntatore alla data dell'Ultima modifica restituita.
+- **max_age** Puntatore alla validità massima di una risorsa
+- **dati** Puntatore alla data dell'ultima modifica restituita.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il callback
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Impostare correttamente il callback
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2593,7 +2596,7 @@ status = nx_web_http_server_cache_info_callback_set(&my_server, cache_info_get);
 
 ## <a name="nx_web_http_server_callback_data_send"></a>nx_web_http_server_callback_data_send
 
-Inviare dati da una funzione di callback
+Inviare dati dalla funzione di callback
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2605,18 +2608,18 @@ UINT nx_web_http_server_callback_data_send(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia i dati nel pacchetto fornito dalla routine di callback dell'applicazione. Questa operazione viene in genere usata per inviare i dati dinamici associati alle richieste GET/POST. Si noti che se si utilizza questa funzione, la routine di callback è responsabile dell'invio dell'intera risposta nel formato corretto. Inoltre, la routine di callback deve restituire lo stato di NX_WEB_HTTP_CALLBACK_COMPLETED.
+Questo servizio invia i dati nel pacchetto fornito dalla routine di callback dell'applicazione. Viene in genere usato per inviare dati dinamici associati a richieste GET/POST. Si noti che se si usa questa funzione, la routine di callback è responsabile dell'invio dell'intera risposta nel formato corretto. Inoltre, la routine di callback deve restituire lo stato di NX_WEB_HTTP_CALLBACK_COMPLETED.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **DATA_PTR** Puntatore ai dati da inviare.
-- **Data_length** Numero di byte da inviare.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **data_ptr** Puntatore ai dati da inviare.
+- **data_length** Numero di byte da inviare.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente i dati del server
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) I dati del server sono stati inviati correttamente
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2653,7 +2656,7 @@ UINT my_request_notify(NX_WEB_HTTP_SERVER *server_ptr, UINT request_type,
 
 ## <a name="nx_web_http_server_callback_generate_response_header"></a>nx_web_http_server_callback_generate_response_header
 
-Creare un'intestazione della risposta in una funzione di callback
+Creare un'intestazione di risposta in una funzione di callback
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2667,26 +2670,26 @@ UINT nx_web_http_server_callback_generate_response_header(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio viene usato nella routine di callback del server HTTP (S) (definita dall'applicazione) per generare un'intestazione di risposta HTTP. La routine di callback del server viene richiamata quando il server HTTP risponde alle richieste GET, PUT e DELETE del client che richiedono una risposta HTTP. Questa funzione accetta le informazioni di risposta dall'applicazione e genera l'intestazione di risposta appropriata. Per ulteriori informazioni sulla routine di callback delle richieste server, vedere il nx_web_http_server_create di servizio *()* .
+Questo servizio viene usato nella routine di callback del server HTTP(S) (definita dall'applicazione) per generare un'intestazione di risposta HTTP. La routine di callback del server viene richiamata quando il server HTTP risponde alle richieste CLIENT GET, PUT e DELETE che richiedono una risposta HTTP. Questa funzione accetta le informazioni di risposta dall'applicazione e genera l'intestazione di risposta appropriata. Per altre informazioni sulla routine di callback delle richieste del server, vedere il *nx_web_http_server_create()* del servizio.
 
-Questa API è deprecata. Gli sviluppatori sono invitati a utilizzare *nx_web_http_server_callback_generate_response_header_extended ()*.
+Questa API è deprecata. Gli sviluppatori sono invitati a *usare nx_web_http_server_callback_generate_response_header_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **packet_pptr** Puntatore a un puntatore di pacchetto allocato per il messaggio
-- **status_code** Indicare lo stato della risorsa. Esempi:
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **packet_pptr** Puntatore a un puntatore a pacchetto allocato per il messaggio
+- **status_code** Indica lo stato della risorsa. Esempi:
   - **NX_WEB_HTTP_STATUS_OK**
   - **NX_WEB_HTTP_STATUS_MODIFIED**
   - **NX_WEB_HTTP_STATUS_INTERNAL_ERROR**
-- **CONTENT_LENGTH** Dimensioni del contenuto in byte
+- **content_length** Dimensioni del contenuto in byte
 - **content_type** Tipo di HTTP, ad esempio "text/plain"
-- **additional_header** Puntatore a testo intestazione aggiuntivo
+- **additional_header** Puntatore al testo aggiuntivo dell'intestazione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha creato l'intestazione HTML
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Creazione intestazione HTML completata
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2755,7 +2758,7 @@ UINT my_request_notify(NX_WEB_HTTP_SERVER *server_ptr, UINT request_type,
 
 ## <a name="nx_web_http_server_callback_generate_response_header_extended"></a>nx_web_http_server_callback_generate_response_header_extended
 
-Creare un'intestazione della risposta in una funzione di callback
+Creare un'intestazione di risposta in una funzione di callback
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2772,27 +2775,27 @@ UINT nx_web_http_server_callback_generate_response_header_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio viene usato nella routine di callback del server HTTP (S) (definita dall'applicazione) per generare un'intestazione di risposta HTTP. La routine di callback del server viene richiamata quando il server HTTP risponde alle richieste GET, PUT e DELETE del client che richiedono una risposta HTTP. Questa funzione accetta le informazioni di risposta dall'applicazione e genera l'intestazione di risposta appropriata. Per ulteriori informazioni sulla routine di callback delle richieste server, vedere il nx_web_http_server_create di servizio *()* .
+Questo servizio viene usato nella routine di callback del server HTTP(S) (definita dall'applicazione) per generare un'intestazione di risposta HTTP. La routine di callback del server viene richiamata quando il server HTTP risponde alle richieste CLIENT GET, PUT e DELETE che richiedono una risposta HTTP. Questa funzione accetta le informazioni di risposta dall'applicazione e genera l'intestazione di risposta appropriata. Per altre informazioni sulla routine di callback delle richieste del server, vedere il *nx_web_http_server_create()* del servizio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **packet_pptr** Puntatore a un puntatore di pacchetto allocato per il messaggio
-- **status_code** Indicare lo stato della risorsa. Esempi:
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **packet_pptr** Puntatore a un puntatore a pacchetto allocato per il messaggio
+- **status_code** Indica lo stato della risorsa. Esempi:
   - **NX_WEB_HTTP_STATUS_OK**
   - **NX_WEB_HTTP_STATUS_MODIFIED**
   - **NX_WEB_HTTP_STATUS_INTERNAL_ERROR**
-- **status_code_length** Lunghezza stringa del codice di stato
-- **CONTENT_LENGTH** Dimensioni del contenuto in byte
+- **status_code_length** Lunghezza della stringa del codice di stato
+- **content_length** Dimensioni del contenuto in byte
 - **content_type** Tipo di HTTP, ad esempio "text/plain"
-- **content_type_length** Lunghezza stringa del tipo di contenuto
-- **additional_header** Puntatore a testo intestazione aggiuntivo
-- **additional_header_length** Lunghezza del testo dell'intestazione aggiuntivo
+- **content_type_length** Lunghezza della stringa del tipo di contenuto
+- **additional_header** Puntatore al testo aggiuntivo dell'intestazione
+- **additional_header_length** Lunghezza del testo aggiuntivo dell'intestazione
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha creato l'intestazione HTML
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Creazione intestazione HTML completata
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2875,21 +2878,21 @@ UINT nx_web_http_server_callback_packet_send(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia una risposta server HTTP completa da un callback HTTP. Il pacchetto viene inviato dal server HTTP al _TIMEOUT_SEND NX_WEB_HTTP_SERVER. L'intestazione e i dati HTTP devono essere aggiunti al pacchetto. Se lo stato restituito indica un errore, l'applicazione HTTP deve rilasciare il pacchetto.
+Questo servizio invia una risposta completa del server HTTP da un callback HTTP. Il server HTTP invierà il pacchetto con il NX_WEB_HTTP_SERVER _TIMEOUT_SEND. L'intestazione HTTP e i dati devono essere aggiunti al pacchetto. Se lo stato restituito indica un errore, l'applicazione HTTP deve rilasciare il pacchetto.
 
 Il callback deve restituire NX_WEB_HTTP_CALLBACK_COMPLETED.
 
-Per un esempio più dettagliato, vedere *nx_web_http_server_callback_generate_response_header ()* .
+Vedere *nx_web_http_server_callback_generate_response_header()* per un esempio più dettagliato.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP
+- **server_ptr** Puntatore al blocco di controllo del server HTTP
 - **packet_ptr** Puntatore al pacchetto da inviare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato il pacchetto del server http
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Il pacchetto del server HTTP è stato inviato correttamente
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2912,7 +2915,7 @@ return(NX_WEB_HTTP_CALLBACK_COMPLETED);
 
 ## <a name="nx_web_http_server_callback_response_send"></a>nx_web_http_server_callback_response_send
 
-Invia risposta dalla funzione di callback
+Inviare una risposta dalla funzione di callback
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2926,20 +2929,20 @@ UINT nx_web_http_server_callback_response_send(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia le informazioni di risposta fornite dalla routine di callback dell'applicazione. Questa operazione viene in genere usata per inviare risposte personalizzate associate alle richieste GET/POST. Si noti che se si utilizza questa funzione, la routine di callback deve restituire lo stato di NX_WEB_HTTP_CALLBACK_COMPLETED.
+Questo servizio invia le informazioni di risposta fornite dalla routine di callback dell'applicazione. Viene in genere usato per inviare risposte personalizzate associate alle richieste GET/POST. Si noti che se si usa questa funzione, la routine di callback deve restituire lo stato di NX_WEB_HTTP_CALLBACK_COMPLETED.
 
-questo servizio è deprecato. Gli sviluppatori sono invitati a utilizzare *nx_web_http_server_callback_response_send_extended ()*.
+questo servizio è deprecato. Gli sviluppatori sono invitati a *usare nx_web_http_server_callback_response_send_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **intestazione** di Puntatore alla stringa di intestazione della risposta.
-- **informazioni** su Puntatore alla stringa di informazioni.
-- **additional_info** Puntatore alla stringa di informazioni aggiuntiva.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **intestazione** Puntatore alla stringa di intestazione della risposta.
+- **informazioni** Puntatore alla stringa di informazioni.
+- **additional_info** Puntatore alla stringa di informazioni aggiuntive.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente la risposta al server http
+- **NX_SUCCESS** (0x00) Risposta del server HTTP inviata correttamente
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2972,7 +2975,7 @@ UINT my_request_notify(NX_WEB_HTTP_SERVER *server_ptr, UINT request_type,
 
 ## <a name="nx_web_http_server_callback_response_send_extended"></a>nx_web_http_server_callback_response_send_extended
 
-Invia risposta dalla funzione di callback
+Inviare una risposta dalla funzione di callback
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2988,25 +2991,25 @@ UINT nx_web_http_server_callback_response_send_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia le informazioni di risposta fornite dalla routine di callback dell'applicazione. Questa operazione viene in genere usata per inviare risposte personalizzate associate alle richieste GET/POST. Si noti che se si utilizza questa funzione, la routine di callback deve restituire lo stato di NX_WEB_HTTP_CALLBACK_COMPLETED.
+Questo servizio invia le informazioni di risposta fornite dalla routine di callback dell'applicazione. Viene in genere usato per inviare risposte personalizzate associate alle richieste GET/POST. Si noti che se si usa questa funzione, la routine di callback deve restituire lo stato di NX_WEB_HTTP_CALLBACK_COMPLETED.
 
-Le stringhe di intestazione, informazioni e additional_info devono essere con terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
+Le stringhe di intestazione, informazioni e additional_info devono avere terminazione NULL e la lunghezza di ogni stringa corrisponde alla lunghezza specificata nell'elenco di argomenti.
 
-Questo servizio sostituisce *nx_web_http_server_callback_response_send*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_server_callback_response_send*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **intestazione** di Puntatore alla stringa di intestazione della risposta.
-- **HEADER_LENGTH** Lunghezza della stringa di intestazione della risposta.
-- **informazioni** su Puntatore alla stringa di informazioni.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **intestazione** Puntatore alla stringa di intestazione della risposta.
+- **header_length** Lunghezza della stringa di intestazione della risposta.
+- **informazioni** Puntatore alla stringa di informazioni.
 - **Information_length** Lunghezza della stringa di informazioni.
-- **additional_info** Puntatore alla stringa di informazioni aggiuntiva.
-- **additional_info_length** Lunghezza della stringa di informazioni aggiuntiva.
+- **additional_info** Puntatore alla stringa di informazioni aggiuntive.
+- **additional_info_length** Lunghezza della stringa di informazioni aggiuntive.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha inviato correttamente la risposta al server http
+- **NX_SUCCESS** (0x00) Risposta del server HTTP inviata correttamente
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3056,25 +3059,25 @@ UINT nx_web_http_server_content_get(NX_WEB_HTTP_SERVER *server_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di recuperare la quantità specificata di contenuto dalla richiesta client HTTP POST o PUT. Deve essere chiamato dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create ()*).
+Questo servizio tenta di recuperare la quantità specificata di contenuto dalla richiesta del client HTTP POST o PUT. Deve essere chiamato dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create()).*
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che questo pacchetto non deve essere rilasciato dal callback della richiesta di notifica.
-- **byte_offset** Numero di byte da sfalsare nell'area del contenuto.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che questo pacchetto non deve essere rilasciato dal callback di notifica della richiesta.
+- **byte_offset** Numero di byte di cui eseguire l'offset nell'area del contenuto.
 - **destination_ptr** Puntatore all'area di destinazione per il contenuto.
 - **destination_size** Numero massimo di byte disponibili nell'area di destinazione.
-- **actual_size** Puntatore alla variabile di destinazione che verrà impostata sulle dimensioni effettive del contenuto copiato.
+- **actual_size** Puntatore alla variabile di destinazione che verrà impostata sulla dimensione effettiva del contenuto copiato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il contenuto del server http riuscito Get
-- Errore interno del server HTTP **NX_WEB_HTTP_ERROR** (0x30000)
-- **NX_WEB_HTTP_DATA_END** (0X30007) fine del contenuto della richiesta
-- TIMEOUT del server HTTP **NX_WEB_HTTP_TIMEOUT** (0x30001) per il recupero del pacchetto di contenuto successivo
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Successful HTTP Server content Get
+- **NX_WEB_HTTP_ERROR** (0x30000) del server HTTP
+- **NX_WEB_HTTP_DATA_END** (0x30007) Fine della richiesta
+- **NX_WEB_HTTP_TIMEOUT** (0x30001) del server HTTP per ottenere il pacchetto di contenuto successivo
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3095,7 +3098,7 @@ status = nx_web_http_server_content_get(&my_server, packet_ptr,
 
 ## <a name="nx_web_http_server_content_get_extended"></a>nx_web_http_server_content_get_extended
 
-Ottieni contenuto dalla richiesta/supporta la lunghezza del contenuto di lunghezza zero
+Ottiene il contenuto dalla richiesta/supporta la lunghezza del contenuto di lunghezza zero
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3111,27 +3114,27 @@ UINT nx_web_http_server_content_get_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio è quasi identico a *nx_web_http_server_content_get ()*; tenta di recuperare la quantità specificata di contenuto dalla richiesta del client HTTP POST o PUT. Tuttavia, gestisce le richieste con lunghezza del contenuto pari a zero (' Empty request ') come richiesta valida. Deve essere chiamato dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create ()*).
+Questo servizio è quasi identico *a nx_web_http_server_content_get()*; tenta di recuperare la quantità specificata di contenuto dalla richiesta del client HTTP POST o PUT. Gestisce tuttavia le richieste con lunghezza del contenuto pari a zero ('empty request') come richiesta valida. Deve essere chiamato dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create()).*
 
-Questo servizio sostituisce *nx_web_http_server_content_get*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_server_content_get*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
-- **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che questo pacchetto non deve essere rilasciato dal callback della richiesta di notifica.
-- **byte_offset** Numero di byte da sfalsare nell'area del contenuto.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
+- **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che questo pacchetto non deve essere rilasciato dal callback di notifica della richiesta.
+- **byte_offset** Numero di byte di cui eseguire l'offset nell'area del contenuto.
 - **destination_ptr** Puntatore all'area di destinazione per il contenuto.
 - **destination_size** Numero massimo di byte disponibili nell'area di destinazione.
-- **actual_size** Puntatore alla variabile di destinazione che verrà impostata sulle dimensioni effettive del contenuto copiato.
+- **actual_size** Puntatore alla variabile di destinazione che verrà impostata sulla dimensione effettiva del contenuto copiato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) contenuto http riuscito Get
-- Errore interno del server HTTP **NX_WEB_HTTP_ERROR** (0x30000)
-- **NX_WEB_HTTP_DATA_END** (0X30007) fine del contenuto della richiesta
-- TIMEOUT del server HTTP **NX_WEB_HTTP_TIMEOUT** (0x30001) nel recupero del pacchetto successivo
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Successful HTTP content get
+- **NX_WEB_HTTP_ERROR** (0x30000) del server HTTP
+- **NX_WEB_HTTP_DATA_END** (0x30007) Fine della richiesta
+- **NX_WEB_HTTP_TIMEOUT** timeout (0x30001) del server HTTP nel recupero del pacchetto successivo
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3152,7 +3155,7 @@ status = nx_web_http_server_content_get_extended(&my_server, packet_ptr,
 
 ## <a name="nx_web_http_server_content_length_get"></a>nx_web_http_server_content_length_get
 
-Ottenere la lunghezza del contenuto nella richiesta/supporta la lunghezza del contenuto pari a zero valore
+Ottiene la lunghezza del contenuto nella richiesta/supporta la lunghezza del contenuto pari a zero
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3164,18 +3167,18 @@ UINT nx_web_http_server_content_length_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di recuperare la lunghezza del contenuto HTTP nel pacchetto fornito. Il valore restituito indica lo stato di completamento corretto e il valore di lunghezza effettivo viene restituito nel puntatore di input content_length. Se non è presente alcun contenuto HTTP/lunghezza contenuto = 0, questa routine restituisce ancora uno stato di completamento corretto e il puntatore di input content_length punta a una lunghezza valida (zero). Deve essere chiamato dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create ()*).
+Questo servizio tenta di recuperare la lunghezza del contenuto HTTP nel pacchetto fornito. Il valore restituito indica lo stato di completamento corretto e il valore della lunghezza effettiva viene restituito nel puntatore di input content_length. Se non è presente alcun contenuto HTTP/Lunghezza contenuto = 0, questa routine restituisce comunque uno stato di completamento corretto e il puntatore di input content_length punta a una lunghezza valida (zero). Deve essere chiamato dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create()).*
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che questo pacchetto non deve essere rilasciato dal callback della richiesta di notifica.
-- **CONTENT_LENGTH** Puntatore al valore recuperato dal campo lunghezza contenuto
+- **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che questo pacchetto non deve essere rilasciato dal callback di notifica della richiesta.
+- **content_length** Puntatore al valore recuperato dal campo Lunghezza contenuto
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) lunghezza contenuto server http riuscita Get
-- Formato dell'intestazione HTTP **NX_WEB_HTTP_INCOMPLETE_PUT_ERROR** (0x3000F) non corretto
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Successful HTTP Server Content Length Get
+- **NX_WEB_HTTP_INCOMPLETE_PUT_ERROR** (0x3000F) Formato di intestazione HTTP non corretto
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3214,31 +3217,31 @@ UINT nx_web_http_server_create(NX_WEB_HTTP_SERVER *http_server_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza del server HTTP, che viene eseguita nel contesto del proprio thread ThreadX. Le routine di callback dell'applicazione *authentication_check* e *request_notify* facoltative forniscono al software dell'applicazione il controllo sulle operazioni di base del server http.
+Questo servizio crea un'istanza del server HTTP, che viene eseguita nel contesto del proprio thread ThreadX. Le routine *authentication_check* e *request_notify* callback dell'applicazione forniscono all'applicazione il controllo software sulle operazioni di base del server HTTP.
 
-Questo servizio viene utilizzato per creare sia server HTTP in testo non crittografato che server HTTPS protetti da TLS. Per abilitare HTTPS usando TLS, vedere il nx_web_http_server_secure_configure di servizio *()*.
+Questo servizio viene usato per creare sia server HTTP in testo non crittografato che server HTTPS protetti da TLS. Per abilitare HTTPS tramite TLS, vedere il servizio *nx_web_http_server_secure_configure()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **http_server_ptr** Puntatore al blocco di controllo server HTTP.
+- **http_server_ptr** Puntatore al blocco di controllo del server HTTP.
 - **http_server_name** Puntatore al nome del server HTTP.
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **SERVER_PORT** Porta TCP in ascolto per l'istanza del server.
-- **media_ptr** Puntatore a un'istanza del supporto FileX creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **server_port** Porta di ascolto TCP per l'istanza del server.
+- **media_ptr** Puntatore all'istanza del supporto FileX creata in precedenza.
 - **stack_ptr** Puntatore all'area dello stack di thread del server HTTP.
-- **stack_size** Puntatore alla dimensione dello stack del thread del server HTTP.
-- **authentication_check** Puntatore a funzione per la routine di controllo dell'autenticazione dell'applicazione. Se specificato, questa routine viene chiamata per ogni richiesta del client HTTP. Se questo parametro è NULL, non verrà eseguita alcuna autenticazione. Questo parametro è deprecato. Chiamare invece *nx_web_http_server_authenticate_check_set*().
-- **request_notify** Puntatore della funzione alla routine di notifica della richiesta dell'applicazione. Se specificato, questa routine viene chiamata prima dell'elaborazione del server HTTP della richiesta. Questo consente di reindirizzare il nome della risorsa o i campi all'interno di una risorsa da aggiornare prima di completare la richiesta del client HTTP.
+- **stack_size** Puntatore alle dimensioni dello stack dei thread del server HTTP.
+- **authentication_check** Puntatore a funzione alla routine di controllo dell'autenticazione dell'applicazione. Se specificato, questa routine viene chiamata per ogni richiesta del client HTTP. Se questo parametro è NULL, non verrà eseguita alcuna autenticazione. Questo parametro è deprecato. Chiamare *invece nx_web_http_server_authenticate_check_set*() .
+- **request_notify** Puntatore a funzione alla routine di notifica della richiesta dell'applicazione. Se specificato, questa routine viene chiamata prima dell'elaborazione del server HTTP della richiesta. In questo modo è possibile reindirizzare il nome della risorsa o aggiornare i campi all'interno di una risorsa prima di completare la richiesta del client HTTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione del server HTTP riuscita **NX_SUCCESS** (0x00).
-- NX_PTR_ERROR (0x07) server HTTP, IP, supporti, stack o puntatore al pool di pacchetti non validi.
-- Il payload del pacchetto di NX_WEB_HTTP_POOL_ERROR (0x30009) del pool non è sufficiente per contenere la richiesta HTTP completa.
+- **NX_SUCCESS** (0x00) Creazione del server HTTP completata.
+- NX_PTR_ERROR (0x07) Puntatore del server HTTP, IP, supporto, stack o pool di pacchetti non valido.
+- NX_WEB_HTTP_POOL_ERROR (0x30009) Il payload del pacchetto del pool non è sufficientemente grande da contenere una richiesta HTTP completa.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -3264,17 +3267,17 @@ UINT nx_web_http_server_delete(NX_WEB_HTTP_SERVER *http_server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del server HTTP creata in precedenza.
+Questo servizio elimina un'istanza del server HTTP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **http_server_ptr** Puntatore al blocco di controllo server HTTP.
+- **http_server_ptr** Puntatore al blocco di controllo del server HTTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione del server HTTP riuscita **NX_SUCCESS** (0x00)
-- NX_PTR_ERROR (0x07) puntatore al server HTTP non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Eliminazione del server HTTP riuscita
+- NX_PTR_ERROR (0x07) Puntatore server HTTP non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3291,7 +3294,7 @@ status = nx_web_http_server_delete(&my_server);
 
 ## <a name="nx_web_http_server_get_entity_content"></a>nx_web_http_server_get_entity_content
 
-Recuperare il percorso e la lunghezza dei dati dell'entità
+Recuperare la posizione e la lunghezza dei dati dell'entità
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3305,25 +3308,25 @@ UINT nx_web_http_server_get_entity_content(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio determina la posizione dell'inizio dei dati all'interno dell'entità multiparte corrente nei messaggi client ricevuti e la lunghezza dei dati che non includono la stringa di limite. Internamente, il server HTTP Aggiorna i propri offset in modo che questa funzione possa essere richiamata nello stesso datagramma client per i messaggi con più entità. Il puntatore al pacchetto viene aggiornato al pacchetto successivo in cui il messaggio del client è un datagramma con più pacchetti.
+Questo servizio determina la posizione dell'inizio dei dati all'interno dell'entità multipart corrente nei messaggi client ricevuti e la lunghezza dei dati che non includono la stringa limite. Internamente, il server HTTP aggiorna i propri offset in modo che questa funzione possa essere chiamata nuovamente nello stesso datagramma client per i messaggi con più entità. Il puntatore a pacchetto viene aggiornato al pacchetto successivo in cui il messaggio client è un datagramma a più pacchetti.
 
-Si noti che per usare questo servizio NX_WEB_HTTP_MULTIPART_ENABLE necessario abilitarlo. Si noti inoltre che l'applicazione non deve rilasciare il pacchetto a cui punta packet_pptr. Questa operazione viene eseguita internamente dal server HTTP.
+Si noti NX_WEB_HTTP_MULTIPART_ENABLE deve essere abilitato per usare questo servizio. Si noti anche che l'applicazione non deve rilasciare il pacchetto a cui punta packet_pptr. Questa operazione viene eseguita internamente dal server HTTP.
 
-Per ulteriori informazioni, vedere *nx_web_http_server_get_entity_header ()* .
+Per *altri dettagli, vedere nx_web_http_server_get_entity_header()* .
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **server_ptr** Puntatore al server HTTP
-- **packet_pptr** Puntatore alla posizione del puntatore del pacchetto. Si noti che l'applicazione non deve rilasciare questo pacchetto
-- **available_offset** Puntatore all'offset dei dati dell'entità dal puntatore a prependi del pacchetto
-- **available_length** Puntatore alla lunghezza dei dati dell'entità
+- **packet_pptr** Puntatore alla posizione del puntatore a pacchetto. Si noti che l'applicazione non deve rilasciare questo pacchetto
+- **available_offset** Puntatore all'offset dei dati di entità dal puntatore anteposto al pacchetto
+- **available_length** Puntatore alla lunghezza dei dati di entità
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha recuperato correttamente le dimensioni e la posizione del contenuto dell'entità
-- Il contenuto **NX_WEB_HTTP_BOUNDARY_ALREADY_FOUND** (0x30016) per i marcatori multipart interni del server http è già stato trovato
-- Errore interno del server HTTP NX_WEB_HTTP_ERROR (0x30000)
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Le dimensioni e la posizione del contenuto dell'entità sono state recuperate correttamente
+- **NX_WEB_HTTP_BOUNDARY_ALREADY_FOUND** (0x30016) Il contenuto per i marcatori multipart interni del server HTTP è già stato trovato
+- NX_WEB_HTTP_ERROR (0x30000) Errore interno del server HTTP
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3348,7 +3351,7 @@ status = nx_web_http_server_get_entity_content(&my_server, &packet_ptr, *offset,
 
 ## <a name="nx_web_http_server_get_entity_header"></a>nx_web_http_server_get_entity_header
 
-Recupera il contenuto dell'intestazione dell'entità
+Recuperare il contenuto dell'intestazione di entità
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3362,25 +3365,25 @@ UINT nx_web_http_server_get_entity_header(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera l'intestazione dell'entità nel buffer specificato. Il server HTTP interno aggiorna i propri puntatori per individuare la prossima entità multipart in un datagramma client con più intestazioni di entità. Il puntatore al pacchetto viene aggiornato al pacchetto successivo in cui il messaggio del client è un datagramma con più pacchetti.
+Questo servizio recupera l'intestazione dell'entità nel buffer specificato. Il server HTTP internamente aggiorna i propri puntatori per individuare l'entità multipart successiva in un datagramma client con più intestazioni di entità. Il puntatore a pacchetto viene aggiornato al pacchetto successivo in cui il messaggio client è un datagramma a più pacchetti.
 
-Si noti che per usare questo servizio NX_WEB_HTTP_MULTIPART_ENABLE necessario abilitarlo. Si noti inoltre che l'applicazione non deve rilasciare il pacchetto a cui punta packet_pptr.
+Si noti NX_WEB_HTTP_MULTIPART_ENABLE deve essere abilitato per usare questo servizio. Si noti anche che l'applicazione non deve rilasciare il pacchetto a cui punta packet_pptr.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **server_ptr** Puntatore al server HTTP
-- **packet_pptr** Puntatore alla posizione del puntatore del pacchetto. Si noti che l'applicazione non deve rilasciare questo pacchetto
+- **packet_pptr** Puntatore alla posizione del puntatore a pacchetto. Si noti che l'applicazione non deve rilasciare questo pacchetto
 - **entity_header_buffer** Puntatore alla posizione in cui archiviare l'intestazione dell'entità
-- **BUFFER_SIZE** Dimensioni del buffer di input
+- **buffer_size** Dimensioni del buffer di input
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'intestazione dell'entità è stata recuperata **NX_SUCCESS** (0x00)
-- Campo di intestazione dell'entità **NX_WEB_HTTP_NOT_FOUND** (0x30006) non trovato
-- Tempo di **NX_WEB_HTTP_TIMEOUT** (0x30001) scaduto per la ricezione del pacchetto successivo per il messaggio client Multipack
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- Errore HTTP interno NX_WEB_HTTP_ERROR (0x30000)
+- **NX_SUCCESS** (0x00) L'intestazione dell'entità è stata recuperata correttamente
+- **NX_WEB_HTTP_NOT_FOUND** (0x30006) Campo intestazione entità non trovato
+- **NX_WEB_HTTP_TIMEOUT** (0x30001) Tempo scaduto per ricevere il pacchetto successivo per il messaggio client multipacket
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_WEB_HTTP_ERROR (0x30000) Errore HTTP interno
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3447,7 +3450,7 @@ UINT my_request_notify(NX_WEB_HTTP_SERVER *server_ptr, UINT request_type,
 
 ## <a name="nx_web_http_server_gmt_callback_set"></a>nx_web_http_server_gmt_callback_set
 
-Impostare il callback per ottenere la data e l'ora GMT
+Impostare il callback per ottenere data e ora GMT
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3459,18 +3462,18 @@ UINT nx_web_http_server_gmt_callback_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il callback per ottenere la data e l'ora GMT con un server HTTP creato in precedenza. Questo servizio viene richiamato con il server HTTP che sta creando un'intestazione nel server HTTP risposte al client.
+Questo servizio imposta il callback per ottenere data e ora GMT con un server HTTP creato in precedenza. Questo servizio viene richiamato con il server HTTP che crea un'intestazione nelle risposte del server HTTP al client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **server_ptr** Puntatore al server HTTP
 - **gmt_get** Puntatore al callback GMT
-- **Data di scadenza** Puntatore alla data recuperata
+- **date** Puntatore alla data recuperata
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il callback
-- NX_PTR_ERROR (0x07) il puntatore al pacchetto o al parametro non è valido.
+- **NX_SUCCESS** (0x00) Impostare correttamente il callback
+- NX_PTR_ERROR (0x07) Puntatore a pacchetto o parametro non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3494,7 +3497,7 @@ status = nx_web_http_server_gmt_callback_set(&my_server, gmt_get);
 
 ## <a name="nx_web_http_server_invalid_userpassword_notify_set"></a>nx_web_http_server_invalid_userpassword_notify_set
 
-Impostare il callback per gestire l'utente o la password non valida
+Impostare il callback per gestire utente/password non validi
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3509,14 +3512,14 @@ UINT nx_web_http_server_invalid_userpassword_notify_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il callback richiamato quando viene ricevuto un nome utente e una password non validi in una richiesta GET, put o Delete del client, mediante l'autenticazione digest o di base. Il server HTTP deve essere creato in precedenza.
+Questo servizio imposta il callback richiamato quando un nome utente e una password non validi vengono ricevuti in una richiesta client get, put o delete, tramite digest o autenticazione di base. Il server HTTP deve essere creato in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **server_ptr** Puntatore al server HTTP
-- **invalid_username_password_callback** Puntatore a callback utente/pass non valido
-- **risorsa** di Puntatore alla risorsa specificata dal client
-- **CLIENT_ADDRESS** Indirizzo client
+- **invalid_username_password_callback** Puntatore al callback utente/passaggio non valido
+- **resource** Puntatore alla risorsa specificata dal client
+- **client_address** Indirizzo client
 - **request_type** Indica il tipo di richiesta client. Può essere:
   - *NX_WEB_HTTP_SERVER_GET_REQUEST*
   - *NX_WEB_HTTP_SERVER_POST_REQUEST NX_WEB_HTTP_SERVER_HEAD_REQUEST*
@@ -3524,8 +3527,8 @@ Questo servizio imposta il callback richiamato quando viene ricevuto un nome ute
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il callback
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Impostare correttamente il callback
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3566,26 +3569,26 @@ UINT nx_web_http_server_mime_maps_additional_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente allo sviluppatore di applicazioni HTTP di aggiungere altri tipi MIME dai tipi MIME predefiniti forniti dal server HTTP Web NetX. Per un elenco dei tipi definiti, vedere *nx_web_http_server_get_type ()* .
+Questo servizio consente allo sviluppatore di applicazioni HTTP di aggiungere altri tipi MIME dai tipi MIME predefiniti forniti dal server HTTP Web NetX. Vedere *nx_web_http_server_get_type() per* l'elenco dei tipi definiti.
 
-Quando viene ricevuta una richiesta client, ad esempio una richiesta GET, il server HTTP analizza il tipo di file richiesto dall'intestazione HTTP usando il set di mappe MIME aggiuntivo e, se non viene trovata alcuna corrispondenza, Cerca una corrispondenza nella mappa MIME predefinita del server HTTP. Se non viene trovata alcuna corrispondenza, il valore predefinito del tipo MIME è "text/plain".
+Quando viene ricevuta una richiesta client, ad esempio una richiesta GET, il server HTTP analizza il tipo di file richiesto dall'intestazione HTTP usando preferibilmente il set di mapping MIME aggiuntivo e, se non viene trovata alcuna corrispondenza, cerca una corrispondenza nella mappa MIME predefinita del server HTTP. Se non viene trovata alcuna corrispondenza, per impostazione predefinita il tipo MIME è "text/plain".
 
-Se la funzione request Notify è registrata con il server HTTP, il callback della richiesta di notifica può chiamare *nx_web_http_server_type_get_extended ()* per analizzare il tipo di file.
+Se la funzione request notify è registrata nel server HTTP, il callback di notifica della richiesta può chiamare *nx_web_http_server_type_get_extended()* per analizzare il tipo di file.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **server_ptr** Puntatore all'istanza del server HTTP
-- **mime_maps** Puntatore a una matrice di mappa MIME
+- **mime_maps** Puntatore a una matrice di mappe MIME
 - **mime_map_num** Numero di mappe MIME nella matrice
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Set di mappe MIME del server HTTP con **NX_SUCCESS** (0x00) riuscito
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Set di mapping MIME del server HTTP riuscito
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -3606,7 +3609,7 @@ status = nx_web_http_server_mime_maps_additional_set(&my_server,
 
 ## <a name="nx_web_http_server_response_packet_allocate"></a>nx_web_http_server_response_packet_allocate
 
-Allocare un pacchetto HTTP (S)
+Allocare un pacchetto HTTP(S)
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3619,27 +3622,27 @@ UINT nx_web_http_server_response_packet_allocate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di allocare un pacchetto per il server HTTP (S).
+Questo servizio tenta di allocare un pacchetto per il server HTTP(S).
 
-Si noti che se un'API NetX o HTTP Server successiva che usa questo pacchetto come input ha **esito negativo**, ad esempio nx_packet_data_append o * * nx_web_http_server_callback_packet_send, l'applicazione è responsabile del rilascio del pacchetto. **
+Si noti che se un'API NetX o HTTP Server successiva che usa questo pacchetto come **input** ha esito negativo, ad esempio nx_packet_data_append o **nx_web_http_server_callback_packet_send, l'applicazione è responsabile del rilascio del pacchetto. **
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **server_ptr** Puntatore al blocco di controllo server HTTP.
+- **server_ptr** Puntatore al blocco di controllo del server HTTP.
 - **packet_ptr** Puntatore al pacchetto allocato.
-- **WAIT_OPTION** Definisce il tempo di attesa in cicli se non sono disponibili pacchetti nel pool di pacchetti. Le opzioni di attesa sono definite come segue:
-  - **NX_NO_WAIT** (0x00000000) se si seleziona NX_NO_WAIT, il thread chiamante restituirà immediatamente se la richiesta non può essere soddisfatta.
-  - **NX_WAIT_FOREVER** (0xFFFFFFFF) la selezione di NX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando il server HTTP non risponde alla richiesta.
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe) la selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server http.
+- **wait_option** Definisce il tempo di attesa in tick se non sono disponibili pacchetti nel pool di pacchetti. Le opzioni di attesa sono definite nel modo seguente:
+  - **NX_NO_WAIT** (0x00000000) Selezionando NX_NO_WAIT il thread chiamante viene restituito immediatamente se la richiesta non può essere soddisfatta.
+  - **NX_WAIT_FOREVER** (0xFFFFFFFF) Selezionando NX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il server HTTP non risponde alla richiesta.
+  - **valore** di timeout (da 0x00000001 a 0xFFFFFFFE) La selezione di un valore numerico (0x1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server HTTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Allocazione pacchetto riuscita **NX_SUCCESS** (0x00)
-- **NX_NO_PACKET** (0x01) non sono disponibili pacchetti
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al *tx_thread_wait_abort*.
-- Le dimensioni del pacchetto **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non supportano il protocollo.
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Allocato pacchetti riuscito
+- **NX_NO_PACKET** (0x01) Nessun pacchetto disponibile
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a *tx_thread_wait_abort*.
+- **NX_INVALID_PARAMETERS** (0x4D) Le dimensioni del pacchetto non supportano il protocollo.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3671,23 +3674,23 @@ UINT nx_web_http_server_packet_content_find(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio estrae la lunghezza del contenuto dall'intestazione HTTP. Aggiorna inoltre il pacchetto fornito come indicato di seguito: il puntatore del pacchetto Prepend (inizio della posizione del buffer dei pacchetti in cui scrivere) viene impostato sul contenuto HTTP (dati) appena passata l'intestazione HTTP.
+Questo servizio estrae la lunghezza del contenuto dall'intestazione HTTP. Aggiorna anche il pacchetto fornito come segue: il puntatore anteposto al pacchetto (inizio della posizione del buffer di pacchetti in cui scrivere) viene impostato sul contenuto HTTP (dati) appena passato all'intestazione HTTP.
 
-Se l'inizio del contenuto non viene trovato nel pacchetto corrente, la funzione attende la ricezione del pacchetto successivo utilizzando l'opzione NX_WEB_HTTP_SERVER_TIMEOUT_RECEIVE wait.
+Se l'inizio del contenuto non viene trovato nel pacchetto corrente, la funzione attende la ricezione del pacchetto successivo usando l'opzione NX_WEB_HTTP_SERVER_TIMEOUT_RECEIVE wait.
 
-Si noti che questo metodo non deve essere chiamato prima di chiamare *nx_web_http_server_get_entity_header ()* perché modifica il puntatore anteposto del pacchetto oltre l'intestazione dell'entità.
+Si noti che non deve essere chiamato prima *di chiamare nx_web_http_server_get_entity_header()* perché modifica il puntatore anteposto al pacchetto oltre l'intestazione dell'entità.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **server_ptr** Puntatore all'istanza del server HTTP
-- **packet_ptr** Puntatore al puntatore del pacchetto per la restituzione del pacchetto con puntatore anteposto aggiornato
-- **CONTENT_LENGTH** Puntatore a content_length estratte
+- **packet_ptr** Puntatore al puntatore a pacchetto per la restituzione del pacchetto con puntatore anteposto aggiornato
+- **content_length** Puntatore a content_length
 
 ### <a name="return-values"></a>Valori restituiti
 
-- È stata trovata la lunghezza del contenuto HTTP **NX_SUCCESS** (0x00) e l'aggiornamento del pacchetto è riuscito
-- Tempo di **NX_WEB_HTTP_TIMEOUT** (0x30001) scaduto in attesa del pacchetto successivo
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Trovato contenuto HTTP e pacchetto aggiornato correttamente
+- **NX_WEB_HTTP_TIMEOUT** (0x30001) Tempo scaduto in attesa del pacchetto successivo
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3723,7 +3726,7 @@ UINT nx_web_http_server_packet_get(NX_WEB_HTTP_SERVER *server_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce il pacchetto successivo ricevuto sul socket del server HTTP. L'opzione Attendi per la ricezione di un pacchetto è NX_WEB_HTTP_SERVER_TIMEOUT_RECEIVE.
+Questo servizio restituisce il pacchetto successivo ricevuto nel socket del server HTTP. L'opzione di attesa per ricevere un pacchetto è NX_WEB_HTTP_SERVER_TIMEOUT_RECEIVE.
 
 Si noti che, in caso di esito positivo, l'applicazione è responsabile del rilascio del pacchetto.
 
@@ -3734,9 +3737,9 @@ Si noti che, in caso di esito positivo, l'applicazione è responsabile del rilas
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ricevuto il pacchetto http successivo
-- Tempo di **NX_WEB_HTTP_TIMEOUT** (0x30001) scaduto in attesa del pacchetto successivo
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Ricevuto pacchetto HTTP successivo
+- **NX_WEB_HTTP_TIMEOUT** (0x30001) Tempo scaduto in attesa del pacchetto successivo
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3768,23 +3771,23 @@ UINT nx_web_http_server_param_get(NX_PACKET *packet_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di recuperare il parametro URL HTTP specificato nel pacchetto di richiesta fornito. Se il parametro HTTP richiesto non è presente, questa routine restituisce lo stato NX_WEB_HTTP_NOT_FOUND. Questa routine deve essere chiamata dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create ()*).
+Questo servizio tenta di recuperare il parametro URL HTTP specificato nel pacchetto di richiesta fornito. Se il parametro HTTP richiesto non è presente, questa routine restituisce lo stato NX_WEB_HTTP_NOT_FOUND. Questa routine deve essere chiamata dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create()*).
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che l'applicazione non deve rilasciare questo pacchetto.
-- **param_number** Numero logico del parametro a partire da zero, da sinistra a destra nell'elenco dei parametri.
-- **param_ptr** Area di destinazione per copiare il parametro.
-- **param_size** Restituisce la lunghezza totale dei dati del parametro (in byte).
+- **param_number** Numero logico del parametro che inizia da zero, da sinistra a destra nell'elenco di parametri.
+- **param_ptr** Area di destinazione in cui copiare il parametro.
+- **param_size** Restituisce la lunghezza totale dei dati dei parametri (in byte).
 - **max_param_size** Dimensioni massime dell'area di destinazione del parametro.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) parametro Server http riuscito Get
-- Il parametro specificato **NX_WEB_HTTP_NOT_FOUND** (0x30006) non è stato trovato
-- Il parametro della richiesta **NX_WEB_HTTP_IMPROPERLY_TERMINATED_PARAM** (0x30015) non è terminato correttamente
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Successful HTTP Server parameter get
+- **NX_WEB_HTTP_NOT_FOUND** (0x30006) Parametro specificato non trovato
+- **NX_WEB_HTTP_IMPROPERLY_TERMINATED_PARAM** (0x30015) Request parameter not properly terminated (Il parametro di richiesta (0x30015) non è stato terminato correttamente
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3820,26 +3823,26 @@ UINT nx_web_http_server_query_get(NX_PACKET *packet_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di recuperare la query URL HTTP specificata nel pacchetto di richiesta fornito. Se la query HTTP richiesta non è presente, questa routine restituisce lo stato NX_WEB_HTTP_NOT_FOUND. Questa routine deve essere chiamata dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create ()*).
+Questo servizio tenta di recuperare la query dell'URL HTTP specificata nel pacchetto di richiesta fornito. Se la query HTTP richiesta non è presente, questa routine restituisce lo stato NX_WEB_HTTP_NOT_FOUND. Questa routine deve essere chiamata dal callback di notifica della richiesta dell'applicazione specificato durante la creazione del server HTTP (*nx_web_http_server_create()*).
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **packet_ptr** Puntatore al pacchetto di richiesta del client HTTP. Si noti che l'applicazione non deve rilasciare questo pacchetto.
-- **query_number** Numero logico del parametro a partire da zero, da sinistra a destra nell'elenco di query.
-- **query_ptr** Area di destinazione per la copia della query.
+- **query_number** Numero logico del parametro che inizia da zero, da sinistra a destra nell'elenco di query.
+- **query_ptr** Area di destinazione in cui copiare la query.
 - **query_size** Restituisce le dimensioni dei dati della query (in byte).
-- **max_query_size** Dimensione massima della destinazione della query
+- **max_query_size** Dimensioni massime della destinazione della query
 
 quell'area.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) query del server http riuscita Get
-- Dimensioni della query di **NX_WEB_HTTP_FAILED** (0x30002) troppo piccole.
-- Impossibile trovare la query specificata **NX_WEB_HTTP_NOT_FOUND** (0x30006)
-- **NX_WEB_HTTP_NO_QUERY_PARSED** (0X30013) nessuna query nella richiesta client
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Query del server HTTP riuscita
+- **NX_WEB_HTTP_FAILED** (0x30002) Dimensioni query troppo piccole.
+- **NX_WEB_HTTP_NOT_FOUND** (0x30006) Query specificata non trovata
+- **NX_WEB_HTTP_NO_QUERY_PARSED** (0x30013) Nessuna query nella richiesta client
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3861,7 +3864,7 @@ status = nx_web_http_server_query_get(request_packet_ptr, 0,
 
 ## <a name="nx_web_http_server_response_chunked_set"></a>nx_web_http_server_response_chunked_set
 
-Imposta il trasferimento Chunked per la risposta HTTP (S)
+Impostare il trasferimento in blocchi per la risposta HTTP(S)
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3873,21 +3876,21 @@ UINT nx_web_http_server_response_chunked_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio usa la codifica di trasferimento Chunked per inviare al client un pacchetto di dati di risposta HTTP (S) personalizzato creato con *nx_web_http_server_response_packet_allocate*().
+Questo servizio usa la codifica di trasferimento in blocchi per inviare un pacchetto di dati di risposta HTTP(S) personalizzato creato *con nx_web_http_server_response_packet_allocate*() al client.
 
 > [!NOTE]
-> Se l'applicazione usa la codifica di trasferimento Chunked per inviare un pacchetto di dati di risposta, deve chiamare questo servizio dopo aver chiamato *nx_web_http_server_response_packet_allocate*() e prima di chiamare *nx_web_http_server_callback_packet_send*().
+> Se l'applicazione usa la codifica di trasferimento in blocchi per inviare un pacchetto di dati di risposta, deve chiamare questo servizio *dopo* aver chiamato nx_web_http_server_response_packet_allocate () e prima di nx_web_http_server_callback_packet_send *().*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al blocco di controllo client HTTP.
-- **chunk_size** Dimensione dei blocchi-dati in ottetti.
-- **packet_ptr** Puntatore ai pacchetti di dati della richiesta HTTP (S).
+- **chunk_size** Dimensioni dei dati in blocchi in ottetti.
+- **packet_ptr** Puntatore al pacchetto di dati della richiesta HTTP(S).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) set completato correttamente.
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Set completato in blocchi.
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3907,7 +3910,7 @@ nx_web_http_server_response_packet_allocate(&my_server, &my_packet, NX_WAIT_FORE
 /* Set the chunked transfer. */
 status = nx_web_http_server_response_chunked_set(&my_server, 128, my_packet)
 
-/* At this point, user can fill the data into my_packet. *./
+/* At this point, user can fill the data into my_packet. */
 nx_packet_data_append(my_packet, data_ptr, data_size,
     packet_pool, NX_WAIT_FOREVER);
 
@@ -3917,7 +3920,7 @@ nx_web_http_server_callback_packet_send(&my_server, my_packet);
 
 ## <a name="nx_web_http_server_secure_configure"></a>nx_web_http_server_secure_configure
 
-Configurare un server HTTP per l'uso di TLS per Secure HTTPS
+Configurare un server HTTP per l'uso di TLS per HTTPS sicuro
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3938,62 +3941,62 @@ UINT nx_web_http_server_secure_configure(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura un'istanza del server HTTP Web NetX creata in precedenza per l'uso di TLS per le comunicazioni HTTPS sicure. I parametri vengono usati per configurare tutte le sessioni TLS possibili con lo stato identico, in modo che ogni client HTTPS in ingresso verifichi un comportamento coerente. Il numero di sessioni TLS viene controllato utilizzando la macro NX_WEB_HTTP_SESSION_MAX.
+Questo servizio configura un'istanza del server HTTP Web NetX creata in precedenza per l'uso di TLS per le comunicazioni HTTPS sicure. I parametri vengono usati per configurare tutte le sessioni TLS possibili con stato identico in modo che ogni client HTTPS in ingresso presenti un comportamento coerente. Il numero di sessioni TLS viene controllato usando la macro NX_WEB_HTTP_SESSION_MAX.
 
-La tabella di routine di crittografia (tabella ciphersuite) viene condivisa tra tutte le sessioni TLS perché contiene solo i puntatori a funzione.
+La tabella di routine crittografica (tabella ciphersuite) viene condivisa tra tutte le sessioni TLS perché contiene solo puntatori a funzione.
 
-I buffer dei metadati e dei riassemblatori dei pacchetti sono divisi equamente tra tutte le sessioni TLS. Se la dimensione del buffer non è divisibile equamente per il numero di sessioni, il resto non verrà usato.
+I buffer di riassemblaggio dei metadati e dei pacchetti sono divisi equamente tra tutte le sessioni TLS. Se le dimensioni del buffer non sono divisibile in modo uniforme per il numero di sessioni, il resto non verrà usato.
 
-Il certificato di identità passato viene usato da tutte le sessioni. Durante l'operazione TLS, il certificato di identità server viene letto solo da, quindi le copie non sono necessarie per ogni sessione.
+Il certificato di identità passato viene usato da tutte le sessioni. Durante l'operazione TLS, il certificato di identità del server viene letto solo da , quindi le copie non sono necessarie per ogni sessione.
 
-I certificati attendibili vengono aggiunti a ogni sessione TLS nel server HTTPS. Questi vengono usati per l'autenticazione del certificato client abilitata automaticamente quando viene fornito spazio per i certificati remoti.
+I certificati attendibili vengono aggiunti a ogni sessione TLS nel server HTTPS. Questi vengono usati per l'autenticazione del certificato client che viene abilitata automaticamente quando viene fornito spazio del certificato remoto.
 
-Per impostazione predefinita, la matrice e il buffer del certificato remoto sono condivisi tra tutte le sessioni TLS. I certificati remoti vengono usati per l'autenticazione del certificato client, che viene abilitata automaticamente quando il numero di certificati remoti è diverso da zero. A causa della condivisione del buffer, è possibile che alcune sessioni si blocchino durante la convalida del certificato.
+La matrice di certificati remoti e il buffer sono condivisi per impostazione predefinita tra tutte le sessioni TLS. I certificati remoti vengono usati per l'autenticazione del certificato client che viene abilitata automaticamente quando il numero di certificati remoti è diverso da zero. A causa della condivisione del buffer, alcune sessioni possono bloccarsi durante la convalida del certificato.
 
 Per disabilitare l'autenticazione del certificato client, passare NX_NULL per il parametro remote_certificates e il valore 0 per il parametro remote_certs_num.
 
-I valori restituiti includeranno eventuali codici di errore TLS derivanti da problemi di configurazione delle sessioni TLS.
+I valori restituiti includeranno tutti i codici di errore TLS risultanti da problemi nella configurazione delle sessioni TLS.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **http_server_ptr** Puntatore all'istanza del server HTTP.
-- **crypto_table** Puntatore alla tabella TLS ciphersuite.
+- **crypto_table** Puntatore alla tabella di crittografia TLS.
 - **metadata_buffer** Puntatore al buffer dei metadati crittografici.
 - **metadata_size** Dimensioni del buffer dei metadati crittografici.
-- **packet_buffer** Buffer del riassemblaggio dei pacchetti TLS.
-- **packet_buffer** Dimensioni del buffer dei pacchetti TLS: devono essere uguali a (<dimensioni del buffer TLS desiderate * NX_WEB_HTTP_SESSION_MAX).
+- **packet_buffer** Buffer di riassemblaggio dei pacchetti TLS.
+- **packet_buffer** Dimensione del buffer di pacchetti TLS: deve essere uguale a (<dimensioni del buffer TLS* NX_WEB_HTTP_SESSION_MAX).
 - **identity_certificate** Certificato di identità del server TLS: verrà usato per tutte le sessioni del server HTTPS.
-- **trusted_certificates** Puntatore alla matrice di oggetti NX_SECURE_X509_CERT, utilizzato per convalidare i certificati client in ingresso se l'autenticazione del certificato client viene abilitata passando un valore diverso da zero per il parametro *remote_certs_num* .
-- **trusted_certs_num** Numero di certificati attendibili nella matrice *trusted_certificates* .
-- **remote_certificates** Puntatore alla matrice di oggetti NX_SECURE_X509_CERT utilizzati per i certificati client in ingresso.
-- **remote_certs_num** Numero di certificati remoti. Deve corrispondere al numero massimo di certificati previsti dai client. L'autenticazione del certificato client viene abilitata automaticamente quando è diverso da zero.
-- **remote_certificate_buffer** Buffer che contiene i certificati remoti in ingresso dai client se è abilitata l'autenticazione del certificato client. remote_cert_buffer_size dimensione del buffer dei certificati remoti. Deve essere uguale a (<dimensioni massime previste del certificato \* remote_certs_num).
+- **trusted_certificates** Puntatore alla matrice di NX_SECURE_X509_CERT, utilizzato per convalidare i certificati client in ingresso se l'autenticazione del certificato client è abilitata passando un valore diverso da zero per il *parametro remote_certs_num.*
+- **trusted_certs_num** Numero di certificati attendibili nella *matrice trusted_certificates.*
+- **remote_certificates** Puntatore alla matrice di NX_SECURE_X509_CERT, utilizzato per i certificati client in ingresso.
+- **remote_certs_num** Numero di certificati remoti. Deve essere il numero massimo di certificati previsti dai client. L'autenticazione del certificato client viene abilitata automaticamente quando è diverso da zero.
+- **remote_certificate_buffer** Buffer per contenere i certificati remoti in ingresso dai client se è abilitata l'autenticazione del certificato client. remote_cert_buffer_size dimensioni del buffer dei certificati remoti. Deve essere uguale a (<dimensioni massime previste del \* certificato remote_certs_num).
 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) inizializzazione corretta della sessione TLS.
-- **NX_NOT_CONNECTED** (0X38) il socket TCP sottostante non è più connesso.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0X102) un tipo di messaggio TLS ricevuto non è corretto.
-- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0X106) una crittografia fornita dall'host remoto non è supportata.
-- L'elaborazione del messaggio **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) durante l'handshake TLS non è riuscita.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0X108) un messaggio in arrivo non ha superato un controllo Mac hash.
-- **NX_SECURE_TLS_TCP_SEND_FAILE** (0x109) non è stato possibile inviare un socket TCP sottostante.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0X10A) un messaggio in ingresso ha un campo di lunghezza non valido.
-- **NX_SECURE_TLS_BAD_CIPHERSPE** (0X10B) un messaggio ChangeCipherSpec in ingresso non è corretto.
-- **NX_SECURE_TLS_INVALID_SERVER_CER** (0X10C) un certificato TLS in ingresso è inutilizzabile per l'identificazione del server TLS remoto.
-- **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0X10D) la crittografia a chiave pubblica fornita dall'host remoto non è supportata.
-- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0X10E) l'host remoto non ha indicato ciphersuites supportati dallo stack TLS sicuro NETX.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0X10F) un messaggio TLS ricevuto ha una versione di TLS sconosciuta nell'intestazione.
-- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) un messaggio TLS ricevuto ha una versione di TLS nota ma non supportata nell'intestazione.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0X111) l'allocazione di pacchetti TLS interna non è riuscita.
-- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0X112) l'host remoto ha fornito un certificato non valido.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0X114) l'host remoto ha inviato un avviso che indica un errore e termina la sessione TLS.
-- **NX_PTR_ERROR** (0x07) ha tentato di usare un puntatore non valido.
+- **NX_SUCCESS** (0x00) Inizializzazione della sessione TLS completata.
+- **NX_NOT_CONNECTED** (0x38) Il socket TCP sottostante non è più connesso.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) Un tipo di messaggio TLS ricevuto non è corretto.
+- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) Una crittografia fornita dall'host remoto non è supportata.
+- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) L'elaborazione del messaggio durante l'handshake TLS non è riuscita.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio in ingresso non ha superato un controllo MAC hash.
+- **NX_SECURE_TLS_TCP_SEND_FAILE** (0x109) L'invio di un socket TCP sottostante non è riuscito.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) Un messaggio in arrivo ha un campo di lunghezza non valido.
+- **NX_SECURE_TLS_BAD_CIPHERSPE** (0x10B) Un messaggio ChangeCipherSpec in ingresso non è corretto.
+- **NX_SECURE_TLS_INVALID_SERVER_CER** (0x10C) Un certificato TLS in ingresso non è utilizzabile per identificare il server TLS remoto.
+- **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0x10D) La crittografia a chiave pubblica fornita dall'host remoto non è supportata.
+- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10E) L'host remoto non ha indicato ciphersuit supportati dallo stack NETX Secure TLS.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio TLS ricevuto ha una versione TLS sconosciuta nell'intestazione.
+- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) Un messaggio TLS ricevuto aveva una versione TLS nota ma non supportata nell'intestazione.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Un'allocazione interna di pacchetti TLS non è riuscita.
+- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) L'host remoto ha fornito un certificato non valido.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) L'host remoto ha inviato un avviso che indica un errore e termina la sessione TLS.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -4039,7 +4042,7 @@ UINT nx_web_http_server_start(NX_WEB_HTTP_SERVER *http_server_ptr);
 
 Questo servizio avvia un'istanza del server HTTP o HTTPS creata in precedenza.
 
-I server HTTPS condividono la stessa API HTTP. Per abilitare HTTPS usando TLS in un server HTTP, vedere il nx_web_http_server_secure_configure di servizio *().*
+I server HTTPS condividono la stessa API di HTTP. Per abilitare HTTPS usando TLS in un server HTTP, vedere il servizio *nx_web_http_server_secure_configure().*
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -4047,12 +4050,12 @@ I server HTTPS condividono la stessa API HTTP. Per abilitare HTTPS usando TLS in
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Inizio del server HTTP **NX_SUCCESS** (0x00) riuscito
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Avvio del server HTTP riuscito
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -4075,7 +4078,7 @@ UINT nx_web_http_server_stop(NX_WEB_HTTP_SERVER *http_server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio arresta l'istanza del server HTTP create in precedenza. Questa routine deve essere chiamata prima di eliminare un'istanza del server HTTP.
+Questo servizio arresta l'istanza del server HTTP creata in precedenza. Questa routine deve essere chiamata prima di eliminare un'istanza del server HTTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -4083,9 +4086,9 @@ Questo servizio arresta l'istanza del server HTTP create in precedenza. Questa r
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Interruzione del server HTTP riuscita **NX_SUCCESS** (0x00)
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Arresto del server HTTP riuscito
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -4102,7 +4105,7 @@ status = nx_web_http_server_stop(&my_server);
 
 ## <a name="nx_web_http_server_type_get"></a>nx_web_http_server_type_get
 
-Estrai il tipo di file dalla richiesta HTTP client
+Estrarre il tipo di file dalla richiesta HTTP client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4115,35 +4118,35 @@ UINT nx_web_http_server_type_get(NX_WEB_HTTP_SERVER *http_server_ptr,
 ### <a name="description"></a>Descrizione
 
 > [!NOTE]
-> questo servizio è deprecato. Gli utenti sono invitati a usare il servizio *nx_web_http_server_type_get_extended ()*.
+> questo servizio è deprecato. Gli utenti sono invitati a usare il *servizio nx_web_http_server_type_get_extended()*.
 
-Questo servizio estrae il tipo di richiesta HTTP nel buffer *http_type_string* e la relativa lunghezza in *string_size* dal *nome* del buffer di input, in genere l'URL. Se non viene trovata alcuna mappa MIME, per impostazione predefinita viene impostato il tipo "text/plain". In caso contrario, confronta il tipo Estratto con le mappe MIME predefinite del server HTTP per una corrispondenza. Le mappe MIME predefinite nel server HTTP Web NetX sono:
+Questo servizio estrae il tipo di richiesta HTTP nel buffer *http_type_string* e la relativa lunghezza *in* string_size dal nome *del* buffer di input, in genere l'URL. Se non viene trovata alcuna mappa MIME, per impostazione predefinita viene utilizzato il tipo "text/plain". In caso contrario, confronta il tipo estratto con i mapping MIME predefiniti del server HTTP per trovare una corrispondenza. Le mappe MIME predefinite nel server HTTP Web NetX sono:
 
-- testo HTML/HTML
-- testo htm/html
-- testo txt/normale
-- immagine gif/gif
-- immagine jpg/jpeg
-- icona immagine ICO/x
+- html text/html
+- htm text/html
+- txt text/plain
+- gif image/gif
+- jpg image/jpeg
+- ico image/x-icon
 
-Se specificato, verrà inoltre cercato un set definito dall'utente di mappe MIME aggiuntive. Per ulteriori informazioni sulle mappe definite dall'utente, vedere *nx_web_http_server_mime_maps_addtional_set ()* .
+Se specificato, esegue anche la ricerca in un set definito dall'utente di mappe MIME aggiuntive. Vedere *nx_web_http_server_mime_maps_addtional_set() per* altri dettagli sulle mappe definite dall'utente.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **http_server_ptr** Puntatore all'istanza del server HTTP
-- **nome** Puntatore al buffer in cui eseguire la ricerca
+- **name** Puntatore al buffer da cercare
 - **http_type_string** Puntatore alla stringa di tipo HTML estratta
-- **string_size** Puntatore per restituire la lunghezza della stringa di tipo HTML estratta.
+- **string_size** Puntatore per restituire la lunghezza della stringa di tipo HTML estratto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Estrazione del tipo da **NX_SUCCESS** (0x00) riuscita
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- **NX_WEB_HTTP_EXTENSION_MIME_DEFAULT** (0X30019) valore predefinito "text/plain" restituito.
+- **NX_SUCCESS** (0x00) Estrazione riuscita del tipo
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- **NX_WEB_HTTP_EXTENSION_MIME_DEFAULT** (0x30019) Restituito "text/plain" predefinito.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Applicazione
+Applicazioni
 
 ### <a name="example"></a>Esempio
 
@@ -4165,7 +4168,7 @@ string_length = nx_web_http_server_type_get(&my_server_ptr,
 
 ## <a name="nx_web_http_server_type_get_extended"></a>nx_web_http_server_type_get_extended
 
-Estrai il tipo di file dalla richiesta HTTP client
+Estrarre il tipo di file dalla richiesta HTTP client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4180,39 +4183,39 @@ UINT nx_web_http_server_type_get_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio estrae il tipo di richiesta HTTP nel buffer *http_type_string* e la relativa lunghezza in *string_size* dal *nome* del buffer di input, in genere l'URL. Se non viene trovata alcuna mappa MIME, per impostazione predefinita viene impostato il tipo "text/plain". In caso contrario, confronta il tipo Estratto con le mappe MIME predefinite del server HTTP per una corrispondenza. Le mappe MIME predefinite nel server HTTP Web NetX sono:
+Questo servizio estrae il tipo di richiesta HTTP nel buffer *http_type_string* e la relativa lunghezza *in* string_size dal nome *del* buffer di input, in genere l'URL. Se non viene trovata alcuna mappa MIME, per impostazione predefinita viene utilizzato il tipo "text/plain". In caso contrario, confronta il tipo estratto con i mapping MIME predefiniti del server HTTP per trovare una corrispondenza. Le mappe MIME predefinite nel server HTTP Web NetX sono:
 
-- testo HTML/HTML
-- testo htm/html
-- testo txt/normale
-- immagine gif/gif
-- immagine jpg/jpeg
-- icona immagine ICO/x
+- html text/html
+- htm text/html
+- txt text/plain
+- gif image/gif
+- jpg image/jpeg
+- ico image/x-icon
 
-Se specificato, verrà inoltre cercato un set definito dall'utente di mappe MIME aggiuntive. Per ulteriori informazioni sulle mappe definite dall'utente, vedere *nx_web_http_server_mime_maps_addtional_set ()* .
+Se specificato, esegue anche la ricerca in un set definito dall'utente di mappe MIME aggiuntive. Vedere *nx_web_http_server_mime_maps_addtional_set() per* altri dettagli sulle mappe definite dall'utente.
 
-Questo servizio sostituisce *nx_web_http_server_type_get*(). Questa versione richiede che i chiamanti forniscano informazioni sulla lunghezza alla funzione.
+Questo servizio sostituisce *nx_web_http_server_type_get*(). Questa versione richiede ai chiamanti di fornire informazioni sulla lunghezza alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **http_server_ptr** Puntatore all'istanza del server HTTP
-- **nome** Puntatore al buffer in cui eseguire la ricerca
+- **name** Puntatore al buffer da cercare
 - **name_length** Lunghezza del nome
 - **http_type_string** Puntatore alla stringa di tipo HTML estratta
-- **http_type_string_max_size** Dimensioni del buffer di http_type_string
-- **string_size** Puntatore per restituire la stringa di tipo HTML estratta
+- **http_type_string_max_size** Dimensioni della dimensione http_type_string buffer
+- **string_size** Puntatore per restituire una stringa di tipo HTML estratto
 
-lunghezza.
+Lunghezza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Estrazione del tipo da **NX_SUCCESS** (0x00) riuscita
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- **NX_WEB_HTTP_EXTENSION_MIME_DEFAULT** (0X30019) valore predefinito "text/plain" restituito.
+- **NX_SUCCESS** (0x00) Estrazione riuscita del tipo
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- **NX_WEB_HTTP_EXTENSION_MIME_DEFAULT** (0x30019) Restituito "text/plain" predefinito.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Applicazione
+Applicazioni
 
 ### <a name="example"></a>Esempio
 
@@ -4237,7 +4240,7 @@ ret = nx_web_http_server_type_get_extended(&my_server_ptr,
 
 ## <a name="nx_web_http_server_digest_authenticate_notify_set"></a>nx_web_http_server_digest_authenticate_notify_set
 
-Imposta funzione di callback autenticazione digest
+Impostare la funzione di callback di autenticazione digest
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4261,17 +4264,17 @@ Questo servizio imposta il callback richiamato quando viene eseguita l'autentica
 ### <a name="input-parameters"></a>Parametri di input
 
 - **http_server_ptr** Puntatore all'istanza del server HTTP
-- **digest_authenticate_callback** Puntatore al callback di autenticazione del digest
+- **digest_authenticate_callback** Puntatore al callback di autenticazione digest
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il callback
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- Autenticazione del digest NX_NOT_SUPPORTED (0x4B) non abilitata
+- **NX_SUCCESS** (0x00) Impostare correttamente il callback
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_NOT_SUPPORTED (0x4B) L'autenticazione del digest non è abilitata
 
 ### <a name="allowed-from"></a>Consentito da
 
-Applicazione
+Applicazioni
 
 ### <a name="example"></a>Esempio
 
@@ -4297,7 +4300,7 @@ status = nx_web_http_server_digest_authenticate_notify_set(&my_server,
 
 ## <a name="nx_web_http_server_authenticate_check_set"></a>nx_web_http_server_authenticate_check_set
 
-Imposta funzione di callback autenticazione digest
+Impostare la funzione di callback di autenticazione digest
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4323,16 +4326,16 @@ Questo servizio imposta il callback richiamato quando viene eseguito il controll
 ### <a name="input-parameters"></a>Parametri di input
 
 - **http_server_ptr** Puntatore all'istanza del server HTTP
-- **authenticate_check_externded** Puntatore per autenticare il callback del controllo
+- **authenticate_check_externded** Puntatore per autenticare il callback di controllo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il callback
-- NX_PTR_ERROR (0x07) input puntatore non valido
+- **NX_SUCCESS** (0x00) Impostare correttamente il callback
+- NX_PTR_ERROR (0x07) Input puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
-Applicazione
+Applicazioni
 
 ### <a name="example"></a>Esempio
 

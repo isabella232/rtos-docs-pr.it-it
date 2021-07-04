@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f70b8890be6b12f917ac1724a29559afab33b88d
-ms.sourcegitcommit: 0520b2afb6b7f8ae1ea48581e160459fc9292ca7
+ms.openlocfilehash: 39b31c1abae8613eb54382162504aaadc07ceebf
+ms.sourcegitcommit: 97f6724d6eee7b9c251a50c191911050c52b1c69
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108297497"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025922"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Capitolo 4- Descrizione dei Azure RTOS FileX
 
@@ -48,7 +48,7 @@ Questo servizio legge gli attributi della directory dal supporto specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Lettura degli attributi di directory riuscita
+- **FX_SUCCESS** (0x00) Lettura degli attributi di directory completata
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto
 - **FX _NOT FOUND** (0x04) Directory specificata non trovata nel supporto
 - **FX_NOT_DIRECTORY** (0x0E) La voce non è una directory
@@ -122,7 +122,7 @@ Questo servizio imposta gli attributi della directory su quelli specificati dal 
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
 - **directory_name**: puntatore al nome della directory richiesta (il percorso della directory è facoltativo).
-- **attributes:** nuovi attributi per questa directory. Gli attributi di directory validi sono definiti come segue:
+- **attributes**: i nuovi attributi di questa directory. Gli attributi di directory validi sono definiti come segue:
   - FX_READ_ONLY (0x01)
   - FX_HIDDEN (0x02)
   - FX_SYSTEM (0x04)
@@ -185,7 +185,7 @@ status = fx_directory_attributes_set(&my_media, "mydir", FX_READ_ONLY);
 
 ## <a name="fx_directory_create"></a>fx_directory_create
 
-Crea una sottodirectory
+Crea la sottodirectory
 
 ### <a name="prototype"></a>Prototipo
 
@@ -196,7 +196,7 @@ UINT fx_directory_create(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una sottodirectory nella directory predefinita corrente o nel percorso specificato nel nome della directory. A differenza della directory radice, le sottodirectory non hanno un limite al numero di file che possono contenere. La directory radice può contenere solo il numero di voci determinate dal record di avvio.
+Questo servizio crea una sottodirectory nella directory predefinita corrente o nel percorso specificato nel nome della directory. A differenza della directory radice, le sottodirectory non hanno un limite al numero di file che possono contenere. La directory radice può contenere solo il numero di voci determinato dal record di avvio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -205,16 +205,16 @@ Questo servizio crea una sottodirectory nella directory predefinita corrente o n
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Creazione della directory completata.
+- **FX_SUCCESS** (0x00) Creazione directory riuscita.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto
 - **FX_NOT_FOUND** (0x04) Directory specificata non trovata nel supporto
-- **FX_NOT_DIRECTORY** (0x0E) La voce non è una directory
-- **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90)
-- **FX_FILE _CORRUPT** (0x08) Il file è danneggiato
+- **FX_NOT_DIRECTORY** (0x0E) non è una directory
+- **FX_IO_ERROR** di I/O del driver 0x90 (0x90)
+- **FX_FILE _CORRUPT** file (0x08) è danneggiato
 - **FX_SECTOR_INVALID** (0x89) Settore non valido
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
-- **FX_MEDIA_INVALID** (0x02) Supporto non valido
+- **FX_MEDIA_INVALID** (0x02) Supporti non validi
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono presenti altre voci in questa directory
 - **FX_PTR_ERROR** (0x18) Puntatore multimediale non valido
 - **FX_INVALID_ATTR** (0x19) Attributi non validi selezionati.
@@ -273,19 +273,19 @@ UINT fx_directory_default_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce il puntatore all'ultimo percorso impostato ***fx_directory_default_set***. Se la directory predefinita non è stata impostata o se la directory predefinita corrente è la directory radice, viene restituito FX_NULL valore .
+Questo servizio restituisce il puntatore all'ultimo percorso impostato ***da fx_directory_default_set***. Se la directory predefinita non è stata impostata o se la directory predefinita corrente è la directory radice, viene restituito FX_NULL valore .
 
 > [!IMPORTANT]
-> *La dimensione predefinita della stringa di percorso interna è di 256 caratteri. è possibile modificarlo modificando FX_MAXIMUM_PATH **in** **fx_api.h e** ricompilando l'intera libreria FileX. Il percorso della stringa di caratteri viene mantenuto per l'applicazione e non viene usato internamente da FileX.*
+> *La dimensione predefinita della stringa di percorso interna è di 256 caratteri. Può essere modificato modificando il FX_MAXIMUM_PATH **in** **fx_api.h e** ricompilando l'intera libreria FileX. Il percorso della stringa di caratteri viene mantenuto per l'applicazione e non viene usato internamente da FileX.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **return_path_name:** puntatore alla destinazione per l'ultima stringa di directory predefinita. Viene restituito FX_NULL valore se l'impostazione corrente della directory predefinita è la radice. Quando il supporto viene aperto, root è l'impostazione predefinita.
+- **return_path_name**: puntatore alla destinazione per l'ultima stringa di directory predefinita. Viene restituito FX_NULL valore se l'impostazione corrente della directory predefinita è la radice. Quando il supporto viene aperto, la radice è l'impostazione predefinita.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Ottenere la directory predefinita corretta
+- **FX_SUCCESS** (0x00) Operazione get della directory predefinita riuscita
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto
 - **FX_PTR_ERROR** (0x18) Supporto o puntatore di destinazione non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
@@ -344,7 +344,7 @@ UINT fx_directory_default_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la directory predefinita del supporto. Se viene specificato FX_NULL valore , la directory predefinita viene impostata sulla directory radice del supporto. Tutte le operazioni di file successive che non specificano in modo esplicito un percorso verranno impostate su questa directory per impostazione predefinita.
+Questo servizio imposta la directory predefinita del supporto. Se viene specificato FX_NULL, la directory predefinita viene impostata sulla directory radice del supporto. Tutte le operazioni sui file successive che non specificano in modo esplicito un percorso verranno impostate per impostazione predefinita su questa directory.
 
 > [!IMPORTANT]
 > *La dimensione predefinita della stringa di percorso interna è di 256 caratteri. è possibile modificarlo modificando FX_MAXIMUM_PATH **in** **fx_api.h e** ricompilando l'intera libreria FileX. Il percorso della stringa di caratteri viene mantenuto per l'applicazione e non viene usato internamente da FileX.*
@@ -421,11 +421,11 @@ Questo servizio elimina la directory specificata. Si noti che la directory deve 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **directory_name**: puntatore al nome della directory da eliminare (il percorso della directory è facoltativo).
+- **directory_name:** puntatore al nome della directory da eliminare (il percorso della directory è facoltativo).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Eliminazione directory riuscita
+- **FX_SUCCESS** (0x00) Eliminazione della directory completata
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto
 - **FX_NOT_FOUND** (0x04) Directory specificata non trovata
 - **FX_DIR_NOT_EMPTY** (0x10) La directory specificata non è vuota
@@ -495,15 +495,15 @@ UINT fx_directory_first_entry_find(
 Questo servizio recupera il nome della prima voce nella directory predefinita e lo copia nella destinazione specificata.
 
 > [!WARNING]
-> *La destinazione specificata deve essere sufficientemente grande da contenere il nome FileX di dimensioni massime, come definito **FX_MAX_LONG_NAME_LEN.***
+> *La destinazione specificata deve essere sufficientemente grande da contenere il nome FileX di dimensioni massime, come definito da **FX_MAX_LONG_NAME_LEN.***
 
 > [!WARNING]
-> *Se si usa un percorso non locale, è importante impedire agli altri thread dell'applicazione di modificare questa directory (con un semaforo ThreadX, un mutex o una modifica del livello di priorità) mentre è in corso un attraversamento della directory. In caso contrario, è possibile ottenere risultati non validi.*
+> *Se si usa un percorso non locale, è importante impedire (con un semaforo ThreadX, un mutex o una modifica del livello di priorità) altri thread dell'applicazione di modificare questa directory durante l'attraversamento della directory. In caso contrario, è possibile ottenere risultati non validi.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **return_entry_name**: puntatore alla destinazione per il nome della prima voce nella directory predefinita.
+- **return_entry_name:** puntatore alla destinazione per il nome della prima voce nella directory predefinita.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -573,7 +573,7 @@ UINT fx_directory_first_full_entry_find(
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **directory_name**: puntatore alla destinazione per il nome di una voce di directory. Deve essere grande almeno quanto FX_MAX_LONG_NAME_LEN.
+- **directory_name:** puntatore alla destinazione per il nome di una voce di directory. Deve essere grande almeno quanto FX_MAX_LONG_NAME_LEN.
 - **attributes:** se non Null, puntatore alla destinazione per gli attributi della voce da inserire. Gli attributi vengono restituiti in un formato mappa di bit con le impostazioni possibili seguenti:
   - **FX_READ_ONLY** (0x01)
   - **FX_HIDDEN** (0x02)
@@ -687,11 +687,11 @@ UINT fx_directory_first_full_entry_find(
 - **FX_NOT_FOUND** (0x04) Directory specificata non trovata nel supporto
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90)
 - **FX_MEDIA_INVALID** (0x02) Supporto non valido
-- **FX_FILE _CORRUPT** file (0x08) è danneggiato
+- **FX_FILE _CORRUPT** (0x08) Il file è danneggiato
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
 - **FX_SECTOR_INVALID** (0x89) Settore non valido
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore di destinazione non valido.
+- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore di destinazione.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -812,12 +812,12 @@ UINT fx_directory_local_path_clear(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce il puntatore del percorso locale del supporto specificato. Se non è impostato alcun percorso locale, viene restituito null al chiamante.
+Questo servizio restituisce il puntatore al percorso locale del supporto specificato. Se non è impostato alcun percorso locale, viene restituito un valore NULL al chiamante.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **return_path_name:** puntatore al puntatore alla stringa di destinazione per la stringa di percorso locale da archiviare.
+- **return_path_name:** puntatore al puntatore della stringa di destinazione per la stringa del percorso locale da archiviare.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -879,22 +879,22 @@ UINT fx_directory_local_path_restore(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ripristina un percorso locale impostato in precedenza. Viene ripristinata anche la posizione di ricerca nella directory effettuata in questo percorso locale, che rende questa routine utile negli attraversamenti ricorsivi della directory da parte dell'applicazione.
+Questo servizio ripristina un percorso locale impostato in precedenza. Viene ripristinata anche la posizione di ricerca della directory effettuata in questo percorso locale, che rende questa routine utile negli attraversamenti di directory ricorsivi da parte dell'applicazione.
 
 > [!IMPORTANT]
-> *Ogni percorso locale contiene una stringa di percorso locale **di FX_MAXIMUM_PATH** dimensioni, che per impostazione predefinita è di 256 caratteri. Questa stringa di percorso interna non viene usata da FileX e viene fornita solo per l'uso dell'applicazione. Se **FX_LOCAL_PATH** verrà dichiarata come variabile locale, gli utenti devono fare attenzione all'aumento dello stack in base alle dimensioni di questa struttura. Gli utenti sono invitati a ridurre le dimensioni **del** FX_MAXIMUM_PATH ricompilare l'origine della libreria FileX.*
+> *Ogni percorso locale contiene una stringa di percorso locale **di FX_MAXIMUM_PATH** dimensioni, che per impostazione predefinita è di 256 caratteri. Questa stringa di percorso interna non viene usata da FileX e viene fornita solo per l'uso dell'applicazione. Se **FX_LOCAL_PATH** deve essere dichiarato come variabile locale, gli utenti devono fare attenzione all'aumento dello stack in base alle dimensioni di questa struttura. Gli utenti sono invitati a ridurre le dimensioni **del** FX_MAXIMUM_PATH e ricompilare l'origine della libreria FileX.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **local_path_ptr**: puntatore al percorso locale impostato in precedenza. È molto importante assicurarsi che questo puntatore punti effettivamente a un percorso locale usato in precedenza e ancora intatto.
+- **local_path_ptr:** puntatore al percorso locale impostato in precedenza. È molto importante assicurarsi che questo puntatore punti effettivamente a un percorso locale usato in precedenza e ancora intatto.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **FX_SUCCESS** (0x00) Ripristino del percorso locale riuscito.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è attualmente aperto.
 - **FX_NOT_IMPLEMENTED** (0x22) FX_NO_LCOAL_PATH definito.
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore di percorso locale non valido.
+- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore di percorso locale.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -949,17 +949,17 @@ UINT fx_directory_local_path_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura un percorso specifico del thread come specificato dal simbolo ***new_path_string** _. Al termine di questa routine, le informazioni sul percorso locale archiviate in _ *_local_path_ptr_** avranno la precedenza sul percorso multimediale globale per tutte le operazioni su file e directory eseguite da questo thread. Questa operazione non avrà alcun impatto su altri thread nel sistema 
+Questo servizio configura un percorso specifico del thread come specificato da ***new_path_string** _. Al termine di questa routine, le informazioni sul percorso locale archiviate in _ *_local_path_ptr_** avranno la precedenza sul percorso multimediale globale per tutte le operazioni di file e directory eseguite da questo thread. Questo non avrà alcun impatto su qualsiasi altro thread nel sistema 
 > [!IMPORTANT]
-> *Le dimensioni predefinite della stringa di percorso locale sono di 256 caratteri. Può essere modificato modificando il FX_MAXIMUM_PATH **in** **fx_api.h** e ricompilando l'intera libreria FileX. Il percorso della stringa di caratteri viene mantenuto per l'applicazione e non viene usato internamente da FileX.*
+> *La dimensione predefinita della stringa di percorso locale è di 256 caratteri. è possibile modificarlo modificando FX_MAXIMUM_PATH **in** **fx_api.h e** ricompilando l'intera libreria FileX. Il percorso della stringa di caratteri viene mantenuto per l'applicazione e non viene usato internamente da FileX.*
 
 > [!IMPORTANT]
-> *Per i nomi forniti dall'applicazione, FileX supporta sia la barra rovesciata ( ) che la barra (/) per separare directory, sottodirectory e \\ nomi di file. Tuttavia, FileX usa solo il carattere barra rovesciata nei percorsi restituiti all'applicazione.*
+> *Per i nomi forniti dall'applicazione, FileX supporta sia la barra rovesciata ( ) che i caratteri barra (/) per separare directory, sottodirectory e nomi \\ di file. Tuttavia, FileX usa solo il carattere barra rovesciata nei percorsi restituiti all'applicazione.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **media_ptr**: puntatore al supporto aperto in precedenza.
-- **local_path_ptr**: destinazione per contenere le informazioni sul percorso locale specifico del thread. L'indirizzo di questa struttura può essere fornito alla funzione di ripristino del percorso locale in futuro.
+- **media_ptr:** puntatore al supporto aperto in precedenza.
+- **local_path_ptr**: destinazione per contenere le informazioni sul percorso locale specifiche del thread. L'indirizzo di questa struttura può essere fornito alla funzione di ripristino del percorso locale in futuro.
 - **new_path_name**: specifica il percorso locale da configurare.
 
 ### <a name="return-values"></a>Valori restituiti
@@ -967,9 +967,9 @@ Questo servizio configura un percorso specifico del thread come specificato dal 
 - **FX_SUCCESS** (0x00) Set di directory predefinito riuscito.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NOT_IMPLEMENTED** (0x22) **FX_NO_LCOAL_PATH
-- **FX_INVALID_PATH** (0x0D) Non è stato possibile trovare la nuova directory.
+- **FX_INVALID_PATH** (0x0D) Impossibile trovare la nuova directory.
 - **FX_NOT_IMPLEMENTED** (0x22) - **FX_NO_LOCAL_PATH definito.
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore di percorso locale non valido.
+- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore di percorso locale.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1029,7 +1029,7 @@ UINT fx_directory_long_name_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il nome lungo (se presente) associato al nome breve (formato 8.3) fornito. Il nome breve può essere un nome di file o un nome di directory.
+Questo servizio recupera il nome lungo (se presente) associato al nome breve (formato 8.3) fornito. Il nome breve può essere un nome file o un nome di directory.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -1039,16 +1039,16 @@ Questo servizio recupera il nome lungo (se presente) associato al nome breve (fo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Successful long name get
+- **FX_SUCCESS** (0x00) Ottenere il nome lungo riuscito
 - **FX_NOT_FOUND** (0x04) Nome breve non trovato
-- **FX_IO_ERROR** di I/O del driver 0x90 (0x90)
-- **FX_MEDIA_INVALID** (0x02) Supporti non validi
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato
+- **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90)
+- **FX_MEDIA_INVALID** (0x02) Supporto non valido
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato
 - **FX_SECTOR_INVALID** (0x89) Settore non valido
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome non valido
-- **FX_CALLER_ERROR** (0x20) Caller non è un thread
+- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore al nome
+- **FX_CALLER_ERROR** (0x20) Il chiamante non è un thread
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1103,26 +1103,26 @@ UINT fx_directory_long_name_get_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il nome lungo (se presente) associato al nome breve (formato 8.3) fornito. Il nome breve può essere un nome di file o un nome di directory.
+Questo servizio recupera il nome lungo (se presente) associato al nome breve (formato 8.3) fornito. Il nome breve può essere un nome file o un nome di directory.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
 - **short_name:** puntatore al nome breve di origine (formato 8.3).
-- **long_name:** puntatore alla destinazione per il nome lungo. Se non è presente alcun nome lungo, viene restituito il nome breve. Nota: la destinazione per il nome lungo deve essere sufficientemente grande da contenere **FX_MAX_LONG_NAME_LEN** caratteri.
+- **long_name:** puntatore alla destinazione per il nome lungo. Se non è presente alcun nome lungo, viene restituito il nome breve. Nota: la destinazione per il nome lungo deve essere sufficientemente grande da **contenere FX_MAX_LONG_NAME_LEN** caratteri.
 - **long_file_name_buffer_length**: lunghezza del buffer dei nomi lunghi.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Get nome lungo riuscito.
+- **FX_SUCCESS** (0x00) Ottiene il nome lungo riuscito.
 - **FX_NOT_FOUND** (0x04) Nome breve non trovato.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_MEDIA_INVALID** (0x02) Supporto non valido.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione.
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome non valido.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore al nome non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -1179,26 +1179,26 @@ UINT fx_directory_name_test(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio verifica se il nome fornito è o meno una directory. In tal caso, viene restituito FX_SUCCESS valore.
+Questo servizio verifica se il nome fornito è o meno una directory. In tal caso, viene FX_SUCCESS restituito un oggetto .
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **directory_name**: puntatore al nome della voce di directory.
+- **directory_name:** puntatore al nome della voce di directory.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **FX_SUCCESS** (0x00) Nome fornito è una directory.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto
-- **FX_NOT_FOUND** impossibile trovare 0x04 directory (0x04).
-- **FX_NOT_DIRECTORY** (0x0E) non è una directory
+- **FX_NOT_FOUND** (0x04) Impossibile trovare la voce della directory.
+- **FX_NOT_DIRECTORY** (0x0E) La voce non è una directory
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_MEDIA_INVALID** (0x02) Supporto non valido.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione.
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome non valido.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore al nome non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -1256,12 +1256,12 @@ UINT fx_directory_next_entry_find(
 Questo servizio restituisce il nome della voce successiva nella directory predefinita corrente.
 
 > [!WARNING]
-> *Se si usa un percorso non locale, è anche importante impedire (con un livello di priorità threadX o semaforo thread) che altri thread dell'applicazione cambino questa directory durante l'attraversamento di una directory. In caso contrario, è possibile ottenere risultati non validi.*
+> *Se si usa un percorso non locale, è anche importante impedire (con un semaforo ThreadX o un livello di priorità del thread) che altri thread dell'applicazione cambino questa directory durante l'attraversamento di una directory. In caso contrario, è possibile ottenere risultati non validi.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **return_entry_name**: puntatore alla destinazione per il nome della voce successiva nella directory predefinita. Il buffer a cui punta questo puntatore deve essere sufficientemente grande da contenere la dimensione massima del nome FileX, definita **_da FX_MAX_LONG_NAME_LEN_**.
+- **return_entry_name:** puntatore alla destinazione per il nome della voce successiva nella directory predefinita. Il buffer a cui punta questo puntatore deve essere sufficientemente grande da contenere le dimensioni massime del nome FileX, definite da FX_MAX_LONG_NAME_LEN **_._**
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -1270,7 +1270,7 @@ Questo servizio restituisce il nome della voce successiva nella directory predef
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono presenti altre voci in questa directory.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_PTR_ERROR** (0x18) Puntatore multimediale non valido.
@@ -1345,12 +1345,12 @@ Questo servizio recupera il nome della voce successiva nella directory predefini
 > *La destinazione specificata deve essere sufficientemente grande da contenere il nome FileX di dimensioni massime, come definito da ***FX_MAX_LONG_NAME_LEN****
 
 > [!WARNING]
-> *Se si usa un percorso non locale, è importante impedire agli altri thread dell'applicazione di modificare questa directory (con un semaforo ThreadX, un mutex o una modifica del livello di priorità) mentre è in corso un attraversamento della directory. In caso contrario, è possibile ottenere risultati non validi.*
+> *Se si usa un percorso non locale, è importante impedire (con un semaforo ThreadX, un mutex o una modifica del livello di priorità) altri thread dell'applicazione di modificare questa directory durante l'attraversamento della directory. In caso contrario, è possibile ottenere risultati non validi.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **directory_name**: puntatore alla destinazione per il nome di una voce di directory. Deve essere grande almeno quanto **FX_MAX_LONG_NAME_LEN**.
+- **directory_name:** puntatore alla destinazione per il nome di una voce di directory. Deve essere grande almeno quanto **FX_MAX_LONG_NAME_LEN**.
 - **attributes:** se non Null, puntatore alla destinazione per gli attributi della voce da inserire. Gli attributi vengono restituiti in un formato mappa di bit con le impostazioni possibili seguenti:
   - **FX_READ_ONLY** (0x01)
   - **FX_HIDDEN** (0x02)
@@ -1364,15 +1364,15 @@ Questo servizio recupera il nome della voce successiva nella directory predefini
 - **day:** se non Null, puntatore alla destinazione per il giorno di modifica della voce.
 - **hour:** se non Null, puntatore alla destinazione per l'ora di modifica della voce.
 - **minute:** se non Null, puntatore alla destinazione per il minuto di modifica della voce.
-- **second:** se non Null, puntatore alla destinazione per il secondo di modifica della voce.
+- **second:** se non Null, puntatore alla destinazione per il secondo elemento di modifica della voce.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Ricerca della voce successiva nella directory riuscita.
+- **FX_SUCCESS** (0x00) Ricerca della voce successiva della directory completata.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono presenti altre voci in questa directory.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione.
@@ -1445,13 +1445,13 @@ UINT fx_directory_rename(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio modifica il nome della directory con il nuovo nome di directory specificato. La ridenominazione viene eseguita anche in relazione al percorso specificato o al percorso predefinito. Se viene specificato un percorso nel nuovo nome di directory, la directory rinominata viene spostata nel percorso specificato. Se non viene specificato alcun percorso, la directory rinominata viene inserita nel percorso predefinito corrente.
+Questo servizio modifica il nome della directory con il nuovo nome di directory specificato. La ridenominazione viene eseguita anche in relazione al percorso specificato o al percorso predefinito. Se viene specificato un percorso nel nuovo nome di directory, la directory rinominata viene effettivamente spostata nel percorso specificato. Se non viene specificato alcun percorso, la directory rinominata viene inserita nel percorso predefinito corrente.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
 - **old_directory_name:** puntatore al nome della directory corrente.
-- **new_directory_name:** puntatore al nome della nuova directory.
+- **new_directory_name:** puntatore al nuovo nome di directory.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -1462,7 +1462,7 @@ Questo servizio modifica il nome della directory con il nuovo nome di directory 
 - **FX_INVALID_NAME** (0x0C) Il nuovo nome di directory non è valido.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione.
@@ -1527,17 +1527,17 @@ UINT fx_directory_short_name_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il nome breve (formato 8.3) associato al nome lungo fornito. Il nome lungo può essere un nome file o un nome di directory.
+Questo servizio recupera il nome breve (formato 8.3) associato al nome lungo fornito. Il nome lungo può essere un nome di file o un nome di directory.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **long_name:** puntatore al nome long di origine.
+- **long_name:** puntatore al nome lungo di origine.
 - **short_name:** puntatore al nome breve di destinazione (formato 8.3). Si noti che la destinazione per il nome breve deve essere sufficientemente grande da contenere 14 caratteri.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Ottiene il nome breve riuscito.
+- **FX_SUCCESS** (0x00) Nome breve riuscito.
 - **FX_NOT_FOUND** (0x04) Nome lungo non trovato.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
@@ -1546,7 +1546,7 @@ Questo servizio recupera il nome breve (formato 8.3) associato al nome lungo for
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
 - **FX_MEDIA_INVALID** (0x02) Supporto non valido.
-- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore al nome.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -1606,18 +1606,18 @@ UINT fx_directory_short_name_get_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il nome breve (formato 8.3) associato al nome lungo fornito. Il nome lungo può essere un nome file o un nome di directory.
+Questo servizio recupera il nome breve (formato 8.3) associato al nome lungo fornito. Il nome lungo può essere un nome di file o un nome di directory.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **long_name:** puntatore al nome long di origine.
+- **long_name:** puntatore al nome lungo di origine.
 - **short_name:** puntatore al nome breve di destinazione (formato 8.3). Nota: la destinazione per il nome breve deve essere sufficientemente grande da contenere 14 caratteri.
 - **short_file_name_length**: lunghezza del buffer dei nomi brevi.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Ottiene il nome breve riuscito.
+- **FX_SUCCESS** (0x00) Nome breve riuscito.
 - **FX_NOT_FOUND** (0x04) Nome lungo non trovato.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
@@ -1626,7 +1626,7 @@ Questo servizio recupera il nome breve (formato 8.3) associato al nome lungo for
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
 - **FX_MEDIA_INVALID** (0x02) Supporto non valido.
-- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore al nome.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -1691,14 +1691,14 @@ Questo servizio abilita il modulo a tolleranza di errore. All'avvio, il modulo a
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
 - **memory_ptr:** puntatore a un blocco di memoria usato dal modulo a tolleranza di errore come memoria scratch.
-- **memory_size:** dimensioni della memoria scratch. Per il corretto funzionamento della tolleranza di errore, le dimensioni della memoria scratch devono essere di almeno 3072 byte e devono essere multiple delle dimensioni del settore.
+- **memory_size**: dimensioni della memoria scratch. Per il corretto funzionamento della tolleranza di errore, le dimensioni della memoria scratch devono essere di almeno 3072 byte e devono essere multiple delle dimensioni del settore.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **FX_SUCCESS** (0x00) Abilitato correttamente a tolleranza di errore.
 - **FX_NOT_ENOUGH_MEMORY** (0x91) dimensioni della memoria troppo piccole.
 - **FX_BOOT_ERROR** (0x01) Errore del settore di avvio.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_NO_MORE_ENTRIES** (0x0F) Nessun cluster gratuito disponibile.
 - **FX_NO_MORE_SPACE** (0x0A) I supporti associati a questo file non hanno un numero sufficiente di cluster disponibili.
 - **FX_SECTOR_INVALID** (0x89) Il settore non è valido
@@ -1771,7 +1771,7 @@ Per allocare spazio oltre 4 GB, l'applicazione deve usare il servizio *fx_file_e
 - **FX_SUCCESS** (0x00) Corretta allocazione dei file.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato non è aperto per la scrittura.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è attualmente aperto.
 - **FX_NO_MORE_ENTRIES** (0x0F) Nessun cluster gratuito disponibile.
 - **FX_NO_MORE_SPACE** (0x0A) I supporti associati a questo file non hanno un numero sufficiente di cluster disponibili.
@@ -1846,7 +1846,7 @@ Questo servizio legge gli attributi del file dal supporto specificato.
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
 - **file_name**: puntatore al nome del file richiesto (il percorso della directory è facoltativo).
-- **attributes_ptr:** puntatore alla destinazione per gli attributi del file da inserire. Gli attributi del file vengono restituiti in un formato mappa di bit con le impostazioni possibili seguenti:
+- **attributes_ptr**: puntatore alla destinazione per gli attributi del file da inserire. Gli attributi del file vengono restituiti in un formato mappa di bit con le impostazioni possibili seguenti:
   - FX_READ_ONLY (0x01)
   - FX_HIDDEN (0x02)
   - FX_SYSTEM (0x04)
@@ -1856,9 +1856,9 @@ Questo servizio legge gli attributi del file dal supporto specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Lettura corretta dell'attributo.
+- **FX_SUCCESS** (0x00) Lettura dell'attributo riuscita.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NOT_FOUND** (0x04) File specificato non trovato nel supporto.
+- **FX_NOT_FOUND** (0x04) Il file specificato non è stato trovato nel supporto.
 - **FX_NOT_A_FILE** (0x05) Il file specificato è una directory.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
@@ -1939,8 +1939,8 @@ Questo servizio imposta gli attributi del file su quelli specificati dal chiaman
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **file_name:** puntatore al nome del file richiesto** (il percorso della directory è facoltativo).
-- **attributes**: i nuovi attributi per il file. Gli attributi di file validi sono definiti nel modo seguente:
+- **file_name**: puntatore al nome del file richiesto** (il percorso della directory è facoltativo).
+- **attributes:** nuovi attributi per il file. Gli attributi di file validi sono definiti come segue:
   - FX_READ_ONLY (0x01)
   - FX_HIDDEN (0x02)
   - FX_SYSTEM (0x04)
@@ -2015,7 +2015,7 @@ status = fx_file_attributes_set(&my_media, "myfile.txt", FX_READ_ONLY);
 
 ## <a name="fx_file_best_effort_allocate"></a>fx_file_best_effort_allocate
 
-Il massimo sforzo per allocare spazio per un file
+Sforzo ottimale per allocare spazio per un file
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2027,28 +2027,28 @@ UINT fx_file_best_effort_allocate(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca e collega uno o più cluster contigui alla fine del file specificato. FileX determina il numero di cluster necessari dividendo le dimensioni richieste per il numero di byte per cluster. Il risultato viene quindi arrotondato per es. Se nel supporto non sono disponibili cluster consecutivi sufficienti, questo servizio collega il blocco più grande disponibile di cluster consecutivi al file . La quantità di spazio effettivamente allocato al file viene restituita al chiamante.
+Questo servizio alloca e collega uno o più cluster contigui alla fine del file specificato. FileX determina il numero di cluster necessari dividendo le dimensioni richieste per il numero di byte per cluster. Il risultato viene quindi arrotondato all'intero cluster successivo. Se non sono disponibili cluster consecutivi sufficienti nei supporti, questo servizio collega il blocco più grande disponibile di cluster consecutivi al file. La quantità di spazio effettivamente allocato al file viene restituita al chiamante.
 
 Per allocare spazio oltre 4 GB, l'applicazione deve usare il servizio *fx_file_extended_best_effort_allocate*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore a un file aperto in precedenza.
-- **size:** numero di byte da allocare per il file.
+- **size**: numero di byte da allocare per il file.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Corretta allocazione dei file con il massimo sforzo.
+- **FX_SUCCESS** (0x00) Allocazione dei file ottimale.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato non è aperto per la scrittura.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è attualmente aperto.
-- **FX_NO_MORE_SPACE** (0x0A) il supporto associato a questo file non dispone di un numero sufficiente di cluster disponibili.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_NO_MORE_SPACE** (0x0A) I supporti associati a questo file non hanno un numero sufficiente di cluster disponibili.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_PTR_ERROR** (0x18) Puntatore di file o destinazione non valido.
+- **FX_PTR_ERROR** (0x18) Puntatore o destinazione file non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -2122,7 +2122,7 @@ Questo servizio chiude il file specificato. Se il file è stato aperto per la sc
 
 - **FX_SUCCESS** (0x00) Chiusura del file completata.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è aperto.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_PTR_ERROR** (0x18) Supporto o puntatore attributi non validi.
@@ -2203,8 +2203,8 @@ Questo servizio crea il file specificato nella directory predefinita o nel perco
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_ALREADY_CREATED** (0x0B) Il file specificato è già stato creato.
 - **FX_NO_MORE_SPACE** (0x0A) Non sono presenti altre voci nella directory radice o non sono disponibili altri cluster.
-- **FX_INVALID_PATH** (0x0D) Percorso non valido fornito con il nome file.
-- **FX_INVALID_NAME** (0x0C) Il nome del file non è valido.
+- **FX_INVALID_PATH** (0x0D) Percorso non valido specificato con il nome file.
+- **FX_INVALID_NAME** (0x0C) Nome file non valido.
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
@@ -2213,7 +2213,7 @@ Questo servizio crea il file specificato nella directory predefinita o nel perco
 - **FX_MEDIA_INVALID** (0x02)Supporti non validi.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto sottostante è protetto da scrittura.
-- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore al nome file.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome file non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -2298,17 +2298,17 @@ status = fx_file_date_time_set(&my_media, "my_file", 1999, 12, 31, 23, 59, 59);
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **file_name:** puntatore al nome del file.
+- **file_name**: puntatore al nome del file.
 - **year:** valore dell'anno (1980-2107 inclusi).
-- **month:** valore del mese (da 1 a 12 inclusi).
+- **month:** valore del mese (1-12 inclusi).
 - **day:** valore del giorno (da 1 a 31 inclusi).
-- **hour**: valore dell'ora (0-23 inclusi).
-- **minute:** valore dei minuti (da 0 a 59 inclusi).
-- **second:** valore del secondo (0-59 inclusi).
+- **hour**: valore di hour (0-23 inclusi).
+- **minute:** valore di minute (0-59 inclusi).
+- **second:** valore di second (0-59 inclusi).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Set di data/ora riuscito.
+- **FX_SUCCESS** (0x00) Data/ora riuscita.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NOT_FOUND** file (0x04) non trovato.
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato.
@@ -2318,13 +2318,13 @@ status = fx_file_date_time_set(&my_media, "my_file", 1999, 12, 31, 23, 59, 59);
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore del nome non valido.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore al nome non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 - **FX_INVALID_YEAR** (0x12) Year non è valido.
 - **FX_INVALID_MONTH** (0x13) Month non è valido.
 - **FX_INVALID_DAY** (0x14) Day non è valido.
-- **FX_INVALID_HOUR** (0x15) Hour non è valida.
-- **FX_INVALID_MINUTE** (0x16) Minute non è valido.
+- **FX_INVALID_HOUR** (0x15) L'ora non è valida.
+- **FX_INVALID_MINUTE** minuto (0x16) non è valido.
 - **FX_INVALID_SECOND** (0x17) Second non è valido.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -2392,16 +2392,16 @@ Questo servizio elimina il file specificato.
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **file_name**: puntatore al nome del file da eliminare (il percorso della directory è facoltativo).
+- **file_name:** puntatore al nome del file da eliminare (il percorso della directory è facoltativo).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Eliminazione file riuscita.
+- **FX_SUCCESS** (0x00) Eliminazione del file completata.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NOT_FOUND** (0x04) Il file specificato non è stato trovato.
+- **FX_NOT_FOUND** (0x04) File specificato non trovato.
 - **FX_NOT_A_FILE** (0x05) Il nome file specificato è una directory o un volume.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato è attualmente aperto.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
@@ -2473,7 +2473,7 @@ UINT fx_file_extended_allocate(
 
 Questo servizio alloca e collega uno o più cluster contigui alla fine del file specificato. FileX determina il numero di cluster necessari dividendo le dimensioni richieste per il numero di byte per cluster. Il risultato viene quindi arrotondato per es.
 
-Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore intero a 64 bit, che consente al chiamante di preallocare spazio oltre l'intervallo di 4 GB.
+Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore integer a 64 bit, che consente al chiamante di preallocare spazio oltre l'intervallo di 4 GB.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -2485,7 +2485,7 @@ Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore i
 - **FX_SUCCESS** (0x00) Allocazione file riuscita.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato non è aperto per la scrittura.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è attualmente aperto.
-- **FX_NO_MORE_SPACE** (0x0A) I supporti associati a questo file non hanno un numero sufficiente di cluster disponibili.
+- **FX_NO_MORE_SPACE** (0x0A) il supporto associato a questo file non dispone di un numero sufficiente di cluster disponibili.
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
@@ -2557,21 +2557,21 @@ UINT fx_file_extended best_effort_allocate(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca e collega uno o più cluster contigui alla fine del file specificato. FileX determina il numero di cluster necessari dividendo le dimensioni richieste per il numero di byte per cluster. Il risultato viene quindi arrotondato all'intero cluster successivo. Se non sono disponibili cluster consecutivi sufficienti nei supporti, questo servizio collega il blocco più grande disponibile di cluster consecutivi al file. La quantità di spazio effettivamente allocato al file viene restituita al chiamante.
+Questo servizio alloca e collega uno o più cluster contigui alla fine del file specificato. FileX determina il numero di cluster necessari dividendo le dimensioni richieste per il numero di byte per cluster. Il risultato viene quindi arrotondato per es. Se nel supporto non sono disponibili cluster consecutivi sufficienti, questo servizio collega il blocco più grande disponibile di cluster consecutivi al file . La quantità di spazio effettivamente allocato al file viene restituita al chiamante.
 
-Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore intero a 64 bit, che consente al chiamante di preallocare spazio oltre l'intervallo di 4 GB.
+Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore integer a 64 bit, che consente al chiamante di preallocare spazio oltre l'intervallo di 4 GB.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore a un file aperto in precedenza.
-- **size**: numero di byte da allocare per il file.
+- **size:** numero di byte da allocare per il file.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Corretta allocazione dei file.
+- **FX_SUCCESS** (0x00) Allocazione file riuscita.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato non è aperto per la scrittura.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è attualmente aperto.
-- **FX_NO_MORE_SPACE** (0x0A) I supporti associati a questo file non hanno un numero sufficiente di cluster disponibili.
+- **FX_NO_MORE_SPACE** (0x0A) il supporto associato a questo file non dispone di un numero sufficiente di cluster disponibili.
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
@@ -2633,7 +2633,7 @@ status = fx_file_extended_best_effort_allocate(&my_file,
 
 ## <a name="fx_file_extended_relative_seek"></a>fx_file_extended_relative_seek
 
-Posizioni a un offset di byte relativo
+Posizioni in base a un offset di byte relativo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2645,17 +2645,17 @@ UINT fx_file_extended_relative_seek(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il puntatore di lettura/scrittura del file interno all'offset di byte relativo specificato. Qualsiasi richiesta di lettura o scrittura di file successiva inizierà in questa posizione nel file.
+Questo servizio posiziona il puntatore interno di lettura/scrittura del file all'offset di byte relativo specificato. Qualsiasi richiesta di lettura o scrittura di file successiva inizierà in questa posizione nel file.
 
 Questo servizio è progettato per exFAT. Il *byte_offset* accetta un valore intero a 64 bit, che consente al chiamante di riposizionare il puntatore di lettura/scrittura oltre l'intervallo di 4 GB.
 
 > [!IMPORTANT]
-> *Se l'operazione di ricerca tenta di cercare oltre la fine del file, il puntatore di lettura/scrittura del file viene posizionato alla fine del file. Al contrario, se l'operazione di ricerca tenta di posizionarsi oltre l'inizio del file, il puntatore di lettura/scrittura del file viene posizionato all'inizio del file.*
+> *Se l'operazione di ricerca tenta di cercare oltre la fine del file, il puntatore di lettura/scrittura del file viene posizionato alla fine del file. Viceversa, se l'operazione di ricerca tenta di posizionarsi oltre l'inizio del file, il puntatore di lettura/scrittura del file viene posizionato all'inizio del file.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore a un file aperto in precedenza.
-- **byte_offset:** offset di byte relativo desiderato nel file.
+- **byte_offset:** offset dei byte relativo desiderato nel file.
 - **seek_from**: direzione e posizione della posizione da cui eseguire la ricerca relativa. Le opzioni di ricerca valide sono definite come segue:
   - FX_SEEK_BEGIN (0x00)
   - FX_SEEK_END (0x01)
@@ -2811,24 +2811,24 @@ UINT fx_file_truncate(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio tronca le dimensioni del file alle dimensioni specificate. Se le dimensioni fornite sono maggiori delle dimensioni effettive del file, questo servizio non fa nulla. Nessuno dei cluster di supporti associati al file viene rilasciato.
+Questo servizio tronca le dimensioni del file alle dimensioni specificate. Se le dimensioni fornite sono maggiori delle dimensioni effettive del file, questo servizio non fa nulla. Nessuno dei cluster multimediali associati al file viene rilasciato.
 
 > [!WARNING]
-> *Prestare attenzione al troncamento dei file che possono essere aperti contemporaneamente per la lettura. Il troncamento di un file aperto anche per la lettura può comportare la lettura di dati non validi.*
+> *Prestare attenzione a troncare i file che possono essere aperti contemporaneamente per la lettura. Il troncamento di un file aperto anche per la lettura può comportare la lettura di dati non validi.*
 
-Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore integer a 64 bit, che consente al chiamante di operare oltre l'intervallo di 4 GB.
+Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore intero a 64 bit, che consente al chiamante di operare oltre l'intervallo di 4 GB.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore al blocco di controllo file.
-- **size:** nuove dimensioni del file. I byte oltre questa nuova dimensione di file vengono eliminati.
+- **size:** nuove dimensioni del file. I byte oltre le nuove dimensioni del file vengono eliminati.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **FX_SUCCESS** (0x00) Troncamento del file riuscito.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è aperto.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato non è aperto per la scrittura.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
@@ -2899,9 +2899,9 @@ UINT fx_file_extended_truncate_release(
 Questo servizio tronca le dimensioni del file alle dimensioni specificate. Se le dimensioni fornite sono maggiori delle dimensioni effettive del file, questo servizio non esegue alcun'operazione. A differenza ***del fx_file_extended_truncate,*** questo servizio rilascia tutti i cluster inutilizzati.
 
 > [!WARNING]
-> *Prestare attenzione al troncamento dei file che possono essere aperti contemporaneamente per la lettura. Il troncamento di un file aperto anche per la lettura può comportare la lettura di dati non validi.*
+> *Prestare attenzione a troncare i file che possono essere aperti contemporaneamente per la lettura. Il troncamento di un file aperto anche per la lettura può comportare la lettura di dati non validi.*
 
-Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore integer a 64 bit, che consente al chiamante di operare oltre l'intervallo di 4 GB.
+Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore intero a 64 bit, che consente al chiamante di operare oltre l'intervallo di 4 GB.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -2913,7 +2913,7 @@ Questo servizio è progettato per exFAT. Il *parametro size* accetta un valore i
 - **FX_SUCCESS** (0x00) Troncamento del file riuscito.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato non è aperto per la scrittura.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è attualmente aperto.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
@@ -2987,27 +2987,27 @@ UINT fx_file_open(
 Questo servizio apre il file specificato per la lettura o la scrittura. Un file può essere aperto per la lettura più volte, mentre un file può essere aperto per la scrittura una sola volta fino a quando il writer non chiude il file.
 
 > [!IMPORTANT]
-> *È necessario fare attenzione se un file è aperto contemporaneamente per la lettura e la scrittura. La scrittura di file eseguita quando un file viene aperto contemporaneamente per la lettura potrebbe non essere visibile dal lettore, a meno che il lettore non chiuda e riapre il file per la lettura. Analogamente, il writer di file deve prestare attenzione quando si usano i servizi di troncamento dei file. Se un file viene troncato dal writer, i lettori dello stesso file potrebbero restituire dati non validi.*
+> *È necessario fare attenzione se un file è aperto simultaneamente per la lettura e la scrittura. La scrittura di file eseguita quando un file viene aperto simultaneamente per la lettura potrebbe non essere visibile dal lettore, a meno che il lettore non chiuda e riapre il file per la lettura. Analogamente, il writer di file deve prestare attenzione quando si usano i servizi di troncamento dei file. Se un file viene troncato dal writer, i lettori dello stesso file potrebbero restituire dati non validi.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
 - **file_ptr:** puntatore al blocco di controllo file.
-- **file_name:** puntatore al nome del file da aprire (il percorso della directory è facoltativo).
-- **open_type:** tipo di file aperto. Le opzioni valide per i tipi aperti sono:
+- **file_name**: puntatore al nome del file da aprire (il percorso della directory è facoltativo).
+- **open_type**: tipo di file aperto. Le opzioni valide per il tipo aperto sono:
   - FX_OPEN_FOR_READ (0x00)
   - FX_OPEN_FOR_WRITE (0x01)
   - FX_OPEN_FOR_READ_FAST (0x02)
 
-L'apertura di file FX_OPEN_FOR_READ e FX_OPEN_FOR_READ_FAST è simile alla seguente:
+L'apertura di file FX_OPEN_FOR_READ e FX_OPEN_FOR_READ_FAST è simile:
 
-- FX_OPEN_FOR_READ verifica che l'elenco collegato di cluster che costituiscono il file sia intatto e FX_OPEN_FOR_READ_FAST non esegue questa verifica, che lo rende più veloce.
+- FX_OPEN_FOR_READ verifica che l'elenco collegato dei cluster che costituiscono il file sia intatto e FX_OPEN_FOR_READ_FAST non esegue questa verifica, il che lo rende più veloce.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Apertura del file completata.
+- **FX_SUCCESS** (0x00) Il file è stato aperto correttamente.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NOT_FOUND** (0x04) File specificato non trovato.
+- **FX_NOT_FOUND** (0x04) Il file specificato non è stato trovato.
 - **FX_NOT_A_FILE** (0x05) Il nome file specificato è una directory o un volume.
 - **FX_FILE_CORRUPT** (0x08) Il file specificato è danneggiato e l'apertura non è riuscita.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato è già aperto o il tipo aperto non è valido.
@@ -3085,28 +3085,28 @@ UINT fx_file_read(
 Questo servizio legge i byte dal file e li archivia nel buffer fornito. Al termine della lettura, il puntatore di lettura interno del file viene regolato in modo che punti al byte successivo nel file. Se nella richiesta rimane un numero inferiore di byte, solo i byte rimanenti vengono archiviati nel buffer. In ogni caso, il numero totale di byte inseriti nel buffer viene restituito al chiamante.
 
 > [!WARNING]
-> *L'applicazione deve garantire che il buffer fornito sia in grado di archiviare il numero specificato di byte richiesti.*
+> *L'applicazione deve assicurarsi che il buffer fornito sia in grado di archiviare il numero specificato di byte richiesti.*
 
 > [!WARNING]
-> *Si ottiene una maggiore velocità di prestazioni se il buffer di destinazione si trova su un limite di parole lunghe e le dimensioni richieste sono divisibile uniformemente per sizeof(**ULONG**).*
+> *Si ottiene prestazioni più veloci se il buffer di destinazione si trova su un limite di parole lunghe e le dimensioni richieste sono divisibile in modo uniforme in base a sizeof(**ULONG**).*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore al blocco di controllo file.
-- **buffer_ptr**: puntatore al buffer di destinazione per la lettura.
+- **buffer_ptr:** puntatore al buffer di destinazione per la lettura.
 - **request_size**: numero massimo di byte da leggere.
-- **actual_size**: puntatore alla variabile per contenere il numero effettivo di byte letti nel buffer fornito.
+- **actual_size:** puntatore alla variabile per contenere il numero effettivo di byte letti nel buffer fornito.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Lettura file riuscita.
+- **FX_SUCCESS** (0x00) Lettura del file completata.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è aperto.
 - **FX_FILE_CORRUPT** (0x08) Il file specificato è danneggiato e la lettura non è riuscita.
 - **FX_END_OF_FILE** (0x09) È stata raggiunta la fine del file.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio per completare l'operazione
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
-- **FX_PTR_ERROR** (0x18) Puntatore a file o buffer non valido.
+- **FX_PTR_ERROR** (0x18) Puntatore al file o al buffer non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -3158,7 +3158,7 @@ status = fx_file_read(&my_file, my_buffer, 1024, &actual_bytes);
 
 ## <a name="fx_file_relative_seek"></a>fx_file_relative_seek
 
-Posizioni in base a un offset di byte relativo
+Posizioni a un offset di byte relativo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3170,31 +3170,31 @@ UINT fx_file_relative_seek(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il puntatore interno di lettura/scrittura del file all'offset di byte relativo specificato. Qualsiasi richiesta di lettura o scrittura di file successiva inizierà in questa posizione nel file.
+Questo servizio posiziona il puntatore di lettura/scrittura del file interno all'offset di byte relativo specificato. Qualsiasi richiesta di lettura o scrittura di file successiva inizierà in questa posizione nel file.
 
 > [!IMPORTANT]
-> *Se l'operazione di ricerca tenta di cercare oltre la fine del file, il puntatore di lettura/scrittura del file viene posizionato alla fine del file. Viceversa, se l'operazione di ricerca tenta di posizionarsi oltre l'inizio del file, il puntatore di lettura/scrittura del file viene posizionato all'inizio del file.*
+> *Se l'operazione di ricerca tenta di cercare oltre la fine del file, il puntatore di lettura/scrittura del file viene posizionato alla fine del file. Al contrario, se l'operazione di ricerca tenta di posizionarsi oltre l'inizio del file, il puntatore di lettura/scrittura del file viene posizionato all'inizio del file.*
 
-Per eseguire la ricerca con un valore di offset superiore a 4 GB, l'applicazione deve usare il *fx_file_extended_relative_seek*.
+Per cercare con un valore di offset superiore a 4 GB, l'applicazione deve usare il *servizio* fx_file_extended_relative_seek .
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore a un file aperto in precedenza.
-- **byte_offset:** offset dei byte relativo desiderato nel file.
+- **byte_offset:** offset di byte relativo desiderato nel file.
 - **seek_from**: direzione e posizione della posizione da cui eseguire la ricerca relativa. Le opzioni di ricerca valide sono definite come segue:
   - FX_SEEK_BEGIN (0x00)
   - FX_SEEK_END (0x01)
   - FX_SEEK_FORWARD (0x02)
   - FX_SEEK_BACK (0x03)
 
-Se FX_SEEK_BEGIN specificato, l'operazione di ricerca viene eseguita dall'inizio del file. Se FX_SEEK_END specificato, l'operazione di ricerca viene eseguita all'indietro a partire dalla fine del file. Se FX_SEEK_FORWARD specificato, l'operazione di ricerca viene eseguita in avanti dalla posizione corrente del file. Se FX_SEEK_BACK specificato, l'operazione di ricerca viene eseguita all'indietro dalla posizione corrente del file.
+Se FX_SEEK_BEGIN specificato, l'operazione di ricerca viene eseguita dall'inizio del file. Se FX_SEEK_END specificato, l'operazione di ricerca viene eseguita all'indietro dalla fine del file. Se FX_SEEK_FORWARD specificato, l'operazione di ricerca viene eseguita in avanti dalla posizione corrente del file. Se FX_SEEK_BACK specificato, l'operazione di ricerca viene eseguita all'indietro dalla posizione corrente del file.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **FX_SUCCESS** (0x00) Ricerca relativa al file completata.
 - **FX_NOT_OPEN** (0x07) Il file specificato non è attualmente aperto.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
 - **FX_PTR_ERROR** (0x18) Puntatore di file non valido.
@@ -3261,27 +3261,27 @@ UINT fx_file_rename(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio modifica il nome del file specificato da *old_file_name*. La ridenominazione viene eseguita anche in relazione al percorso specificato o al percorso predefinito. Se viene specificato un percorso nel nuovo nome file, il file rinominato viene effettivamente spostato nel percorso specificato. Se non viene specificato alcun percorso, il file rinominato viene inserito nel percorso predefinito corrente.
+Questo servizio modifica il nome del file specificato da *old_file_name*. La ridenominazione viene eseguita anche in relazione al percorso specificato o al percorso predefinito. Se viene specificato un percorso nel nuovo nome file, il file rinominato viene spostato nel percorso specificato. Se non viene specificato alcun percorso, il file rinominato viene inserito nel percorso predefinito corrente.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un blocco di controllo multimediale.
-- **old_file_name:** puntatore al nome del file da rinominare (il percorso della directory è facoltativo).
-- **new_file_name:** puntatore al nuovo nome file. Il percorso della directory non è consentito.
+- **old_file_name**: puntatore al nome del file da rinominare (il percorso della directory è facoltativo).
+- **new_file_name**: puntatore al nuovo nome file. Il percorso della directory non è consentito.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Ridenominazione del file completata.
+- **FX_SUCCESS** (0x00) La ridenominazione del file è riuscita.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NOT_FOUND** (0x04) File specificato non trovato.
+- **FX_NOT_FOUND** (0x04) Il file specificato non è stato trovato.
 - **FX_NOT_A_FILE** (0x05) Il file specificato è una directory.
 - **FX_ACCESS_ERROR** (0x06) Il file specificato è già aperto.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_INVALID_NAME** (0x0C) Il nuovo nome file specificato non è un nome di file valido.
+- **FX_INVALID_NAME** (0x0C) Il nuovo nome file specificato non è un nome file valido.
 - **FX_INVALID_PATH** percorso (0x0D) non è valido.
 - **FX_ALREADY_CREATED** (0x0B) Viene usato il nuovo nome file.
-- **FX_MEDIA_INVALID** (0x02) Il supporto non è valido.
+- **FX_MEDIA_INVALID** (0x02) non è valido.
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
@@ -3338,7 +3338,7 @@ status = fx_file_rename(&my_media, "myfile1.txt", "myfile2.txt");
 
 ## <a name="fx_file_seek"></a>fx_file_seek
 
-Posizioni all'offset di byte
+Posizioni per l'offset dei byte
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3349,14 +3349,14 @@ UINT fx_file_seek(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il puntatore di lettura/scrittura del file interno all'offset di byte specificato. Qualsiasi richiesta di lettura o scrittura di file successiva inizierà in questa posizione nel file.
+Questo servizio posiziona il puntatore interno di lettura/scrittura del file all'offset di byte specificato. Qualsiasi richiesta di lettura o scrittura di file successiva inizierà in questa posizione nel file.
 
-Per cercare con un valore di offset superiore a 4 GB, l'applicazione deve usare il *servizio* fx_file_extended_seek .
+Per eseguire la ricerca con un valore di offset superiore a 4 GB, l'applicazione deve usare il *fx_file_extended_seek*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore al blocco di controllo file.
-- **byte_offset:** offset di byte desiderato nel file. Un valore pari a zero posizionerà il puntatore in lettura/scrittura all'inizio del file, mentre un valore maggiore delle dimensioni del file posizionerà il puntatore di lettura/scrittura alla fine del file.
+- **byte_offset:** offset di byte desiderato nel file. Il valore zero posiziona il puntatore di lettura/scrittura all'inizio del file, mentre un valore maggiore delle dimensioni del file posiziona il puntatore di lettura/scrittura alla fine del file.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3427,7 +3427,7 @@ UINT fx_file_truncate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tronca le dimensioni del file alle dimensioni specificate. Se le dimensioni fornite sono maggiori delle dimensioni effettive del file, questo servizio non fa nulla. Nessuno dei cluster multimediali associati al file viene rilasciato.
+Questo servizio tronca le dimensioni del file alle dimensioni specificate. Se le dimensioni fornite sono maggiori delle dimensioni effettive del file, questo servizio non fa nulla. Nessuno dei cluster di supporti associati al file viene rilasciato.
 
 > [!WARNING]
 > *Prestare attenzione al troncamento dei file che possono essere aperti contemporaneamente per la lettura. Il troncamento di un file aperto anche per la lettura può comportare la lettura di dati non validi.*
@@ -3437,7 +3437,7 @@ Per operare oltre 4 GB, l'applicazione userà il servizio *fx_file_extended_trun
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore al blocco di controllo file.
-- **size:** nuove dimensioni del file. I byte oltre questa nuova dimensione di file vengono eliminati.
+- **size:** nuove dimensioni del file. I byte oltre le nuove dimensioni del file vengono eliminati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3521,7 +3521,7 @@ Per operare oltre 4 GB, l'applicazione userà il servizio *fx_file_extended_trun
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore a un file aperto in precedenza.
-- **size:** nuove dimensioni del file. I byte oltre questa nuova dimensione di file vengono eliminati.
+- **size:** nuove dimensioni del file. I byte oltre le nuove dimensioni del file vengono eliminati.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3601,13 +3601,13 @@ UINT fx_file_write(
 Questo servizio scrive byte dal buffer specificato a partire dalla posizione corrente del file. Al termine della scrittura, il puntatore di lettura interno del file viene regolato in modo che punti al byte successivo nel file.
 
 > [!WARNING]
-> *Si ottiene prestazioni più veloci se il buffer di origine si trova su un limite di parole lunghe e le dimensioni richieste sono divisibile uniformemente per sizeof(**ULONG**).*
+> *Si ottiene prestazioni più veloci se il buffer di origine si trova su un limite di parole lunghe e le dimensioni richieste sono divisibile in modo uniforme in base a sizeof(**ULONG**).*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore al blocco di controllo file.
-- **buffer_ptr**: puntatore al buffer di origine per la scrittura.
-- **size:** numero di byte da scrivere.
+- **buffer_ptr:** puntatore al buffer di origine per la scrittura.
+- **size**: numero di byte da scrivere.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3617,7 +3617,7 @@ Questo servizio scrive byte dal buffer specificato a partire dalla posizione cor
 - **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio nei supporti per eseguire questa scrittura.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la voce FAT.
 - **FX_NO_MORE_ENTRIES** (0x0F) Non sono più presenti voci FAT.
@@ -3687,7 +3687,7 @@ Questo servizio installa la funzione di callback richiamata dopo un'operazione d
 ### <a name="input-parameters"></a>Parametri di input
 
 - **file_ptr:** puntatore al blocco di controllo file.
-- **file_write_notify:** funzione di callback di scrittura file da installare. Impostare la funzione di callback su NULL per disabilitare la funzione di callback.
+- **file_write_notify:** funzione di callback di scrittura file da installare. L'impostazione della funzione di callback su NULL disabilita la funzione di callback.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -3746,10 +3746,10 @@ UINT fx_media_abort(FX_MEDIA *media_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio interrompe tutte le attività correnti associate al supporto, tra cui la chiusura di tutti i file aperti, l'invio di una richiesta di interruzione al driver associato e l'inserimento dei supporti in uno stato interrotto. Questo servizio viene in genere chiamato quando vengono rilevati errori di I/O.
+Questo servizio interrompe tutte le attività correnti associate al supporto, inclusa la chiusura di tutti i file aperti, l'invio di una richiesta di interruzione al driver associato e il posizionamento dei supporti in uno stato interrotto. Questo servizio viene in genere chiamato quando vengono rilevati errori di I/O.
 
 > [!WARNING]
-> *Il supporto deve essere riaperto per poterlo usare nuovamente dopo l'esecuzione di un'operazione di interruzione.*
+> *Il supporto deve essere riaperto per usarlo nuovamente dopo l'esecuzione di un'operazione di interruzione.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -3802,7 +3802,7 @@ status = fx_media_abort(&my_media);
 
 ## <a name="fx_media_cache_invalidate"></a>fx_media_cache_invalidate
 
-Invalida la cache dei settori logici
+Invalida la cache del settore logico
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3812,7 +3812,7 @@ UINT fx_media_cache_invalidate(FX_MEDIA *media_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio scarica tutti i settori dirty nella cache e quindi invalida l'intera cache dei settori logici.
+Questo servizio scarica tutti i settori dirty nella cache e quindi invalida l'intera cache del settore logico.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -3820,10 +3820,10 @@ Questo servizio scarica tutti i settori dirty nella cache e quindi invalida l'in
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Invalidate la cache dei supporti riuscita.
+- **FX_SUCCESS** (0x00) Invalidazione della cache multimediale riuscita.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
-- **FX_PTR_ERROR** (0x18) Supporto o puntatore scratch non valido.
+- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore scratch.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -3890,12 +3890,12 @@ Il fx_media_check richiede memoria scratch per l'analisi approfondita delle dire
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
 - **scratch_memory_ptr:** puntatore all'inizio della memoria scratch.
-- **scratch_memory_size**: dimensioni della memoria scratch in byte.
+- **scratch_memory_size:** dimensioni della memoria scratch in byte.
 - **error_correction_option:** bit dell'opzione di correzione degli errori, quando il bit è impostato, viene eseguita la correzione degli errori. I bit dell'opzione di correzione degli errori sono definiti come segue:
   - FX_FAT_CHAIN_ERROR (0x01)
   - FX_DIRECTORY_ERROR (0x02)
-  - FX_LOST_CLUSTER_ERROR (0x04) È sufficiente o insieme le opzioni di correzione degli errori necessarie. Se non è necessaria alcuna correzione degli errori, è necessario che sia specificato il valore 0.
-- **errors_detected_ptr:** destinazione per i bit di rilevamento degli errori, come definito di seguito:
+  - FX_LOST_CLUSTER_ERROR (0x04) Semplicemente O insieme alle opzioni di correzione degli errori necessarie. Se non è necessaria alcuna correzione degli errori, deve essere specificato il valore 0.
+- **errors_detected_ptr**: destinazione per i bit di rilevamento degli errori, come definito di seguito:
   - FX_FAT_CHAIN_ERROR (0x01)
   - FX_DIRECTORY_ERROR (0x02) FX_LOST_CLUSTER_ERROR (0x04)
   - FX_FILE_SIZE_ERROR (0x08)
@@ -3904,9 +3904,9 @@ Il fx_media_check richiede memoria scratch per l'analisi approfondita delle dire
 
 - **FX_SUCCESS** (0x00) Controllo dei supporti riuscito, visualizzare la destinazione degli errori rilevati per informazioni dettagliate.
 - **FX_ACCESS_ERROR** (0x06) Impossibile eseguire il controllo con i file aperti.
-- **FX_FILE_CORRUPT** file (0x08) è danneggiato.
+- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NO_MORE_SPACE** (0x0A) Non è più disponibile spazio sul supporto.
+- **FX_NO_MORE_SPACE** (0x0A) Nessun altro spazio sul supporto.
 - **FX_NOT_ENOUGH_MEMORY** (0x91) La memoria scratch fornita non è sufficientemente grande.
 - **FX_ERROR_NOT_FIXED** (0x93) Danneggiamento della directory radice FAT32 che non è stato possibile correzione.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
@@ -3969,7 +3969,7 @@ UINT fx_media_close(FX_MEDIA *media_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio chiude il supporto specificato. Durante il processo di chiusura del supporto, tutti i file aperti vengono chiusi e tutti i buffer rimanenti vengono scaricati nel supporto fisico.
+Questo servizio chiude il supporto specificato. Durante la chiusura del supporto, tutti i file aperti vengono chiusi e tutti i buffer rimanenti vengono scaricati nel supporto fisico.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -3977,7 +3977,7 @@ Questo servizio chiude il supporto specificato. Durante il processo di chiusura 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Chiusura del supporto completata.
+- **FX_SUCCESS** (0x00) Chiusura dei supporti completata.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_PTR_ERROR** (0x18) Puntatore multimediale non valido.
@@ -4107,20 +4107,23 @@ Questo servizio formatta i supporti forniti in modo compatibile con exFAT in bas
 > *La formattazione di un supporto già formattato cancella in modo efficace tutti i file e le directory presenti nel supporto.*
 
 > [!IMPORTANT]
-> *Le dimensioni del volume exFAT devono corrispondere alle dimensioni della partizione (se è presente un layout MBR o GPT) o alle dimensioni dell'intero dispositivo se non è presente alcun layout di partizione (nessun MBR o GPT). Esiste una limitazione per Windows che exFAT Disk non verrà ricodnato se formattato con alcuni valori dei settori totali inferiori ai settori disponibili*
+> *Le dimensioni del volume exFAT devono corrispondere alle dimensioni della partizione (se è presente un layout MBR o GPT) o alle dimensioni dell'intero dispositivo se non è presente alcun layout di partizione (nessun MBR o GPT). Esiste una limitazione per Windows che il disco exFAT non verrà ricoginato se formattato con alcuni valori dei settori totali inferiori ai settori disponibili*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale. Viene usato solo per fornire alcune informazioni di base necessarie per il funzionamento del driver.
-- **driver:** puntatore al driver di I/O per questo supporto. Si tratta in genere dello stesso driver fornito alla chiamata fx_media_open successiva.
+- **driver**: puntatore al driver di I/O per questo supporto. Si tratta in genere dello stesso driver fornito alla chiamata fx_media_open successiva.
 - **driver_info_ptr:** puntatore a informazioni facoltative che possono essere utilizzate dal driver di I/O.
-- **memory_ptr:** puntatore alla memoria di lavoro per il supporto. memory_size specifica le dimensioni della memoria dei supporti di lavoro. Le dimensioni devono essere almeno le dimensioni del settore del supporto.
-- **volume_name:** puntatore alla stringa del nome del volume, che contiene un massimo di 11 caratteri.
-- **number_of_fats**: numero di FTS sul supporto. L'implementazione corrente supporta una fat sul supporto.
+- **memory_ptr**: puntatore alla memoria di lavoro per il supporto. memory_size specifica le dimensioni della memoria dei supporti di lavoro. Le dimensioni devono essere almeno le dimensioni del settore del supporto.
+- **volume_name**: puntatore alla stringa del nome del volume, che può avere un massimo di 11 caratteri.
+- **number_of_fats**: numero di fat nel supporto. L'implementazione corrente supporta un fat sul supporto.
 - **hidden_sectors**: numero di settori nascosti prima del settore di avvio del supporto. Questo è tipico quando sono presenti più partizioni.
 - **total_sectors**: numero totale di settori nei supporti.
 - **bytes_per_sector**: numero di byte per settore, che in genere è 512. FileX richiede che sia un multiplo di 32.
-- **sectors_per_cluster**: numero di settori in ogni cluster. Il cluster è l'unità di allocazione minima in un file system.
+> [!IMPORTANT]
+> *In riferimento alla specifica, i byte per settore possono assumere solo i valori seguenti: 512, 1024, 2048 o 4096.*
+
+- **sectors_per_cluster**: numero di settori in ogni cluster. Il cluster è l'unità di allocazione minima in un file system FAT.
 - **volumne_serial_number**: numero di serie da usare per questo volume.
 - **boundary_unit:** dimensioni di allineamento dell'area dati fisica, in numero di settori.
 
@@ -4262,7 +4265,7 @@ UINT fx_media_flush(FX_MEDIA *media_ptr);
 Questo servizio scarica tutti i settori memorizzati nella cache e le voci di directory di tutti i file modificati nel supporto fisico.
 
 > [!WARNING]
-> *Questa routine può essere chiamata periodicamente dall'applicazione per ridurre il rischio di danneggiamento dei file e/o perdita di dati in caso di una perdita di alimentazione improvvisa nella destinazione.*
+> *Questa routine può essere chiamata periodicamente dall'applicazione per ridurre il rischio di danneggiamento dei file e/o perdita di dati in caso di perdita improvvisa di alimentazione nella destinazione.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -4270,7 +4273,7 @@ Questo servizio scarica tutti i settori memorizzati nella cache e le voci di dir
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Scaricamento del supporto riuscito.
+- **FX_SUCCESS** (0x00) Scaricamento dei supporti riuscito.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_FILE_CORRUPT**    (0x08) Il file è danneggiato.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
@@ -4342,7 +4345,7 @@ UINT fx_media_format(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio formatta i supporti forniti in modo compatibile con FAT 12/16/32 in base ai parametri forniti. Questo servizio deve essere chiamato prima di aprire il supporto.
+Questo servizio formatta i supporti forniti in modo compatibile con FAT 16/16/32 in base ai parametri forniti. Questo servizio deve essere chiamato prima di aprire il supporto.
 
 > [!WARNING]
 > *La formattazione di un supporto già formattato cancella in modo efficace tutti i file e le directory presenti nel supporto.*
@@ -4350,16 +4353,19 @@ Questo servizio formatta i supporti forniti in modo compatibile con FAT 12/16/32
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale. Viene usato solo per fornire alcune informazioni di base necessarie per il funzionamento del driver.
-- **driver**: puntatore al driver di I/O per questo supporto. Si tratta in genere dello stesso driver fornito alla chiamata fx_media_open successiva.
+- **driver:** puntatore al driver di I/O per questo supporto. Si tratta in genere dello stesso driver fornito alla chiamata fx_media_open successiva.
 - **driver_info_ptr:** puntatore a informazioni facoltative che possono essere utilizzate dal driver di I/O.
-- **memory_ptr**: puntatore alla memoria di lavoro per il supporto.
+- **memory_ptr:** puntatore alla memoria di lavoro per il supporto.
 - **memory_size**: specifica le dimensioni della memoria dei supporti di lavoro. Le dimensioni devono essere almeno le dimensioni del settore del supporto.
-- **volume_name**: puntatore alla stringa del nome del volume, che può avere un massimo di 11 caratteri.
-- **number_of_fats**: numero di faT nei supporti. Il valore minimo è 1 per il fat primario. I valori maggiori di 1 comportano la manutenzione di copie FAT aggiuntive in fase di esecuzione.
+- **volume_name:** puntatore alla stringa del nome del volume, che contiene un massimo di 11 caratteri.
+- **number_of_fats**: numero di fat nei supporti. Il valore minimo è 1 per la fat primaria. I valori maggiori di 1 comportano la manutenzione di copie FAT aggiuntive in fase di esecuzione.
 - **directory_entries**: numero di voci di directory nella directory radice.
 - **hidden_sectors**: numero di settori nascosti prima del settore di avvio del supporto. Questo è tipico quando sono presenti più partizioni.
 - **total_sectors**: numero totale di settori nei supporti.
 - **bytes_per_sector**: numero di byte per settore, che in genere è 512. FileX richiede che sia un multiplo di 32.
+> [!IMPORTANT]
+> *In riferimento alla specifica, i byte per settore possono assumere solo i valori seguenti: 512, 1024, 2048 o 4096.*
+
 - **sectors_per_cluster**: numero di settori in ogni cluster. Il cluster è l'unità di allocazione minima in un file system.
 - **heads**: numero di teste fisiche.
 - **sectors_per_track**: numero di settori per traccia.
@@ -4442,7 +4448,7 @@ UINT fx_media_open(
 Questo servizio apre un supporto per l'accesso ai file usando il driver di I/O fornito.
 
 > [!WARNING]
-> *La memoria fornita a questo servizio viene usata per implementare una cache di settore logico interna, quindi maggiore è la quantità di memoria fornita, maggiore sarà la quantità di I/O fisico ridotta. FileX richiede una cache di almeno un settore logico (byte per settore del supporto).*
+> *La memoria fornita a questo servizio viene usata per implementare una cache del settore logico interno, di conseguenza, maggiore sarà la quantità di memoria fornita, maggiore sarà la quantità di I/O fisico ridotta. FileX richiede una cache di almeno un settore logico (byte per settore del supporto).*
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -4515,17 +4521,17 @@ UINT fx_media_open_notify_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta una funzione di callback di notifica che verrà richiamata dopo che un supporto è stato aperto correttamente.
+Questo servizio imposta una funzione di callback di notifica che verrà richiamata dopo l'apertura di un supporto.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **media_open_notify:** funzione di callback di notifica dell'apertura dei supporti da installare. Il passaggio di NULL come funzione di callback disabilita il callback di apertura del supporto.
+- **media_open_notify:** funzione di callback di notifica dell'apertura dei supporti da installare. Il passaggio di NULL come funzione di callback disabilita il callback di apertura dei supporti.
 
 ### <a name="return-values"></a>Valori restituiti
 
 
-- **FX_SUCCESS** (0x00) L'installazione della funzione di callback è riuscita.
+- **FX_SUCCESS** (0x00) Correttamente installata la funzione di callback.
 - **FX_PTR_ERROR** (0x18) media_ptr è NULL.
 - **FX_CALLER_ERROR**    (0x20) Caller non è un thread.
 
@@ -4574,17 +4580,17 @@ UINT fx_media_read(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio legge un settore logico dal supporto e lo inserisce nel buffer fornito.
+Questo servizio legge un settore logico dai supporti e lo inserisce nel buffer fornito.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore a un supporto aperto in precedenza.
 - **logical_sector:** settore logico da leggere.
-- **buffer_ptr**: puntatore alla destinazione per la lettura del settore logico.
+- **buffer_ptr:** puntatore alla destinazione per il settore logico letto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Lettura supporti riuscita.
+- **FX_SUCCESS** (0x00) Lettura dei supporti completata.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
@@ -4643,7 +4649,7 @@ UINT fx_media_space_available(
 
 Questo servizio restituisce il numero di byte disponibili nel supporto.
 
-Per usare supporti di dimensioni superiori a 4 GB, l'applicazione deve usare il *servizio* fx_media_extended_space_available .
+Per usare supporti di dimensioni superiori a 4 GB, l'applicazione deve usare il *fx_media_extended_space_available*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -4652,7 +4658,7 @@ Per usare supporti di dimensioni superiori a 4 GB, l'applicazione deve usare il 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Ha restituito correttamente lo spazio disponibile sui supporti.
+- **FX_SUCCESS** (0x00) È stato restituito spazio disponibile nel supporto.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_PTR_ERROR** (0x18) Puntatore multimediale non valido o puntatore byte disponibili è NULL.
 - **FX_CALLER_ERROR**    (0x20) Caller non è un thread.
@@ -4714,7 +4720,7 @@ Questo servizio recupera il nome del volume del supporto aperto in precedenza.
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **volume_name:** puntatore alla destinazione per il nome del volume. Si noti che la destinazione deve essere sufficientemente grande da contenere 12 caratteri.
+- **volume_name:** puntatore alla destinazione per il nome del volume. Si noti che la destinazione deve essere almeno sufficientemente grande da contenere 12 caratteri.
 - **volume_source**: indica dove recuperare il nome, dal settore di avvio o dalla directory radice. I valori validi per questo parametro sono:
   - FX_BOOT_SECTOR
   - FX_DIRECTORY_SECTOR
@@ -4725,7 +4731,7 @@ Questo servizio recupera il nome del volume del supporto aperto in precedenza.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NOT_FOUND** volume (0x04) non trovato.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
-- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore di destinazione del volume.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore di destinazione del volume non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -4802,7 +4808,7 @@ Questo servizio recupera il nome del volume del supporto aperto in precedenza.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NOT_FOUND** volume (0x04) non trovato.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
-- **FX_PTR_ERROR** (0x18) Supporto non valido o puntatore di destinazione del volume.
+- **FX_PTR_ERROR** (0x18) Supporto o puntatore di destinazione del volume non valido.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -5003,11 +5009,11 @@ Questo servizio restituisce la data di sistema corrente.
 
 - **year:** puntatore alla destinazione per l'anno.
 - **month:** puntatore alla destinazione per month.
-- **day:** puntatore alla destinazione per il giorno.
+- **day:** puntatore alla destinazione per day.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **FX_SUCCESS** (0x00) Recupero della data riuscito.
+- **FX_SUCCESS** (0x00) Recupero data riuscito.
 - **FX_PTR_ERROR** (0x18) Uno o più parametri di input sono NULL.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -5105,10 +5111,10 @@ VOID fx_system_initialize(void);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio inizializza tutte le principali strutture di dati FileX. Deve essere chiamato  in tx_application_define o possibilmente da un thread di inizializzazione e deve essere chiamato prima di usare qualsiasi altro servizio FileX.
+Questo servizio inizializza tutte le principali strutture di dati FileX. Deve essere chiamato in un ***tx_application_define*** o possibilmente da un thread di inizializzazione e deve essere chiamato prima di usare qualsiasi altro servizio FileX.
 
 > [!WARNING]
-> *Dopo l'inizializzazione da questa chiamata, l'applicazione deve chiamare fx_system_date_set _ e _ fx_system_time_set * per iniziare con una data e un'ora di sistema *accurate.*
+> *Una volta inizializzata da questa chiamata, l'applicazione deve chiamare fx_system_date_set _ e _ fx_system_time_set * per iniziare con una data e un'ora *di sistema accurate.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -5120,7 +5126,7 @@ Nessuno.
 
 ### <a name="allowed-from"></a>Consentito da
 
-inizializzazione, thread
+Inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -5170,9 +5176,9 @@ Questo servizio recupera l'ora di sistema corrente.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **hour:** puntatore alla destinazione per l'ora.
-- **minute:** puntatore alla destinazione per minuti.
-- **second:** puntatore alla destinazione per il secondo.
+- **hour:** puntatore alla destinazione per hour.
+- **minute:** puntatore alla destinazione per minute.
+- **second:** puntatore alla destinazione per second.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -5221,13 +5227,13 @@ UINT fx_system_time_set(UINT hour, UINT minute, UINT second);
 Questo servizio imposta l'ora di sistema corrente su quella specificata dai parametri di input.
 
 > [!WARNING]
-> *Questo servizio deve essere  chiamato subito dopo l'fx_system_initialize per impostare l'ora di sistema iniziale. Per impostazione predefinita, l'ora di sistema è 0:0:0.*
+> *Questo servizio deve essere chiamato poco dopo **l'fx_system_initialize** per impostare l'ora di sistema iniziale. Per impostazione predefinita, l'ora di sistema è 0:0:0.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **hour**: nuova ora (0-23).
 - **minute**: nuovo minuto (0-59).
-- **second**: nuovo secondo (0-59).
+- **second:** nuovo secondo (0-59).
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -5295,7 +5301,7 @@ Questo servizio crea una sottodirectory denominata Unicode nella directory prede
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_ALREADY_CREATED** (0x0B) La directory specificata esiste già.
 - **FX_NO_MORE_SPACE** (0x0A) Nessun altro cluster disponibile nel supporto per la nuova voce di directory.
-- **FX_NOT_IMPLEMENTED** servizio (0x22) non implementato per l'file system exFAT.
+- **FX_NOT_IMPLEMENTED** (0x22) non implementato per l'file system exFAT.
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
 - **FX_PTR_ERROR** (0x18) Supporti o puntatori nome non validi.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
@@ -5449,7 +5455,7 @@ UINT fx_unicode_file_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un file con nome Unicode nella directory predefinita corrente. Non sono consentite informazioni sul percorso nel parametro del nome di origine Unicode. In caso di esito positivo, il nome breve (formato 8.3) del file Unicode appena creato viene restituito dal servizio.
+Questo servizio crea un file con nome Unicode nella directory predefinita corrente. Non sono consentite informazioni sul percorso nel parametro del nome di origine Unicode. In caso di esito positivo, il servizio restituire il nome breve (formato 8.3) del file Unicode appena creato.
 
 > [!WARNING]
 > *Tutte le operazioni sul file Unicode (apertura, scrittura, lettura, chiusura e così via) devono essere eseguite fornendo il nome breve restituito (formato 8.3) ai servizi file FileX standard.*
@@ -5458,7 +5464,7 @@ Questo servizio crea un file con nome Unicode nella directory predefinita corren
 
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **source_unicode_name:** puntatore al nome Unicode per il nuovo file.
+- **source_unicode_name**: puntatore al nome Unicode per il nuovo file.
 - **source_unicode_length**: lunghezza del nome Unicode.
 - **short_name:** puntatore alla destinazione per il nome breve (formato 8.3) per il nuovo file Unicode.
 
@@ -5468,10 +5474,10 @@ Questo servizio crea un file con nome Unicode nella directory predefinita corren
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_ALREADY_CREATED** (0x0B) Il file specificato esiste già.
 - **FX_NO_MORE_SPACE** (0x0A) Nessun altro cluster disponibile nel supporto per la nuova voce di file.
-- **FX_NOT_IMPLEMENTED** servizio (0x22) non implementato per l'file system exFAT.
+- **FX_NOT_IMPLEMENTED** (0x22) non implementato per le file system exFAT.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_WRITE_PROTECT** (0x23) Il supporto specificato è protetto da scrittura.
-- **FX_PTR_ERROR** (0x18) Supporti o puntatori nome non validi.
+- **FX_PTR_ERROR** (0x18) Supporti o puntatori di nome non validi.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -5544,7 +5550,7 @@ UINT fx_unicode_file_rename(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio modifica un nome file denominato Unicode in un nuovo nome Unicode specificato nella directory predefinita corrente. I parametri del nome Unicode non devono avere informazioni sul percorso.
+Questo servizio modifica un nome file con nome Unicode nel nuovo nome Unicode specificato nella directory predefinita corrente. I parametri del nome Unicode non devono contenere informazioni sul percorso.
 
 > [!IMPORTANT]
 > *Questo servizio non è supportato nei supporti exFAT.*
@@ -5552,16 +5558,16 @@ Questo servizio modifica un nome file denominato Unicode in un nuovo nome Unicod
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
-- **old_unicode_name:** puntatore al nome Unicode per il file corrente.
+- **old_unicode_name**: puntatore al nome Unicode per il file corrente.
 - **old_unicode_name_length**: lunghezza del nome Unicode corrente.
-- **new_unicode_name:** puntatore al nuovo nome file Unicode.
+- **new_unicode_name**: puntatore al nuovo nome file Unicode.
 - **new_unicode_name_length**: lunghezza del nuovo nome Unicode.
-- **new_short_name:** puntatore alla destinazione per il nome breve (formato 8.3) per il file Unicode rinominato.
+- **new_short_name**: puntatore alla destinazione per il nome breve (formato 8.3) per il file Unicode rinominato.
 
 ### <a name="return-values"></a>Valori restituiti
 
 
-- **FX_SUCCESS** (0x00) Apertura dei supporti completata.
+- **FX_SUCCESS** (0x00) I supporti sono stati aperti correttamente.
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_ALREADY_CREATED** (0x0B) Il nome file specificato esiste già.
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
@@ -5788,28 +5794,28 @@ UINT fx_unicode_name_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il nome Unicode associato al nome breve fornito (formato 8.3) all'interno della directory predefinita corrente. Non sono consentite informazioni sul percorso nel parametro short name. In caso di esito positivo, il nome Unicode associato al nome breve viene restituito dal servizio.
+Questo servizio recupera il nome Unicode associato al nome breve fornito (formato 8.3) all'interno della directory predefinita corrente. Nel parametro nome breve non sono consentite informazioni sul percorso. In caso di esito positivo, il nome Unicode associato al nome breve viene restituito dal servizio.
 
 > [!IMPORTANT]
-> *Questo servizio può essere usato per ottenere nomi Unicode per file e sottodirectory.*
+> *Questo servizio può essere usato per ottenere nomi Unicode sia per i file che per le sottodirectory.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
 - **short_name** Puntatore al nome breve (formato 8.3).
-- **destination_unicode_name:** puntatore alla destinazione per il nome Unicode associato al nome breve fornito.
+- **destination_unicode_name**: puntatore alla destinazione per il nome Unicode associato al nome breve fornito.
 - **destination_unicode_length:** puntatore alla lunghezza del nome Unicode restituita.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **FX_SUCCESS** (0x00) Recupero del nome Unicode riuscito.
 - **FX_FAT_READ_ERROR** (0x03) Impossibile leggere la tabella FAT.
-- **FX_FILE_CORRUPT** (0x08) Il file è danneggiato
+- **FX_FILE_CORRUPT** file (0x08) è danneggiato
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NOT_FOUND** (0x04) Nome breve non trovato o dimensioni di destinazione Unicode troppo piccole.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
-- **FX_PTR_ERROR** (0x18) Supporti o puntatori nome non validi.
+- **FX_PTR_ERROR** (0x18) Supporti o puntatori di nome non validi.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -5877,21 +5883,21 @@ UINT fx_unicode_name_get_extended(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il nome Unicode associato al nome breve fornito (formato 8.3) all'interno della directory predefinita corrente. Non sono consentite informazioni sul percorso nel parametro short name. In caso di esito positivo, il nome Unicode associato al nome breve viene restituito dal servizio.
+Questo servizio recupera il nome Unicode associato al nome breve fornito (formato 8.3) all'interno della directory predefinita corrente. Nel parametro nome breve non sono consentite informazioni sul percorso. In caso di esito positivo, il nome Unicode associato al nome breve viene restituito dal servizio.
 
 > [!IMPORTANT]
-> *Questo servizio è identico a ***fx_unicode_name_get**, ad eccezione del chiamante che specifica le dimensioni del buffer Unicode di destinazione _come argomento di input. Ciò consente al servizio di garantire che non sovrascriva il buffer Unicode di destinazione_
+> *Questo servizio è identico a ***fx_unicode_name_get**, ad eccezione del fatto che il chiamante fornisce le dimensioni del buffer Unicode di destinazione _come argomento di input. Ciò consente al servizio di garantire che non sovrascriverà il buffer Unicode di destinazione_
 
 > [!IMPORTANT]
-> *Questo servizio può essere usato per ottenere nomi Unicode per file e sottodirectory.*
+> *Questo servizio può essere usato per ottenere nomi Unicode sia per i file che per le sottodirectory.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **media_ptr:** puntatore al blocco di controllo multimediale.
 - **short_name:** puntatore al nome breve (formato 8.3).
-- **destination_unicode_name:** puntatore alla destinazione per il nome Unicode associato al nome breve fornito.
+- **destination_unicode_name**: puntatore alla destinazione per il nome Unicode associato al nome breve fornito.
 - **destination_unicode_length:** puntatore alla lunghezza del nome Unicode restituita.
-- **unicode_name_buffer_length**: dimensione del buffer dei nomi Unicode. Nota: è necessario un carattere di terminazione NULL, che crea un byte aggiuntivo.
+- **unicode_name_buffer_length**: dimensioni del buffer dei nomi Unicode. Nota: è necessario un carattere di terminazione NULL, che crea un byte aggiuntivo.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -5902,7 +5908,7 @@ Questo servizio recupera il nome Unicode associato al nome breve fornito (format
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
 - **FX_NOT_FOUND** (0x04) Nome breve non trovato o dimensioni di destinazione Unicode troppo piccole.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
-- **FX_PTR_ERROR** (0x18) Supporti o puntatori del nome non validi.
+- **FX_PTR_ERROR** (0x18) Supporti o puntatori di nome non validi.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -5987,10 +5993,10 @@ Questo servizio recupera il nome breve (formato 8.3) associato al nome Unicode a
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NOT_FOUND** non è stato 0x04 il nome Unicode (0x04).
+- **FX_NOT_FOUND** il nome Unicode 0x04 (0x04) non è stato trovato.
 - **FX_NOT_IMPLEMENTED** (0x22) non implementato per le file system exFAT.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
-- **FX_PTR_ERROR** (0x18) Supporti o puntatori del nome non validi.
+- **FX_PTR_ERROR** (0x18) Supporti o puntatori di nome non validi.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -6064,7 +6070,7 @@ UINT fx_unicode_short_name_get_extended(
 Questo servizio recupera il nome breve (formato 8.3) associato al nome Unicode all'interno della directory predefinita corrente. Non sono consentite informazioni sul percorso nel parametro del nome Unicode. In caso di esito positivo, il nome breve associato al nome Unicode viene restituito dal servizio.
 
 > [!IMPORTANT]
-> *Questo servizio è identico **a fx_unicode_short_name_get()**, ad eccezione del fatto che il chiamante fornisce le dimensioni del buffer di destinazione come argomento di input. Ciò consente al servizio di garantire che il nome breve non superi il buffer di destinazione.*
+> *Questo servizio è identico **a fx_unicode_short_name_get(),** ad eccezione del fatto che il chiamante fornisce le dimensioni del buffer di destinazione come argomento di input. Ciò consente al servizio di garantire che il nome breve non superi il buffer di destinazione.*
 
 *Questo servizio può essere usato per ottenere nomi brevi sia per i file che per le sottodirectory*
 
@@ -6083,10 +6089,10 @@ Questo servizio recupera il nome breve (formato 8.3) associato al nome Unicode a
 - **FX_FILE_CORRUPT** file (0x08) è danneggiato
 - **FX_IO_ERROR** errore di I/O del driver 0x90 (0x90).
 - **FX_MEDIA_NOT_OPEN** (0x11) Il supporto specificato non è aperto.
-- **FX_NOT_FOUND** non è stato 0x04 il nome Unicode (0x04).
-- **FX_NOT_IMPLEMENTED** servizio (0x22) non implementato per l'file system exFAT.
+- **FX_NOT_FOUND** il nome Unicode 0x04 (0x04) non è stato trovato.
+- **FX_NOT_IMPLEMENTED** (0x22) non implementato per le file system exFAT.
 - **FX_SECTOR_INVALID** (0x89) Settore non valido.
-- **FX_PTR_ERROR** (0x18) Supporti o puntatori nome non validi.
+- **FX_PTR_ERROR** (0x18) Supporti o puntatori di nome non validi.
 - **FX_CALLER_ERROR** (0x20) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
