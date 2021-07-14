@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 6112ab5cb711ca1a5c83fd5cd4b43abc0302c6c5
-ms.sourcegitcommit: f9d8cf23becf96d5bd6d31dd54f89c48962fd09b
+ms.openlocfilehash: b40a57bf385ddcf623ff7cbe0d2e798c547227d7
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549332"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754897"
 ---
 # <a name="overview-of-azure-rtos-netx-duo"></a>Panoramica di Azure RTOS NetX Duo
 
@@ -30,6 +30,7 @@ Azure RTOS stack di rete TCP/IP incorporato di NetX Duo è lo stack di rete TCP/
 * Minimo 1,2 KB, 300 byte di RAM
 
 ### <a name="http-https"></a>HTTP, HTTPS
+NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 
 #### <a name="http-10"></a>HTTP 1.0
 
@@ -79,7 +80,7 @@ Azure RTOS stack di rete TCP/IP incorporato di NetX Duo è lo stack di rete TCP/
 * Domain Name System (DNS)
 * Multicast Domain Name System (mDNS)
 * Individuazione dei servizi basati su DNS (DNS-SD)
-* DNS minimo da 2,4 KB a 3 KB FLASH, footprint di RAM da 1 KB
+* DNS minimo da 2,4 KB a 3 KB FLASH, footprint ram da 1 KB
 * Supporto client
 * mDNS e DNS-SD sono disponibili solo con Azure RTOS NetX Duo
 
@@ -102,7 +103,7 @@ Azure RTOS stack di rete TCP/IP incorporato di NetX Duo è lo stack di rete TCP/
 * FTP minimo da 1,8 KB a 7,2 KB FLASH, da 0,6 KB a 2,1 KB ram footprint
 * TFTP minimo da 1,7 KB a 2,4 KB FLASH, da 0,3 KB a 1,8 KB ram footprint
 * Supporto client e server
-* API FTP e TFTP *intuitive: \** nx_ftp_ o *\* nx_tftp_*
+* API FTP e TFTP *intuitive: nx_ftp_ \** o *nx_tftp_ \**
 
 ### <a name="ppp-pppoe"></a>PPP, PPPoE
 
@@ -120,14 +121,8 @@ Azure RTOS stack di rete TCP/IP incorporato di NetX Duo è lo stack di rete TCP/
 * Supporto client
 * API SNTP intuitive: *nx_sntp_ \**
 
-### <a name="azure-rtos-netx-duo-api"></a>Azure RTOS NetX Duo API
+### <a name="legacy-code-support"></a>Supporto del codice legacy
 
-* API intuitiva e coerente
-* Convenzione di denominazione sostantivo-verbo
-* Implementazione rapida dell'API a copia zero
-* Tutte le API hanno <i>nx_* per</i> identificarsi facilmente come Azure RTOS NetX
-* Le API di blocco hanno un timeout del thread facoltativo
-* Vedere [Azure RTOS per l'utente di NetX Duo](about-this-guide.md) per altri dettagli
 * Livello BSD facoltativo per la portabilità del codice socket legacy
 
 ### <a name="igmp"></a>Igmp
@@ -261,30 +256,50 @@ Azure RTOS NetX Duo è sicuro. Questa sicurezza viene fornita tramite prodotti d
 
 Microsoft Azure RTOS fornisce agli OEM componenti per proteggere la comunicazione e creare codice e isolamento dei dati usando i meccanismi di protezione hardware MCU/MPU sottostanti. È in definitiva responsabilità del generatore di dispositivi garantire che il dispositivo soddisfi pienamente i requisiti di sicurezza in evoluzione associati al caso d'uso specifico.
 
-
 ## <a name="interoperability-verification"></a>Verifica dell'interoperabilità
 
 NetX Duo è conforme agli standard RFC e offre interoperabilità completa con i dispositivi per la maggior parte dei fornitori.
 
 ![Logo pronto per IPv6](./media/overview-netx-duo/ipv6-ready-logo.png)
 
-Azure RTOS NetX Duo è uno degli unici stack TCP/IP incorporati per ottenere la rigorosa certificazione del logo IPv6-Ready, dimostrando che ha superato i test di conformità e interoperabilità, amministrati e convalidati dal forum IPv6. NetX Duo usa anche lo standard di settore IxANVL (Automated Network Validation Library) per l'implementazione del protocollo TCP/IP core di NetX Duo.
+Azure RTOS NetX Duo è uno degli unici stack TCP/IP incorporati per ottenere la rigorosa certificazione del logo IPv6-Ready, dimostrando di aver superato i test di conformità e interoperabilità, amministrati e convalidati dal forum IPv6. NetX Duo usa anche lo standard di settore IxANVL (Automated Network Validation Library) per l'implementazione del protocollo TCP/IP core di NetX Duo.
 
 ## <a name="comprehensive-iot-solution"></a>Soluzione IoT completa
 
-NetX Duo offre una delle reti TCP/IP più complete per le applicazioni IoT con un'ampia incorporata. Questo supporto include i seguenti prodotti del protocollo aggiuntivo.
+NetX Duo offre una delle reti TCP/IP più complete per applicazioni IoT con un'incorporata approfondita. Questo supporto include i prodotti del protocollo aggiuntivo seguenti.
 
-MQTT, CoAP, LWM2M, 6LoWPAN, SSL/TLS/DTLS, IPsec, AutoIP, DHCP, DNS, mDNS, DNS-SD, FTP, HTTP, IPsec, NAT, POP3, PPP, PPPoE, SMTP, SNMP v1/2/3, Telnet, TFTP
+* MQTT
+* CoAP
+* LWM2M
+* 6LoWPAN
+* SSL/TLS/DTLS
+* IPsec
+* AutoIP
+* DHCP
+* DNS
+* Mdns
+* DNS-SD
+* FTP
+* HTTP
+* IPsec
+* NAT
+* POP3
+* Ppp
+* Pppoe
+* SMTP
+* SNMP v1/2/3
+* Telnet
+* TFTP
 
 ## <a name="advanced-technology"></a>Tecnologia avanzata
 
-Azure RTOS NetX Duo è una tecnologia avanzata che include:
+Azure RTOS NetX Duo è una tecnologia avanzata che include quanto segue.
 
-* Architettura ™ Piconet
+* Architettura di Piconet™
 * Scalabilità automatica
-* UDP Fast-Path Technology™
+* Tecnologia Fast-Path UDP™
 * Gestione flessibile dei pacchetti
-* API e implementazione a copia zero
+* API e implementazione in copia zero
 * Supporto multihomed
 * Timeout facoltativo per tutte le sospensioni
 * Supporto del routing statico
@@ -294,31 +309,37 @@ Azure RTOS NetX Duo è una tecnologia avanzata che include:
 
 ## <a name="related-services"></a>Servizi correlati
 
-### <a name="azure-iot"></a>Azure IoT
+NetX Duo offre i servizi aggiuntivi seguenti.
 
-NetX Duo include [Azure IoT Middleware](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/docs/README.md)per Azure RTOS, una libreria specifica della piattaforma che funge da livello di binding tra il Azure RTOS e Azure SDK per Embedded C per facilitare la connettività ai servizi Azure IoT. Gli obiettivi del Azure IoT middleware sono i seguenti.
-* Fornire le interfacce smart client (IoTHub_Client, DeviceProvisioning_Client) necessarie agli sviluppatori per le applicazioni.
+* Azure IoT Middleware
+* Azure Defender
+* Aggiornamento del dispositivo per l'hub IoT.
+
+### <a name="azure-iot-middleware"></a>Azure IoT Middleware
+
+NetX Duo include [Azure IoT Middleware](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/docs/README.md)per Azure RTOS , una libreria specifica della piattaforma che funge da livello di associazione tra Azure RTOS e Azure SDK per Embedded C per facilitare la connettività ai servizi Azure IoT. Gli obiettivi del Azure IoT middleware sono i seguenti.
+* Fornire le interfacce client intelligenti (IoTHub_Client, DeviceProvisioning_Client) necessarie agli sviluppatori per le proprie applicazioni.
 * Orchestrare l'interazione tra Embedded C SDK e la piattaforma.
-* Specificare Azure RTOS inizializzazione della piattaforma.
+* Specificare Azure RTOS'inizializzazione della piattaforma.
 * IoT Plug and Play supporto.
 * Funzionalità di sicurezza.
-* Informazioni sulle limitazioni delle risorse.
+* Limitazione delle risorse in grado di riconoscere.
 * Supporto del protocollo.
 
-![Azure RTOS correlati a NetX Duo](./media/overview-netx-duo/related-services.png)
+![Azure RTOS servizi correlati a NetX Duo](./media/overview-netx-duo/related-services.png)
 
 ### <a name="azure-defender"></a>Azure Defender
 
-Il modulo Azure Defender per IoT sicurezza offre una soluzione di sicurezza completa per Azure RTOS dispositivi. Il modulo di sicurezza per Azure RTOS rilevamento di attività di rete dannose, la base del comportamento dei dispositivi basato su avvisi personalizzati e contribuisce a migliorare la protezione della sicurezza dei dispositivi. Altre informazioni sul modulo [di sicurezza per Azure RTOS](https://docs.microsoft.com/azure/asc-for-iot/iot-security-azure-rtos) [](https://docs.microsoft.com/azure/asc-for-iot/quickstart-azure-rtos-security-module) guida introduttiva alla configurazione del modulo Azure RTOS sicurezza.
+Il Azure Defender per IoT di sicurezza fornisce una soluzione di sicurezza completa per Azure RTOS dispositivi. Il modulo di sicurezza per Azure RTOS rilevamento delle attività di rete dannose, la base del comportamento dei dispositivi basata su avvisi personalizzati e contribuisce a migliorare l'pulizia della sicurezza dei dispositivi. Altre informazioni sul modulo [di sicurezza per Azure RTOS](https://docs.microsoft.com/azure/asc-for-iot/iot-security-azure-rtos) guida introduttiva alla configurazione del modulo Azure RTOS sicurezza. [](https://docs.microsoft.com/azure/asc-for-iot/quickstart-azure-rtos-security-module)
 
-### <a name="device-update-for-iot-hub"></a>Aggiornamento del dispositivo per l'hub IoT
+### <a name="device-update-for-iot-hub"></a>Aggiornamento dei dispositivi per l'hub IoT
 
-L'aggiornamento dei dispositivi di Azure per l'hub [IoT](https://docs.microsoft.com/azure/iot-hub-device-update/understand-device-update) è un servizio che consente di distribuire aggiornamenti over-the-air (OTA) per i dispositivi IoT. Il modulo Device Update for IoT Hub (Aggiornamento dispositivo per hub IoT) è l'implementazione dell'aggiornamento del dispositivo per l'agente dell'hub IoT in Azure RTOS NetX Duo. Fornisce semplici API per i generatori di dispositivi per integrare la funzionalità Aggiornamento dispositivo nella propria applicazione.
+Aggiornamento dei dispositivi di Azure per [l'hub IoT](https://docs.microsoft.com/azure/iot-hub-device-update/understand-device-update) è un servizio che consente di distribuire aggiornamenti over-the-air (OTA) per i dispositivi IoT. Il modulo Device Update for IoT Hub è l'implementazione di Device Update for IoT Hub Agent in Azure RTOS NetX Duo. Fornisce API semplici per i generatori di dispositivi per integrare la funzionalità Aggiornamento dispositivi nella propria applicazione.
 
 Vedere gli esempi di schede di valutazione dei semiconduttori chiave che includono le guide introduttive per informazioni su come configurare, compilare e distribuire gli aggiornamenti over-the-air (OTA) nei dispositivi.
 
-Altre informazioni sull'uso dell'aggiornamento dei [dispositivi per l'hub IoT con Azure RTOS](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-azure-real-time-operating-system).
+Altre informazioni sull'uso di Aggiornamento dispositivi per [l'hub IoT con Azure RTOS](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-azure-real-time-operating-system).
 
 ## <a name="next-steps"></a>Passaggi successivi
 
-Per altre informazioni su NetX Duo, iniziare con il manuale [Azure RTOS'utente di NetX Duo.](about-this-guide.md)
+Per altre informazioni su NetX Duo, iniziare con la guida [Azure RTOS'utente di NetX Duo.](about-this-guide.md)
