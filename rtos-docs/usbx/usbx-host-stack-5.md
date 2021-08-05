@@ -1,30 +1,30 @@
 ---
-title: Capitolo 5-API delle classi host USBX
-description: Informazioni sulle API delle classi host USBX.
+title: Capitolo 5 - API classi host USBX
+description: Informazioni sull'API Classi host USBX.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: bf5876042e08a59979adcd429917bfc3fbfdbc20
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2e9e2e0286300b3f79f7f9e6ad2d7fab96ba7337
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824524"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115177746"
 ---
-# <a name="chapter-5---usbx-host-classes-api"></a>Capitolo 5-API delle classi host USBX
+# <a name="chapter-5---usbx-host-classes-api"></a>Capitolo 5 - API classi host USBX
 
-In questo capitolo vengono illustrate tutte le API esposte delle classi host USBX. Le API seguenti per ogni classe sono descritte in dettaglio.
+Questo capitolo illustra tutte le API esposte delle classi host USBX. Le API seguenti per ogni classe sono descritte in dettaglio.
 
 - Classe HID
-- CDC-ACM (classe)
+- Classe CDC-ACM
 - Classe CDC-ECM
 - Classe di archiviazione
 
 ## <a name="ux_host_class_hid_client_register"></a>ux_host_class_hid_client_register
 
-Registrare un client nascosto nella classe HID.
+Registrare un client HID nella classe HID.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -37,22 +37,22 @@ UINT ux_host_class_hid_client_register(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per registrare un client nascosto nella classe HID. La classe HID deve trovare una corrispondenza tra un dispositivo HID e un client nascosto prima di richiedere i dati da questo dispositivo.
+Questa funzione viene usata per registrare un client HID nella classe HID. La classe HID deve trovare una corrispondenza tra un dispositivo HID e un client HID prima di richiedere dati da questo dispositivo.
 
 > [!NOTE]
-> La stringa C di hid_client_name deve essere con terminazione NULL e la lunghezza (senza il carattere di terminazione NULL) non deve essere maggiore di **UX_HOST_CLASS_HID_MAX_CLIENT_NAME_LENGTH**.
+> La stringa C di hid_client_name deve essere con terminazione NULL e la lunghezza di essa (senza il terminatore NULL stesso) non deve essere maggiore **di UX_HOST_CLASS_HID_MAX_CLIENT_NAME_LENGTH**.
 
 ### <a name="parameters"></a>Parametri
 
 - **hid_client_name** Puntatore al nome del client HID.
-- **hid_client_handler** Puntatore al gestore client nascosto.
+- **hid_client_handler** Puntatore al gestore client HID.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato
-- L'allocazione di memoria **UX_MEMORY_INSUFFICIENT** (0x12) per il client non è riuscita.
-- Il numero massimo di client **UX_MEMORY_ARRAY_FULL** (0x1A) è già registrato.
-- **UX_HOST_CLASS_ALREADY_INSTALLED** (0X58) questa classe esiste già
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato
+- **UX_MEMORY_INSUFFICIENT(0x12)** L'allocazione della memoria per il client non è riuscita.
+- **UX_MEMORY_ARRAY_FULL** (0x1a) Numero massimo di client già registrati.
+- **UX_HOST_CLASS_ALREADY_INSTALLED** (0x58) Questa classe esiste già
 
 ### <a name="example"></a>Esempio
 
@@ -82,18 +82,18 @@ UINT ux_host_class_hid_report_callback_register(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per registrare un callback dalla classe HID al client HID quando viene ricevuto un report.
+Questa funzione viene usata per registrare un callback dalla classe HID al client HID quando viene ricevuto un report.
 
 ### <a name="parameters"></a>Parametri
 
-- **nascosto** Puntatore all'istanza della classe HID
-- **call_back** Puntatore alla struttura call_back
+- **hid** Puntatore all'istanza della classe HID
+- **call_back** Puntatore alla call_back struttura
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) istanza HID non valida.
-- Errore **UX_HOST_CLASS_HID_REPORT_ERROR** (0x79) nella registrazione del callback del report.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) Istanza HID non valida.
+- **UX_HOST_CLASS_HID_REPORT_ERROR** (0x79) Errore nella registrazione del callback del report.
 
 ### <a name="example"></a>Esempio
 
@@ -127,17 +127,17 @@ UINT ux_host_class_hid_periodic_report_start(UX_HOST_CLASS_HID *hid);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per avviare l'endpoint periodico (interrupt) per l'istanza della classe HID associata a questo client nascosto. La classe HID non può avviare l'endpoint periodico finché il client HID non viene attivato e pertanto viene lasciato al client HID per avviare l'endpoint per la ricezione dei report.
+Questa funzione viene usata per avviare l'endpoint periodico (interrupt) per l'istanza della classe HID associata a questo client HID. La classe HID non può avviare l'endpoint periodico finché il client HID non viene attivato e pertanto viene lasciato al client HID per avviare l'endpoint per ricevere i report.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **nascosto** Puntatore all'istanza della classe HID.
+- **hid** Puntatore all'istanza della classe HID.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione di report periodici **UX_SUCCESS** (0x00) avviata correttamente.
-- Errore **ux_host_class_hid_PERIODIC_REPORT_ERROR** (0x7A) nel rapporto periodico.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
+- **UX_SUCCESS** (0x00) La creazione di report periodici è stata avviata correttamente.
+- **ux_host_class_hid_PERIODIC_REPORT_ERROR** (0x7A) Errore nel report periodico.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -164,17 +164,17 @@ UINT ux_host_class_hid_periodic_report_stop(UX_HOST_CLASS_HID *hid);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per arrestare l'endpoint periodico (interrupt) per l'istanza della classe HID associata a questo client nascosto. La classe HID non può arrestare l'endpoint periodico finché il client HID non viene disattivato, tutte le relative risorse vengono liberate e pertanto viene lasciato al client nascosto per arrestare l'endpoint.
+Questa funzione viene usata per arrestare l'endpoint periodico (interrupt) per l'istanza della classe HID associata a questo client HID. La classe HID non può arrestare l'endpoint periodico fino a quando il client HID non viene disattivato, tutte le relative risorse vengono liberate e pertanto viene lasciato al client HID per arrestare l'endpoint.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **nascosto** Puntatore all'istanza della classe HID.
+- **hid** Puntatore all'istanza della classe HID.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Report periodici di **UX_SUCCESS** (0x00) arrestato correttamente.
-- Errore **ux_host_class_hid_PERIODIC_REPORT_ERROR** (0x7A) nel rapporto periodico.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste
+- **UX_SUCCESS** (0x00) La creazione di report periodici è stata arrestata.
+- **ux_host_class_hid_PERIODIC_REPORT_ERROR** (0x7A) Errore nel report periodico.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) l'istanza della classe HID non esiste
 
 ### <a name="example"></a>Esempio
 
@@ -202,19 +202,19 @@ UINT ux_host_class_hid_report_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene usata per ricevere un report direttamente dal dispositivo senza basarsi sull'endpoint periodico. Questo report è proveniente dall'endpoint di controllo, ma il suo trattamento è identico a quello che era in arrivo nell'endpoint periodico.
+Questa funzione viene usata per ricevere un report direttamente dal dispositivo senza basarsi sull'endpoint periodico. Questo report proviene dall'endpoint di controllo, ma il trattamento è identico a quello dell'endpoint periodico.
 
 ### <a name="parameters"></a>Parametri
 
-- **nascosto** Puntatore all'istanza della classe HID.
-- **client_report** Puntatore al report client nascosto.
+- **hid** Puntatore all'istanza della classe HID.
+- **client_report** Puntatore al report del client HID.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il report è stato ricevuto correttamente.
-- **UX_HOST_CLASS_HID_REPORT_ERROR** (0x70) il report del client non è valido o si è verificato un errore durante il trasferimento.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
-- **UX_BUFFER_OVERFLOW** (0X5d) il buffer fornito non è sufficientemente grande da contenere il report non compresso.
+- **UX_SUCCESS** (0x00) Il report è stato ricevuto correttamente.
+- **UX_HOST_CLASS_HID_REPORT_ERROR** (0x70) Report client non valido o errore durante il trasferimento.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
+- **UX_BUFFER_OVERFLOW** (0x5d) Il buffer fornito non è sufficientemente grande da contenere il report non compresso.
 
 ### <a name="example"></a>Esempio
 
@@ -253,15 +253,15 @@ Questa funzione viene usata per inviare un report direttamente al dispositivo.
 
 ### <a name="parameters"></a>Parametri
 
-- **nascosto** Puntatore all'istanza della classe HID.
-- **client_report** Puntatore al report client nascosto.
+- **hid** Puntatore all'istanza della classe HID.
+- **client_report** Puntatore al report del client HID.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il report è stato inviato correttamente.
-- **UX_HOST_CLASS_HID_REPORT_ERROR** (0x70) il report del client non è valido o si è verificato un errore durante il trasferimento.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
-- **UX_HOST_CLASS_HID_REPORT_OVERFLOW** (0X5d) il buffer fornito non è sufficientemente grande da contenere il report non compresso.
+- **UX_SUCCESS** (0x00) Il report è stato inviato correttamente.
+- **UX_HOST_CLASS_HID_REPORT_ERROR** (0x70) Report client non valido o errore durante il trasferimento.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
+- **UX_HOST_CLASS_HID_REPORT_OVERFLOW** (0x5d) Il buffer fornito non è sufficientemente grande da contenere il report non compresso.
 
 ### <a name="example"></a>Esempio
 
@@ -294,7 +294,7 @@ UINT ux_host_class_hid_mouse_buttons_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per ottenere i pulsanti del mouse
+Questa funzione viene usata per ottenere i pulsanti del mouse
 
 ### <a name="parameters"></a>Parametri
 
@@ -303,8 +303,8 @@ Questa funzione viene utilizzata per ottenere i pulsanti del mouse
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il pulsante del mouse **UX_SUCCESS** (0x00) è stato recuperato.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
+- **UX_SUCCESS** (0x00) Il pulsante del mouse è stato recuperato correttamente.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -322,7 +322,7 @@ status = ux_host_class_hid_mouse_button_get(mouse_instance, &mouse_buttons);
 
 ## <a name="ux_host_class_hid_mouse_position_get"></a>ux_host_class_hid_mouse_position_get
 
-Ottiene la posizione del mouse.
+Ottenere la posizione del mouse.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -335,7 +335,7 @@ UINT ux_host_class_hid_mouse_position_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per ottenere la posizione del mouse in coordinate x & y.
+Questa funzione viene usata per ottenere la posizione del mouse nelle coordinate x & y.
 
 ### <a name="parameters"></a>Parametri
 
@@ -345,8 +345,8 @@ Questa funzione viene utilizzata per ottenere la posizione del mouse in coordina
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Sono state recuperate le coordinate di **UX_SUCCESS** (0x00) X &amp; Y.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
+- **UX_SUCCESS** (0x00) X Y &amp; coordinate recuperate correttamente.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -366,7 +366,7 @@ status = ux_host_class_hid_mouse_position_get(mouse_instance,
 
 ## <a name="ux_host_class_hid_keyboard_key_get"></a>ux_host_class_hid_keyboard_key_get
 
-Ottenere la chiave e lo stato della tastiera.
+Ottenere il tasto e lo stato della tastiera.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -385,15 +385,15 @@ Questa funzione viene usata per ottenere il tasto e lo stato della tastiera.
 
 - **keyboard_instance** Puntatore all'istanza della tastiera HID.
 - **keyboard_key** Puntatore al contenitore di tasti della tastiera.
-- **keyboard_state** Puntatore al contenitore dello stato della tastiera.
+- **keyboard_state** Puntatore al contenitore di stato della tastiera.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- La chiave e lo stato di **UX_SUCCESS** (0x00) sono stati recuperati correttamente.
-- **UX_ERROR** (0Xff) nulla da segnalare.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
+- **UX_SUCCESS** (0x00) La chiave e lo stato sono stati recuperati correttamente.
+- **UX_ERROR** (0xff) Nulla da segnalare.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
 
-Lo stato della tastiera può includere i valori seguenti.
+Lo stato della tastiera può avere i valori seguenti.
 
 - **UX_HID_KEYBOARD_STATE_KEY_UP** 0x10000
 - **UX_HID_KEYBOARD_STATE_NUM_LOCK** 0x0001
@@ -405,13 +405,13 @@ Lo stato della tastiera può includere i valori seguenti.
 - **UX_HID_KEYBOARD_STATE_SHIFT** 0x0300
 - **UX_HID_KEYBOARD_STATE_LEFT_ALT** 0x0400
 - **UX_HID_KEYBOARD_STATE_RIGHT_ALT** 0x0800
-- **UX_HID_KEYBOARD_STATE_ALT** 0x0A00
+- **UX_HID_KEYBOARD_STATE_ALT** 0x0a00
 - **UX_HID_KEYBOARD_STATE_LEFT_CTRL** 0x1000
 - **UX_HID_KEYBOARD_STATE_RIGHT_CTRL** 0x2000
 - **UX_HID_KEYBOARD_STATE_CTRL** 0x3000
 - **UX_HID_KEYBOARD_STATE_LEFT_GUI** 0x4000
 - **UX_HID_KEYBOARD_STATE_RIGHT_GUI** 0x8000
-- **UX_HID_KEYBOARD_STATE_GUI** 0xA000
+- **UX_HID_KEYBOARD_STATE_GUI** 0xa000
 
 ### <a name="example"></a>Esempio
 
@@ -464,18 +464,18 @@ UINT ux_host_class_hid_keyboard_ioctl(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione esegue una specifica funzione IOCTL sulla tastiera HID. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il comando viene completato.
+Questa funzione esegue una funzione ioctl specifica per la tastiera HID. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il comando viene completato.
 
 ### <a name="parameters"></a>Parametri
 
 - **keyboard_instance** Puntatore all'istanza della tastiera HID.
-- **ioctl_function** funzione IOCTL da eseguire. Vedere la tabella seguente per una delle funzioni IOCTL consentite.
-- **parametro** di Puntatore a un parametro specifico del comando IOCTL.
+- **ioctl_function** funzione ioctl da eseguire. Vedere la tabella seguente per una delle funzioni ioctl consentite.
+- **parametro** Puntatore a un parametro specifico dell'oggetto ioctl.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) la funzione IOCTL è stata completata correttamente.
-- **UX_FUNCTION_NOT_SUPPORTED** (0x54) funzione IOCTL sconosciuta
+- **UX_SUCCESS** (0x00) La funzione ioctl è stata completata correttamente.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) Funzione IOCTL sconosciuta
 
 ### <a name="ioctl-functions"></a>Funzioni IOCTL
 
@@ -580,7 +580,7 @@ status = ux_host_class_hid_keyboard_ioctl(keyboard,
 /* If status equals UX_SUCCESS, the operation was successful. */
 ```
 
-### <a name="example--disable-keyboard-key-decode"></a>Esempio: disabilitare la decodifica del tasto tastiera
+### <a name="example--disable-keyboard-key-decode"></a>Esempio: disabilitare la decodifica dei tasti della tastiera
 
 ```c
 UINT status;
@@ -612,16 +612,16 @@ Questa funzione viene usata per ottenere gli utilizzi del controllo remoto.
 ### <a name="parameters"></a>Parametri
 
 - **remote_control_instance** Puntatore all'istanza di controllo remoto HID.
-- **utilizzo** di Puntatore all'utilizzo.
-- **valore** di Puntatore al valore per l'utilizzo.
+- **utilizzo** Puntatore all'utilizzo.
+- **value** Puntatore al valore per l'utilizzo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- **UX_ERROR** (0Xff) nulla da segnalare.
-- L'istanza della classe HID **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non esiste.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_ERROR** (0xff) Nulla da segnalare.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** l'istanza della classe HID non esiste.
 
-L'elenco di tutti gli utilizzi possibili è troppo lungo per questo manuale dell'utente. Per una descrizione completa, il ux_host_class_hid. h include l'intero set di valori possibili.
+L'elenco di tutti i possibili utilizzi è troppo lungo per essere contenuto in questa guida utente. Per una descrizione completa, ux_host_class_hid.h include l'intero set di valori possibili.
 
 ### <a name="example"></a>Esempio
 
@@ -684,20 +684,23 @@ UINT ux_host_class_cdc_acm_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione legge dall'interfaccia cdc_acm. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo.
+Questa funzione legge dall'interfaccia cdc_acm. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il trasferimento è completato.
+
+> [!Note]
+> Questa funzione legge i dati bulk non elaborati dal dispositivo, quindi rimane in sospeso fino a quando il buffer non è pieno o il dispositivo termina il trasferimento da un pacchetto breve (incluso il pacchetto di lunghezza zero). Per altre informazioni, vedere Considerazioni generali sul [**trasferimento bulk.**](usbx-device-stack-5.md#general-considerations-for-bulk-transfer)
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'istanza della classe cdc_acm.
-- **data_pointer** Puntatore all'indirizzo del buffer del payload di dati.
+- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **data_pointer** Puntatore all'indirizzo del buffer del payload dei dati.
 - **requested_length** Lunghezza da ricevere.
 - **actual_length** Lunghezza effettivamente ricevuta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5b) l'istanza di cdc_acm non è valida.
-- TIMEOUT di trasferimento **UX_TRANSFER_TIMEOUT** (0x5c), lettura incompleta.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) L'istanza cdc_acm non è valida.
+- **UX_TRANSFER_TIMEOUT** (0x5c) Timeout trasferimento, lettura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -714,7 +717,7 @@ status = ux_host_class_cdc_acm_read(cdc_acm, data_pointer,
 
 ## <a name="ux_host_class_cdc_acm_write"></a>ux_host_class_cdc_acm_write
 
-Scrivere nell'interfaccia cdc_acm
+Scrivere nell'interfaccia cdc_acm dati
 
 ### <a name="prototype"></a>Prototipo
 
@@ -728,20 +731,20 @@ UINT ux_host_class_cdc_acm_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive nell'interfaccia cdc_acm. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo.
+Questa funzione scrive nell'interfaccia cdc_acm. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il trasferimento è completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'istanza della classe cdc_acm.
-- **data_pointer** Puntatore all'indirizzo del buffer del payload di dati.
+- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **data_pointer** Puntatore all'indirizzo del buffer del payload dei dati.
 - **requested_length** Lunghezza da inviare.
 - **actual_length** Lunghezza effettivamente inviata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5b) l'istanza di cdc_acm non è valida.
-- TIMEOUT di trasferimento **UX_TRANSFER_TIMEOUT** (0x5c), scrittura incompleta.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) L'istanza cdc_acm non è valida.
+- **UX_TRANSFER_TIMEOUT** (0x5c) Timeout di trasferimento, scrittura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -758,7 +761,7 @@ status = ux_host_class_cdc_acm_write(cdc_acm, data_pointer,
 
 ## <a name="ux_host_class_cdc_acm_ioctl"></a>ux_host_class_cdc_acm_ioctl
 
-Eseguire una funzione IOCTL nell'interfaccia cdc_acm.
+Eseguire una funzione IOCTL nell'cdc_acm.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -771,20 +774,20 @@ UINT ux_host_class_cdc_acm_ioctl(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione esegue una specifica funzione IOCTL nell'interfaccia cdc_acm. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il comando viene completato.
+Questa funzione esegue una funzione ioctl specifica per l'cdc_acm interfaccia. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il comando viene completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'istanza della classe cdc_acm.
-- **ioctl_function** funzione IOCTL da eseguire. Vedere la tabella seguente per una delle funzioni IOCTL consentite.
-- **parametro** di Puntatore a un parametro specifico di IOCTL
+- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **ioctl_function** funzione ioctl da eseguire. Vedere la tabella seguente per una delle funzioni ioctl consentite.
+- **parametro** Puntatore a un parametro specifico di ioctl
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- **UX_MEMORY_INSUFFICIENT** (0x12) memoria insufficiente.
-- L'istanza di **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5B) CDC-ACM è in uno stato non valido.
-- **UX_FUNCTION_NOT_SUPPORTED** (0x54) funzione IOCTL sconosciuta.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Memoria insufficiente.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) L'istanza di CDC-ACM è in uno stato non valido.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) Funzione IOCTL sconosciuta.
 
 ### <a name="ioctl-functions"></a>Funzioni IOCTL:
 
@@ -810,7 +813,7 @@ status = ux_host_class_cdc_acm_ioctl(cdc_acm,
 
 ## <a name="ux_host_class_cdc_acm_reception_start"></a>ux_host_class_cdc_acm_reception_start
 
-Inizia la ricezione in background dei dati dal dispositivo.
+Avvia la ricezione in background dei dati dal dispositivo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -822,15 +825,15 @@ UINT ux_host_class_cdc_acm_reception_start(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione fa in modo che USBX legga continuamente i dati dal dispositivo in background. Al completamento di ogni transazione, viene richiamato il callback specificato in **cdc_acm_reception** , in modo che l'applicazione possa eseguire un'ulteriore elaborazione dei dati della transazione.
+Questa funzione fa sì che USBX letta continuamente i dati dal dispositivo in background. Al termine di ogni transazione, viene richiamato il callback specificato **in** cdc_acm_reception in modo che l'applicazione possa eseguire un'ulteriore elaborazione dei dati della transazione.
 
 > [!NOTE]
-> non è necessario usare **ux_host_class_cdc_acm_read** mentre è in uso la ricezione in background.
+> **ux_host_class_cdc_acm_read** non deve essere usato mentre è in uso la ricezione in background.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'istanza della classe cdc_acm.
-- **cdc_acm_reception** Puntatore al parametro che contiene i valori che definiscono il comportamento della ricezione in background. Il layout di questo parametro è il seguente:
+- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **cdc_acm_reception** Puntatore al parametro che contiene valori che definiscono il comportamento della ricezione in background. Il layout di questo parametro è il seguente:
 
 ```c
 typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
@@ -848,8 +851,8 @@ typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
 
 ### <a name="return-value"></a>Valore restituito
 
-- Ricezione in background **UX_SUCCESS** (0x00) avviata correttamente.
-- Istanza di classe non corretta **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b).
+- **UX_SUCCESS** (0x00) La ricezione in background è stata avviata correttamente.
+- **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b) Istanza di classe errata.
 
 ```c
 UINT status;
@@ -882,7 +885,7 @@ status = ux_host_class_cdc_acm_reception_start(cdc_acm_host_data, &cdc_acm_recep
 
 ## <a name="ux_host_class_cdc_acm_reception_stop"></a>ux_host_class_cdc_acm_reception_stop
 
-Arresta la ricezione dei pacchetti in background.
+Arresta la ricezione in background dei pacchetti.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -894,11 +897,11 @@ UINT ux_host_class_cdc_acm_reception_stop(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione fa in modo che USBX arresti la ricezione in background avviata in precedenza da **ux_host_class_cdc_acm_reception_start**.
+Questa funzione fa sì che USBX arresti la ricezione in background avviata in precedenza **da ux_host_class_cdc_acm_reception_start**.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'istanza della classe cdc_acm.
+- **cdc_acm** Puntatore all'cdc_acm di classe.
 - **cdc_acm_reception** Puntatore allo stesso parametro utilizzato per avviare la ricezione in background. Il layout di questo parametro è il seguente:
 
 ```c
@@ -918,8 +921,8 @@ typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
 
 ### <a name="return-value"></a>Valore restituito
 
-- La ricezione in background **UX_SUCCESS** (0x00) è stata arrestata.
-- Istanza di classe non corretta **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b).
+- **UX_SUCCESS** (0x00) La ricezione in background è stata arrestata.
+- **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b) Istanza di classe errata.
 
 ```c
 UINT status;
