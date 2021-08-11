@@ -1,57 +1,57 @@
 ---
-title: Capitolo 2-installazione e uso di HTTP NetX
+title: Capitolo 2 - Installazione e uso di NetX HTTP
 description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente HTTP NetX.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: db621e38e9d2324ca3ce2398aee9f729b05886ee
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5d4913c01de5cc7c41d44bda473bbaca06dd474a26570b056bfde3cd48acc4e4
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822619"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799405"
 ---
-# <a name="chapter-2---installation-and-use-of-netx-http"></a>Capitolo 2-installazione e uso di HTTP NetX
+# <a name="chapter-2---installation-and-use-of-netx-http"></a>Capitolo 2 - Installazione e uso di NetX HTTP
 
 Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente HTTP NetX.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-Azure RTO NetX può essere ottenuto dal repository di codice sorgente pubblico all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) .
+Azure RTOS NetX può essere ottenuto dal repository di codice sorgente pubblico all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) .
 
-- **nx_http_client. h** File di intestazione per il client HTTP per NetX
-- **nx_http_server. h** File di intestazione per il server HTTP per NetX
-- **nx_http_client. c** File di origine C per il client HTTP per NetX
-- **nx_http_server. c** File di origine C per il server HTTP per NetX
-- **nx_md5. c** Algoritmi digest MD5
-- **filex_stub. h** File stub se FileX non è presente
+- **nx_http_client.h** File di intestazione per il client HTTP per NetX
+- **nx_http_server.h** File di intestazione per il server HTTP per NetX
+- **nx_http_client.c** File di origine C per il client HTTP per NetX
+- **nx_http_server.c** File di origine C per il server HTTP per NetX
+- **nx_md5.c** Algoritmi digest MD5
+- **filex_stub.h** File stub se FileX non è presente
 - **nx_http.pdf** Descrizione di HTTP per NetX
-- **demo_netx_http. c** Dimostrazione HTTP di NetX
+- **demo_netx_http.c** Dimostrazione di HTTP NetX
 
 ## <a name="http-installation"></a>Installazione HTTP
 
-Per poter usare HTTP per NetX, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\green*", il *nx_http_client. h* e *nx_http_client. c* per le applicazioni client http NetX e *nx_http_server. h* e *nx_http_server. c* per le applicazioni server http NETX. *nx_md5. c* deve essere copiato in questa directory. Per la demo ' RAM driver ' dell'applicazione NetX client HTTP e i file server devono essere copiati nella stessa directory.
+Per usare HTTP per NetX, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_http_client.h* e *nx_http_client.c* per le applicazioni client HTTP NetX e *nx_http_server.h* e *nx_http_server.c* per le applicazioni server HTTP NetX. *nx_md5.c* deve essere copiato in questa directory. Per l'applicazione demo "ram driver" i file netx http client e server devono essere copiati nella stessa directory.
 
 ## <a name="using-http"></a>Uso di HTTP
 
-L'uso di HTTP per NetX è facile. In pratica, il codice dell'applicazione deve includere *nx_http_client. h* e/o *nx_http_server. h* dopo aver incluso *tx_api. h, fx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX, FILEX e NETX. Una volta inclusi i file di intestazione HTTP, il codice dell'applicazione è in grado di eseguire le chiamate di funzione HTTP specificate più avanti in questa guida. L'applicazione deve includere anche *nx_http_client. c*, *nx_http_server. c* e *MD5. c* nel processo di compilazione. Questi file devono essere compilati allo stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare HTTP di NetX.
+L'uso di HTTP per NetX è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nx_http_client.h* e/o *nx_http_server.h* dopo aver *incluso rispettivamente tx_api.h, fx_api.h* e *nx_api.h,* per poter usare rispettivamente ThreadX, FileX e NetX. Dopo aver incluso i file di intestazione HTTP, il codice dell'applicazione è in grado di effettuare le chiamate di funzione HTTP specificate più avanti in questa guida. L'applicazione deve includere *anche nx_http_client.c*, *nx_http_server.c* e *md5.c* nel processo di compilazione. Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX HTTP.
 
 >[!NOTE] 
-> Se NX_HTTP_DIGEST_ENABLE non viene specificato nel processo di compilazione, non è necessario aggiungere il file *MD5. c* all'applicazione. Analogamente, se non sono richieste funzionalità client HTTP, il file *nx_http_client. c* può essere omesso.
+> Se NX_HTTP_DIGEST_ENABLE non viene specificato nel processo di compilazione, non è necessario aggiungere il file *md5.c* all'applicazione. Analogamente, se non sono richieste funzionalità client HTTP, il file *nx_http_client.c* può essere omesso.
 
 >[!NOTE] 
-> Poiché HTTP usa i servizi TCP NetX, è necessario abilitare TCP con la chiamata *nx_tcp_enable* prima di usare http.
+> Poiché HTTP utilizza i servizi TCP NetX, è necessario che TCP sia abilitato *con nx_tcp_enable* chiamata prima di usare HTTP.
 
-## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
+## <a name="small-example-system"></a>Small Example System
 
-Un esempio di come è facile usare HTTP di NetX è descritto nella figura 1,1 riportata di seguito. In questo esempio, il file di inclusione HTTP *nx_http_client. h e nx_http_server. h vengono* portati nella riga 8. Successivamente, il server HTTP viene creato in "*tx_application_define*" alla riga 131.
+Nella figura 1.1 riportata di seguito è descritto un esempio di come sia facile usare HTTP NetX. In questo esempio il file di inclusione HTTP *nx_http_client.h e nx_http_server.h* vengono inclusi alla riga 8. Il server HTTP viene quindi creato in "*tx_application_define*" alla riga 131.
 
 >[!NOTE] 
 > Il blocco di controllo server HTTP "*Server*" è stato definito come variabile globale alla riga 25 in precedenza.
 
-Una volta completata la creazione, un server HTTP viene avviato alla riga 136. Alla riga 149 viene creato il client HTTP. Infine, il client scrive il file alla riga 157 e legge il file alla riga 195.
+Al termine della creazione, viene avviato un server HTTP alla riga 136. Alla riga 149 viene creato il client HTTP. Infine, il client scrive il file alla riga 157 e lo legge nuovamente alla riga 195.
 
 ```c
 /* This is a small demo of HTTP on the high-performance NetX TCP/IP stack.
@@ -267,34 +267,34 @@ UINT          status;
  }
 ```
 
-Figura 1,1 esempio di utilizzo HTTP con NetX
+Figura 1.1 Esempio di uso di HTTP con NetX
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Per la compilazione di HTTP per NetX sono disponibili diverse opzioni di configurazione. Di seguito è riportato un elenco di tutte le opzioni, in cui ciascuna è descritta in dettaglio. I valori predefiniti sono elencati, ma possono essere ridefiniti prima dell'inclusione di *nx_http_client. h e nx_http_server. h*:
+Sono disponibili diverse opzioni di configurazione per la compilazione di HTTP per NetX. Di seguito è riportato un elenco di tutte le opzioni, in cui ogni opzione è descritta in dettaglio. I valori predefiniti sono elencati, ma possono essere ridefiniti prima dell'inclusione di *nx_http_client.h e nx_http_server.h*:
 
 - **NX_DISABLE_ERROR_CHECKING** Definita, questa opzione rimuove il controllo degli errori HTTP di base. Viene in genere usato dopo il debug dell'applicazione.
 - **NX_HTTP_SERVER_PRIORITY** Priorità del thread del server HTTP. Per impostazione predefinita, questo valore è definito come 16 per specificare la priorità 16.
-- **NX_HTTP_NO_FILEX** Definito, questa opzione fornisce uno stub per le dipendenze FileX. Se questa opzione è definita, il client HTTP funzionerà senza alcuna modifica. Il server HTTP dovrà essere modificato o l'utente dovrà creare un numero limitato di servizi FileX per il corretto funzionamento.
-- **NX_HTTP_TYPE_OF_SERVICE** Tipo di servizio richiesto per le richieste TCP HTTP. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per indicare il normale servizio pacchetti IP.
-- **NX_HTTP_SERVER_THREAD_TIME_SLICE** Numero di cicli del timer che il thread del server può eseguire prima di cedere ai thread con la stessa priorità. Il valore predefinito è 2.
-- **NX_HTTP_FRAGMENT_OPTION** L'abilitazione del frammento per le richieste TCP HTTP. Per impostazione predefinita, questo valore è NX_DONT_FRAGMENT per disabilitare la frammentazione TCP HTTP.
-- **NX_HTTP_SERVER_WINDOW_SIZE** Dimensioni finestra socket server. Per impostazione predefinita, questo valore è pari a 2048 byte.
-- **NX_HTTP_TIME_TO_LIVE** Specifica il numero di router che questo pacchetto può superare prima che venga eliminato. Il valore predefinito è impostato su 0x80.
-- **NX_HTTP_SERVER_TIMEOUT** Consente di specificare il numero di cicli ThreadX per i quali i servizi interni sospendono. Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
-- **NX_HTTP_SERVER_TIMEOUT_ACCEPT** Specifica il numero di cicli ThreadX per i quali i servizi interni vengono sospesi per le chiamate interne *nx_tcp_server_socket_accept* . Il valore predefinito è impostato su (10 * NX_IP_PERIODIC_RATE).
-- **NX_HTTP_SERVER_TIMEOUT_DISCONNECT** Specifica il numero di cicli ThreadX per i quali i servizi interni vengono sospesi per le chiamate interne *nx_tcp_socket_disconnect* . Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
-- **NX_HTTP_SERVER_TIMEOUT_RECEIVE** Specifica il numero di cicli ThreadX per i quali i servizi interni vengono sospesi per le chiamate interne *nx_tcp_socket_receive* . Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
-- **NX_HTTP_SERVER_TIMEOUT_SEND** Specifica il numero di cicli ThreadX per i quali i servizi interni vengono sospesi per le chiamate interne *nx_tcp_socket_send* . Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
-- **NX_HTTP_MAX_HEADER_FIELD** Specifica la dimensione massima del campo dell'intestazione HTTP. Il valore predefinito è 256.
-- **NX_HTTP_MULTIPART_ENABLE** Se definito, Abilita il server HTTP per supportare le richieste HTTP multipart.
-- **NX_HTTP_SERVER_MAX_PENDING** Specifica il numero di connessioni che possono essere accodate per il server HTTP. Il valore predefinito è impostato su 5.
-- **NX_HTTP_MAX_RESOURCE** Specifica il numero di byte consentiti in un *nome di risorsa* fornito dal client. Il valore predefinito è impostato su 40.
-- **NX_HTTP_MAX_NAME** Specifica il numero di byte consentiti in un *nome utente* fornito dal client. Il valore predefinito è impostato su 20.
+- **NX_HTTP_NO_FILEX** Definita, questa opzione fornisce uno stub per le dipendenze FileX. Il client HTTP funzionerà senza alcuna modifica se questa opzione è definita. Il server HTTP dovrà essere modificato o l'utente dovrà creare alcuni servizi FileX per funzionare correttamente.
+- **NX_HTTP_TYPE_OF_SERVICE** Tipo di servizio necessario per le richieste TCP HTTP. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per indicare il normale servizio di pacchetti IP.
+- **NX_HTTP_SERVER_THREAD_TIME_SLICE** Numero di tick del timer che il thread del server può eseguire prima di cedere ai thread con la stessa priorità. Il valore predefinito è 2.
+- **NX_HTTP_FRAGMENT_OPTION** Frammento abilitato per le richieste TCP HTTP. Per impostazione predefinita, questo valore è NX_DONT_FRAGMENT disabilitare la frammentazione TCP HTTP.
+- **NX_HTTP_SERVER_WINDOW_SIZE** Dimensioni della finestra del socket del server. Per impostazione predefinita, questo valore è 2048 byte.
+- **NX_HTTP_TIME_TO_LIVE** Specifica il numero di router che il pacchetto può superare prima di essere eliminato. Il valore predefinito è impostato su 0x80.
+- **NX_HTTP_SERVER_TIMEOUT** Specifica il numero di tick ThreadX per cui i servizi interni verranno sospesi. Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
+- **NX_HTTP_SERVER_TIMEOUT_ACCEPT** Specifica il numero di tick ThreadX che i servizi interni sospenderanno per nelle *chiamate* nx_tcp_server_socket_accept interne. Il valore predefinito è impostato su (10 * NX_IP_PERIODIC_RATE).
+- **NX_HTTP_SERVER_TIMEOUT_DISCONNECT** Specifica il numero di tick ThreadX che i servizi interni sospenderanno per nelle *chiamate* nx_tcp_socket_disconnect interne. Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
+- **NX_HTTP_SERVER_TIMEOUT_RECEIVE** Specifica il numero di tick ThreadX che i servizi interni sospenderanno per nelle *chiamate* nx_tcp_socket_receive interne. Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
+- **NX_HTTP_SERVER_TIMEOUT_SEND** Specifica il numero di tick ThreadX che i servizi interni sospenderanno per nelle *chiamate* nx_tcp_socket_send interne. Il valore predefinito è impostato su 10 secondi (10 * NX_IP_PERIODIC_RATE).
+- **NX_HTTP_MAX_HEADER_FIELD** Specifica le dimensioni massime del campo dell'intestazione HTTP. Il valore predefinito è 256.
+- **NX_HTTP_MULTIPART_ENABLE** Se definito, consente al server HTTP di supportare le richieste HTTP multipart.
+- **NX_HTTP_SERVER_MAX_PENDING** Specifica il numero di connessioni che possono essere accodati per il server HTTP. Il valore predefinito è impostato su 5.
+- **NX_HTTP_MAX_RESOURCE** Specifica il numero di byte consentiti in un nome di risorsa *fornito dal* client. Il valore predefinito è impostato su 40.
+- **NX_HTTP_MAX_NAME** Specifica il numero di byte consentiti in un nome utente *fornito* dal client. Il valore predefinito è impostato su 20.
 - **NX_HTTP_MAX_PASSWORD** Specifica il numero di byte consentiti in una *password* fornita dal client. Il valore predefinito è impostato su 20.
-- **NX_HTTP_SERVER_MIN_PACKET_SIZE** Specifica la dimensione minima dei pacchetti nel pool specificato al momento della creazione del server. La dimensione minima è necessaria per garantire che l'intestazione HTTP completa possa essere contenuta in un unico pacchetto. Il valore predefinito è impostato su 600.
-- **NX_HTTP_CLIENT_MIN_PACKET_SIZE** Specifica la dimensione minima dei pacchetti nel pool specificato durante la creazione del client. La dimensione minima è necessaria per garantire che l'intestazione HTTP completa possa essere contenuta in un unico pacchetto. Il valore predefinito è impostato su 300.
+- **NX_HTTP_SERVER_MIN_PACKET_SIZE** Specifica le dimensioni minime dei pacchetti nel pool specificato al momento della creazione del server. Le dimensioni minime sono necessarie per garantire che l'intestazione HTTP completa possa essere contenuta in un pacchetto. Il valore predefinito è impostato su 600.
+- **NX_HTTP_CLIENT_MIN_PACKET_SIZE** Specifica le dimensioni minime dei pacchetti nel pool specificato al momento della creazione del client. Le dimensioni minime sono necessarie per garantire che l'intestazione HTTP completa possa essere contenuta in un pacchetto. Il valore predefinito è impostato su 300.
 - **NX_HTTP_SERVER_RETRY_SECONDS** *impostare il timeout di ritrasmissione del socket del server in secondi. Il* valore predefinito è impostato su 2.
-- **NX_HTTP_SERVER_RETRY_MAX** Questo consente di impostare il numero massimo di ritrasmissioni sul socket del server. Il valore predefinito è impostato su 10.
-- **NX_HTTP_SERVER_RETRY_SHIFT** Questo valore viene utilizzato per impostare il timeout di ritrasmissione successivo. Il timeout corrente viene moltiplicato per il numero di ritrasmissioni fino a questo punto, spostate in base al valore del turno di timeout del socket. Il valore predefinito è impostato su 1 per raddoppiare il timeout.
-- **NX_HTTP_ SERVER_TRANSMIT_QUEUE_DEPTH** Specifica il numero massimo di pacchetti che possono essere accodati nella coda di ritrasmissione del socket server. Se il numero di pacchetti accodati raggiunge questo numero, non sarà più possibile inviare pacchetti fino a quando non vengono rilasciati uno o più pacchetti accodati. Il valore predefinito è impostato su 20.
+- **NX_HTTP_SERVER_RETRY_MAX** In questo modo viene impostato il numero massimo di ritrasmissioni nel socket del server. Il valore predefinito è impostato su 10.
+- **NX_HTTP_SERVER_RETRY_SHIFT** Questo valore viene usato per impostare il timeout di ritrasmissione successivo. Il timeout corrente viene moltiplicato per il numero di ritrasmissioni fino a questo momento, spostato per il valore dello spostamento del timeout del socket. Il valore predefinito è impostato su 1 per raddoppiare il timeout.
+- **NX_HTTP_ SERVER_TRANSMIT_QUEUE_DEPTH** Specifica il numero massimo di pacchetti che possono essere accodati nella coda di ritrasmissione socket del server. Se il numero di pacchetti accodati raggiunge questo numero, non è possibile inviare altri pacchetti finché non vengono rilasciati uno o più pacchetti accodati. Il valore predefinito è impostato su 20.

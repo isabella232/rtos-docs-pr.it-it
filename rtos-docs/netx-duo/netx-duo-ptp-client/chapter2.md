@@ -1,34 +1,34 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX Duo PTP client
+title: Capitolo 2 - Installazione e uso di Azure RTOS client PTP NetX Duo
 description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client NetX Duo PTP.
 author: v-condav
 ms.author: v-condav
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cab2c31099bded953753fd530cef931cf0d7aaf7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ee2e4184ce041679b5ae5368d91c436cf8a0bc2ac6f59deba67d996b318151bd
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821704"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798028"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-ptp-client"></a>Capitolo 2-installazione e uso di Azure RTO NetX Duo PTP client
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-ptp-client"></a>Capitolo 2 - Installazione e uso di Azure RTOS client PTP NetX Duo
 
 Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client NetX Duo PTP.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-È possibile ottenere Azure RTO NetX Duo dal repository del codice sorgente pubblico all'indirizzo https://github.com/azure-rtos/netxduo/tree/master/addons/ptp .
+Azure RTOS NetX Duo può essere ottenuto dal repository del codice sorgente pubblico all'indirizzo https://github.com/azure-rtos/netxduo/tree/master/addons/ptp .
 
-***nxd_ptp_client. h*** File di intestazione per il client PTP per NetX Duo ***nxd_ptp_client. c*** file di origine per il client PTP per NetX Duo ***demo_netx_duo_ptp_client. c*** NETX Duo PTP client dimostrazione
+***nxd_ptp_client.h*** File di intestazione per il client PTP per NetX Duo ***nxd_ptp_client.c*** File di origine C per il client PTP per netX Duo ***demo_netx_duo_ptp_client.c*** Dimostrazione client PTP NetX Duo
 
 
 ## <a name="using-ptp-client"></a>Uso del client PTP
-L'uso del client PTP per NetX Duo è facile. In pratica, il codice dell'applicazione deve includere ***nxd_ptp_client. h** _ dopo aver incluso _*_tx_api. h_*_ e _*_nx_api. h_*_, per poter utilizzare rispettivamente threadX e NETX Duo. Una volta incluso il file di intestazione del client PTP, il codice dell'applicazione è in grado di eseguire le chiamate della funzione client PTP specificate più avanti in questa guida. L'applicazione deve inoltre includere _ *_nxd_ptp_client. c_** nel processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client PTP NetX Duo.
+L'uso del client PTP per NetX Duo è semplice. Fondamentalmente, il codice dell'applicazione deve includere ***nxd_ptp_client.h** _ dopo aver incluso _*_rispettivamente tx_api.h_*_ e _*_nx_api.h_*_, per poter usare rispettivamente ThreadX e NetX Duo. Dopo aver incluso il file di intestazione del client PTP, il codice dell'applicazione è in grado di effettuare le chiamate di funzione client PTP specificate più avanti in questa guida. L'applicazione deve includere anche _ *_nxd_ptp_client.c_** nel processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client NetX Duo PTP.
 
 ## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
-Un esempio di come usare i servizi client di NetX Duo PTP è descritto nella figura 1 riportata di seguito.
+Un esempio di come usare i servizi client NetX Duo PTP è descritto nella figura 1 che viene visualizzata di seguito.
 ```C
 /*
    This is a small demo of the NetX Duo PTP client on the high-performance NetX Duo TCP/IP stack.
@@ -304,10 +304,10 @@ ULONG   gw_address;
 ```
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
-Con il client PTP NetX Duo sono disponibili diverse opzioni di configurazione. Di seguito è riportato un elenco di tutte le opzioni descritte in dettaglio:
-* **NX_PTP_CLIENT_THREAD_TIME_SLICE** Definisce l'intervallo di tempo del thread del client PTP. Il valore predefinito è no time slice.
-* **NX_PTP_CLIENT_TIMER_TICKS_PER_SECOND** Definisce la frequenza del timer interno del client PTP. Il valore predefinito è 10, che indica un timer 100 ms.
-* **NX_PTP_CLIENT_ANNOUNCE_RECEIPT_TIMEOUT** Definisce il numero massimo di pacchetti di annuncio mancanti prima del timeout. Il valore predefinito è 3.
-* **NX_PTP_CLIENT_LOG_ANNOUNCE_INTERVAL** Definisce l'intervallo di tempo tra il pacchetto di annuncio successivo, espresso come log 2. Questo valore deve essere uniforme in un dominio. Il valore predefinito è 1, ovvero 2S.
-* **NX_PTP_CLIENT_DELAY_REQ_INTERVAL** Definisce l'intervallo per l'invio di pacchetti di richieste di ritardo. Il valore predefinito è 2 secondi.
+Con il client NetX Duo PTP sono disponibili diverse opzioni di configurazione. Di seguito è riportato un elenco di tutte le opzioni descritte in dettaglio:
+* **NX_PTP_CLIENT_THREAD_TIME_SLICE** Definisce l'intervallo di tempo del thread client PTP. Il valore predefinito non è un intervallo di tempo.
+* **NX_PTP_CLIENT_TIMER_TICKS_PER_SECOND** Definisce la frequenza del timer interno del client PTP. Il valore predefinito è 10, che indica un timer di 100 ms.
+* **NX_PTP_CLIENT_ANNOUNCE_RECEIPT_TIMEOUT** Definisce il numero massimo di pacchetti Announce mancanti prima del timeout. Il valore predefinito è 3.
+* **NX_PTP_CLIENT_LOG_ANNOUNCE_INTERVAL** Definisce l'intervallo di tempo tra il pacchetto Announce successivo, espresso come log 2. Questo valore deve essere uniforme in tutto un dominio. Il valore predefinito è 1, ovvero 2s.
+* **NX_PTP_CLIENT_DELAY_REQ_INTERVAL** Definisce l'intervallo per l'invio di pacchetti di richiesta delay. Il valore predefinito è 2 secondi.
 * **NX_PTP_CLIENT_MAX_QUEUE_DEPTH** Definisce la profondità massima della coda per il socket client. Il valore predefinito è 5.

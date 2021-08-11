@@ -1,29 +1,29 @@
-- name: Documentazione sui moduli ThreadX di Azure RTO
+- name: Azure RTOS dei moduli ThreadX
   href: index.yml
-- name: Manuale dell'utente sui moduli ThreadX
+- name: Manuale dell'utente dei moduli ThreadX
   expanded: true
   items:
-    - name: Ch. 1-Panoramica
+    - name: Ch. 1 - Panoramica
       href: chapter1.md
-    - name: Ch. 2-requisiti del modulo
+    - name: Ch. 2 - Requisiti del modulo
       href: chapter2.md
-    - name: Ch. 3-requisiti di gestione moduli
+    - name: Ch. 3 - Requisiti di Gestione moduli
       href: chapter3.md
-    - name: Ch. API a 4 moduli
+    - name: Ch. 4 - API del modulo
       href: chapter4.md
-    - name: Ch. API di gestione moduli 5
+    - name: Ch. 5 - API di Gestione moduli
       href: chapter5.md
-    - name: Appendice-Esempi specifici della porta
+    - name: Appendice - Esempi specifici delle porte
       href: appendix.md
 - name: Repository ThreadX
   href: 'https://github.com/azure-rtos/threadx'
 - name: Servizi correlati
   items:
-    - name: Defender per Internet delle cose-RTO (anteprima)
+    - name: Defender per IoT - RTOS (anteprima)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
-- name: Componenti Microsoft Azure RTO
+- name: Microsoft Azure Componenti RTOS
   items:
-    - name: Microsoft Azure RTO
+    - name: Microsoft Azure Rtos
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
@@ -31,7 +31,7 @@
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
-    - name: NetX
+    - name: Netx
       href: ../netx/index.yml
     - name: GUIX
       href: ../guix/index.yml

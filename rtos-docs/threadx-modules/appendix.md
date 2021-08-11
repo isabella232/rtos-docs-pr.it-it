@@ -1,25 +1,25 @@
 ---
-title: Appendice-Esempi specifici della porta
-description: Questo articolo illustra alcuni esempi specifici della porta per i moduli ThreadX.
+title: Appendice - Esempi specifici della porta
+description: Questo articolo illustra esempi specifici della porta per i moduli ThreadX.
 author: philmea
 ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c2324a2057bf2ddb2d255b2ff611d34fc664560a
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: bc4721431810d72a72d5bc69e8382378cb7f95935a8ac755c25a8cff985cd185
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549811"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799371"
 ---
-# <a name="appendix---port-specific-examples"></a>Appendice-Esempi specifici della porta
+# <a name="appendix---port-specific-examples"></a>Appendice - Esempi specifici della porta
 
 ## <a name="arm11-processor"></a>Processore ARM11
 
 ### <a name="arm11-using-gcc"></a>ARM11 con GCC
 
-#### <a name="module-preamble-for-arm11-using-gcc"></a>Preambolo del modulo per ARM11 con GCC
+#### <a name="module-preamble-for-arm11-using-gcc"></a>Preambolo del modulo per ARM11 usando GCC
 
 ```armasm
     .arm
@@ -67,14 +67,14 @@ _txm_module_preamble:
     .word       0                                               @ Reserved 15
 ```
 
-#### <a name="module-properties-for-arm11-using-gcc"></a>Proprietà dei moduli per ARM11 con GCC
+#### <a name="module-properties-for-arm11-using-gcc"></a>Proprietà del modulo per ARM11 usando GCC
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | [23-0] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-arm11-using-gcc"></a>Module linker per ARM11 con GCC
+#### <a name="module-linker-for-arm11-using-gcc"></a>Linker del modulo per ARM11 usando GCC
 
 ```c
 MEMORY
@@ -288,9 +288,9 @@ SECTIONS
 }
 ```
 
-#### <a name="building-modules-for-arm11-using-gcc"></a>Compilazione di moduli per ARM11 tramite GCC
+#### <a name="building-modules-for-arm11-using-gcc"></a>Compilazione di moduli per ARM11 con GCC
 
-Un semplice esempio di riga di comando per la compilazione di un modulo ARM11 usando GCC:
+Un semplice esempio della riga di comando per la compilazione di un modulo ARM11 usando GCC:
 
 ```dos
 arm-none-eabi-gcc -c -g -mcpu=arm1136j-s -msingle-pic-base -fPIC -mpic-register=r9 txm_module_preamble.S
@@ -299,18 +299,18 @@ arm-none-eabi-gcc -c -g -mcpu=arm1136j-s -msingle-pic-base -fPIC -mpic-register=
 arm-none-eabi-ld -A arm1136j-s -T demo_threadx_module.ld txm_module_preamble.o gcc_setup.o demo_threadx_module.o txm.a txm.a -o demo_threadx_module.out -M > demo_threadx_module.map
 ```
 
-#### <a name="thread-extension-definition-for-arm11-using-gcc"></a>Definizione dell'estensione di thread per ARM11 con GCC
+#### <a name="thread-extension-definition-for-arm11-using-gcc"></a>Definizione dell'estensione del thread per ARM11 usando GCC
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;  \
                                 VOID    *tx_thread_module_entry_info_ptr;
 ```
 
-#### <a name="building-module-manager-for-arm11-using-gcc"></a>Compilazione di gestione moduli per ARM11 tramite GCC
+#### <a name="building-module-manager-for-arm11-using-gcc"></a>Compilazione di Gestione moduli per ARM11 usando GCC
 
 Non viene fornito alcun esempio.
 
-#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-gcc"></a>Attributi per l'API External memory Enable per ARM11 con GCC
+#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-gcc"></a>Attributi per l'API di abilitazione della memoria esterna per ARM11 tramite GCC
 
 Questa funzionalità non è abilitata su questa porta.
 
@@ -377,20 +377,20 @@ __txm_module_preamble
         END
 ```
 
-#### <a name="module-properties-for-arm11-using-ac5"></a>Proprietà del modulo per ARM11 con AC5
+#### <a name="module-properties-for-arm11-using-ac5"></a>Proprietà del modulo per ARM11 tramite AC5
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | [23-0] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-arm11-using-ac5"></a>Modulo linker per ARM11 con AC5
+#### <a name="module-linker-for-arm11-using-ac5"></a>Linker del modulo per ARM11 con AC5
 
-Compilato dalla riga di comando, nessun esempio di file del linker.
+Basato sulla riga di comando, nessun esempio di file del linker.
 
 #### <a name="building-modules-for-arm11-using-ac5"></a>Compilazione di moduli per ARM11 con AC5
 
-Un semplice esempio di riga di comando per la compilazione di un modulo ARM11 usando AC5:
+Un semplice esempio di riga di comando per la compilazione di un modulo ARM11 con AC5:
 
 ```dos
 armasm -g --cpu ARM1136J-S --apcs /interwork --apcs /ropi --apcs /rwpi txm_module_preamble.s
@@ -398,16 +398,16 @@ armcc -g -c -O0 --cpu ARM1136J-S --apcs /interwork --apcs /ropi --apcs /rwpi dem
 armlink -d -o demo_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list demo_threadx_module.map txm_module_preamble.o demo_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-arm11-using-ac5"></a>Definizione dell'estensione di thread per ARM11 con AC5
+#### <a name="thread-extension-definition-for-arm11-using-ac5"></a>Definizione dell'estensione thread per ARM11 tramite AC5
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;  \
                                 VOID    *tx_thread_module_entry_info_ptr;
 ```
 
-#### <a name="building-module-manager-for-arm11-using-ac5"></a>Compilazione di gestione moduli per ARM11 con AC5
+#### <a name="building-module-manager-for-arm11-using-ac5"></a>Compilazione di Module Manager per ARM11 con AC5
 
-Semplice esempio di riga di comando per la compilazione di un gestore di moduli ARM11 usando AC5:
+Un semplice esempio della riga di comando per la compilazione di un modulo arm11 manager con AC5:
 
 ```dos
 armasm -g --cpu ARM1136J-S --apcs /interwork tx_initialize_low_level.s
@@ -416,7 +416,7 @@ armcc -g -c -O2 --cpu ARM1136J-S --apcs /interwork module_code.c
 armlink -d -o demo_threadx_module_manager.axf --elf --ro 0 --first tx_initialize_low_level.o(Init) --remove --map --symbols --list demo_threadx_module_manager.map tx_initialize_low_level.o demo_threadx_module_manager.o module_code.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-ac5"></a>Attributi per la memoria esterna Abilita API per ARM11 con AC5
+#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-ac5"></a>Attributi per l'API di abilitazione della memoria esterna per ARM11 tramite AC5
 
 Questa funzionalità non è abilitata su questa porta.
 
@@ -488,21 +488,21 @@ __txm_module_preamble
     END
 ```
 
-#### <a name="module-properties-for-cortex-a7-using-ac5"></a>Proprietà dei moduli per Cortex-A7 con AC5
+#### <a name="module-properties-for-cortex-a7-using-ac5"></a>Proprietà del modulo per Cortex-A7 tramite AC5
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | [23-1] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-a7-using-ac5"></a>Module linker per Cortex-A7 con AC5
+#### <a name="module-linker-for-cortex-a7-using-ac5"></a>Linker di modulo per Cortex-A7 con AC5
 
-Compilato dalla riga di comando, nessun esempio di file del linker.
+Basato sulla riga di comando, nessun esempio di file del linker.
 
 #### <a name="building-modules-for-cortex-a7-using-ac5"></a>Compilazione di moduli per Cortex-A7 con AC5
 
-Un semplice esempio di riga di comando per la compilazione di un modulo Cortex-A7 con AC5:
+Un semplice esempio della riga di comando per la compilazione di un modulo Cortex-A7 usando AC5:
 
 ```dos
 armasm -g --cpu=cortex-a7.no_neon --fpu=softvfp --apcs=/interwork/ropi/rwpi txm_module_preamble.s
@@ -510,7 +510,7 @@ armcc  -g --cpu=cortex-a7.no_neon --fpu=softvfp -c --apcs=/interwork/ropi/rwpi -
 armlink -d -o demo_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list demo_threadx_module.map txm_module_preamble.o demo_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-a7-using-ac5"></a>Definizione di estensione di thread per Cortex-A7 con AC5
+#### <a name="thread-extension-definition-for-cortex-a7-using-ac5"></a>Definizione dell'estensione thread per Cortex-A7 tramite AC5
 
 ```c
 #define TX_THREAD_EXTENSION_2   ULONG   tx_thread_vfp_enable;                   \
@@ -528,9 +528,9 @@ armlink -d -o demo_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o
                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-a7-using-ac5"></a>Compilazione di Module Manager per Cortex-A7 con AC5
+#### <a name="building-module-manager-for-cortex-a7-using-ac5"></a>Creazione di Module Manager per Cortex-A7 tramite AC5
 
-Semplice esempio di riga di comando per la compilazione di un modulo di gestione dei moduli Cortex-A7 con AC5:
+Un semplice esempio della riga di comando per la compilazione di un gestore di moduli Cortex-A7 tramite AC5:
 
 ```dos
 armasm -g --cpu=cortex-a7.no_neon --fpu=softvfp --apcs=interwork tx_initialize_low_level.s
@@ -539,16 +539,16 @@ armcc -g --cpu=cortex-a7.no_neon --fpu=softvfp -c module_code.c
 armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x80000000 --first tx_initialize_low_level.o(VECTORS) --remove --map --symbols --list demo_threadx_module_manager.map tx_initialize_low_level.o demo_threadx_module_manager.o module_code.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-A7 con AC5
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-A7 tramite AC5
 
-Per configurare le impostazioni di memoria condivisa, è possibile usare gli attributi seguenti:
+Per configurare le impostazioni della memoria condivisa, è possibile usare gli attributi seguenti:
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MMU_ATTRIBUTE_XN | Esegui mai |
 | TXM_MMU_ATTRIBUTE_B | Impostazione B |
-| TXM_MMU_ATTRIBUTE_C | Impostazione C |
-| TXM_MMU_ATTRIBUTE_AP | Impostazione AP |
+| TXM_MMU_ATTRIBUTE_C | Impostazione di C |
+| TXM_MMU_ATTRIBUTE_AP | Impostazione ap |
 | TXM_MMU_ATTRIBUTE_TEX | Impostazione TEX |
 
 Per informazioni sulla configurazione di queste impostazioni, vedere la documentazione di ARM.
@@ -630,19 +630,19 @@ __txm_module_preamble
 
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-ac5"></a>Proprietà dei moduli per Cortex-M3 con AC5
+#### <a name="module-properties-for-cortex-m3-using-ac5"></a>Proprietà del modulo per Cortex-M3 con AC5
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-ac5"></a>Module linker per Cortex-M3 con AC5
+#### <a name="module-linker-for-cortex-m3-using-ac5"></a>Linker di modulo per Cortex-M3 con AC5
 
-Nessun file del linker di esempio specificato. il collegamento viene eseguito sulla riga di comando. Vedere la sezione successiva.
+Non viene fornito alcun file del linker di esempio. Il collegamento viene eseguito nella riga di comando. Vedere la sezione successiva.
 
 #### <a name="building-modules-for-cortex-m3-using-ac5"></a>Compilazione di moduli per Cortex-M3 con AC5
 
@@ -654,7 +654,7 @@ armcc  -g --cpu=cortex-m3 -c --apcs=/interwork/ropi/rwpi --lower_ropi -I../inc -
 armlink -d -o sample_threadx_module.axf --elf --ro=0x30000 --rw=0x40000 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list sample_threadx_module.map txm_module_preamble.o sample_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-ac5"></a>Definizione di estensione di thread per Cortex-M3 con AC5
+#### <a name="thread-extension-definition-for-cortex-m3-using-ac5"></a>Definizione dell'estensione thread per Cortex-M3 con AC5
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -672,9 +672,9 @@ armlink -d -o sample_threadx_module.axf --elf --ro=0x30000 --rw=0x40000 --first 
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-ac5"></a>Compilazione di Module Manager per Cortex-M3 con AC5
+#### <a name="building-module-manager-for-cortex-m3-using-ac5"></a>Creazione di Module Manager per Cortex-M3 tramite AC5
 
-Vedere build_threadx_module_manager_demo.bat di esempio:
+Vedere l'esempio build_threadx_module_manager_demo.bat:
 
 ```dos
 armasm -g --cpu=cortex-m3 --apcs=interwork tx_initialize_low_level.S
@@ -682,11 +682,11 @@ armcc -g --cpu=cortex-m3 -c -I../inc -I../../../../common_modules/inc -I../../..
 armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_initialize_low_level.o(RESET) --remove --map --symbols --list sample_threadx_module_manager.map tx_initialize_low_level.o sample_threadx_module_manager.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con AC5
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M3 tramite AC5
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -759,25 +759,25 @@ __txm_module_preamble:
     .dc.l   0                                                   // Reserved 15
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-ac6"></a>Proprietà dei moduli per Cortex-M3 con AC6
+#### <a name="module-properties-for-cortex-m3-using-ac6"></a>Proprietà del modulo per Cortex-M3 con AC6
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-ac6"></a>Module linker per Cortex-M3 con AC6
+#### <a name="module-linker-for-cortex-m3-using-ac6"></a>Linker di modulo per Cortex-M3 con AC6
 
-Non viene usato alcun file del linker. Vedere Impostazioni progetto.
+Non viene usato alcun file del linker. Vedere le impostazioni del progetto.
 
 #### <a name="building-modules-for-cortex-m3-using-ac6"></a>Compilazione di moduli per Cortex-M3 con AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-ac6"></a>Definizione di estensione di thread per Cortex-M3 con AC6
+#### <a name="thread-extension-definition-for-cortex-m3-using-ac6"></a>Definizione dell'estensione thread per Cortex-M3 con AC6
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -795,15 +795,15 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-ac6"></a>Compilazione di Module Manager per Cortex-M3 con AC6
+#### <a name="building-module-manager-for-cortex-m3-using-ac6"></a>Creazione di Module Manager per Cortex-M3 con AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con AC6
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M3 tramite AC6
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -873,17 +873,17 @@ __txm_module_preamble:
 
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-gnu"></a>Proprietà dei moduli per Cortex-M3 con GNU
+#### <a name="module-properties-for-cortex-m3-using-gnu"></a>Proprietà del modulo per Cortex-M3 con GNU
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-gnu"></a>Module linker per Cortex-M3 con GNU
+#### <a name="module-linker-for-cortex-m3-using-gnu"></a>Linker di modulo per Cortex-M3 con GNU
 
 ```c
 MEMORY
@@ -1108,7 +1108,7 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m3 -fpie -fno-plt -mpic-data-is-text-relati
 arm-none-eabi-ld -A cortex-m3 -T sample_threadx_module.ld txm_module_preamble.o gcc_setup.o sample_threadx_module.o -e _txm_module_thread_shell_entry txm.a -o sample_threadx_module.axf -M > sample_threadx_module.map
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-gnu"></a>Definizione di estensione di thread per Cortex-M3 con GNU
+#### <a name="thread-extension-definition-for-cortex-m3-using-gnu"></a>Definizione dell'estensione del thread per Cortex-M3 con GNU
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -1126,7 +1126,7 @@ arm-none-eabi-ld -A cortex-m3 -T sample_threadx_module.ld txm_module_preamble.o 
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-gnu"></a>Compilazione di gestione moduli per Cortex-M3 con GNU
+#### <a name="building-module-manager-for-cortex-m3-using-gnu"></a>Building Module Manager for Cortex-M3 using GNU
 
 Vedere build_threadx_module_manager_sample.bat:
 
@@ -1137,9 +1137,9 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m3 -mthumb cortexm_crt0.S
 arm-none-eabi-ld -A cortex-m3 -ereset_handler -T sample_threadx.ld tx_simulator_startup.o cortexm_crt0.o sample_threadx_module_manager.o tx.a  libc.a -o sample_threadx_module_manager.axf -M > sample_threadx_module_manager.map
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con GNU
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M3 tramite GNU
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
 | Parametro attribute | Significato |
 |---|---|
@@ -1223,17 +1223,17 @@ __txm_module_preamble:
     END
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-iar"></a>Proprietà dei moduli per Cortex-M3 con IAR
+#### <a name="module-properties-for-cortex-m3-using-iar"></a>Proprietà del modulo per Cortex-M3 con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-iar"></a>Module linker per Cortex-M3 con IAR
+#### <a name="module-linker-for-cortex-m3-using-iar"></a>Linker di modulo per Cortex-M3 con IAR
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -1292,9 +1292,9 @@ place in RAM_region   { block RWPI };
 
 #### <a name="building-modules-for-cortex-m3-using-iar"></a>Compilazione di moduli per Cortex-M3 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria dei moduli ThreadX, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-iar"></a>Definizione dell'estensione di thread per Cortex-M3 con IAR
+#### <a name="thread-extension-definition-for-cortex-m3-using-iar"></a>Definizione dell'estensione thread per Cortex-M3 con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -1313,13 +1313,13 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
                                 VOID    *tx_thread_iar_tls_pointer;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-iar"></a>Compilazione di Module Manager per Cortex-M3 con IAR
+#### <a name="building-module-manager-for-cortex-m3-using-iar"></a>Building Module Manager for Cortex-M3 using IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria dei moduli ThreadX, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M3 con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M3 con IAR
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
 | Parametro attribute | Significato |
 |---|---|
@@ -1400,20 +1400,20 @@ __txm_module_preamble:
     .dc.l   0                                                   // Reserved 15
 ```
 
-#### <a name="module-properties-for-cortex-m33-using-ac6"></a>Proprietà dei moduli per Cortex-M33 con AC6
+#### <a name="module-properties-for-cortex-m33-using-ac6"></a>Proprietà del modulo per Cortex-M33 con AC6
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m33-using-ac6"></a>Module linker per Cortex-M33 con AC6
+#### <a name="module-linker-for-cortex-m33-using-ac6"></a>Linker di modulo per Cortex-M33 con AC6
 
-Non è necessario alcun file del linker per la Keil. Vedere Impostazioni di compilazione nel progetto di esempio.
-Di seguito sono elencate le opzioni importanti del linker:
+Nessun file del linker necessario per la toolchain Keil. Vedere le impostazioni di compilazione nel progetto di esempio.
+Di seguito sono elencate importanti opzioni del linker:
 
 ```c
 --entry demo_module_start --first __txm_module_preamble
@@ -1434,7 +1434,7 @@ Impostazioni del compilatore:
 -o ./Objects/*.o -MD
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m33-using-ac6"></a>Definizione di estensione di thread per Cortex-M33 con AC6
+#### <a name="thread-extension-definition-for-cortex-m33-using-ac6"></a>Definizione dell'estensione thread per Cortex-M33 tramite AC6
 
 ```c
 #define TX_THREAD_EXTENSION_2                   VOID    *tx_thread_module_instance_ptr;         \
@@ -1452,13 +1452,13 @@ Impostazioni del compilatore:
                                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m33-using-ac6"></a>Compilazione di Module Manager per Cortex-M33 con AC6
+#### <a name="building-module-manager-for-cortex-m33-using-ac6"></a>Creazione di Module Manager per Cortex-M33 tramite AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto sample_threadx_module e il progetto demo_threadx_non-secure_zone.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, sample_threadx_module progetto e demo_threadx_non-secure_zone progetto.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m33-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M33 con AC6
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m33-using-ac6"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M33 tramite AC6
 
-| Parametro attribute |
+| Parametro dell'attributo |
 |---|
 | TXM_MODULE_ATTRIBUTE_NON_SHAREABLE |
 | TXM_MODULE_ATTRIBUTE_OUTER_SHAREABLE |
@@ -1470,27 +1470,27 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 
 #### <a name="module-preamble-for-cortex-m33-using-gnu"></a>Preambolo del modulo per Cortex-M33 con GNU
 
-#### <a name="module-properties-for-cortex-m33-using-gnu"></a>Proprietà dei moduli per Cortex-M33 con GNU
+#### <a name="module-properties-for-cortex-m33-using-gnu"></a>Proprietà del modulo per Cortex-M33 tramite GNU
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m33-using-gnu"></a>Module linker per Cortex-M33 con GNU
+#### <a name="module-linker-for-cortex-m33-using-gnu"></a>Linker di modulo per Cortex-M33 con GNU
 
 #### <a name="building-modules-for-cortex-m33-using-gnu"></a>Compilazione di moduli per Cortex-M33 con GNU
 
-#### <a name="thread-extension-definition-for-cortex-m33-using-gnu"></a>Definizione di estensione di thread per Cortex-M33 con GNU
+#### <a name="thread-extension-definition-for-cortex-m33-using-gnu"></a>Definizione dell'estensione thread per Cortex-M33 tramite GNU
 
 #### <a name="building-module-manager-for-cortex-m33-using-gnu"></a>Compilazione di Module Manager per Cortex-M33 con GNU
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m33-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M33 con GNU
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m33-using-gnu"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M33 tramite GNU
 
-| Parametro attribute |
+| Parametro dell'attributo |
 |---|
 | TXM_MODULE_ATTRIBUTE_NON_SHAREABLE |
 | TXM_MODULE_ATTRIBUTE_OUTER_SHAREABLE |
@@ -1575,17 +1575,17 @@ __txm_module_preamble:
 
 ```
 
-#### <a name="module-properties-for-cortex-m33-using-iar"></a>Proprietà dei moduli per Cortex-M33 con IAR
+#### <a name="module-properties-for-cortex-m33-using-iar"></a>Proprietà del modulo per Cortex-M33 con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m33-using-iar"></a>Module linker per Cortex-M33 con IAR
+#### <a name="module-linker-for-cortex-m33-using-iar"></a>Linker di modulo per Cortex-M33 con IAR
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -1644,7 +1644,7 @@ place in RAM_region   { block RWPI };
 
 #### <a name="building-modules-for-cortex-m33-using-iar"></a>Compilazione di moduli per Cortex-M33 con IAR
 
-#### <a name="thread-extension-definition-for-cortex-m33-using-iar"></a>Definizione di estensione di thread per Cortex-M33 con IAR
+#### <a name="thread-extension-definition-for-cortex-m33-using-iar"></a>Definizione dell'estensione thread per Cortex-M33 con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2                   VOID    *tx_thread_module_instance_ptr;         \
@@ -1667,9 +1667,9 @@ place in RAM_region   { block RWPI };
 
 Non è ancora disponibile un'area di lavoro di esempio. Presto disponibile.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m33-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M33 con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m33-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M33 con IAR
 
-| Parametro attribute |
+| Parametro dell'attributo |
 |---|
 | TXM_MODULE_ATTRIBUTE_NON_SHAREABLE |
 | TXM_MODULE_ATTRIBUTE_OUTER_SHAREABLE |
@@ -1754,23 +1754,23 @@ __txm_module_preamble
     END
 ```
 
-#### <a name="module-properties-for-cortex-m4-using-ac5"></a>Proprietà dei moduli per Cortex-M4 con AC5
+#### <a name="module-properties-for-cortex-m4-using-ac5"></a>Proprietà del modulo per Cortex-M4 con AC5
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m4-using-ac5"></a>Module linker per Cortex-M4 con AC5
+#### <a name="module-linker-for-cortex-m4-using-ac5"></a>Linker di modulo per Cortex-M4 con AC5
 
-Nessun file del linker di esempio specificato. il collegamento viene eseguito sulla riga di comando. Vedere la sezione successiva.
+Non viene fornito alcun file del linker di esempio. Il collegamento viene eseguito nella riga di comando. Vedere la sezione successiva.
 
 #### <a name="building-modules-for-cortex-m4-using-ac5"></a>Compilazione di moduli per Cortex-M4 con AC5
 
-Vedere build_threadx_module_demo.bat di esempio:
+Vedere l'esempio build_threadx_module_demo.bat:
 
 ```dos
 armasm -g --cpreproc --cpu=cortex-m4 --fpu=vfpv4 --apcs=/interwork/ropi/rwpi txm_module_preamble.S
@@ -1778,7 +1778,7 @@ armcc  -g --cpu=cortex-m4 --fpu=vfpv4 -c --apcs=/interwork/ropi/rwpi --lower_rop
 armlink -d -o sample_threadx_module.axf --elf --ro=0x30000 --rw=0x40000 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list sample_threadx_module.map txm_module_preamble.o sample_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m4-using-ac5"></a>Definizione dell'estensione di thread per Cortex-M4 con AC5
+#### <a name="thread-extension-definition-for-cortex-m4-using-ac5"></a>Definizione dell'estensione thread per Cortex-M4 con AC5
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -1796,9 +1796,9 @@ armlink -d -o sample_threadx_module.axf --elf --ro=0x30000 --rw=0x40000 --first 
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m4-using-ac5"></a>Compilazione di Module Manager per Cortex-M4 con AC5
+#### <a name="building-module-manager-for-cortex-m4-using-ac5"></a>Creazione di Module Manager per Cortex-M4 tramite AC5
 
-Vedere build_threadx_module_manager_demo.bat di esempio:
+Vedere l'esempio build_threadx_module_manager_demo.bat:
 
 ```dos
 armasm -g --cpreproc --cpu=cortex-m4 --fpu=vfpv4 --apcs=/interwork tx_initialize_low_level.S
@@ -1806,11 +1806,11 @@ armcc -g --cpu=cortex-m4 --fpu=vfpv4 -c -I../inc -I../../../../common_modules/in
 armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_initialize_low_level.o(RESET) --remove --map --symbols --list sample_threadx_module_manager.map tx_initialize_low_level.o sample_threadx_module_manager.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con AC5
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac5"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M4 tramite AC5
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -1883,25 +1883,25 @@ __txm_module_preamble:
     .dc.l   0                                                   // Reserved 15
 ```
 
-#### <a name="module-properties-for-cortex-m4-using-ac6"></a>Proprietà dei moduli per Cortex-M4 con AC6
+#### <a name="module-properties-for-cortex-m4-using-ac6"></a>Proprietà del modulo per Cortex-M4 tramite AC6
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m4-using-ac6"></a>Module linker per Cortex-M4 con AC6
+#### <a name="module-linker-for-cortex-m4-using-ac6"></a>Linker di modulo per Cortex-M4 con AC6
 
-Non viene usato alcun file del linker. Vedere Impostazioni progetto.
+Non viene usato alcun file del linker. Vedere le impostazioni del progetto.
 
 #### <a name="building-modules-for-cortex-m4-using-ac6"></a>Compilazione di moduli per Cortex-M4 con AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
 
-#### <a name="thread-extension-definition-for-cortex-m4-using-ac6"></a>Definizione dell'estensione di thread per Cortex-M4 con AC6
+#### <a name="thread-extension-definition-for-cortex-m4-using-ac6"></a>Definizione dell'estensione thread per Cortex-M4 tramite AC6
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -1919,15 +1919,15 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m4-using-ac6"></a>Compilazione di Module Manager per Cortex-M4 con AC6
+#### <a name="building-module-manager-for-cortex-m4-using-ac6"></a>Creazione di Module Manager per Cortex-M4 tramite AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con AC6
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac6"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M4 tramite AC6
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -1996,17 +1996,17 @@ __txm_module_preamble:
     .dc.l      0                                                // Reserved 15
 ```
 
-#### <a name="module-properties-for-cortex-m4-using-gnu"></a>Proprietà dei moduli per Cortex-M4 con GNU
+#### <a name="module-properties-for-cortex-m4-using-gnu"></a>Proprietà del modulo per Cortex-M4 con GNU
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m4-using-gnu"></a>Module linker per Cortex-M4 con GNU
+#### <a name="module-linker-for-cortex-m4-using-gnu"></a>Linker di modulo per Cortex-M4 con GNU
 
 ```c
 MEMORY
@@ -2231,7 +2231,7 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=vfpv4 -fpie -fno-
 arm-none-eabi-ld -A cortex-m4 -T sample_threadx_module.ld txm_module_preamble.o gcc_setup.o sample_threadx_module.o -e _txm_module_thread_shell_entry txm.a -o sample_threadx_module.axf -M > sample_threadx_module.map
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m4-using-gnu"></a>Definizione di estensione di thread per Cortex-M4 con GNU
+#### <a name="thread-extension-definition-for-cortex-m4-using-gnu"></a>Definizione dell'estensione thread per Cortex-M4 tramite GNU
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -2261,11 +2261,11 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=vfpv4 -mthumb -I.
 arm-none-eabi-gcc -g -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=vfpv4 -mthumb -T sample_threadx.ld -ereset_handler -nostartfiles -o sample_threadx_module_manager.out -Wl,-Map=sample_threadx_module_manager.map cortexm_vectors.o cortexm_crt0.o tx_initialize_low_level.o sample_threadx_module_manager.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con GNU
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-gnu"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M4 tramite GNU
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -2347,17 +2347,17 @@ __txm_module_preamble:
     END
 ```
 
-#### <a name="module-properties-for-cortex-m4-using-iar"></a>Proprietà dei moduli per Cortex-M4 con IAR
+#### <a name="module-properties-for-cortex-m4-using-iar"></a>Proprietà del modulo per Cortex-M4 con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m4-using-iar"></a>Module linker per Cortex-M4 con IAR
+#### <a name="module-linker-for-cortex-m4-using-iar"></a>Linker di modulo per Cortex-M4 con IAR
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -2416,9 +2416,9 @@ place in RAM_region   { block RWPI };
 
 #### <a name="building-modules-for-cortex-m4-using-iar"></a>Compilazione di moduli per Cortex-M4 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-cortex-m4-using-iar"></a>Definizione di estensione di thread per Cortex-M4 con IAR
+#### <a name="thread-extension-definition-for-cortex-m4-using-iar"></a>Definizione dell'estensione thread per Cortex-M4 con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -2439,11 +2439,11 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 
 #### <a name="building-module-manager-for-cortex-m4-using-iar"></a>Compilazione di Module Manager per Cortex-M4 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria dei moduli ThreadX, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M4 con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M4 con IAR
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
 | Parametro attribute | Significato |
 |---|---|
@@ -2527,23 +2527,23 @@ __txm_module_preamble
     END
 ```
 
-#### <a name="module-properties-for-cortex-m7-using-ac5"></a>Proprietà dei moduli per Cortex-M7 con AC5
+#### <a name="module-properties-for-cortex-m7-using-ac5"></a>Proprietà del modulo per Cortex-M7 con AC5
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-ac5"></a>Module linker per Cortex-M7 con AC5
+#### <a name="module-linker-for-cortex-m7-using-ac5"></a>Linker di modulo per Cortex-M7 con AC5
 
 Compilato dalla riga di comando, nessun esempio di file del linker.
 
 #### <a name="building-modules-for-cortex-m7-using-ac5"></a>Compilazione di moduli per Cortex-M7 con AC5
 
-Un semplice esempio di riga di comando per la compilazione di un modulo Cortex-M7 con AC5:
+Un semplice esempio di riga di comando per la creazione di un modulo Cortex-M7 con AC5:
 
 ```dos
 armasm -g --cpu=cortex-m7 --fpu=softvfp --apcs=/interwork/ropi/rwpi txm_module_preamble.s
@@ -2551,7 +2551,7 @@ armcc  -g --cpu=cortex-m7 --fpu=softvfp -c --apcs=/interwork/ropi/rwpi --lower_r
 armlink -d -o sample_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list sample_threadx_module.map txm_module_preamble.o sample_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-ac5"></a>Definizione di estensione di thread per Cortex-M7 con AC5
+#### <a name="thread-extension-definition-for-cortex-m7-using-ac5"></a>Definizione dell'estensione thread per Cortex-M7 con AC5
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -2569,9 +2569,9 @@ armlink -d -o sample_threadx_module.axf --elf --ro 0 --first txm_module_preamble
                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m7-using-ac5"></a>Compilazione di Module Manager per Cortex-M7 con AC5
+#### <a name="building-module-manager-for-cortex-m7-using-ac5"></a>Building Module Manager for Cortex-M7 using AC5
 
-Semplice esempio di riga di comando per la compilazione di un gestore di moduli Cortex-M7 con AC5:
+Un semplice esempio di riga di comando per la creazione di un modulo di gestione Cortex-M7 con AC5:
 
 ```dos
 armasm -g --cpu=cortex-m7 --fpu=softvfp --apcs=interwork tx_initialize_low_level.s
@@ -2580,29 +2580,29 @@ armcc -g --cpu=cortex-m7 --fpu=softvfp -c module_code.c
 armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_initialize_low_level.o(RESET) --remove --map --symbols --list demo_threadx_module_manager.map tx_initialize_low_level.o demo_threadx_module_manager.o module_code.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac5"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con AC5
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac5"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M7 tramite AC5
 
 ### <a name="cortex-m7-using-ac6"></a>Cortex-M7 con AC6
 
-#### <a name="module-properties-for-cortex-m7-using-ac6"></a>Proprietà dei moduli per Cortex-M7 con AC6
+#### <a name="module-properties-for-cortex-m7-using-ac6"></a>Proprietà del modulo per Cortex-M7 con AC6
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-ac6"></a>Module linker per Cortex-M7 con AC6
+#### <a name="module-linker-for-cortex-m7-using-ac6"></a>Linker del modulo per Cortex-M7 con AC6
 
-Non viene usato alcun file del linker. Vedere Impostazioni progetto.
+Non viene usato alcun file del linker. Vedere le impostazioni del progetto.
 
 #### <a name="building-modules-for-cortex-m7-using-ac6"></a>Compilazione di moduli per Cortex-M7 con AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-ac6"></a>Definizione di estensione di thread per Cortex-M7 con AC6
+#### <a name="thread-extension-definition-for-cortex-m7-using-ac6"></a>Definizione dell'estensione thread per Cortex-M7 con AC6
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -2620,13 +2620,13 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m7-using-ac6"></a>Compilazione di Module Manager per Cortex-M7 con AC6
+#### <a name="building-module-manager-for-cortex-m7-using-ac6"></a>Building Module Manager for Cortex-M7 using AC6
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo di esempio e il progetto di gestione moduli di esempio.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con AC6
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M7 tramite AC6
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
 | Parametro attribute | Significato |
 |---|---|
@@ -2634,17 +2634,17 @@ Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
 
 ### <a name="cortex-m7-using-gnu"></a>Cortex-M7 con GNU
 
-#### <a name="module-properties-for-cortex-m7-using-gnu"></a>Proprietà dei moduli per Cortex-M7 con GNU
+#### <a name="module-properties-for-cortex-m7-using-gnu"></a>Proprietà del modulo per Cortex-M7 con GNU
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-gnu"></a>Module linker per Cortex-M7 con GNU
+#### <a name="module-linker-for-cortex-m7-using-gnu"></a>Linker di modulo per Cortex-M7 con GNU
 
 ```c
 MEMORY
@@ -2869,7 +2869,7 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -fpie -f
 arm-none-eabi-ld -A cortex-m7 -T sample_threadx_module.ld txm_module_preamble.o gcc_setup.o sample_threadx_module.o -e _txm_module_thread_shell_entry txm.a -o sample_threadx_module.axf -M > sample_threadx_module.map
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-gnu"></a>Definizione di estensione di thread per Cortex-M7 con GNU
+#### <a name="thread-extension-definition-for-cortex-m7-using-gnu"></a>Definizione dell'estensione thread per Cortex-M7 tramite GNU
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -2898,11 +2898,11 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb 
 arm-none-eabi-gcc -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -nostartfiles -ereset_handler -T sample_threadx.ld tx_simulator_startup.o cortexm_crt0.o sample_threadx_module_manager.o tx.a -o sample_threadx_module_manager.axf -Wl,-Map=sample_threadx_module_manager.map
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con GNU
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M7 tramite GNU
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -2984,17 +2984,17 @@ __txm_module_preamble:
     END
 ```
 
-#### <a name="module-properties-for-cortex-m7-using-iar"></a>Proprietà dei moduli per Cortex-M7 con IAR
+#### <a name="module-properties-for-cortex-m7-using-iar"></a>Proprietà del modulo per Cortex-M7 con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-iar"></a>Module linker per Cortex-M7 con IAR
+#### <a name="module-linker-for-cortex-m7-using-iar"></a>Linker di modulo per Cortex-M7 con IAR
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -3047,9 +3047,9 @@ place in RAM_region   { block RWPI };
 
 #### <a name="building-modules-for-cortex-m7-using-iar"></a>Compilazione di moduli per Cortex-M7 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-iar"></a>Definizione di estensione di thread per Cortex-M7 con IAR
+#### <a name="thread-extension-definition-for-cortex-m7-using-iar"></a>Definizione dell'estensione thread per Cortex-M7 con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -3070,13 +3070,13 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 
 #### <a name="building-module-manager-for-cortex-m7-using-iar"></a>Compilazione di Module Manager per Cortex-M7 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-M7 con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-M7 con IAR
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -3146,21 +3146,21 @@ __txm_module_preamble:
 .word   0                                                   /* Reserved 15  */
 ```
 
-#### <a name="module-properties-for-cortex-r4-using-ac6"></a>Proprietà dei moduli per Cortex-R4 con AC6
+#### <a name="module-properties-for-cortex-r4-using-ac6"></a>Proprietà del modulo per Cortex-R4 tramite AC6
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | [23-1] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-r4-using-ac6"></a>Module linker per Cortex-R4 con AC6
+#### <a name="module-linker-for-cortex-r4-using-ac6"></a>Linker di modulo per Cortex-R4 con AC6
 
-Compilato dalla riga di comando, nessun esempio di file del linker.
+Basato sulla riga di comando, nessun esempio di file del linker.
 
 #### <a name="building-modules-for-cortex-r4-using-ac6"></a>Compilazione di moduli per Cortex-R4 con AC6
 
-Un semplice esempio di riga di comando per la compilazione di un modulo Cortex-R4 con AC6:
+Un semplice esempio della riga di comando per la compilazione di un modulo Cortex-R4 usando AC6:
 
 ```dos
 armclang -c -g -fropi -frwpi --target=arm-arm-none-eabi -mcpu=cortex-r4 demo_threadx_module.c
@@ -3169,7 +3169,7 @@ armclang -c -g -fropi -frwpi --target=arm-arm-none-eabi -mcpu=cortex-r4 semihost
 armlink -d -o demo_threadx_module.axf --elf --ro 0x00100000 --first txm_module_preamble.o --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --datacompressor=off --list demo_threadx_module.map txm_module_preamble.o demo_threadx_module.o semihosting.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-r4-using-ac6"></a>Definizione dell'estensione di thread per Cortex-R4 con AC6
+#### <a name="thread-extension-definition-for-cortex-r4-using-ac6"></a>Definizione dell'estensione thread per Cortex-R4 con AC6
 
 ```c
 #define TX_THREAD_EXTENSION_2   ULONG   tx_thread_vfp_enable;                   \
@@ -3187,9 +3187,9 @@ armlink -d -o demo_threadx_module.axf --elf --ro 0x00100000 --first txm_module_p
                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-r4-using-ac6"></a>Compilazione di Module Manager per Cortex-R4 con AC6
+#### <a name="building-module-manager-for-cortex-r4-using-ac6"></a>Creazione di Module Manager per Cortex-R4 tramite AC6
 
-Un semplice esempio di riga di comando per la creazione di un modulo di gestione dei moduli Cortex-R4 con AC6:
+Un semplice esempio della riga di comando per la compilazione di un modulo Cortex-R4 manager usando AC6:
 
 ```dos
 armclang -c -g --target=arm-arm-none-eabi -mcpu=cortex-r4 demo_threadx_module_manager.c
@@ -3200,11 +3200,11 @@ armclang -c -g --target=arm-arm-none-eabi -mcpu=cortex-r4 startup.S
 armlink -d -o demo_threadx_module_manager.axf --elf --scatter=demo_threadx.scat --remove --map --symbols --list demo_threadx_module_manager.map startup.o timer.o gic.o demo_threadx_module_manager.o tx_initialize_low_level.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-ac6"></a>Attributi per la memoria esterna Abilita API per Cortex-R4 con AC6
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-ac6"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-R4 tramite AC6
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -3275,15 +3275,15 @@ __txm_module_preamble:
     END
 ```
 
-#### <a name="module-properties-for-cortex-r4-using-iar"></a>Proprietà dei moduli per Cortex-R4 con IAR
+#### <a name="module-properties-for-cortex-r4-using-iar"></a>Proprietà del modulo per Cortex-R4 con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
 | [23-1] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-r4-using-iar"></a>Module linker per Cortex-R4 con IAR
+#### <a name="module-linker-for-cortex-r4-using-iar"></a>Linker di modulo per Cortex-R4 con IAR
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -3333,9 +3333,9 @@ place in RAM_region   { block RWPI };
 
 #### <a name="building-modules-for-cortex-r4-using-iar"></a>Compilazione di moduli per Cortex-R4 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-cortex-r4-using-iar"></a>Definizione dell'estensione di thread per Cortex-R4 con IAR
+#### <a name="thread-extension-definition-for-cortex-r4-using-iar"></a>Definizione dell'estensione thread per Cortex-R4 con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2   ULONG   tx_thread_vfp_enable;                   \
@@ -3356,13 +3356,13 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 
 #### <a name="building-module-manager-for-cortex-r4-using-iar"></a>Compilazione di Module Manager per Cortex-R4 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-iar"></a>Attributi per la memoria esterna Abilita API per Cortex-R4 con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per Cortex-R4 con IAR
 
-Il modulo dispone sempre dell'accesso in lettura alla memoria condivisa.
+Il modulo ha sempre accesso in lettura alla memoria condivisa.
 
-| Parametro attribute | Significato |
+| Parametro dell'attributo | Significato |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 
@@ -3425,15 +3425,15 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-mcf544xx-using-ghs"></a>Proprietà del modulo per MCF544xx con GHS
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione da MMU<br />Protezione da MMU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MMU<br />Protezione MMU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x03 | **ID compilatore**<br />GHS |
+| [31-24] | <br />0x03 | **ID compilatore**<br />Ghs |
 
-#### <a name="module-linker-for-mcf544xx-using-ghs"></a>Modulo linker per MCF544xx con GHS
+#### <a name="module-linker-for-mcf544xx-using-ghs"></a>Linker di modulo per MCF544xx con GHS
 
 ```c
 DEFAULTS {
@@ -3487,9 +3487,9 @@ DEFAULTS {
 
 #### <a name="building-modules-for-mcf544xx-using-ghs"></a>Compilazione di moduli per MCF544xx con GHS
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-mcf544xx-using-ghs"></a>Definizione dell'estensione di thread per MCF544xx con GHS
+#### <a name="thread-extension-definition-for-mcf544xx-using-ghs"></a>Definizione dell'estensione del thread per MCF544xx con GHS
 
 ```c
 #define TX_THREAD_EXTENSION_2   int     Errno;                                  \
@@ -3509,11 +3509,11 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-mcf544xx-using-ghs"></a>Compilazione di gestione moduli per MCF544xx con GHS
+#### <a name="building-module-manager-for-mcf544xx-using-ghs"></a>Compilazione di Gestione moduli per MCF544xx con GHS
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-mcf544xx-using-ghs"></a>Attributi per la memoria esterna Abilita API per MCF544xx con GHS
+#### <a name="attributes-for-external-memory-enable-api-for-mcf544xx-using-ghs"></a>Attributi per l'API di abilitazione della memoria esterna per MCF544xx con GHS
 
 Questa funzionalità non è abilitata in MCF544xx.
 
@@ -3589,15 +3589,15 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-rx63-using-iar"></a>Proprietà del modulo per RX63 con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x02 | **ID compilatore**<br />IAR<br />GNU |
+| [31-24] | <br />0x00<br />0x02 | **ID compilatore**<br />Iar<br />Gnu |
 
-#### <a name="module-linker-for-rx63-using-iar"></a>Modulo linker per RX63 con IAR
+#### <a name="module-linker-for-rx63-using-iar"></a>Linker di modulo per RX63 con IAR
 
 ```c
 //-----------------------------------------------------------------------------
@@ -3682,9 +3682,9 @@ place in RAM_region16   { block RWPI };
 
 #### <a name="building-modules-for-rx63-using-iar"></a>Compilazione di moduli per RX63 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-rxrx635n-using-iar"></a>Definizione dell'estensione di thread per RXRX635N con IAR
+#### <a name="thread-extension-definition-for-rxrx635n-using-iar"></a>Definizione dell'estensione thread per RXRX635N con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;       \
@@ -3702,15 +3702,15 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
                                 VOID    *tx_thread_iar_tls_pointer;
 ```
 
-#### <a name="building-module-manager-for-rx63-using-iar"></a>Compilazione di Module Manager per RX63 con IAR
+#### <a name="building-module-manager-for-rx63-using-iar"></a>Compilazione di Gestione moduli per RX63 con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-rx63-using-iar"></a>Attributi per l'API External memory Enable per RX63 con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-rx63-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per RX63 con IAR
 
 | Parametro attributo | Significato |
 |---|---|
-| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Esegui codice |
+| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Eseguire codice |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_READ | accesso in lettura |
 
@@ -3786,15 +3786,15 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-rx65n-using-iar"></a>Proprietà del modulo per RX65N con IAR
 
-| bit | valore | Significato |
+| bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x00<br />0x02 | **ID compilatore**<br />IAR<br />GNU |
+| [31-24] | <br />0x00<br />0x02 | **ID compilatore**<br />Iar<br />Gnu |
 
-#### <a name="module-linker-for-rx65n-using-iar"></a>Modulo linker per RX65N con IAR
+#### <a name="module-linker-for-rx65n-using-iar"></a>Linker di modulo per RX65N con IAR
 
 ```c
 //-----------------------------------------------------------------------------
@@ -3879,9 +3879,9 @@ place in RAM_region16   { block RWPI };
 
 #### <a name="building-modules-for-rx65n-using-iar"></a>Compilazione di moduli per RX65N con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="thread-extension-definition-for-rx65n-using-iar"></a>Definizione dell'estensione di thread per RX65N con IAR
+#### <a name="thread-extension-definition-for-rx65n-using-iar"></a>Definizione dell'estensione thread per RX65N con IAR
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -3901,12 +3901,12 @@ Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la li
 
 #### <a name="building-module-manager-for-rx65n-using-iar"></a>Compilazione di Module Manager per RX65N con IAR
 
-Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria di moduli ThreadX, il progetto del modulo demo e il progetto di gestione moduli dimostrativi.
+Viene fornita un'area di lavoro di esempio. Compilare la libreria ThreadX, la libreria ThreadX Modules, il progetto di modulo demo e il progetto demo module manager.
 
-#### <a name="attributes-for-external-memory-enable-api-for-rx65n-using-iar"></a>Attributi per l'API External memory Enable per RX65N con IAR
+#### <a name="attributes-for-external-memory-enable-api-for-rx65n-using-iar"></a>Attributi per l'API di abilitazione della memoria esterna per RX65N con IAR
 
 | Parametro attributo | Significato |
 |---|---|
-| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Esegui codice |
+| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Eseguire codice |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Accesso in scrittura |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_READ | accesso in lettura |

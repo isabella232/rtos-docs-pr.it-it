@@ -1,59 +1,59 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX Duo SNTP client
+title: Capitolo 2 - Installazione e uso di Azure RTOS client NetX Duo SNTP
 description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client NetX Duo SNTP.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cd917e7e70ce21dbff6c8081c2ff115c0acad8a8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2058875c08d64e2c16f67b48323814ec77ec96882eec26aaf2c9454459511db3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821653"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799048"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-sntp-client"></a>Capitolo 2-installazione e uso di Azure RTO NetX Duo SNTP client
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-sntp-client"></a>Capitolo 2 - Installazione e uso di Azure RTOS client NetX Duo SNTP
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'uso del client Azure RTO NetX Duo SNTP.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'uso del Azure RTOS NetX Duo SNTP.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
 SNTP per NetX Duo è disponibile all'indirizzo [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Il pacchetto include due file di origine e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nxd_sntp_client. c** File di origine C del client SNTP  
-- **nxd_sntp_client. h** File di intestazione del client SNTP  
-- **demo_netxduo_sntp_client. c** Applicazione client SNTP dimostrativa  
+- **nxd_sntp_client.c** File di origine C del client SNTP  
+- **nxd_sntp_client.h** File di intestazione del client SNTP  
+- **demo_netxduo_sntp_client.c** Applicazione client SNTP dimostrativa  
 - **nxd_sntp_client.pdf** Manuale dell'utente del client NetX Duo SNTP  
 
 ## <a name="netx-duo-sntp-client-installation"></a>Installazione del client NetX Duo SNTP
 
-Per poter usare SNTP per NetX Duo, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX Duo. Se, ad esempio, NetX Duo è installato nella directory "*\threadx\arm7\green*", i file del client NETX Duo SNTP *nxd_sntp_client. c* e *nxd_sntp_client. h* (*nx_sntp_client. c* e *nx_sntp_client. h* in NETX) devono essere copiati in questa directory.
+Per usare SNTP per NetX Duo, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\arm7\green*", i file del client SNTP di NetX Duo *nxd_sntp_client.c* e *nxd_sntp_client.h* (*nx_sntp_client.c* e *nx_sntp_client.h* in NetX) devono essere copiati in questa directory.
 
-## <a name="using-netx-duo-sntp-client"></a>Uso di NetX Duo SNTP client
+## <a name="using-netx-duo-sntp-client"></a>Uso del client NetX Duo SNTP
 
-L'uso di NetX Duo SNTP client è facile. In pratica, il codice dell'applicazione deve includere *nxd_sntp_client. h* dopo aver incluso *tx_api. h, fx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX Duo. Una volta incluso *nxd_sntp_client. h* , il codice dell'applicazione è in grado di eseguire le chiamate di funzione SNTP specificate più avanti in questa guida. Nell'applicazione deve inoltre essere incluso *nxd_sntp_client. c* nel processo di compilazione. Questi file devono essere compilati allo stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX Duo SNTP client.
+L'uso del client NetX Duo SNTP è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nxd_sntp_client.h* dopo aver incluso *rispettivamente tx_api.h, fx_api.h* e *nx_api.h,* per poter usare rispettivamente ThreadX e NetX Duo. Dopo *nxd_sntp_client.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione SNTP specificate più avanti in questa guida. L'applicazione deve anche *includere nxd_sntp_client.c* nel processo di compilazione. Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client NetX Duo SNTP.
 
 > [!NOTE]
-> Poiché il client NetX Duo SNTP usa i servizi UDP di NetX Duo, è necessario abilitare UDP con la chiamata *nx_udp_enable* prima di usare i servizi SNTP.
+> Poiché il client NetX Duo SNTP usa i servizi UDP di NetX Duo, UDP deve essere abilitato con la chiamata *nx_udp_enable* prima di usare i servizi SNTP.
 
-## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
+## <a name="small-example-system"></a>Small Example System
 
-Di seguito è riportato un esempio di come usare NetX Duo SNTP. Si noti che questo esempio **non** è garantito che funzioni come nel sistema. Potrebbe essere necessario apportare modifiche per il sistema e l'hardware specifici. Ad esempio, sarà necessario sostituire il driver NetX RAM con la funzione di driver effettiva. Questo esempio è destinato esclusivamente a scopi dimostrativi.
+Di seguito è riportato un esempio di come usare NetX Duo SNTP. Si noti che non **è garantito** che questo esempio funzioni come nel sistema. Potrebbe essere necessario apportare modifiche per il sistema e l'hardware specifici. Ad esempio, sarà necessario sostituire il driver ram NetX con la funzione effettiva del driver. Questo esempio è destinato esclusivamente a scopo dimostrativo.
 
-In questo esempio è incluso il file di intestazione SNTP *nxd_sntp_client. h* . Il client SNTP viene creato in "*tx_application_define*". Si noti che quando si crea il client SNTP, le funzioni del gestore del bacio della morte e della seconda intercalare sono facoltative.
+In questo esempio è incluso il file di intestazione *SNTP nxd_sntp_client.h.* Il client SNTP viene creato in "*tx_application_define*". Si noti che le funzioni di gestione della morte e del secondo intercalare sono facoltative quando si crea il client SNTP.
 
-Questa demo può essere usata con IPv6 o IPv4. Per eseguire il client SNTP su IPv6, definire USE_IPV6. IPv6 deve essere abilitato anche in NetX Duo. L'host client SNTP è configurato per la convalida degli indirizzi IPv6 e i servizi ICMPv6 e IPv6 in NetX Duo. Per ulteriori informazioni sul supporto IPv6 in NetX Duo, vedere la guida dell'utente di NetX Duo.
+Questa demo può essere usata con IPv6 o IPv4. Per eseguire il client SNTP su IPv6, definire USE_IPV6. IPv6 deve essere abilitato anche in NetX Duo. L'host del client SNTP è configurato per la convalida degli indirizzi IPv6 e per i servizi ICMPv6 e IPv6 in NetX Duo. Per altri dettagli sul supporto IPv6 in NetX Duo, vedere il Manuale dell'utente di NetX Duo.
 
 Il client SNTP deve quindi essere inizializzato per la modalità unicast o broadcast.
 
-Il client SNTP scrive inizialmente gli aggiornamenti temporali del server nella struttura dei dati interna. Non corrisponde all'ora locale del dispositivo. L'ora locale del dispositivo può essere impostata come ora di riferimento nel client di SNTP prima di avviare il thread del client SNTP. Questa opzione è utile se il client SNTP è configurato (NX_SNTP_CLIENT_IGNORE_MAX_ADJUST_STARTUP impostato su NX_FALSE) per confrontare il primo aggiornamento del server con il NX_SNTP_CLIENT_MAX_ADJUSTMENT (valore predefinito 180 millisecondi). In caso contrario, il client SNTP imposta l'ora locale iniziale direttamente quando riceve il primo aggiornamento dal server.
+Il client SNTP scrive inizialmente gli aggiornamenti dell'ora del server nella propria struttura di dati interna. Non corrisponde all'ora locale del dispositivo. L'ora locale del dispositivo può essere impostata come ora di base nel client SNTP prima di avviare il thread del client SNTP. Ciò è utile se il client SNTP è configurato (NX_SNTP_CLIENT_IGNORE_MAX_ADJUST_STARTUP impostato su NX_FALSE) per confrontare il primo aggiornamento del server con il NX_SNTP_CLIENT_MAX_ADJUSTMENT (valore predefinito di 180 millisecondi). In caso contrario, il client SNTP imposta direttamente l'ora locale iniziale quando ottiene il primo aggiornamento dal server.
 
-Un tempo di riferimento viene applicato al client SNTP usando il servizio *nx_sntp_client_set_local_time* .
+Un tempo di base viene applicato al client SNTP usando *il nx_sntp_client_set_local_time* servizio.
 
-Il client SNTP viene avviato rispettivamente per la modalità unicast e broadcast. Per un determinato intervallo (leggermente inferiore all'intervallo di polling unicast), l'applicazione aggiorna l'ora locale del client SNTP, usando il *nx_sntp_client_set_local_time*, dal "clock in tempo reale" che viene simulato semplicemente incrementando i secondi e i millisecondi dell'ora corrente. Dopo ogni intervallo, l'applicazione verifica periodicamente la disponibilità di aggiornamenti dal server SNTP. Il servizio *nx_sntp_client_receiving _updates* verifica che il client SNTP stia attualmente ricevendo aggiornamenti validi. In tal caso, recupererà l'ora di aggiornamento più recente utilizzando il servizio *nx_sntp_client_get_local_time_extended* .
+Il client SNTP viene avviato rispettivamente per la modalità unicast e broadcast. Per un determinato intervallo (leggermente inferiore all'intervallo di polling unicast), l'applicazione aggiorna l'ora locale del client SNTP, usando *il nx_sntp_client_set_local_time*, dall'"orologio in tempo reale" simulato semplicemente incrementando i secondi e i millisecondi dell'ora corrente. Dopo ogni intervallo, l'applicazione verifica periodicamente la disponibilità di aggiornamenti dal server SNTP. Il *nx_sntp_client_receiving _updates* verifica che il client SNTP riceva attualmente aggiornamenti validi. In tal caso, recupererà l'ora dell'aggiornamento più recente *usando il nx_sntp_client_get_local_time_extended* servizio.
 
-Il client SNTP può essere arrestato in qualsiasi momento usando il servizio *nx_sntp_client_stop* se, ad esempio, rileva che il client SNTP non riceve più aggiornamenti validi. Per riavviare il client, l'applicazione deve chiamare il servizio unicast o broadcast Initialize, quindi chiamare i servizi unicast o broadcast Run. Mentre l'attività thread client SNTP è stata arrestata, il client SNTP può cambiare le modalità e i server SNTP (unicast o broadcast), se necessario, ad esempio il server SNTP precedente sembra inattivo.
+Il client SNTP può essere arrestato in qualsiasi momento usando il servizio *nx_sntp_client_stop se,* ad esempio, rileva che il client SNTP non riceve più aggiornamenti validi. Per riavviare il client, l'applicazione deve chiamare il servizio di inizializzazione unicast o broadcast e quindi chiamare i servizi di esecuzione unicast o broadcast. Mentre l'attività del thread del client SNTP viene arrestata, il client SNTP può cambiare server e modalità SNTP (unicast o broadcast), se necessario, ad esempio il server SNTP precedente sembra essere in stato insoddiente.
 
 ```c
 /* 
@@ -637,91 +637,91 @@ VOID time_update_callback(NX_SNTP_TIME_MESSAGE *time_update_ptr,
 
 ```
 
-Figura 1 esempio di utilizzo del client SNTP con NetX Duo
+Figura 1 Esempio di uso del client SNTP con NetX Duo
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Per definire il client NetX Duo SNTP sono disponibili diverse opzioni di configurazione. L'elenco seguente descrive tutti i dettagli:  
+Sono disponibili diverse opzioni di configurazione per la definizione del client NetX Duo SNTP. L'elenco seguente descrive ogni elemento in dettaglio:  
   
 
 **NX_SNTP_CLIENT_THREAD_STACK_SIZE**  
-Questa opzione consente di impostare le dimensioni dello stack di thread del client. Il valore predefinito di NetX Duo SNTP client size è 2048.
+Questa opzione imposta le dimensioni dello stack di thread del client. La dimensione predefinita del client NetX Duo SNTP è 2048.
 
 **NX_SNTP_CLIENT_THREAD_TIME_SLICE**  
-Questa opzione consente di impostare la sezione relativa all'ora dell'utilità di pianificazione per l'esecuzione del thread del client. Il valore predefinito di NetX Duo SNTP client size è TX_NO_TIME_SLICE.
+Questa opzione imposta l'intervallo di tempo dell'utilità di pianificazione per l'esecuzione del thread client. Le dimensioni predefinite del client NetX Duo SNTP sono TX_NO_TIME_SLICE.
 
 **NX_SNTP_CLIENT_ THREAD_PRIORITY**  
-Questa opzione imposta la priorità del thread del client. Il valore predefinito del client NetX Duo SNTP è 2.
+Questa opzione imposta la priorità del thread client. Il valore predefinito di NetX Duo SNTP Client è 2.
 
 **NX_SNTP_CLIENT_PREEMPTION_THRESHOLD**  
-Questa opzione imposta il livello di priorità in corrispondenza del quale il thread del client consente la precedenza. Il valore predefinito di NetX Duo SNTP client è impostato su `NX_SNTP_CLIENT_ THREAD_PRIORITY` .
+Questa opzione imposta il livello di priorità al quale il thread client consente la precedenza. Il valore predefinito di NetX Duo SNTP Client è impostato su `NX_SNTP_CLIENT_ THREAD_PRIORITY` .
 
 **NX_SNTP_CLIENT_UDP_SOCKET_NAME**  
-Questa opzione imposta il nome del socket UDP. Il nome predefinito del socket UDP del client NetX Duo SNTP è "socket client SNTP".
+Questa opzione imposta il nome del socket UDP. Il nome predefinito del socket UDP del client NetX Duo SNTP è "SNTP Client socket".
 
 **NX_SNTP_CLIENT_UDP_PORT**  
-Viene impostata la porta a cui è associato il socket client. La porta client NetX Duo SNTP predefinita è 123.
+In questo modo viene impostata la porta a cui è associato il socket client. La porta predefinita del client NetX Duo SNTP è 123.
 
 **NX_SNTP_SERVER_UDP_PORT**  
-Si tratta della porta a cui il client invia messaggi SNTP al server SNTP. La porta predefinita del server SNTP NetX è 123.
+Si tratta della porta su cui il client invia i messaggi SNTP al server SNTP. La porta predefinita del server NetX SNTP è 123.
 
 **NX_SNTP_CLIENT_TIME_TO_LIVE**  
-Specifica il numero di router che un pacchetto client può superare prima che venga eliminato. Il client NetX Duo SNTP predefinito è impostato su 0x80 *.*
+Specifica il numero di router che un pacchetto client può passare prima di essere eliminato. Il client NetX Duo SNTP predefinito è impostato su 0x80 *.*
 
 **NX_SNTP_CLIENT_MAX_QUEUE_DEPTH**  
-Numero massimo di pacchetti UDP (datagrammi) che possono essere accodati nel socket client SNTP di NetX Duo. Ricevuti pacchetti aggiuntivi significa che vengono rilasciati i pacchetti meno recenti. Il client NetX Duo SNTP predefinito è impostato su 5.
+Numero massimo di pacchetti UDP (datagrammi) che possono essere accodati nel socket del client SNTP di NetX Duo. I pacchetti aggiuntivi ricevuti significano che vengono rilasciati i pacchetti meno recenti. Il client NetX Duo SNTP predefinito è impostato su 5.
 
 **NX_SNTP_CLIENT_PACKET_TIMEOUT**  
-Timeout per l'allocazione di pacchetti NetX Duo. Il timeout del pacchetto client NetX Duo SNTP predefinito è 1 secondo.
+Timeout per l'allocazione di pacchetti NetX Duo. Il timeout predefinito del pacchetto del client NetX Duo SNTP è di 1 secondo.
 
 **NX_SNTP_CLIENT_NTP_VERSION**  
-Versione di SNTP usata dal client l'API client NetX Duo SNTP è basata sulla versione 4. Il valore predefinito è 3.
+Versione SNTP usata dal client L'API client SNTP di NetX Duo è basata sulla versione 4. Il valore predefinito è 3.
 
 **NX_SNTP_CLIENT_MIN_NTP_VERSION**  
-Versione meno recente di SNTP. il client sarà in grado di usare. Il valore predefinito del client NetX Duo SNTP è la versione 3.
+Versione SNTP meno recente che il client sarà in grado di usare. L'impostazione predefinita del client SNTP di NetX Duo è la versione 3.
 
 **NX_SNTP_CLIENT_MIN_SERVER_STRATUM**  
-Il livello più basso (livello di strato numerico più elevato) SNTP lo strato del server che il client accetterà. Il valore predefinito del client NetX Duo SNTP è 2.
+Livello più basso (livello massimo di strato numerico) dello strato del server SNTP accettato dal client. Il valore predefinito di NetX Duo SNTP Client è 2.
 
 **NX_SNTP_CLIENT_MIN_TIME_ADJUSTMENT**  
-Regolazione minima del tempo, in millisecondi, che il client effettuerà all'ora dell'orologio locale. Le rettifiche temporali seguenti verranno ignorate. Il valore predefinito del client NetX Duo SNTP è 10.
+Regolazione dell'ora minima in millisecondi che il client farà all'ora dell'orologio locale. Le rettifiche di tempo al di sotto di questo valore verranno ignorate. Il valore predefinito di NetX Duo SNTP Client è 10.
 
 **NX_SNTP_CLIENT_MAX_TIME_ADJUSTMENT**  
-Regolazione del tempo massima in millisecondi che il client effettuerà all'ora dell'orologio locale. Per le rettifiche temporali sopra questa quantità, la regolazione dell'orologio locale è limitata alla regolazione del tempo massima. Il valore predefinito di NetX Duo SNTP client è 180000 (3 minuti).
+Regolazione dell'ora massima in millisecondi che il client farà all'ora dell'orologio locale. Per le rettifiche di tempo superiori a questo valore, la regolazione dell'orologio locale è limitata alla regolazione massima dell'ora. Il valore predefinito del client NetX Duo SNTP è 180000 (3 minuti).
 
 **NX_SNTP_CLIENT_IGNORE_MAX_ADJUST_STARTUP**  
-In questo modo è possibile rinunciare alla regolazione del tempo massima quando il client riceve il primo aggiornamento dal relativo server di tempo. Successivamente, viene applicata la regolazione del tempo massima. Lo scopo è quello di ottenere il client sincronizzato con l'orologio del server il prima possibile. Il valore predefinito del client NetX Duo SNTP è NX_TRUE.
+Ciò consente di rinunciare alla regolazione del tempo massima quando il client riceve il primo aggiornamento dal server di tempo. Successivamente, viene applicata la regolazione temporale massima. L'intenzione è di sincronizzare il client con l'orologio del server il prima possibile. Il client NetX Duo SNTP predefinito è NX_TRUE.
 
 **NX_SNTP_CLIENT_MAX_TIME_LAPSE**  
-Quantità di tempo massima consentita (secondi) trascorsa senza un aggiornamento orario valido ricevuto dal client SNTP. Il client SNTP continuerà a funzionare, ma lo stato del server SNTP è impostato su NX_FALSE. Il valore predefinito è 7200.
+Tempo massimo consentito (secondi) trascorso senza un aggiornamento di tempo valido ricevuto dal client SNTP. Il client SNTP continuerà a essere in esecuzione, ma lo stato del server SNTP è impostato su NX_FALSE. Il valore predefinito è 7200.
 
 
 **NX_SNTP_UPDATE_TIMEOUT_INTERVAL**  
-Intervallo (secondi) in cui il timer client di SNTP aggiorna il tempo client di SNTP rimanente dopo l'ultimo aggiornamento valido ricevuto e il client unicast aggiorna il tempo di intervallo di polling rimanente prima di inviare la richiesta di aggiornamento SNTP successiva. Il valore predefinito è 1.
+Intervallo (secondi) in cui il timer del client SNTP aggiorna il tempo del client SNTP rimanente dall'ultimo aggiornamento valido ricevuto e il client unicast aggiorna il tempo rimanente dell'intervallo di polling prima di inviare la richiesta di aggiornamento SNTP successiva. Il valore predefinito è 1.
 
 **NX_SNTP_CLIENT_UNICAST_POLL_INTERVAL**  
-Intervallo di polling iniziale (secondi) in cui il client invia una richiesta unicast al server SNTP. Il valore predefinito di NetX Duo SNTP client è 3600.
+Intervallo di polling iniziale (secondi) in cui il client invia una richiesta unicast al server SNTP. Il valore predefinito del client SNTP di NetX Duo è 3600.
 
 **NX_SNTP_CLIENT_EXP_BACKOFF_RATE**  
-Fattore in base al quale viene aumentato l'intervallo di polling unicast del client corrente. Quando il client non riesce a ricevere un aggiornamento temporale del server o riceve indicazioni dal server che è temporaneamente non disponibile (ad esempio, non ancora sincronizzato) per il servizio di aggiornamento del tempo, aumenterà l'intervallo di polling corrente per questa frequenza fino a, ma non superando NX_SNTP_CLIENT_MAX_TIME_LAPSE. Il valore predefinito è 2.
+Fattore in base al quale viene aumentato l'intervallo di polling unicast del client corrente. Quando il client non riceve un aggiornamento dell'ora del server o riceve indicazioni dal server che non è temporaneamente disponibile (ad esempio non è ancora sincronizzato) per il servizio di aggiornamento temporale, l'intervallo di polling corrente aumenta di questa frequenza fino a non superare NX_SNTP_CLIENT_MAX_TIME_LAPSE. Il valore predefinito è 2.
 
 **NX_SNTP_CLIENT_RTT_REQUIRED**  
-Se abilitata, questa opzione richiede che il client SNTP calcoli round trip tempo dei messaggi di SNTP quando si applicano gli aggiornamenti del server all'orologio locale. Il valore predefinito è NX_FALSE (disabilitato).
+Questa opzione, se abilitata, richiede che il client SNTP calcoli round trip'ora dei messaggi SNTP quando si applicano gli aggiornamenti del server all'orologio locale. Il valore predefinito è NX_FALSE (disabilitato).
 
 **NX_SNTP_CLIENT_MAX_ROOT_DISPERSION**  
-La dispersione di clock del server massima (microsecondi), ovvero una misura della precisione del clock del server, che verrà accettata dal client. Per disabilitare questo requisito, impostare la dispersione radice massima su 0x0. Il valore predefinito del client NetX Duo SNTP è impostato su 50000.
+La dispersione massima dell'orologio del server (microsecondi), ovvero una misura della precisione dell'orologio del server, verrà accettata dal client. Per disabilitare questo requisito, impostare la dispersione radice massima su 0x0. Il valore predefinito di NetX Duo SNTP Client è 50000.
 
 **NX_SNTP_CLIENT_INVALID_UPDATE_LIMIT**  
-Limite al numero di aggiornamenti non validi consecutivi ricevuti dal server client in modalità broadcast o unicast. Quando viene raggiunto questo limite, il client imposta lo stato corrente del server SNTP su non valido (NX_FALSE) anche se continuerà a provare a ricevere gli aggiornamenti dal server. Il valore predefinito del client NetX Duo SNTP è 3.
+Limite al numero di aggiornamenti non validi consecutivi ricevuti dal server client in modalità broadcast o unicast. Quando viene raggiunto questo limite, il client imposta lo stato corrente del server SNTP su non valido (NX_FALSE), anche se continuerà a provare a ricevere aggiornamenti dal server. Il valore predefinito del client SNTP di NetX Duo è 3.
 
 **NX_SNTP_CLIENT_RANDOMIZE_ON_STARTUP**  
-Questo determina se il client SNTP in modalità unicast deve inviare la prima richiesta SNTP al server SNTP corrente dopo un intervallo di attesa casuale. Viene usato nei casi in cui viene avviato simultaneamente un numero significativo di client SNTP per limitare la congestione del traffico nel server SNTP. Il valore predefinito è NX_FALSE.
+Ciò determina se il client SNTP in modalità unicast deve inviare la prima richiesta SNTP con il server SNTP corrente dopo un intervallo di attesa casuale. Viene usato nei casi in cui un numero significativo di client SNTP viene avviato contemporaneamente per limitare la congestione del traffico nel server SNTP. Il valore predefinito è NX_FALSE.
 
 **NX_SNTP_CLIENT_SLEEP_INTERVAL**  
-Intervallo di tempo durante il quale l'attività del client SNTP dorme. Questo consente l'esecuzione delle chiamate API dell'applicazione da parte del client SNTP. Il valore predefinito è 1 segno di timer.
+Intervallo di tempo durante il quale l'attività del client SNTP viene sospensione. In questo modo le chiamate API dell'applicazione possono essere eseguite dal client SNTP. Il valore predefinito è 1 tick timer.
 
 **NX_SNTP_CURRENT_YEAR**  
-Per visualizzare la data nel formato anno/mese/data, impostare questo valore su un valore uguale o minore dell'anno corrente (non deve essere uguale all'anno in tempo NTP valutato). Il valore predefinito è 2015.
+Per visualizzare la data nel formato anno/mese/data, impostare questo valore su uguale o minore dell'anno corrente (non deve essere lo stesso anno dell'ora NTP in fase di valutazione). Il valore predefinito è 2015.
 
 **NTP_SECONDS_AT_01011999**  
-Questo è il numero di secondi nel primo periodo NTP sul clock NTP master. Viene definito come 0xBA368E80. Per disabilitare la visualizzazione di secondi NTP in data e ora, impostare su zero.
+Questo è il numero di secondi nel primo ntp epoch sull'orologio NTP master. È definito come 0xBA368E80. Per disabilitare la visualizzazione dei secondi NTP in data e ora, impostare su zero.

@@ -1,97 +1,97 @@
 ---
-title: Capitolo 1-Introduzione a NetX HTTP
-description: In questo documento viene illustrato come il protocollo HTTP è un protocollo progettato per il trasferimento di contenuto sul Web.
+title: Capitolo 1 - Introduzione a NetX HTTP
+description: Questo documento illustra come HTTP è un protocollo progettato per il trasferimento di contenuto sul Web.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6137cc0d8deb753d784be844d5abc7778dd62295
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1e37328ab9cff0ab635a00113a83ee256c39303ce24b0cb292b6c2eaa71236f5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822622"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799388"
 ---
-# <a name="chapter-1---introduction-to-netx-http"></a>Capitolo 1-Introduzione a NetX HTTP
+# <a name="chapter-1---introduction-to-netx-http"></a>Capitolo 1 - Introduzione a NetX HTTP
 
-Il Hypertext Transfer Protocol (HTTP) è un protocollo progettato per il trasferimento del contenuto sul Web. HTTP è un protocollo semplice che utilizza i servizi di Transmission Control Protocol affidabili (TCP) per eseguire la relativa funzione di trasferimento del contenuto. Per questo motivo, HTTP è un protocollo di trasferimento del contenuto altamente affidabile. HTTP è uno dei protocolli applicativi più usati. Tutte le operazioni sul Web utilizzano il protocollo HTTP.
+Il Hypertext Transfer Protocol (HTTP) è un protocollo progettato per il trasferimento di contenuto sul Web. HTTP è un protocollo semplice che usa i Transmission Control Protocol (TCP) reliable Transmission Control Protocol per eseguire la funzione di trasferimento del contenuto. Per questo scopo, HTTP è un protocollo di trasferimento del contenuto altamente affidabile. HTTP è uno dei protocolli di applicazione più usati. Tutte le operazioni sul Web utilizzano il protocollo HTTP.
 
 ## <a name="http-requirements"></a>Requisiti HTTP
 
-Per funzionare correttamente, il pacchetto HTTP NetX richiede l'installazione di un NetX (versione 5,2 o successiva). Inoltre, è necessario che sia già stata creata un'istanza IP e che sia stato abilitato il protocollo TCP nella stessa istanza di IP. Il file demo nella sezione "Small example System" del **capitolo 2** illustra come questa operazione viene eseguita.
+Per funzionare correttamente, il pacchetto HTTP NetX richiede l'installazione di NetX (versione 5.2 o successiva). Inoltre, è necessario che sia già stata creata un'istanza IP e che TCP sia abilitato nella stessa istanza IP. Il file demo nella sezione "Small Example System" nel **capitolo 2** illustra come eseguire questa operazione.
 
-La parte client HTTP del pacchetto HTTP NetX non ha altri requisiti.
+La parte client HTTP del pacchetto HTTP NetX non presenta altri requisiti.
 
-La parte relativa al server HTTP del pacchetto HTTP NetX presenta diversi requisiti aggiuntivi. Per prima cosa, è necessario l'accesso completo alla *porta TCP 80 nota* per la gestione di tutte le richieste HTTP del client. Il server HTTP è anche progettato per l'uso con FileX Embedded file system. Se FileX non è disponibile, l'utente può trasferire le parti di FileX utilizzate nel proprio ambiente. Questo argomento viene descritto nelle sezioni successive di questa guida.
+La parte server HTTP del pacchetto HTTP NetX presenta diversi requisiti aggiuntivi. In primo luogo, è necessario l'accesso completo alla porta TCP *nota 80* per la gestione di tutte le richieste HTTP client. Il server HTTP è progettato anche per l'uso con l'file system FileX. Se FileX non è disponibile, l'utente può convertire le parti di FileX usate nel proprio ambiente. Questo argomento viene illustrato nelle sezioni successive di questa guida.
 
 ## <a name="http-constraints"></a>Vincoli HTTP 
 
-Il protocollo HTTP NetX implementa lo standard HTTP 1,0. Tuttavia, sono presenti i vincoli seguenti:
+Il protocollo HTTP NetX implementa lo standard HTTP 1.0. Esistono tuttavia i vincoli seguenti:
 
 1.  Le connessioni permanenti non sono supportate
 
-2.  Il pipelining della richiesta non è supportato
+2.  Il pipelining delle richieste non è supportato
 
-3.  Il server HTTP supporta l'autenticazione di base e del digest MD5, ma non MD5-sess. Attualmente, il client HTTP supporta solo l'autenticazione di base.
+3.  Il server HTTP supporta sia l'autenticazione digest di base che l'autenticazione del digest MD5, ma non md5. Attualmente, il client HTTP supporta solo l'autenticazione di base.
 
 4.  Non è supportata alcuna compressione del contenuto.
 
-5.  Le richieste di traccia, opzioni e connessione non sono supportate.
+5.  Le richieste TRACE, OPTIONS e CONNECT non sono supportate.
 
-6.  Il pool di pacchetti associato al server o al client HTTP deve essere sufficientemente grande da contenere l'intestazione HTTP completa.
+6.  Il pool di pacchetti associato al server HTTP o al client deve essere sufficientemente grande da contenere l'intestazione HTTP completa.
 
-7.  I servizi client HTTP sono destinati solo al trasferimento del contenuto. in questo pacchetto non sono disponibili utilità di visualizzazione.
+7.  I servizi client HTTP sono solo per il trasferimento del contenuto. In questo pacchetto non sono disponibili utilità di visualizzazione.
 
-## <a name="http-url-resource-names"></a>URL HTTP (nomi di risorse)
+## <a name="http-url-resource-names"></a>URL HTTP (nomi delle risorse)
 
-Il protocollo HTTP è progettato per trasferire il contenuto sul Web. Il contenuto richiesto viene specificato dall'URL (Universal Resource Locator). Questo è il componente principale di ogni richiesta HTTP. Gli URL iniziano sempre con il carattere "/" e in genere corrispondono ai file nel server HTTP. Di seguito sono elencate le estensioni di file HTTP comuni:
+Il protocollo HTTP è progettato per trasferire il contenuto sul Web. Il contenuto richiesto viene specificato dall'URL (Universal Resource Locator). Questo è il componente principale di ogni richiesta HTTP. Gli URL iniziano sempre con un carattere "/" e in genere corrispondono ai file nel server HTTP. Di seguito sono riportate le estensioni di file HTTP comuni:
 
-- **. htm (o. html)** Hypertext Markup Language (HTML)
-- **txt** Testo ASCII normale
-- **. gif** Immagine GIF binaria
-- **. xbm** Immagine xbitmap binaria
+- **.htm (o .html)** Hypertext Markup Language (HTML)
+- **.txt** Testo ASCII normale
+- **.gif** Immagine GIF binaria
+- **.xbm** Immagine Xbitmap binaria
 
 ## <a name="http-client-requests"></a>Richieste client HTTP
 
-Il protocollo HTTP ha un meccanismo semplice per la richiesta di contenuto Web. È fondamentalmente disponibile un set di comandi HTTP standard emessi dal client dopo che una connessione è stata stabilita correttamente sulla *porta TCP 80*. Di seguito sono riportati alcuni dei comandi HTTP di base:
+HTTP ha un meccanismo semplice per la richiesta di contenuto Web. Esiste fondamentalmente un set di comandi HTTP standard emessi dal client dopo che è stata stabilita correttamente una connessione sulla porta TCP *nota 80.* Di seguito sono illustrati alcuni dei comandi HTTP di base:
 
-- OTTENERE la risorsa HTTP/1.0 *ottenere la risorsa specificata*
-- POST Resource HTTP/1.0 *ottenere la risorsa specificata e passare l'input collegato al server http*
-- Risorsa HEAD HTTP/1.0 *trattata come Get ma non il contenuto viene restituito dal server http*
-- Inserisci risorsa HTTP/1.0 *posizione sul server http*
-- Elimina risorsa HTTP/1.0 *Delete risorsa nel server*
+- GET resource HTTP/1.0 *Ottiene la risorsa specificata*
+- POST resource HTTP/1.0 *Ottiene la risorsa specificata e passa l'input collegato al server HTTP*
+- La risorsa HEAD HTTP/1.0 *trattata come GET ma non* come contenuto viene restituita dal server HTTP
+- PUT resource HTTP/1.0 *Place resource on HTTP Server*
+- DELETE resource HTTP/1.0 *Delete resource on the Server*
 
 Questi comandi ASCII vengono generati internamente dai Web browser e dai servizi client HTTP NetX per eseguire operazioni HTTP con un server HTTP.
 
 >[!NOTE] 
-> Per impostazione predefinita, l'applicazione client HTTP viene impostata sulla porta di connessione 80. Tuttavia, può modificare la porta di connessione al server HTTP in fase di esecuzione usando il servizio *nx_http_client_set_connect_port* . Per ulteriori informazioni su questo servizio, vedere il capitolo 4. In questo modo è possibile gestire i server Web che occasionalmente utilizzano porte alternative per le connessioni client.
+> Per impostazione predefinita, l'applicazione client HTTP ha la porta di connessione 80. Tuttavia, può modificare la porta di connessione al server HTTP in fase di esecuzione usando il *nx_http_client_set_connect_port* servizio. Per altre informazioni su questo servizio, vedere il capitolo 4. Ciò consente di ospitare server Web che occasionalmente usano porte alternative per le connessioni client.
 
-## <a name="http-server-responses"></a>Risposte al server HTTP
+## <a name="http-server-responses"></a>Risposte del server HTTP
 
-Il server HTTP utilizza la stessa *porta TCP 80 nota* per inviare le risposte del comando client. Una volta che il server HTTP elabora il comando client, restituisce una stringa di risposta ASCII che include un codice di stato numerico a 3 cifre. La risposta numerica viene utilizzata dal software client HTTP per determinare se l'operazione ha avuto esito positivo o negativo. Di seguito è riportato un elenco di varie risposte del server HTTP ai comandi client:
+Il server HTTP usa la stessa *porta TCP nota 80* per inviare risposte al comando client. Quando il server HTTP elabora il comando Client, restituisce una stringa di risposta ASCII che include un codice di stato numerico a 3 cifre. La risposta numerica viene usata dal software client HTTP per determinare se l'operazione ha avuto esito positivo o negativo. Di seguito è riportato un elenco di varie risposte del server HTTP ai comandi client:
 
-- la *richiesta 200 è stata completata*
-- la *richiesta 400 non è stata creata correttamente*
-- 401 *richiesta non autorizzata, il client deve inviare l'autenticazione*
-- 404 la *risorsa specificata nella richiesta non è stata trovata*
-- 500 *errore interno del server http*
-- *richiesta 501 non implementata dal server http*
-- 502 il *servizio non è disponibile*
+- 200 *Richiesta completata*
+- 400 *La richiesta non è stata formata correttamente*
+- 401 *Richiesta non autorizzata, il client deve inviare l'autenticazione*
+- 404 *La risorsa specificata nella richiesta non è stata trovata*
+- 500 *Errore interno del server HTTP*
+- 501 *Richiesta non implementata dal server HTTP*
+- Il servizio 502 *non è disponibile*
 
-Ad esempio, una richiesta client corretta per inserire il file "test.htm" viene risposto con il messaggio "HTTP/1.0 200 OK".
+Ad esempio, a una richiesta client riuscita di PUT del file "test.htm" viene risposto il messaggio "HTTP/1.0 200 OK".
 
 ## <a name="http-communication"></a>Comunicazione HTTP
 
-Come indicato in precedenza, il server HTTP utilizza la *porta TCP nota 80* per il campo richieste client. I client HTTP possono usare qualsiasi porta TCP disponibile. La sequenza generale degli eventi HTTP è la seguente:
+Come accennato in precedenza, il server HTTP usa la *porta TCP 80* nota per il campo Richieste client. I client HTTP possono usare qualsiasi porta TCP disponibile. La sequenza generale di eventi HTTP è la seguente:
 
-**Richiesta HTTP Get**:
+**Richiesta HTTP GET**:
 
-1.  Il client invia la connessione TCP alla porta del server 80.
+1.  Problemi del client: TCP si connette alla porta 80 del server.
 
-2.  Il client invia la richiesta "**Get Resource http/1.0**" (insieme ad altre informazioni di intestazione).
+2.  Il client invia la richiesta "**GET resource HTTP/1.0**" (insieme ad altre informazioni sull'intestazione).
 
-3.  Il server compila un messaggio "**http/1.0 200 OK**" con informazioni aggiuntive seguite immediatamente dal contenuto della risorsa (se presente).
+3.  Il server compila un messaggio "**HTTP/1.0 200 OK**" con informazioni aggiuntive seguite immediatamente dal contenuto della risorsa (se presente).
 
 4.  Il server esegue una disconnessione.
 
@@ -99,32 +99,32 @@ Come indicato in precedenza, il server HTTP utilizza la *porta TCP nota 80* per 
 
 **Richiesta HTTP PUT**:
 
-1. Il client invia la connessione TCP alla porta del server 80.
+1. Problemi del client: TCP si connette alla porta 80 del server.
 
-2. Il client invia la richiesta "**put Resource http/1.0**", insieme ad altre informazioni di intestazione e seguita dal contenuto della risorsa.
+2. Il client invia la **richiesta "PUT resource HTTP/1.0",** insieme ad altre informazioni di intestazione e seguita dal contenuto della risorsa.
 
-3. Il server compila un messaggio "**http/1.0 200 OK**" con informazioni aggiuntive seguite immediatamente dal contenuto della risorsa.
+3. Il server compila un messaggio **"HTTP/1.0 200 OK"** con informazioni aggiuntive seguite immediatamente dal contenuto della risorsa.
 
 4. Il server esegue una disconnessione.
 
 5. Il client esegue una disconnessione.
 
 >[!NOTE] 
-> Come indicato in precedenza, il client HTTP può modificare la porta di connessione predefinita da 80 a un'altra porta usando il *nx_http_client_set_connect_port* per i server Web che usano porte alternative per connettersi ai client.
+> Come accennato in precedenza, il client HTTP può modificare la porta di connessione predefinita da 80 a un'altra porta usando il *nx_http_client_set_connect_port* per i server Web che usano porte alternative per connettersi ai client.
 
 ## <a name="http-authentication"></a>Autenticazione HTTP
 
-L'autenticazione HTTP è facoltativa e non è obbligatoria per tutte le richieste Web. Esistono due tipi di autenticazione, ovvero *Basic* e *digest*. L'autenticazione di base equivale all'autenticazione del *nome* e della *password* presente in molti protocolli. Nell'autenticazione di base HTTP, il nome e le password vengono concatenati e codificati nel formato Base64. Lo svantaggio principale dell'autenticazione di base è il nome e la password vengono trasmessi apertamente nella richiesta. In questo modo è piuttosto semplice che il nome e la password vengano rubati. L'autenticazione del digest risolve questo problema senza trasmettere mai il nome e la password nella richiesta. Viene invece utilizzato un algoritmo per derivare una chiave o un digest a 128 bit dal nome, dalla password e da altre informazioni. Il server HTTP NetX supporta l'algoritmo digest MD5 standard.
+L'autenticazione HTTP è facoltativa e non è necessaria per tutte le richieste Web. Esistono due tipi di autenticazione, ad esempio *basic e* *digest.* L'autenticazione di base equivale *all'autenticazione* con *nome e password* disponibile in molti protocolli. Nell'autenticazione di base HTTP il nome e le password vengono concatenati e codificati nel formato base64. Lo svantaggio principale dell'autenticazione di base è che il nome e la password vengono trasmessi apertamente nella richiesta. Ciò semplifica il furto del nome e della password. L'autenticazione del digest risolve questo problema non trasmettendo mai il nome e la password nella richiesta. Viene invece usato un algoritmo per derivare una chiave o un digest a 128 bit dal nome, dalla password e da altre informazioni. Il server HTTP NetX supporta l'algoritmo digest MD5 standard.
 
-Quando è richiesta l'autenticazione? In sostanza, il server HTTP decide se una risorsa richiesta richiede l'autenticazione. Se è richiesta l'autenticazione e la richiesta del client non include l'autenticazione corretta, al client viene inviata una risposta "HTTP/1.0 401 non autorizzato" con il tipo di autenticazione richiesto. Il client deve quindi creare una nuova richiesta con l'autenticazione corretta.
+Quando è necessaria l'autenticazione? In pratica, il server HTTP decide se una risorsa richiesta richiede l'autenticazione. Se l'autenticazione è necessaria e la richiesta client non includeva l'autenticazione appropriata, al client viene inviata una risposta "HTTP/1.0 401 Unauthorized" con il tipo di autenticazione richiesto. È quindi previsto che il client formi una nuova richiesta con l'autenticazione appropriata.
 
 ## <a name="http-authentication-callback"></a>Callback di autenticazione HTTP
 
-Come indicato in precedenza, l'autenticazione HTTP è facoltativa e non è necessaria per tutti i trasferimenti Web. Inoltre, l'autenticazione è in genere dipendente dalle risorse. L'accesso ad alcune risorse sul server richiede l'autenticazione, mentre altri no. Il pacchetto del server HTTP NetX consente all'applicazione di specificare (tramite la chiamata ***nx_http_server_create*** ) una routine di callback di autenticazione che viene chiamata all'inizio della gestione di ogni richiesta del client http.
+Come accennato in precedenza, l'autenticazione HTTP è facoltativa e non è necessaria per tutti i trasferimenti Web. Inoltre, l'autenticazione dipende in genere dalle risorse. L'accesso ad alcune risorse nel server richiede l'autenticazione, mentre altre no. Il pacchetto server HTTP NetX consente all'applicazione di specificare (tramite la chiamata ***nx_http_server_create)*** una routine di callback di autenticazione che viene chiamata all'inizio della gestione di ogni richiesta client HTTP.
 
-La routine di callback fornisce il server HTTP NetX con le stringhe di nome utente, password e area di autenticazione associate alla risorsa e restituisce il tipo di autenticazione necessario. Se non è necessaria alcuna autenticazione per la risorsa, il callback di autenticazione deve restituire il valore di **NX_HTTP_DONT_AUTHENTICATE**. In caso contrario, se è richiesta l'autenticazione di base per la risorsa specificata, la routine deve restituire **NX_HTTP_BASIC_AUTHENTICATE**. Infine, se è richiesta l'autenticazione digest MD5, la routine di callback deve restituire **NX_HTTP_DIGEST_AUTHENTICATE**. Se non è necessaria alcuna autenticazione per le risorse fornite dal server HTTP, il callback non è necessario e può essere fornito un puntatore NULL alla chiamata di creazione del server HTTP.
+La routine di callback fornisce al server HTTP NetX le stringhe nome utente, password e area di autenticazione associate alla risorsa e restituisce il tipo di autenticazione necessario. Se non è necessaria alcuna autenticazione per la risorsa, il callback di autenticazione deve restituire il valore **di NX_HTTP_DONT_AUTHENTICATE**. In caso contrario, se è necessaria l'autenticazione di base per la risorsa specificata, la routine deve restituire **NX_HTTP_BASIC_AUTHENTICATE**. Infine, se è necessaria l'autenticazione del digest MD5, la routine di callback deve restituire **NX_HTTP_DIGEST_AUTHENTICATE**. Se non è necessaria alcuna autenticazione per qualsiasi risorsa fornita dal server HTTP, il callback non è necessario ed è possibile specificare un puntatore NULL alla chiamata di creazione del server HTTP.
 
-Il formato della routine di callback dell'applicazione di autenticazione è molto semplice e viene definito di seguito:
+Il formato della routine di callback di autenticazione dell'applicazione è molto semplice ed è definito di seguito:
 
 ```c
 UINT nx_http_server_authentication_check (NX_HTTP_SERVER *server_ptr,
@@ -135,24 +135,24 @@ UINT nx_http_server_authentication_check (NX_HTTP_SERVER *server_ptr,
 
 I parametri di input sono definiti come segue:
 
-- *request_type* Specifica la richiesta client HTTP, le richieste valide sono definite come segue:
+- *request_type* Specifica la richiesta del client HTTP. Le richieste valide sono definite come segue:
   - **NX_HTTP_SERVER_GET_REQUEST**
   - **NX_HTTP_SERVER_POST_REQUEST**
   - **NX_HTTP_SERVER_HEAD_REQUEST**
   - **NX_HTTP_SERVER_PUT_REQUEST**
   - **NX_HTTP_SERVER_DELETE_REQUEST**
-- *risorsa* di Risorsa specifica richiesta.
-- *nome* Destinazione per il puntatore al nome utente obbligatorio.
-- *password* di Destinazione per il puntatore alla password richiesta.
-- *area di autenticazione* Destinazione per il puntatore all'area di autenticazione per l'autenticazione.
+- *risorsa* Risorsa specifica richiesta.
+- *name* Destinazione per il puntatore al nome utente richiesto.
+- *password* Destinazione per il puntatore alla password richiesta.
+- *area di autenticazione* Destinazione per il puntatore all'area di autenticazione per questa autenticazione.
 
-Il valore restituito della routine di autenticazione specifica se è richiesta l'autenticazione. il nome, la password e i puntatori dell'area di autenticazione non vengono utilizzati se **NX_HTTP_DONT_AUTHENTICATE** viene restituito dalla routine di callback di autenticazione. In caso contrario, lo sviluppatore del server HTTP deve garantire che **NX_HTTP_MAX_USERNAME** e **NX_HTTP_MAX_PASSWORD** definiti in *nx_http_server. h* siano sufficientemente grandi per il nome utente e la password specificati nel callback di autenticazione. Per impostazione predefinita, le dimensioni sono pari a 20 caratteri.
+Il valore restituito della routine di autenticazione specifica se è necessaria l'autenticazione. I puntatori name, password e realm non vengono usati se **NX_HTTP_DONT_AUTHENTICATE** viene restituito dalla routine di callback di autenticazione. In caso contrario, lo  sviluppatore del server HTTP deve assicurarsi che le NX_HTTP_MAX_USERNAME e **NX_HTTP_MAX_PASSWORD** definite in *nx_http_server.h siano* sufficientemente grandi per il nome utente e la password specificati nel callback di autenticazione. Per impostazione predefinita, entrambe sono di dimensioni di 20 caratteri.
 
-## <a name="http-invalid-usernamepassword-callback"></a>Callback di nome utente/password non valido HTTP
+## <a name="http-invalid-usernamepassword-callback"></a>Callback http nome utente/password non valido
 
-Il callback facoltativo di nome utente/password non valido nel server HTTP NetX viene richiamato se il server HTTP riceve una combinazione di nome utente e password non valida in una richiesta client. Se l'applicazione server HTTP registra un callback con il server HTTP, verrà richiamato se l'autenticazione di base o Digest ha esito negativo *in nx_http_server_get_process*, in *nx_http_server_put_process* o *in nx_http_server_delete_process.*
+Il callback facoltativo di nome utente/password non valido nel server HTTP NetX viene richiamato se il server HTTP riceve una combinazione di nome utente e password non valida in una richiesta client. Se l'applicazione server HTTP registra un callback con il server HTTP, verrà richiamata se l'autenticazione di base o digest non riesce *in nx_http_server_get_process*, *in nx_http_server_put_process* o *in nx_http_server_delete_process.*
 
-Per registrare un callback con il server HTTP, il servizio seguente viene definito nel server HTTP NetX.
+Per registrare un callback con il server HTTP, nel server HTTP NetX viene definito il servizio seguente.
 
 ```c
 UINT nx_http_server_invalid_userpassword_notify_set (NX_HTTP_SERVER *http_server_ptr,
@@ -169,18 +169,18 @@ I tipi di richiesta sono definiti come segue:
 - **NX_HTTP_SERVER_PUT_REQUEST**
 - **NX_HTTP_SERVER_DELETE_REQUEST**
 
-## <a name="http-insert-gmt-date-header-callback"></a>Callback intestazione Data GMT inserimento HTTP
+## <a name="http-insert-gmt-date-header-callback"></a>HTTP Insert GMT Date Header Callback
 
-È disponibile un callback facoltativo nel server HTTP NetX per inserire un'intestazione di data nei messaggi di risposta. Questo callback viene richiamato quando il server HTTP sta rispondendo a una richiesta PUT o Get
+È disponibile un callback facoltativo nel server HTTP NetX per inserire un'intestazione di data nei messaggi di risposta. Questo callback viene richiamato quando il server HTTP risponde a una richiesta put o get
 
-Per registrare un callback della data GMT con il server HTTP, il servizio seguente viene definito nel server HTTP NetX.
+Per registrare un callback di data GMT con il server HTTP, nel server HTTP NetX è definito il servizio seguente.
 
 ```c
 UINT _nx_http_server_gmt_callback_set(NX_HTTP_SERVER *server_ptr,
                                      VOID (*gmt_get)(NX_HTTP_SERVER_DATE *date);
 ```
 
-Il tipo di dati NX_HTTP_SERVER_DATE viene definito nel modo seguente:
+Il NX_HTTP_SERVER_DATE di dati è definito come segue:
 
 ```c
 typedef struct NX_HTTP_SERVER_DATE_STRUCT
@@ -195,11 +195,11 @@ typedef struct NX_HTTP_SERVER_DATE_STRUCT
 } NX_HTTP_SERVER_DATE;
 ```
 
-## <a name="http-cache-info-get-callback"></a>Callback informazioni cache HTTP Get
+## <a name="http-cache-info-get-callback"></a>Callback Get delle informazioni sulla cache HTTP
 
-Il server HTTP ha un callback per richiedere la validità massima e la data dall'applicazione HTTP per una risorsa specifica. Queste informazioni vengono usate per determinare se il server HTTP invia l'intera pagina in risposta a una richiesta Get del client. Se il "se modificato da" nella richiesta del client non viene trovato o non corrisponde alla data dell'Ultima modifica restituita dal callback Get cache, viene inviata l'intera pagina.
+Il server HTTP ha un callback per richiedere la validità massima e la data dall'applicazione HTTP per una risorsa specifica. Queste informazioni vengono usate per determinare se il server HTTP invia l'intera pagina in risposta a una richiesta Client Get. Se il valore "if modified since" nella richiesta Client non viene trovato o non corrisponde alla data dell'ultima modifica restituita dal callback get cache, viene inviata l'intera pagina.
 
-Per registrare il callback con il server HTTP, viene definito il seguente servizio:
+Per registrare il callback con il server HTTP, viene definito il servizio seguente:
 
 ```c
 UINT _nx_http_server_cache_info_callback_set(NX_HTTP_SERVER *server_ptr,
@@ -209,7 +209,7 @@ UINT _nx_http_server_cache_info_callback_set(NX_HTTP_SERVER *server_ptr,
 
 ## <a name="http-multipart-support"></a>Supporto multipart HTTP
 
-Multipurpose Internet Mail Extensions (MIME) è stato originariamente progettato per il protocollo SMTP, ma il suo utilizzo è stato distribuito in HTTP. MIME consente ai messaggi di contenere tipi di messaggi misti, ad esempio image/jpg e text/plain, all'interno dello stesso messaggio. Il server HTTP NetX ha aggiunto servizi per determinare il tipo di contenuto nei messaggi HTTP che contengono MIME dal client. Per abilitare il supporto multipart HTTP e utilizzare questi servizi, è necessario definire l'opzione di configurazione **NX_HTTP_MULTIPART_ENABLE** .
+Multipurpose Internet Mail Extensions (MIME) era originariamente destinato al protocollo SMTP, ma il suo utilizzo è stato distribuito in HTTP. MIME consente ai messaggi di contenere tipi misti di messaggi (ad esempio image/jpg e text/plain) all'interno dello stesso messaggio. Il server HTTP NetX ha aggiunto servizi per determinare il tipo di contenuto nei messaggi HTTP contenenti MIME dal client. Per abilitare il supporto multipart HTTP e usare questi servizi, è necessario **NX_HTTP_MULTIPART_ENABLE** l'opzione di configurazione .
 
 ```c
 UINT nx_http_server_get_entity_header(NX_HTTP_SERVER *server_ptr,
@@ -223,12 +223,12 @@ UINT nx_http_server_get_entity_content(NX_HTTP_SERVER *server_ptr,
                                       ULONG *available_length);
 ```
 
-Per altri dettagli sull'uso di questi servizi, vedere la descrizione nel capitolo 3 "Descrizione dei servizi HTTP".
+Per altri dettagli sull'uso di questi servizi, vedere la relativa descrizione nel capitolo 3 "Descrizione dei servizi HTTP".
 
-## <a name="http-multi-thread-support"></a>Supporto multithreading HTTP
+## <a name="http-multi-thread-support"></a>Supporto multi-thread HTTP
 
-I servizi client HTTP NetX possono essere chiamati da più thread contemporaneamente. Tuttavia, le richieste di lettura o scrittura per un'istanza specifica del client HTTP devono essere eseguite in sequenza dallo stesso thread.
+I servizi client HTTP NetX possono essere chiamati contemporaneamente da più thread. Tuttavia, le richieste di lettura o scrittura per una particolare istanza del client HTTP devono essere eseguite in sequenza dallo stesso thread.
 
 ## <a name="http-rfcs"></a>RFC HTTP
 
-Il protocollo HTTP di NetX è conforme a RFC1945 "Hypertext Transfer Protocol/1.0", RFC 2581 "TCP congestione del controllo", RFC 1122 "requisiti per gli host Internet" e RFC correlate.
+NetX HTTP è conforme a RFC1945 "Hypertext Transfer Protocol/1.0", RFC 2581 "TCP Congestion Control", RFC 1122 "Requirements for Internet Hosts" (Requisiti per gli host Internet) e RFC correlate.

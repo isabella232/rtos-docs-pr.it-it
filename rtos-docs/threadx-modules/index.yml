@@ -1,25 +1,25 @@
 ### YamlMime:Landing
-title: Documentazione sui moduli ThreadX di Azure RTO
-summary: Il componente moduli ThreadX di Azure RTO fornisce un'infrastruttura per le applicazioni per il caricamento dinamico dei moduli compilati separatamente dalla parte residente dell'applicazione.
+title: Azure RTOS documentazione dei moduli ThreadX
+summary: Il Azure RTOS threadx modules fornisce un'infrastruttura per le applicazioni per caricare dinamicamente i moduli compilati separatamente dalla parte residente dell'applicazione.
 metadata:
-  title: Che cosa sono i moduli ThreadX di Azure RTO?
-  description: I moduli ThreadX di Azure RTO offrono moduli caricati in modo dinamico che vengono compilati separatamente dall'applicazione.
+  title: Che cos'Azure RTOS ThreadX?
+  description: Azure RTOS ThreadX Modules fornisce moduli caricati dinamicamente compilati separatamente dall'applicazione.
   services: rtos
   ms.service: rtos
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 07/10/2020
-  ms.openlocfilehash: 40958716dfaa14813279fbce3b63d696e3dc21d2
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: 36fb45ffb348ce0807caffb9f6e8a09bae03a58ce51585e9f4e583e0f278796d
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: MT
   ms.contentlocale: it-IT
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797832"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116799099"
 landingContent:
-- title: Introduzione ai moduli ThreadX di Azure RTO
+- title: Introduzione ai Azure RTOS ThreadX
   linkLists:
   - linkListType: overview
     links:
-    - text: Che cosa sono i moduli ThreadX di Azure RTO?
+    - text: Che cos'Azure RTOS ThreadX?
       url: chapter1.md

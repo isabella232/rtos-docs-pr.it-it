@@ -1,54 +1,54 @@
 ---
-title: Capitolo 3-Descrizione dei servizi TFTP di Azure RTO NetX Duo
-description: Questo capitolo contiene una descrizione di tutti i servizi TFTP NetX Duo (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS NetX Duo TFTP
+description: Questo capitolo contiene una descrizione di tutti i servizi NetX Duo TFTP (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 56f0d8edb991fff6ae30b6411e375ace58c544f7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: db7b7469bda02597db6428ecbf080b37a095413411eef2abefb1c4804d7bb1d3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821611"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799064"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-tftp-services"></a>Capitolo 3-Descrizione dei servizi TFTP di Azure RTO NetX Duo
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-tftp-services"></a>Capitolo 3 - Descrizione dei Azure RTOS NetX Duo TFTP
 
-Questo capitolo contiene una descrizione di tutti i servizi TFTP NetX Duo (elencati di seguito) in ordine alfabetico. Se non diversamente specificato, tutti i servizi supportano le comunicazioni IPv6 e IPv4.
+Questo capitolo contiene una descrizione di tutti i servizi NetX Duo TFTP (elencati di seguito) in ordine alfabetico. Se non diversamente specificato, tutti i servizi supportano le comunicazioni IPv6 e IPv4.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
-- **nxd_tftp_client_file_open**: *aprire il file del client TFTP*
+- **nxd_tftp_client_file_open:** *aprire il file client TFTP*
 
-- **nxd_tftp_client_create**: *creare un'istanza del client TFTP*
+- **nxd_tftp_client_create**: *Creare un'istanza del client TFTP*
 
-- **nxd_tftp_client_delete**: *eliminare un'istanza del client TFTP*
+- **nxd_tftp_client_delete**: *Eliminare un'istanza del client TFTP*
 
-- **nxd_tftp_client_error_info_get**: *ottenere informazioni sugli errori del client*
+- **nxd_tftp_client_error_info_get:** ottenere *informazioni sugli errori del client*
 
-- **nxd_tftp_client_file_close**: *chiudere il file client*
+- **nxd_tftp_client_file_close**: *Chiudere il file client*
 
-- **nxd_tftp_client_file_open**: *Apri file client*
+- **nxd_tftp_client_file_open**: *aprire il file client*
 
-- **nxd_tftp_client_file_read**: *leggere un blocco dal file client*
+- **nxd_tftp_client_file_read:** *Leggere un blocco dal file client*
 
-- **nxd_tftp_client_file_write**: *scrittura del blocco nel file client*
+- **nxd_tftp_client_file_write**: *Blocco di scrittura nel file client*
 
-- **nxd_tftp_client_packet_allocate**: *allocare il pacchetto per la scrittura del file client*
+- **nxd_tftp_client_packet_allocate**: *Allocare un pacchetto per la scrittura di file client*
 
-- **nxd_tftp_client_set_interface**: *impostare l'interfaccia fisica per le richieste TFTP*
+- **nxd_tftp_client_set_interface:** *impostare l'interfaccia fisica per le richieste TFTP*
 
-- **nxd_tftp_server_create**: *creare un server TFTP*
+- **nxd_tftp_server_create:** Creare *un server TFTP*
 
-- **nxd_tftp_server_delete**: *eliminare il server TFTP*
+- **nxd_tftp_server_delete**: *Eliminare il server TFTP*
 
-- **nxd_tftp_server_start**: *avvio del server TFTP*
+- **nxd_tftp_server_start**: *Avviare il server TFTP*
 
-- **nxd_tftp_server_stop**: *arrestare il server TFTP*
+- **nxd_tftp_server_stop:** *Arrestare il server TFTP*
 
 > [!NOTE] 
-> Gli equivalenti IPv4 di tutti i servizi elencati in precedenza sono disponibili nel client e nel server TFTP NetX Duo, ad esempio *nx_tftp_server_create* e *nx_tftp_client_file_open*. Nelle pagine seguenti vengono fornite solo le descrizioni dell'API "Duo", ad esempio i servizi che iniziano con *nxd_*. Quando \* viene specificato un input di NXD_ADDRESS, l'API equivalente IPv4 chiama per l'input ULONG. In caso contrario, non esiste alcuna differenza nell'uso dell'API.
+> Gli equivalenti IPv4 di tutti i servizi elencati in precedenza sono disponibili in NetX Duo TFTP Client e Server, ad esempio *nx_tftp_server_create* e *nx_tftp_client_file_open*. Nelle pagine seguenti vengono fornite solo le descrizioni dell'API "Duo", ad esempio i servizi che iniziano *con nxd_*, . Se viene specificato NXD_ADDRESS \* input, l'API equivalente IPv4 chiama per l'input ULONG. In caso contrario, non esiste alcuna differenza nell'uso dell'API.
 
 ## <a name="nxd_tftp_client_create"></a>nxd_tftp_client_create
 
@@ -66,33 +66,33 @@ UINT nxd_tftp_client_create(NX_TFTP_CLIENT *tftp_client_ptr,
 Questo servizio crea un'istanza del client TFTP per l'istanza IP creata in precedenza.
 
 > [!IMPORTANT]
-> L'applicazione deve assicurarsi che l'indirizzo IP e il pool di pacchetti specificati siano già stati creati. Inoltre, è necessario abilitare UDP per l'istanza IP prima di chiamare il servizio.
+> L'applicazione deve assicurarsi che l'IP e il pool di pacchetti forniti siano già stati creati. È inoltre necessario che UDP sia abilitato per l'istanza IP prima di chiamare questo servizio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **tftp_client_ptr** Puntatore al blocco di controllo client TFTP.
 
-- **tftp_client_name** Nome dell'istanza del client TFTP
+- **tftp_client_name** Nome di questa istanza del client TFTP
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 - **pool_ptr** Puntatore all'istanza del client TFTP del pool di pacchetti.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione TFTP riuscita **NX_SUCCESS**(0x00).
+- **NX_SUCCESS**(0x00) Creazione TFTP riuscita.
 
-- La versione di IP **NX_TFTP_INVALID_IP_VERSION** (0X0C) non è valida o non è supportata
+- **NX_TFTP_INVALID_IP_VERSION** (0x0C) Versione IP non valida o non supportata
 
-- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) indirizzo IP del server non valido ricevuto
+- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) Ricevuto indirizzo IP del server non valido
 
-- ACK server **NX_TFTP_NO_ACK_RECEIVED** (0x09) non ricevuti
+- **NX_TFTP_NO_ACK_RECEIVED** (0x09) Server ACK non ricevuto
 
-- NX_PTR_ERROR (0x16) un IP, un pool o un puntatore TFTP non valido.
+- NX_PTR_ERROR (0x16) Indirizzo IP, pool o puntatore TFTP non valido.
 
-- NX_INVALID_PARAMETERS (irreversibile 0x4D) non è stato inserito alcun puntatore non valido
+- NX_INVALID_PARAMETERS (0x4D) Input non puntatore non valido
 
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -121,19 +121,19 @@ UINT nxd_tftp_client_delete(NX_TFTP_CLIENT *tftp_client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del client TFTP creata in precedenza.
+Questo servizio elimina un'istanza del client TFTP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **tftp_client_ptr** Puntatore a un'istanza del client TFTP creata in precedenza.
+- **tftp_client_ptr** Puntatore all'istanza del client TFTP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione del client TFTP riuscita **NX_SUCCESS** (0x00).
+- **NX_SUCCESS** (0x00) Eliminazione del client TFTP completata.
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -151,7 +151,7 @@ status =  nxd_tftp_client_delete(&my_tftp_client);
 
 ## <a name="nxd_tftp_client_error_info_get"></a>nxd_tftp_client_error_info_get
 
-Ottenere informazioni sull'errore del client
+Ottenere informazioni sugli errori del client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -162,23 +162,23 @@ UINT nxd_tftp_client_error_info_get(NX_TFTP_CLIENT *tftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce l'ultimo codice di errore ricevuto e imposta il puntatore sulla stringa di errore interna del client. In condizioni di errore, l'utente può visualizzare l'ultimo errore inviato dal server. Una stringa di errore null indica che non è presente alcun errore.
+Questo servizio restituisce l'ultimo codice di errore ricevuto e imposta il puntatore alla stringa di errore interna del client. In condizioni di errore, l'utente può visualizzare l'ultimo errore inviato dal server. Una stringa di errore Null indica che non è presente alcun errore.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **tftp_client_ptr** Puntatore a un'istanza del client TFTP creata in precedenza.
+- **tftp_client_ptr** Puntatore all'istanza del client TFTP creata in precedenza.
 
 - **error_code** Puntatore all'area di destinazione per il codice di errore
 
-- **ERROR_STRING** Puntatore alla destinazione per la stringa di errore
+- **error_string** Puntatore alla destinazione per la stringa di errore
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) informazioni sugli errori TFTP riuscite.  
+- **NX_SUCCESS** (0x00) Ottenere informazioni sull'errore TFTP riuscito.  
 
-- NX_PTR_ERROR (0x16) puntatore client TFTP non valido.
+- NX_PTR_ERROR (0x16) Puntatore client TFTP non valido.
 
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -196,7 +196,7 @@ status =  nxd_tftp_client_error_info_get(&my_tftp_client, &error_code,
 
 ## <a name="nxd_tftp_client_file_close"></a>nxd_tftp_client_file_close
 
-Chiudi file client
+Chiudere il file client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -207,23 +207,23 @@ UINT nxd_tftp_client_file_close(NX_TFTP_CLIENT *tftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio chiude il file precedentemente aperto da questa istanza del client TFTP. A un'istanza del client TFTP può essere aperto un solo file alla volta.
+Questo servizio chiude il file aperto in precedenza da questa istanza del client TFTP. Un'istanza del client TFTP può avere un solo file aperto alla volta.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **tftp_client_ptr** Puntatore a un'istanza del client TFTP creata in precedenza.
+- **tftp_client_ptr** Puntatore all'istanza del client TFTP creata in precedenza.
 
-- **ip_type** Indica il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
+- **ip_type** Indicare il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Chiusura del file TFTP **NX_SUCCESS** (0x00) completata.
+- **NX_SUCCESS** (0x00) Chiusura del file TFTP completata.
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
-- NX_INVALID_PARAMETERS (irreversibile 0x4D) non è un input puntatore non valido.
+- NX_INVALID_PARAMETERS (0x4D) Input non puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -240,7 +240,7 @@ status =  nxd_tftp_client_file_close(&my_tftp_client);
 
 ## <a name="nx_tftp_client_file_open"></a>nx_tftp_client_file_open
 
-Apri file client TFTP
+Aprire il file client TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -255,7 +255,7 @@ UINT nx_tftp_client_file_open(NX_TFTP_CLIENT *tftp_client_ptr,
 Questo servizio tenta di aprire il file specificato nel server TFTP all'indirizzo IP specificato. Il file verrà aperto per la lettura o la scrittura. 
 
 > [!NOTE] 
-> Questo è limitato solo ai pacchetti IPv4 ed è destinato a supportare le applicazioni TFTP NetX. Gli sviluppatori sono invitati a trasferire le proprie applicazioni a utilizzando il servizio "Duo" equivalente *nxd_tftp_client_file_open.*
+> Questo è limitato solo ai pacchetti IPv4 ed è destinato al supporto di applicazioni NetX TFTP. Gli sviluppatori sono invitati a convertire le applicazioni all'uso di servizi "duo" *equivalenti nxd_tftp_client_file_open.*
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -271,39 +271,39 @@ Questo servizio tenta di aprire il file specificato nel server TFTP all'indirizz
 
   **NX_TFTP_OPEN_FOR_WRITE** (0x02)
 
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa dell'apertura del file del client TFTP. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà l'apertura del file del client TFTP. Le opzioni di attesa sono definite nel modo seguente:
 
-  **valore di timeout** (0x00000001 tramite 0xfffffffe)
+  **valore di timeout** (da 0x00000001 a 0xFFFFFFFE)
 
   **TX_WAIT_FOREVER** (0xFFFFFFFF) 
   
-  Se si seleziona TX_WAIT_FOREVER, il thread chiamante verrà sospeso per un tempo illimitato fino a quando un server TFTP non risponde alla richiesta. 
+  Selezionando TX_WAIT_FOREVER il thread chiamante viene sospeso a tempo indeterminato fino a quando un server TFTP non risponde alla richiesta. 
   
-  La selezione di un valore numerico (1-0xFFFFFFFE) consente di specificare il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server TFTP.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server TFTP.
 
-- **ip_type** Indica il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
+- **ip_type** Indicare il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Apertura del file client **NX_SUCCESS** (0x00) riuscita
+- **NX_SUCCESS** (0x00) File client riuscito aperto
 
-- Il client **NX_TFTP_NOT_CLOSED** (0xC3) ha già aperto il file
+- **NX_TFTP_NOT_CLOSED** (0xC3) Il client ha già un file aperto
 
-- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) indirizzo server non valido ricevuto
+- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) Indirizzo del server non valido ricevuto
 
-- **NX_TFTP_NO_ACK_RECEIVED** (0x09) nessun ACK ricevuto dal server
+- **NX_TFTP_NO_ACK_RECEIVED** (0x09) Nessun ACK ricevuto dal server
 
-- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) IP del server non valido ricevuto
+- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) Indirizzo IP del server non valido ricevuto
 
-- Codice di errore ricevuto **NX_TFTP_CODE_ERROR** (0x05)
+- **NX_TFTP_CODE_ERROR** (0x05) Codice errore ricevuto
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
-- NX_IP_ADDRESS_ERROR (0x21) indirizzo IP del server non valido
+- NX_IP_ADDRESS_ERROR (0x21) Indirizzo IP del server non valido
 
-- Tipo aperto NX_OPTION_ERROR (0x0A) non valido
+- NX_OPTION_ERROR (0x0A) Tipo di apertura non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -330,7 +330,7 @@ status =  nxd_tftp_client_file_open(&my_tftp_client, “test.txt”,
 
 ## <a name="nxd_tftp_client_file_open"></a>nxd_tftp_client_file_open
 
-Apri file client TFTP
+Aprire il file client TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -358,43 +358,43 @@ Questo servizio tenta di aprire il file specificato nel server TFTP all'indirizz
 
   **NX_TFTP_OPEN_FOR_WRITE** (0x02)
 
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa dell'apertura del file del client TFTP. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà l'apertura del file del client TFTP. Le opzioni di attesa sono definite nel modo seguente:
 
-  **valore di timeout** (0x00000001 tramite 0xfffffffe)
+  **valore di timeout** (da 0x00000001 a 0xFFFFFFFE)
 
   **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-  Se si seleziona TX_WAIT_FOREVER, il thread chiamante verrà sospeso per un tempo illimitato fino a quando un server TFTP non risponde alla richiesta.
+  Selezionando TX_WAIT_FOREVER il thread chiamante viene sospeso a tempo indeterminato fino a quando un server TFTP non risponde alla richiesta.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) consente di specificare il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server TFTP.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server TFTP.
 
-- **ip_type** Indica il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
+- **ip_type** Indicare il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Apertura del file client **NX_SUCCESS** (0x00) riuscita
+- **NX_SUCCESS** (0x00) File client riuscito aperto
 
-- Il client **NX_TFTP_NOT_CLOSED** (0xC3) ha già aperto il file
+- **NX_TFTP_NOT_CLOSED** (0xC3) Il client ha già un file aperto
 
-- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) indirizzo server non valido ricevuto
+- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) Indirizzo del server non valido ricevuto
 
-- **NX_TFTP_NO_ACK_RECEIVED** (0x09) nessun ACK ricevuto dal server
+- **NX_TFTP_NO_ACK_RECEIVED** (0x09) Nessun ACK ricevuto dal server
 
-- **NX_TFTP_INVALID_IP_VERSION** (0x0C) versione IP non valida
+- **NX_TFTP_INVALID_IP_VERSION** (0x0C) Versione IP non valida
 
-- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) IP del server non valido ricevuto
+- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) Indirizzo IP del server non valido ricevuto
 
-- Codice di errore ricevuto **NX_TFTP_CODE_ERROR** (0x05)
+- **NX_TFTP_CODE_ERROR** (0x05) Codice errore ricevuto
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
-- NX_IP_ADDRESS_ERROR (0x21) indirizzo IP del server non valido
+- NX_IP_ADDRESS_ERROR (0x21) Indirizzo IP del server non valido
 
-- Tipo aperto NX_OPTION_ERROR (0x0A) non valido
+- NX_OPTION_ERROR (0x0A) Tipo di apertura non valido
 
-- NX_INVALID_PARAMETERS (irreversibile 0x4D) non è stato inserito alcun puntatore non valido
+- NX_INVALID_PARAMETERS (0x4D) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -421,7 +421,7 @@ status =  nxd_tftp_client_file_open(&my_tftp_client, “test.txt”,
 
 ## <a name="nxd_tftp_client_file_read"></a>nxd_tftp_client_file_read
 
-Leggi un blocco dal file client
+Leggere un blocco dal file client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -441,45 +441,45 @@ Questo servizio legge un blocco di 512 byte dal file del client TFTP aperto in p
 
 - **packet_ptr** Destinazione per il pacchetto contenente il blocco letto dal file.
 
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa del completamento dell'operazione di lettura. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà il completamento della lettura. Le opzioni di attesa sono definite nel modo seguente:
 
-  **valore di timeout** (0x00000001 tramite 0xfffffffe)
+  **valore di timeout** (da 0x00000001 a 0xFFFFFFFE)
 
   **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-  Se si seleziona TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino a quando il server TFTP non risponde alla richiesta.
+  Selezionando TX_WAIT_FOREVER il thread chiamante viene sospeso a tempo indeterminato fino a quando il server TFTP non risponde alla richiesta.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi mentre è in attesa che il server TFTP invii un blocco del file.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa che il server TFTP invii un blocco del file.
 
-- **ip_type** Indica il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
+- **ip_type** Indicare il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Lettura blocco client riuscita **NX_SUCCESS** (0x00)
+- **NX_SUCCESS** (0x00) Lettura del blocco client riuscita
 
-- Il file client specificato **NX_TFTP_NOT_OPEN** (0xC3) non è aperto per la lettura
+- **NX_TFTP_NOT_OPEN** (0xC3) Il file client specificato non è aperto per la lettura
 
-- **NX_NO_PACKET** (0x01) non è stato ricevuto alcun pacchetto dal server.
+- **NX_NO_PACKET** (0x01) Nessun pacchetto ricevuto dal server.
 
-- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) indirizzo server non valido ricevuto
+- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) Indirizzo del server non valido ricevuto
 
-- **NX_TFTP_NO_ACK_RECEIVED** (0x09) nessun ACK ricevuto dal server
+- **NX_TFTP_NO_ACK_RECEIVED** (0x09) Nessun servizio ACK ricevuto dal server
 
-- È stata rilevata la fine del file **NX_TFTP_END_OF_FILE** (0XC5) (non un errore).
+- **NX_TFTP_END_OF_FILE** (0xC5) Fine del file rilevata (non un errore).
 
-- **NX_TFTP_INVALID_IP_VERSION** (0x0C) versione IP non valida
+- **NX_TFTP_INVALID_IP_VERSION** (0x0C) Versione IP non valida
 
-- Codice di errore ricevuto **NX_TFTP_CODE_ERROR** (0x05)
+- **NX_TFTP_CODE_ERROR** (0x05) Codice errore ricevuto
 
-- **NX_TFTP_FAILED** (0xC2) codice TFTP sconosciuto ricevuto
+- **NX_TFTP_FAILED** (0xC2) Ricevuto codice TFTP sconosciuto
 
-- **NX_TFTP_INVALID_BLOCK_NUMBER** (0x0A) numero di blocco non valido ricevuto
+- **NX_TFTP_INVALID_BLOCK_NUMBER** (0x0A) Numero di blocco non valido ricevuto
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
-- NX_INVALID_PARAMETERS (irreversibile 0x4D) non è stato inserito alcun puntatore non valido
+- NX_INVALID_PARAMETERS (0x4D) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -516,41 +516,41 @@ Questo servizio scrive un blocco di 512 byte nel file del client TFTP aperto in 
 
 - **packet_ptr** Pacchetto contenente il blocco da scrivere nel file.
 
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa del completamento della scrittura. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà il completamento della scrittura. Le opzioni di attesa sono definite come segue:
 
-  **valore di timeout** (0x00000001 tramite 0xfffffffe)
+  **valore di timeout** (0x00000001 tramite 0xFFFFFFFE)
 
   **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-  Se si seleziona TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino a quando il server TFTP non risponde alla richiesta.
+  Se si TX_WAIT_FOREVER il thread chiamante viene sospeso per un periodo illimitato fino a quando il server TFTP non risponde alla richiesta.
  
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi mentre è in attesa che il server TFTP invii un ACK per la richiesta di scrittura.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa che il server TFTP invii un ACK per la richiesta di scrittura.
 
-- **ip_type** Indica il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
+- **ip_type** Indicare il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Scrittura blocco client riuscita **NX_SUCCESS** (0x00)
+- **NX_SUCCESS** (0x00) Scrittura del blocco client riuscita
 
-- Il file client specificato **NX_TFTP_NOT_OPEN** (0xC3) non è aperto per la scrittura
+- **NX_TFTP_NOT_OPEN** (0xC3) Il file client specificato non è aperto per la scrittura
 
-- Timeout **NX_TFTP_TIMEOUT** (0xC1) in attesa di ACK server
+- **NX_TFTP_TIMEOUT** (0xC1) in attesa di Server ACK
 
-- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) indirizzo server non valido ricevuto
+- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) Indirizzo server non valido ricevuto
 
-- **NX_TFTP_NO_ACK_RECEIVED** (0x09) nessun ACK ricevuto dal server
+- **NX_TFTP_NO_ACK_RECEIVED** (0x09) Nessun ACK ricevuto dal server
 
-- **NX_TFTP_INVALID_IP_VERSION** (0x0C) versione IP non valida
+- **NX_TFTP_INVALID_IP_VERSION** (0x0C) Versione IP non valida
 
-- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) indirizzo server non valido ricevuto
+- **NX_INVALID_TFTP_SERVER_ADDRESS** (0x08) Indirizzo server non valido ricevuto
 
-- Codice di errore ricevuto **NX_TFTP_CODE_ERROR** (0x05)
+- **NX_TFTP_CODE_ERROR** (0x05) Codice di errore ricevuto
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input del puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
-- NX_INVALID_PARAMETERS (irreversibile 0x4D) non è stato inserito alcun puntatore non valido
+- NX_INVALID_PARAMETERS (0x4D) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -568,7 +568,7 @@ status =  nxd_tftp_client_file_write(&my_tftp_client, packet_ptr, 200);
 
 ## <a name="nxd_tftp_client_packet_allocate"></a>nxd_tftp_client_packet_allocate
 
-Alloca pacchetto per la scrittura di file client
+Allocare un pacchetto per la scrittura di file client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -580,7 +580,7 @@ UINT nxd_tftp_client_packet_allocate(NX_PACKET_POOL *pool_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca un pacchetto UDP dal pool di pacchetti specificato e crea spazio per l'intestazione TFTP a 4 byte prima che il pacchetto venga restituito al chiamante. Il chiamante può quindi compilare un buffer per la scrittura in un file client.
+Questo servizio alloca un pacchetto UDP dal pool di pacchetti specificato e fa spazio all'intestazione TFTP a 4 byte prima che il pacchetto venga restituito al chiamante. Il chiamante può quindi compilare un buffer per la scrittura in un file client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -588,27 +588,27 @@ Questo servizio alloca un pacchetto UDP dal pool di pacchetti specificato e crea
 
 - **packet_ptr** Destinazione per il puntatore al pacchetto allocato.
 
-- **WAIT_OPTION** Definisce per quanto tempo il servizio attenderà il completamento dell'allocazione del pacchetto. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà il completamento dell'allocazione del pacchetto. Le opzioni di attesa sono definite come segue:
 
-  **valore di timeout** (0x00000001 tramite 0xfffffffe)
+  **valore di timeout** (0x00000001 tramite 0xFFFFFFFE)
 
   **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-  Se si seleziona TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino al completamento dell'allocazione.
+  La TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino al completamento dell'allocazione.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi in attesa dell'allocazione dei pacchetti.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa dell'allocazione dei pacchetti.
 
-- **ip_type** Indica il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
+- **ip_type** Indicare il protocollo IP da usare. Le opzioni valide sono IPv4 (4) o IPv6 (6).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Allocazione pacchetto riuscita **NX_SUCCESS** (0x00)
+- **NX_SUCCESS** (0x00) Corretta allocazione pacchetti
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input del puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
-- NX_INVALID_PARAMETERS (irreversibile 0x4D) non è stato inserito alcun puntatore non valido
+- NX_INVALID_PARAMETERS (0x4D) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -625,7 +625,7 @@ status =  nxd_tftp_client_packet_allocate(&my_pool, &packet_ptr, 200);
 
 ## <a name="nxd_tftp_client_set_interface"></a>nxd_tftp_client_set_interface
 
-Imposta l'interfaccia fisica per le richieste TFTP
+Impostare l'interfaccia fisica per le richieste TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -636,10 +636,10 @@ UINT nxd_tftp_client_set_interface(NX_TFTP_CLIENT *tftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio usa l'indice dell'interfaccia di input per impostare l'interfaccia fisica per il client TFTP per l'invio e la ricezione di pacchetti TFTP. Il valore predefinito è zero, per l'interfaccia primaria.
+Questo servizio utilizza l'indice dell'interfaccia di input per impostare l'interfaccia fisica per il client TFTP per l'invio e la ricezione di pacchetti TFTP. Il valore predefinito è zero per l'interfaccia primaria.
 
 > [!NOTE]
-> NetX Duo deve supportare l'indirizzamento multihome (v 5.6 o versione successiva) per usare questo servizio.
+> NetX Duo deve supportare l'indirizzamento multihome (v5.6 o versione successiva) per usare questo servizio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -649,13 +649,13 @@ Questo servizio usa l'indice dell'interfaccia di input per impostare l'interfacc
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'input dell'interfaccia (0x0B) dell'interfaccia non è valido per il **NX_SUCCESS** (0x00)
+- **NX_SUCCESS** (0x00) L'interfaccia (0x0B) non è valida
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input del puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
-- Input dell'interfaccia NX_TFTP_INVALID_INTERFACE (0x0B) non valido
+- NX_TFTP_INVALID_INTERFACE (0x0B) Input di interfaccia non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -672,7 +672,7 @@ status =  nxd_tftp_client_set_interface(&client, 0);
 
 ## <a name="nxd_tftp_server_create"></a>nxd_tftp_server_create
 
-Crea server TFTP
+Creare un server TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -685,10 +685,10 @@ UINT nxd_tftp_server_create(NX_TFTP_SERVER *tftp_server_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un server TFTP che risponde alle richieste del client TFTP sulla porta 69. Il server deve essere avviato da una chiamata successiva a *nxd_tftp_server_start*.
+Questo servizio crea un server TFTP che risponde alle richieste del client TFTP sulla porta 69. Il server deve essere avviato da una chiamata successiva *a nxd_tftp_server_start*.
 
 > [!IMPORTANT]
-> L'applicazione deve verificare che siano già state create le istanze IP, il pool di pacchetti e l'istanza del supporto FileX specificati. Inoltre, è necessario abilitare UDP per l'istanza IP prima di chiamare il servizio.
+> L'applicazione deve assicurarsi che l'istanza IP, il pool di pacchetti e l'istanza del supporto FileX specificati siano già stati creati. È inoltre necessario che UDP sia abilitato per l'istanza IP prima di chiamare questo servizio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -696,7 +696,7 @@ Questo servizio crea un server TFTP che risponde alle richieste del client TFTP 
 
 - **tftp_server_name** Nome dell'istanza del server TFTP
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 - **media_ptr** Puntatore all'istanza del supporto FileX.
 
@@ -709,15 +709,15 @@ Questo servizio crea un server TFTP che risponde alle richieste del client TFTP 
 > [!NOTE]
 > Il pool fornito deve avere payload di pacchetti di almeno 580 byte. <sup>1</sup>
 
-<sup>1</sup> la parte relativa ai dati di un pacchetto è esattamente 512 byte, ma le dimensioni del payload del pacchetto devono essere di almeno 572 byte. I byte rimanenti vengono usati per le intestazioni UDP, IPv6 e Ethernet e i potenziali byte finali richiesti dal driver per l'allineamento.
+<sup>1</sup> La parte di dati di un pacchetto è esattamente di 512 byte, ma le dimensioni del payload del pacchetto devono essere di almeno 572 byte. I byte rimanenti vengono usati per le intestazioni UDP, IPv6 ed Ethernet e i byte finali potenziali richiesti dal driver per l'allineamento.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione di un server **NX_SUCCESS** (0x00) riuscita
+- **NX_SUCCESS** (0x00) Creazione server riuscita
 
-- Il pool di pacchetti **NX_TFTP_POOL_ERROR** (0xc6) ha una dimensione del pacchetto inferiore a 560 byte
+- **NX_TFTP_POOL_ERROR** (0xC6) Il pool di pacchetti ha dimensioni del pacchetto inferiori a 560 byte
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input del puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -735,7 +735,7 @@ status =  nxd_tftp_server_create(&my_server, “My TFTP Server”, &server_ip,
 
 ## <a name="nxd_tftp_server_delete"></a>nxd_tftp_server_delete
 
-Elimina server TFTP
+Eliminare il server TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -745,7 +745,7 @@ UINT nxd_tftp_server_delete(NX_TFTP_SERVER *tftp_server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un server TFTP creato in precedenza.
+Questo servizio elimina un server TFTP creato in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -753,11 +753,11 @@ Questo servizio Elimina un server TFTP creato in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione server riuscita **NX_SUCCESS** (0x00)
+- **NX_SUCCESS** (0x00) Eliminazione del server riuscita
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input del puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -774,7 +774,7 @@ status =  nxd_tftp_server_delete(&my_server);
 
 ## <a name="nxd_tftp_server_start"></a>nxd_tftp_server_start
 
-Avvia server TFTP
+Avviare il server TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -792,9 +792,9 @@ Questo servizio avvia il server TFTP creato in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Avvio del server **NX_SUCCESS** (0x00) riuscito
+- **NX_SUCCESS** (0x00) Avvio del server riuscito
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
  
 ### <a name="allowed-from"></a>Consentito da
 
@@ -811,7 +811,7 @@ status =  nxd_tftp_server_start(&my_server);
 
 ## <a name="nxd_tftp_server_stop"></a>nxd_tftp_server_stop
 
-Arresta server TFTP
+Arrestare il server TFTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -829,11 +829,11 @@ Questo servizio arresta il server TFTP creato in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Arresto server riuscito **NX_SUCCESS** (0x00)
+- **NX_SUCCESS** (0x00) Arresto del server riuscito
 
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- NX_PTR_ERROR (0x16) Input del puntatore non valido.
 
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 

@@ -6,33 +6,33 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 80ec22058ab64ed0c6258bb3d9364ec44f9a741b
-ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
+ms.openlocfilehash: b10260778f7f5e1a5bd0a38aded2339008b066cca77f2439a5881d28a0489524
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110223393"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797756"
 ---
 # <a name="chapter-4---description-of-azure-rtos-netx-secure-services"></a>Capitolo 4 - Descrizione dei Azure RTOS NetX Secure
 
 Questo capitolo contiene una descrizione di tutti i Azure RTOS NetX Secure (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "Valori restituiti" nelle descrizioni api seguenti, i valori in **GRASSETTO** non sono interessati dalla macro **NX_SECURE_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla macro **NX_SECURE_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 - [nx_secure_crypto_table_self_test](#nx_secure_crypto_table_self_test)
   - Eseguire self_test sui metodi di crittografia
 - [nx_secure_module_hash_compute](#nx_secure_module_hash_compute)
   - Calcola il valore hash usando user_supplied funzione hash
 - [nx_secure_tls_active_certificate_set](#nx_secure_tls_active_certificate_set)
-  - Impostare il certificato di identità attivo per una sessione TLS sicura di NetX
+  - Impostare il certificato di identità attivo per una sessione TLS protetta di NetX
 - [nx_secure_tls_client_psk_set](#nx_secure_tls_client_psk_set)
-  - Impostare una chiave Pre_Shared per una sessione del client TLS sicuro NetX
+  - Impostare una chiave Pre_Shared per una sessione client TLS protetta di NetX
 - [nx_secure_tls_initialize](#nx_secure_tls_initialize)
-  - Inizializza il modulo NETX Secure TLS]
+  - Inizializza il modulo NetX Secure TLS]
 - [nx_secure_tls_local_certificate_add](#nx_secure_tls_local_certificate_add)
-  - Aggiungere un certificato locale alla sessione TLS sicura di NetX
+  - Aggiungere un certificato locale alla sessione TLS protetta di NetX
 - [nx_secure_tls_local_certificate_find](#nx_secure_tls_local_certificate_find)
-  - Trovare un certificato locale in una sessione TLS sicura netx in base al nome comune
+  - Trovare un certificato locale in una sessione TLS sicura NetX in base al nome comune
 - [nx_secure_tls_local_certificate_remove](#nx_secure_tls_local_certificate_remove)
   - Rimuovere il certificato locale dalla sessione TLS protetta di NetX
 - [nx_secure_tls_metadata_size_calculate](#nx_secure_tls_metadata_size_calculate)
@@ -60,19 +60,19 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti, i valori in **
 - [nx_secure_tls_session_x509_client_verify_configure](#nx_secure_tls_session_x509_client_verify_configure)
   - Abilitare la verifica X.509 del client e allocare spazio per i certificati client
 - [nx_secure_tls_session_client_verify_disable](#nx_secure_tls_session_client_verify_disable)
-  - Disabilitare l'autenticazione del certificato client per una sessione TLS sicura netx
+  - Disabilitare l'autenticazione del certificato client per una sessione TLS protetta NetX
 - [nx_secure_tls_session_client_verify_enable](#nx_secure_tls_session_client_verify_enable)
-  - Abilitare l'autenticazione del certificato client per una sessione TLS sicura netx
+  - Abilitare l'autenticazione del certificato client per una sessione TLS protetta NetX
 - [nx_secure_tls_session_create](#nx_secure_tls_session_create)
-  - Creare una sessione TLS sicura netx per le comunicazioni sicure
+  - Creare una sessione TLS sicura NetX per le comunicazioni protette
 - [nx_secure_tls_session_delete](#nx_secure_tls_session_delete)
-  - Eliminare una sessione TLS sicura di NetX
+  - Eliminare una sessione TLS protetta di NetX
 - [nx_secure_tls_session_end](#nx_secure_tls_session_end)
-  - Terminare una sessione TLS sicura di NetX attiva
+  - Terminare una sessione TLS protetta di NetX attiva
 - [nx_secure_tls_session_packet_buffer_set](#nx_secure_tls_session_packet_buffer_set)
   - Impostare il buffer di riassemblaggio dei pacchetti per una sessione TLS protetta di NetX
 - [nx_secure_tls_session_protocol_version_override](#nx_secure_tls_session_protocol_version_override)
-  - Eseguire l'override della versione predefinita del protocollo TLS per una sessione TLS sicura netx
+  - Eseguire l'override della versione predefinita del protocollo TLS per una sessione TLS protetta di NetX
 - [nx_secure_tls_session_receive](#nx_secure_tls_session_receive)
   - Ricevere dati da una sessione TLS protetta di NetX
 - [nx_secure_tls_session_renegotiate_callback_set](#nx_secure_tls_session_renegotiate_callback_set)
@@ -88,29 +88,29 @@ Nella sezione "Valori restituiti" nelle descrizioni api seguenti, i valori in **
 - [nx_secure_tls_session_sni_extension_parse](#nx_secure_tls_session_sni_extension_parse)
   - Analizzare un'Indicazione nome server (SNI) ricevuta da un client TLS
 - [nx_secure_tls_session_sni_extension_set](#nx_secure_tls_session_sni_extension_set)
-  - Impostare un nome DNS Indicazione nome server (SNI) per l'invio a un server remoto
+  - Impostare un Indicazione nome server DNS dell'estensione SNI da inviare a un server remoto
 - [nx_secure_tls_session_start](#nx_secure_tls_session_start)
-  - Avviare una sessione TLS sicura di NetX
+  - Avviare una sessione TLS protetta di NetX
 - [nx_secure_tls_session_time_function_set](#nx_secure_tls_session_time_function_set)
-  - Assegnare una funzione timestamp a una sessione TLS protetta netx
+  - Assegnare una funzione timestamp a una sessione TLS sicura netx
 - [nx_secure_tls_trusted_certificate_add](#nx_secure_tls_trusted_certificate_add)
-  - Aggiungere un certificato attendibile alla sessione TLS sicura di NetX
+  - Aggiungere un certificato attendibile alla sessione TLS protetta di NetX
 - [nx_secure_tls_trusted_certificate_remove](#nx_secure_tls_trusted_certificate_remove)
-  - Rimuovere un certificato attendibile dalla sessione TLS sicura di NetX
+  - Rimuovere un certificato attendibile dalla sessione TLS protetta di NetX
 - [nx_secure_x509_certificate_initialize](#nx_secure_x509_certificate_initialize)
   - Inizializzare il certificato X.509 per NetX Secure TLS
 - [nx_secure_x509_common_name_dns_check](#nx_secure_x509_common_name_dns_check)
   - Controllare il nome DNS rispetto al certificato X.509
 - [nx_secure_x509_crl_revocation_check](#nx_secure_x509_crl_revocation_check)
-  - Controllare il certificato X.509 rispetto a un elenco di revoche di certificati (CRL)]
+  - Controllare il certificato X.509 rispetto a un elenco di revoche di certificati (CRL) fornito]
 - [nx_secure_x509_dns_name_initialize](#nx_secure_x509_dns_name_initialize)
-  - Inizializzare una struttura di nomi DNS X.509
+  - Inizializzare una struttura dei nomi DNS X.509
 - [nx_secure_x509_extended_key_usage_extension_parse](#nx_secure_x509_extended_key_usage_extension_parse)
-  - Trovare e analizzare un'estensione per l'utilizzo chiavi estesa X.509 in un certificato X.509
+  - Trovare e analizzare un'estensione X.509 estesa per l'utilizzo delle chiavi in un certificato X.509
 - [nx_secure_x509_extension_find](#nx_secure_x509_extension_find)
   - Trovare e restituire un'estensione X.509 in un certificato X.509
 - [nx_secure_x509_key_usage_extension_parse](#nx_secure_x509_key_usage_extension_parse)
-  - Trovare e analizzare un'estensione Utilizzo chiavi X.509 in un certificato X.509
+  - Trovare e analizzare un'estensione X.509 Key Usage in un certificato X.509
 
 ## <a name="nx_secure_crypto_table_self_test"></a>nx_secure_crypto_table_self_test
 
@@ -139,7 +139,7 @@ NetX Secure Crypto Self Test supporta gli algoritmi e le dimensioni delle chiavi
 - HMAC-SHA: SHA1-96, SHA1-160, SHA2-256, SHA2-384, SHA2- 512, autenticazione e calcolo hash
 - MD5: autenticazione
 - Funzione pseudo-casuale (PRF): PRF_HMAC_SHA1 e PRF_HMAC_SHA2-256
-- RSA: operazione power-modulus RSA a 1024, 2048 e 4096 bit
+- RSA: operazione di power-modulus RSA a 1024, 2048 e 4096 bit
 - SHA: autenticazione SHA1 (96 e 160 bit), SHA2 (256 bit, 384 bit, 512 bit)
 
 Questa funzione include i vettori predefiniti per gli algoritmi di crittografia elencati in precedenza. Tuttavia, verifica solo quelli elencati nella *cipher_table* passati a questa funzione. Ad esempio, per una sessione TLS usa solo il TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite, questa funzione eseguirà test self-service su RSA (1024, 2048, 4096 bit), AES-CBC (128 bit) e SHA1.
@@ -154,11 +154,11 @@ Questa funzione include i vettori predefiniti per gli algoritmi di crittografia 
 
 - **NX_SECURE_TLS_SUCCESS** (0x00) Sono stati testati correttamente i metodi di crittografia forniti.
 - **NX_PTR_ERROR** (0x07) Struttura del metodo di crittografia non valida
-- **NX_NOT_SUCCESSFUL** (0x43) il test self-test della crittografia ha esito negativo.
+- **NX_NOT_SUCCESSFUL** (0x43) Il test self-test della crittografia ha esito negativo.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -206,7 +206,7 @@ UINT nx_secure_module_hash_compute(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione calcola il valore hash del flusso di dati nell'area di memoria specificata, usando il metodo di crittografia HMAC fornito e la stringa della chiave. La funzione di calcolo hash del modulo è disponibile solo se la libreria NetX Secure viene compilata con il simbolo seguente definito: NX_SECURE_POWER_ON_SELF_TEST_MODULE_INTEGRITY_CHECK
+Questa funzione calcola il valore hash del flusso di dati nell'area di memoria specificata, usando il metodo di crittografia HMAC fornito e la stringa di chiave. La funzione di calcolo hash del modulo è disponibile solo se la libreria NetX Secure viene compilata con il simbolo seguente definito: NX_SECURE_POWER_ON_SELF_TEST_MODULE_INTEGRITY_CHECK
 
 ### <a name="parameters"></a>Parametri
 
@@ -459,7 +459,7 @@ void main()
 
 ## <a name="nx_secure_tls_client_psk_set"></a>nx_secure_tls_client_psk_set
 
-Impostare una chiave precondi condivisa per una sessione del client TLS sicuro netx
+Impostare una chiave precondi shared per una sessione client TLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -472,19 +472,19 @@ UINT  nx_secure_tls_client_psk_set(NX_SECURE_TLS_SESSION *session_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una chiave precondi shared (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo della sessione TLS e imposta tale chiave PSK da usare nelle connessioni client TLS successive. La chiave PSK viene usata al posto di un certificato digitale quando i ciphersuit PSK sono abilitati e usati.
+Questo servizio aggiunge una chiave precondi shared (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo sessione TLS e imposta tale chiave PSK da usare nelle connessioni client TLS successive. La chiave PSK viene usata al posto di un certificato digitale quando le ciphersuit PSK sono abilitate e usate.
 
-In questo caso, la chiave PSK è associata a un server TLS remoto specifico con cui il client TLS vuole comunicare. La chiave PSK impostata tramite questa API verrà fornita all'host remoto del server TLS durante il successivo handshake TLS.
+In questo caso, la chiave PSK è associata a un server TLS remoto specifico con cui il client TLS vuole comunicare. La chiave PSK impostata tramite questa API verrà fornita all'host del server TLS remoto durante il successivo handshake TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS creata in precedenza.
 - **pre_shared_key** Valore PSK effettivo.
 - **psk_length** Lunghezza del valore PSK.
-- **psk_identity** Stringa utilizzata per identificare questo valore PSK.
+- **psk_identity** Stringa usata per identificare questo valore PSK.
 - **identity_length** Lunghezza dell'identità PSK.
-- **hint** Stringa usata per indicare il gruppo di chiavi psk tra cui scegliere in un server TLS.
-- **hint_length** Lunghezza della stringa dell'hint.
+- **hint** Stringa usata per indicare il gruppo di psk tra cui scegliere in un server TLS.
+- **hint_length** Lunghezza della stringa di hint.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -538,7 +538,7 @@ nessuno
 
 ### <a name="return-values"></a>Valori restituiti
 
-nessuno
+Nessuno
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -569,11 +569,11 @@ UINT  nx_secure_tls_local_certificate_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un'istanza inizializzata NX_SECURE_X509_CERT struttura all'archivio locale di una sessione TLS. Questo certificato può essere usato dallo stack TLS per identificare il dispositivo durante l'handshake TLS (se è stato contrassegnato come certificato di identità durante l'inizializzazione della struttura del certificato usando nx_secure_x509_certificate_initialize) o come autorità di certificazione come parte di una catena di certificati fornita all'host remoto durante l'handshake TLS.
+Questo servizio aggiunge un'istanza della NX_SECURE_X509_CERT inizializzata all'archivio locale di una sessione TLS. Questo certificato può essere usato dallo stack TLS per identificare il dispositivo durante l'handshake TLS (se è stato contrassegnato come certificato di identità durante l'inizializzazione della struttura del certificato usando nx_secure_x509_certificate_initialize) o come autorità di certificazione come parte di una catena di certificati fornita all'host remoto durante l'handshake TLS.
 
 Se sono necessari più certificati locali con lo stesso nome comune, è possibile aggiungere certificati usando il *servizio nx_secure_tls_server_certificate_add* (vedere l'avviso seguente).
 
-Per la **modalità** server TLS è necessario un certificato.
+Per la modalità server TLS **è** necessario un certificato.
 
 Un certificato è *facoltativo* per la modalità client TLS.
 
@@ -588,8 +588,8 @@ Un certificato è *facoltativo* per la modalità client TLS.
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) Aggiunta del certificato completata.
-- **NX_INVALID_PARAMETERS** (0x4D) Si è tentato di aggiungere un certificato non valido o duplicato.
-- **NX_PTR_ERROR** (0x07) Sessione TLS o puntatore al certificato non valido.
+- **NX_INVALID_PARAMETERS** (0x4D) Tentativo di aggiunta di un certificato non valido o duplicato.
+- **NX_PTR_ERROR** (0x07) Puntatore di certificato o sessione TLS non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -619,7 +619,7 @@ status =  nx_secure_tls_local_certificate_add(&tls_session, &certificate);
 
 ## <a name="nx_secure_tls_local_certificate_find"></a>nx_secure_tls_local_certificate_find
 
-Trovare un certificato locale in una sessione TLS sicura netx in base al nome comune
+Trovare un certificato locale in una sessione TLS sicura NetX in base al nome comune
 
 ### <a name="prototype"></a>Prototipo
 
@@ -632,9 +632,9 @@ UINT  nx_secure_tls_local_certificate_find(NX_SECURE_TLS_SESSION
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio trova un certificato nell'archivio certificati del dispositivo locale di una sessione TLS e restituisce un puntatore alla struttura NX_SECURE_X509_CERT nell'archivio. Il common_name e la sua lunghezza (name_length) vengono usati per identificare il certificato nell'archivio abbinando il campo Nome comune soggetto X.509 del certificato.
+Questo servizio trova un certificato nell'archivio certificati del dispositivo locale di una sessione TLS e restituisce un puntatore alla struttura NX_SECURE_X509_CERT nell'archivio. Il common_name e la lunghezza (name_length) vengono usati per identificare il certificato nell'archivio abbinando il campo Nome comune soggetto X.509 del certificato.
 
-Se sono presenti più certificati con lo stesso nome comune, verrà restituito solo il primo. Usare *invece* nx_secure_tls_server_certificate_find.
+Se sono presenti più certificati con lo stesso nome comune, verrà restituito solo il primo. Usare *nx_secure_tls_server_certificate_find.*
 
 > [!IMPORTANT]
 > *Questa API non deve essere usata con la stessa sessione TLS quando si usa nx_secure_tls_server_certificate_add. L'API del certificato server usa un identificatore numerico univoco per ogni certificato e nx_secure_tls_local_certificate_add indici basati sul nome comune X.509. I servizi certificati locali offrono un'alternativa pratica all'identificatore numerico per le applicazioni che usano un solo certificato di identità. Usando il nome comune, l'applicazione non deve tenere traccia degli identificatori numerici.*
@@ -708,14 +708,14 @@ Questo servizio rimuove un'istanza del certificato locale da una sessione TLS, c
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS creata in precedenza.
-- **common_name** Valore nome comune del certificato da rimuovere.
-- **common_name_length** Lunghezza della stringa del nome comune.
+- **common_name** Valore common name del certificato da rimuovere.
+- **common_name_length** Lunghezza della stringa Common Name.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) Aggiunta del certificato completata.
 - **NX_PTR_ERROR** (0x07) Puntatore di sessione TLS non valido.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) non è stato trovato.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Il certificato non è stato trovato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -753,19 +753,19 @@ UINT  nx_secure_tls_metadata_size_calculate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio calcola e restituisce le dimensioni dei metadati crittografici necessari per una determinata sessione TLS e la tabella di crittografia TLS. Per altre informazioni sulla tabella di crittografia crittografica, vedere la sezione "Inizializzazione di TLS con metodi di crittografia".
+Questo servizio calcola e restituisce le dimensioni dei metadati crittografici necessari per una particolare sessione TLS e una tabella di crittografia TLS (vedere la sezione "Inizializzazione di TLS con metodi di crittografia" per altre informazioni sulla tabella di crittografia).
 
-Questo servizio deve essere chiamato con la tabella crittografica desiderata per calcolare le dimensioni del buffer dei metadati passato in nx_secure_tls_session_create.
+Questo servizio deve essere chiamato con la tabella crittografica desiderata per calcolare le dimensioni del buffer dei metadati passato nx_secure_tls_session_create.
 
 ### <a name="parameters"></a>Parametri
 
-- **crypto_table** Puntatore a una tabella di crittografia NETX Secure TLS completa.
+- **crypto_table** Puntatore a una tabella di crittografia NetX Secure TLS completa.
 - **metadata_size** Output del calcolo delle dimensioni in byte.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) Calcolo delle dimensioni dei metadati riuscito.
-- **NX_PTR_ERROR** (0x07) Tabella di crittografia o puntatore di dimensione restituito non valido.
+- **NX_PTR_ERROR** (0x07) Tabella di crittografia non valida o puntatore alle dimensioni restituite.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -856,7 +856,7 @@ variable packet_ptr.  */
 
 ## <a name="nx_secure_tls_psk_add"></a>nx_secure_tls_psk_add
 
-Aggiungere una chiave precondinessa a una sessione TLS sicura di NetX
+Aggiungere una chiave precondicondita a una sessione TLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -870,17 +870,17 @@ UINT  nx_secure_tls_psk_add(NX_SECURE_TLS_SESSION *session_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una chiave precondi condivisa (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo della sessione TLS. La chiave PSK viene usata al posto di un certificato digitale quando i ciphersuit PSK sono abilitati e usati.
+Questo servizio aggiunge una chiave precondi shared (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo sessione TLS. La chiave PSK viene usata al posto di un certificato digitale quando le ciphersuit PSK sono abilitate e usate.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS creata in precedenza.
 - **pre_shared_key** Valore PSK effettivo.
 - **psk_length** Lunghezza del valore PSK.
-- **psk_identity** Stringa utilizzata per identificare questo valore PSK.
+- **psk_identity** Stringa usata per identificare questo valore PSK.
 - **identity_length** Lunghezza dell'identità PSK.
-- **hint** Stringa usata per indicare il gruppo di chiavi psk tra cui scegliere in un server TLS.
-- **hint_length** Lunghezza della stringa dell'hint.
+- **hint** Stringa usata per indicare il gruppo di psk tra cui scegliere in un server TLS.
+- **hint_length** Lunghezza della stringa di hint.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -945,14 +945,14 @@ Per la modalità server TLS, è necessaria un'allocazione remota del certificato
 - **session_ptr** Puntatore a un'istanza di sessione TLS creata in precedenza.
 - **certificate_ptr** Puntatore a un'istanza del certificato X.509 non inizializzata.
 - **raw_certificate_buffer** Puntatore a un buffer per contenere il certificato non analizzato ricevuto dall'host remoto.
-- **raw_buffer_size** Dimensioni del buffer del certificato non elaborato.
+- **raw_buffer_size** Dimensione del buffer del certificato non elaborato.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) Corretta allocazione del certificato.
 - **NX_PTR_ERROR** (0x07) Puntatore di sessione TLS non valido.
 - **NX_SECURE_TLS_INSUFFICIENT_CERT_SPACE** (0x12D) Il buffer fornito era troppo piccolo.
-- **NX_INVALID_PARAMETERS** (0x4D) Si è tentato di aggiungere un certificato non valido.
+- **NX_INVALID_PARAMETERS** (0x4D) Tentativo di aggiungere un certificato non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -996,7 +996,7 @@ UINT  nx_secure_tls_remote_certificate_buffer_allocate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca spazio per elaborare le catene di certificati in ingresso da host server remoti per eseguire l'autenticazione e la verifica X.509 in un'istanza del client TLS. Per la modalità server TLS, l'allocazione remota dei certificati è necessaria solo se  è abilitata l'autenticazione del certificato X.509 client. Per le istanze del server TLS è invece necessario usare il nx_secure_tls_session_x509_client_verify_configure servizio.
+Questo servizio alloca spazio per elaborare le catene di certificati in ingresso dagli host server remoti per eseguire l'autenticazione e la verifica X.509 in un'istanza del client TLS. Per la modalità server TLS, l'allocazione remota dei certificati è necessaria solo se  è abilitata l'autenticazione del certificato X.509 client. Per le istanze del server TLS è necessario usare nx_secure_tls_session_x509_client_verify_configure servizio.
 
 Se non si allocano certificati remoti, la modalità client TLS avrà esito negativo durante l'handshake TLS, a meno che non sia in uso una crittografia PSK (Pre-Shared Key).
 
@@ -1007,7 +1007,7 @@ buffer_size = (<expected max number of certificates in chain>) *
                  (sizeof(NX_SECURE_X509_CERT) + <max cert size>)
 ```
 
-I certificati tipici con chiavi RSA a 2048 bit che usano SHA-256 per le firme sono nell'intervallo di 1000-2000 byte. Il buffer deve essere sufficientemente grande da contenere almeno tale dimensione per ogni certificato, ma a seconda dei certificati host remoti può essere notevolmente più piccolo o più grande. Si noti che se il buffer è troppo piccolo per contenere il certificato in ingresso, l'handshake TLS terminerà con un errore.
+I certificati tipici con chiavi RSA a 2048 bit che usano SHA-256 per le firme sono nell'intervallo tra 1000 e 2000 byte. Il buffer deve essere sufficientemente grande da contenere almeno le dimensioni per ogni certificato, ma a seconda dei certificati host remoti può essere notevolmente più piccolo o più grande. Si noti che se il buffer è troppo piccolo per contenere il certificato in ingresso, l'handshake TLS terminerà con un errore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1019,7 +1019,7 @@ I certificati tipici con chiavi RSA a 2048 bit che usano SHA-256 per le firme so
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) Corretta allocazione del certificato.
-- **NX_PTR_ERROR** (0x07) Sessione TLS o puntatore al buffer non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore di buffer o sessione TLS non valido.
 - **NX_SECURE_TLS_INSUFFICIENT_CERT_SPACE** (0x12D) Il buffer fornito era troppo piccolo.
 - **NX_INVALID_PARAMETERS** (0x4D) Il buffer era troppo piccolo per contenere il numero desiderato di certificati.
 
@@ -1130,12 +1130,12 @@ UINT  nx_secure_tls_server_certificate_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio viene usato per aggiungere un certificato all'archivio locale di una sessione TLS (vedere nx_secure_tls_local_certificate_add) usando un identificatore numerico anziché indicizzare l'archivio usando il soggetto X.509 (nome comune) all'interno del certificato. L'identificatore numerico è separato dal certificato e consente di aggiungere più certificati come certificati di identità a un server TLS, oltre a consentire l'aggiunta di più certificati con lo stesso nome comune allo stesso archivio locale della sessione TLS. Questo stesso servizio può essere usato per i certificati client, ma è raro che un client TLS abbia più certificati di identità.
+Questo servizio viene usato per aggiungere un certificato all'archivio locale di una sessione TLS (vedere nx_secure_tls_local_certificate_add) usando un identificatore numerico anziché indicizzare l'archivio usando il soggetto X.509 (nome comune) all'interno del certificato. L'identificatore numerico è separato dal certificato e consente di aggiungere più certificati come certificati di identità a un server TLS, nonché di aggiungere più certificati con lo stesso nome comune allo stesso archivio locale della sessione TLS. Questo stesso servizio può essere usato per i certificati client, ma è raro che un client TLS abbia più certificati di identità.
 
-Il cert_id parametro è un numero intero positivo diverso da zero assegnato dall'applicazione. Il valore effettivo non è importante (diverso da zero), ma deve essere univoco nell'archivio per la sessione TLS fornita. Il cert_id può essere usato per trovare e rimuovere certificati dall'archivio locale usando nx_secure_tls_server_certificate_find e nx_secure_tls_server_certificate_remove, rispettivamente.
+Il cert_id è un numero intero positivo diverso da zero assegnato dall'applicazione. Il valore effettivo non è importante (diverso da zero), ma deve essere univoco nell'archivio per la sessione TLS fornita. Il cert_id può essere usato per trovare e rimuovere certificati dall'archivio locale usando nx_secure_tls_server_certificate_find e nx_secure_tls_server_certificate_remove, rispettivamente.
 
 > [!IMPORTANT]
-> *Questa API non deve essere usata con la stessa sessione TLS quando si usa nx_secure_tls_local_certificate_add. L nx_secure_tls_server_certificate_add API usa un identificatore numerico univoco per ogni certificato e l'indice dei servizi certificati locali in base al nome comune X.509. I servizi certificati del server consentono l'esistenza di più certificati con dati condivisi (in particolare nome comune) nello stesso archivio locale. Ciò è utile per un server con più identità.*
+> *Questa API non deve essere usata con la stessa sessione TLS quando si usa nx_secure_tls_local_certificate_add. L nx_secure_tls_server_certificate_add API usa un identificatore numerico univoco per ogni certificato e l'indice dei servizi certificati locali in base al nome comune X.509. I servizi certificati server consentono l'esistenza di più certificati con dati condivisi (in particolare nome comune) nello stesso archivio locale. Ciò è utile per un server con più identità.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -1146,7 +1146,7 @@ Il cert_id parametro è un numero intero positivo diverso da zero assegnato dall
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00)Operazione riuscita.
-- **NX_PTR_ERROR** (0x07) Sessione TLS o puntatore di certificato non valido.
+- **NX_PTR_ERROR** (0x07) Sessione TLS o puntatore del certificato non valido.
 - **NX_SECURE_TLS_CERT_ID_INVALID** (0x138) L'ID certificato specificato ha un valore non valido (probabilmente 0).
 - **NX_SECURE_TLS_CERT_ID_DUPLICATE** (0x139) L'ID certificato specificato era già presente nell'archivio locale.
 - **NX_INVALID_PARAMETERS(0x4D)** Errore interno: è probabile che l'archivio certificati sia danneggiato.
@@ -1194,7 +1194,7 @@ UINT  nx_secure_tls_server_certificate_find(
 
 Questo servizio viene usato per trovare un certificato nell'archivio locale di una sessione TLS (vedere nx_secure_tls_local_certificate_add) usando un identificatore numerico invece di indicizzare l'archivio usando il soggetto X.509 (nome comune) all'interno del certificato.
 
-Il cert_id è un numero intero positivo diverso da zero assegnato dall'applicazione quando il certificato viene aggiunto all'archivio locale della sessione TLS usando nx_secure_tls_server_certificate_add.
+Il cert_id è un intero positivo diverso da zero assegnato dall'applicazione quando il certificato viene aggiunto all'archivio locale della sessione TLS usando nx_secure_tls_server_certificate_add.
 
 > [!IMPORTANT]
 > *Questa API non deve essere usata con la stessa sessione TLS quando si usa nx_secure_tls_local_certificate_add. L nx_secure_tls_server_certificate_add API usa un identificatore numerico univoco per ogni certificato e l'indice dei servizi certificati locali in base al nome comune X.509. I servizi certificati server consentono l'esistenza di più certificati con dati condivisi (in particolare nome comune) nello stesso archivio locale. Ciò è utile per un server con più identità.*
@@ -1208,8 +1208,8 @@ Il cert_id è un numero intero positivo diverso da zero assegnato dall'applicazi
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00)Operazione riuscita.
-- **NX_PTR_ERROR** (0x07) Sessione TLS o puntatore al certificato non valido.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) L'ID certificato specificato non corrisponde ad alcun id nell'archivio locale della sessione TLS fornita.
+- **NX_PTR_ERROR** (0x07) Puntatore di certificato o sessione TLS non valido.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) L'ID certificato specificato non corrisponde ad alcuno nell'archivio locale della sessione TLS fornita.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1252,7 +1252,7 @@ UINT  nx_secure_tls_server_certificate_remove(
 
 Questo servizio viene usato per rimuovere un certificato dall'archivio locale di una sessione TLS (vedere nx_secure_tls_local_certificate_add) usando un identificatore numerico anziché indicizzare l'archivio usando il soggetto X.509 (nome comune) all'interno del certificato.
 
-Il cert_id è un numero intero positivo diverso da zero assegnato dall'applicazione quando il certificato viene aggiunto all'archivio locale della sessione TLS usando nx_secure_tls_server_certificate_add.
+Il cert_id è un intero positivo diverso da zero assegnato dall'applicazione quando il certificato viene aggiunto all'archivio locale della sessione TLS usando nx_secure_tls_server_certificate_add.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1263,7 +1263,7 @@ Il cert_id è un numero intero positivo diverso da zero assegnato dall'applicazi
 
 - **NX_SUCCESS** (0x00)Operazione riuscita.
 - **NX_PTR_ERROR** (0x07) Sessione TLS non valida.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) L'ID certificato specificato non corrisponde ad alcun id nell'archivio locale della sessione TLS fornita.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) L'ID certificato specificato non corrisponde ad alcuno nell'archivio locale della sessione TLS fornita.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1313,24 +1313,24 @@ Questo servizio viene usato per recuperare il livello e il valore di avviso TLS 
 
 I valori dei parametri alert_level e alert_value sono validi solo se questa funzione viene chiamata immediatamente dopo una chiamata API TLS che ha restituito lo stato NX_SECURE_TLS_ALERT_RECEIVED (0x114) che indica che è stato ricevuto un avviso dall'host remoto.
 
-Si noti che se l'host locale TLS invia un avviso, i codici di errore restituiti sono molto più descrittivi dell'errore effettivo rispetto all'avviso TLS stesso perché i valori di avviso TLS vengono intenzionalmente lasciati ambigui per impedire determinati tipi di attacco ,ad esempio un attacco "oracolo di riempimento" o simili.
+Si noti che se l'host locale TLS invia un avviso, i codici di errore restituiti sono molto più descrittivi dell'errore effettivo rispetto all'avviso TLS stesso perché i valori di avviso TLS vengono intenzionalmente lasciati ambigui per impedire determinati tipi di attacco (ad esempio un attacco "oracolo di riempimento" o simili).
 
 Il livello di avviso accetta solo uno dei due valori seguenti: NX_SECURE_TLS_ALERT_LEVEL_WARNING (0x1) o NX_SECURE_TLS_ALERT_LEVEL_FATAL (0x2). In generale, solo l'avviso CloseNotify (usato per indicare un esito positivo di una sessione TLS) riceverà un livello di "Avviso", anche se alcune situazioni di configurazione dell'estensione possono anche essere considerate avvisi. La maggior parte degli avvisi sarà "Fatal" che indica un potenziale errore di sicurezza e determina la chiusura immediata della connessione TLS (handshake o sessione).
 
-I valori di avviso TLS sono definiti nelle RFC TLS, di seguito è riportato l'elenco di RFC 5246 (TLSv1.2) per riferimento:
+I valori degli avvisi TLS sono definiti nelle RFC TLS, di seguito è riportato l'elenco di RFC 5246 (TLSv1.2) per riferimento:
 
 | Nome avviso                     | Valore | Descrizione                                                                                                                                                  |
 | ---------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | close_notify                  | 0     | Nessun errore, indica l'esito positivo della sessione                                                                                                                   |
 | unexpected_message            | 10    | TLS ha ricevuto un messaggio imprevisto o non in ordine                                                                                                           |
 | bad_record_mac               | 20    | Decrittografia e/o verifica MAC non riuscita                                                                                                                    |
-| decryption_failed_RESERVED   | 21    | **DEPRECATO** Decrittografia non riuscita (deprecata a causa di attacchi di oracolo di riempimento)                                                                                      |
+| decryption_failed_RESERVED   | 21    | **DEPRECATO** Decrittografia non riuscita (deprecata a causa di attacchi oracle di riempimento)                                                                                      |
 | record_overflow               | 22    | È stato ricevuto un record maggiore delle dimensioni massime del record TLS                                                                                        |
 | decompression_failure         | 30    | Si è verificato un problema durante la compressione/decompressione di un record TLS                                                                                       |
 | handshake_failure             | 40    | Si è verificato un errore di handshake non specificato che non è coperto da un avviso diverso                                                                            |
 | no_certificate_RESERVED      | 41    | **DEPRECATO** in TLS (solo SSL)                                                                                                                                 |
-| bad_certificate               | 42    | Un certificato ricevuto contiene firme o formattazioni non valide                                                                                   |
-| unsupported_certificate       | 43    | È stato ricevuto un certificato di tipo non valido, ad esempio un certificato di sola firma usato per l'autenticazione server TLS                                    |
+| bad_certificate               | 42    | Un certificato ricevuto conteneva una formattazione o firme non valide                                                                                   |
+| unsupported_certificate       | 43    | È stato ricevuto un certificato di tipo non valido,ad esempio un certificato di sola firma usato per l'autenticazione del server TLS                                    |
 | certificate_revoked           | 44    | Lo stato del certificato (fornito da un CRL o OCSP) è stato indicato come "revocato"                                                                       |
 | certificate_expired           | 45    | Il certificato ricevuto non è compreso nell'intervallo di date valido (non ancora valido o scaduto)                                                                 |
 | certificate_unknown           | 46    | È stato rilevato un problema di certificato sconosciuto non coperto da altri avvisi                                                                          |
@@ -1345,7 +1345,7 @@ I valori di avviso TLS sono definiti nelle RFC TLS, di seguito è riportato l'el
 | internal_error                | 80    | Si è verificato un errore non TLS (ad esempio problemi di allocazione della memoria, problemi dell'applicazione) che ha generato una sessione TLS interrotta.                                         |
 | user_canceled                 | 90    | Restituito se la sessione TLS viene annullata da un utente o un'applicazione prima del completamento dell'handshake (simile a CloseNotify).                                 |
 | no_renegotiation              | 100   | Indica che l'host remoto non è disposto a eseguire handshake di rinegoziazione TLS in risposta a una richiesta di rinegoziazione.                                 |
-| unsupported_extension         | 110   | Inviato se un client TLS riceve un serverHello contenente estensioni non richieste in modo esplicito nel ClientHello iniziale (che indica che il server ha un problema). |
+| unsupported_extension         | 110   | Inviato se un client TLS riceve un serverHello contenente estensioni non richieste in modo esplicito nel ClientHello iniziale (a indicare che il server presenta un problema). |
 
 ### <a name="parameters"></a>Parametri
 
@@ -1411,11 +1411,11 @@ UINT  nx_secure_tls_ session_certificate_callback_set (
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna un puntatore a funzione a una sessione TLS che TLS richiama quando viene ricevuto un certificato da un host remoto, consentendo all'applicazione di eseguire controlli di convalida, ad esempio la convalida DNS, la revoca del certificato e l'applicazione dei criteri dei certificati.
+Questo servizio assegna un puntatore a funzione a una sessione TLS che TLS richiama quando un certificato viene ricevuto da un host remoto, consentendo all'applicazione di eseguire controlli di convalida, ad esempio la convalida DNS, la revoca del certificato e l'imposizione dei criteri dei certificati.
 
-NetX Secure TLS eseguirà la convalida del percorso X.509 di base sul certificato prima di richiamare il callback per garantire che il certificato possa essere tracciato in un certificato nell'archivio certificati attendibili TLS, ma tutte le altre convalide verranno gestite da questo callback.
+NetX Secure TLS eseguirà la convalida del percorso X.509 di base sul certificato prima di richiamare il callback per assicurarsi che il certificato possa essere tracciato in un certificato nell'archivio certificati attendibili TLS, ma tutte le altre convalide verranno gestite da questo callback.
 
-Il callback fornisce il puntatore di sessione TLS e un puntatore al certificato di identità dell'host remoto (la foglia nella catena di certificati). Il callback deve restituire NX_SUCCESS se la convalida ha esito positivo; in caso contrario, deve restituire un codice di errore che indica l'errore di convalida. Qualsiasi valore diverso da NX_SUCCESS causerà l'interruzione immediata dell'handshake TLS.
+Il callback fornisce il puntatore di sessione TLS e un puntatore al certificato di identità dell'host remoto (foglia nella catena di certificati). Il callback deve restituire NX_SUCCESS se la convalida ha esito positivo, in caso contrario deve restituire un codice di errore che indica l'errore di convalida. Qualsiasi valore diverso da NX_SUCCESS causerà l'interruzione immediata dell'handshake TLS.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1476,7 +1476,7 @@ UINT  nx_secure_tls_ session_client_callback_set (
 
 Questo servizio assegna un puntatore a funzione a una sessione TLS che TLS richiama quando un handshake client TLS ha ricevuto un messaggio ServerHelloDone. La funzione di callback consente a un'applicazione di elaborare tutte le estensioni TLS dal messaggio ServerHello ricevuto che richiedono input o decisioni.
 
-Il callback viene eseguito con il blocco di controllo sessione TLS richiamato e una matrice di NX_SECURE_TLS_HELLO_EXTENSION oggetti . La matrice di oggetti di estensione deve essere passata a una funzione helper che troverà e an parserà un'estensione specifica. Attualmente non sono supportate estensioni specifiche in NetX Secure che richiedono l'input del client TLS, ma il callback è disponibile per i progettisti di applicazioni per gestire estensioni personalizzate o nuove che potrebbero diventare disponibili. Per una funzione helper di esempio che analizza le estensioni TLS fornite nei messaggi hello, vedere *nx_secure_tls_session_sni_extension_parse*.
+Il callback viene eseguito con il blocco di controllo sessione TLS richiamato e una matrice di NX_SECURE_TLS_HELLO_EXTENSION oggetti . La matrice di oggetti estensione deve essere passata a una funzione helper che troverà e an parserà un'estensione specifica. Attualmente non sono supportate estensioni specifiche in NetX Secure che richiedono l'input del client TLS, ma il callback è disponibile per i progettisti di applicazioni per gestire estensioni personalizzate o nuove che potrebbero diventare disponibili. Per una funzione helper di esempio che analizza le estensioni TLS fornite nei messaggi hello, vedere *nx_secure_tls_session_sni_extension_parse*.
 
 Il callback client può essere usato anche per selezionare il certificato di identità attivo usando *nx_secure_tls_active_certificate_set* per il client TLS nel caso in cui il server remoto abbia richiesto un certificato e fornito informazioni per consentire al client TLS di selezionare un certificato specifico. Per altre informazioni, vedere le informazioni nx_secure_tls_active_certificate_set riferimento.
 
@@ -1551,9 +1551,9 @@ UINT  nx_secure_tls_session_x509_client_verify_configure(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio abilita l'autenticazione client X.509 facoltativa per un'istanza del server TLS. Alloca anche lo spazio necessario per elaborare le catene di certificati in ingresso dall'host client remoto. I certificati forniti dal client remoto verranno verificati in base ai certificati attendibili dell'istanza del server TLS, assegnati al servizio *nx_secure_tls_trusted_certificate_add.*
+Questo servizio abilita l'autenticazione client X.509 facoltativa per un'istanza del server TLS. Alloca anche lo spazio necessario per elaborare le catene di certificati in ingresso dall'host client remoto. I certificati forniti dal client remoto verranno verificati rispetto ai certificati attendibili dell'istanza del server TLS, assegnati al servizio *nx_secure_tls_trusted_certificate_add.*
 
-Per la modalità client TLS, è necessaria l'allocazione remota dei certificati e deve *essere* nx_secure_tls_remote_certificate_buffer_allocate servizio. L'abilitazione dell'autenticazione client X.509 in un'istanza del client TLS non avrà alcun effetto.
+Per la modalità client TLS, è necessaria l'allocazione remota dei certificati nx_secure_tls_remote_certificate_buffer_allocate *deve* essere usata. L'abilitazione dell'autenticazione client X.509 in un'istanza del client TLS non avrà alcun effetto.
 
 Il *certificate_buffer* punta allo spazio allocato per archiviare i certificati remoti in ingresso e i blocchi di controllo necessari per tali certificati. Il buffer verrà diviso per il numero di certificati (*certs_number*) con una parte uguale a ogni certificato. Il *buffer_size* parametro indica le dimensioni del buffer. Lo spazio necessario è disponibile con la formula seguente:
 
@@ -1562,7 +1562,7 @@ buffer_size = (<expected max number of certificates in chain>) *
              (sizeof(NX_SECURE_X509_CERT) + <max cert size>)
 ```
 
-I certificati tipici con chiavi RSA a 2048 bit che usano SHA-256 per le firme sono nell'intervallo di 1000-2000 byte. Il buffer deve essere sufficientemente grande da contenere almeno tale dimensione per ogni certificato, ma a seconda dei certificati host remoti può essere notevolmente più piccolo o più grande. Si noti che se il buffer è troppo piccolo per contenere il certificato in ingresso, l'handshake TLS terminerà con un errore.
+I certificati tipici con chiavi RSA a 2048 bit che usano SHA-256 per le firme sono nell'intervallo tra 1000 e 2000 byte. Il buffer deve essere sufficientemente grande da contenere almeno tale dimensione per ogni certificato, ma a seconda dei certificati host remoti può essere notevolmente più piccolo o più grande. Si noti che se il buffer è troppo piccolo per contenere il certificato in ingresso, l'handshake TLS terminerà con un errore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1611,7 +1611,7 @@ status =  nx_secure_tls_session_x509_client_verify_configure(&tls_session,
 
 ## <a name="nx_secure_tls_session_client_verify_disable"></a>nx_secure_tls_session_client_verify_disable
 
-Disabilitare l'autenticazione del certificato client per una sessione TLS protetta NetX
+Disabilitare l'autenticazione del certificato client per una sessione TLS sicura netx
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1722,9 +1722,9 @@ UINT  nx_secure_tls_session_create(NX_SECURE_TLS_SESSION *session_ptr
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio inizializza un'istanza NX_SECURE_TLS_SESSION struttura da usare per stabilire comunicazioni TLS sicure su una connessione di rete.
+Questo servizio inizializza un'istanza della NX_SECURE_TLS_SESSION da usare per stabilire comunicazioni TLS sicure su una connessione di rete.
 
-Il metodo accetta un NX_SECURE_TLS_CRYPTO oggetto popolato con i metodi di crittografia disponibili da usare per TLS. *L encryption_metadata_area* punta a un buffer allocato per l'uso da parte di TLS per i "metadati" usati dai metodi di crittografia nella tabella NX_SECURE_TLS_CRYPTO per i calcoli. Le dimensioni della tabella possono essere determinate usando il nx_secure_tls_metadata_size_calculate dati. Per altri dettagli, vedere la sezione "Crittografia in NetX Secure TLS" nel capitolo 3.
+Il metodo accetta un NX_SECURE_TLS_CRYPTO oggetto popolato con i metodi di crittografia disponibili da usare per TLS. Il *encryption_metadata_area* punta a un buffer allocato per l'uso da parte di TLS per i "metadati" usati dai metodi di crittografia nella tabella NX_SECURE_TLS_CRYPTO per i calcoli. Le dimensioni della tabella possono essere determinate usando il nx_secure_tls_metadata_size_calculate dati. Per altri dettagli, vedere la sezione "Crittografia in NetX Secure TLS" nel capitolo 3.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1735,10 +1735,10 @@ Il metodo accetta un NX_SECURE_TLS_CRYPTO oggetto popolato con i metodi di critt
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00)Inizializzazione della sessione TLS completata.
-- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
-- **NX_INVALID_PARAMETERS** (0x4D) Il buffer dei metadati era troppo piccolo per i metodi specificati.
-- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) Nella tabella di crittografia non è stato fornito un metodo di crittografia obbligatorio per la versione abilitata di TLS.
+- **NX_SUCCESS** (0x00)Inizializzazione della sessione TLS riuscita.
+- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_INVALID_PARAMETERS** (0x4D) Il buffer dei metadati è troppo piccolo per i metodi specificati.
+- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) Un metodo di crittografia obbligatorio per la versione abilitata di TLS non è stato fornito nella tabella di crittografia.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1796,8 +1796,8 @@ Questo servizio elimina una sessione TLS rappresentata da un'istanza NX_SECURE_T
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Inizializzazione riuscita della sessione TLS.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_SUCCESS** (0x00) Inizializzazione della sessione TLS completata.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1825,7 +1825,7 @@ status =  nx_secure_tls_session_delete(&tls_session);
 
 ## <a name="nx_secure_tls_session_end"></a>nx_secure_tls_session_end
 
-Terminare una sessione TLS sicura di NetX attiva
+Terminare una sessione TLS protetta di NetX attiva
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1836,7 +1836,7 @@ UINT  nx_secure_tls_session_end(NX_SECURE_TLS_SESSION *session_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio termina una sessione TLS rappresentata da un'istanza NX_SECURE_TLS_SESSION di sicurezza inviando il messaggio CLOSENotify TLS all'host remoto. Il servizio attende quindi che l'host remoto risponda con il proprio messaggio CloseNotify.
+Questo servizio termina una sessione TLS rappresentata da un'NX_SECURE_TLS_SESSION di struttura inviando il messaggio TLS CloseNotify all'host remoto. Il servizio attende quindi che l'host remoto risponda con il proprio messaggio CloseNotify.
 
 Se l'host remoto non invia un messaggio CloseNotify, TLS considera questo errore e una possibile violazione della sicurezza, quindi controllare il valore restituito è importante per una connessione sicura. Il **wait_option** può essere usato per controllare per quanto tempo il servizio deve attendere la risposta prima di restituire il controllo al thread chiamante.
 
@@ -1892,21 +1892,21 @@ UINT  nx_secure_tls_session_packet_buffer_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio associa un buffer di riassemblaggio di pacchetti a una sessione TLS. Per decrittografare e analizzare i record TLS in ingresso, i dati in ogni record devono essere assemblati dai pacchetti TCP sottostanti. I record TLS possono avere dimensioni massime di 16 KB (anche se in genere sono molto più piccoli), quindi potrebbero non rientrare in un singolo pacchetto TCP.
+Questo servizio associa un buffer di riassemblaggio di pacchetti a una sessione TLS. Per decrittografare e analizzare i record TLS in ingresso, i dati in ogni record devono essere assemblati dai pacchetti TCP sottostanti. I record TLS possono avere dimensioni massime di 16 KB (anche se in genere sono molto più piccoli), quindi potrebbero non essere adatti a un singolo pacchetto TCP.
 
-Se si sa che le dimensioni dei messaggi in ingresso saranno inferiori al limite di record TLS di 16 KB, le dimensioni del buffer possono essere ridotte, ma per gestire i dati in ingresso sconosciuti il buffer deve essere reso il più grande possibile. Se un record in ingresso è più grande del buffer fornito, la sessione TLS terminerà con un errore.
+Se si sa che le dimensioni dei messaggi in ingresso saranno inferiori al limite di record TLS di 16 KB, le dimensioni del buffer possono essere ridotte, ma per gestire i dati in ingresso sconosciuti il buffer deve essere reso il più grande possibile. Se un record in ingresso è maggiore del buffer fornito, la sessione TLS terminerà con un errore.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS.
 - **buffer_ptr** Puntatore al buffer per TLS da usare per il riassemblaggio dei pacchetti.
-- **buffer_size** Dimensioni del buffer fornito in byte.
+- **buffer_size** Dimensione in byte del buffer fornito.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Inizializzazione riuscita della sessione TLS.
+- **NX_SUCCESS** (0x00) Inizializzazione della sessione TLS completata.
 - **NX_INVALID_PARAMETERS** (0x4D) Buffer o puntatore di sessione TLS non valido.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1937,7 +1937,7 @@ status =  nx_secure_tls_session_packet_buffer_set(&tls_session, tls_packet_buffe
 
 ## <a name="nx_secure_tls_session_protocol_version_override"></a>nx_secure_tls_session_protocol_version_override
 
-Eseguire l'override della versione predefinita del protocollo TLS per una sessione TLS sicura netx
+Eseguire l'override della versione predefinita del protocollo TLS per una sessione TLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1961,16 +1961,16 @@ Le macro NX_SECURE_TLS_DISABLE_TLS_1_1 e NX_SECURE_TLS_ENABLE_TLS_1_0 possono es
 Si noti che se l'host remoto non supporta la versione fornita, la connessione avrà esito negativo. Solo la versione di sostituzione fornita verrà negoziata da NetX Secure TLS.
 
 > [!IMPORTANT]
-> RFC 7507: SCSV di fallback TLS. Questa RFC è stata introdotta per attenuare un problema di sicurezza causato originariamente da server che gestivano in modo non corretto la negoziazione di downgrade del protocollo e rifiutavano invece messaggi ClientHello altrimenti validi. Nel tentativo di mantenere la compatibilità con questi server precedenti, alcune applicazioni client TLS hanno iniziato a ripetere gli handshake non riusciti con e la versione precedente di TLS (ad esempio TLS 1.2 non è riuscito, quindi provare TLS 1.1). Questa soluzione alternativa ha tuttavia introdotto un nuovo problema: un utente malintenzionato potrebbe forzare il downgrade di un client introducendo artificialmente un errore di rete o di pacchetto che causa l'esito negativo della connessione al server, anche quando il server supporta la versione più recente di TLS. Effettuando il downgrade a una versione precedente, l'utente malintenzionato potrebbe sfruttare i punti deboli di tale versione (SSLv3<sup>21</sup> in particolare è debole per l'attacco POODLE). Per evitare questa situazione, RFC 7507 ha presentato la "scSV di fallback", una pseudo-crittografia<sup>22</sup> inviata in ClientHello che invia una notifica a un server TLS quando un client TLS usa una versione TLS non supportata dalla versione più recente. In questo modo, un server che supporta una versione più recente può rifiutare un ClientHello contenente la versione scSV di fallback e impedire il successo dell'attacco di downgrade.
+> RFC 7507: SCSV di fallback TLS. Questa RFC è stata introdotta per attenuare un problema di sicurezza causato originariamente da server che gestivano in modo non corretto la negoziazione di downgrade del protocollo e rifiutavano invece messaggi ClientHello altrimenti validi. Nel tentativo di mantenere la compatibilità con questi server precedenti, alcune applicazioni client TLS hanno iniziato a ripetere gli handshake non riusciti con e la versione precedente di TLS (ad esempio TLS 1.2 non è riuscito, quindi provare TLS 1.1). Questa soluzione alternativa ha tuttavia introdotto un nuovo problema: un utente malintenzionato potrebbe forzare il downgrade di un client introducendo artificialmente un errore di rete o di pacchetto che causa l'esito negativo della connessione al server, anche quando il server supporta la versione tls più recente. Effettuando il downgrade a una versione precedente, l'utente malintenzionato potrebbe sfruttare i punti deboli di tale versione (SSLv3<sup>21</sup> in particolare è debole per l'attacco POODLE). Per evitare questa situazione, RFC 7507 ha presentato il "fallback SCSV", uno pseudo-ciphersuite<sup>22</sup> inviato in ClientHello che invia una notifica a un server TLS quando un client TLS usa una versione TLS che non è la versione più recente supportata. In questo modo, un server che supporta una versione più recente può rifiutare un ClientHello contenente il fallback SCSV e impedire il successo dell'attacco di downgrade.
 
 21. NetX Secure non implementa SSLv3 a causa dell'esistenza di gravi punti deboli noti, ad esempio POODLE.
 
-22. Uno pseudo-ciphersuite, o SCSV (Signaling Cipher Suite Value), è un numero di ciphersuite riservato usato per segnalare le implementazioni TLS abilitate sulle funzionalità che non erano disponibili nelle versioni precedenti di TLS. ScSV di fallback e TLS_EMPTY_RENEGOTIATION_INFO_SCSV (RFC 5746) sono esempi.
+22. Una pseudo-ciphersuite, o SCSV (Signaling Cipher Suite Value), è un numero di crittografia riservato usato per segnalare le implementazioni TLS abilitate sulle funzionalità non disponibili nelle versioni precedenti di TLS. Il fallback SCSV e il TLS_EMPTY_RENEGOTIATION_INFO_SCSV (RFC 5746) sono esempi.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS.
-- **protocol_version** Macro della versione di TLS per la versione specifica di TLS da usare.
+- **protocol_version** Macro della versione TLS per la versione specifica di TLS da usare.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -2016,23 +2016,23 @@ UINT  nx_secure_tls_session_receive(NX_SECURE_TLS_SESSION *session_ptr,
 Questo servizio riceve i dati dalla sessione TLS attiva specificata, gestendo la decrittografia dei dati prima di fornirla al chiamante nel parametro NX_PACKET. Se nella sessione specificata non viene accodato alcun dato, la chiamata viene sospesa in base all'opzione di attesa fornita.
 
 > [!IMPORTANT]
-> *Se NX_SUCCESS restituito, l'applicazione è responsabile del rilascio del pacchetto ricevuto quando non è più necessario.*
+> *Se NX_SUCCESS viene restituito , l'applicazione è responsabile del rilascio del pacchetto ricevuto quando non è più necessario.*
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS.
-- **packet_ptr** Puntatore a un puntatore a pacchetto TLS allocato.
+- **packet_ptr** Puntatore a un puntatore a pacchetti TLS allocato.
 - **wait_option** Indica per quanto tempo il servizio deve attendere un pacchetto dall'host remoto prima della restituzione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Inizializzazione della sessione TLS completata.
+- **NX_SUCCESS** (0x00) Inizializzazione riuscita della sessione TLS.
 - **NX_NO_PACKET** (0x01) Nessun dato ricevuto.
 - **NX_NOT_CONNECTED** (0x38) Il socket TCP sottostante non è più connesso.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio ricevuto non è riuscito a eseguire un controllo hash di autenticazione.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio ricevuto conteneva una versione del protocollo sconosciuta nella relativa intestazione.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio ricevuto non ha superato un controllo hash di autenticazione.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio ricevuto contiene una versione del protocollo sconosciuta nell'intestazione.
 - **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Ha ricevuto un avviso TLS dall'host remoto.
-- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
+- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
 - **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) La sessione TLS fornita non è stata inizializzata.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -2078,7 +2078,7 @@ UINT  nx_secure_tls_ session_renegotiate_callback_set (
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna un callback a una sessione TLS che verrà richiamata ogni volta che dall'host remoto viene ricevuto il primo messaggio di un handshake di rinegoziazione della sessione.
+Questo servizio assegna un callback a una sessione TLS che verrà richiamata ogni volta che l'host remoto riceve il primo messaggio di un handshake di rinegoziazione della sessione.
 
 La funzione di callback è concepita come notifica all'applicazione dell'inizio di un handshake di rinegoziazione. L'applicazione può scegliere di terminare la sessione TLS restituisce qualsiasi valore diverso da zero dal callback che causerà la chiusura della sessione TLS da parte di TLS con un errore. Se l'applicazione vuole procedere con la rinegoziazione, il callback deve restituire NX_SUCCESS.
 
@@ -2094,7 +2094,7 @@ NetX Secure TLS implementa l'estensione Secure Renegotiation Inidication da RFC 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Assegnazione riuscita del callback.
+- **NX_SUCCESS** (0x00) Assegnazione del callback riuscita.
 - **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido per la funzione di callback o la sessione TLS.
 
 ### <a name="allowed-from"></a>Consentito da
@@ -2146,14 +2146,14 @@ UINT  nx_secure_tls_ session_renegotiate (
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia un handshake di *rinegoziazione* della sessione con un host TLS remoto connesso. Una rinegoziazione è costituita da un secondo handshake TLS nel contesto di una sessione TLS stabilita in precedenza. Ognuno dei nuovi messaggi di handshake viene crittografato usando la sessione TLS fino a quando non vengono generate nuove chiavi di sessione e non vengono sfrallati i messaggi ChangeCipherSpec, in cui le nuove chiavi vengono usate per crittografare tutti i messaggi.
+Questo servizio avvia un handshake di *rinegoziazione* della sessione con un host TLS remoto connesso. Una rinegoziazione è costituita da un secondo handshake TLS nel contesto di una sessione TLS stabilita in precedenza. Ognuno dei nuovi messaggi di handshake viene crittografato usando la sessione TLS fino a quando non vengono generate nuove chiavi di sessione e non vengono s scambiati i messaggi ChangeCipherSpec, in cui le nuove chiavi vengono usate per crittografare tutti i messaggi.
 
-Una rinegoziazione può essere avviata in qualsiasi momento dopo aver stabilito una sessione TLS. Se viene tentata una rinegoziazione durante un handshake TLS o prima che venga stabilita una sessione TLS, non verrà eseguita alcuna azione.
+Una rinegoziazione può essere avviata in qualsiasi momento dopo aver stabilito una sessione TLS. Se si tenta una rinegoziazione durante un handshake TLS o prima che venga stabilita una sessione TLS, non verrà eseguita alcuna azione.
 
 > [!NOTE]
-> *Un intero handshake TLS verrà eseguito quando questo servizio viene richiamato, quindi il tempo di completamento e lo stato restituito variano a seconda delle impostazioni TLS correnti e dei parametri di sessione.*
+> *Quando questo servizio viene richiamato, verrà eseguito un intero handshake TLS, quindi il tempo di completamento e lo stato restituito variano a seconda delle impostazioni TLS correnti e dei parametri della sessione.*
 
-NetX Secure TLS implementa l'estensione secure renegotiation Inidication di RFC 5746 per garantire che gli handshake di rinegoziazione non siano soggetti ad attacchi man-in-the-middle.
+NetX Secure TLS implementa l'estensione Secure Renegotiation Inidication da RFC 5746 per garantire che gli handshake di rinegoziazione non siano soggetti ad attacchi man-in-the-middle.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2162,11 +2162,11 @@ NetX Secure TLS implementa l'estensione secure renegotiation Inidication di RFC 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Rinegoziazione riuscita.
+- **NX_SUCCESS** (0x00) La rinegoziazione è riuscita.
 - **NX_NO_PACKET** (0x01) Nessun dato ricevuto.
 - **NX_NOT_CONNECTED** (0x38) Il socket TCP sottostante non è più connesso.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio ricevuto non è riuscito a eseguire un controllo hash di autenticazione.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio ricevuto conteneva una versione del protocollo sconosciuta nella relativa intestazione.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio ricevuto non ha superato un controllo hash di autenticazione.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio ricevuto contiene una versione del protocollo sconosciuta nell'intestazione.
 - **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Ha ricevuto un avviso TLS dall'host remoto.
 - **NX_SECURE_TLS_RENEGOTIATION_SESSION_INACTIVE** (0x134) La sessione TLS locale o remota è inattiva, rendendo impossibile la rinegoziazione.
 - **NX_SECURE_TLS_RENEGOTIATION_FAILURE** (0x13A) L'host remoto non ha fornito l'estensione SCSV o Secure Renegotiation e pertanto non è possibile eseguire la rinegoziazione.
@@ -2238,7 +2238,7 @@ UINT  nx_secure_tls_session_reset (NX_SECURE_TLS_SESSION *session_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio cancella una sessione TLS e reimposta lo stato come se la sessione fosse stata appena creata in modo da poter usare nuovamente un oggetto sessione TLS esistente per una nuova sessione.
+Questo servizio cancella una sessione TLS e reimposta lo stato come se la sessione fosse stata appena creata in modo che un oggetto sessione TLS esistente possa essere usato nuovamente per una nuova sessione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2246,9 +2246,9 @@ Questo servizio cancella una sessione TLS e reimposta lo stato come se la sessio
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Inizializzazione riuscita della sessione TLS.
+- **NX_SUCCESS** (0x00) Inizializzazione della sessione TLS completata.
 - **NX_INVALID_PARAMETERS** (0x4D) Puntatore di sessione TLS non valido.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2351,11 +2351,11 @@ UINT  nx_secure_tls_ session_server_callback_set (
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio assegna un puntatore a funzione a una sessione TLS che TLS richiama quando un handshake del server TLS ha ricevuto un messaggio ClientHello. La funzione di callback consente a un'applicazione di elaborare tutte le estensioni TLS dal messaggio ClientHello ricevuto che richiedono input o processo decisionale.
+Questo servizio assegna un puntatore a funzione a una sessione TLS che TLS richiama quando un handshake del server TLS ha ricevuto un messaggio ClientHello. La funzione di callback consente a un'applicazione di elaborare le estensioni TLS dal messaggio ClientHello ricevuto che richiedono input o decisioni.
 
-Il callback viene eseguito con il blocco di controllo della sessione TLS richiamato e una matrice NX_SECURE_TLS_HELLO_EXTENSION oggetti . La matrice di oggetti estensione deve essere passata in una funzione helper che troverà e analerà un'estensione specifica. Per una funzione helper di esempio che analizza le estensioni TLS fornite nei messaggi hello, *vedere nx_secure_tls_session_sni_extension_parse*.
+Il callback viene eseguito con il blocco di controllo sessione TLS richiamato e una matrice di NX_SECURE_TLS_HELLO_EXTENSION oggetti . La matrice di oggetti estensione deve essere passata a una funzione helper che troverà e an parserà un'estensione specifica. Per una funzione helper di esempio che analizza le estensioni TLS fornite nei messaggi hello, vedere *nx_secure_tls_session_sni_extension_parse*.
 
-Il callback del server può essere usato anche per selezionare il certificato di identità attivo *usando nx_secure_tls_active_certificate_set* per il server TLS. Ciò si verifica più spesso in risposta a un'estensione Indicazione nome server (SNI) che consente a un client TLS di indicare il server che sta tentando di contattare. Per altre informazioni, *vedere nx_secure_tls_session_sni_extension_parse* e *nx_secure_tls_active_certificate_set* informazioni.
+Il callback del server può essere usato anche per selezionare il certificato di identità attivo *usando* nx_secure_tls_active_certificate_set per il server TLS. Ciò si verifica più spesso in risposta a un'estensione Indicazione nome server (SNI) che consente a un client TLS di indicare il server che sta tentando di contattare. Per altre *informazioni, vedere nx_secure_tls_session_sni_extension_parse* *e nx_secure_tls_active_certificate_set* riferimento.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2506,8 +2506,8 @@ La NX_SECURE_X509_DNS_NAME contiene semplicemente il nome DNS come stringa UCHAR
 
 - **NX_SUCCESS** (0x00) Analisi dell'estensione completata.
 - **NX_PTR_ERROR** (0x07) Matrice di estensioni non valida o puntatore di sessione TLS.
-- **NX_SECURE_TLS_EXTENSION_NOT_FOUND'estensione** SNI 0x136 (0x136) non trovata.
-- **NX_SECURE_TLS_SNI_EXTENSION_INVALID** formato dell'estensione SNI 0x137 (0x137) non è valido.
+- **NX_SECURE_TLS_EXTENSION_NOT_FOUND** (0x136) estensione SNI non trovata.
+- **NX_SECURE_TLS_SNI_EXTENSION_INVALID** formato dell'estensione SNI (0x137) non è valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2524,7 +2524,7 @@ Thread
 
 ## <a name="nx_secure_tls_session_sni_extension_set"></a>nx_secure_tls_session_sni_extension_set
 
-Impostare un nome DNS Indicazione nome server estensione SNI da inviare a un server remoto
+Impostare un Indicazione nome server DNS dell'estensione SNI da inviare a un server remoto
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2536,12 +2536,12 @@ UINT  nx_secure_tls_session_sni_extension_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente a un'applicazione client TLS di fornire un nome DNS del server preferito a un server TLS remoto usando l'estensione TLS Indicazione nome server (SNI). L'estensione SNI consente al server di selezionare il certificato di identità e i parametri corretti in base alle preferenze del server indicate dal client. L'estensione SNI supporta attualmente solo un singolo nome DNS da inviare, quindi il parametro del nome singolare. Il dns_name deve essere inizializzato con *nx_secure_x509_dns_name_initialize* e conterrà il server preferito del client. Per annullare l'impostazione del nome dell'estensione, è sufficiente chiamare questo servizio con un valore di parametro "dns_name" di NX_NULL.
+Questo servizio consente a un'applicazione client TLS di fornire un nome DNS del server preferito a un server TLS remoto usando l'estensione TLS Indicazione nome server (SNI). L'estensione SNI consente al server di selezionare il certificato di identità e i parametri corretti in base alle preferenze del server indicate dal client. L'estensione SNI attualmente supporta solo un singolo nome DNS da inviare, quindi il parametro del nome singolare. Il dns_name deve essere inizializzato con nx_secure_x509_dns_name_initialize *e* conterrà il server preferito del client. Per annullare l'impostazione del nome dell'estensione, è sufficiente chiamare questo servizio con un valore di parametro "dns_name" di NX_NULL.
 
 La NX_SECURE_X509_DNS_NAME contiene semplicemente il nome DNS come stringa UCHAR nel campo nx_secure_x509_dns_name e la lunghezza della stringa del nome in *nx_secure_x509_dns_name_length*.  La macro NX_SECURE_X509_DNS_NAME_MAX le dimensioni del buffer nx_secure_x509_dns_name dati.
 
 > [!NOTE]
-> *Questa routine deve essere chiamata prima nx_secure_tls_session_start richiamata o clientHello non conterrà l'estensione SNI.*
+> *Questa routine deve essere chiamata prima nx_secure_tls_session_start richiamata o ClientHello non conterrà l'estensione SNI.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -2595,7 +2595,7 @@ void main()
 
 ## <a name="nx_secure_tls_session_start"></a>nx_secure_tls_session_start
 
-Avviare una sessione TLS sicura di NetX
+Avviare una sessione TLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2625,22 +2625,22 @@ L'opzione wait definisce il comportamento del servizio mentre è in corso l'hand
 - **NX_NOT_CONNECTED** (0x38) Il socket TCP sottostante non è più connesso.
 - **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) Un tipo di messaggio TLS ricevuto non è corretto.
 - **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) Una crittografia fornita dall'host remoto non è supportata.
-- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) L'elaborazione dei messaggi durante l'handshake TLS non è riuscita.
+- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) L'elaborazione del messaggio durante l'handshake TLS non è riuscita.
 - **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio in arrivo non ha superato un controllo MAC hash.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Un invio di socket TCP sottostante non è riuscito.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) L'invio di un socket TCP sottostante non è riuscito.
 - **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) Un messaggio in arrivo ha un campo di lunghezza non valido.
 - **NX_SECURE_TLS_BAD_CIPHERSPEC** (0x10B) Un messaggio ChangeCipherSpec in ingresso non è corretto.
 - **NX_SECURE_TLS_INVALID_SERVER_CERT** (0x10C) Un certificato TLS in ingresso non è utilizzabile per identificare il server TLS remoto.
 - **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0x10D) La crittografia a chiave pubblica fornita dall'host remoto non è supportata.
-- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10E) L'host remoto non ha indicato alcun ciphersuit supportato dallo stack TLS sicuro NetX.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio TLS ricevuto aveva una versione tls sconosciuta nell'intestazione.
-- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) Un messaggio TLS ricevuto aveva una versione tls nota ma non supportata nell'intestazione.
+- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10E) L'host remoto non ha indicato ciphersuit supportati dallo stack NETX Secure TLS.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio TLS ricevuto ha una versione TLS sconosciuta nell'intestazione.
+- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) Un messaggio TLS ricevuto aveva una versione TLS nota ma non supportata nell'intestazione.
 - **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Un'allocazione interna di pacchetti TLS non è riuscita.
 - **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) L'host remoto ha fornito un certificato non valido.
 - **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) L'host remoto ha inviato un avviso che indica un errore e termina la sessione TLS.
-- **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0x13B) Una voce nella tabella ciphersuite contiene un puntatore a funzione NULL.
-- **NX_SECURE_TLS_INAPPROPRIATE_FALLBACK** (0x146) Un client TLS remotoHello include lo scSV di fallback e tenta un fallback della versione.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0x13B) Una voce nella tabella ciphersuite ha un puntatore a funzione NULL.
+- **NX_SECURE_TLS_INAPPROPRIATE_FALLBACK** (0x146) Un client TLS remotoHello includeva il fallback SCSV e tentava un fallback della versione.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2779,20 +2779,20 @@ UINT  nx_secure_tls_time_function_set(
 
 Questa funzione configura un puntatore a funzione che TLS richiama quando deve ottenere l'ora corrente, usata in vari messaggi di handshake TLS e per la verifica dei certificati.
 
-È previsto che la funzione restituisca il GMT corrente in formato UNIX a 32 bit (secondi a partire dalla mezzanotte del 1° gennaio 1970 UTC, ignorando i secondi intercalare), in base ai requisiti clientHello nella RFC 5246 tls.
+È previsto che la funzione restituisca il GMT corrente in formato UNIX 32 bit (secondi a partire dalla mezzanotte a partire dal 1° gennaio 1970, UTC, ignorando i secondi intercalare), in base ai requisiti ClientHello nella RFC 5246 TLS.
 
 Se non viene assegnata alcuna funzione timestamp, verrà usato il valore 0 per il timestamp nell'handshake TLS e il controllo della scadenza del certificato non funzionerà.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione TLS.
-- **time_func_ptr** Puntatore a una funzione che restituisce l'ora corrente (GMT) in formato UNIX a 32 bit.
+- **time_func_ptr** Puntatore a una funzione che restituisce l'ora corrente (GMT) in UNIX formato a 32 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Inizializzazione riuscita della sessione TLS.
+- **NX_SUCCESS** (0x00) Inizializzazione della sessione TLS completata.
 - **NX_INVALID_PARAMETERS** (0x4D) Puntatore di sessione TLS non valido.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2830,7 +2830,7 @@ status =  nx_secure_tls_timestamp_function_set(&tls_session, get_gmt_time);
 
 ## <a name="nx_secure_tls_trusted_certificate_add"></a>nx_secure_tls_trusted_certificate_add
 
-Aggiungere un certificato attendibile alla sessione TLS sicura di NetX
+Aggiungere un certificato attendibile alla sessione TLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2841,7 +2841,7 @@ UINT  nx_secure_tls_trusted_certificate_add(NX_SECURE_TLS_SESSION
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un'istanza NX_SECURE_X509_CERT a una sessione TLS. Questo certificato viene usato dallo stack TLS per verificare i certificati forniti dall'host remoto durante l'handshake TLS.
+Questo servizio aggiunge un'istanza inizializzata NX_SECURE_X509_CERT struttura a una sessione TLS. Questo certificato viene usato dallo stack TLS per verificare i certificati forniti dall'host remoto durante l'handshake TLS.
 
 I certificati attendibili sono necessari per la modalità client TLS.
 
@@ -2912,7 +2912,7 @@ Questo servizio rimuove un certificato attendibile da una sessione TLS, con chia
 
 - **NX_SUCCESS** (0x00) Aggiunta del certificato completata.
 - **NX_PTR_ERROR** (0x07) Puntatore di sessione TLS non valido.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** certificato (0x119) non trovato.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Il certificato non è stato trovato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2958,11 +2958,11 @@ UINT  nx_secure_x509_certificate_initialize(
 
 Questo servizio inizializza una struttura NX_SECURE_X509_CERT da un certificato digitale X.509 con codifica binaria da usare in una sessione TLS.
 
-I dati del **certificato devono** essere un certificato digitale X.509 valido in formato binario con codifica DER. I dati possono essere da qualsiasi origine (ad esempio, file system, buffer costante compilato e così via) purché sia fornito un puntatore UCHAR a tale dati.
+I dati del **certificato devono** essere un certificato digitale X.509 valido in formato binario con codifica DER. I dati possono essere da qualsiasi origine (ad esempio file system, buffer costante compilato e così via) purché sia fornito un puntatore UCHAR a tale dati.
 
-Il *raw_data_buffer* e le relative dimensioni sono parametri facoltativi che specificano un buffer dedicato in cui i dati del certificato vengono copiati prima dell'analisi. Se raw_data_buffer viene passato come NX_NULL, la struttura NX_SECURE_X509_CERT punti direttamente alla matrice certificate_data (in questo caso buffer_size viene ignorata). Se raw_data_buffer viene passato come ***NX_NULL,*** non modificare i dati a cui punta il puntatore certificate_data o l'elaborazione del certificato avrà probabilmente esito negativo.
+Il *raw_data_buffer* e le relative dimensioni sono parametri facoltativi che specificano un buffer dedicato in cui vengono copiati i dati del certificato prima dell'analisi. Se raw_data_buffer viene passato come NX_NULL, la struttura NX_SECURE_X509_CERT farà riferimento direttamente alla matrice certificate_data (buffer_size viene ignorata in questo caso). Se raw_data_buffer viene passato come ***NX_NULL,*** non modificare i dati a cui punta il puntatore certificate_data o l'elaborazione del certificato avrà probabilmente esito negativo.
 
-Il parametro della chiave privata è per i certificati di identità locali: la chiave privata viene usata dai server per decrittografare i dati della chiave in ingresso da un client (crittografati con la chiave pubblica del server) e dai client per verificare la propria identità a un server quando il server richiede un certificato client. L'aggiunta di una chiave privata con questa API contrassegnerà automaticamente il certificato associato come certificato di identità per un'applicazione TLS. Quando si inizializzano i certificati per altri scopi (ad esempio, l'archivio attendibile), il parametro *private_key_data* deve essere passato come NULL, il *private_key_data_length* come 0 e il *private_key_type* deve essere passato come NX_SECURE_X509_KEY_TYPE_NONE.
+Il parametro della chiave privata è per i certificati di identità locali: la chiave privata viene usata dai server per decrittografare i dati della chiave in ingresso da un client (crittografati usando la chiave pubblica del server) e dai client per verificare la propria identità a un server quando il server richiede un certificato client. L'aggiunta di una chiave privata con questa API contrassegnerà automaticamente il certificato associato come certificato di identità per un'applicazione TLS. Quando si inizializzano i certificati per altri scopi ,ad esempio l'archivio attendibile, il parametro *private_key_data* deve essere passato come NULL, il *private_key_data_length* come 0 e il *private_key_type* deve essere passato come NX_SECURE_X509_KEY_TYPE_NONE.
 
 Il *private_key_type* parametro indica la formattazione della chiave privata. Ad esempio, se la chiave privata è una chiave privata RSA in formato PKCS#1 con codifica DER, il private_key_type deve essere passato come NX_SECURE_X509_KEY_TYPE_RSA_PKCS1_DER, un tipo noto a NetX Secure che verrà analizzato immediatamente e salvato per un uso successivo.
 
@@ -2970,7 +2970,7 @@ Il private_key_type supporta anche i tipi di chiave definiti dall'utente<sup>23<
 
 L'intervallo di chiavi definite dall'utente copre la metà superiore di un intero senza segno a 32 bit, 0x0001 0000-0xFFFF FFFF. I valori inferiori 0x0001 0000 sono riservati per l'uso di NetX Secure.
 
-I tipi di chiave definiti dall'utente sono una funzionalità avanzata che richiede routine crittografiche personalizzate per gestire i dati della chiave privata non elaborati. Per informazioni su questa funzionalità, contattare il rappresentante di Express Logic.
+I tipi di chiave definiti dall'utente sono una funzionalità avanzata che richiede routine crittografiche personalizzate per gestire i dati della chiave privata non elaborati. Se si ha bisogno di questa funzionalità, contattare il rappresentante di Express Logic.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2986,12 +2986,12 @@ I tipi di chiave definiti dall'utente sono una funzionalità avanzata che richie
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) Aggiunta del certificato completata.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 - **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) I dati del certificato non contengono un certificato X.509 con codifica DER.
 - **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** certificato (0x10D) non dispone di una crittografia a chiave pubblica supportata da NetX Secure.
-- **NX_SECURE_X509_INVALID_CERTIFICATE_SEQUENCE** chiave privata (0x186) o certificato non contiene una sequenza ASN.1 valida.
+- **NX_SECURE_X509_INVALID_CERTIFICATE_SEQUENCE** (0x186) La chiave privata o il certificato non contiene una sequenza ASN.1 valida.
 - **NX_SECURE_PKCS1_INVALID_PRIVATE_KEY** (0x18A) La chiave privata specificata non è una chiave RSA PKCS#1 valida.
-- **NX_SECURE_X509_INVALID_PRIVATE_KEY_TYPE** (0x19D) Il tipo di chiave privata specificato non è definito dall'utente e non corrisponde ad alcun tipo noto.
+- **NX_SECURE_X509_INVALID_PRIVATE_KEY_TYPE** (0x19D) Il tipo di chiave privata fornito non è definito dall'utente e non corrisponde ad alcun tipo noto.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3032,9 +3032,9 @@ UINT  nx_secure_x509_common_name_dns_check(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio controlla il nome comune di un certificato rispetto a un nome di dominio principale (TLD) fornito dal chiamante ai fini della convalida DNS di un host remoto. Questa funzione di utilità deve essere chiamata dall'interno di una routine di callback di convalida del certificato fornita dall'applicazione. Il nome TLD deve essere la parte superiore dell'URL usato per accedere all'host remoto (il "." -separated string before the first slash). Se il nome comune contiene un carattere jolly , ad esempio .example.com, il carattere jolly corrisponderà a qualsiasi con *lo stesso suffisso. Si* noti che solo il primo carattere jolly (" ") rilevato (lettura da destra a sinistra) verrà considerato  per la corrispondenza con caratteri jolly, ad esempio abc.*.example.com corrisponderà a qualsiasi nome che termina con ".example.com".
+Questo servizio controlla il nome comune di un certificato rispetto a un nome di dominio principale (TLD) fornito dal chiamante ai fini della convalida DNS di un host remoto. Questa funzione di utilità deve essere chiamata dall'interno di una routine di callback di convalida del certificato fornita dall'applicazione. Il nome TLD deve essere la parte superiore dell'URL usato per accedere all'host remoto ("." -separated string before the first slash). Se il nome comune contiene un carattere jolly,ad esempio .example.com, il carattere jolly corrisponderà a qualsiasi con *lo stesso suffisso. Si* noti che solo il primo carattere jolly (" ") rilevato (lettura da destra a sinistra) verrà considerato  per la corrispondenza con caratteri jolly, ad esempio abc.*.example.com corrisponderà a qualsiasi nome che termina con ".example.com".
 
-Se il nome comune non corrisponde alla stringa fornita, viene analizzata l'estensione "subjectAltName" (se presente nel certificato) e vengono confrontate anche le voci DNSName. Se nessuna di queste voci corrisponde, viene restituito un errore.
+Se il nome comune non corrisponde alla stringa specificata, viene analizzata l'estensione "subjectAltName" (se presente nel certificato) e vengono confrontate anche le voci DNSName. Se nessuna di queste voci corrisponde, viene restituito un errore.
 
 È importante comprendere il formato del nome comune (e delle voci subjectAltName) nei certificati previsti. Ad esempio, alcuni certificati possono usare un indirizzo IP non elaborato o un carattere jolly. La stringa DNS TLD deve essere formattata in modo che corrisponda ai valori previsti nei certificati ricevuti.
 
@@ -3106,7 +3106,7 @@ UINT  nx_secure_x509_crl_revocation_check(const UCHAR *crl_data,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio accetta un elenco di revoche di certificati con codifica DER e cerca un certificato specifico in tale elenco. L'autorità di certificazione del CRL viene convalidata rispetto a un archivio certificati fornito, l'autorità di certificazione CRL viene convalidata in modo che sia uguale a quella per il certificato controllato e il numero di serie del certificato in questione viene usato per cercare l'elenco di certificati revocati. Se le autorità di certificazione corrispondono, la  firma viene esere e il certificato non è presente nell'elenco, la chiamata ha esito positivo. In tutti gli altri casi viene restituito un errore.
+Questo servizio accetta un elenco di revoche di certificati con codifica DER e cerca un certificato specifico in tale elenco. L'autorità di certificazione del CRL viene convalidata rispetto a un archivio certificati fornito, l'autorità di certificazione CRL viene convalidata in modo che sia uguale a quella per il certificato controllato e il numero di serie del certificato in questione viene usato per cercare l'elenco di certificati revocati. Se le autorità di certificazione corrispondono, la firma viene verificata e il certificato non è **presente** nell'elenco, la chiamata ha esito positivo. In tutti gli altri casi viene restituito un errore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -3119,14 +3119,14 @@ Questo servizio accetta un elenco di revoche di certificati con codifica DER e c
 
 - **NX_SUCCESS** (0x00) Convalida riuscita che il certificato non è stato revocato.
 - **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** certificato dell'autorità di certificazione CRL (0x119) non trovato.
-- **NX_SECURE_TLS_ISSUER_CERTIFICATE_NOT_FOUND** 0x11B) Certificato dell'autorità di certificazione non trovato.
-- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) L'ASN.1 CRL contiene un campo di lunghezza non valido.
-- **NX_SECURE_X509_UNEXPECTED_ASN1_TAG(0x189)** L'elenco CRL contiene un ASN.1 non valido.
-- **NX_SECURE_X509_CHAIN_VERIFY_FAILURE** (0x18C) Verifica della catena di certificati non riuscita.
-- **NX_SECURE_X509_CRL_ISSUER_MISMATCH(0x197)** CRL e autorità di certificazione non corrispondono.
+- **NX_SECURE_TLS_ISSUER_CERTIFICATE_NOT_FOUND** 0x11B) Certificato autorità di certificazione non trovato.
+- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) L'ASN.1 CRL conteneva un campo di lunghezza non valido.
+- **NX_SECURE_X509_UNEXPECTED_ASN1_TAG(0x189)** Il CRL conteneva asn.1 non valido.
+- **NX_SECURE_X509_CHAIN_VERIFY_FAILURE** (0x18C) Una verifica della catena di certificati non è riuscita.
+- **NX_SECURE_X509_CRL_ISSUER_MISMATCH** (0x197) CRL e autorità di certificazione non corrispondono.
 - **NX_SECURE_X509_CRL_SIGNATURE_CHECK_FAILED** 0x198) La firma CRL non è valida.
-- **NX_SECURE_X509_CRL_CERTIFICATE_REVOKED** (0x199) Il certificato controllato è stato trovato nell'elenco CRL e pertanto viene revocato.
-- **NX_PTR_ERROR** (0x07) Ha tentato di usare un puntatore non valido.
+- **NX_SECURE_X509_CRL_CERTIFICATE_REVOKED** (0x199) Il certificato controllato è stato trovato nell'elenco CRL e viene quindi revocato.
+- **NX_PTR_ERROR** (0x07) Tentativo di usare un puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3194,7 +3194,7 @@ status =  nx_secure_tls_session_certificate_callback_set(&tls_session,
 
 ## <a name="nx_secure_x509_dns_name_initialize"></a>nx_secure_x509_dns_name_initialize
 
-Inizializzare una struttura di nomi DNS X.509
+Inizializzare una struttura dei nomi DNS X.509
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3260,11 +3260,11 @@ UINT  nx_secure_x509_extended_key_usage_extension_parse(
 
 Questo servizio deve essere chiamato dall'interno di un callback di verifica del certificato (vedere *nx_secure_tls_session_certificate_callback_set)*. Cerca un OID di utilizzo della chiave estesa specifico all'interno di un certificato X.509 e restituisce se l'OID è presente. Il key_usage è un mapping integer degli OID usato internamente da NetX Secure X.509 e TLS per evitare di passare le stringhe OID a lunghezza variabile come parametri.
 
-Gli OID pertinenti per l'estensione per l'utilizzo della chiave estesa sono indicati nella tabella seguente. Un'implementazione tipica del client TLS che vuole controllare l'utilizzo della chiave estesa in un certificato del server TLS ricevuto verificherebbe l'esistenza del NX_SECURE_TLS_X509_TYPE_PKIX_KP_SERVER_AUTH OID: se l'estensione è presente ma tale OID non lo è, il certificato verrebbe considerato non valido per l'identificazione dell'host come server TLS e il callback di verifica del certificato dovrebbe restituire un errore. Se l'estensione stessa non è presente, è l'applicazione a decidere se procedere o meno con l'handshake TLS.
+Gli OID pertinenti per l'estensione per l'utilizzo della chiave estesa sono indicati nella tabella seguente. Un'implementazione tipica del client TLS che vuole controllare l'utilizzo della chiave estesa in un certificato del server TLS ricevuto verificherebbe l'esistenza del NX_SECURE_TLS_X509_TYPE_PKIX_KP_SERVER_AUTH OID: se l'estensione è presente ma tale OID non lo è, il certificato verrebbe considerato non valido per l'identificazione dell'host come server TLS e il callback di verifica del certificato dovrebbe restituire un errore. Se l'estensione stessa non è presente, l'applicazione deve decidere se procedere o meno con l'handshake TLS.
 
-Nel callback di verifica del certificato, il codice restituito di errore NX_SECURE_X509_KEY_USAGE_ERROR è riservato per l'uso da parte dell'applicazione. Se si verifica un errore durante la verifica dell'utilizzo della chiave, questo valore può essere restituito dal callback per indicare il motivo dell'errore.
+Nel callback di verifica del certificato, il codice restituito dell'errore NX_SECURE_X509_KEY_USAGE_ERROR è riservato all'uso dell'applicazione. Se si verifica un errore nel controllo dell'utilizzo della chiave, questo valore può essere restituito dal callback per indicare il motivo dell'errore.
 
-| NetX Secure Identifier                                | Valore OID         | Descrizione                                      |
+| Identificatore di sicurezza NetX                                | Valore OID         | Descrizione                                      |
 | --------------------------------------------------------- | --------------------- | ---------------------------------------------------- |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_SERVER_AUTH   | 1.3.6.1.5.5.7.3.1 | Il certificato può essere usato per identificare un server TLS |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_CLIENT_AUTH   | 1.3.6.1.5.5.7.3.2 | Il certificato può essere usato per identificare un client TLS |
@@ -3282,13 +3282,13 @@ OID e mapping per l'estensione X.509 Extended Key Usage
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) OID di utilizzo della chiave specificato trovato.
-- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) Rilevato tag multi byte ASN.1 (certificato non supportato).
+- **NX_SUCCESS** (0x00) OID utilizzo chiave specificato trovato.
+- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) rilevato tag multi byte ASN.1 (certificato non supportato).
 - **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Rilevato campo ASN.1 invaild (certificato non valido).
-- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Classe di tag ASN.1 non valida rilevata (certificato non valido).
-- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) Rilevata estensione non valida (certificato non valido).
+- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Classe di tag ASN.1 non valida (certificato non valido).
+- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) È stata rilevata un'estensione non valida (certificato non valido).
 - **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19B) L'estensione Utilizzo chiavi esteso non è stata trovata nel certificato fornito.
-- **NX_PTR_ERROR** (0x07) Puntatore certificato non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore di certificato non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3352,7 +3352,7 @@ UINT  nx_secure_x509_extension_find(
 
 Questo servizio deve essere chiamato dall'interno di un callback di verifica del certificato (vedere *nx_secure_tls_session_certificate_callback_set)* ed è un servizio X.509 avanzato.
 
-La funzione cerca un'estensione specifica all'interno di un certificato X.509 in base a un OID e restituisce se l'OID è presente, insieme a una struttura contenente riferimenti ai dati di estensione non elaborati pertinenti. Il extension_id è un mapping di interi degli OID usato internamente da NetX Secure X.509 e TLS per evitare di passare le stringhe OID a lunghezza variabile come parametri.
+La funzione cerca un'estensione specifica all'interno di un certificato X.509 in base a un OID e restituisce se l'OID è presente, insieme a una struttura contenente riferimenti ai dati dell'estensione non elaborati pertinenti. Il extension_id è un mapping di interi degli OID usato internamente da NetX Secure X.509 e TLS per evitare di passare le stringhe OID a lunghezza variabile come parametri.
 
 Le funzioni helper fornite per estensioni specifiche (ad esempio *nx_secure_x509_key_usage_extension_parse*) chiamano nx_secure_x509_extension_find internamente per ottenere i dati dell'estensione.
 
@@ -3371,7 +3371,7 @@ La versione corrente di NetX Secure X.509 ha un supporto limitato per le estensi
 | ------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------- | -------------------- |
 | NX_SECURE_TLS_X509_TYPE_DIRECTORY_ATTRIBUTES  | 2.5.29.9  | Attributi della directory: attributi di informazioni di base sul soggetto del certificato  | No               |
 | NX_SECURE_TLS_X509_TYPE_SUBJECT_KEY_ID       | 2.5.29.14 | Usato per identificare una chiave pubblica specifica                                         | No               |
-| NX_SECURE_TLS_X509_TYPE_KEY_USAGE             | 2.5.29.15 | Fornisce informazioni sugli usi validi per la chiave pubblica del certificato              | Sì              |
+| NX_SECURE_TLS_X509_TYPE_KEY_USAGE             | 2.5.29.15 | Fornisce informazioni sugli utilizzi validi per la chiave pubblica del certificato              | Sì              |
 | NX_SECURE_TLS_X509_TYPE_SUBJECT_ALT_NAME     | 2.5.29.17 | Fornisce nomi DNS alternativi per identificare il certificato                     | Sì<sup>24</sup>        |
 | NX_SECURE_TLS_X509_TYPE_ISSUER_ALT_NAME      | 2.5.29.18 | Fornisce nomi DNS alternativi per identificare l'autorità emittente del certificato            | No               |
 | NX_SECURE_TLS_X509_TYPE_BASIC_CONSTRAINTS     | 2.5.29.19 | Fornisce informazioni di base sui vincoli di utilizzo dei certificati                        | No               |
@@ -3387,21 +3387,21 @@ La versione corrente di NetX Secure X.509 ha un supporto limitato per le estensi
 
 OID e mapping per le estensioni X.509
 
-24. L'estensione SubjectAltName viene analizzata come parte del controllo dei nomi DNS nel servizio nx_secure_x509_common_name_dns_check.
+24. L'estensione SubjectAltName viene analizzata come parte del controllo del nome DNS nel nx_secure_x509_common_name_dns_check.
 
 ### <a name="parameters"></a>Parametri
 
 - **certificato** Puntatore al certificato da verificare.
-- **estensione** Struttura restituita contenente il puntatore ai dati di estensione e la lunghezza.
+- **estensione** Restituisce la struttura contenente il puntatore ai dati di estensione e la lunghezza.
 - **extension_id** Mapping di interi OID dalla tabella precedente.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) OID dell'estensione specificato trovato e dati restituiti.
-- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) Rilevato tag multi byte ASN.1 (certificato non supportato).
+- **NX_SUCCESS** (0x00) OID estensione specificato trovato e dati restituiti.
+- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) rilevato tag multi byte ASN.1 (certificato non supportato).
 - **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Rilevato campo ASN.1 invaild (certificato non valido).
-- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Classe di tag ASN.1 non valida rilevata (certificato non valido).
-- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) Rilevata estensione non valida
+- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Classe di tag ASN.1 non valida (certificato non valido).
+- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) È stata rilevata un'estensione non valida
 - **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19B) L'OID dell'estensione specificato non è stato trovato nel certificato fornito.
 - **NX_PTR_ERROR** (0x07) Puntatore di estensione o certificato non valido.
 
@@ -3451,7 +3451,7 @@ NX_SECURE_X509_EXTENSION extension_data;
 
 ## <a name="nx_secure_x509_key_usage_extension_parse"></a>nx_secure_x509_key_usage_extension_parse
 
-Trovare e analizzare un'estensione X.509 Key Usage in un certificato X.509
+Trovare e analizzare un'estensione Utilizzo chiavi X.509 in un certificato X.509
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3467,7 +3467,7 @@ Questo servizio deve essere chiamato dall'interno di un callback di verifica del
 
 I bit, come definito dalla specifica X.509 (RFC 5280), sono indicati nella tabella seguente. Un'operazione AND bit per bit con la maschera di bit appropriata (e il controllo della presenza di valori non zero) offrirà il valore di ogni bit.
 
-Si noti che la codifica DER del campo di bit elimina gli zeri aggiuntivi, quindi la posizione effettiva dei bit nei dati del certificato non elaborati sarà probabilmente diversa dalle relative posizioni nel campo di bit decodificato. Le maschera di bit fornite devono essere usate solo sul campo di bit decodificato restituito da *nx_secure_x509_key_usage_extension_parse* e non con i dati non elaborati del certificato con codifica DER.
+Si noti che la codifica DER del campo di bit elimina gli zeri aggiuntivi, quindi la posizione effettiva dei bit nei dati del certificato non elaborati sarà probabilmente diversa dalle relative posizioni nel campo di bit decodificato. Le maschera di bit fornite devono essere usate solo nel campo di bit decodificato restituito da *nx_secure_x509_key_usage_extension_parse* e non con i dati non elaborati del certificato con codifica DER.
 
 Nel callback di verifica del certificato, il codice restituito di errore NX_SECURE_X509_KEY_USAGE_ERROR è riservato per l'uso da parte dell'applicazione. Se si verifica un errore durante la verifica dell'utilizzo della chiave, questo valore può essere restituito dal callback per indicare il motivo dell'errore.
 
@@ -3480,10 +3480,10 @@ Nel callback di verifica del certificato, il codice restituito di errore NX_SECU
 | NX_SECURE_X509_KEY_USAGE_KEY_AGREEMENT      | 4            | Il certificato può essere usato per il contratto di chiave (come con Diffie-Hellman)                                                                                           |
 | NX_SECURE_X509_KEY_USAGE_KEY_CERT_SIGN     | 5            | Il certificato può essere usato per firmare e verificare altri certificati (il certificato è un certificato CA o ICA).                                                  |
 | NX_SECURE_X509_KEY_USAGE_CRL_SIGN           | 6            | La chiave pubblica del certificato viene usata per verificare le firme nei CRL                                                                                                  |
-| NX_SECURE_X509_KEY_USAGE_ENCIPHER_ONLY      | 7            | Usato con il bit key agreement (bit 4): se impostato, la chiave del certificato può essere usata solo per crittografare durante l'accordo di chiave. Non definito se il bit dell'accordo di chiave non è impostato. |
-| NX_SECURE_X509_KEY_USAGE_DECIPHER_ONLY      | 8            | Usato con il bit key agreement (bit 4): se impostato, la chiave del certificato può essere usata solo per decrittografare durante l'accordo di chiave. Non definito se il bit dell'accordo di chiave non è impostato. |
+| NX_SECURE_X509_KEY_USAGE_ENCIPHER_ONLY      | 7            | Usato con il bit dell'accordo di chiave (bit 4): se impostato, la chiave del certificato può essere usata solo per crittografare durante il contratto di chiave. Non definito se il bit dell'accordo di chiave non è impostato. |
+| NX_SECURE_X509_KEY_USAGE_DECIPHER_ONLY      | 8            | Usato con il bit dell'accordo di chiave (bit 4): se impostato, la chiave del certificato può essere usata solo per decrittografare durante l'accordo di chiave. Non definito se il bit dell'accordo di chiave non è impostato. |
 
-Maschera di bit e valori per l'estensione per l'utilizzo delle chiavi X.509
+Maschera di bit e valori per l'estensione utilizzo chiavi X.509
 
 ### <a name="parameters"></a>Parametri
 
@@ -3492,11 +3492,11 @@ Maschera di bit e valori per l'estensione per l'utilizzo delle chiavi X.509
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) L'estensione per l'utilizzo della chiave è stata trovata e il campo di bit restituito.
-- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) Rilevato tag multi byte ASN.1 (certificato non supportato).
+- **NX_SUCCESS(0x00)** Estensione utilizzo chiave trovata e campo di bit restituito.
+- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) rilevato tag multi byte ASN.1 (certificato non supportato).
 - **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Rilevato campo ASN.1 invaild (certificato non valido).
-- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Classe di tag ASN.1 non valida rilevata (certificato non valido).
-- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) Rilevata estensione non valida (certificato non valido).
+- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Classe di tag ASN.1 non valida (certificato non valido).
+- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) È stata rilevata un'estensione non valida (certificato non valido).
 - **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19B)L'estensione Utilizzo chiavi non è stata trovata nel certificato fornito.
 - **NX_PTR_ERROR** (0x07) Certificato o puntatore di campo di bit non valido.
 

@@ -1,21 +1,21 @@
 ---
-title: Appendice B-costanti NetX di Azure RTO
-description: Visualizzare l'elenco delle costanti NetX di Azure RTO.
+title: Appendice B - Azure RTOS costanti NetX
+description: Visualizzare l'elenco Azure RTOS costanti NetX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d17736a613ca3cd69dcc7a00a5ec16ee680093b4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7f3b22675ea7bf98f653c9299fb3cef74b9b5f6588ff3328d46b989c96d77c4c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822805"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801275"
 ---
-# <a name="appendix-b---azure-rtos-netx-constants"></a>Appendice B-costanti NetX di Azure RTO
+# <a name="appendix-b---azure-rtos-netx-constants"></a>Appendice B - Azure RTOS costanti NetX
 
-## <a name="alphabetic-listing"></a>Listato alfabetico
+## <a name="alphabetic-listing"></a>Elenco alfabetico
 
 | Costante    | Valore   |
 | -------------------------- | ---------- |
@@ -105,7 +105,7 @@ ms.locfileid: "104822805"
 | NX_IP_ADDRESS_ERROR | 0x21 |
 | NX_IP_ADDRESS_RESOLVED | 0x0002 |
 | NX_IP_ALIGN_FRAGS | 8 |
-| NX_IP_ALL_EVENTS | 0xFFFFFFFF |
+| NX_IP_ALL_EVENTS | 0xffffffff |
 | NX_IP_ARP_ENABLED | 0x0008 |
 | NX_IP_ARP_REC_EVENT | 0x00000010 |
 | NX_IP_CLASS_A_HOSTID | 0x00FFFFFF |
@@ -139,7 +139,7 @@ ms.locfileid: "104822805"
 | NX_IP_INITIALIZE_DONE | 0x0001 |
 | NX_IP_INTERNAL_ERROR | 0x20 |
 | NX_IP_LENGTH_MASK | 0x0F000000 |
-| NX_IP_LIMITIED_BROADCAST | 0xFFFFFFFF |
+| NX_IP_LIMITIED_BROADCAST | 0xffffffff |
 | NX_IP_LINK_ENABLED | 0x0004 |
 | NX_IP_LOOPBACK_FIRST | 0x7F000000 |
 | NX_IP_LOOPBACK_LAST | 0x7FFFFFFF |
@@ -217,12 +217,12 @@ ms.locfileid: "104822805"
 | NX_NOT_LISTEN_STATE | 0x36 |
 | NX_NOT_SUCCESSFUL | 0x43 |
 | NX_NULL | 0 |
-| NX_OPTION_ERROR | 0x0A |
+| NX_OPTION_ERROR | 0x0a |
 | NX_OVERFLOW | 0x03 |
 | NX_PACKET_ALLOCATED | 0xAAAAAAAA |
 | NX_PACKET_DEBUG_LOG_SIZE | 100 |
 | NX_PACKET_ENQUEUED | 0xEEEEEEEE |
-| NX_PACKET_FREE | 0xFFFFFFFF |
+| NX_PACKET_FREE | 0xffffffff |
 | NX_PACKET_POOL_ID | 0x5041434B |
 | NX_PACKET_READY | 0xBBBBBBBB |
 | NX_PHYSICAL_HEADER | 16 |
@@ -304,7 +304,7 @@ ms.locfileid: "104822805"
 | NX_UNHANDLED_COMMAND     | 0x44       |
 | NX_WAIT_ABORTED          | 0x1A       |
 | NX_WAIT_ERROR            | 0x08       |
-| NX_WAIT_FOREVER          | 0xFFFFFFFF |
+| NX_WAIT_FOREVER          | 0xffffffff |
 | NX_WINDOW_OVERFLOW       | 0x39       |
 
 
@@ -603,7 +603,7 @@ ms.locfileid: "104822805"
 | NX_ALL_HOSTS_ADDRESS | 0xFE000001 |
 | NX_IGMPV2_TYPE_MASK | 0xFF000000 |
 | NX_IP_TIME_TO_LIVE_MASK | 0xFF000000 |
-| NX_IP_ALL_EVENTS | 0xFFFFFFFF |
-| NX_IP_LIMITIED_BROADCAST | 0xFFFFFFFF |
-| NX_PACKET_FREE | 0xFFFFFFFF |
-| NX_WAIT_FOREVER | 0xFFFFFFFF |
+| NX_IP_ALL_EVENTS | 0xffffffff |
+| NX_IP_LIMITIED_BROADCAST | 0xffffffff |
+| NX_PACKET_FREE | 0xffffffff |
+| NX_WAIT_FOREVER | 0xffffffff |

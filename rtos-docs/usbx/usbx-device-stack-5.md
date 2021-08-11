@@ -1,21 +1,21 @@
 ---
-title: Capitolo 5 - Considerazioni sulla classe di dispositivi USBX
+title: Capitolo 5 - Considerazioni sulle classi di dispositivi USBX
 description: Informazioni sulle considerazioni sulla classe di dispositivi USBX.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: ea348d94e83863c0e2652df29f92d952f2242661
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: b8fcfa251df9140d23b50a99f13f2755d2bdfae0ca6b9529633f25e263c7edcc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178018"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798741"
 ---
-# <a name="chapter-5---usbx-device-class-considerations"></a>Capitolo 5 - Considerazioni sulla classe di dispositivi USBX
+# <a name="chapter-5---usbx-device-class-considerations"></a>Capitolo 5 - Considerazioni sulle classi di dispositivi USBX
 
-## <a name="device-class-registration"></a>Registrazione della classe device
+## <a name="device-class-registration"></a>Registrazione della classe di dispositivi
 
 Ogni classe di dispositivo segue lo stesso principio per la registrazione. Una struttura contenente parametri di classe specifici viene passata alla funzione di inizializzazione della classe.
 
@@ -40,7 +40,7 @@ status = ux_device_stack_class_register(_ux_system_slave_class_hid_name,
     ux_device_class_hid_entry,1,0, (VOID *)&hid_parameter);
 ```
 
-Ogni classe può registrare, facoltativamente, una funzione di callback quando un'istanza della classe viene attivata. Il callback viene quindi chiamato dallo stack di dispositivi per informare l'applicazione che è stata creata un'istanza di .
+Ogni classe può registrare, facoltativamente, una funzione di callback quando viene attivata un'istanza della classe. Il callback viene quindi chiamato dallo stack di dispositivi per informare l'applicazione che è stata creata un'istanza di .
 
 L'applicazione avrebbe nel corpo le 2 funzioni per l'attivazione e la disattivazione, come illustrato nell'esempio seguente.
 
@@ -62,17 +62,17 @@ Non è consigliabile eseguire operazioni all'interno di queste funzioni, ma memo
 
 ## <a name="general-considerations-for-bulk-transfer"></a>Considerazioni generali sul trasferimento bulk
 
-In base alla specifica USB 2.0, un endpoint deve sempre trasmettere i payload dei dati con un campo dati minore o uguale al valore wMaxPacketSize segnalato dell'endpoint. Le dimensioni di un pacchetto di dati sono limitate a bMaxPacketSize. Il trasferimento può essere completato con i casi seguenti
+In base alla specifica USB 2.0, un endpoint deve sempre trasmettere payload di dati con un campo dati minore o uguale al valore wMaxPacketSize segnalato dall'endpoint. Le dimensioni di un pacchetto di dati sono limitate a bMaxPacketSize. Il trasferimento può essere completato nei casi seguenti
 1. L'endpoint ha trasferito esattamente la quantità di dati prevista
-2. Quando un dispositivo o un endpoint host recieves un pacchetto con dimensioni inferiori alle dimensioni massime del pacchetto (wMaxPacketSize). Questo pacchetto breve indica che non è rimasto più alcun pacchetto di dati e il trasferimento è stato completato o quando i pacchetti di dati da trasmettere sono tutti uguali a wMaxPacketSize, non è possibile determinare la fine del trasferimento. Per il completamento del trasferimento, è necessario inviare un pacchetto di lunghezza zero (ZLP) a pacchetti brevi e pacchetti di lunghezza zero che indica la fine di un trasferimento bulk di dati. Le considerazioni precedenti si applicano alle API di trasferimento di dati bulk non elaborati, ad esempio ux_device_class_cdc_acm_read().
+2. Quando un dispositivo o un endpoint host viene ricevuto da un pacchetto con dimensioni inferiori alle dimensioni massime del pacchetto (wMaxPacketSize). Questo pacchetto breve indica che non è più disponibile alcun pacchetto di dati e che il trasferimento è stato completato oppure quando i pacchetti di dati da trasmettere sono tutti uguali a wMaxPacketSize, non è possibile determinare la fine del trasferimento. Per il completamento del trasferimento, è necessario inviare un pacchetto di lunghezza zero (ZLP) pacchetti brevi e pacchetti di lunghezza zero indica la fine di un trasferimento di dati in blocco. Le considerazioni precedenti si applicano alle API di trasferimento dati bulk non elaborati, ad esempio ux_device_class_cdc_acm_read().
 
-## <a name="usb-device-storage-class"></a>Classe di Archiviazione USB
+## <a name="usb-device-storage-class"></a>Classe device Archiviazione USB
 
-La classe di archiviazione del dispositivo USB consente a un dispositivo di archiviazione incorporato nel sistema di essere reso visibile a un host USB.
+La classe di archiviazione del dispositivo USB consente di visualizzare un dispositivo di archiviazione incorporato nel sistema in un host USB.
 
-La classe di archiviazione del dispositivo USB non fornisce di per sé una soluzione di archiviazione. Accetta e interpreta semplicemente le richieste SCSI provenienti dall'host. Quando una di queste richieste è un comando di lettura o scrittura, richiama una chiamata predefinita a un gestore di dispositivo di archiviazione reale, ad esempio un driver di dispositivo ATA o un driver di dispositivo Flash.
+La classe di archiviazione del dispositivo USB non fornisce da sola una soluzione di archiviazione. Accetta e interpreta semplicemente le richieste SCSI provenienti dall'host. Quando una di queste richieste è un comando di lettura o scrittura, richiama una chiamata predefinita a un gestore di dispositivo di archiviazione reale, ad esempio un driver di dispositivo ATA o un driver di dispositivo Flash.
 
-Quando si inizializza la classe di archiviazione del dispositivo, viene data una struttura puntatore alla classe che contiene tutte le informazioni necessarie. Di seguito è illustrato un esempio.
+Quando si inizializza la classe di archiviazione del dispositivo, alla classe viene assegnato un puntatore che contiene tutte le informazioni necessarie. Di seguito è illustrato un esempio.
 
 ```c
 /* Initialize the storage class parameters to customize vendor strings. */
@@ -119,11 +119,11 @@ status = ux_device_stack_class_register(_ux_system_slave_class_storage_name,
     ux_device_class_storage_entry, ux_device_class_storage_thread, 0, (VOID *)&storage_parameter);
 ```
 
-In questo esempio, le stringhe di archiviazione del driver vengono personalizzate assegnando puntatori di stringa al parametro corrispondente. Se uno dei puntatori alla stringa viene lasciato UX_NULL, viene usata la stringa Azure RTOS predefinita.
+In questo esempio le stringhe di archiviazione dei driver vengono personalizzate assegnando puntatori di stringa al parametro corrispondente. Se uno dei puntatori alla stringa viene lasciato UX_NULL, viene usata la Azure RTOS predefinita.
 
-In questo esempio viene fornito l'indirizzo dell'ultimo blocco o LBA dell'unità, nonché le dimensioni del settore logico. L'LBA è il numero di settori disponibili nei supporti -1. La lunghezza del blocco è impostata su 512 nei normali supporti di archiviazione. Può essere impostato su 2048 per le unità ottiche.
+In questo esempio viene fornito l'ultimo indirizzo di blocco o LBA dell'unità, nonché le dimensioni del settore logico. L'LBA è il numero di settori disponibili nei supporti -1. La lunghezza del blocco è impostata su 512 nei normali supporti di archiviazione. Può essere impostato su 2048 per le unità ottiche.
 
-L'applicazione deve passare tre puntatori a funzione di callback per consentire alla classe di archiviazione di leggere, scrivere e ottenere lo stato per il supporto.
+L'applicazione deve passare tre puntatori di funzione di callback per consentire alla classe di archiviazione di leggere, scrivere e ottenere lo stato per il supporto.
 
 I prototipi per le funzioni di lettura e scrittura sono illustrati nell'esempio seguente.
 
@@ -152,9 +152,9 @@ Dove:
 - *data_pointer* è l'indirizzo del buffer da usare per la lettura o la scrittura.
 - *number_blocks* è il numero di settori da leggere/scrivere.
 - *lba* è l'indirizzo del settore da leggere.
-- *media_status* deve essere compilato esattamente come il valore restituito del callback di stato del supporto.
+- *media_status* deve essere compilato esattamente come il valore restituito del callback dello stato multimediale.
 
-Il valore restituito può avere il valore UX_SUCCESS o UX_ERROR che indica un'operazione riuscita o non riuscita. Queste operazioni non devono restituire altri codici di errore. Se si verifica un errore in qualsiasi operazione, la classe di archiviazione richiama la funzione di richiamata dello stato.
+Il valore restituito può avere il valore UX_SUCCESS o UX_ERROR che indica un'operazione riuscita o non riuscita. Queste operazioni non devono restituire altri codici di errore. Se si verifica un errore in qualsiasi operazione, la classe di archiviazione richiama la funzione di callback dello stato.
 
 Questa funzione ha il prototipo seguente.
 
@@ -170,23 +170,23 @@ Il parametro chiamante media_id non è attualmente usato e deve essere sempre 0.
 
 Il valore restituito è un codice di errore SCSI che può avere il formato seguente.
 
-- **Bit da 0 a 7** Sense_key
-- **Bit da 8 a 15** Codice di senso aggiuntivo
-- **Bit 16-23** Qualificatore di codice di senso aggiuntivo
+- **Bit 0-7** Sense_key
+- **Bit 8-15** Codice di senso aggiuntivo
+- **Bit 16-23** Qualificatore del codice di senso aggiuntivo
 
 La tabella seguente fornisce le possibili combinazioni Sense/ASC/ASCQ.
 
-| Tasto di senso | ASC | Ascq | Descrizione                                       |
+| Sense Key | ASC | Ascq | Descrizione                                       |
 | --------- | --- | ---- | ------------------------------------------------- |
 | 00        | 00  | 00   | NESSUN SENSO                                          |
-| 01        | 17  | 01   | DATI RECUPERATI CON TENTATIVI                       |
-| 01        | 18  | 00   | DATI RECUPERATI CON ECC                           |
-| 02        | 04  | 01   | UNITÀ LOGICA NON PRONTA - IN VIA DI PRE-PREPARARSI          |
-| 02        | 04  | 02   | UNITÀ LOGICA NON PRONTA: INIZIALIZZAZIONE NECESSARIA |
+| 01        | 17  | 01   | DATI RIPRISTINATI CON TENTATIVI                       |
+| 01        | 18  | 00   | DATI RIPRISTINATI CON ECC                           |
+| 02        | 04  | 01   | UNITÀ LOGICA NON PRONTA - PREPARARSI          |
+| 02        | 04  | 02   | UNITÀ LOGICA NON PRONTA- INIZIALIZZAZIONE NECESSARIA |
 | 02        | 04  | 04   | UNITÀ LOGICA NON PRONTA - FORMATO IN CORSO       |
 | 02        | 04  | FF   | UNITÀ LOGICA NON PRONTA - IL DISPOSITIVO È OCCUPATO          |
-| 02        | 06  | 00   | NESSUNA POSIZIONE DI RIFERIMENTO TROVATA                       |
-| 02        | 08  | 00   | ERRORE DI COMUNICAZIONE UNITÀ LOGICA                |
+| 02        | 06  | 00   | NON È STATA TROVATA ALCUNA POSIZIONE DI RIFERIMENTO                       |
+| 02        | 08  | 00   | ERRORE DI COMUNICAZIONE DELL'UNITÀ LOGICA                |
 | 02        | 08  | 01   | TIMEOUT COMUNICAZIONE UNITÀ LOGICA               |
 | 02        | 08  | 80   | SOVRACCARICO DI COMUNICAZIONE DELLE UNITÀ LOGICHE                |
 | 02        | 3A  | 00   | MEDIUM NOT PRESENT                                |
@@ -213,7 +213,7 @@ La tabella seguente fornisce le possibili combinazioni Sense/ASC/ASCQ.
 | 05        | 26  | 02   | VALORE DEL PARAMETRO NON VALIDO                           |
 | 05        | 39  | 00   | SALVATAGGIO DI PARAMETRI NON SUPPORTATI                     |
 | 06        | 28  | 00   | NON PRONTO PER LA TRANSIZIONE - SUPPORTO MODIFICATO     |
-| 06        | 29  | 00   | SI È VERIFICATA LA REIMPOSTAZIONE DELL'ACCENSIONE O LA REIMPOSTAZIONE DEL DISPOSITIVO BUS       |
+| 06        | 29  | 00   | ACCENSIONE A REIMPOSTAZIONE O REIMPOSTAZIONE DEL DISPOSITIVO BUS       |
 | 06        | 2f  | 00   | COMANDI CANCELLATI DA UN ALTRO INIZIATORE             |
 | 07        | 27  | 00   | SCRIVERE SUPPORTI PROTETTI                             |
 | 0b        | 4E  | 00   | TENTATIVO DI COMANDO SOVRAPPOSTO                      |
@@ -243,7 +243,7 @@ Il valore restituito indica se il comando ha avuto esito positivo. Deve **essere
 
 Se l'applicazione non implementa questo callback, alla ricezione del comando **GET_STATUS_NOTIFICATION** USBX invierà una notifica all'host che il comando non è implementato.
 
-Il **SYNCHRONIZE_CACHE** deve essere gestito se l'applicazione utilizza una cache per le scritture dall'host. Un host può inviare questo comando se sa che il dispositivo di archiviazione sta per essere disconnesso, ad esempio in Windows, se si fa clic con il pulsante destro del mouse sull'icona di un'unità flash sulla barra degli strumenti e si seleziona "Eject storage device name", Windows invia il \[ \] comando SYNCHRONIZE_CACHE **a** tale dispositivo.
+Il **SYNCHRONIZE_CACHE** deve essere gestito se l'applicazione usa una cache per le scritture dall'host. Un host può inviare questo comando se sa che il dispositivo di archiviazione sta per essere disconnesso, ad esempio in Windows, se si fa clic con il pulsante destro del mouse sull'icona di un'unità flash sulla barra degli strumenti e si seleziona "Eject storage device name", Windows invia il \[ \] comando SYNCHRONIZE_CACHE **a** tale dispositivo.
 
 Se l'applicazione vuole gestire il **comando GET_STATUS_NOTIFICATION** dall'host, deve implementare un callback con il prototipo seguente.
 
@@ -259,7 +259,7 @@ UINT ux_slave_class_storage_media_flush(
 Dove:
 
 - *storage* è l'istanza della classe di archiviazione.
-- *Il* parametro lun specifica il LUN a cui viene indirizzato il comando.
+- *Il parametro lun* specifica il LUN a cui viene indirizzato il comando.
 - *number_blocks* specifica il numero di blocchi da sincronizzare.
 - *lba* è l'indirizzo del settore del primo blocco da sincronizzare.
 - *media_status* deve essere compilato esattamente come il valore restituito del callback dello stato multimediale.
@@ -371,7 +371,7 @@ unsigned char device_framework_full_speed[] = {
 };
 ```
 
-La classe CDC-ACM usa un framework di dispositivo composito per raggruppare le interfacce (controllo e dati). Di conseguenza, è necessario fare attenzione quando si definisce il descrittore del dispositivo. USBX si basa sul descrittore IAD per sapere internamente come associare le interfacce. Il descrittore IAD deve essere dichiarato prima delle interfacce e contenere la prima interfaccia della classe CDC-ACM e il numero di interfacce collegate.
+La classe CDC-ACM usa un framework di dispositivo composito per raggruppare le interfacce (controllo e dati). Di conseguenza, è necessario fare attenzione quando si definisce il descrittore del dispositivo. USBX si basa sul descrittore IAD per sapere internamente come associare le interfacce. Il descrittore IAD deve essere dichiarato prima delle interfacce e contenere la prima interfaccia della classe CDC-ACM e il numero di interfacce associate.
 
 La classe CDC-ACM usa anche un descrittore funzionale di unione che esegue la stessa funzione del descrittore IAD più recente. Anche se un descrittore funzionale dell'unione deve essere dichiarato per motivi cronologici e per la compatibilità con il lato host, non viene usato da USBX.
 
@@ -395,7 +395,7 @@ I 2 parametri definiti sono puntatori di callback nelle applicazioni utente che 
 
 Il terzo parametro definito è un puntatore di callback all'applicazione utente che verrà chiamato in caso di modifica del parametro di stato della riga o della codifica della riga. Ad esempio, quando viene richiesta dall'host di modificare lo stato DTR in **TRUE,** viene richiamato il callback, in cui l'applicazione utente può controllare gli stati della riga tramite la funzione IOCTL per fare in modo che l'host kow sia pronto per la comunicazione.
 
-CDC-ACM è basato su uno standard USB-IF e viene riconosciuto automaticamente dai sistemi operativi MACO e Linux. Nelle Windows, questa classe richiede un file inf per Windows versione precedente alla 10. Windows 10 non richiede file con estensione inf. Viene fornito un modello per la classe CDC-ACM, disponibile nella directory ***usbx_windows_host_files.*** Per una versione più recente Windows usare il file CDC_ACM_Template_Win7_64bit.inf (ad eccezione di Win10). Questo file deve essere modificato in modo da riflettere il PID/VID usato dal dispositivo. Il PID/VID sarà specifico per il cliente finale quando l'azienda e il prodotto vengono registrati con USB-IF. Nel file inf i campi da modificare si trovano qui.
+CDC-ACM è basato su uno standard USB-IF e viene riconosciuto automaticamente dai sistemi operativi MACO e Linux. Nelle Windows, questa classe richiede un file inf per Windows versione precedente alla 10. Windows 10 non richiede file con estensione inf. Viene fornito un modello per la classe CDC-ACM, disponibile nella directory ***usbx_windows_host_files.*** Per una versione più recente Windows usare il file CDC_ACM_Template_Win7_64bit.inf (ad eccezione di Win10). Questo file deve essere modificato in base al PID/VID usato dal dispositivo. Il PID/VID sarà specifico per il cliente finale quando l'azienda e il prodotto vengono registrati con USB-IF. Nel file inf i campi da modificare si trovano qui.
 
 ```INF
 [DeviceList]
@@ -437,7 +437,7 @@ Questa funzione viene chiamata quando un'applicazione deve eseguire varie chiama
 ### <a name="return-value"></a>Valore restituito
 
 - **UX_SUCCESS** (0x00) L'operazione è riuscita.
-- **UX_ERROR** (0xFF) error from function
+- **UX_ERROR** (0xFF) dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -611,7 +611,7 @@ Questa funzione viene chiamata quando un'applicazione deve ottenere i parametri 
 ### <a name="parameters"></a>Parametri
 
 - **cdc_acm**: puntatore all'istanza della classe cdc.
-- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_GET_LINE_STATE
+- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_GET_LINE_STATE
 - **parameter**: puntatore a una struttura di parametri di riga:
 
 ```c
@@ -851,10 +851,10 @@ UINT ux_device_class_cdc_acm_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando un'applicazione deve leggere dalla pipe di dati OUT (OUT dall'host, IN dal dispositivo). Si tratta di un blocco.
+Questa funzione viene chiamata quando un'applicazione deve leggere dalla pipe di dati OUT (OUT dall'host, IN dal dispositivo). Si sta bloccando.
 
 > [!Note]
-> Questa funzione legge i dati bulk non elaborati dall'host, quindi rimane in sospeso fino a quando il buffer non è pieno o l'host termina il trasferimento da un pacchetto breve (incluso un pacchetto di lunghezza zero). Per altre informazioni, vedere la sezione [**Considerazioni generali sul trasferimento bulk.**](#general-considerations-for-bulk-transfer)
+> Questa funzione legge i dati bulk non elaborati dall'host, quindi rimane in sospeso fino a quando il buffer non è pieno o l'host termina il trasferimento con un pacchetto breve (incluso un pacchetto di lunghezza zero). Per altre informazioni, vedere la sezione [**Considerazioni generali sul trasferimento bulk.**](#general-considerations-for-bulk-transfer)
 
 ### <a name="parameters"></a>Parametri
 
@@ -895,13 +895,13 @@ UINT ux_device_class_cdc_acm_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando un'applicazione deve scrivere nella pipe di dati IN (IN dall'host, OUT dal dispositivo). Si tratta di un blocco.
+Questa funzione viene chiamata quando un'applicazione deve scrivere nella pipe di dati IN (IN dall'host, OUT dal dispositivo). Si sta bloccando.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm**: puntatore all'istanza della classe cdc.
-- **buffer:** indirizzo del buffer in cui vengono archiviati i dati.
-- **requested_length**: lunghezza del buffer da scrivere.
+- **cdc_acm:** puntatore all'istanza della classe cdc.
+- **buffer**: indirizzo del buffer in cui vengono archiviati i dati.
+- **requested_length:** lunghezza del buffer da scrivere.
 - **actual_length**: lunghezza restituita nel buffer dopo l'esecuzione della scrittura.
 
 ### <a name="return-value"></a>Valore restituito
@@ -939,10 +939,10 @@ Questa funzione viene chiamata quando un'applicazione deve scrivere nella pipe d
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm**: puntatore all'istanza della classe cdc.
-- **buffer:** indirizzo del buffer in cui vengono archiviati i dati.
-- **requested_length**: lunghezza del buffer da scrivere.
-- **actual_length**: lunghezza restituita nel buffer dopo l'esecuzione della scrittura
+- **cdc_acm:** puntatore all'istanza della classe cdc.
+- **buffer**: indirizzo del buffer in cui vengono archiviati i dati.
+- **requested_length:** lunghezza del buffer da scrivere.
+- **actual_length:** lunghezza restituita nel buffer dopo l'esecuzione della scrittura
 
 ### <a name="return-value"></a>Valore restituito
 
@@ -960,11 +960,11 @@ if(status != UX_SUCCESS)
     return;
 ```
 
-### <a name="usb-device-cdc-ecm-class"></a>Classe USB Device CDC-ECM
+### <a name="usb-device-cdc-ecm-class"></a>Classe CDC-ECM del dispositivo USB
 
 La classe CDC-ECM del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo ethernet. Questa classe è basata sullo standard USB ed è un subset dello standard CDC.
 
-Un framework di dispositivi conforme a CDC-ACM deve essere dichiarato dallo stack di dispositivi. Di seguito è riportato un esempio.
+Un framework di dispositivo conforme a CDC-ACM deve essere dichiarato dallo stack di dispositivi. Di seguito è riportato un esempio.
 
 ```c
 unsigned char device_framework_full_speed[] = {
@@ -1019,7 +1019,7 @@ unsigned char device_framework_full_speed[] = {
 };
 ```
 
-La classe CDC-ECM usa un approccio del descrittore di dispositivo molto simile a CDC-ACM e richiede anche un descrittore IAD. Per la definizione, vedere la classe CDC-ACM.
+La classe CDC-ECM usa un approccio descrittore di dispositivo molto simile a CDC-ACM e richiede anche un descrittore IAD. Per la definizione, vedere la classe CDC-ACM.
 
 Oltre al normale framework di dispositivi, CDC-ECM richiede descrittori di stringa speciali. Di seguito è illustrato un esempio.
 
@@ -1047,7 +1047,7 @@ unsigned char string_framework[] = {
 };
 ```
 
-Il descrittore della stringa di indirizzi MAC viene usato dalla classe CDC-ECM per rispondere alle query host sull'indirizzo MAC a cui il dispositivo sta rispondendo al protocollo TCP/IP. Può essere impostato sulla scelta del dispositivo, ma deve essere definito qui.
+Il descrittore della stringa di indirizzi MAC viene usato dalla classe CDC-ECM per rispondere alle query host sull'indirizzo MAC a cui il dispositivo risponde al protocollo TCP/IP. Può essere impostato sulla scelta del dispositivo, ma deve essere definito qui.
 
 L'inizializzazione della classe CDC-ECM è la seguente.
 
@@ -1077,13 +1077,13 @@ status = ux_device_stack_class_register(_ux_system_slave_class_cdc_ecm_name,
     ux_device_class_cdc_ecm_entry, 1,0,&cdc_ecm_parameter);
 ```
 
-L'inizializzazione di questa classe prevede lo stesso callback di funzione per l'attivazione e la disattivazione, anche se in questo caso sono impostate su NULL in modo che non sia eseguito alcun callback.
+L'inizializzazione di questa classe prevede lo stesso callback di funzione per l'attivazione e la disattivazione, anche se in questo caso come esercizio sono impostate su NULL in modo che non sia eseguito alcun callback.
 
-I parametri successivi sono per la definizione degli ID nodo. 2 I nodi sono necessari per CDC-ECM, un nodo locale e un nodo remoto. Il nodo locale specifica l'indirizzo MAC del dispositivo, mentre il nodo remoto specifica l'indirizzo MAC dell'host. Il nodo remoto deve essere uguale a quello dichiarato nel descrittore di stringhe del framework di dispositivi.
+I parametri successivi sono per la definizione degli ID nodo. 2 I nodi sono necessari per CDC-ECM, un nodo locale e un nodo remoto. Il nodo locale specifica l'indirizzo MAC del dispositivo, mentre il nodo remoto specifica l'indirizzo MAC dell'host. Il nodo remoto deve essere uguale a quello dichiarato nel descrittore di stringa del framework di dispositivo.
 
 La classe CDC-ECM include API incorporate per il trasferimento dei dati in entrambi i modi, ma sono nascoste all'applicazione perché l'applicazione utente comunicherà con il dispositivo USB Ethernet tramite NetX.
 
-La classe USBX CDC-ECM è strettamente collegata Azure RTOS stack di rete NetX. Un'applicazione che usa la classe NetX e USBX CDC-ECM attiverà lo stack di rete NetX nel modo consueto, ma deve anche attivare lo stack di rete USB come indicato di seguito.
+La classe USBX CDC-ECM è strettamente associata Azure RTOS stack di rete NetX. Un'applicazione che usa la classe NetX e USBX CDC-ECM attiverà lo stack di rete NetX nel modo consueto, ma deve anche attivare lo stack di rete USB come indicato di seguito.
 
 ```c
 /* Initialize the NetX system. */
@@ -1095,15 +1095,15 @@ ux_network_driver_init();
 
 Lo stack di rete USB deve essere attivato una sola volta e non è specifico di CDCECM, ma è richiesto da qualsiasi classe USB che richiede servizi NetX.
 
-La classe CDC-ECM verrà riconosciuta dagli host MAC OS e Linux. Tuttavia, non è disponibile alcun driver fornito da Microsoft Windows riconoscere CDC-ECM in modo nativo. Alcuni prodotti commerciali esistono per le Windows e forniscono il proprio file inf. Questo file dovrà essere modificato nello stesso modo del modello inf CDC-ACM in modo che corrisponda al PID/VID del dispositivo di rete USB.
+La classe CDC-ECM verrà riconosciuta dagli host MAC OS e Linux. Non è tuttavia disponibile alcun driver fornito da Microsoft Windows riconoscere CDC-ECM in modo nativo. Alcuni prodotti commerciali esistono per le piattaforme Windows e forniscono il proprio file inf. Questo file dovrà essere modificato allo stesso modo del modello inf CDC-ACM in modo che corrisponda al PID/VID del dispositivo di rete USB.
 
-## <a name="usb-device-hid-class"></a>Classe HID dispositivo USB
+## <a name="usb-device-hid-class"></a>Classe HID del dispositivo USB
 
 La classe HID del dispositivo USB consente a un sistema host USB di connettersi a un dispositivo HID con funzionalità client HID specifiche.
 
-La classe di dispositivo USBX HID è relativamente semplice rispetto al lato host. È strettamente collegato al comportamento del dispositivo e al relativo descrittore HID.
+La classe di dispositivo USBX HID è relativamente semplice rispetto al lato host. È strettamente legato al comportamento del dispositivo e al relativo descrittore HID.
 
-Qualsiasi client HID richiede prima di tutto di definire un framework di dispositivi HID come nell'esempio seguente.
+Qualsiasi client HID richiede prima di tutto di definire un framework di dispositivo HID come nell'esempio seguente.
 
 ```c
 UCHAR device_framework_full_speed[] = {
@@ -1131,7 +1131,7 @@ Il framework HID contiene un descrittore di interfaccia che descrive la classe H
 
 Attualmente, la classe HID USBX non supporta più ID report, perché la maggior parte delle applicazioni richiede un solo ID (ID zero). Se più ID report sono una funzionalità a cui si è interessati, contattare Microsoft.
 
-L'inizializzazione della classe HID è la seguente, usando una tastiera USB come esempio.
+L'inizializzazione della classe HID è la seguente, usando come esempio una tastiera USB.
 
 ```c
 /* Initialize the hid class parameters for a keyboard. */
@@ -1163,9 +1163,9 @@ La classe HID USBX supporta i comandi HID standard seguenti dall'host.
 | UX_DEVICE_CLASS_HID_COMMAND_SET_IDLE     | 0x0a  | Impostare la frequenza di inattività dell'endpoint di interrupt |
 | UX_DEVICE_CLASS_HID_COMMAND_SET_PROTOCOL | 0x0b  | Ottenere il protocollo in esecuzione nel dispositivo           |
 
-Il report Get e Set sono i comandi usati più di frequente da HID per trasferire i dati tra l'host e il dispositivo. In genere l'host invia dati sull'endpoint di controllo, ma può ricevere dati nell'endpoint di interrupt o tramite l'esecuzione di un comando GET_REPORT per recuperare i dati nell'endpoint di controllo.
+Il report Get e Set sono i comandi usati più di frequente da HID per trasferire i dati tra l'host e il dispositivo. In genere l'host invia i dati sull'endpoint di controllo, ma può ricevere dati sull'endpoint di interrupt o inviando un comando GET_REPORT per recuperare i dati nell'endpoint di controllo.
 
-La classe HID può inviare dati all'host nell'endpoint di interrupt usando la ux_device_class_hid_event_set funzione .
+La classe HID può inviare i dati all'host nell'endpoint di interrupt usando la ux_device_class_hid_event_set funzione .
 
 ### <a name="ux_device_class_hid_event_set"></a>ux_device_class_hid_event_set
 

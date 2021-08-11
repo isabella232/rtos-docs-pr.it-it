@@ -1,63 +1,63 @@
 ---
-title: Capitolo 2-installazione e uso del client DNS NetX di Azure RTO
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client DNS NetX di Azure RTO.
+title: Capitolo 2 - Installazione e uso del Azure RTOS DNS NetX
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS Dns Client NetX.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 054b7366eb9a28bc0dc2fb8c4b2479c12532499b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ffd6e7308775d919818420a2276f28d07ca3e9f467af71bb6e0524b7b3a79de8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822658"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799507"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-dns-client"></a>Capitolo 2-installazione e uso del client DNS NetX di Azure RTO
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-dns-client"></a>Capitolo 2 - Installazione e uso del Azure RTOS DNS NetX
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client DNS NetX di Azure RTO.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS Dns Client NetX.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-Il client DNS di NetX è disponibile all'indirizzo <https://github.com/azure-rtos/netx> . Il pacchetto include i file seguenti:
+Il client DNS NetX è disponibile all'indirizzo <https://github.com/azure-rtos/netx> . Il pacchetto include i file seguenti:
 
-- **nx_dns. h**: file di intestazione per il client DNS NETX
-- **nx_dns. c**: file di origine c per il client DNS NETX
-- **nx_dns.pdf**: Descrizione PDF del client DNS NETX
+- **nx_dns.h:** file di intestazione per il client DNS NetX
+- **nx_dns.c**: file di origine C per il client DNS NetX
+- **nx_dns.pdf**: Descrizione PDF del client DNS NetX
 
 ## <a name="dns-client-installation"></a>Installazione del client DNS
 
-Per usare il client DNS NetX, copiare i file di codice sorgente *nx_dns. c* e *nx_dns. h* nella stessa directory in cui è installato NETX. Se, ad esempio, NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_dns. h* e *nx_dns. c* devono essere copiati in questa directory.
+Per usare NetX DNS Client, copiare i file di codice *sorgente nx_dns.c* e *nx_dns.h* nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_dns.h* e *nx_dns.c* devono essere copiati in questa directory.
 
 ## <a name="using-the-dns-client"></a>Uso del client DNS
 
-L'uso del client DNS di NetX è facile. In pratica, il codice dell'applicazione deve includere *nx_dns. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX. Una volta incluso *nx_dns. h* , il codice dell'applicazione è in grado di eseguire le chiamate di funzione DNS specificate più avanti in questa guida. L'applicazione deve inoltre aggiungere *nx_dns. c* al processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il DNS NetX.
+L'uso del client DNS NetX è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nx_dns.h* dopo aver incluso *rispettivamente tx_api.h* e *nx_api.h*, per poter usare rispettivamente ThreadX e NetX. Dopo *nx_dns.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione DNS specificate più avanti in questa guida. L'applicazione deve anche *aggiungere nx_dns.c* al processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare DNS NetX.
 
 >[!NOTE]
-> Poiché DNS usa i servizi UDP NetX, è necessario abilitare UDP con la chiamata *nx_udp_enable* prima di usare DNS.
+> Poiché DNS usa i servizi UDP NetX,  è necessario nx_udp_enable udp prima di usare DNS.
 
-## <a name="small-example-system-for-dns-client"></a>Sistema di esempio piccolo per il client DNS 
+## <a name="small-example-system-for-dns-client"></a>Small Example System for DNS Client 
 
-Nel programma dell'applicazione DNS di esempio fornito in questa sezione *nx_dns. h* è incluso alla riga 6. NX_DNS_CLIENT_USER_CREATE_PACKET_POOL, che consente all'applicazione client DNS di creare il pool di pacchetti per il client DNS, viene dichiarata sulle righe 21-23. Questo pool di pacchetti viene utilizzato per l'allocazione di pacchetti per l'invio di messaggi DNS. Se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definito, viene creato un pool di pacchetti nella riga 71-91. Se questa opzione non è abilitata, il client DNS crea il proprio pool di pacchetti in base al payload del pacchetto e alle dimensioni del pool impostate dai parametri di configurazione in *nx_dns. h* e descritti altrove in questo capitolo.
+Nel programma di applicazione DNS di esempio fornito in questa sezione *nx_dns.h* è incluso alla riga 6. NX_DNS_CLIENT_USER_CREATE_PACKET_POOL, che consente all'applicazione client DNS di creare il pool di pacchetti per il client DNS, viene dichiarato nelle righe 21-23. Questo pool di pacchetti viene usato per allocare pacchetti per l'invio di messaggi DNS. Se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL definito, viene creato un pool di pacchetti nelle righe 71-91. Se questa opzione non è abilitata, il client DNS crea il proprio pool di pacchetti in base al payload del pacchetto e alle dimensioni del pool impostate dai parametri di configurazione in *nx_dns.h* e descritto altrove in questo capitolo.
 
-Viene creato un altro pool di pacchetti nella riga 93-105 per l'istanza IP client usata per le operazioni NetX interne. Viene quindi creata l'istanza IP usando la chiamata *nx_ip_create* nella riga 107-119. È possibile che l'attività IP e il client DNS condividano lo stesso pool di pacchetti, ma poiché in genere il client DNS invia messaggi di dimensioni maggiori rispetto ai pacchetti di controllo inviati dall'attività IP, l'utilizzo di pool di pacchetti separati consente un utilizzo più efficiente della memoria.
+Un altro pool di pacchetti viene creato nelle righe 93-105 per l'istanza IP client usata per le operazioni NetX interne. Successivamente, l'istanza IP viene creata *usando nx_ip_create* chiamata nella riga 107-119. È possibile che l'attività IP e il client DNS convivino lo stesso pool di pacchetti, ma poiché il client DNS in genere invia messaggi di dimensioni maggiori rispetto ai pacchetti di controllo inviati dall'attività IP, l'uso di pool di pacchetti separati rende più efficiente l'uso della memoria.
 
-ARP e UDP, usati dalle reti IPv4, sono abilitati rispettivamente nelle righe 122 e 134.
+ARP e UDP (usati dalle reti IPv4) sono abilitati rispettivamente nelle righe 122 e 134.
 
 >[!NOTE]
-> Questa demo usa il driver ' RAM ' dichiarato alla riga 37 e usato nella chiamata *nx_ip_create* . Questo driver RAM viene distribuito con il codice sorgente di NetX. Per eseguire effettivamente il client DNS, l'applicazione deve fornire un driver di rete fisico effettivo per la trasmissione e la ricezione di pacchetti dal server DNS.
+> Questa demo usa il driver "ram" dichiarato alla riga 37 e usato nella *nx_ip_create* chiamata. Questo driver ram viene distribuito con il codice sorgente NetX. Per eseguire effettivamente il client DNS, l'applicazione deve fornire un driver di rete fisico effettivo per trasmettere e ricevere pacchetti dal server DNS.
 
-La funzione di immissione thread del client *thread_client_entry* è definita sotto la funzione *tx_application_define* . Inizialmente cede il controllo al sistema per consentire l'inizializzazione del thread attività IP da parte del driver di rete.
+La funzione client thread entry *thread_client_entry* definita sotto la *funzione* tx_application_define client. Inizialmente rinuncia al controllo al sistema per consentire l'inizializzazione del thread dell'attività IP da parte del driver di rete.
 
-Quindi crea il client DNS sulle righe 176-187, Inizializza la cache sulle righe 189-200 e imposta il pool di pacchetti creato in precedenza nell'istanza del client DNS sulle righe 202-217. Viene quindi aggiunto un server DNS IPv4 sulle righe 220-229.
+Crea quindi il client DNS sulle righe 176-187, inizializza la cache sulle righe 189-200 e imposta il pool di pacchetti creato in precedenza sull'istanza del client DNS nelle righe 202-217. Aggiunge quindi un server DNS IPv4 alle righe 220-229.
 
-Il resto del programma di esempio usa i servizi client DNS per eseguire query DNS. Le ricerche degli indirizzi IP dell'host vengono eseguite sulle righe 240 e 262. La differenza tra questi due servizi, *nx_dns_host_by_name_get* e *nx_dns_ipv4_address_by_name_get*, consiste nel fatto che il primo salva solo un indirizzo IP, mentre quest'ultimo salva più indirizzi se il server DNS risponde.
+Il resto del programma di esempio usa i servizi client DNS per eseguire query DNS. Le ricerche degli indirizzi IP host vengono eseguite nelle righe 240 e 262. La differenza tra questi due servizi, *nx_dns_host_by_name_get* *e nx_dns_ipv4_address_by_name_get*, è che il primo salva un solo indirizzo IP, mentre il secondo salva più indirizzi se il server DNS ha risposto.
 
-Le ricerche inverse (nome host da indirizzo IP) vengono eseguite sulle righe 354 (*nx_dns_host_by_address_get*).
+Le ricerche inverse (nome host dall'indirizzo IP) vengono eseguite sulle righe 354 (*nx_dns_host_by_address_get*).
 
-Altri due servizi per le ricerche DNS, CNAME e TXT, vengono illustrati rispettivamente sulle righe 375 e 420, per individuare CNAME e TXT per il nome di dominio di input. NetX client DNS come servizi simili per altri tipi di record, ad esempio NS, MX, SRV e SOA. Per una descrizione dettagliata di tutte le ricerche dei tipi di record disponibili nel client DNS NetX, vedere il capitolo 3.
+Altri due servizi per le ricerche DNS, CNAME e TXT, sono illustrati rispettivamente nelle righe 375 e 420 per individuare CNAME e TXT per il nome di dominio di input. Client DNS NetX come servizi simili per altri tipi di record, ad esempio NS, MX, SRV e SOA. Vedere il capitolo 3 per descrizioni dettagliate di tutte le ricerche di tipi di record disponibili nel client DNS NetX.
 
-Quando il client DNS viene eliminato alla riga 594, usando il servizio *nx_dns_delete* , il pool di pacchetti per il client DNS non viene eliminato, a meno che il client DNS non abbia creato il proprio pool di pacchetti. In caso contrario, spetta all'applicazione eliminare il pool di pacchetti se non ne è stato ulteriormente utilizzato.
+Quando il client DNS viene eliminato alla riga 594, usando il servizio *nx_dns_delete,* il pool di pacchetti per il client DNS non viene eliminato a meno che il client DNS non ha creato il proprio pool di pacchetti. In caso contrario, l'applicazione deve eliminare il pool di pacchetti se non ha più alcun utilizzo.
 
 ```c
 /* This is a small demo of DNS Client for the high-performance NetX TCP/IP stack.*/
@@ -595,36 +595,36 @@ void thread_client_entry(ULONG thread_input)
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Sono disponibili diverse opzioni di configurazione per la creazione di DNS per NetX. Queste opzioni possono essere ridefinite in *nx_dns. h.* L'elenco seguente descrive tutti i dettagli:  
+Esistono diverse opzioni di configurazione per la creazione di DNS per NetX. Queste opzioni possono essere ridefinite in *nx_dns.h.* L'elenco seguente descrive ognuno in dettaglio:  
 
-- **NX_DNS_TYPE_OF_SERVICE**: tipo di servizio necessario per le richieste UDP DNS. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per il normale servizio pacchetti IP.
+- **NX_DNS_TYPE_OF_SERVICE:** tipo di servizio necessario per le richieste UDP DNS. Per impostazione predefinita, questo valore è definito come NX_IP_NORMAL per il normale servizio di pacchetti IP.
 
-- **NX_DNS_TIME_TO_LIVE**: specifica il numero massimo di router che un pacchetto può superare prima che venga eliminato. Il valore predefinito è 0x80
+- **NX_DNS_TIME_TO_LIVE**: specifica il numero massimo di router che un pacchetto può passare prima di essere eliminato. Il valore predefinito è 0x80
 
-- **NX_DNS_FRAGMENT_OPTION**: imposta la proprietà Socket per consentire o impedire la frammentazione dei pacchetti in uscita. Il valore predefinito è NX_DONT_FRAGMENT.
+- **NX_DNS_FRAGMENT_OPTION**: imposta la proprietà socket per consentire o non consentire la frammentazione dei pacchetti in uscita. Il valore predefinito è NX_DONT_FRAGMENT.
 
 - **NX_DNS_QUEUE_DEPTH**: imposta il numero massimo di pacchetti da archiviare nella coda di ricezione del socket. Il valore predefinito è 5.
 
-- **NX_DNS_MAX_SERVERS**: specifica il numero massimo di server DNS nell'elenco dei server client.
+- **NX_DNS_MAX_SERVERS**: specifica il numero massimo di server DNS nell'elenco server client.
 
-- **NX_DNS_MESSAGE_MAX**: dimensioni massime del messaggio DNS per l'invio di query DNS. Il valore predefinito è 512, che corrisponde anche alla dimensione massima specificata nella sezione 2.3.4 del documento RFC 1035.
+- **NX_DNS_MESSAGE_MAX:** dimensione massima dei messaggi DNS per l'invio di query DNS. Il valore predefinito è 512, che è anche la dimensione massima specificata in RFC 1035 Section 2.3.4.
 
-- **NX_DNS_PACKET_PAYLOAD_UNALIGNED**: se non è definito, la dimensione del payload del pacchetto client che include le intestazioni Ethernet, IP (o IPv6) e UDP più le dimensioni massime del messaggio DNS specificate da NX_DNS_MESSAGE_MAX. Indipendentemente dalla definizione, il payload del pacchetto è allineato a 4 byte e archiviato in NX_DNS_PACKET_PAYLOAD.
+- **NX_DNS_PACKET_PAYLOAD_UNALIGNED:** se non è definito, la dimensione del payload del pacchetto client che include le intestazioni Ethernet, IP (o IPv6) e UDP più le dimensioni massime dei messaggi DNS specificate da NX_DNS_MESSAGE_MAX. Indipendentemente dalla definizione, il payload del pacchetto è allineato a 4 byte e archiviato in NX_DNS_PACKET_PAYLOAD.
 
-- **NX_DNS_PACKET_POOL_SIZE**: dimensioni del pool di pacchetti client per l'invio di query DNS se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL non è definito. Il valore predefinito è sufficientemente grande per 16 pacchetti di dimensioni del payload definiti da NX_DNS_PACKET_PAYLOAD ed è allineato a 4 byte.
+- **NX_DNS_PACKET_POOL_SIZE**: dimensioni del pool di pacchetti client per l'invio di query DNS se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL non è definito. Il valore predefinito è sufficientemente grande per 16 pacchetti di dimensioni del payload definite da NX_DNS_PACKET_PAYLOAD ed è allineato a 4 byte.
 
-- **NX_DNS_MAX_RETRIES**: il numero massimo di volte in cui il client DNS eseguirà una query sul server DNS corrente prima di provare un altro server o di interrompere la query DNS.
+- **NX_DNS_MAX_RETRIES:** numero massimo di volte in cui il client DNS esegue una query sul server DNS corrente prima di provare un altro server o interrompere la query DNS.
 
-- **NX_DNS_MAX_RETRANS_TIMEOUT**: il timeout massimo di ritrasmissione in una query DNS a un server DNS specifico. Il valore predefinito è 64 secondi (64 * NX_IP_PERIODIC_RATE).
+- **NX_DNS_MAX_RETRANS_TIMEOUT:** timeout di ritrasmissione massimo per una query DNS in un server DNS specifico. Il valore predefinito è 64 secondi (64 *NX_IP_PERIODIC_RATE).
 
-- **NX_DNS_IP_GATEWAY_AND_DNS_SERVER**: se definito e l'indirizzo del gateway IPv4 client è diverso da zero, il client DNS imposta il gateway IPv4 come server DNS primario del client. Il valore predefinito è Disattivata.
+- **NX_DNS_IP_GATEWAY_AND_DNS_SERVER:** se definito e l'indirizzo del gateway IPv4 client è diverso da zero, il client DNS imposta il gateway IPv4 come server DNS primario del client. Il valore predefinito è Disattivata.
 
-- **NX_DNS_PACKET_ALLOCATE_TIMEOUT**: viene impostata l'opzione timeout per l'allocazione di un pacchetto dal pool di pacchetti client DNS. Il valore predefinito è 1 secondo (1 * NX_IP_PERIODIC_RATE).
+- **NX_DNS_PACKET_ALLOCATE_TIMEOUT**: imposta l'opzione di timeout per l'allocazione di un pacchetto dal pool di pacchetti client DNS. Il valore predefinito è 1 secondo (1*NX_IP_PERIODIC_RATE).
 
-- **NX_DNS_CLIENT_USER_CREATE_PACKET_POOL**: consente al client DNS di consentire all'applicazione di creare e impostare il pool di pacchetti del client DNS. Per impostazione predefinita, questa opzione è disabilitata e il client DNS crea il proprio pool di pacchetti in *nx_dns_create*.
+- **NX_DNS_CLIENT_USER_CREATE_PACKET_POOL**: consente al client DNS di consentire all'applicazione di creare e impostare il pool di pacchetti del client DNS. Per impostazione predefinita, questa opzione è disabilitata e il client DNS crea il proprio pool di *pacchetti* nx_dns_create .
 
-- **NX_DNS_CLIENT_CLEAR_QUEUE**: consente al client DNS di cancellare dalla coda di ricezione i messaggi DNS precedenti prima di inviare una nuova query. La rimozione di questi pacchetti dalle query DNS precedenti impedisce l'overflow e l'eliminazione di pacchetti validi da parte della coda di socket client DNS.
+- **NX_DNS_CLIENT_CLEAR_QUEUE:** consente al client DNS di cancellare i messaggi DNS precedenti dalla coda di ricezione prima di inviare una nuova query. La rimozione di questi pacchetti dalle query DNS precedenti impedisce alla coda socket del client DNS di sovraccaricare ed eliminare pacchetti validi.
 
-- **NX_DNS_ENABLE_EXTENDED_RR_TYPES**: consente al client DNS di eseguire una query su tipi di record DNS aggiuntivi in, ad esempio CNAME, NS, MX, SOA, SRV e txt.
+- **NX_DNS_ENABLE_EXTENDED_RR_TYPES:** consente al client DNS di eseguire query su tipi di record DNS aggiuntivi in (ad esempio CNAME, NS, MX, SOA, SRV e TXT).
 
 - **NX_DNS_CACHE_ENABLE**: consente al client DNS di archiviare i record di risposta nella cache DNS.

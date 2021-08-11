@@ -1,26 +1,26 @@
 ---
-title: Appendice A-servizi API SMP ThreadX di Azure RTO
-description: Servizi API SMP di ThreadX
+title: Appendice A - Azure RTOS'API ThreadX SMP
+description: Servizi API SMP ThreadX
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a246bf997bfb51136c6a3802fe6b099d6a9002a4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6ccaeeb152bbd623d2ea702a4a29dbbadb98dc5b252bba9977d553a056da6b2a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823246"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798844"
 ---
-# <a name="appendix-a---azure-rtos-threadx-smp-api-services"></a>Appendice A-servizi API SMP ThreadX di Azure RTO
+# <a name="appendix-a---azure-rtos-threadx-smp-api-services"></a>Appendice A - Azure RTOS'API ThreadX SMP
 
-## <a name="entry-function"></a>Entry (funzione)
+## <a name="entry-function"></a>Funzione Entry
 
 ```C
 VOID     tx_kernel_enter(VOID);
 ```
-## <a name="block-memory-services"></a>Blocca servizi di memoria
+## <a name="block-memory-services"></a>Servizi di memoria a blocchi
 
 ```C
 UINT     tx_block_allocate(TX_BLOCK_POOL *pool_ptr,
@@ -59,7 +59,7 @@ UINT         tx_block_pool_prioritize(TX_BLOCK_POOL
 
 UINT         tx_block_release(VOID *block_ptr);
 ```
-## <a name="byte-memory-services"></a>Servizi di memoria byte
+## <a name="byte-memory-services"></a>Servizi byte memory
 
 ```C
 UINT     tx_byte_allocate(TX_BYTE_POOL *pool_ptr,
@@ -98,7 +98,7 @@ UINT     tx_byte_pool_prioritize(TX_BYTE_POOL
 
 UINT     tx_byte_release(VOID *memory_ptr);
 ```
-## <a name="event-flags-services"></a>Servizi flag di evento
+## <a name="event-flags-services"></a>Servizi dei flag di evento
 
 ```C
 UINT     tx_event_flags_create(TX_EVENT_FLAGS_GROUP
@@ -142,7 +142,7 @@ UINT     tx_event_flags_set_notify(TX_EVENT_FLAGS_GROUP
             (*events_set_notify)(TX_EVENT_FLAGS_GROUP
             *));
 ```
-## <a name="interrupt-control"></a>Interrompi controllo
+## <a name="interrupt-control"></a>Controllo interrupt
 
 ```C
 UINT     tx_interrupt_control(UINT new_posture);
@@ -181,7 +181,7 @@ UINT     tx_mutex_prioritize(TX_MUTEX *mutex_ptr);
 
 UINT     tx_mutex_put(TX_MUTEX *mutex_ptr);
 ```
-## <a name="queue-services"></a>Servizi di Accodamento
+## <a name="queue-services"></a>Servizi di accodamento
 
 ```C
 UINT     tx_queue_create(TX_QUEUE *queue_ptr, CHAR
@@ -232,7 +232,7 @@ UINT     tx_queue_send(TX_QUEUE *queue_ptr, VOID
 UINT     tx_queue_send_notify(TX_QUEUE *queue_ptr, VOID
             (*queue_send_notify)(TX_QUEUE *));
 ```
-## <a name="semaphore-services"></a>Servizi semaforo
+## <a name="semaphore-services"></a>Servizi semafori
 
 ```C
 UINT     tx_semaphore_ceiling_put(TX_SEMAPHORE
@@ -369,7 +369,7 @@ UINT     tx_thread_time_slice_change(TX_THREAD
 
 UINT     tx_thread_wait_abort(TX_THREAD *thread_ptr);
 ```
-## <a name="time-services"></a>Servizi temporali
+## <a name="time-services"></a>Servizi ora
 
 ```C
 ULONG     tx_time_get(VOID);

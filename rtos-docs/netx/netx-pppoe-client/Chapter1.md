@@ -1,25 +1,25 @@
 ---
-title: Capitolo 1-Introduzione ad Azure RTO NetX client PPPoE
-description: Questo capitolo contiene i dettagli del modulo PPPoE di Azure RTO NetX.
+title: Capitolo 1 - Introduzione al Azure RTOS client PPPoE NetX
+description: Questo capitolo contiene i dettagli Azure RTOS modulo PPPoE NetX.
 author: philmea
 ms.author: philmea
 ms.date: 07/13/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: bbf1e064bb38754bd67b279a0fd60d46d3d6d557
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 08edb5b332426d4ab5d2f92462438e1cb84245db6c2f6ab2ef72f28eab8a313f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822547"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798911"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-pppoe-client"></a>Capitolo 1-Introduzione ad Azure RTO NetX client PPPoE
+# <a name="chapter-1---introduction-to-azure-rtos-netx-pppoe-client"></a>Capitolo 1 - Introduzione al Azure RTOS client PPPoE NetX
 
-PPP over Ethernet (PPPoE) consente agli host di connettersi al server PPP tramite Ethernet invece della tradizionale comunicazione della linea seriale basata su caratteri.  I dettagli tecnici di PPPoE sono descritti in RFC 2516: un metodo per la trasmissione di PPP over Ethernet (PPPoE). Questo documento è incentrato sui dettagli del modulo PPPoE NetX di Azure RTO.
+PPP su Ethernet (PPPoE) consente agli host di connettersi al server PPP tramite Ethernet anziché la comunicazione linea seriale tradizionale basata su caratteri.  I dettagli tecnici di PPPoE sono descritti in RFC 2516: A Method for Transmitting PPP over Ethernet (PPPoE). Questo documento è in particolare in Azure RTOS modulo PPPoE NetX.
 
-Per fornire una connessione Point-to-Point su Ethernet, ogni sessione PPP deve apprendere l'indirizzo Ethernet del peer remoto, nonché stabilire un identificatore di sessione univoco.
+Per fornire una connessione da punto a punto tramite Ethernet, ogni sessione PPP deve apprendere l'indirizzo Ethernet del peer remoto, nonché stabilire un identificatore di sessione univoco.
 
-In base allo standard RFC 2516, PPPoE è costituito da due fasi: la fase di individuazione e la fase della sessione PPPoE. Quando un host (client) desidera avviare una sessione PPP, deve prima eseguire l'individuazione per trovare il server PPPoE. Questo passaggio consente inoltre al server e al client di identificare gli indirizzi MAC Ethernet e SESSION_ID, che verranno usati per il resto della sessione PPP.
+In base a RFC 2516, PPPoE è costituito da due fasi: la fase di individuazione e la fase sessione PPPoE. Quando un host (client) vuole avviare una sessione PPP, deve prima eseguire l'individuazione per trovare il server PPPoE. Questo passaggio consente inoltre al server e al client di identificare l'altro indirizzo MAC Ethernet e SESSION_ID, che verranno usati per il resto della sessione PPP.
 
 Un frame Ethernet è il seguente:
 
@@ -31,20 +31,20 @@ Il payload Ethernet per PPPoE è il seguente:
 
 ## <a name="pppoe-discovery-stage"></a>Fase di individuazione PPPoE
 
-La fase di individuazione PPPoE consente ai client di selezionare un server da tutti i server disponibili sulla rete, in modo da creare una sessione prima di scambiare i frame PPP.  Al termine della fase di individuazione, sia il client che il server devono accettare un ID di sessione univoco ed entrambi i lati devono essere a conoscenza dell'indirizzo MAC del peer.
+La fase di individuazione PPPoE consente ai client di selezionare un server da tutti i server disponibili nella rete, in modo efficace per creare una sessione prima dello scambio di frame PPP.  Al termine della fase di individuazione, sia il client che il server devono accettare un ID sessione univoco ed entrambi i lati devono conoscere l'indirizzo MAC del peer.
 
 | Messaggio di individuazione | Codice | Direzione |
 | ----------------- | ---- | --------- |
-| Avvio di individuazione attiva PPPoE (PADI) | 0x09 | Da client a broadcast |
-| Offerta di individuazione attiva PPPoE (PADO) | 0x07 | Da server a client |
-| Richiesta di individuazione attiva PPPoE (PADR) | 0x19 | Da client a server |
-| Sessione di individuazione attiva PPPOE-conferma (rilievi) | 0x65 | Da server a client |
-| Termina individuazione attiva PPPoE (PADT) | 0xa7 | Può essere avviato dal server o dal client |
+| Avvio dell'individuazione attiva PPPoE (PADI) | 0x09 | Dal client alla trasmissione |
+| PpPoe Active Discovery Offer (PADO) | 0x07 | Dal server al client |
+| Richiesta di individuazione attiva PPPoE (PADR) | 0x19 | Dal client al server |
+| PPPOE Active Discovery Session-confirmation (PADS) | 0x65 | Dal server al client |
+| PPPoE Active Discovery Terminate (PADT) | 0xa7 | Può essere avviato da server o client |
 
-Tutti i frame Ethernet di individuazione hanno il campo ETHER_TYPE impostato sul valore 0x8863.
+Per tutti i frame Ethernet di individuazione il campo ETHER_TYPE impostato sul valore 0x8863.
 
 ## <a name="pppoe-session-message"></a>Messaggio di sessione PPPoE
 
-Dopo che il client e il server hanno creato una sessione, i frame PPP possono essere trasferiti come messaggi di sessione PPPoE.  Durante una sessione, il SESSION_ID non deve cambiare e deve essere il valore assegnato dal server durante la fase di individuazione.
+Dopo che il client e il server hanno creato una sessione, i frame PPP possono essere trasferiti come messaggi di sessione PPPoE.  Durante una sessione, il SESSION_ID deve cambiare e deve essere il valore assegnato dal server durante la fase di individuazione.
 
-Tutti i frame Ethernet della sessione PPPoE hanno il campo ETHER_TYPE impostato sul valore 0x8864.
+Per tutti i frame Ethernet di sessione PPPoE il campo ETHER_TYPE impostato sul valore 0x8864.

@@ -1,46 +1,46 @@
 ---
-title: Capitolo 2-installazione e utilizzo del client SMTP NetX Duo
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client SMTP NetX Duo.
+title: Capitolo 2 - Installazione e uso del client SMTP di NetX Duo
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client SMTP di NetX Duo.
 author: philmea
 ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 86f324935ba32aab010b81f825be0a6564983a2e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ba4d50048adba4ac992f6bbe90d236445546a5929ace74899833c686a90dadd9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821689"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797841"
 ---
-# <a name="chapter-2---installation-and-use-of-netx-duo-smtp-client"></a>Capitolo 2-installazione e utilizzo del client SMTP NetX Duo
+# <a name="chapter-2---installation-and-use-of-netx-duo-smtp-client"></a>Capitolo 2 - Installazione e uso del client SMTP di NetX Duo
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client SMTP NetX Duo.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client SMTP di NetX Duo.
 
-## <a name="netx-duo-smtp-client-installation"></a>Installazione client SMTP NetX Duo
+## <a name="netx-duo-smtp-client-installation"></a>Installazione del client SMTP di NetX Duo
 
-Il client SMTP NetX Duo è disponibile all'indirizzo [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Il pacchetto include i file seguenti:
+Il client SMTP di NetX Duo è disponibile all'indirizzo [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Il pacchetto include i file seguenti:
 
-- **nxd_smtp_client. c** File di origine C per l'API client SMTP NetX Duo
-- **nxd_smtp_client. h** File di intestazione C per l'API client SMTP NetX Duo
-- **demo_netxduo_smtp_client. c** Demo per il client SMTP NetX Duo
-- **nxd_smtp_client.pdf manuale dell'utente per** API client SMTP NetX Duo
+- **nxd_smtp_client.c** File di origine C per l'API client SMTP di NetX Duo
+- **nxd_smtp_client.h** File di intestazione C per l'API client SMTP di NetX Duo
+- **demo_netxduo_smtp_client.c** Demo per il client SMTP di NetX Duo
+- **nxd_smtp_client.pdf'utente per** NetX Duo SMTP Client API
 
-Per usare l'API client SMTP NetX Duo, l'intera distribuzione indicata in precedenza può essere copiata nella stessa directory in cui è installato NetX Duo. Se, ad esempio, NetX Duo è installato nella directory "c:*\Progetto nel*", i file *nxd_smtp_client. h e nxd_smtp_client. c* devono essere copiati in questa directory.
+Per usare l'API client SMTP di NetX Duo, l'intera distribuzione indicata in precedenza può essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "c:*\myproject*", i file *nxd_smtp_client.h e nxd_smtp_client.c* devono essere copiati in questa directory.
 
-## <a name="using-netx-duo-smtp-client"></a>Uso del client SMTP NetX Duo
+## <a name="using-netx-duo-smtp-client"></a>Uso del client SMTP di NetX Duo
 
-Per creare l'applicazione client SMTP NetX Duo, è necessario innanzitutto compilare le librerie ThreadX e NetX Duo e includerle nel progetto di compilazione. L'applicazione deve quindi includere TX *_api. h* e *nx_api. h nel codice sorgente dell'applicazione*. Questa operazione consentirà di abilitare i servizi ThreadX e NetX Duo. Deve inoltre includere *nxd_smtp_client. c* e *nxd_smtp_client. h* dopo *tx_api. h* e *nx_api. h per l'utilizzo dei servizi client SMTP.*
+Per creare l'applicazione client SMTP di NetX Duo, deve prima compilare le librerie ThreadX e NetX Duo e includerle nel progetto di compilazione. L'applicazione deve quindi includere tx *_api.h* *e nx_api.h nel codice sorgente dell'applicazione.* In questo modo verranno abilitati i servizi ThreadX e NetX Duo. Deve includere anche *nxd_smtp_client.c* *e nxd_smtp_client.h* dopo *tx_api.h* e *nx_api.h* per usare i servizi client SMTP.
 
-Questi file devono essere compilati in modo analogo agli altri file dell'applicazione e il codice oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per creare un'applicazione client SMTP NetX Duo.
+Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il codice oggetto deve essere collegato con i file dell'applicazione. Questo è tutto ciò che è necessario per creare un'applicazione client SMTP netx duo.
 
-## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
+## <a name="small-example-system"></a>Small Example System
 
-Un esempio di utilizzo del client SMTP NetX Duo è descritto nella figura 1 riportata di seguito. Il pool di pacchetti per l'istanza IP viene creato usando il servizio nx_packet_pool_create, alla riga 68 e ha un payload di pacchetti molto piccolo. Questo perché l'istanza IP invia solo pacchetti di controllo che non richiedono un payload molto elevato. Il pool di pacchetti client SMTP creato alla riga 84 e viene utilizzato per trasmettere messaggi client SMTP ai dati del server e del messaggio. Il payload del pacchetto è molto più grande. L'istanza IP viene creata nella riga 118 usando lo stesso pool di pacchetti. TCP, obbligatorio per il protocollo SMTP, è abilitato nell'istanza IP alla riga 130.
+Un esempio di uso del client SMTP di NetX Duo è descritto nella figura 1 riportata di seguito. Il pool di pacchetti per l'istanza IP viene creato usando il servizio nx_packet_pool_create, alla riga 68, e ha un payload di pacchetti molto piccolo. Ciò è dovuto al fatto che l'istanza IP invia solo pacchetti di controllo che non richiedono molto payload. Il pool di pacchetti del client SMTP creato alla riga 84 viene utilizzato per trasmettere i messaggi del client SMTP al server e ai dati dei messaggi. Il payload dei pacchetti è molto più grande. L'istanza IP viene creata nella riga 118 usando lo stesso pool di pacchetti. TCP, necessario per il protocollo SMTP, è abilitato nell'istanza IP nella riga 130.
 
-Nel thread dell'applicazione, il client SMTP viene creato usando il servizio *nxd_smtp_client_create* , alla riga 170. Il servizio *nxd_smtp_client_create* supporta le connessioni al server SMTP sia IPv4 che IPv6, sebbene questo esempio sia limitato a IPv4. Il messaggio di posta elettronica viene quindi inviato al client SMTP per la trasmissione alla riga 184 usando il servizio *nx_smtp_mail_send* . Si noti che la riga dell'oggetto con l'intestazione del contenuto della posta viene creata separatamente dal corpo del messaggio. Si noti inoltre che la richiesta invia messaggi accetta un solo indirizzo di posta elettronica destinatario che si presuppone sia sintatticamente corretto.
+Nel thread dell'applicazione il client SMTP viene creato *usando il nxd_smtp_client_create,* nella riga 170. Il *nxd_smtp_client_create* supporta connessioni server SMTP sia IPv4 che IPv6, anche se questo esempio è limitato a IPv4. Il messaggio di posta elettronica viene quindi inviato al client SMTP per la trasmissione alla riga 184 *usando nx_smtp_mail_send* servizio. Si noti che la riga dell'oggetto con l'intestazione del contenuto del messaggio viene creata separatamente dal corpo del messaggio. Si noti anche che la richiesta di invio messaggi accetta un solo indirizzo di posta elettronica del destinatario che si presuppone sia sintatticamente corretto.
 
-Quindi, l'applicazione termina il client SMTP alla riga 200. Il servizio *nx_smtp_client_delete* verifica che la connessione socket sia chiusa e che la porta non sia associata. Si noti che spetta all'applicazione client SMTP eliminare il pool di pacchetti se non è più usato.
+L'applicazione termina quindi il client SMTP alla riga 200. Il *nx_smtp_client_delete* verifica che la connessione socket sia chiusa e che la porta non sia associata. Si noti che è l'applicazione client SMTP a eliminare il pool di pacchetti se non è più in uso.
 
 ```c
 /*
@@ -257,20 +257,20 @@ void    demo_client_thread_entry(ULONG info)
 }
 ```
 
-**Figura 1. Esempio di utilizzo del client SMTP con NetX Duo**
+**Figura 1. Esempio di uso del client SMTP con NetX Duo**
 
 ## <a name="client-configuration-options"></a>Opzioni di configurazione client
 
-Sono disponibili diverse opzioni di configurazione con l'API client SMTP NetX Duo. Di seguito è riportato un elenco di tutte le opzioni descritte in dettaglio:
+Sono disponibili diverse opzioni di configurazione con l'API client SMTP di NetX Duo. Di seguito è riportato un elenco di tutte le opzioni descritte in dettaglio:
 
-- **NX_SMTP_CLIENT_TCP_WINDOW_SIZE** Questa opzione consente di impostare le dimensioni della finestra di ricezione TCP del client. Questo deve essere impostato su un numero inferiore alle dimensioni MTU dell'hardware Ethernet sottostante e consentire le intestazioni IP e TCP. La dimensione predefinita della finestra TCP del client SMTP NetX Duo è 1460.
-- **NX_SMTP_CLIENT_PACKET_TIMEOUT** Questa opzione imposta il timeout per l'allocazione dei pacchetti NetX. Il timeout del pacchetto client SMTP NetX Duo predefinito è di 2 secondi.
-- **NX_SMTP_CLIENT_CONNECTION_TIMEOUT** Questa opzione imposta il timeout di connessione socket TCP client. Il timeout di connessione del client SMTP NetX Duo predefinito è di 10 secondi.
-- **NX_SMTP_CLIENT_DISCONNECT_TIMEOUT** Questa opzione imposta il timeout di disconnessione socket TCP client. Il timeout di disconnessione del client SMTP NetX Duo predefinito è 5 secondi *. Si noti che se il client SMTP rileva un errore interno, ad esempio una connessione interrotta, può terminare la connessione con un timeout di attesa zero.
-- **NX_SMTP_GREETING_TIMEOUT** Questa opzione imposta il timeout per il client per ricevere la risposta del server al messaggio di saluto. Il valore predefinito del client SMTP NetX Duo è 10 secondi.
-- **NX_SMTP_ENVELOPE_TIMEOUT** Questa opzione imposta il timeout per il client per ricevere la risposta del server a un comando client. Il valore predefinito del client SMTP NetX Duo è 10 secondi.
-- **NX_SMTP_MESSAGE_TIMEOUT** Questa opzione imposta il timeout per il client per ricevere la risposta del server alla ricezione dei dati del messaggio di posta elettronica. Il valore predefinito del client SMTP NetX Duo è 30 secondi.
-- **NX_SMTP_CLIENT_SEND_TIMEOUT** Questa opzione definisce l'opzione di attesa del buffer per archiviare la password dell'utente durante l'autenticazione SMTP con il server. Il valore predefinito è 20 byte.
-- **NX_SMTP_SERVER_CHALLENGE_MAX_STRING** Questa opzione definisce la dimensione del buffer per l'estrazione della richiesta di verifica del server durante l'autenticazione SMTP. Il valore predefinito è 200 byte. Per l'accesso e l'autenticazione normale, il client SMTP può probabilmente usare un buffer più piccolo.
-- **NX_SMTP_CLIENT_MAX_PASSWORD** Questa opzione definisce la dimensione del buffer in cui archiviare la password dell'utente durante l'autenticazione SMTP con il server. Il valore predefinito è 20 byte. 
-- **NX_SMTP_CLIENT_MAX_USERNAME** Questa opzione definisce la dimensione del buffer in cui archiviare il nome utente dell'host durante l'autenticazione SMTP con il server. Il valore predefinito è 40 byte. 
+- **NX_SMTP_CLIENT_TCP_WINDOW_SIZE** Questa opzione imposta le dimensioni della finestra di ricezione TCP client. Deve essere impostato su un valore inferiore alle dimensioni MTU dell'hardware Ethernet sottostante e consentire spazio per le intestazioni IP e TCP. La dimensione predefinita della finestra TCP del client SMTP di NetX Duo è 1460.
+- **NX_SMTP_CLIENT_PACKET_TIMEOUT** Questa opzione imposta il timeout per l'allocazione di pacchetti NetX. Il timeout predefinito del pacchetto del client SMTP di NetX Duo è di 2 secondi.
+- **NX_SMTP_CLIENT_CONNECTION_TIMEOUT** Questa opzione imposta il timeout di connessione del socket TCP client. Il timeout di connessione predefinito del client SMTP di NetX Duo è 10 secondi.
+- **NX_SMTP_CLIENT_DISCONNECT_TIMEOUT** Questa opzione imposta il timeout di disconnessione del socket TCP client. Il timeout di disconnessione predefinito del client SMTP di NetX Duo è di 5 secondi*. Si noti che se il client SMTP rileva un errore interno, ad esempio una connessione interrotta, può terminare la connessione con un timeout di attesa pari a zero.
+- **NX_SMTP_GREETING_TIMEOUT** Questa opzione imposta il timeout per il client per la ricezione della risposta del server al messaggio di saluto. Il valore predefinito di NetX Duo SMTP Client è 10 secondi.
+- **NX_SMTP_ENVELOPE_TIMEOUT** Questa opzione imposta il timeout che consente al client di ricevere la risposta del server a un comando client. Il valore predefinito di NetX Duo SMTP Client è 10 secondi.
+- **NX_SMTP_MESSAGE_TIMEOUT** Questa opzione imposta il timeout per il client per la ricezione della risposta del server alla ricezione dei dati del messaggio di posta elettronica. Il valore predefinito di NetX Duo SMTP Client è 30 secondi.
+- **NX_SMTP_CLIENT_SEND_TIMEOUT** Questa opzione definisce l'opzione wait del buffer per archiviare la password utente durante l'autenticazione SMTP con il server. Il valore predefinito è 20 byte.
+- **NX_SMTP_SERVER_CHALLENGE_MAX_STRING** Questa opzione definisce le dimensioni del buffer per l'estrazione della richiesta di verifica del server durante l'autenticazione SMTP. Il valore predefinito è 200 byte. Per l'autenticazione LOGIN e PLAIN, il client SMTP può probabilmente usare un buffer più piccolo.
+- **NX_SMTP_CLIENT_MAX_PASSWORD** Questa opzione definisce le dimensioni del buffer in cui archiviare la password utente durante l'autenticazione SMTP con il server. Il valore predefinito è 20 byte. 
+- **NX_SMTP_CLIENT_MAX_USERNAME** Questa opzione definisce le dimensioni del buffer in cui archiviare il nome utente host durante l'autenticazione SMTP con il server. Il valore predefinito è 40 byte. 

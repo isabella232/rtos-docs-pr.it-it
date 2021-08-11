@@ -1,65 +1,65 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX Duo TFTP
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente TFTP di Azure RTO NetX Duo.
+title: Capitolo 2 - Installazione e uso di Azure RTOS NetX Duo TFTP
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'uso del Azure RTOS TFTP di NetX Duo.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ffb0c433bf1a5665e07da3cc6c240f1d0d8c87d9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ae4e82a0f878af06bd178035cb9429cfe2a14d0bc4bbf848db7d321463586a20
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822901"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801258"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-tftp"></a>Capitolo 2-installazione e uso di Azure RTO NetX Duo TFTP
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-tftp"></a>Capitolo 2 - Installazione e uso di Azure RTOS NetX Duo TFTP
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente TFTP di Azure RTO NetX Duo.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'uso del Azure RTOS TFTP di NetX Duo.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-Azure RTO NetX Duo può essere ottenuto dal repository di codice sorgente pubblico all'indirizzo https://github.com/azure-rtos/netxduo/ . Il pacchetto include i file seguenti:
+Azure RTOS NetX Duo può essere ottenuto dal repository di codice sorgente pubblico all'indirizzo https://github.com/azure-rtos/netxduo/ . Il pacchetto include i file seguenti:
 
 
-- **nxd_tftp_client. h** File di intestazione per il client TFTP NetX Duo
+- **nxd_tftp_client.h** File di intestazione per il client NetX Duo TFTP
 
-- **nxd_tftp_client. c** File di origine C per il client TFTP NetX Duo
+- **nxd_tftp_client.c** File di origine C per il client NetX Duo TFTP
 
-- **nxd_tftp_server. h** File di intestazione per il server TFTP NetX Duo
+- **nxd_tftp_server.h** File di intestazione per il server NetX Duo TFTP
 
-- **nxd_tftp_server. c** File di origine C per NetX Duo TFTP Server
+- **nxd_tftp_server.c** File di origine C per il server NetX Duo TFTP
 
-- **filex_stub. h** File stub se FileX non è presente
+- **filex_stub.h** File stub se FileX non è presente
 
 - **nxd_tftp.pdf** Descrizione PDF di NetX Duo TFTP
 
-- **demo_netxduo_tftp. c** Dimostrazione TFTP di NetX Duo
+- **demo_netxduo_tftp.c** Dimostrazione di NetX Duo TFTP
 
-## <a name="tftp-installation"></a>Installazione TFTP
+## <a name="tftp-installation"></a>Installazione di TFTP
 
-Per usare NetX Duo TFTP, l'intera distribuzione citata in precedenza può essere copiata nella stessa directory in cui è installato NetX Duo. Se, ad esempio, NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_tftp_client. h*, *nxd_tftp_client. c*, *nxd_tftp_server. h* e *nxd_tftp_server. c* potrebbero essere copiati in questa directory.
+Per usare NetX Duo TFTP, l'intera distribuzione indicata in precedenza può essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_tftp_client.h*, *nxd_tftp_client.c*, *nxd_tftp_server.h* e *nxd_tftp_server.c* potrebbero essere copiati in questa directory.
 
 ## <a name="using-tftp"></a>Uso di TFTP
 
-Per eseguire un'applicazione TFTP, il codice dell'applicazione deve includere *nxd_tftp_client. h* e/o nxd_tftp_server. h dopo aver incluso *tx_api. h, fx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX, FILEX e NETX Duo. Il progetto dell'applicazione deve includere anche *nxd_tftp_client. c* e/o *nxd_tftp_server. c* nel processo di compilazione. Questi file devono essere compilati allo stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX Duo TFTP. Una volta inclusi *i file di intestazione* , il codice dell'applicazione è in grado di utilizzare i servizi TFTP.
+Per eseguire un'applicazione TFTP, il codice dell'applicazione deve includere *nxd_tftp_client.h* e/o nxd_tftp_server.h dopo aver *incluso rispettivamente tx_api.h, fx_api.h* e *nx_api.h,* per poter usare rispettivamente ThreadX, FileX e NetX Duo. Il progetto dell'applicazione *deve includere anche nxd_tftp_client.c* e/o *nxd_tftp_server.c* nel processo di compilazione. Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX Duo TFTP. Dopo *aver incluso i file di intestazione,* il codice dell'applicazione è in grado di usare i servizi TFTP.
 
 > [!NOTE]
-> Poiché TFTP usa i servizi UDP NetX Duo, è necessario abilitare UDP con la chiamata *nx_udp_enable* prima di usare TFTP.
+> Poiché TFTP usa i servizi UDP di NetX Duo, udp deve essere abilitato con la nx_udp_enable *prima* di usare TFTP.
 
-## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
+## <a name="small-example-system"></a>Small Example System
 
-Un esempio di come è facile usare NetX Duo TFTP è descritto nella figura 1,1 riportata di seguito. In questo esempio, il file di inclusione TFTP *nxd_tftp_client. h* e *nxd_tftp_server. h* vengono portati in alla riga 19 e 20. Il server TFTP viene quindi creato in "*tx_application_define*" alla riga 179. 
-
-> [!NOTE]
-> Il blocco di controllo del server TFTP "*Server*" è stato definito come variabile globale alla riga 45 in precedenza. Questa demo sceglie di usare IPv4 per la comunicazione TFTP nella riga 14. Al termine della creazione, il server TFTP viene avviato alla riga 304. Alla riga 411 viene creato il client TFTP. Infine, il client scrive il file alla riga 450 e legge il file alla riga 485.
-
-L'attività del thread del server TFTP viene arrestata e il server TFTP viene eliminato alla riga 324. L'applicazione deve chiamare fx_media_close (riga 331) per chiudere tutti i file e aggiornare i dati di file e directory al supporto USB.
+Un esempio della facilità d'uso di NetX Duo TFTP è descritto nella figura 1.1 riportata di seguito. In questo esempio il file di inclusione TFTP *nxd_tftp_client.h* e *nxd_tftp_server.h* vengono inclusi nelle righe 19 e 20. Successivamente, il server TFTP viene creato in "*tx_application_define*" alla riga 179. 
 
 > [!NOTE]
-> Questo esempio USA FileX per il server TFTP che gestisce la ricezione e il download di richieste di file client TFTP. Tuttavia, se NX_TFTP_NO_FILEX è definito, l'applicazione può includere file_stub. h anziché fx_api. h.
+> Il blocco di controllo del server TFTP "*server*" è stato definito come variabile globale alla riga 45 in precedenza. Questa demo sceglie di usare IPv4 per la comunicazione TFTP nella riga 14. Al termine della creazione, il server TFTP viene avviato alla riga 304. Alla riga 411 viene creato il client TFTP. Infine, il client scrive il file alla riga 450 e lo legge nuovamente alla riga 485.
+
+L'attività del thread del server TFTP viene arrestata e il server TFTP viene eliminato alla riga 324. L'applicazione deve chiamare fx_media_close (riga 331) per chiudere tutti i file e aggiornare i dati di file e directory nel supporto USB.
+
+> [!NOTE]
+> Questo esempio usa FileX per la gestione del server TFTP per la ricezione e il download delle richieste di file del client TFTP. Tuttavia, se NX_TFTP_NO_FILEX definito, l'applicazione può includere file_stub.h anziché fx_api.h.
 >
-> Si noti inoltre che le applicazioni client e server TFTP NetX esistenti funzioneranno con NetX Duo TFTP. Lo sviluppatore di applicazioni è tuttavia incoraggiato a trasferire le proprie applicazioni TFTP NetX in NetX Duo. I servizi TFTP NetX equivalenti sono:
+> Si noti anche che le applicazioni client e server NetX TFTP esistenti funzionano con NetX Duo TFTP. Tuttavia, lo sviluppatore dell'applicazione è invitato a convertire le applicazioni NetX TFTP in NetX Duo. I servizi NetX TFTP equivalenti sono:
 
 - *nxd_tftp_server_start*
 
@@ -616,11 +616,11 @@ UINT        iface_index;
 }
 ```
 
-Figura 1,1 esempio di uso di TFTP con NetX Duo
+Figura 1.1 Esempio di uso di TFTP con NetX Duo
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Per la compilazione di NetX Duo TFTP sono disponibili diverse opzioni di configurazione. L'elenco seguente descrive ogni dettaglio. Se non diversamente specificato, queste opzioni sono disponibili in *nxd_tftp_client. h* e *nxd_tftp_server. h*.
+Sono disponibili diverse opzioni di configurazione per la creazione di NetX Duo TFTP. Nell'elenco seguente vengono descritte in dettaglio le due opzioni. Se non diversamente specificato, queste opzioni sono disponibili in *nxd_tftp_client.h* *e nxd_tftp_server.h.*
 
 
 - **NX_DISABLE_ERROR_CHECKING** Definita, questa opzione rimuove il controllo degli errori TFTP di base. Viene in genere usato dopo il debug dell'applicazione.
@@ -629,26 +629,26 @@ Per la compilazione di NetX Duo TFTP sono disponibili diverse opzioni di configu
 
 - **NX_TFTP_SERVER_TIME_SLICE** Intervallo di tempo per l'esecuzione del server TFTP prima di cedere ad altri thread con la stessa priorità. Il valore predefinito è 2.
 
-- **NX_TFTP_MAX_CLIENTS** Il numero massimo di client che il server è in grado di gestire in una sola volta. Per impostazione predefinita, questo valore è 10 per supportare 10 client contemporaneamente.
+- **NX_TFTP_MAX_CLIENTS** Numero massimo di client che il server può gestire contemporaneamente. Per impostazione predefinita, questo valore è 10 per supportare 10 client contemporaneamente.
 
 - **NX_TFTP_ERROR_STRING_MAX** Numero massimo di caratteri nella stringa di errore. Per impostazione predefinita, questo valore è 64.
 
-- **NX_TFTP_NO_FILEX** Definito, questa opzione fornisce uno stub per le dipendenze FileX. Se questa opzione è definita, il client TFTP funzionerà senza alcuna modifica. Il server TFTP dovrà essere modificato o l'utente dovrà creare un numero limitato di servizi FileX per il corretto funzionamento.
+- **NX_TFTP_NO_FILEX** Definita, questa opzione fornisce uno stub per le dipendenze FileX. Il client TFTP funzionerà senza alcuna modifica se questa opzione è definita. Il server TFTP dovrà essere modificato o l'utente dovrà creare alcuni servizi FileX per funzionare correttamente.
 
-- **NX_TFTP_TYPE_OF_SERVICE** Tipo di servizio richiesto per le richieste UDP TFTP. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per indicare il normale servizio pacchetti IP.
+- **NX_TFTP_TYPE_OF_SERVICE** Tipo di servizio necessario per le richieste UDP TFTP. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per indicare il normale servizio di pacchetti IP.
 
-- **NX_TFTP_FRAGMENT_OPTION** Consenti frammenti per richieste UDP TFTP. Per impostazione predefinita, questo valore è NX_DONT_FRAGMENT per disabilitare la frammentazione UDP TFTP.
+- **NX_TFTP_FRAGMENT_OPTION** Frammento abilitato per le richieste UDP TFTP. Per impostazione predefinita, questo valore è NX_DONT_FRAGMENT disabilitare la frammentazione UDP TFTP.
 
-- **NX_TFTP_TIME_TO_LIVE** Specifica il numero di router che questo pacchetto può superare prima che venga eliminato. Il valore predefinito è impostato su 0x80.
+- **NX_TFTP_TIME_TO_LIVE** Specifica il numero di router che il pacchetto può superare prima di essere eliminato. Il valore predefinito è impostato su 0x80.
 
 - **NX_TFTP_SOURCE_PORT** Questa opzione consente a un'applicazione client TFTP di specificare la porta del socket UDP del client TFTP. Il valore predefinito è NX_ANY_PORT.
 
-- ***NX_TFTP_SERVER_RETRANSMIT_ENABLE*** Consente al timer del server TFTP di controllare ogni sessione del client TFTP con per l'attività recente, ovvero un ACK o un pacchetto di dati. Quando il timeout della sessione scade dopo il numero massimo di volte, si presuppone che la connessione sia stata persa. Il server cancella la richiesta client, chiude tutti i file aperti e rende disponibile la richiesta di connessione per il client successivo. L'impostazione predefinita è Disabled.
+- ***NX_TFTP_SERVER_RETRANSMIT_ENABLE*** Consente al timer del server TFTP di controllare ogni sessione client TFTP con l'attività recente (un pacchetto di dati o ACK). Quando il timeout della sessione scade dopo il numero massimo di volte, si presuppone che la connessione sia stata persa. Il server cancella la richiesta client, chiude tutti i file aperti e rende disponibile la richiesta di connessione per il client successivo. L'impostazione predefinita è disabilitata.
 
-- **NX_TFTP_SERVER_TIMEOUT_PERIOD** Specifica l'intervallo di tempo durante il quale la funzione di immissione del timer del server TFTP controlla le connessioni client per la ricezione di pacchetti. Il valore predefinito è 20 (cicli timer).
+- **NX_TFTP_SERVER_TIMEOUT_PERIOD** Specifica l'intervallo in cui la funzione di immissione timer del server TFTP controlla le connessioni client per la ricezione di pacchetti. Il valore predefinito è 20 (tick del timer).
 
-- **NX_TFTP_SERVER_RETRANSMIT_TIMEOUT** Si tratta del timeout per la ricezione di un ACK valido o di un pacchetto di dati dal client. Il valore predefinito è 200 (cicli timer)*.*
+- **NX_TFTP_SERVER_RETRANSMIT_TIMEOUT** Si tratta del timeout per la ricezione di un pacchetto di dati o ACK valido dal client. Il valore predefinito è 200 (tick *timer).*
 
 - **NX_TFTP_SERVER_MAX_RETRIES** Specifica il numero massimo di volte in cui il timeout di ritrasmissione della sessione client viene rinnovato. Successivamente, la sessione viene chiusa dal server.
 
-- **NX_TFTP_MAX_CLIENT_RETRANSMITS** Specifica il numero massimo di volte in cui il server riceve un ACK duplicato o un pacchetto di dati dal client (che viene eliminato) senza inviare un messaggio di errore al client e chiudere la sessione. Non produce alcun effetto se viene definito NX_TFTP_SERVER_RETRANSMIT_ENABLE.
+- **NX_TFTP_MAX_CLIENT_RETRANSMITS** Specifica il numero massimo di volte in cui il server riceve un ACK duplicato o un pacchetto di dati dal client (che elimina) senza inviare un messaggio di errore al client e chiudere la sessione. Non ha effetto se NX_TFTP_SERVER_RETRANSMIT_ENABLE è definito .

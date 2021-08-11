@@ -1,47 +1,47 @@
 ---
-title: Capitolo 3-Descrizione dei servizi FTP NetX di Azure RTO
-description: Questo capitolo contiene una descrizione di tutti i servizi FTP NetX di Azure RTO (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS FTP NetX
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS FTP NetX (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b05d03c45607c45acf32474cf8e40861532c5fae
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1aec01088236dcae359c0273a0206c10ea09201eb486478ebd678529413badae
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822625"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799456"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-ftp-services"></a>Capitolo 3-Descrizione dei servizi FTP NetX di Azure RTO
+# <a name="chapter-3---description-of-azure-rtos-netx-ftp-services"></a>Capitolo 3 - Descrizione dei Azure RTOS FTP NetX
 
-Questo capitolo contiene una descrizione di tutti i servizi FTP NetX di Azure RTO (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i Azure RTOS FTP NetX (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
-- **nx_ftp_client_connect**: *connettersi al server FTP*
-- **nx_ftp_client_create**: *creare un'istanza del client FTP*
-- **nx_ftp_client_delete**: *eliminare un'istanza del client FTP*
-- **nx_ftp_client_directory_create**: *creare una directory nel server*
-- **nx_ftp_client_directory_default_set**: *impostare la directory predefinita nel server*
-- **nx_ftp_client_directory_delete**: *eliminare una directory nel server*
-- **nx_ftp_client_directory_listing_get**: *ottenere un elenco di directory dal server*
-- **nx_ftp_client_directory_listing_continue**: *continua la visualizzazione della directory dal server*
-- **nx_ftp_client_disconnect**: *disconnettersi dal server FTP*
-- **nx_ftp_client_file_close**: *chiudere il file client*
-- **nx_ftp_client_file_delete**: *eliminare un file nel server*
-- **nx_ftp_client_file_open**: *Apri file client*
-- **nx_ftp_client_file_read**: *lettura da file*
-- **nx_ftp_client_file_rename**: *rinominare il file nel server*
-- **nx_ftp_client_file_write**: *scrittura nel file*
-- **nx_ftp_server_create**: *creare un server FTP*
-- **nx_ftp_server_delete**: *eliminare il server FTP*
-- **nx_ftp_server_start**: *avviare il server FTP*
-- **nx_ftp_server_stop**: *arrestare il server FTP*
+- **nx_ftp_client_connect**: *Connessione al server FTP*
+- **nx_ftp_client_create**: *Creare un'istanza del client FTP*
+- **nx_ftp_client_delete**: *Eliminare un'istanza del client FTP*
+- **nx_ftp_client_directory_create**: *Creare una directory nel server*
+- **nx_ftp_client_directory_default_set:** impostare *la directory predefinita nel server*
+- **nx_ftp_client_directory_delete**: *Eliminare una directory nel server*
+- **nx_ftp_client_directory_listing_get:** Ottenere *l'elenco di directory dal server*
+- **nx_ftp_client_directory_listing_continue:** continuare *l'elenco di directory dal server*
+- **nx_ftp_client_disconnect**: *Disconnettersi dal server FTP*
+- **nx_ftp_client_file_close**: *Chiudere il file client*
+- **nx_ftp_client_file_delete**: *Elimina file nel server*
+- **nx_ftp_client_file_open**: *Aprire il file client*
+- **nx_ftp_client_file_read**: *Lettura da file*
+- **nx_ftp_client_file_rename**: *Rinominare il file nel server*
+- **nx_ftp_client_file_write**: *Scrivere nel file*
+- **nx_ftp_server_create**: *Creare un server FTP*
+- **nx_ftp_server_delete**: *Elimina server FTP*
+- **nx_ftp_server_start**: *Avviare il server FTP*
+- **nx_ftp_server_stop**: *Arrestare il server FTP*
 
 ## <a name="nx_ftp_client_connect"></a>nx_ftp_client_connect
 
-Connettersi a un server FTP
+Connessione a un server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -53,28 +53,28 @@ UINT nx_ftp_client_connect(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio connette l'istanza del client FTP precedentemente creata al server FTP all'indirizzo IP specificato.
+Questo servizio connette l'istanza del client FTP creata in precedenza al server FTP all'indirizzo IP fornito.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 - **server_ip**: indirizzo IP del server FTP.
-- **username**: nome utente del client per l'autenticazione.
-- **password**: password client per l'autenticazione.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per la connessione client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **username:** nome utente client per l'autenticazione.
+- **password:** password client per l'autenticazione.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la connessione client FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 attraverso 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un tempo indefinito fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) connessione FTP riuscita.
-- **NX_TFTP_EXPECTED_22X_CODE**: (0xDB) non ha ricevuto una risposta 22x (OK)
-- **NX_FTP_EXPECTED_23X_CODE**: (0xdc) non ha ricevuto una risposta 23x (OK)
-- **NX_FTP_EXPECTED_33X_CODE**: (0xDE) non ha ricevuto una risposta 33x (OK)
-- **NX_FTP_NOT_DISCONNECTED**: il client (0xd4) è già connesso.
-- NX_PTR_ERROR: (0x07) puntatore non valido InOut.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
-- NX_IP_ADDRESS_ERROR: (0x21) indirizzo IP non valido.
+- **NX_SUCCESS:**(0x00) Connessione FTP riuscita.
+- **NX_TFTP_EXPECTED_22X_CODE:**(0xDB) Non è stata ricevuta una risposta 22X (ok)
+- **NX_FTP_EXPECTED_23X_CODE**: (0xDC) Non è stata ricevuta una risposta 23X (ok)
+- **NX_FTP_EXPECTED_33X_CODE:**(0xDE) Non è stata ricevuta una risposta 33X (ok)
+- **NX_FTP_NOT_DISCONNECTED:**(0xD4) Il client è già connesso.
+- NX_PTR_ERROR: (0x07) Inout puntatore non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
+- NX_IP_ADDRESS_ERROR: (0x21) Indirizzo IP non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -109,16 +109,16 @@ Questo servizio crea un'istanza del client FTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 - **ftp_client_name**: nome del client FTP.
-- **ip_ptr**: puntatore all'istanza IP creata in precedenza.
-- **window_size**: dimensioni della finestra annunciata per il socket TCP del client FTP.
-- **pool_ptr**: puntatore al pool di pacchetti predefinito per il client FTP. Si noti che il payload del pacchetto minimo deve essere sufficientemente grande da contenere il percorso completo e il nome del file o della directory.
+- **ip_ptr:** puntatore all'istanza IP creata in precedenza.
+- **window_size:** dimensioni della finestra annunciate per il socket TCP di questo client FTP.
+- **pool_ptr:** puntatore al pool di pacchetti predefinito per questo client FTP. Si noti che il payload minimo del pacchetto deve essere sufficientemente grande da contenere il percorso completo e il nome del file o della directory.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) creazione client FTP riuscita.
-- NX_PTR_ERROR: (0x16) protocollo FTP, puntatore IP o puntatore al pool di pacchetti non valido. puntatore alla password.
+- **NX_SUCCESS**: (0x00) Creazione del client FTP riuscita.
+- NX_PTR_ERROR: (0x16) Ftp, puntatore IP o puntatore del pool di pacchetti non valido. puntatore password.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -147,18 +147,18 @@ UINT nx_ftp_client_delete(NX_FTP_CLIENT *ftp_client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del client FTP.
+Questo servizio elimina un'istanza del client FTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) eliminazione client FTP riuscita.
-- **NX_FTP_NOT_DISCONNECTED**: (0xd4) errore di eliminazione del client FTP.
-- NX_PTR_ERROR: (0x16) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Eliminazione del client FTP riuscita.
+- **NX_FTP_NOT_DISCONNECTED:**(0xD4) Errore di eliminazione del client FTP.
+- NX_PTR_ERROR: (0x16) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -191,19 +191,19 @@ Questo servizio crea la directory specificata nel server FTP connesso al client 
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **DIRECTORY_NAME**: nome della directory da creare.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per la creazione della directory FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **directory_name**: nome della directory da creare.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la creazione della directory FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 attraverso 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un tempo indefinito fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) la creazione della directory FTP è riuscita.
+- **NX_SUCCESS**: (0x00) Creazione della directory FTP riuscita.
 - **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK) 
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido. 
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok) 
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido. 
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -222,7 +222,7 @@ status = nx_ftp_client_directory_create(&my_client, "my_dir", 200);
 
 ## <a name="nx_ftp_client_directory_default_set"></a>nx_ftp_client_directory_default_set
 
-Imposta la directory predefinita nel server FTP
+Impostare la directory predefinita nel server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -233,23 +233,23 @@ UINT nx_ftp_client_directory_default_set(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la directory predefinita sul server FTP connesso al client FTP specificato. Questa directory predefinita si applica solo alla connessione del client.
+Questo servizio imposta la directory predefinita nel server FTP connesso al client FTP specificato. Questa directory predefinita si applica solo alla connessione del client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 - **directory_path**: nome del percorso della directory da impostare.
-- **WAIT_OPTION**: definisce per quanto tempo il servizio resterà in attesa del set di directory predefinito FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **wait_option**: definisce per quanto tempo il servizio attenderà il set di directory predefinito FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 attraverso 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un tempo indefinito fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) il set predefinito di FTP è riuscito.
+- **NX_SUCCESS:**(0x00) Impostazione predefinita FTP riuscita.
 - **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK) 
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido. 
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok) 
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido. 
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -267,7 +267,7 @@ status = nx_ftp_client_directory_default_set(&my_client, "my_dir", 200);
 
 ## <a name="nx_ftp_client_directory_delete"></a>nx_ftp_client_directory_delete
 
-Elimina directory nel server FTP
+Eliminare la directory nel server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -278,23 +278,23 @@ UINT nx_ftp_client_directory_delete(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina la directory specificata nel server FTP connesso al client FTP specificato.
+Questo servizio elimina la directory specificata nel server FTP connesso al client FTP specificato.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **DIRECTORY_NAME**: nome della directory da eliminare.
-- **WAIT_OPTION**: definisce per quanto tempo il servizio resterà in attesa dell'eliminazione della directory FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **directory_name**: nome della directory da eliminare.
+- **wait_option**: definisce per quanto tempo il servizio attenderà l'eliminazione della directory FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 attraverso 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un tempo indefinito fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) eliminazione directory FTP riuscita.
+- **NX_SUCCESS:**(0x00) Eliminazione della directory FTP riuscita.
 - **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK) 
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido. 
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok) 
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido. 
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -312,7 +312,7 @@ status = nx_ftp_client_directory_delete(&my_client, "my_dir", 200);
 
 ## <a name="nx_ftp_client_directory_listing_get"></a>nx_ftp_client_directory_listing_get
 
-Ottenere l'elenco di directory dal server FTP
+Ottenere un elenco di directory dal server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -324,26 +324,26 @@ UINT nx_ftp_client_directory_listing_get(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ottiene il contenuto della directory specificata nel server FTP connesso al client FTP specificato. Il puntatore al pacchetto fornito conterrà una o più voci di directory. Ogni voce è separata da una &lt; combinazione CR/LF \. Per completare l'operazione di Get della directory è necessario chiamare il ***nx_ftp_client_directory_listing_continue***:.
+Questo servizio ottiene il contenuto della directory specificata nel server FTP connesso al client FTP specificato. Il puntatore di pacchetto fornito conterrà una o più voci di directory. Ogni voce è separata da una &lt; combinazione cr/lf\. Il ***nx_ftp_client_directory_listing_continue***: deve essere chiamato per completare l'operazione di lettura della directory.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **DIRECTORY_NAME**: nome della directory da cui ottenere il contenuto.
-- **packet_ptr**: puntatore al puntatore del pacchetto di destinazione. In caso di esito positivo, il payload del pacchetto conterrà una o più voci di directory.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per l'elenco di directory FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **directory_name:** nome della directory di cui ottenere il contenuto.
+- **packet_ptr:** puntatore al puntatore al pacchetto di destinazione. In caso di esito positivo, il payload del pacchetto conterrà una o più voci di directory.
+- **wait_option**: definisce per quanto tempo il servizio attenderà l'elenco di directory FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 attraverso 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un tempo indefinito fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) elenco di directory FTP riuscite.
+- **NX_SUCCESS**: (0x00) Elenco di directory FTP riuscito.
 - **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_NOT_ENABLED**: (0X14) servizio (IPv6) non abilitato
-- **NX_FTP_EXPECTED_1XX_CODE**: (0xD9) non ha ricevuto una risposta 1xx (OK)
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK)
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_NOT_ENABLED:** servizio (0x14) (IPv6) non abilitato
+- **NX_FTP_EXPECTED_1XX_CODE:**(0xD9) Non è stata ricevuta una risposta 1XX (ok)
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok)
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -363,7 +363,7 @@ status = nx_ftp_client_directory_listing_get(&my_client, "my_dir", &my_packet,
 
 ## <a name="nx_ftp_client_directory_listing_continue"></a>nx_ftp_client_directory_listing_continue
 
-Continua Inserzione directory dal server FTP
+Continuare l'elenco di directory dal server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -375,24 +375,24 @@ UINT nx_ftp_client_directory_listing_continue(NX_FTP_CLIENT
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio continua a ottenere il contenuto della directory specificata nel server FTP connesso al client FTP specificato. Dovrebbe essere stato immediatamente preceduto da una chiamata a ***nx_ftp_client_directory_listing_get***. In caso di esito positivo, il puntatore al pacchetto fornito conterrà una o più voci di directory. Questa routine deve essere chiamata fino a quando non viene ricevuto uno stato di NX_FTP_END_OF_LISTING.
+Questo servizio continua a ottenere il contenuto della directory specificata nel server FTP connesso al client FTP specificato. Deve essere stato immediatamente preceduto da una chiamata a ***nx_ftp_client_directory_listing_get***. In caso di esito positivo, il puntatore di pacchetto fornito conterrà una o più voci di directory. Questa routine deve essere chiamata fino a quando non viene ricevuto NX_FTP_END_OF_LISTING stato del servizio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **packet_ptr**: puntatore al puntatore del pacchetto di destinazione. In caso di esito positivo, il payload del pacchetto conterrà una o più voci di directory, separate da &lt; CR/LF &gt; .
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per l'elenco di directory FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **packet_ptr:** puntatore al puntatore al pacchetto di destinazione. In caso di esito positivo, il payload del pacchetto conterrà una o più voci di directory, separate da &lt; cr/lf &gt; .
+- **wait_option**: definisce per quanto tempo il servizio attenderà l'elenco di directory FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 attraverso 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un tempo indefinito fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) elenco di directory FTP riuscite.
-- **NX_FTP_END_OF_LISTING**: (0XD8) non sono presenti altre voci in questa directory.
-- **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_2XX_CODE** (0xDA) non ha ricevuto una risposta 2xx (OK)
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS**: (0x00) Elenco di directory FTP riuscito.
+- **NX_FTP_END_OF_LISTING**: (0xD8) Non sono presenti altre voci in questa directory.
+- **NX_FTP_NOT_CONNECTED:** il client FTP (0xD3) non è connesso.
+- **NX_FTP_EXPECTED_2XX_CODE** (0xDA) Non è stata ricevuta una risposta 2XX (ok)
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -412,7 +412,7 @@ status = nx_ftp_client_directory_listing_continue(&my_client, &my_packet,
 
 ## <a name="nx_ftp_client_disconnect"></a>nx_ftp_client_disconnect
 
-Disconnetti dal server FTP
+Disconnettersi dal server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -427,18 +427,18 @@ Questo servizio disconnette una connessione al server FTP stabilita in precedenz
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **WAIT_OPTION**: definisce per quanto tempo il servizio attenderà la disconnessione del client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la disconnessione del client FTP. Le opzioni di attesa sono definite come segue:
+  - **valore di timeout**: (0x00000001 tramite 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) la DISconnessione FTP è riuscita.
-- **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK)
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS**: (0x00) Disconnessione FTP riuscita.
+- **NX_FTP_NOT_CONNECTED:** il client FTP (0xD3) non è connesso.
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok)
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -455,7 +455,7 @@ status = nx_ftp_client_disconnect(&my_client, 200);
 
 ## <a name="nx_ftp_client_file_close"></a>nx_ftp_client_file_close
 
-Chiudi file client
+Chiudere il file client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -470,19 +470,19 @@ Questo servizio chiude un file aperto in precedenza nel server FTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per la chiusura del file del client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la chiusura del file del client FTP. Le opzioni di attesa sono definite come segue:
+  - **valore di timeout**: (0x00000001 tramite 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) chiusura file FTP riuscita.
-- **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_NOT_OPEN (0xD5)**: file non aperto; impossibile chiuderla
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK)
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Chiusura del file FTP completata.
+- **NX_FTP_NOT_CONNECTED:** il client FTP (0xD3) non è connesso.
+- **NX_FTP_NOT_OPEN (0xD5):** File non aperto; non può chiuderlo
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok)
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -500,7 +500,7 @@ status = nx_ftp_client_file_close(&my_client, 200);
 
 ## <a name="nx_ftp_client_file_delete"></a>nx_ftp_client_file_delete
 
-Elimina file nel server FTP
+Eliminare un file nel server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -511,23 +511,23 @@ UINT nx_ftp_client_file_delete(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina il file specificato sul server FTP.
+Questo servizio elimina il file specificato nel server FTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 - **file_name**: nome del file da eliminare.
-- **WAIT_OPTION**: definisce per quanto tempo il servizio resterà in attesa dell'eliminazione del file del client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **wait_option**: definisce per quanto tempo il servizio attenderà l'eliminazione del file del client FTP. Le opzioni di attesa sono definite come segue:
+  - **valore di timeout**: (0x00000001 tramite 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) eliminazione file FTP riuscita.
-- **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK)
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Eliminazione del file FTP completata.
+- **NX_FTP_NOT_CONNECTED:** il client FTP (0xD3) non è connesso.
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok)
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -557,26 +557,26 @@ UINT nx_ftp_client_file_open(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio apre il file specificato, per la lettura o la scrittura, sul server FTP precedentemente connesso all'istanza client specificata.
+Questo servizio apre il file specificato, per la lettura o la scrittura, nel server FTP connesso in precedenza all'istanza client specificata.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 - **file_name**: nome del file da aprire.
 - **open_type**: **NX_FTP_OPEN_FOR_READ** o **NX_FTP_OPEN_FOR_WRITE**.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per l'apertura del file del client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **wait_option**: definisce per quanto tempo il servizio attenderà l'apertura del file del client FTP. Le opzioni di attesa sono definite come segue:
+  - **valore di timeout**: (0x00000001 tramite 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) l'apertura del file FTP è riuscita.
-- **NX_OPTION_ERROR**: (0x0A) tipo aperto non valido.
-- **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_NOT_CLOSED**: il client FTP (0xD6) è già aperto.
-- **NX_NO_FREE_PORTS**: (0X45) non sono disponibili porte TCP da assegnare
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Apertura del file FTP riuscita.
+- **NX_OPTION_ERROR**: (0x0A) Tipo aperto non valido.
+- **NX_FTP_NOT_CONNECTED:** il client FTP (0xD3) non è connesso.
+- **NX_FTP_NOT_CLOSED:**(0xD6) FTP Client è già aperto.
+- **NX_NO_FREE_PORTS:**(0x45) Nessuna porta TCP disponibile per l'assegnazione
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -607,27 +607,27 @@ UINT nx_ftp_client_file_read(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio legge un pacchetto da un file aperto in precedenza. Deve essere chiamato ripetutamente fino a quando non viene ricevuto uno stato di NX_FTP_END_OF_FILE.
+Questo servizio legge un pacchetto da un file aperto in precedenza. Deve essere chiamato in modo ripetitivo fino a quando non viene ricevuto NX_FTP_END_OF_FILE stato .
 
-Si noti che il chiamante non alloca un pacchetto per questo servizio.  È necessario fornire solo un puntatore a un puntatore di pacchetto. Questo servizio aggiornerà il puntatore del pacchetto in modo che punti a un pacchetto recuperato dalla coda di ricezione del socket.  Se viene restituito uno stato di esito positivo, significa che è disponibile un pacchetto ed è responsabilità del chiamante rilasciare il pacchetto quando viene eseguito.
+Si noti che il chiamante non alloca un pacchetto per questo servizio.  È necessario fornire solo un puntatore a un puntatore a pacchetto. Questo servizio aggiornerà il puntatore del pacchetto in modo che punti a un pacchetto recuperato dalla coda di ricezione del socket.  Se viene restituito uno stato riuscito, significa che è disponibile un pacchetto ed è responsabilità del chiamante rilasciare il pacchetto al termine dell'operazione.
 
-Se viene restituito uno stato diverso da zero (stato di errore o NX_FTP_END_OF_FILE), il chiamante non rilascia il pacchetto. In caso contrario, viene generato un errore se il puntatore del pacchetto è NULL.
+Se viene restituito uno stato diverso da zero (stato di errore o NX_FTP_END_OF_FILE), il chiamante non rilascia il pacchetto. In caso contrario, viene generato un errore quando il puntatore del pacchetto è NULL.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **packet_ptr**: puntatore alla destinazione per il puntatore al pacchetto di dati recuperato dalla coda. In caso di esito positivo, i dati del pacchetto contengono parte o tutto il file.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per la lettura del file del client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **packet_ptr:** puntatore alla destinazione per il puntatore del pacchetto di dati recuperato dalla coda. In caso di esito positivo, i dati del pacchetto contengono parte o tutto il file.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la lettura del file del client FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 a 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso a tempo indeterminato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) la lettura del file FTP è riuscita.
+- **NX_SUCCESS:**(0x00) Lettura del file FTP completata.
 - **NX_FTP_NOT_OPEN**: il client FTP (0xD5) non è aperto.
-- **NX_FTP_END_OF_FILE**: (0xD7) la condizione di fine del file.
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_FTP_END_OF_FILE**: (0xD7) Condizione di fine file.
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -661,7 +661,7 @@ downloaded, an NX_FTP_END_OF_FILE status is returned (no packet retrieved). */
 
 ## <a name="nx_ftp_client_file_rename"></a>nx_ftp_client_file_rename
 
-Rinomina file nel server FTP
+Rinominare il file nel server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -672,25 +672,25 @@ UINT nx_ftp_client_file_rename(NX_FTP_CLIENT *ftp_ptr, CHAR *filename,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Rinomina un file nel server FTP.
+Questo servizio rinomina un file nel server FTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **filename**: nome corrente del file.
-- **new_filename**: nuovo nome per il file.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per la ridenominazione del file client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **filename:** nome corrente del file.
+- **new_filename:** nuovo nome per il file.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la ridenominazione del file del client FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 a 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso a tempo indeterminato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) la ridenominazione del file FTP è riuscita.
+- **NX_SUCCESS**: (0x00) Ridenominazione del file FTP completata.
 - **NX_FTP_NOT_CONNECTED**: il client FTP (0xD3) non è connesso.
-- **NX_FTP_EXPECTED_3XX_CODE**: (0XDD) non ha ricevuto la risposta 3xx (OK)
-- **NX_FTP_EXPECTED_2XX_CODE**: (0xDA) non ha ricevuto una risposta 2xx (OK)
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_FTP_EXPECTED_3XX_CODE:**(0XDD) Non ha ricevuto la risposta 3XX (ok)
+- **NX_FTP_EXPECTED_2XX_CODE:**(0xDA) Non è stata ricevuta una risposta 2XX (ok)
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -710,7 +710,7 @@ status = nx_ftp_client_file_rename(&my_client, "my_file.txt", "new_file.txt",
 
 ## <a name="nx_ftp_client_file_write"></a>nx_ftp_client_file_write
 
-Scrivi nel file
+Scrivere nel file
 
 ### <a name="prototype"></a>Prototipo
 
@@ -721,22 +721,22 @@ UINT nx_ftp_client_file_write(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio scrive un pacchetto di dati nel file precedentemente aperto sul server FTP.
+Questo servizio scrive un pacchetto di dati nel file aperto in precedenza nel server FTP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
-- **packet_ptr**: puntatore al pacchetto contenente i dati da scrivere.
-- **WAIT_OPTION**: definisce il tempo di attesa del servizio per la scrittura del file del client FTP. Le opzioni di attesa sono definite come segue:
-  - **valore di timeout**: (0x00000001 tramite 0xfffffffe)
-  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) la selezione di TX_WAIT_FOREVER determina la sospensione illimitata del thread chiamante fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risposta del server FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
+- **packet_ptr:** puntatore a pacchetto contenente i dati da scrivere.
+- **wait_option**: definisce per quanto tempo il servizio attenderà la scrittura del file del client FTP. Le opzioni di attesa sono definite nel modo seguente:
+  - **valore di timeout**: (0x00000001 a 0xFFFFFFFE)
+  - **TX_WAIT_FOREVER**: (0xFFFFFFFF) Se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso a tempo indeterminato fino a quando un server FTP non risponde alla richiesta. La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risposta del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) scrittura del file FTP riuscita.
+- **NX_SUCCESS**: (0x00) Scrittura del file FTP riuscita.
 - **NX_FTP_NOT_OPEN**: il client FTP (0xD5) non è aperto.
-- NX_PTR_ERROR: (0x07) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- NX_PTR_ERROR: (0x07) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -766,20 +766,20 @@ UINT nx_ftp_client_passive_mode_set(NX_FTP_CLIENT *ftp_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita la modalità di trasferimento passivo se l'input passive_mode_enabled è impostato su NX_TRUE su un'istanza del client FTP creata in precedenza in modo che le chiamate successive ai file di lettura o scrittura (RETR, STOR) o scaricano un elenco di directory (NLST) vengano eseguite in modalità di trasferimento. Per disabilitare il trasferimento in modalità passiva e tornare al comportamento predefinito della modalità di trasferimento attivo, chiamare questa funzione con il passive_mode_enabled input impostato su NX_FALSE.
+Questo servizio abilita la modalità di trasferimento passivo se l'input passive_mode_enabled è impostato su NX_TRUE in un'istanza del client FTP creata in precedenza in modo che le chiamate successive per leggere o scrivere file (RETR, STOR) o scaricare un elenco di directory (NLST) siano eseguite in modalità di trasferimento. Per disabilitare il trasferimento in modalità passiva e tornare al comportamento predefinito della modalità di trasferimento attiva, chiamare questa funzione con l'input passive_mode_enabled impostato su NX_FALSE.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_client_ptr**: puntatore al blocco di controllo client FTP.
+- **ftp_client_ptr:** puntatore al blocco di controllo client FTP.
 - **passive_mode_enabled**:
-  - Se è impostato su NX_TRUE, viene abilitata la modalità passiva.
-  - Se impostato su NX_FALSE, la modalità passiva è disabilitata.
+  - Se impostato su NX_TRUE, la modalità passiva è abilitata.
+  - Se impostata su NX_FALSE, la modalità passiva è disabilitata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) impostato in modalità passiva riuscita.
-- NX_PTR_ERROR: (0x16) puntatore FTP non valido.
-- NX_INVALID_PARAMETERS: (irreversibile 0x4D) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS**: (0x00) Impostato correttamente in modalità passiva.
+- NX_PTR_ERROR: (0x16) Puntatore FTP non valido.
+- NX_INVALID_PARAMETERS: (0x4D) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -797,7 +797,7 @@ status = nx_ftp_client_passive_mode_set(&my_client, NX_TRUE);
 
 ## <a name="nx_ftp_server_create"></a>nx_ftp_server_create
 
-Crea server FTP
+Creare un server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -818,24 +818,24 @@ UINT nx_ftp_server_create(NX_FTP_SERVER *ftp_server_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza del server FTP nell'istanza IP di NetX specificata e creata in precedenza. Si noti che è necessario avviare il server FTP con una chiamata a ***nx_ftp_server_start*** per avviare l'operazione.
+Questo servizio crea un'istanza del server FTP nell'istanza IP NetX specificata e creata in precedenza. Si noti che il server FTP deve essere avviato con una chiamata a ***nx_ftp_server_start*** che inizi l'operazione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_server_ptr**: puntatore al blocco di controllo del server FTP.
+- **ftp_server_ptr:** puntatore al blocco di controllo del server FTP.
 - **ftp_server_name**: nome del server FTP.
-- **ip_ptr**: puntatore all'istanza IP NETX associata. Si noti che può essere presente un solo server FTP per un'istanza IP.
-- **media_ptr**: puntatore all'istanza del supporto FILEX associata.
-- **stack_ptr**: puntatore alla memoria per l'area dello stack del thread del server FTP interno.
-- **stack_size**: dimensioni dell'area dello stack specificata da *stack_ptr*.
-- **pool_ptr**: puntatore al pool di pacchetti NETX predefinito. Si noti che la dimensione del payload dei pacchetti nel pool deve essere sufficientemente grande da contenere il nome file o il percorso più grande.
-- **ftp_login**: puntatore a funzione per la funzione di accesso dell'applicazione. Questa funzione fornisce il nome utente e la password del client che richiede una connessione. Se è valido, la funzione di accesso dell'applicazione deve restituire NX_SUCCESS.
-- **ftp_logout**: puntatore a funzione per la funzione di disconnessione dell'applicazione. Questa funzione fornisce il nome utente e la password del client che richiede una disconnessione. Se è valido, la funzione di accesso dell'applicazione deve restituire NX_SUCCESS.
+- **ip_ptr:** puntatore all'istanza IP NetX associata. Si noti che può essere presente un solo server FTP per un'istanza IP.
+- **media_ptr:** puntatore all'istanza del supporto FileX associata.
+- **stack_ptr:** puntatore alla memoria per l'area dello stack del thread del server FTP interno.
+- **stack_size**: dimensione dell'area dello stack specificata da *stack_ptr*.
+- **pool_ptr:** puntatore al pool di pacchetti NetX predefinito. Si noti che le dimensioni del payload dei pacchetti nel pool devono essere sufficientemente grandi da contenere il nome file/percorso più grande.
+- **ftp_login:** puntatore a funzione alla funzione di accesso dell'applicazione. Questa funzione fornisce il nome utente e la password dal client che richiede una connessione. Se è valido, la funzione di accesso dell'applicazione deve restituire NX_SUCCESS.
+- **ftp_logout:** puntatore a funzione alla funzione di disconnessione dell'applicazione. Questa funzione fornisce il nome utente e la password dal client che richiede una disconnessione. Se è valido, la funzione di accesso dell'applicazione deve restituire NX_SUCCESS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) la creazione del server FTP è riuscita.
-- NX_PTR_ERROR: (0x16) puntatore FTP non valido.
+- **NX_SUCCESS**: (0x00) Creazione del server FTP riuscita.
+- NX_PTR_ERROR: (0x16) Puntatore FTP non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -856,7 +856,7 @@ status = nx_ftp_server_create(&my_server, "My Server Name", &ip_0, &ram_disk,
 
 ## <a name="nx_ftp_server_delete"></a>nx_ftp_server_delete
 
-Elimina server FTP
+Eliminare il server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -866,17 +866,17 @@ UINT nx_ftp_server_delete(NX_FTP_SERVER *ftp_server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del server FTP creata in precedenza.
+Questo servizio elimina un'istanza del server FTP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_server_ptr**: puntatore al blocco di controllo del server FTP.
+- **ftp_server_ptr:** puntatore al blocco di controllo del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) eliminazione del server FTP riuscita.
-- NX_PTR_ERROR: (0x16) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Eliminazione del server FTP completata.
+- NX_PTR_ERROR: (0x16) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -894,7 +894,7 @@ status = nx_ftp_server_delete(&my_server);
 
 ## <a name="nx_ftp_server_start"></a>nx_ftp_server_start
 
-Avvia server FTP
+Avviare il server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -908,12 +908,12 @@ Questo servizio avvia un'istanza del server FTP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_server_ptr**: puntatore al blocco di controllo del server FTP.
+- **ftp_server_ptr:** puntatore al blocco di controllo del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) avvio del server FTP riuscito.
-- NX_PTR_ERROR: (0x16) puntatore FTP non valido.
+- **NX_SUCCESS**: (0x00) Avvio del server FTP riuscito.
+- NX_PTR_ERROR: (0x16) Puntatore FTP non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -931,7 +931,7 @@ status = nx_ftp_server_start(&my_server);
 
 ## <a name="nx_ftp_server_stop"></a>nx_ftp_server_stop
 
-Arresta server FTP
+Arrestare il server FTP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -941,17 +941,17 @@ UINT nx_ftp_server_stop(NX_FTP_SERVER *ftp_server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio interrompe un'istanza del server FTP creata e avviata in precedenza.
+Questo servizio arresta un'istanza del server FTP creata in precedenza e avviata.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **ftp_server_ptr**: puntatore al blocco di controllo del server FTP.
+- **ftp_server_ptr:** puntatore al blocco di controllo del server FTP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) l'arresto del server FTP è riuscito.
-- NX_PTR_ERROR: (0x16) puntatore FTP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Arresto del server FTP riuscito.
+- NX_PTR_ERROR: (0x16) Puntatore FTP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 

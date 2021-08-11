@@ -1,23 +1,23 @@
 ---
-title: Capitolo 6-uso della classe CDC-ECM USBX
-description: USBX contiene una classe CDC-ECM per l'host e il lato dispositivo. Questa classe è progettata per essere usata con NetX, in particolare, la classe USBX CDC-ECM funge da driver per NetX. Questo è il motivo per cui non esistono API CDC-ECM elencate nel capitolo 5.
+title: Capitolo 6 - Utilizzo della classe USBX CDC-ECM
+description: USBX contiene una classe CDC-ECM per il lato host e dispositivo. Questa classe è progettata per essere usata con NetX, in particolare la classe USBX CDC-ECM funge da driver per NetX. Per questo motivo non sono elencate API CDC-ECM nel capitolo 5.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 18e7e075788623916de36cf911597230295b56c5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7328b8c3537acac1ef02fced32b0c2731065aea0c6e2742a96f0644e9a8045f0
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824341"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798351"
 ---
-# <a name="chapter-6---usbx-cdc-ecm-class-usage"></a>Capitolo 6-uso della classe CDC-ECM USBX
+# <a name="chapter-6---usbx-cdc-ecm-class-usage"></a>Capitolo 6 - Utilizzo della classe USBX CDC-ECM
 
-USBX contiene una classe CDC-ECM per l'host e il lato dispositivo. Questa classe è progettata per essere usata con NetX, in particolare, la classe USBX CDC-ECM funge da driver per NetX. Questo è il motivo per cui non esistono API CDC-ECM elencate nel capitolo 5.
+USBX contiene una classe CDC-ECM per il lato host e dispositivo. Questa classe è progettata per essere usata con NetX, in particolare la classe USBX CDC-ECM funge da driver per NetX. Per questo motivo non sono elencate API CDC-ECM nel capitolo 5.
 
-Dopo l'inizializzazione di NetX e USBX e l'utilizzo di un'istanza di un dispositivo CDC-ECM da parte di USBX, l'applicazione usa esclusivamente NetX per comunicare con il dispositivo. L'inizializzazione segue il modello illustrato nell'esempio riportato di seguito.
+Dopo l'inizializzazione di NetX e USBX e la ricerca di un'istanza di un dispositivo CDC-ECM da parte di USBX, l'applicazione usa esclusivamente NetX per comunicare con il dispositivo. L'inizializzazione segue il modello illustrato nell'esempio seguente.
 
 ```c
 UINT status;

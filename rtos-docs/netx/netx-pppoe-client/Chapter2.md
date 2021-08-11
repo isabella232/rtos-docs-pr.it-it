@@ -1,53 +1,53 @@
 ---
-title: Capitolo 2-installazione e uso del client PPPoE NetX di Azure RTO
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client PPPoE NetX di Azure RTO.
+title: Capitolo 2 - Installazione e uso di Azure RTOS client PpPoE NetX
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo Azure RTOS del client PPPoE NetX.
 author: philmea
 ms.author: philmea
 ms.date: 07/13/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 17d910647db7b207280b3fbd9e90c468293a8e67
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 081fbbd917391a4183488f0fbf124cbd8499c5f8b6d619f7b6cff9f61e6d0bcb
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822541"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798793"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pppoe-client"></a>Capitolo 2-installazione e uso del client PPPoE NetX di Azure RTO
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pppoe-client"></a>Capitolo 2 - Installazione e uso di Azure RTOS client PpPoE NetX
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente client PPPoE NetX di Azure RTO.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo Azure RTOS del client PPPoE NetX.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-Il client PPPoE per NetX è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include i file seguenti:
+PPPoE Client for NetX è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include i file seguenti:
 
- - **nx_pppoe_client. h** File di intestazione per il client PPPoE per NetX
- - **nx_pppoe_client. c** File di origine C per il client PPPoE per NetX
+ - **nx_pppoe_client.h** File di intestazione per PPPoE Client for NetX
+ - **nx_pppoe_client.c** File di origine C per PPPoE Client for NetX
  - **nx_pppoe_client.pdf** Descrizione PDF del client PPPoE per NetX
- - **demo_netx_pppoe_client. c** Dimostrazione del client PPPoE NetX
+ - **demo_netx_pppoe_client.c** Dimostrazione del client PPPoE NetX
 
-## <a name="pppoe-client-installation"></a>Installazione client PPPoE
+## <a name="pppoe-client-installation"></a>Installazione del client PPPoE
 
-Per poter usare il client PPPoE per NetX, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Se, ad esempio, NetX è installato nella directory *"\threadx\arm7\green"* , i file *nx_pppoe_client. h* e *nx_pppoe_client. c* devono essere copiati in questa directory.
+Per usare il client PPPoE per NetX, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory *"\threadx\arm7\green",* i file *nx_pppoe_client.h* e *nx_pppoe_client.c* devono essere copiati in questa directory.
 
 ## <a name="using-pppoe-client"></a>Uso del client PPPoE
 
-L'uso del client PPPoE per NetX è facile. In pratica, il codice dell'applicazione deve includere *nx_pppoe_client. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX. Una volta incluso *nx_pppoe_client. h* , il codice dell'applicazione è quindi in grado di eseguire le chiamate della funzione client PPPoE specificate più avanti in questa guida. Nell'applicazione deve inoltre essere incluso *nx_pppoe_client. c* nel processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client PPPoE di NetX.
+L'uso del client PPPoE per NetX è semplice. In pratica, il codice dell'applicazione deve includere *nx_pppoe_client.h* dopo aver incluso *tx_api.h* e *nx_api.h*, per poter usare rispettivamente ThreadX e NetX. Dopo *nx_pppoe_client.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione PPPoE Client specificate più avanti in questa guida. L'applicazione deve includere *anche nx_pppoe_client.c* nel processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client PPPoE NetX.
 
-## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
+## <a name="small-example-system"></a>Small Example System
 
-Di seguito è riportato un esempio che illustra come usare NetX PPPoE client è descritto nella figura 1,1. In questo esempio il file di inclusione client PPPoE *nx_pppoe_client. h* viene portato alla riga 50. Successivamente, il client PPPoE viene creato in *"thread_0_entry"* alla riga 238. Si noti che il client PPPoE deve essere creato dopo avere creato l'istanza IP. L'istanza IP e l'istanza di PPP vengono create e inizializzate line142-220. Il blocco di controllo client PPPoE *"pppoe_client"* è stato definito come variabile globale alla riga 75 in precedenza. Le funzioni di trasmissione e ricezione vengono impostate alla riga 238.
+Di seguito è riportato un esempio che illustra come usare netx PPPoE Client è descritto nella figura 1.1. In questo esempio il file di inclusione PPPoE Client *nx_pppoe_client.h* viene portato alla riga 50. Successivamente, il client PPPoE viene creato in *"thread_0_entry"* alla riga 238. Si noti che il client PPPoE deve essere creato dopo la creazione dell'istanza IP. L'istanza IP e l'istanza PPP vengono create e inizializzate dalla riga 142-220. Il blocco di controllo *"pppoe_client"* del client PPPoE è stato definito in precedenza come variabile globale alla riga 75. Le funzioni di invio e ricezione vengono impostate alla riga 238.
 
-In generale, è consigliabile usare il modulo PPPoE con il modulo PPP. In questo esempio, il client PPP include il file *nx_ppp. h* viene portato alla riga 49. Successivamente, il client PPP viene creato alla riga 164. Riga 172 impostare la funzione per l'invio del pacchetto PPP. Riga 179-190 installazione degli indirizzi IP e definizione del protocollo PAP. Riga 104-129 impostare il nome utente e la password per il protocollo PAP.
+In generale, il modulo PPPoE deve essere usato con il modulo PPP. In questo esempio, il file di inclusione del client PPP *nx_ppp.h* viene portato alla riga 49. Successivamente, il client PPP viene creato alla riga 164. La riga 172 configura la funzione per l'invio di pacchetti PPP. La riga 179-190 configura gli indirizzi IP e definisce il protocollo pap. La riga 104-129 configura il nome utente e la password per il protocollo pap.
 
-Dopo la sessione PPPoE stabilita. L'applicazione può chiamare *nx_pppoe_client_session_get* per ottenere le informazioni sulla sessione, ovvero l'indirizzo MAC del server e l'ID sessione, alla riga 264. Il PPP o l'applicazione può chiamare *nx_pppoe_client_session_packet_send* per inviare il pacchetto PPPoE alla riga 283.
+Dopo aver stabilito la sessione PPPoE. L'applicazione può *chiamare nx_pppoe_client_session_get* per ottenere le informazioni sulla sessione (indirizzo MAC del server e ID sessione) alla riga 264. PPP o Applicazione può *chiamare* nx_pppoe_client_session_packet_send per inviare pacchetti PPPoE alla riga 283.
 
-Quando l'applicazione non elabora più il traffico PPP, l'applicazione può chiamare *nx_pppoe_client_session_terminate* per terminare la sessione PPPoE.
+Quando l'applicazione non elabora più il traffico PPP, può chiamare nx_pppoe_client_session_terminate *per* terminare la sessione PPPoE.
 
-Si noti che in questo esempio il client PPPoE funziona con lo stack IP normale e condivide un driver Ethernet. Passare lo stesso driver Ethernet per l'istanza IP normale alla riga 155 e l'istanza del client PPPoE alla riga 298.
+Si noti che in questo esempio il client PPPoE funziona contemporaneamente con lo stack IP normale e condivide un driver Ethernet. Passare lo stesso driver Ethernet per l'istanza IP normale alla riga 155 e l'istanza del client PPPoE alla riga 298.
 
 > [!NOTE]
-> Ridefinire **NX_PHYSICAL_HEADER** a 24 per garantire spazio sufficiente per la compilazione dell'intestazione fisica. Intestazione fisica: 14 (intestazione Ethernet) + 6 (intestazione PPPoE) + 2 (intestazione PPP) + 2 (allineamento a quattro byte).
+> Ridefinire **NX_PHYSICAL_HEADER** a 24 per garantire spazio sufficiente per il riempimento dell'intestazione fisica. Intestazione fisica:14(intestazione Ethernet) + 6 (intestazione PPPoE) + 2 (intestazione PPP) + 2 (allineamento a quattro byte).
 
 ```c
   1 /**************************************************************************/
@@ -347,20 +347,20 @@ Si noti che in questo esempio il client PPPoE funziona con lo stack IP normale e
 287 #endif /* NX_PPP_PPPOE_ENABLE  */
 ```
 
-**Figura 1,1 esempio di utilizzo del client PPPoE con NetX**
+**Figura 1.1 Esempio di utilizzo del client PPPoE con NetX**
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Sono disponibili diverse opzioni di configurazione per la creazione di client PPPoE per NetX. L'elenco seguente descrive tutti i dettagli:
+Sono disponibili diverse opzioni di configurazione per la compilazione del client PPPoE per NetX. L'elenco seguente descrive ogni elemento in dettaglio:
 
-- **NX_DISABLE_ERROR_CHECKING** Definita, questa opzione rimuove il controllo degli errori client PPPoE di base. Viene in genere usato dopo il debug dell'applicazione.
-- **NX_PPPOE_CLIENT_INITIALIZE_DRIVER_ENABLE** Se definito, Abilita la funzionalità per inizializzare il driver Ethernet nel modulo PPPoE. Viene disabilitato per impostazione predefinita.
-- **NX_PPPOE_CLIENT_THREAD_TIME_SLICE** Opzione relativa al tempo di sezionamento per il thread del client PPPoE. Per impostazione predefinita, questo valore è TX_NO_TIME_SLICE.
-- **NX_PPPOE_CLIENT_PADI_INIT_TIMEOUT** Definisce la pozione di attesa per la ritrasmissione iniziale dei pacchetti PADI. Per impostazione predefinita, questo valore è di 1 secondo.
-- **NX_PPPOE_CLIENT_PADI_COUNT** Questo consente di definire il numero di ritiri di trasmissione PADI consentiti prima che la connessione venga considerata interruppe. Per impostazione predefinita, questo valore è 4.
-- **NX_PPPOE_CLIENT_PADR_INIT_TIMEOUT** Definisce la pozione di attesa per la ritrasmissione iniziale dei pacchetti PADR. Per impostazione predefinita, questo valore è di 1 secondo.
-- **NX_PPPOE_CLIENT_PADR_COUNT** Questo consente di definire il numero di retire di trasmissione PADR consentite prima che la connessione venga considerata interruppe. Per impostazione predefinita, questo valore è 4.
-- **NX_PPPOE_CLIENT_MAX_AC_NAME_SIZE** Definisce la dimensione massima del nome AC. Per impostazione predefinita, questo valore è 32.
-- **NX_PPPOE_CLIENT_MAX_AC_COOKIE_SIZE** Definisce le dimensioni massime del cookie AC. Per impostazione predefinita, questo valore è 32.
-- **NX_PPPOE_CLIENT_MAX_RELAY_SESSION_ID_SIZE** Definisce le dimensioni massime di relay-Session-ID. Per impostazione predefinita, questo valore è 12.
-- **NX_PPPOE_CLIENT_MIN_PACKET_PAYLOAD_SIZE** Specifica le dimensioni minime del payload del pacchetto per il client PPPoE. Se le dimensioni del payload del pacchetto sono maggiori di questo valore, può evitare di concatenare i pacchetti. Per impostazione predefinita, questo valore è 1520 (la dimensione massima del payload è Ethernet 1500, l'intestazione Ethernet 14, l'allineamento CRC 2 e 4 byte).
+- **NX_DISABLE_ERROR_CHECKING** Questa opzione rimuove il controllo degli errori di base del client PPPoE. Viene in genere usato dopo il debug dell'applicazione.
+- **NX_PPPOE_CLIENT_INITIALIZE_DRIVER_ENABLE** Se definito, abilita la funzionalità per inizializzare il driver Ethernet nel modulo PPPoE. Disabilita per impostazione predefinita.
+- **NX_PPPOE_CLIENT_THREAD_TIME_SLICE** Opzione di intervallo di tempo per il thread del client PPPoE. Per impostazione predefinita, questo valore è TX_NO_TIME_SLICE.
+- **NX_PPPOE_CLIENT_PADI_INIT_TIMEOUT** Definisce la pozione di attesa per la ritrasmissione iniziale dei pacchetti PADI. Per impostazione predefinita, questo valore è 1 secondo.
+- **NX_PPPOE_CLIENT_PADI_COUNT** Definisce il numero di reti di trasmissione PADI consentite prima che la connessione venga considerata interrotta. Per impostazione predefinita, questo valore è 4.
+- **NX_PPPOE_CLIENT_PADR_INIT_TIMEOUT** Definisce la pozione di attesa per la ritrasmissione iniziale dei pacchetti PADR. Per impostazione predefinita, questo valore è 1 secondo.
+- **NX_PPPOE_CLIENT_PADR_COUNT** Definisce il numero di reti di trasmissione PADR consentite prima che la connessione venga considerata interrotta. Per impostazione predefinita, questo valore è 4.
+- **NX_PPPOE_CLIENT_MAX_AC_NAME_SIZE** Definisce le dimensioni massime di AC-Name. Per impostazione predefinita, questo valore è 32.
+- **NX_PPPOE_CLIENT_MAX_AC_COOKIE_SIZE** Definisce le dimensioni massime di AC-Cookie. Per impostazione predefinita, questo valore è 32.
+- **NX_PPPOE_CLIENT_MAX_RELAY_SESSION_ID_SIZE** Definisce le dimensioni massime di Relay-Session-Id. Per impostazione predefinita, questo valore è 12.
+- **NX_PPPOE_CLIENT_MIN_PACKET_PAYLOAD_SIZE** Specifica le dimensioni minime del payload del pacchetto per il client PPPoE. Se le dimensioni del payload del pacchetto sono maggiori di questo valore, è possibile evitare il concatenamento dei pacchetti. Per impostazione predefinita, questo valore è 1520 (dimensioni massime del payload di Ethernet 1500, intestazione Ethernet 14, CRC 2 e allineamento a quattro byte 4).

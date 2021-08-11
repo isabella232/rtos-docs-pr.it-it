@@ -1,21 +1,21 @@
 ---
-title: Appendice B-il file tx_trace. h
-description: In questo capitolo viene visualizzato il file tx_trace. h.
+title: Appendice B - File tx_trace.h
+description: Questo capitolo visualizza il file tx_trace.h.
 author: philmea
 ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 23d318186709e1ecc8085daee41f1569f70af5a3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 13479071452c189bc87dd974a506ff34fc4da8b51e3bf0339e9c9bb3c2e3b7a7
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823732"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798232"
 ---
-# <a name="appendix-b---the-tx_traceh-file"></a>Appendice B-il file tx_trace. h
+# <a name="appendix-b---the-tx_traceh-file"></a>Appendice B - File tx_trace.h
 
-In questo capitolo viene visualizzato il file **tx_trace. h** .
+Questo capitolo visualizza il file **tx_trace.h.**
 
 ```c
 /**************************************************************************/

@@ -1,24 +1,24 @@
 ---
-title: Capitolo 3-Descrizione client dei servizi client SMTP
-description: Questo capitolo contiene una descrizione di tutti i servizi client SMTP NetX Duo (elencati di seguito) in ordine di utilizzo in una tipica applicazione client SMTP.
+title: Capitolo 3 - Descrizione client dei servizi client SMTP
+description: Questo capitolo contiene una descrizione di tutti i servizi client SMTP di NetX Duo (elencati di seguito) in ordine di utilizzo in una tipica applicazione client SMTP.
 author: philmea
 ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f590ba5a4c020b4a0aec6628a89c0e5f0f8579d9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: bc54e7763c4a3977ef4d760bc92025b1cda792b979d741fc7b82f8f1a3f2901b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821692"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797807"
 ---
-# <a name="chapter-3---client-description-of-smtp-client-services"></a>Capitolo 3-Descrizione client dei servizi client SMTP
+# <a name="chapter-3---client-description-of-smtp-client-services"></a>Capitolo 3 - Descrizione client dei servizi client SMTP
 
-Questo capitolo contiene una descrizione di tutti i servizi client SMTP NetX Duo (elencati di seguito) in ordine di utilizzo in una tipica applicazione client SMTP.
+Questo capitolo contiene una descrizione di tutti i servizi client SMTP di NetX Duo (elencati di seguito) in ordine di utilizzo in una tipica applicazione client SMTP.
 
 > [!NOTE]
-> Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **_NX_DISABLE_ERROR_CHECKING_** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+> Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **grassetto** non sono interessati dalla definizione **_NX_DISABLE_ERROR_CHECKING_** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 ## <a name="nxd_smtp_client_create"></a>nxd_smtp_client_create
 
@@ -46,8 +46,8 @@ Questo servizio crea un'istanza del client SMTP nell'istanza IP specificata.
 - **client_ptr** Puntatore al blocco di controllo client SMTP;
 - **ip_ptr** Puntatore all'istanza IP;
 - **packet_pool_ptr** Puntatore al pool di pacchetti client;
-- **nome utente** Nome utente * * con terminazione NULL per l'autenticazione
-- **password** di Password con terminazione NULL per l'autenticazione
+- **nome utente** Nome utente con terminazione NULL** per l'autenticazione
+- **password** Password con terminazione NULL per l'autenticazione
 - **from_address** Indirizzo del mittente con terminazione NULL
 - **client_domain** Nome di dominio con terminazione NULL
 - **authentication_type** Tipo di autenticazione client. I tipi supportati sono:
@@ -55,14 +55,14 @@ Questo servizio crea un'istanza del client SMTP nell'istanza IP specificata.
   - NX_SMTP_CLIENT_AUTH_PLAIN
   - NX_SMTP_CLIENT_AUTH_NONE
 - **server_address** Puntatore all'indirizzo IP del server SMTP
-- **SERVER_PORT** Porta TCP del server SMTP
+- **server_port** Porta TCP del server SMTP
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione del client SMTP **NX_SUCCESS** (0x00) completata. Stato di creazione socket TCP
-- NX_SMTP_INVALID_PARAM (0xA5) non è stato inserito alcun puntatore non valido
-- Tipo di indirizzo IP NX_IP_ADDRESS_ERROR (0x21) non valido
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
+- **NX_SUCCESS** client SMTP (0x00) è stato creato correttamente. Stato di creazione del socket TCP
+- NX_SMTP_INVALID_PARAM (0xA5) Input non puntatore non valido
+- NX_IP_ADDRESS_ERROR (0x21) Tipo di indirizzo IP non valido
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -120,7 +120,7 @@ UINT nx_smtp_client_delete(NX_SMTP_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del client SMTP creata in precedenza.
+Questo servizio elimina un'istanza del client SMTP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -128,8 +128,8 @@ Questo servizio Elimina un'istanza del client SMTP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il client **NX_SUCCESS** (0x00) è stato eliminato
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
+- **NX_SUCCESS** (0x00) Il client è stato eliminato
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -163,24 +163,24 @@ UINT nx_smtp_mail_send(NX_SMTP_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea e invia un elemento di posta SMTP. Il client SMTP stabilisce una connessione TCP con il server SMTP e invia una serie di comandi SMTP. Se non viene rilevato alcun errore, il messaggio di posta elettronica verrà trasmesso al server. Indipendentemente dal fatto che il messaggio venga inviato correttamente, la connessione TCP verrà terminata e verrà restituito uno stato che indica il risultato della trasmissione della posta elettronica. L'applicazione può chiamare questo servizio per tutti i messaggi di posta elettronica necessari per l'invio senza limiti.
+Questo servizio crea e invia un elemento di posta SMTP. Il client SMTP stabilisce una connessione TCP con il server SMTP e invia una serie di comandi SMTP. Se non si verificano errori, trasmetterà il messaggio di posta elettronica al server. Indipendentemente dal fatto che il messaggio venga inviato correttamente, la connessione TCP verrà terminata e verrà restituito uno stato che indica il risultato della trasmissione della posta. L'applicazione può chiamare questo servizio per tutti i messaggi di posta elettronica che deve inviare senza limiti.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **client_ptr** Puntatore al client SMTP
-- **recipient_address** Indirizzo destinatario con terminazione NULL.
+- **recipient_address** Indirizzo del destinatario con terminazione NULL.
 - **oggetto** Testo della riga dell'oggetto con terminazione NULL;.
-- **priorità** di Livello di priorità a cui viene recapitato il messaggio
+- **priorità** Livello di priorità al quale viene recapitata la posta elettronica
 - **mail_body** Puntatore al messaggio di posta elettronica
 - **mail_body_length** Dimensioni del messaggio di posta elettronica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Messaggio **NX_SUCCESS** (0x00) inviato correttamente
-- Istanza del client SMTP **NX_SMTP_CLIENT_NOT_INITIALIZED** (0xB2) non inizializzata per il risultato dello stato della sessione SMTP della sessione SMTP
-- Parametro puntatore non valido NX_PTR_ERROR (0x07)
-- NX_SMTP_INVALID_PARAM (0xA5) non è stato inserito alcun puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Posta elettronica inviata correttamente
+- **NX_SMTP_CLIENT_NOT_INITIALIZED(0xB2)** Smtp Client instance not initialized for SMTP session status Outcome of SMTP session (L'istanza del client SMTP non è stata inizializzata per lo stato della sessione SMTP Risultato della sessione SMTP)
+- NX_PTR_ERROR (0x07) Parametro puntatore non valido
+- NX_SMTP_INVALID_PARAM (0xA5) Input non puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
