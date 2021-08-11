@@ -1,18 +1,18 @@
-- name: Microsoft Azure RTOS
+- name: Microsoft Azure Documentazione di RTOS
   href: index.yml
-- name: Panoramica di Microsoft Azure RTOScd
+- name: Panoramica di Microsoft Azure RTOS
   href: overview-rtos.md
 - name: Guide introduttive
   href: getting-started.md
-- name: Microsoft Azure repository RTOS
+- name: Microsoft Azure Repository RTOS
   href: 'https://github.com/azure-rtos/'
 - name: Servizi correlati
   items:
     - name: Defender per IoT - RTOS (anteprima)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
-- name: Microsoft Azure RTOS
+- name: Microsoft Azure Componenti RTOS
   items:
-    - name: Microsoft Azure RTOS
+    - name: Microsoft Azure Rtos
       href: ./index.yml
     - name: ThreadX
       href: ./threadx/index.yml

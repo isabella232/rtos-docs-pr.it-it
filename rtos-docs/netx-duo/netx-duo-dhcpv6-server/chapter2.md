@@ -1,57 +1,57 @@
 ---
-title: Capitolo 2-installazione e uso del server DHCPv6 di Azure RTO NetX Duo
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del server DHCPv6 NetX Duo.
+title: Capitolo 2 - Installazione e uso di Azure RTOS server NetX Duo DHCPv6
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del server NetX Duo DHCPv6.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: dd2cf736ac7caca616f3f305c0f6f6c84625ca0d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d98059088c89198e3564f3b920e97c7a2491cafea628d1586594eba1aeed0a30
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821941"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783561"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dhcpv6-server"></a>Capitolo 2-installazione e uso del server DHCPv6 di Azure RTO NetX Duo
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dhcpv6-server"></a>Capitolo 2 - Installazione e uso di Azure RTOS server NetX Duo DHCPv6
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del server DHCPv6 NetX Duo.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del server NetX Duo DHCPv6.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-Azure RTO NetX Duo può essere ottenuto dal repository di codice sorgente pubblico all'indirizzo [https://github.com/azure-rtos/netxduo/](https://github.com/azure-rtos/netxduo/) .
+Azure RTOS NetX Duo può essere ottenuto dal repository del codice sorgente pubblico all'indirizzo [https://github.com/azure-rtos/netxduo/](https://github.com/azure-rtos/netxduo/) .
 
-**nxd_dhcpv6_server. h** File di intestazione NetX DuoDHCPv6Server
+**nxd_dhcpv6_server.h** File di intestazione NetX DuoDHCPv6Server
 
-**nxd_dhcpv6_server. c** File di origine DuoDHCPv6Server NetX
+**nxd_dhcpv6_server.c** File di origine NetX DuoDHCPv6Server
 
-**demo_netxduo_dhcpv6. c** File demo del server NetX Duo DHCPv6
+**demo_netxduo_dhcpv6.c** File demo del server NetX Duo DHCPv6
 
-**nxd_dhcpv6_server.pdf** Manuale dell'utente di NetX Duo DHCPv6Server
+**nxd_dhcpv6_server.pdf** Guida dell'utente di NetX Duo DHCPv6Server
 
 ## <a name="netx-duo-dhcpv6-server-installation"></a>Installazione del server NetX Duo DHCPv6
 
-Per usare l'API NetX Duo DHCPv6Server, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX Duo. Se, ad esempio, NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_dhcpv6_server. h* e *nx_dhpcv6_server. c* devono essere copiati in questa directory.
+Per usare l'API NetX Duo DHCPv6Server, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_dhcpv6_server.h* e *nx_dhpcv6_server.c* devono essere copiati in questa directory.
 
 ## <a name="using-netx-duo-dhcpv6-server"></a>Uso del server NetX Duo DHCPv6
 
-L'uso dell'API NetX Duo DHCPv6Server è facile. In pratica, il codice dell'applicazione deve includere *nx_dhcpv6-server. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX Duo. Nell'applicazione deve inoltre essere incluso *nxd_dhcpv6_server. c* nel processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il server NetX Duo DHCPv6.
+L'uso dell'API NetX Duo DHCPv6Server è semplice. In pratica, il codice dell'applicazione deve includere *nx_dhcpv6-server.h* dopo aver incluso *rispettivamente tx_api.h* e *nx_api.h*, per poter usare Rispettivamente ThreadX e NetX Duo. L'applicazione deve includere *anche nxd_dhcpv6_server.c* nel processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il server NetX Duo DHCPv6.
 
-Si noti che, poiché DHCPv6is basato sul protocollo IPv6, è necessario abilitare IPv6 nell'istanza IP utilizzando *nxd_ipv6_enable*. Vengono inoltre utilizzati i servizi UDP e ICMPv6 di NetX Duo. UDP è abilitato chiamando *nx_udp_enable* e ICMPv6is abilitato chiamando *nxd_icmp_enable* prima di avviare l'attività thread del server DHCPv6 di NETX Duo.
+Si noti che poiché DHCPv6is basato sul protocollo IPv6, IPv6 deve essere abilitato nell'istanza IP *usando nxd_ipv6_enable*. Vengono utilizzati anche i servizi UDP e ICMPv6 di NetX Duo. UDP viene abilitato chiamando *nx_udp_enable* e ICMPv6is abilitati chiamando *nxd_icmp_enable* prima di avviare l'attività del thread del server NetX Duo DHCPv6.
 
 ## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
 
-Un esempio di come è facile usare il server DHCPv6 NetX Duo è descritto nel piccolo esempio seguente usando un client e un server DHCPv6 che eseguono un driver virtuale "RAM". Questa demo presuppone un singolo host ospitato usando l'ambiente NetX Duo.
+Un esempio di quanto sia semplice usare il server NetX Duo DHCPv6 è descritto nel piccolo esempio seguente usando un client e un server DHCPv6 in esecuzione su un driver "RAM" virtuale. Questa demo presuppone un singolo host ospitato che usa l'ambiente NetX Duo.
 
-*tx_application_define* crea il pool di pacchetti per l'invio di messaggi DHCPv6, un thread e un'istanza IP per il client e il server e Abilita UDP (DHCP esegue su UDP), IPv6, ICMP e ICMPv6 per le attività IP client e server nelle righe 116-157.
+*tx_application_define* crea un pool di pacchetti per l'invio di messaggi DHCPv6, un thread e un'istanza IP per client e server e abilita UDP (DHCP viene eseguito su UDP), IPv6, ICMP e ICMPv6 per le attività IP client e server nelle righe 116-157.
 
-Il server DHCPv6 viene creato nella riga 456. Non definisce i gestori facoltativi per il rifiuto degli indirizzi o le richieste di opzioni. Nella funzione entry thread server, l'indirizzo IP del server viene configurato con un collegamento servizi indirizzo locale nelle righe 435-453.
+Il server DHCPv6 viene creato nella riga 456. Non definisce i gestori facoltativi di rifiuto dell'indirizzo o richiesta di opzione. Nella funzione Voce thread server l'indirizzo IP del server viene configurato con un collegamento di servizi di indirizzi locali nelle righe 435-453.
 
-Prima di avviare il server DHCPv6, l'applicazione host crea un server DUID alla riga 498 e imposta il server DNS della rete locale alla riga 483. Viene quindi creata una tabella di indirizzi IP assegnabili nelle righe 521. Vedere il **sistema di esempio avanzato** nell'Appendice D per informazioni su come archiviare e recuperare tabelle server dalla memoria.
+Prima di avviare il server DHCPv6, l'applicazione host crea un DUID del server nella riga 498 e imposta il server DNS di rete locale alla riga 483. Crea quindi una tabella di indirizzi IP assegnabili nelle righe 521. Per informazioni **su come archiviare** e recuperare tabelle server dalla memoria, vedere Advanced Example System nell'appendice D.
 
-Il server DHCPv6 è quindi pronto per iniziare alla riga 530.
+Il server DHCPv6 è quindi pronto per l'avvio alla riga 530.
 
-Per informazioni dettagliate sulla creazione e sull'esecuzione del client DHCPv6 NetX Duo, vedere il file *nxd_dhcpv6_client.pdf* distribuito in con il server DHCPv6.
+Per informazioni dettagliate sulla creazione e l'esecuzione del client NetX Duo DHCPv6, vedere il file *nxd_dhcpv6_client.pdf* distribuito con il server DHCPv6.
 
 ```
 
@@ -608,4 +608,4 @@ left at zero.
 540 #endif /* FEATURE_NX_IPV6 */
 ```
 
-**Figura 6. Esempio del server DHCPv6 NetX Duo**
+**Figura 6. Esempio del server NetX Duo DHCPv6**

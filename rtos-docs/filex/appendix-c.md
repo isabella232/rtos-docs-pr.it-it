@@ -1,19 +1,19 @@
 ---
-title: Appendice C-tipi di dati FileX di Azure RTO
-description: Informazioni sui tipi di dati di Azure RTO FileX.
+title: Appendice C - Azure RTOS di dati FileX
+description: Informazioni sui tipi Azure RTOS di dati FileX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 0419bb50021a993c9ab11d01a5d9f4fabc07170d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 26690df52917a4467c2ba2d3b59ee0e64277598b02471d70104ff1f584ad1543
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821455"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783204"
 ---
-# <a name="appendix-c---azure-rtos-filex-data-types"></a>Appendice C-tipi di dati FileX di Azure RTO
+# <a name="appendix-c---azure-rtos-filex-data-types"></a>Appendice C - Azure RTOS di dati FileX
 
 ## <a name="fx_dir_entry"></a>FX_DIR_ENTRY
 

@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0a54f160c96fb3e90c2295ae72020c121d367a12
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 399586eca18ef9345b94cc577bdacbf3c3a591bcd22b474b4e3d4ca4eefb4432
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171353"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782849"
 ---
 # <a name="overview-of-azure-rtos-filex"></a>Panoramica di Azure RTOS FileX
 
-Azure RTOS fileX embedded file system è la soluzione avanzata di livello industriale di Azure RTOS per i formati di file FAT Microsoft, progettata specificamente per applicazioni IoT, in tempo reale e con un'incorporazione approfondita. Azure RTOS FileX supporta tutti i formati di file microsoft, inclusi FAT12, FAT16, FAT32 ed exFAT. FileX offre anche la tolleranza di errore facoltativa e il livellamento dell'usura FLASH tramite un prodotto aggiuntivo denominato [Azure RTOS LevelX](https://docs.microsoft.com/azure/rtos/levelx/). Tutto questo in combinazione con un footprint ridotto, un'esecuzione rapida e una maggiore facilità d'uso, rendono Azure RTOS FileX la scelta ideale per le applicazioni IoT incorporate più complesse.
+Azure RTOS fileX embedded file system è la soluzione avanzata di livello industriale di Azure RTOS per i formati di file FAT Microsoft, progettata specificamente per applicazioni IoT, in tempo reale e con un'incorporazione avanzata. Azure RTOS FileX supporta tutti i formati di file microsoft, inclusi FAT12, FAT16, FAT32 ed exFAT. FileX offre anche tolleranza di errore facoltativa e livellamento dell'usura FLASH tramite un prodotto aggiuntivo denominato [Azure RTOS LevelX](https://docs.microsoft.com/azure/rtos/levelx/). Tutto questo in combinazione con un footprint ridotto, un'esecuzione rapida e una maggiore facilità d'uso, rendono Azure RTOS FileX la scelta ideale per le applicazioni IoT incorporate più complesse.
 
 ## <a name="api-protocols"></a>Protocolli API
 
@@ -32,7 +32,7 @@ Azure RTOS fileX embedded file system è la soluzione avanzata di livello indust
 - Supporto facoltativo per la tolleranza di errore
 - Aggiornamento FAT secondario posticipato
 - Traccia a livello di sistema tramite Azure RTOS TraceX
-- API intuitive per l'accesso ai supporti, tra cui:
+- API di accesso ai supporti intuitive, tra cui:
   - fx_media_open
   - fx_media_close
   - fx_media_format
@@ -42,8 +42,8 @@ Azure RTOS fileX embedded file system è la soluzione avanzata di livello indust
 
 - Percorsi fino a 256 byte
 - Nomi di directory lunghi e 8.3 supportati
-- Creazione della directory & eliminazione
-- Navigazione e attraversamento delle directory
+- Creazione di directory & eliminazione
+- Navigazione e attraversamento della directory
 - Gestione degli attributi della directory
 - Traccia a livello di sistema tramite Azure RTOS TraceX
 - API intuitive per l'accesso alla directory, tra cui:
@@ -80,19 +80,19 @@ Azure RTOS fileX embedded file system è la soluzione avanzata di livello indust
 
 Azure RTOS FileX è una tecnologia avanzata, tra cui:
 
-- Supporto fat 12/16/32 ed exFAT
+- Supporto di FAT 16/16/32 ed exFAT
 - Supporto di più partizioni
 - Scalabilità automatica
-- Neutrale endian
+- Neutro endiano
 - Nome file lungo e supporto 8.3
-- Supporto della tolleranza di errore facoltativo
-- Cache dei settori logici
+- Supporto facoltativo per la tolleranza di errore
+- Cache del settore logico
 - Cache delle voci FAT
 - Preallocazione dei cluster
 - Supporto di file contigui
-- Metriche facoltative delle prestazioni
+- Metriche delle prestazioni facoltative
 - Azure RTOS di analisi del sistema TraceX
 
-## <a name="nornand-wear-leveling-azure-rtos-levelx"></a>NOR/NAND Wear Leveling (Azure RTOS LevelX)
+## <a name="nornand-wear-leveling-azure-rtos-levelx"></a>Livellamento dell'usura NOR/NAND (Azure RTOS LevelX)
 
-Azure RTOS LevelX è il prodotto Microsoft di livellamento per usura NOR/NAND FLASH. Azure RTOS LevelX può essere usato in combinazione con FileX o come libreria di settore FLASH di lettura/scrittura diretta autonoma per l'applicazione.
+Azure RTOS LevelX è il prodotto microsoft di livellamento dell'usura NOR/NAND FLASH. Azure RTOS LevelX può essere usato in combinazione con FileX o come libreria di settore FLASH di lettura/scrittura diretta autonoma per l'applicazione.

@@ -1,27 +1,27 @@
 ---
-title: Appendice A-servizi API ThreadX di Azure RTO
-description: Esplorare i servizi API ThreadX di Azure RTO.
+title: Appendice A - Azure RTOS Api ThreadX
+description: Esplorare l'Azure RTOS di API ThreadX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 30a2dc6284b413fe79ae6214e972b01d1321d031
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 99dd57b474f2f82aea2a7b2317a46c6b5a6150009ab33522ee6fbe4a3de6bf2c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821377"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788525"
 ---
-# <a name="appendix-a---azure-rtos-threadx-api-services"></a>Appendice A-servizi API ThreadX di Azure RTO
+# <a name="appendix-a---azure-rtos-threadx-api-services"></a>Appendice A - Azure RTOS Api ThreadX
 
-## <a name="entry-function"></a>Entry (funzione)
+## <a name="entry-function"></a>Funzione Entry
 
 ```c
 VOID      tx_kernel_enter(VOID);
 ```
 
-## <a name="block-memory-services"></a>Blocca servizi di memoria
+## <a name="block-memory-services"></a>Bloccare i servizi di memoria
 
 ```c
 UINT      tx_block_allocate(TX_BLOCK_POOL *pool_ptr,
@@ -160,13 +160,13 @@ UINT      tx_event_flags_set_notify(TX_EVENT_FLAGS_GROUP *group_ptr,
             VOID (*events_set_notify)(TX_EVENT_FLAGS_GROUP *));
 ```
 
-## <a name="interrupt-control"></a>Interrompi controllo
+## <a name="interrupt-control"></a>Controllo interrupt
 
 ```c
 UINT      tx_interrupt_control(UINT new_posture);
 ```
 
-## <a name="mutex-services"></a>Servizi mutex
+## <a name="mutex-services"></a>Servizi Mutex
 
 ```c
 UINT       tx_mutex_create(TX_MUTEX *mutex_ptr, CHAR *name_ptr,
@@ -209,7 +209,7 @@ UINT       tx_mutex_prioritize(TX_MUTEX *mutex_ptr);
 ```c
 UINT       tx_mutex_put(TX_MUTEX *mutex_ptr);
 ```
-## <a name="queue-services"></a>Servizi di Accodamento
+## <a name="queue-services"></a>Servizi code
 
 ```c
 UINT       tx_queue_create(TX_QUEUE *queue_ptr, CHAR *name_ptr,
@@ -270,7 +270,7 @@ UINT       tx_queue_send_notify(TX_QUEUE *queue_ptr, VOID
               (*queue_send_notify)(TX_QUEUE *));
 ```
 
-## <a name="semaphore-services"></a>Servizi semaforo
+## <a name="semaphore-services"></a>Servizi di semaforo
 
 ```c
 UINT       tx_semaphore_ceiling_put(TX_SEMAPHORE *semaphore_ptr,
@@ -424,7 +424,7 @@ UINT       tx_thread_time_slice_change(TX_THREAD *thread_ptr,
 UINT       tx_thread_wait_abort(TX_THREAD *thread_ptr);
 ```
 
-## <a name="time-services"></a>Servizi temporali
+## <a name="time-services"></a>Servizi ora
 
 ```c
 ULONG      tx_time_get(VOID);

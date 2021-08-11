@@ -1,41 +1,41 @@
 ### YamlMime:Landing
-title: Documentazione di Azure RTO GUIX
-summary: Azure RTO GUIX è un pacchetto di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi embedded.
+title: Azure RTOS documentazione di GUIX
+summary: Azure RTOS GUIX è un pacchetto di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi incorporati.
 metadata:
-  title: Che cos'è Azure RTO GUIX?
-  description: Azure RTO GUIX è un pacchetto di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi embedded.
+  title: Che cos'Azure RTOS GUIX?
+  description: Azure RTOS GUIX è un pacchetto di qualità professionale, creato per soddisfare le esigenze degli sviluppatori di sistemi incorporati.
   services: rtos
   ms.service: rtos
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 5/19/2020
-  ms.openlocfilehash: 5e3215a54a9d1d23e7f238e4bc6ffeafffdc75b4
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: 1a4b7c81349b59a8eff7a3aef30d50a9d33def4040bf1566f92d1fc27e0ebd7c
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: MT
   ms.contentlocale: it-IT
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797892"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116785329"
 landingContent:
-- title: Introduzione ad Azure RTO GUIX
+- title: Introduzione a Azure RTOS GUIX
   linkLists:
   - linkListType: overview
     links:
-    - text: Che cos'è Azure RTO GUIX?
+    - text: Che cos'Azure RTOS GUIX?
       url: overview-guix.md
-- title: Introduzione ad Azure RTO GUIX
+- title: Introduzione a Azure RTOS GUIX
   linkLists:
   - linkListType: get-started
     links:
-    - text: Guida dell'utente di Azure RTO GUIX
+    - text: Azure RTOS utente di GUIX
       url: about-guix.md
-- title: Introduzione ad Azure RTO GUIX Studio
+- title: Introduzione a Azure RTOS GUIX Studio
   linkLists:
   - linkListType: get-started
     links:
-    - text: Guida Avvio rapido di Azure RTO GUIX Studio
+    - text: Azure RTOS guiX Studio Avvio rapido guida
       url: guix-studio-quick-start.md
-    - text: Manuale dell'utente di Azure RTO GUIX Studio
+    - text: Azure RTOS utente di GUIX Studio
       url: about-guix-studio.md
-    - text: Programma di installazione di Azure RTO GUIX Studio
+    - text: Azure RTOS programma di installazione di GUIX Studio
       url: https://aka.ms/azrtos-guix-installer

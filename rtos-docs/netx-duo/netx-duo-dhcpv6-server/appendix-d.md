@@ -1,31 +1,31 @@
 ---
-title: Appendice D-esempio del server DHCPv6 avanzato di Azure RTO NetX Duo
-description: Questo capitolo contiene un esempio di server DHCPv6 avanzato NetX Duo
+title: 'Appendice D : Azure RTOS server NetX Duo Advanced DHCPv6'
+description: Questo capitolo contiene un esempio di server NetX Duo Advanced DHCPv6
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4472804dd223815a80438f283efd4e327ce51898
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 3ebb9683bd3183d5c6a72eab5730175b8e1713b75d285ac3417307c7cf5bde04
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821953"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783680"
 ---
-# <a name="appendix-d----azure-rtos-netx-duo-advanced-dhcpv6-server-example"></a>Appendice D-esempio del server DHCPv6 avanzato di Azure RTO NetX Duo
+# <a name="appendix-d----azure-rtos-netx-duo-advanced-dhcpv6-server-example"></a>Appendice D : Azure RTOS server NetX Duo Advanced DHCPv6
 
-Si tratta di un server DHCPv6 avanzato che illustra il salvataggio e il recupero della tabella di lease degli indirizzi IP del server e delle tabelle dei record client dalla memoria non volatile, come richiesto dallo standard RFC 3315.
+Si tratta di un server DHCPv6 avanzato che illustra il salvataggio e il recupero della tabella di lease degli indirizzi IP del server e delle tabelle di record client dalla memoria non volatile, come richiesto dalla specifica RFC 3315.
 
-In questo esempio il file di inclusione *nxd_dhcpv6_server. h* viene introdotto nella riga 7. Successivamente, il thread dell'applicazione server NetX Duo DHCPv6 viene creato alla riga 81 nel codice di esempio riportato di seguito. Si noti che il blocco di controllo DHCPv6 "*dhcp_server_0*" è stato definito come variabile globale alla riga 19 in precedenza.
+In questo esempio il file di *inclusione nxd_dhcpv6_server.h* viene portato alla riga 7. Il thread dell'applicazione NetX Duo DHCPv6 Server viene quindi creato alla riga 81 nel codice di esempio seguente. Si noti che il blocco di controllo DHCPv6 "*dhcp_server_0*" è stato definito come variabile globale alla riga 19 in precedenza.
 
-Prima di creare l'istanza del server DHCPv6 NetX Duo, la demo crea il pool di pacchetti per l'invio di messaggi DHCPv6 alla riga 84, crea un'interfaccia del thread IP nella riga 102 e Abilita UDP in NetX Duo nella riga 116.
+Prima di creare l'istanza del server NetX Duo DHCPv6, la demo crea un pool di pacchetti per l'invio di messaggi DHCPv6 nella riga 84, crea un'interfaccia di thread IP nella riga 102 e abilita UDP in NetX Duo nella riga 116.
 
-La corretta creazione del server DHCPv6 NetX Duo nella riga 136 include la funzione di callback due facoltativa descritta nel capitolo 1.It Abilita IPv6 e ICMPv6 necessari per NetX Duo per elaborare le operazioni IPv6 e DHCPv6 nella riga 162-163. Prima che il thread del server DHCPv6 sia pronto per l'esecuzione, il server DHCPv6 deve convalidare l'indirizzo IPv6 (167-180) e definire l'interfaccia DHCPv6 nella riga 208-209. Il servizio *nx_dhcpv6_set_server_duid* viene chiamato per creare il server se in precedenza non è stato creato alcun server Duid nella riga 266. Il server imposta un intervallo di indirizzi IP per la creazione di un elenco di indirizzi assegnabili. Se i dati vengono salvati da una sessione precedente, recupera i record client e i dati di lease IPv6 dalla memoria nelle righe 283-318. Crea anche il server DUID o, se ne è stato creato uno, recupera i dati DUID dall'archiviazione specificata dall'utente. Questa operazione è necessaria per riprodurre un DUID Server coerente tra i riavvii. Facoltativamente, l'applicazione host definisce un server DNS per i client che richiedono la configurazione del server DNS.
+La corretta creazione del server NetX Duo DHCPv6 nella riga 136 include la funzione di callback facoltativa descritta nel capitolo 1.It consente a IPv6 e ICMPv6 necessari a NetX Duo di elaborare le operazioni IPv6 e DHCPv6 nella riga 162-163. Prima che il thread del server DHCPv6 sia pronto per l'esecuzione, il server DHCPv6 deve convalidare il proprio indirizzo IPv6 (167-180) e definire la relativa interfaccia DHCPv6 nelle righe 208-209. Il *nx_dhcpv6_set_server_duid* viene chiamato per creare il server se in precedenza non è stato creato alcun DUID server nella riga 266. Il server configura un intervallo di indirizzi IP per la creazione di un elenco di indirizzi assegnabili. Se i dati vengono salvati da una sessione precedente, recupera i record client e i dati di lease IPv6 dalla memoria nelle righe 283-318. Crea anche il relativo DUID del server o, se ne è stato creato uno in precedenza, recupera i dati DUID dalla memoria specificata dall'utente. Questa operazione è necessaria per riprodurre un DUID del server coerente tra un riavvio e l'altro. Facoltativamente, l'applicazione host definisce un server DNS per i client che richiedono la configurazione del server DNS.
 
-Quindi, l'host avvia il DHCPv6Server alla riga 329. Viene creato il socket UPD del server DHCPv6 e vengono attivati i timer del server DHCPv6 di NetX Duo. Il server attende quindi la ricezione delle richieste client. Sebbene possa servire molti client, può solo elaborare una singola richiesta client alla volta.
+L'host avvia quindi DHCPv6Server nella riga 329. Viene creato il socket UPD del server DHCPv6 e vengono attivati i timer del server DHCPv6 di NetX Duo. Il server attende quindi di ricevere richieste client. Sebbene possa essere utilizzato da più client, può elaborare solo una singola richiesta client alla volta.
 
-Il resto dell'esempio contiene le implementazioni host per il salvataggio e il recupero delle tabelle server del pool di indirizzi IPv6 assegnabile e dei record client da e verso la memoria non volatile rispettivamente. Contiene anche un gestore opzioni per le opzioni richieste dai client DHCPv6 che non sono supportate direttamente dal server NetX Duo DHCPv6 (attualmente è supportata solo l'opzione del server DNS). Infine, è disponibile un codice per illustrare come salvare e recuperare il tempo non volatile in base al quale il server tiene traccia della scadenza del lease IP assegnata.
+Nella parte restante dell'esempio sono contenute implementazioni host per il salvataggio e il recupero delle tabelle server rispettivamente del pool di indirizzi IPv6 assegnabile e dei record client da e verso la memoria non volatile. Contiene anche un gestore di opzioni per le opzioni richieste dai client DHCPv6 che non sono supportati direttamente dal server NetX Duo DHCPv6 (attualmente è supportata solo l'opzione server DNS). Infine, è disponibile un codice per illustrare come salvare e recuperare "tempo non volatile" in base al quale il server tiene traccia della scadenza del lease IP assegnato.
 
 ```
 1 /* This is a small demo of the NetX Duo DHCPv6 Server for the high-performance
@@ -702,4 +702,4 @@ before rebooting or for making a backup).*/
 657 }
 ```
 
-**Figura 6. Applicazione server DHCPv6 Advanced NetX Duo**
+**Figura 6. Applicazione server NetX Duo DHCPv6 avanzata**

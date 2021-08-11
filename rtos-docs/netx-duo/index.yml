@@ -1,31 +1,31 @@
 ### YamlMime:Landing
-title: Documentazione di Azure RTO NetX Duo
-summary: Azure RTO NetX Duo è uno stack di rete TCP/IP avanzato e di livello industriale, progettato in modo specifico per le applicazioni in tempo reale e in tempo reale incorporate.
+title: Azure RTOS documentazione di NetX Duo
+summary: Azure RTOS NetX Duo è uno stack di rete TCP/IP avanzato di livello industriale progettato specificamente per applicazioni IoT e in tempo reale con deep embedded.
 metadata:
-  title: Che cos'è Azure RTO NetX Duo?
-  description: Azure RTO NetX Duo è uno stack di rete TCP/IP avanzato e di livello industriale, progettato in modo specifico per le applicazioni in tempo reale e in tempo reale incorporate.
+  title: Che cos'Azure RTOS NetX Duo?
+  description: Azure RTOS NetX Duo è uno stack di rete TCP/IP avanzato di livello industriale progettato specificamente per applicazioni IoT e in tempo reale con deep embedded.
   services: rtos
   ms.service: rtos
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 5/19/2020
-  ms.openlocfilehash: 6eca4b135a5cfa3413fc0828de4caeffa734d90a
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: fdbe2052698b166e48f1383b2c4ef5ad98db7d3e71f8c420c2b7ff85b4bb9b56
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: MT
   ms.contentlocale: it-IT
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797904"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116784955"
 landingContent:
-- title: Introduzione ad Azure RTO NetX Duo
+- title: Introduzione a Azure RTOS NetX Duo
   linkLists:
   - linkListType: overview
     links:
-    - text: Che cos'è Azure RTO NetX Duo?
+    - text: Che cos'Azure RTOS NetX Duo?
       url: overview-netx-duo.md
-- title: Introduzione ad Azure RTO NetX Duo
+- title: Introduzione a Azure RTOS NetX Duo
   linkLists:
   - linkListType: get-started
     links:
-    - text: Manuale dell'utente di Azure RTO NetX Duo
+    - text: Azure RTOS utente di NetX Duo
       url: about-this-guide.md

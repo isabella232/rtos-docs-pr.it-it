@@ -1,118 +1,118 @@
 ---
 title: Capitolo 3 - Panoramica funzionale di GUIX
-description: Questo capitolo contiene una panoramica funzionale del prodotto dell'interfaccia utente GUIX ad alte prestazioni.
+description: Questo capitolo contiene una panoramica funzionale del prodotto interfaccia utente GUIX ad alte prestazioni.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2a53da048b18d35b6b15a4ad8d4138e1a2acd4e8
-ms.sourcegitcommit: 95f4ae0842a486fec8f10d1480203695faa9592d
+ms.openlocfilehash: 37c1103d6b690350b6fa0794b9c719f31a112ff3babf88f125d3735f8ef935b6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111875248"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785234"
 ---
 # <a name="chapter-3---functional-overview-of-guix"></a>Capitolo 3 - Panoramica funzionale di GUIX
 
-Questo capitolo contiene una panoramica funzionale del prodotto dell'interfaccia utente GUIX ad alte prestazioni. 
+Questo capitolo contiene una panoramica funzionale del prodotto interfaccia utente GUIX ad alte prestazioni. 
 
 ## <a name="execution-overview"></a>Panoramica dell'esecuzione
 
-GUIX implementa un modello di programmazione basato su eventi. Ciò significa che il framework GUIX è basato principalmente sulla ricezione di eventi inseriti nella coda di eventi GUIX. L'elaborazione di questi eventi avviene nel contesto del thread GUIX, ovvero un thread ThreadX creato durante l'inizializzazione del sistema GUIX.
+GUIX implementa un modello di programmazione basato su eventi. Ciò significa che il framework GUIX è principalmente guidato dalla ricezione di eventi inseriti nella coda di eventi GUIX. L'elaborazione di questi eventi avviene nel contesto del thread GUIX, ovvero un thread ThreadX creato durante l'inizializzazione del sistema GUIX.
 
-Le applicazioni GUIX definiscono l'interfaccia utente chiamando le funzioni API GUIX per creare finestre e widget figlio e personalizzano l'aspetto di questi widget chiamando funzioni API aggiuntive usate per definire colori, stili, tipi di carattere e vari altri attributi di ogni finestra o tipo di widget. Se si usa GUIX Studio per creare l'aspetto delle schermate dell'interfaccia utente, gran parte di questa operazione di chiamata delle funzioni API GUIX per creare la visualizzazione viene eseguita automaticamente dall'applicazione GUIX Studio.
+Le applicazioni GUIX definiscono l'interfaccia utente chiamando le funzioni API GUIX per creare finestre e widget figlio e personalizzando l'aspetto di questi widget chiamando funzioni API aggiuntive usate per definire colori, stili, tipi di carattere e vari altri attributi di ogni finestra o tipo di widget. Se si usa GUIX Studio per creare l'aspetto delle schermate dell'interfaccia utente, gran parte di questo lavoro di chiamata delle funzioni API GUIX per creare la visualizzazione viene eseguita automaticamente dall'applicazione GUIX Studio.
 
 Le applicazioni GUIX interagiscono con l'utente del sistema e con la logica di business esterna gestendo gli eventi recuperati dalla coda di eventi GUIX.
-Questi eventi vengono in genere generati da widget GUIX, ma possono anche essere creati da thread esterni. Quando viene premuto un pulsante GUIX tipico, il pulsante invia un evento alla finestra padre del pulsante. Il programma dell'applicazione agirà sulla pressione del pulsante fornendo un gestore per l'evento di push del pulsante.
+Questi eventi vengono in genere prodotti dai widget GUIX, ma possono anche essere creati da thread esterni. Quando viene premuto un tipico pulsante GUIX, tale pulsante invia un evento alla finestra padre del pulsante. Il programma dell'applicazione agirà sul push del pulsante fornendo un gestore per l'evento di push del pulsante.
 
-Vengono spesso creati thread GUIX aggiuntivi per elementi come i driver di input. Un tipico driver di input del touchscreen viene eseguito come thread autonomo esterno al thread GUIX principale. Il driver di input tocco invia informazioni di tocco nel thread GUIX inviando eventi nella coda di eventi GUIX.
+Vengono spesso creati thread GUIX aggiuntivi per elementi quali i driver di input. Un tipico driver di input del touch screen viene eseguito come thread autonomo esterno al thread GUIX principale. Il driver di input tocco invia informazioni di tocco nel thread GUIX inviando eventi nella coda di eventi GUIX.
 
-Poiché molte operazioni dell'interfaccia utente, ad esempio le animazioni, richiedono informazioni temporali accurate, GUIX implementa anche un'interfaccia timer semplice e facile da usare. Questa interfaccia timer si basa sul servizio timer ThreadX e viene configurata automaticamente all'avvio del sistema.
+Poiché molte operazioni dell'interfaccia utente, ad esempio le animazioni, richiedono informazioni di temporizzazione accurate, GUIX implementa anche un'interfaccia timer semplice e facile da usare. Questa interfaccia timer si basa sul servizio timer ThreadX e viene configurata automaticamente all'avvio del sistema.
 
-La maggior parte del software GUIX è indipendente da eventuali dipendenze hardware. Il framework richiede driver di input specifici dell'hardware e driver di grafica specifici dell'hardware. I dettagli della modalità di implementazione di questi driver specifici dell'hardware vengono rinviati al capitolo 5.
+La maggior parte del software GUIX è indipendente da eventuali dipendenze hardware. Il framework richiede driver di input specifici dell'hardware e driver di grafica specifici dell'hardware. I dettagli della modalità di implementazione di questi driver specifici dell'hardware vengono posticimanti al capitolo 5.
 
 ## <a name="initialization"></a>Inizializzazione 
 
-Il servizio ***gx_system_initialize*** deve essere chiamato prima di qualsiasi altro servizio GUIX. L'inizializzazione del sistema GUIX può essere chiamata dalla routine threadX ***tx_application_define*** (contesto di inizializzazione) o dai thread dell'applicazione. La ***funzione gx_system_initialize*** crea la coda di eventi GUIX, inizializza la funzionalità timer GUIX, crea il thread di sistema GUIX principale e inizializza varie strutture di dati gestite da GUIX durante l'esecuzione dell'applicazione.
+Il servizio ***gx_system_initialize*** deve essere chiamato prima di qualsiasi altro servizio GUIX. L'inizializzazione del sistema GUIX può essere chiamata dalla routine threadX ***tx_application_define (contesto*** di inizializzazione) o dai thread dell'applicazione. La ***funzione gx_system_initialize*** crea la coda di eventi GUIX, inizializza la funzionalità timer GUIX, crea il thread di sistema GUIX principale e inizializza varie strutture di dati gestite da GUIX durante l'esecuzione dell'applicazione.
 
-Dopo ***gx_system_initialize,*** l'applicazione è pronta per creare schermi, canvas, finestre, widget e personalizzare le proprietà di tutti gli oggetti GUIX. Gran parte dell'API di creazione di oggetti GUIX può essere chiamata ***tx_application_define*** o dai thread dell'applicazione.
+Dopo ***gx_system_initialize,*** l'applicazione è pronta per creare display, canvas, finestre, widget e personalizzare le proprietà di tutti gli oggetti GUIX. Gran parte dell'API di creazione di oggetti GUIX può essere chiamata ***da*** tx_application_define thread dell'applicazione.
 
 ## <a name="application-interface-calls"></a>Chiamate all'interfaccia dell'applicazione 
 
-Le chiamate dall'applicazione vengono in gran parte effettuate da ***tx_application_define*** (contesto di inizializzazione) o dai thread dell'applicazione. Vedere la sezione "Allowed From" (Consentito da) di ogni API GUIX descritta nel capitolo 4 per determinare il contesto da cui può essere chiamata.
+Le chiamate dall'applicazione vengono in gran parte effettuate da tx_application_define ***(contesto*** di inizializzazione) o dai thread dell'applicazione. Vedere la sezione "Allowed From" di ogni API GUIX descritta nel capitolo 4 per determinare il contesto da cui può essere chiamata.
 
-Nella maggior parte dei casi, le attività a elevato utilizzo di elaborazione vengono posticipate al thread GUIX interno, inclusa l'elaborazione di tutti gli eventi e il disegno di widget/finestre.
+Nella maggior parte dei casi, le attività a elevato utilizzo di elaborazione vengono rinviate al thread GUIX interno, inclusa l'elaborazione di tutti gli eventi e il disegno widget/finestra.
 
 Le funzioni API GUIX possono essere chiamate da qualsiasi thread in qualsiasi momento.
-Tuttavia, in genere è considerata un'architettura migliore per separare la logica di business critica per il tempo dalla logica dell'interfaccia utente. Poiché le operazioni di disegno dell'interfaccia utente possono talvolta richiedere molto tempo a seconda delle dimensioni di visualizzazione e delle prestazioni della CPU, in genere non è necessario che i thread critici per il tempo ritardino l'attesa del completamento di un'operazione di disegno.
+Tuttavia, è in genere considerata un'architettura migliore per separare la logica di business time-critical dalla logica dell'interfaccia utente. Poiché le operazioni di disegno dell'interfaccia utente possono talvolta richiedere molto tempo a seconda delle dimensioni dello schermo e delle prestazioni della CPU, in genere non si vuole che i thread critici per il tempo ritardino in attesa del completamento di un'operazione di disegno.
 
 ## <a name="internal-guix-thread"></a>Thread GUIX interno 
 
-Come accennato, GUIX ha un thread interno che esegue la maggior parte dell'elaborazione dell'interfaccia utente grafica. Questo thread viene creato dal software dell'applicazione chiamando ***gx_system_initialize** _ seguito da _*_gx_system_start_**.
+Come accennato, GUIX ha un thread interno che esegue la maggior parte dell'elaborazione gui. Questo thread viene creato dal software dell'applicazione chiamando *** gx_system_initialize** _ seguito da __*_ gx_system_start **.
 
 La priorità del thread GUIX interno è determinata da `#define GX_SYSTEM_THREAD_PRIORITY` . Il valore predefinito è 16 (priorità intermedia), ma può essere modificato specificando questo valore nel file di intestazione gx_port.h o gx_user.h, eseguendo l'override del valore predefinito.
 
-L'intervallo di tempo del thread GUIX è definito in modo analogo da , il cui valore predefinito `#define GX_SYSTEM_THREAD_TIMESLICE` è 10 ms.
+L'intervallo di tempo del thread GUIX è definito in modo analogo da , che per impostazione `#define GX_SYSTEM_THREAD_TIMESLICE` predefinita ha valore 10 ms.
 
 Il sie dello stack del thread di sistema è determinato da , che si trova nel file di intestazione gx_port.h, ma può anche essere sottoposto a override specificando questo valore nel file di intestazione `#define GX_THREAD_STACK_SIZE` gx_user.h. 
 
 Il ciclo di esecuzione del thread GUIX interno è costituito da tre azioni.
-In primo luogo, GUIX recupera gli eventi dalla coda di eventi GUIX e invia tali eventi per l'elaborazione da parte delle finestre e dei widget GUIX. Gli eventi vengono in genere inseriti nella coda di eventi GUIX da timer periodici, dispositivi di input come un touchscreen o un tastierino e dai widget GUIX stessi durante l'elaborazione dell'input dell'utente. Successivamente, dopo l'elaborazione di tutti gli eventi, GUIX determina se è necessario un aggiornamento dello schermo e, in tal caso, esegue l'elaborazione necessaria per aggiornare i dati grafici visualizzati, principalmente chiamando le funzioni di disegno di tali finestre e widget contrassegnati come dirty. GuiX sospende infine il thread GUIX fino all'arrivo di un nuovo evento o di un nuovo evento di input.
+In primo luogo, GUIX recupera gli eventi dalla coda di eventi GUIX e invia tali eventi per l'elaborazione da parte delle finestre e dei widget GUIX. Gli eventi vengono in genere inseriti nella coda di eventi GUIX da timer periodici, dispositivi di input come un touch screen o una tastiera e dai widget GUIX stessi durante l'elaborazione dell'input dell'utente. Successivamente, dopo aver elaborato tutti gli eventi, GUIX determina se è necessario un aggiornamento dello schermo e, in tal caso, esegue l'elaborazione necessaria per aggiornare i dati grafici di visualizzazione, principalmente chiamando le funzioni di disegno di tali finestre e widget contrassegnati come dirty. Infine, GUIX sospende il thread GUIX fino all'arrivo di un nuovo evento o evento di input.
 
 ## <a name="event-processing"></a>Elaborazione di eventi 
 
-Gli eventi di input tocco o penna vengono elaborati determinando la finestra o il widget più in alto sotto la posizione del pixel di input tocco o penna e chiamando la funzione di elaborazione degli eventi della finestra o del widget. Se il widget comprende gli eventi di input penna, ela processerà l'evento nel modo appropriato per quel tipo di widget. In caso contrario, il widget in primo piano passerà l'evento di input tocco o penna all'elemento padre del widget per l'elaborazione. Questo passaggio dell'evento nella catena continua fino a quando l'evento non viene gestito o l'evento arriva alla finestra radice, nel qual caso l'evento viene eliminato.
+Gli eventi di input tocco o penna vengono elaborati determinando la finestra o il widget più in alto sotto la posizione del pixel di input del tocco o della penna e chiamando la funzione di elaborazione degli eventi della finestra o del widget. Se il widget comprende gli eventi di input penna, elarnerà l'evento nel modo appropriato per il tipo di widget. In caso contrario, il widget più in alto passerà l'evento di input tocco o penna all'elemento padre del widget per l'elaborazione. Questo passaggio dell'evento nella catena continua fino a quando l'evento non viene gestito o l'evento arriva alla finestra radice, nel qual caso l'evento viene eliminato.
 
-Gli eventi del tastierino vengono inviati alla finestra o al widget con lo stato attivo per l'input. Lo stato attivo dell'input viene gestito dal componente gx_system GUIX.
+Gli eventi del tastierino vengono inviati alla finestra o al widget con lo stato attivo per l'input. Lo stato attivo dell'input viene mantenuto dal componente gx_system GUIX.
 
 Gli eventi timer vengono sempre inviati alla finestra o al widget proprietario del timer per l'elaborazione.
 
-Gli eventi generati internamente, ad esempio gli eventi clic sui pulsanti o gli eventi di modifica del valore del dispositivo di scorrimento, vengono sempre inviati all'elemento padre del widget che genera l'evento. Se l'elemento padre non elabora l'evento, viene passato verso l'alto nella catena in modo simile agli eventi di input tocco o penna.
+Gli eventi generati internamente, ad esempio gli eventi clic del pulsante o gli eventi di modifica del valore del dispositivo di scorrimento, vengono sempre inviati all'elemento padre del widget che genera l'evento. Se l'elemento padre non elabora l'evento, viene passato alla catena in modo simile agli eventi di input tocco o penna.
 
 ## <a name="drawing"></a>Disegno 
 
-Una volta completata l'elaborazione dell'evento, il thread interno GUIX determina se è necessario un aggiornamento dello schermo e, in tal caso, vengono chiamate le funzioni di disegno finestra/widget appropriate. Al termine del disegno, il thread interno GUIX attende semplicemente la coda di eventi per l'elaborazione dell'evento GUIX successivo.
+Al termine dell'elaborazione dell'evento, il thread interno GUIX determina se è necessario un aggiornamento dello schermo e, in tal caso, vengono chiamate le funzioni di disegno di finestra/widget appropriate. Al termine del disegno, il thread interno GUIX attende semplicemente la coda di eventi per l'elaborazione dell'evento GUIX successivo.
 
-GUIX implementa il concetto di *aree dirty,* ovvero aree che devono essere disegnati nuovamente, per ogni widget e area di disegno. Un widget può disegnare solo in aree precedentemente contrassegnate come dirty. Quando viene chiamata una funzione di disegno del widget, tutte le operazioni di disegno vengono ritagliate internamente in base al rettangolo dirty definito in precedenza.
-I tentativi di disegnare all'esterno di quest'area vengono ignorati.
+GUIX implementa il concetto di *aree dirty,* ovvero aree che devono essere disegnate nuovamente, per ogni widget e area di disegno. Un widget può disegnare solo in aree precedentemente contrassegnate come dirty. Quando viene chiamata una funzione di disegno widget, tutte le operazioni di disegno vengono ritagliate internamente al rettangolo dirty definito in precedenza.
+I tentativi di disegnare all'esterno di questa area vengono ignorati.
 
 I widget e le finestre si contrassegnano come dirty chiamando la funzione API ***gx_system_dirty_mark***. Questa funzione contrassegna l'intero widget o finestra come necessario per essere ridisegnato. Una seconda funzione, ***gx_system_dirty_partial_add***, può essere richiamata come alternativa per contrassegnare solo una parte di una finestra o un widget come dirty.
 
-Questo modello di contrassegno dei widget come dirty e quindi di ridisegno di tali widget solo quando tutti gli eventi di input sono stati elaborati viene definito disegno *posticipato.* L'algoritmo di disegno posticipato GUIX e la manutenzione degli elenchi dirty sono progettati per migliorare l'efficienza di disegno. Poiché le operazioni di disegno sono in genere dispendiose, GUIX è molto difficile da evitare operazioni di disegno non necessarie.
+Questo modello di contrassegno dei widget come dirty e quindi di ridisegno di tali widget solo quando tutti gli eventi di input sono stati elaborati viene definito disegno *posticipato.* L'algoritmo di disegno posticipato GUIX e la manutenzione degli elenchi dirty sono progettati per migliorare l'efficienza del disegno. Poiché le operazioni di disegno sono in genere dispendiose, GUIX lavora sodo per evitare il disegno non necessario.
 
-Il disegno viene eseguito in un canvas *GUIX.* Un'area di disegno è un'area di memoria riservata per contenere i dati grafici. Un'area di disegno può essere o meno collegata direttamente al buffer dei frame hardware, a seconda dell'architettura di sistema e dei vincoli di memoria. Prima di poter eseguire qualsiasi disegno, è necessario aprire un'area di disegno per il disegno chiamando la ***gx_canvas_drawing_initiate*** API. Questa API prepara un'area di disegno per il disegno e ha stabilito il contesto *di disegno corrente.* Quando GUIX esegue un aggiornamento dell'area di disegno di sistema, l'area di disegno viene aperta per il disegno e il contesto di disegno viene stabilito prima che le API di disegno a livello di widget siano richiamate. Non è quindi necessario che i widget avviino il disegno su un'area di disegno all'interno della funzione di disegno del widget.
+Il disegno viene eseguito in un canvas *GUIX.* Un canvas è un'area di memoria riservata per contenere dati grafici. Un canvas può essere o meno collegato direttamente al buffer dei frame hardware, a seconda dell'architettura di sistema e dei vincoli di memoria. Prima di poter eseguire qualsiasi disegno, è necessario aprire un'area di disegno per il disegno chiamando la ***gx_canvas_drawing_initiate*** API. Questa API prepara un'area di disegno per il disegno e ha stabilito il contesto *di disegno corrente.* Quando GUIX esegue un aggiornamento dell'area di disegno di sistema, l'area di disegno viene aperta per il disegno e il contesto di disegno viene stabilito prima che le API di disegno a livello di widget siano richiamate. Pertanto, i widget non devono avviare il disegno su un'area di disegno all'interno della funzione di disegno del widget.
 
-Tuttavia, se un'applicazione desidera eseguire il disegno immediato in un'area di disegno, al di fuori del flusso dell'algoritmo di disegno posticipato GUIX standard, l'applicazione deve richiamare direttamente il ***gx_canvas_drawing_initiate*** prima di chiamare qualsiasi altra funzione API di disegno e deve chiamare ***gx_canvas_drawing_complete*** dopo il completamento del disegno immediato.
+Tuttavia, se un'applicazione desidera eseguire il disegno immediato in un'area di disegno, al di fuori del flusso dell'algoritmo di disegno posticipato GUIX standard, l'applicazione deve richiamare direttamente il ***gx_canvas_drawing_initiate*** prima di chiamare qualsiasi altra funzione API di disegno e deve chiamare ***gx_canvas_drawing_complete*** al termine del disegno immediato.
 
 ## <a name="user-input"></a>Input utente 
 
 GUIX supporta dispositivi touch screen, mouse e tastiera con tipi di evento predefiniti. È possibile usare dispositivi di input aggiuntivi definendo tipi di evento personalizzati o mappando il dispositivo di input personalizzato ai tipi di evento predefiniti.
 
-Le azioni associate a questi dispositivi vengono convertite in eventi elaborati dal thread GUIX interno. Il software a livello di driver scritto per supportare un touchscreen deve preparare e inviare agli eventi della coda di eventi GUIX gli eventi di pen-down, pen-up e pen-drag. Analogamente, un driver di input del tastierino deve generare eventi per la pressione del tasto e l'input di rilascio del tasto.
+Le azioni associate a questi dispositivi vengono convertite in eventi elaborati dal thread GUIX interno. Il software a livello di driver scritto per supportare un touch screen deve preparare e inviare agli eventi della coda di eventi GUIX gli eventi per le operazioni di pen-down, pen-up e pen-drag. Analogamente, un driver di input del tastierino deve generare eventi per la pressione del tasto e l'input di rilascio del tasto.
 
 ## <a name="modal-dialog-execution"></a>Esecuzione di finestre di dialogo modali 
 
-L'esecuzione modale della finestra di dialogo si riferisce alla presentazione di una finestra all'utente che deve essere chiusa in qualche modo prima che qualsiasi altra finestra o widget GUIX possa ricevere l'input dell'utente. Le finestre di dialogo modali acquisiscono tutto l'input dell'utente mentre viene visualizzata la finestra di dialogo, indipendentemente dalla posizione x,y degli eventi di input del mouse o tocco.
+L'esecuzione modale del dialogo si riferisce alla presentazione di una finestra all'utente che deve essere chiusa in qualche modo prima che qualsiasi altra finestra o widget GUIX possa ricevere l'input dell'utente. I dialoghe modali acquisiscono tutto l'input dell'utente mentre viene visualizzata la finestra di dialogo, indipendentemente dalla posizione x,y degli eventi di input tramite tocco o mouse.
 
 Le finestre di dialogo modali vengono attivate dal software dell'applicazione creando prima la finestra nel modo normale chiamando ***gx_window_create*** e quindi chiamando la funzione API GUIX ***gx_window_execute.***
 
-Quando la ***gx_window_execute*** viene chiamata, GUIX entra in un ciclo di elaborazione degli eventi locale. La ***gx_window_execute*** non restituisce al chiamante fino a quando la finestra di dialogo non viene chiusa, tramite input dell'utente ***o chiamando gx_window_close***. Per questo motivo, è molto importante non chiamare mai ***la funzione gx_window_execute*** da un thread diverso dal thread interno GUIX.
+Quando viene ***gx_window_execute*** chiamata alla funzione , GUIX entra in un ciclo di elaborazione eventi locale. La ***gx_window_execute*** non restituisce al chiamante finché la finestra di dialogo non viene chiusa, tramite input dell'utente ***o*** chiamando gx_window_close . Per questo motivo, è molto importante non chiamare mai la funzione ***gx_window_execute*** da qualsiasi thread diverso dal thread interno GUIX.
 
 ## <a name="periodic-processing"></a>Elaborazione periodica 
 
-Per fornire effetti di visualizzazione, animazione sprite e supporto per le richieste periodiche dell'applicazione, GUIX usa un timer ThreadX. Questo singolo timer viene usato per soddisfare tutte le esigenze correlate al tempo GUIX. Per impostazione predefinita, la frequenza per l'elaborazione interna del timer GUIX è impostata su 20 ms tramite la costante **GX_SYSTEM_TIMER_MS**, definita in **_gx_api.h_**, a meno che la costante non sia definita in precedenza nell'intestazione gx_port.h o gx_user.h. La frequenza predefinita può essere modificata dall'applicazione tramite un'opzione di compilazione quando si compila la libreria GUIX o ridefinerla in modo esplicito in ***gx_user.h.***
+Per fornire effetti di visualizzazione, animazione sprite e supporto per le richieste periodiche dell'applicazione, GUIX usa un timer ThreadX. Questo singolo timer viene usato per soddisfare tutte le esigenze relative al tempo GUIX. Per impostazione predefinita, la frequenza per l'elaborazione del timer interno GUIX è impostata su 20 ms tramite la costante **GX_SYSTEM_TIMER_MS**, definita in **_gx_api.h_**, a meno che la costante non sia definita in precedenza nell'intestazione gx_port.h o gx_user.h. La frequenza predefinita può essere modificata dall'applicazione tramite un'opzione di compilazione quando si compila la libreria GUIX o ridefinerla in modo esplicito in ***gx_user.h***.
 
 > [!IMPORTANT]
-> Si noti che la frequenza del timer GUIX è espressa in tick del timer RTOS ed è definita dalla **costante GX_SYSTEM_TIMER_TICKS**. Il valore di **GX_SYSTEM_TIMER_TICKS** viene calcolato **usando** GX_SYSTEM_TIMER_MS e **TX_TIMER_TICKS_PER_SECOND**. L'utente può ridefinire uno di questi valori in ***gx_port.h** _ o _ *_gx_user.h_** per regolare la frequenza e la risoluzione del timer GUIX.
+> Si noti che la frequenza del timer GUIX è espressa nei tick del timer RTOS e viene definita dalla costante GX_SYSTEM_TIMER_TICKS **.** Il valore di **GX_SYSTEM_TIMER_TICKS** viene calcolato **usando** GX_SYSTEM_TIMER_MS e **TX_TIMER_TICKS_PER_SECOND**. L'utente può ridefinire uno di questi valori in ***gx_port.h** _ o _ *_gx_user.h_** per regolare la frequenza e la risoluzione del timer GUIX.
 
 ## <a name="display-driver"></a>Driver di visualizzazione 
 
-I driver di visualizzazione sono responsabili della fornitura di un set di funzioni di disegno al codice GUIX di base. L'implementazione di ognuna di queste funzioni di disegno è determinata dal driver e, quando possibile, l'implementazione sfrutta il supporto dell'accelerazione hardware. In generale, la funzione di disegno funziona scrivendo dati pixel in un buffer di memoria, che può essere il buffer fisico dei frame o può essere un buffer secondario a seconda dell'architettura del driver. Molti driver implementano il doppio buffer usando due buffer di frame e questi buffer vengono attivati o disattivati richiamando la funzione di attivazione/disattivazione del buffer. GUIX chiama queste funzioni internamente nei momenti appropriati. Per i sistemi con vincoli di memoria, le funzioni di disegno possono scrivere solo in un singolo buffer di frame di memoria.
+I driver di visualizzazione sono responsabili della fornitura di un set di funzioni di disegno al codice GUIX di base. L'implementazione di ognuna di queste funzioni di disegno è determinata dal driver e, quando possibile, l'implementazione sfrutta il supporto dell'accelerazione hardware. In generale, la funzione di disegno funziona scrivendo i dati pixel in un buffer di memoria, che può essere il buffer fisico dei frame o può essere un buffer secondario a seconda dell'architettura del driver. Molti driver implementano il doppio buffer usando due buffer di frame e questi buffer vengono attivati o disattivati richiamando la funzione di attivazione/disattivazione del buffer. GUIX chiama queste funzioni internamente nei momenti appropriati. Per i sistemi con vincoli di memoria, le funzioni di disegno possono scrivere solo in un singolo buffer di frame di memoria.
 
 GUIX fornisce implementazioni software predefinite di ogni funzione di disegno di basso livello a ogni livello di intensità e formato dei colori supportati. Queste funzioni vengono richiamate tramite puntatori a funzione mantenuti **all'interno GX_DISPLAY** struttura . Quando vengono creati driver specifici dell'hardware, in genere sovrascrivono alcuni di questi puntatori a funzione con funzioni specifiche dell'hardware di destinazione.
 
-Un driver di visualizzazione hardware tipico viene implementato creando prima il driver di visualizzazione GUIX predefinito per la profondità e il formato dei colori richiesti.
+Un driver di visualizzazione hardware tipico viene implementato creando prima il driver di visualizzazione GUIX predefinito per la profondità e il formato dei colori necessari.
 Il driver hardware sostituirà quindi le funzioni che devono essere ottimizzate o personalizzate per l'implementazione hardware specifica.
 
 GUIX supporta formati di colore in pixel compresi tra il formato monocromatico da 1 bpp e il formato 32-bpp a:r:g:b. GUIX supporta anche molte varianti all'interno di ogni ampia categoria di profondità dei colori, ad esempio r:g:b rispetto all'ordine dei byte b:g:r, formati di pixel con allineamento alle parole e canali alfa. Attualmente sono supportati 25 formati di colore distinti, ma questo elenco aumenta man mano che i fornitori di hardware offrono nuove varianti.
@@ -137,7 +137,7 @@ Modello 3) Buffer frame locale + GRAM esterno:
 
 ![Buffer di frame locale + GRAM esterno](./media/guix/user-guide/local-frame-buffer-external-gram.png)
 
-Il modello 3 è una combinazione dei primi due. In questo modello esiste memoria locale sufficiente per contenere un buffer di frame. Inoltre, il dispositivo di visualizzazione fornisce un GRAM esterno e si aggiorna automaticamente usando i dati forniti nel GRAM. Questa architettura trae vantaggio da una maggiore efficienza degli aggiornamenti perché è possibile trasferire la parte modificata del buffer dei frame locale al GRAM esterno in un unico trasferimento a blocchi, spesso utilizzando canali DMA di onboarding. Questo modello elimina anche lo sfarfallio e lo sfarfallio che possono essere presenti in uno dei primi due modelli, perché solo il contenuto grafico completato viene copiato nell'GRAM esterno.
+Il modello 3 è una combinazione dei primi due. In questo modello esiste memoria locale sufficiente per contenere un buffer di frame. Inoltre, il dispositivo di visualizzazione fornisce un GRAM esterno e si aggiorna automaticamente usando i dati forniti nell'GRAM. Questa architettura trae vantaggio da una maggiore efficienza degli aggiornamenti perché è possibile trasferire la parte modificata del buffer dei frame locale al GRAM esterno in un unico trasferimento a blocchi, spesso utilizzando canali DMA onboarding. Questo modello elimina anche lo sfarfallio e lo sfarfallio che possono essere presenti in uno dei primi due modelli, perché solo il contenuto grafico completato viene copiato nell'GRAM esterno.
 
 Modello 4) Buffer frame Ping-pong:
 
@@ -159,7 +159,7 @@ Il modello 6 è una leggera variazione nel modello 5, in cui è necessario un so
 
 ## <a name="string-encoding"></a>Codifica di stringhe 
 
-GUIX per impostazione predefinita supporta la codifica di stringhe in formato UTF8. Il supporto per la codifica di stringhe UTF8 può essere disabilitato definendo GX_DISABLE_UTF8_SUPPORT **nel** file di ***intestazione gx_user.h.*** Se la codifica UTF8 è disabilitata, GUIX userà internamente solo la codifica standard ASCII a 8 bit più la codifica dei caratteri della tabella codici Latin-1. La disabilitazione della codifica di stringhe UTF8 comporta un footprint della libreria GUIX leggermente più ridotto e un'esecuzione di runtime leggermente più veloce delle funzioni di gestione delle stringhe e di disegno del testo.
+GUIX per impostazione predefinita supporta la codifica della stringa di formato UTF8. Il supporto per la codifica di stringhe UTF8 può essere disabilitato definendo GX_DISABLE_UTF8_SUPPORT **nel** file di ***intestazione gx_user.h.*** Se la codifica UTF8 è disabilitata, GUIX userà internamente solo la codifica standard ASCII a 8 bit più la codifica dei caratteri della tabella codici Latin-1. La disabilitazione della codifica di stringhe UTF8 comporta un footprint della libreria GUIX leggermente più ridotto e un'esecuzione di runtime leggermente più veloce delle funzioni di gestione delle stringhe e di disegno del testo.
 
 La codifica di stringhe UTF8 presenta i tratti seguenti:
 
@@ -171,7 +171,7 @@ Tutti i set di caratteri attivi in tutto il mondo, inclusi i set di caratteri Ka
 
 ### <a name="static-and-dynamic-strings"></a>Stringhe statiche e dinamiche 
 
-Le stringhe assegnate ai widget GUIX che supportano la visualizzazione del testo possono essere costanti stringa definite in modo statico, che in genere vengono inserite nell'archiviazione costante come parte della tabella GUIX String descritta di seguito, e stringhe definite dinamicamente, ovvero stringhe generate in fase di esecuzione usando servizi come ***sprintf** _ o _*_gx_utility_ltoa_**.
+Le stringhe assegnate ai widget GUIX che supportano la visualizzazione del testo possono essere costanti stringa definite in modo statico, che in genere vengono inserite nell'archiviazione costante come parte della tabella stringa GUIX descritta di seguito, e stringhe definite dinamicamente, ovvero stringhe generate in fase di esecuzione usando servizi come ***sprintf** _ o _*_gx_utility_ltoa_**.
 
 Esempi di stringhe dinamiche possono includere un valore visualizzato come numero all'interno di un widget di richiesta GUIX o una stringa "ora/data" formattata dinamicamente in base alla posizione e alle preferenze di formato dell'utente. Se si creano stringhe in fase di esecuzione che verranno assegnate ai widget GUIX, ad esempio i widget **GX_PROMPT** o **GX_TEXT_BUTTON,** è necessario scegliere di allocare in modo statico lo spazio di archiviazione per queste stringhe generate dal runtime, ad esempio
 matrici di caratteri globali) oppure è possibile definire e installare una funzione allocatore di memoria dinamica e usare lo stile **GX_STYLE_TEXT_COPY,** che indica a tali widget di creare una copia privata delle stringhe di testo assegnate.
@@ -186,7 +186,7 @@ Per considerazioni sulla sicurezza, il software GUIX non usa mai internamente le
 
 Versioni della libreria GUIX precedenti alla versione 5.6 delle funzioni API definite che accettano ( `GX_CONST GX_CHAR *text` ) come parametro. Queste funzioni, sebbene siano ancora supportate per la compatibilità con le versioni precedenti, sono state sostituite dalle funzioni API preferite che accettano ( `GX_CONST GX_STRING *string` ) come parametro di input.
 
-Per impostazione predefinita, l'API di gestione del testo deprecata è abilitata per consentire a tutte le applicazioni scritte in precedenza di essere compilate in modo pulito con gli aggiornamenti più recenti della libreria GUIX. Per disabilitare l'API di gestione  del testo deprecata, GX_DISABLE_DEPRECATED_STRING_API la definizione deve essere aggiunta al file **_di intestazione gx_user.h_*_. Tutte le nuove applicazioni devono definire _* GX_DISABLE_DEPRECATED_STRING_API** e devono usare solo le funzioni API sostitutive. Tutti i file di output generati da GUIX Studio per la libreria GUIX versione 5.6 o successiva utilizzeranno solo le funzioni API sostitutive.
+Per impostazione predefinita, l'API di gestione del testo deprecata è abilitata per consentire a tutte le applicazioni scritte in precedenza di essere compilate in modo pulito con gli aggiornamenti più recenti della libreria GUIX. Per disabilitare l'API di gestione  del testo deprecata, GX_DISABLE_DEPRECATED_STRING_API la definizione deve essere aggiunta al file **_di intestazione gx_user.h_*_. Tutte le nuove applicazioni devono definire _* GX_DISABLE_DEPRECATED_STRING_API** e devono usare solo le funzioni api sostitutive. Tutti i file di output generati da GUIX Studio per la libreria GUIX versione 5.6 o successiva utilizzeranno solo le funzioni API sostitutive.
 
 La tabella seguente elenca i nomi delle funzioni api sostitutive deprecate e appena definite:
 
@@ -221,107 +221,107 @@ La tabella seguente elenca i nomi delle funzioni api sostitutive deprecate e app
 
 La tabella di stringhe GUIX e le risorse stringa vengono registrate con un'istanza di visualizzazione GUIX.
 
-Ogni visualizzazione in un sistema a più display ha una propria tabella di stringhe e ogni visualizzazione può essere eseguita nella propria lingua selezionata. Anche gli altri tipi di risorse GUIX (colori, tipi di carattere e mappe pixel) vengono gestiti dal componente GUIX Display, poiché questi tipi di risorse sono specifici per ogni formato di colore di visualizzazione e profondità del colore.
+Ogni visualizzazione in un sistema a più display ha una propria tabella di stringhe e ogni visualizzazione può essere eseguita nella propria lingua selezionata. Anche gli altri tipi di risorse GUIX (colori, tipi di carattere e pixelmap) vengono gestiti dal componente GUIX Display, poiché questi tipi di risorse sono specifici per ogni formato di colore di visualizzazione e profondità del colore.
 
-Anche se è possibile creare manualmente la tabella delle stringhe dell'applicazione, nella maggior parte dei casi la tabella delle stringhe di visualizzazione viene definita dall'applicazione GUIX Studio come parte del file di risorse del progetto. Le lingue disponibili sono definite anche nel file di intestazione della risorsa. La tabella delle stringhe di visualizzazione è una tabella a più colonne di puntatori alle stringhe dell'applicazione. Ogni colonna della tabella di stringhe rappresenta una lingua supportata dall'applicazione.
+Anche se è possibile creare manualmente la tabella delle stringhe dell'applicazione, la tabella delle stringhe di visualizzazione viene spesso definita dall'applicazione GUIX Studio come parte del file di risorse del progetto. Le lingue disponibili sono definite anche nel file di intestazione della risorsa. La tabella delle stringhe di visualizzazione è una tabella a più colonne di puntatori alle stringhe dell'applicazione. Ogni colonna della tabella di stringhe rappresenta un linguaggio supportato dall'applicazione.
 Se l'applicazione supporta una sola lingua, ad esempio l'inglese, la tabella delle stringhe avrà una sola colonna. È comunque possibile aggiungere il supporto per altre lingue in qualsiasi momento senza modificare il software dell'applicazione.
 
-La tabella di stringhe attiva  viene assegnata chiamando la gx_display_string_table_set'API. Questa funzione viene chiamata automaticamente dal codice di avvio generato da GUIX Studio, ma può anche essere chiamata direttamente dall'applicazione per modificare la tabella di stringhe attiva.
+La tabella di stringhe attiva viene assegnata chiamando la ***funzione gx_display_string_table_set*** API. Questa funzione viene chiamata automaticamente dal codice di avvio generato da GUIX Studio, ma può anche essere chiamata direttamente dall'applicazione per modificare la tabella di stringhe attiva.
 
-Il linguaggio attivo viene  assegnato chiamando la gx_display_active_language_set'API. Questa funzione determina quale colonna della tabella delle stringhe di visualizzazione è attiva.
+Il linguaggio attivo viene assegnato chiamando la ***gx_display_active_language_set*** API. Questa funzione determina quale colonna della tabella delle stringhe di visualizzazione è attiva.
 
-Quando questa funzione viene richiamata, un evento **GX_EVENT_LANGUAGE_CHANGE** viene inviato a tutti i widget GUIX visibili, consentendo loro di eseguire l'aggiornamento per visualizzare i dati stringa appena attivi.
+Quando questa funzione viene  richiamata, viene inviato un evento GX_EVENT_LANGUAGE_CHANGE a tutti i widget GUIX visibili, consentendo loro di eseguire l'aggiornamento per visualizzare i nuovi dati stringa attivi.
 
-I widget e il software applicativo risolvono le stringhe definite in modo statico usando i valori ID di stringa ***e*** le funzioni gx_display_string_get_ext o ***gx_widget_string_get_ext'API.*** Queste funzioni restituiscono il **GX_STRING** associato a un ID stringa specificato e alla lingua attualmente attiva.
+I widget e il software dell'applicazione risolvono le stringhe definite in modo statico usando i valori ID ***di*** stringa e gx_display_string_get_ext ***o*** gx_widget_string_get_ext api. Queste funzioni restituiscono il **GX_STRING** associato a un ID stringa specificato e alla lingua attualmente attiva.
 
-### <a name="bi-directional-text-display"></a>Visualizzazione testo bidirezionale 
+### <a name="bi-directional-text-display"></a>Visualizzazione del testo bidirezionale 
 
 GUIX offre due strategie per il supporto del testo bidirezionale.
 
-Un'opzione è eseguire il riordinamento del testo dell'offerta all'interno dell'applicazione GUIX Studio. L'uso di questa opzione guiX Studio è responsabile della generazione di testo offeri nel file di output nell'ordine di visualizzazione. Questa soluzione non ha alcun impatto sulle prestazioni di runtime e non richiede aggiunte alla libreria di runtime GUIX. Per consentire a GUIX Studio di generare stringhe di testo dell'offerta displayorder, è necessario selezionare la casella di controllo Generate **Offeri Text in Display Order** (Genera testo offeri nell'ordine di visualizzazione) nella finestra di dialogo di configurazione della lingua di GUIX Studio:
+Un'opzione è eseguire il riordinamento del testo bidi all'interno dell'applicazione GUIX Studio. L'uso di questa opzione guiX Studio è responsabile della generazione di testo bidi nel file di output nell'ordine di visualizzazione. Questa soluzione non ha alcun impatto sulle prestazioni di runtime e non richiede aggiunte alla libreria di runtime GUIX. Per consentire a GUIX Studio di generare stringhe di testo bidi displayorder, è necessario selezionare la casella di controllo Genera testo **Bidi nell'ordine** di visualizzazione nella finestra di dialogo di configurazione della lingua di GUIX Studio:
 
 ![Configurare le lingue](./media/guix/user-guide/configure-languages.png)
 
-Con queste opzioni selezionate, il file di risorse generato conterrà le stringhe Offeri generate in ordine di visualizzazione e non è necessaria alcuna elaborazione aggiuntiva all'interno della libreria di runtime GUIX.
+Con queste opzioni selezionate, il file di risorse generato conterrà stringhe Bidi generate in ordine di visualizzazione e non è necessaria alcuna elaborazione aggiuntiva all'interno della libreria di runtime GUIX.
 
-La seconda opzione è eseguire il riordinamento del testo offeri in fase di esecuzione. Questa opzione è supportata per le applicazioni che devono gestire stringhe di testo offeri definite in modo dinamico e non generate dall'applicazione GUIX Studio. In questo caso la libreria di runtime GUIX è responsabile del riordinamento del testo dell'offerta prima di disegnare ogni stringa di testo. Questa soluzione ha un impatto sulle prestazioni di runtime e sulla memoria. Per il processo di riordinamento del testo di Offeri deve essere disponibile memoria dinamica sufficiente. Questa soluzione richiede che il GX_DYNAMIC_BIDI_TEXT_SUPPORT essere definito durante la compilazione della libreria GUIX. Sono disponibili due funzioni ***API gx_system_bidi_text_enable*** ***e gx_system_bidi_text_disable*** per abilitare/disabilitare il supporto del testo offeri in fase di esecuzione.
+La seconda opzione è eseguire il riordino del testo bidi in fase di esecuzione. Questa opzione è supportata per le applicazioni che devono gestire stringhe di testo bidi definite dinamicamente e non generate dall'applicazione GUIX Studio. In questo caso, la libreria di runtime GUIX è responsabile del riordino del testo bidi prima di disegnare ogni stringa di testo. Questa soluzione ha un impatto sulle prestazioni di runtime e sulla memoria. Per il processo di riordinamento del testo bidi deve essere disponibile memoria dinamica sufficiente. Questa soluzione richiede che il GX_DYNAMIC_BIDI_TEXT_SUPPORT condizionale sia definito durante la compilazione della libreria GUIX. Vengono fornite due funzioni ***API gx_system_bidi_text_enable*** ***e gx_system_bidi_text_disable*** per abilitare/disabilitare il supporto del testo bidi in fase di esecuzione.
 
-Non è consigliabile usare sia **GX_DYNAMIC_BIDI_TEXT_SUPPORT** che configurare GUIX Studio per generare testo Offeri in ordine di visualizzazione. È necessario selezionare una strategia o l'altra per la gestione delle stringhe di testo di offeri.
+Non è consigliabile usare **GX_DYNAMIC_BIDI_TEXT_SUPPORT** e configurare GUIX Studio per generare il testo Bidi nell'ordine di visualizzazione. È necessario selezionare una strategia o l'altra per la gestione delle stringhe di testo bidi.
 
 ## <a name="memory-usage"></a>Utilizzo memoria 
 
-GUIX risiede insieme al programma dell'applicazione. Di conseguenza, l'utilizzo della memoria statica (o memoria fissa) di GUIX è determinato dagli strumenti di sviluppo; ad esempio il compilatore, il linker e il localizzatore. L'utilizzo della memoria dinamica (o della memoria di run-time) è sotto il controllo diretto dell'applicazione.
+GUIX risiede insieme al programma dell'applicazione. Di conseguenza, l'utilizzo della memoria statica (o della memoria fissa) di GUIX è determinato dagli strumenti di sviluppo. ad esempio il compilatore, il linker e il localizzatore. L'utilizzo della memoria dinamica (o della memoria di run-time) è sotto il controllo diretto dell'applicazione.
 
 ### <a name="static-memory-usage"></a>Utilizzo della memoria statica 
 
-La maggior parte degli strumenti di sviluppo divide l'immagine del programma dell'applicazione in cinque aree di *base:* istruzione *,* costante *,* dati inizializzati, dati non inizializzati e stack di thread *GUIX*.  La figura seguente illustra un possibile layout di queste aree di memoria:
+La maggior parte degli strumenti di sviluppo suddivide l'immagine del programma dell'applicazione in cinque aree di base: *istruzione* *,* *costante*, dati inizializzati, dati non inizializzati e stack di thread *GUIX*.  La figura seguente illustra un possibile layout di queste aree di memoria:
 
 ![Layout in memoria](./media/guix/user-guide/memory-area-example.png)
 
 È importante comprendere che questo è solo un esempio. Il layout effettivo della memoria statica è specifico del processore, degli strumenti di sviluppo, dell'hardware sottostante e dell'applicazione stessa.
 
-L'area delle istruzioni contiene tutte le istruzioni del processore del programma. Quest'area si trova spesso nella ROM.
+L'area delle istruzioni contiene tutte le istruzioni del processore del programma. Questa area si trova spesso nella ROM.
 
-L'area costante contiene varie costanti compilate, che in GUIX contengono le impostazioni predefinite e tutte le risorse dell'applicazione (immagini, stringhe, tipi di carattere e colori). Inoltre, quest'area contiene la "copia iniziale" dell'area dati inizializzata. Durante il processo di inizializzazione del compilatore, questa parte dell'area costante viene usata per configurare i dati inizializzati globali nella RAM. L'area costante è in genere la più grande e segue in genere l'area di istruzioni e si trova spesso nella ROM.
+L'area costante contiene varie costanti compilate, che in GUIX contengono le impostazioni predefinite e tutte le risorse dell'applicazione (immagini, stringhe, tipi di carattere e colori). Questa area contiene anche la "copia iniziale" dell'area dati inizializzata. Durante il processo di inizializzazione del compilatore, questa parte dell'area costante viene usata per configurare i dati inizializzati globali nella RAM. L'area costante è in genere la più grande e in genere segue l'area di istruzioni e si trova spesso nella ROM.
 
-Le mappe pixel GUIX e i tipi di carattere richiedono in genere grandi quantità di archiviazione dei dati costante. Queste aree dati statiche di grandi dimensioni vengono in genere mantenute in ROM o FLASH.
+Le pixelmap GUIX e i tipi di carattere richiedono in genere grandi quantità di archiviazione costante dei dati. Queste aree dati statiche di grandi dimensioni vengono in genere mantenute in ROM o FLASH.
 
-Lo stack di thread GUIX viene definito all'interno dell'area dei dati non inizializzati (come variabile globale) nel file ***gx_system.h*** come indicato di seguito:
+Lo stack di thread GUIX è definito all'interno dell'area dati non inizializzata (come variabile globale) nel file ***gx_system.h*** come indicato di seguito:
 
 ```C
 _gx_system_thread_stack[GX_THREAD_STACK_SIZE];
 ```
 
-**GX_THREAD_STACK_SIZE** è definito in **_gx_port.h,_** ma può essere sottoposto a override dall'applicazione definendo questo simbolo nel file di intestazione ***gx_user.h*** o tramite opzioni di progetto o parametri della riga di comando. Le dimensioni dello stack devono essere sufficientemente grandi da gestire la gestione degli eventi del caso peggiore e le chiamate di disegno annidate.
+**GX_THREAD_STACK_SIZE** definito in **_gx_port.h_**, ma può essere sottoposto a override dall'applicazione definendo questo simbolo nel file di intestazione ***gx_user.h*** o tramite opzioni di progetto o parametri della riga di comando. Le dimensioni dello stack devono essere sufficientemente grandi da gestire la gestione degli eventi peggiore e le chiamate di disegno annidate.
 
 ### <a name="dynamic-memory-usage"></a>memoria dinamica utilizzo 
 
-Come accennato in precedenza, l'utilizzo della memoria dinamica è sotto controllo diretto dell'applicazione. I blocchi di controllo e la memoria associati alle aree di disegno e così via possono essere posizionati in qualsiasi punto dello spazio di memoria della destinazione. Si tratta di una funzionalità importante perché facilita l'utilizzo di diversi tipi di memoria fisica in fase di esecuzione.
+Come accennato in precedenza, l'utilizzo dinamico della memoria è sotto il controllo diretto dell'applicazione. I blocchi di controllo e la memoria associati alle aree di disegno e così via possono essere posizionati in qualsiasi punto dello spazio di memoria della destinazione. Si tratta di una funzionalità importante perché facilita l'utilizzo facile di diversi tipi di memoria fisica in fase di esecuzione.
 
-Si supponga, ad esempio, che un ambiente hardware di destinazione abbia memoria veloce e memoria lenta. Se l'applicazione necessita di prestazioni aggiuntive per il disegno, la memoria canvas può essere inserita in modo esplicito nell'area di memoria ad alta velocità per ottenere prestazioni ottimali.
+Si supponga, ad esempio, che un ambiente hardware di destinazione abbia sia memoria veloce che memoria lenta. Se l'applicazione richiede prestazioni aggiuntive per il disegno, la memoria dell'area di disegno può essere inserita in modo esplicito nell'area di memoria ad alta velocità per ottenere prestazioni ottimali.
 
-Diversi servizi e funzionalità GUIX facoltativi richiedono un meccanismo di allocazione della memoria dinamica di runtime, comunemente definito heap. Questi servizi e funzionalità sono completamente facoltativi e molte applicazioni GUIX non usano alcun heap e non definiscono un meccanismo di allocazione della memoria di runtime.
+Diversi servizi e funzionalità GUIX facoltativi richiedono un meccanismo di allocazione dinamica della memoria di runtime, comunemente definito heap. Questi servizi e funzionalità sono completamente facoltativi e molte applicazioni GUIX non usano heap e non definiscono un meccanismo di allocazione della memoria di runtime.
 
-Se si usano servizi che richiedono l'allocazione della memoria di runtime, è necessario installare le funzioni che GUIX chiamerà quando la memoria deve essere allocata o liberata dinamicamente. È possibile implementare queste funzioni come si preferisce, in modo che anche in questo caso la posizione del pool di memoria dinamica sia sotto il controllo delle applicazioni. Per installare il supporto per l'allocazione  dinamica della memoria, l'applicazione deve richiamare il gx_system_memory_allocator_set API durante l'avvio del programma per definire l'allocazione di memoria e i servizi senza memoria. Per un esempio completo, vedere la documentazione di questa API.
+Se si usano servizi che richiedono l'allocazione della memoria di runtime, è necessario installare le funzioni che GUIX chiamerà quando la memoria deve essere allocata o liberata dinamicamente. È possibile implementare queste funzioni come si preferisce, in modo che anche in questo caso la posizione del pool di memoria dinamica sia sotto il controllo dell'applicazione. Per installare il supporto per l'allocazione dinamica della memoria, l'applicazione deve richiamare il servizio API ***gx_system_memory_allocator_set*** durante l'avvio del programma per definire l'allocazione di memoria e i servizi di memoria disponibili. Per un esempio completo, vedere la documentazione di questa API.
 
-I servizi GUIX che richiedono un servizio di allocazione e deallocazione della memoria di runtime includono:
+I servizi GUIX che richiedono un'allocazione di memoria di runtime e un servizio di deallocazione includono:
 
-  - Caricamento di risorse binarie da una risorsa di archiviazione esterna nell'ambiente di runtime GUIX.
+  - Caricamento di risorse binarie dall'archiviazione esterna nell'ambiente di runtime GUIX.
 
-  - Decodificatore di immagini jpeg di runtime del software.
+  - Decodificatore di immagini jpeg di runtime software.
 
-  - Decodificatore di immagine PNG del runtime software.
+  - Decodificatore di immagini png di runtime software.
 
   - Uso di widget di testo con GX_STYLE_TEXT_COPY.
 
   - Funzioni di utilità di ridimensionamento e rotazione pixemap di runtime.
-  - Allocazione dei blocchi di controllo del widget e della schermata di runtime.
+  - Allocazione del blocco della schermata di runtime e del controllo widget.
 
 Per le applicazioni più piccole, le risorse GUIX vengono in genere compilate e collegate in modo statico come parte dell'immagine dell'applicazione e l'installazione di risorse binarie non è necessaria. Le risorse binarie consentono a un'applicazione di installare risorse (tipi di carattere, immagini, lingue) in fase di esecuzione caricate da una posizione di archiviazione, ad esempio un'unità flash o un URL.
 
-I decodificatori jpeg e png di runtime sono componenti facoltativi. La maggior parte delle applicazioni GUIX consente lo strumento GUIX Studio di pre-decodificare tutti i file di immagine necessari e di archiviarli come risorse di dati GUIX Pixemap proprietarie. Questi servizi vengono forniti per completezza per le applicazioni che richiedono la conversione in runtime di immagini jpeg e/o PNG in formato pixelmap.
+I decodificatori jpeg e png di runtime sono componenti facoltativi. La maggior parte delle applicazioni GUIX consente lo strumento GUIX Studio di pre-decodificare tutti i file di immagine necessari e archiviarli come risorse di dati GUIX Pixemap proprietarie. Questi servizi vengono forniti per completezza per le applicazioni che richiedono la conversione in runtime di immagini jpeg e/o PNG in formato pixelmap.
 
-**GX_STYLE_TEXT_COPY** consente all'utente di specificare che uno o più widget specifici manderanno la propria copia privata del testo assegnato dinamicamente. L'uso di questa opzione richiede l'installazione del meccanismo di allocazione della memoria prima dell'uso. Se questo flag di stile non **<span class="underline">viene</span>** specificato quando viene creato un widget di tipo testo, l'applicazione deve allocare aree di archiviazione statiche per tutte le stringhe di testo create e assegnate dinamicamente. Le variabili automatiche non devono essere usate in questo caso per contenere i dati stringa generati dal runtime. Se lo **stile GX_STYLE_TEXT_COPY** è abilitato, le variabili automatiche possono essere usate per contenere i dati stringa assegnati ai widget GUIX, poiché ogni widget creerà una propria copia del testo assegnato.
+**GX_STYLE_TEXT_COPY** consente all'utente di specificare che un particolare widget o widget manderà la propria copia privata del testo assegnato dinamicamente. L'uso di questa opzione richiede che il meccanismo di allocazione della memoria sia installato prima dell'uso. Se questo flag di stile non **<span class="underline">viene</span>** specificato quando viene creato un widget di tipo testo, l'applicazione deve allocare aree di archiviazione statiche per tutte le stringhe di testo create e assegnate dinamicamente. Le variabili automatiche non devono essere usate in questo caso per contenere dati stringa generati dal runtime. Se lo **stile GX_STYLE_TEXT_COPY** è abilitato, le variabili automatiche possono essere usate per contenere i dati stringa assegnati ai widget GUIX, poiché ogni widget creerà una propria copia del testo assegnato.
 
 Le funzioni di utilità di ridimensionamento e rotazione della mappa pixel restituiscono la mappa pixel tradotta risultante come nuova mappa pixel disponibile per l'applicazione.
-Se vengono usati questi servizi, deve essere disponibile memoria dinamica sufficiente per contenere questi blocchi di dati pixelmap generati dal runtime.
+Se questi servizi vengono usati, deve essere disponibile memoria dinamica sufficiente per contenere questi blocchi di dati pixelmap generati dal runtime.
 
-Infine, i blocchi di controllo per le schermate e i widget GUIX possono essere allocati in modo statico o dinamico. Per le applicazioni più piccole, è comune creare tutte le schermate dell'applicazione durante l'avvio del programma e usare blocchi di controllo allocati staticamente. Per le applicazioni di grandi dimensioni, è comune creare dinamicamente i controlli dello schermo e del widget figlio in base alle esigenze. I blocchi di controllo allocati dinamicamente vengono specificati selezionando la casella di controllo **Runtime Allocate** (Alloca runtime) nella visualizzazione delle proprietà di GUIX Studio o passando il flag di stile **GX_STYLE_DYNAMICALLY_ALLOCATED** durante la creazione di un widget tramite l'API standard. L'uso di blocchi di controllo widget allocati dinamicamente richiede che i servizi di allocazione e deallocazione della memoria siano definiti come descritto in precedenza.
+Infine, i blocchi di controllo per le schermate e i widget GUIX possono essere allocati in modo statico o dinamico. Per le applicazioni più piccole, è comune creare tutte le schermate dell'applicazione durante l'avvio del programma e usare blocchi di controllo allocati in modo statico. Per le applicazioni di grandi dimensioni, è comune creare dinamicamente i controlli dello schermo e del widget figlio in base alle esigenze. I blocchi di controllo allocati dinamicamente vengono specificati selezionando la casella di controllo **Runtime Allocate** nella visualizzazione delle proprietà di GUIX Studio o passando il flag di stile **GX_STYLE_DYNAMICALLY_ALLOCATED** durante la creazione di un widget tramite l'API standard. L'uso di blocchi di controllo widget allocati dinamicamente richiede che i servizi di allocazione e deallocazione della memoria siano definiti come descritto in precedenza.
 
 ## <a name="guix-components"></a>Componenti GUIX 
 
-Le API GUIX sono divise e organizzate in diversi gruppi di base che corrispondono ai componenti fondamentali del sistema GUIX. I componenti fondamentali includono:
+Le API GUIX sono suddivise e organizzate in diversi gruppi di base che corrispondono ai componenti fondamentali del sistema GUIX. I componenti fondamentali includono:
 
 | Componenti  | Descrizione  |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GX_SYSTEM  | Componente di sistema GUIX, responsabile dell'inizializzazione, degli eventi, dei timer, delle tabelle di stringhe e della gestione visibile della gerarchia dei widget.                                                                                                                                                                                                                                                                      |
-| GX_CANVAS  | Area di disegno. Un canvas può essere un'astrazione sottile del buffer dei frame hardware oppure può anche essere un canvas di memoria pura. Il tipo di area di disegno è determinato dai parametri passati alla gx_canvas_create'API.                                                                                                                                                                                   |
-| GX_CONTEXT | Componente del contesto di disegno. Il contesto di disegno contiene informazioni su schermo, area di disegno, pennello e area di ritaglio per le operazioni di disegno correnti.                                                                                                                                                                                                                                      |
-| GX_DISPLAY | Fornisce le API e le implementazioni a livello di driver per consentire all'applicazione e ai widget GUIX di eseguire il disegno su un'area di disegno. GX_DISPLAY viene implementato per eseguire correttamente il rendering della grafica in ogni area di disegno usando il formato colore richiesto dell'area di disegno. Il GX_DISPLAY gestisce anche le risorse (colori, tipi di carattere e mappe pixel) disponibili per i widget che disegnano le aree di disegno collegate a ogni visualizzazione. |
-| GX_WIDGET  | Oggetto widget visibile di base e API associate. Tutti i tipi di widget GUIX sono basati o derivati dal tipo di GX_WIDGET base.                                                                                                                                                                                                                                                                      |
-| GX_UTILITY | In questo gruppo sono incluse funzioni di utilità per l'utilizzo di rettangoli, funzioni per la conversione di stringhe e funzioni matematiche non ANSI.                                                                                                                                                                                                                                                         |
+| GX_SYSTEM  | Componente di sistema GUIX, responsabile dell'inizializzazione, degli eventi, dei timer, delle tabelle di stringhe e della gestione della gerarchia dei widget visibili.                                                                                                                                                                                                                                                                      |
+| GX_CANVAS  | Area di disegno. Un canvas può essere un'astrazione sottile del buffer dei frame hardware oppure può anche essere un canvas di memoria pura. Il tipo di canvas è determinato dai parametri passati alla gx_canvas_create API.                                                                                                                                                                                   |
+| GX_CONTEXT | Componente del contesto di disegno. Il contesto di disegno contiene informazioni sullo schermo, sull'area di disegno e sul pennello e sull'area di ritaglio per le operazioni di disegno correnti.                                                                                                                                                                                                                                      |
+| GX_DISPLAY | Fornisce le API e le implementazioni a livello di driver per consentire all'applicazione e ai widget GUIX di eseguire il disegno su un canvas. GX_DISPLAY viene implementato per eseguire correttamente il rendering della grafica in ogni area di disegno usando il formato colore richiesto dell'area di disegno. Il GX_DISPLAY gestisce anche le risorse (colori, tipi di carattere e pixelmap) disponibili per i widget che disegnano su aree di disegno collegate a ogni visualizzazione. |
+| GX_WIDGET  | Oggetto widget visibile di base e API associate. Tutti i tipi di widget GUIX sono basati o derivati dal tipo di GX_WIDGET di base.                                                                                                                                                                                                                                                                      |
+| GX_UTILITY | In questo gruppo sono incluse funzioni di utilità per l'uso di rettangoli, funzioni per la conversione di stringhe e funzioni matematiche non ANSI.                                                                                                                                                                                                                                                         |
 
-Oltre a questi componenti di base, GUIX include API univoche per ogni tipo di widget fornito nella libreria. Queste API sono descritte nel capitolo 4 di questo Manuale dell'utente, "Descrizione dei servizi GUIX".
+Oltre a questi componenti di base, GUIX include API univoche per ogni tipo di widget fornito nella libreria. Queste API sono descritte nel capitolo 4 di questa Guida dell'utente, "Descrizione dei servizi GUIX".
 
 ## <a name="guix-system-component"></a>Componente di sistema GUIX
 
@@ -329,81 +329,81 @@ Il componente di sistema GUIX fornisce diversi servizi globali per l'applicazion
 
 ### <a name="initialization"></a>Inizializzazione 
 
-L'inizializzazione GUIX viene eseguita dall'applicazione che chiama il servizio ***gx_system_initialize***, che può essere chiamato dall'applicazione dalla routine ***tx_application_define*** ThreadX (contesto di inizializzazione) o dai thread dell'applicazione. La ***gx_system_initialize*** inizializza tutte le strutture di dati GUIX globali e crea il mutex di sistema GUIX, la coda di eventi, il timer e il thread. Dopo ***gx_system_initialize,*** l'applicazione può usare GUIX.
+L'inizializzazione GUIX viene eseguita dall'applicazione che chiama il servizio ***gx_system_initialize***, che può essere chiamato dall'applicazione dalla routine ***threadX tx_application_define*** (contesto di inizializzazione) o dai thread dell'applicazione. La ***gx_system_initialize*** inizializza tutte le strutture di dati GUIX globali e crea il mutex di sistema GUIX, la coda di eventi, il timer e il thread. Dopo ***gx_system_initialize,*** l'applicazione può usare GUIX.
 
 ### <a name="thread-processing"></a>Elaborazione di thread 
 
-Il thread GUIX interno, creato durante l'inizializzazione, è responsabile della maggior parte dell'elaborazione in GUIX. L'elaborazione in questo thread completa prima qualsiasi inizializzazione aggiuntiva richiesta dal driver di visualizzazione sottostante. Al termine, il thread GUIX entra in un ciclo che prima elabora tutti gli eventi presenti nella coda di eventi GUIX e quindi aggiorna la schermata, se necessario. L'aggiornamento dello schermo esegue le funzioni di disegno GUIX necessarie, in base a ciò che è visibile ed è stato contrassegnato come dirty, ovvero deve essere ridisegnato. Quando non sono presenti eventi e non rimane nulla da aggiornare sullo schermo, il thread GUIX verrà sospeso, in attesa dell'arrivo dell'evento GUIX successivo.
+Il thread GUIX interno, creato durante l'inizializzazione, è responsabile della maggior parte dell'elaborazione in GUIX. L'elaborazione in questo thread completa prima qualsiasi inizializzazione aggiuntiva richiesta dal driver di visualizzazione sottostante. Al termine, il thread GUIX entra in un ciclo che elabora prima tutti gli eventi presenti nella coda di eventi GUIX e quindi aggiorna la schermata, se necessario. L'aggiornamento dello schermo esegue le funzioni di disegno GUIX necessarie, in base a ciò che è visibile ed è stato contrassegnato come dirty, ovvero deve essere ridisegnato. Quando non sono presenti eventi e non rimane nulla da aggiornare sullo schermo, il thread GUIX verrà sospeso, in attesa dell'arrivo dell'evento GUIX successivo.
 
 ### <a name="rtos-binding"></a>Associazione RTOS 
 
-Per impostazione predefinita, il componente di sistema GUIX è configurato per l'utilizzo del sistema operativo ThreadX in tempo reale per servizi quali servizi thread, servizi di accodamento eventi e servizi timer. È possibile convertire facilmente GUIX in altri sistemi operativi usando la direttiva del preprocessore GX_DISABLE_THREADX_BINDING e ricompilare la libreria GUIX. In questo modo vengono rimosse le dipendenze ThreadX dal codice sorgente GUIX e lo sviluppatore dell'applicazione può implementare i servizi del sistema operativo necessari usando qualsiasi RTOS fornito dal sistema di destinazione. [Appendice F - GUIX RTOS Binding Services](appendix-f.md) descrive i servizi che devono essere implementati per convertire GUIX in un sistema operativo diverso dal sistema operativo ThreadX.
+Il componente di sistema GUIX è configurato per impostazione predefinita per l'utilizzo del sistema operativo ThreadX in tempo reale per servizi come i servizi thread, i servizi code di eventi e i servizi timer. GUIX può essere facilmente connessa ad altri sistemi operativi usando la direttiva del preprocessore GX_DISABLE_THREADX_BINDING e ricompilare la libreria GUIX. In questo modo le dipendenze ThreadX vengono rimosse dal codice sorgente GUIX e lo sviluppatore dell'applicazione può implementare i servizi del sistema operativo necessari usando qualsiasi RTOS fornito dal sistema di destinazione. [Appendice F - GUIX RTOS Binding Services](appendix-f.md) descrive i servizi che devono essere implementati per convertire GUIX in un sistema operativo diverso dal sistema operativo ThreadX.
 
 ### <a name="multithread-safety"></a>Sicurezza multithread 
 
-L'API GUIX è disponibile dal contesto del thread GUIX e da altri thread dell'applicazione. I thread dell'applicazione possono interagire con il thread GUIX inviando e ricevendo eventi, accedendo alle variabili condivise e usando le funzioni API GUIX. GUIX usa un mutex ThreadX interno per la protezione delle risorse multi-thread. INOLTRE, GUIX impedisce la modifica della struttura interna dei widget visibili dopo l'avvio di un'operazione di aggiornamento dello schermo. Le API che modificano l'albero degli oggetti visibili vengono bloccate mentre sono in corso operazioni di disegno e rilasciate al termine dell'aggiornamento dello schermo.
+L'API GUIX è disponibile dal contesto del thread GUIX e da altri thread dell'applicazione. I thread dell'applicazione possono interagire con il thread GUIX inviando e ricevendo eventi, accedendo alle variabili condivise e usando le funzioni API GUIX. GUIX usa un mutex ThreadX interno per la protezione delle risorse multi-thread. Inoltre, GUIX impedisce la modifica della struttura interna dei widget visibili dopo l'avvio di un'operazione di aggiornamento dello schermo. Le API che modificano l'albero degli oggetti visibili vengono bloccate mentre sono in corso operazioni di disegno e rilasciate al termine dell'aggiornamento dello schermo.
 
 ### <a name="system-timers"></a>Timer di sistema 
 
-GUIX fornisce all'applicazione timer periodici, che vengono spesso usati per l'aggiornamento periodico dei dati visualizzati nelle finestre GUIX. Questa operazione viene eseguita tramite un timer periodico ThreadX, che viene usato anche per eseguire effetti a livello di sistema GUIX come la dissolvenza dello schermo in entrata/uscita e così via.
+GUIX fornisce all'applicazione timer periodici, che vengono spesso usati per l'aggiornamento periodico dei dati visualizzati nelle finestre GUIX. Questa operazione viene eseguita tramite un timer periodico ThreadX, usato anche per eseguire effetti a livello di sistema GUIX, ad esempio la dissolvenza dello schermo in entrata/in uscita e così via.
 
-L'applicazione può creare timer e usare la stessa funzionalità timer usata internamente da GUIX. Naturalmente, l'applicazione può anche creare e usare direttamente i timer ThreadX, se necessario. Il vantaggio dei timer GUIX è che sono molto facili da usare e sono preconfigurato per funzionare all'interno del sistema di elaborazione guiX basato su eventi.
+L'applicazione può creare timer e usare la stessa funzionalità timer usata internamente da GUIX. Naturalmente l'applicazione può anche creare e usare direttamente i timer ThreadX, se necessario. Il vantaggio dei timer GUIX è che sono molto facili da usare e sono preconfigurato per funzionare all'interno del sistema di elaborazione basato su eventi GUIX.
 
-Per creare e avviare un timer GUIX, l'applicazione deve richiamare la funzione ***gx_system_timer_start***. I parametri per questa funzione includono un puntatore al widget chiamante, l'ID timer (che consente a un widget di avviare molti timer) e i valori di timeout iniziale e ripianificazione. Se il valore di timeout della ripianificazione è 0, il timer verrà eseguito una sola volta e verrà eliminato dall'elenco dei timer attivi alla scadenza.
+Per creare e avviare un timer GUIX, l'applicazione deve richiamare la funzione ***gx_system_timer_start***. I parametri di questa funzione includono un puntatore al widget chiamante, l'ID timer (che consente a un widget di avviare molti timer) e i valori di timeout iniziale e riprogrammazione. Se il valore di timeout di riprogrammazione è 0, il timer verrà eseguito una sola volta e verrà eliminato dall'elenco timer attivo alla scadenza.
 
-Una volta avviato, il timer GUIX invierà GX_EVENT_TIMEOUT eventi al proprietario del timer, una sola volta o periodicamente a seconda del valore di ripianificazione del timer. Un timer GUIX può essere arrestato chiamando la funzione API ***gx_system_timer_stop***.
+Una volta avviato, il timer GUIX invierà GX_EVENT_TIMEOUT eventi al proprietario del timer, una sola volta o periodicamente a seconda del valore di riprogrammazione del timer. Un timer GUIX può essere arrestato chiamando la funzione API ***gx_system_timer_stop***.
 
 ### <a name="pen-speed-configuration"></a>Configurazione della velocità della penna 
 
-Il componente di sistema GUIX contiene le informazioni di configurazione correlate al rilevamento della velocità della penna. GuiX generato internamente **GX_EVENT_VERTICAL_FLICK** e **GX_EVENT_HORIZONTAL_FLICK** eventi in base alla velocità e alla distanza degli eventi di PEN_DOWN generati dal driver di input tocco, se presenti. L'applicazione può configurare la distanza minima e la velocità necessarie per attivare questi eventi generati internamente usando la **_gx_system_pen_configure_** API.
+Il componente di sistema GUIX contiene informazioni di configurazione relative al rilevamento della velocità della penna. GuiX generato internamente **GX_EVENT_VERTICAL_FLICK** e **GX_EVENT_HORIZONTAL_FLICK** eventi in base alla velocità e alla distanza degli eventi PEN_DOWN generati dal driver di input tocco, se presenti. L'applicazione può configurare la distanza minima e la velocità necessarie per attivare questi eventi generati internamente usando la gx_system_pen_configure **_API._**
 
-### <a name="screen-stack"></a>Stack dello schermo 
+### <a name="screen-stack"></a>Stack di schermate 
 
-Il componente di sistema GUIX fornisce servizi correlati allo stack di schermate GUIX, una funzionalità facoltativa che supporta uno stack di widget virtuali in cui l'applicazione può eseguire il push, il recupero e il recupero delle schermate in fase di esecuzione. Lo stack dello schermo è utile per la gestione di sistemi di menu complessi, in cui il percorso con cui l'utente può arrivare a vari stati nel sistema di menu è vario. Per tornare allo stato precedente nel sistema di menu, è possibile eseguire facilmente il push dello stato precedente della schermata, quindi visualizzare la nuova schermata e consentire alla nuova schermata di visualizzare lo stato precedente dallo stack di schermate quando la schermata corrente viene chiusa.
+Il componente di sistema GUIX fornisce servizi correlati allo stack di schermate GUIX, una funzionalità facoltativa che supporta uno stack di widget virtuali in cui le schermate possono essere push, recuperate e recuperate in fase di esecuzione dall'applicazione. Lo stack dello schermo è utile per la gestione di sistemi di menu complessi, in cui il percorso in base al quale l'utente può arrivare a vari stati nel sistema di menu è vario. Per tornare allo stato precedente nel sistema di menu, è possibile eseguire facilmente il push dello stato dello schermo precedente, quindi visualizzare la nuova schermata e consentire al nuovo schermo di visualizzare lo stato precedente dallo stack dello schermo quando la schermata corrente viene chiusa.
 
 ### <a name="clipboard-maintenance"></a>Manutenzione degli Appunti 
 
 GUIX supporta gli Appunti per copiare e incollare testo durante l'esecuzione del runtime. Questo supporto viene fornito dal componente GUIX System.
 
-### <a name="dirty-list-maintenance"></a>Manutenzione elenco dirty 
+### <a name="dirty-list-maintenance"></a>Manutenzione degli elenchi dirty 
 
-GUIX gestisce un elenco di widget dirty, vale a dire widget visibili e che devono essere ridisegnato a causa di modifiche dello stato o appena resi visibili. Questo elenco dirty migliora le prestazioni di disegno consentendo a GUIX di eseguire un'operazione di aggiornamento dell'area di disegno per riflettere tutte le modifiche correnti apportate allo stato dell'interfaccia utente, anziché eseguire un aggiornamento dell'area di disegno man mano che viene apportata ogni modifica dell'interfaccia utente.
+GUIX gestisce un elenco di widget dirty, ovvero i widget che sono visibili e devono essere ridisegnate a causa di modifiche di stato o di nuova visualizzazione. Questo elenco dirty migliora le prestazioni di disegno consentendo a GUIX di eseguire un'unica operazione di aggiornamento dell'area di disegno per riflettere tutte le modifiche correnti allo stato dell'interfaccia utente, anziché eseguire un aggiornamento dell'area di disegno quando viene apportata ogni modifica dell'interfaccia utente.
 Questo elenco dirty viene gestito anche dal componente di sistema GUIX.
 
 ### <a name="animation-control-block-pool"></a>Pool di blocchi di controllo dell'animazione 
 
-Le applicazioni spesso desiderano eseguire più sequenze di animazione, spesso in parallelo. GUIX gestisce un pool di blocchi di controllo di animazione da cui l'applicazione può allocare e usare. In questo modo l'applicazione non definisce staticamente questi blocchi di controllo e li riutilizza in momenti diversi, anziché definire un blocco di controllo di animazione univoco per ogni animazione che l'applicazione potrebbe definire. Il pool di blocchi di controllo dell'animazione viene gestito anche dal componente di sistema GUIX.
+Le applicazioni spesso desiderano eseguire più sequenze di animazione, spesso in parallelo. GUIX gestisce un pool di blocchi di controllo di animazione da cui l'applicazione può allocare e usare. In questo modo l'applicazione non definisce in modo statico questi blocchi di controllo e consente di riutilizzarli in momenti diversi, anziché definire un blocco di controllo di animazione univoco per ogni animazione che l'applicazione potrebbe definire. Il pool di blocchi di controllo dell'animazione viene gestito anche dal componente di sistema GUIX.
 
 ### <a name="system-error-handling"></a>Gestione degli errori di sistema 
 
-Il gestore degli errori di sistema GUIX è progettato per aiutare l'applicazione a trovare errori di sistema interni in GUIX che potrebbero essere più difficili da determinare dal punto di vista dell'API. Ogni volta che si verifica un errore di sistema all'interno di GUIX, ***_gx_system_error_process*** chiamata della funzione interna. Questa funzione salva il codice di errore fornito e incrementa il numero totale di errori di sistema rilevati. Le variabili di errore di sistema sono definite come segue:
+Il gestore degli errori di sistema GUIX è progettato per aiutare l'applicazione a trovare errori di sistema interni in GUIX che potrebbero essere più difficili da determinare dal punto di vista dell'API. Ogni volta che si verifica un errore di sistema all'interno di GUIX, viene chiamata ***_gx_system_error_process*** funzione interna. Questa funzione salva il codice di errore fornito e incrementa il numero totale di errori di sistema rilevati. Le variabili di errore di sistema sono definite come segue:
 
 UINT **_gx_system_last_error**;
 
 ULONG **_gx_system_error_count**;
 
-Se l'applicazione GUIX si comporta in modo strano, è utile esaminare la variabile di conteggio degli errori nel debugger. Se è impostata, un modo efficace per risolvere il problema è impostare un punto di interruzione nella funzione ***_gx_system_error_process*** e vedere quando/dove viene chiamato.
+Se l'applicazione GUIX si comporta in modo strano, è utile esaminare la variabile di conteggio degli errori nel debugger. Se è impostato, un buon modo per risolvere il problema è impostare un punto di interruzione nella funzione ***_gx_system_error_process*** e vedere quando/da dove viene chiamato.
 
 ## <a name="guix-canvas-component"></a>Componente canvas GUIX
 
-Il componente canvas è responsabile di tutte le elaborazioni correlate all'area di disegno. Un canvas è in effetti un buffer di frame virtuale. L'applicazione deve creare almeno un'area di disegno per produrre output grafico.
-In genere, si crea almeno un'area di disegno per ogni visualizzazione fisica supportata dal sistema.
+Il componente canvas è responsabile di tutte le elaborazioni correlate all'area di disegno. Un canvas è in effetti un buffer di frame virtuale. L'applicazione deve creare almeno un canvas per produrre output grafico.
+In genere, si crea almeno un canvas per ogni visualizzazione fisica supportata dal sistema.
 
-Tutto il disegno GUIX avviene in un'area di disegno. Nei sistemi più semplici o con vincoli di memoria, è probabile che sia presente una sola area di disegno collegata direttamente al buffer dei frame visibile, mentre i sistemi con requisiti di memoria e grafica più avanzati potrebbero richiedere più canvas. La disponibilità di più aree di disegno per un unico schermo abilita funzionalità come la dissolvenza dello schermo e della finestra e gli effetti di dissolvenza in entrata e in uscita.
-I canvas possono essere di due tipi principali, semplici o gestiti.
+Tutto il disegno GUIX avviene su un'area di disegno. Nei sistemi più semplici o vincolati alla memoria, probabilmente sarà presente un solo canvas che potrebbe essere direttamente collegato al buffer dei frame visibile, mentre i sistemi con più memoria e requisiti di grafica più avanzati potrebbero richiedere più canvas. La disponibilità di più aree di disegno per un unico schermo consente di abilitare funzionalità quali gli effetti di dissolvenza e dissolvenza in entrata e in uscita dello schermo e della finestra.
+I canvas possono essere uno dei due tipi principali, semplici o gestiti.
 
 Un'area di disegno semplice è un'area di disegno fuori schermo usata dall'applicazione.
-GUIX non esegue alcuna operazione direttamente con un'area di disegno semplice, ma l'applicazione può usare un'area di disegno semplice per eseguire il rendering di un disegno complesso in un buffer fuori schermo e quindi usare questo buffer fuori schermo per aggiornare l'area di disegno visibile quando necessario.
+GUIX non esegue alcuna operazione direttamente con un canvas semplice, ma l'applicazione può usare un canvas semplice per eseguire il rendering di un disegno complesso in un buffer fuori schermo e quindi usare questo buffer fuori schermo per aggiornare l'area di disegno visibile quando necessario.
 
-Un'area di disegno gestita viene visualizzata automaticamente all'interno del buffer dei frame hardware da GUIX. Un'area di disegno gestita è inclusa nella creazione di un'area di disegno composita per i sistemi con memoria sufficiente per supportare più canvas gestiti. Le aree di disegno gestite hanno un ordine Z gestito da GUIX e il ritaglio della visualizzazione viene applicato a tutte le aree di disegno gestite.
+Un canvas gestito viene visualizzato automaticamente all'interno del buffer dei frame hardware da GUIX. Un canvas gestito è incluso nella creazione di un canvas composito per i sistemi con memoria sufficiente per supportare più canvas gestiti. Le aree di disegno gestite hanno un ordine Z gestito da GUIX e il ritaglio della visualizzazione viene applicato a tutti i canvas gestiti.
 
-Un'area di disegno è diversa da un buffer di frame perché è più generica. Nei sistemi con vincoli di memoria può essere presente una sola area di disegno e la memoria per questa area di disegno potrebbe essere la memoria visibile del buffer dei frame. Tuttavia, per sistemi più complessi che supportano sovrimpressione grafica più avanzate e più aree di disegno, alle aree di disegno gestite vengono allocate le proprie aree di memoria distinte dalla memoria buffer dei frame hardware.
-Il rendering di queste aree di disegno gestite viene eseguito nel buffer dei frame visibile durante l'operazione di aggiornamento o attivazione/disattivazione del buffer dei frame.
+Un'area di disegno differisce da un buffer di frame perché è più generica. Nei sistemi con vincoli di memoria può essere presente una sola area di disegno e la memoria per questa area di disegno potrebbe essere la memoria del buffer dei frame visibile. Tuttavia, per i sistemi più complessi che supportano sovrapposizioni grafiche più avanzate e più canvas, alle aree di disegno gestite vengono allocate le proprie aree di memoria distinte dalla memoria del buffer dei frame hardware.
+Il rendering di questi canvas gestiti viene eseguito nel buffer dei frame visibile durante l'operazione di aggiornamento o attivazione/disattivazione del buffer dei frame.
 
-Per l'hardware che supporta più livelli di grafica, ad esempio più buffer di frame sovrapposti, l'applicazione può associare uno o più canvas ai livelli di grafica hardware usando l'API ***gx_canvas_hardware_layer_bind.*** Questo servizio informa l'area di disegno che è collegata a un particolare livello grafico hardware e, una volta collegato, l'area di disegno tenterà di usare il supporto hardware per la visibilità dell'area di disegno, ad esempio gx_canvas_show, gx_canvas_hide), la fusione alfa dell'area di disegno (ad esempio ***gx_canvas_alpha_set***) e l'offset dell'area di disegno all'interno della visualizzazione ***(gx_canvas_offset_set***).
+Per l'hardware che supporta più livelli di grafica, ad esempio più buffer di frame sovrapposti, l'applicazione può associare uno o più canvas ai livelli di grafica hardware usando l'API ***gx_canvas_hardware_layer_bind*** hardware. Questo servizio informa l'area di disegno che è collegata a un particolare livello di grafica hardware e, una volta collegato, l'area di disegno tenterà di usare il supporto hardware per la visibilità dell'area di disegno, ad esempio gx_canvas_show, gx_canvas_hide), fusione alfa dell'area di disegno ***(ad*** esempio gx_canvas_alpha_set ) e offset dell'area di disegno all'interno dello schermo (***gx_canvas_offset_set***).
 
-Per architetture diverse dall'organizzazione più semplice di buffer canvas singolo/frame singolo, le dimensioni di un'area di disegno sono determinate dall'applicazione e possono essere diverse da quelle fisse di un buffer di frame.
-Può anche essere in corrispondenza di un offset selezionato dall'applicazione. Altre informazioni, ad esempio l'ordine Z, vengono mantenute all'interno dell'area di disegno. Al termine del disegno nell'area di disegno, il contenuto dell'area di disegno viene trasferito alla visualizzazione fisica dal driver di visualizzazione. In alcuni sistemi che non hanno memoria sufficiente per un'area di disegno separata e aree di memoria del buffer dei frame, l'aggiornamento dell'area di disegno viene effettivamente effettuato direttamente sulla visualizzazione fisica tramite il driver di visualizzazione.
+Per architetture diverse dall'organizzazione di buffer canvas singolo/frame singolo più semplice, le dimensioni di un'area di disegno sono determinate dall'applicazione e possono essere diverse dalle dimensioni fisse di un buffer frame.
+Può anche essere in corrispondenza di un offset selezionato dall'applicazione. Altre informazioni, ad esempio l'ordine Z, vengono mantenute all'interno dell'area di disegno. Al termine del disegno dell'area di disegno, il contenuto dell'area di disegno viene trasferito al display fisico dal driver di visualizzazione. In alcuni sistemi che non hanno memoria sufficiente per aree di memoria canvas e buffer di frame separate, l'aggiornamento dell'area di disegno viene effettivamente effettuato direttamente sul display fisico tramite il driver di visualizzazione.
 
 ### <a name="canvas-creation"></a>Creazione di canvas 
 
@@ -411,41 +411,41 @@ Un oggetto canvas può essere creato durante l'inizializzazione o in qualsiasi m
 
 ### <a name="canvas-control-block"></a>Blocco di controllo Canvas 
 
-Le caratteristiche di ogni oggetto canvas si trovano nel blocco **di controllo** GX_CANVAS e sono definite in **_gx_api.h._** La memoria necessaria per un oggetto canvas viene fornita dall'applicazione e può essere posizionata in qualsiasi punto della memoria. Tuttavia, è più comune rendere il blocco di controllo dell'oggetto canvas e l'area di disegno una struttura globale definendoli all'esterno dell'ambito di qualsiasi funzione.
+Le caratteristiche di ogni oggetto canvas si trovano nel blocco **di controllo GX_CANVAS** e sono definite in **_gx_api.h_**. La memoria necessaria per un oggetto canvas viene fornita dall'applicazione e può essere posizionata in qualsiasi punto della memoria. Tuttavia, è più comune rendere il blocco di controllo dell'oggetto canvas e l'area di disegno una struttura globale definendoli all'esterno dell'ambito di qualsiasi funzione.
 
 ### <a name="canvas-alpha-channel"></a>Canale alfa canvas
 
 GUIX supporta la fusione alfa dei colori di primo piano e di sfondo su molti livelli, tra cui il canale alfa della bitmap che specifica un rapporto di fusione per pixel, il valore alfa del pennello che specifica il rapporto di fusione per un pennello a 16 bpp e profondità di colore superiori e il valore alfa dell'area di disegno che specifica il rapporto di fusione per un'area di disegno sovrapposta.
 
-Il valore alfa di un'area di disegno viene usato quando sono presenti più aree di disegno che vengono composte insieme per la visualizzazione all'interno del buffer dei frame. Se l'ordine Z dell'area di disegno è tale che un'area di disegno si trova sopra altre aree di disegno, il valore alfa dell'area di disegno può essere impostato in modo da unire l'area di disegno con quelle che si trovano dietro. La modifica rapida del valore alfa di un'area di disegno viene usata per fornire effetti di transizione dello schermo "dissolvenza in entrata", ma il valore alfa dell'area di disegno può essere usato in molti modi.
+Il valore alfa di un'area di disegno viene usato quando sono presenti più aree di disegno che vengono composte insieme per la visualizzazione all'interno del buffer dei frame. Se l'ordine Z dell'area di disegno è tale che un'area di disegno si trova sopra altre aree di disegno, è possibile impostare il valore alfa dell'area di disegno per unire l'area di disegno con quelle che si trovano dietro. La modifica rapida del valore alfa di un'area di disegno viene usata per fornire effetti di transizione dello schermo con dissolvenza in entrata, ma il valore alfa dell'area di disegno può essere usato in molti modi.
 
 Se un'area di disegno è associata a un livello di grafica hardware usando gx_canvas_hardware_layer_bind(), GUIX tenterà di implementare la fusione alfa dell'area di disegno usando il supporto hardware, riducendo al minimo il sovraccarico software associato alla fusione di un'area di disegno sovrapposta.
 
-I valori alfa sono da 0 a 255, dove un valore pari a 0 indica che il pixel è completamente trasparente e i valori maggiori di 0 aumentano meno il valore alfa dell'area di disegno trasparente può essere supportato solo per i driver dello schermo in esecuzione a 16 bpp e superiori, a meno che non venga fornita assistenza hardware per la fusione di canvas.
+I valori alfa sono da 0 a 255, dove un valore pari a 0 indica che il pixel è completamente trasparente e i valori maggiori di 0 stanno aumentando meno il valore alfa dell'area di disegno trasparente può essere supportato solo per i driver dello schermo in esecuzione a 16 bpp e superiori, a meno che non venga fornita assistenza hardware per la fusione dell'area di disegno.
 
-### <a name="canvas-offset"></a>Offset area di disegno 
+### <a name="canvas-offset"></a>Offset dell'area di disegno 
 
 Un canvas può essere offset all'interno del buffer dei frame visibile richiamando il ***gx_canvas_offset_set*** API. Gli offset dell'area di disegno vengono in genere usati per implementare animazioni sprite. Se un'area di disegno è associata a un livello di grafica hardware richiamando la funzione API ***gx_canvas_hardware_layer_bind,*** GUIX tenterà di implementare le modifiche di offset dell'area di disegno usando il supporto hardware, riducendo al minimo il sovraccarico software associato allo spostamento della posizione dell'area di disegno.
 
 ### <a name="canvas-drawing"></a>Disegno canvas 
 
-Il componente canvas GUIX fornisce un'API di disegno completa all'applicazione. Prima di poter richiamare  le API di disegno, ad esempio gx_canvas_line_draw o ***gx_canvas_pixelmap_draw,*** l'area di  disegno di destinazione deve essere aperta per il disegno richiamando la funzione API gx_canvas_drawing_initiate. Questa funzione prepara un'area di disegno per il disegno e crea un contesto ***di disegno***.
+Il componente canvas GUIX fornisce un'API di disegno completa all'applicazione. Prima che le API di disegno, ad esempio ***gx_canvas_line_draw*** ***o gx_canvas_pixelmap_draw,*** possano essere richiamate, l'area di disegno di destinazione deve essere aperta per il disegno richiamando la funzione ***api*** gx_canvas_drawing_initiate di disegno. Questa funzione prepara un'area di disegno per il disegno e crea un ***contesto di disegno.***
 
-Le API di disegno di cui viene eseguito il rendering nell'area di disegno, ad esempio ***gx_canvas_line_draw** _ _*_o gx_canvas_text_draw_*_, usano i parametri presenti nel pennello del contesto di disegno corrente per definire lo stile, la larghezza e i colori della linea. Questi parametri del pennello vengono modificati chiamando _*_gx_context_brush_define_*_, _* _gx_context_brush_set_**, ***gx_context_brush_style_set**_ e funzioni API simili dopo che è stato stabilito un contesto di disegno chiamando _*_gx_canvas_drawing_initiate_**.
+Le API di disegno di cui viene eseguito il rendering nell'area di disegno, ad esempio ***gx_canvas_line_draw** _ _*_o gx_canvas_text_draw_*_, usano i parametri presenti nel pennello del contesto di disegno corrente per definire lo stile, la larghezza e i colori della linea. Questi parametri del pennello vengono modificati chiamando le funzioni API _*_gx_context_brush_define_*_, _* _gx_context_brush_set_**, ***gx_context_brush_style_set**_ e simili dopo che un contesto di disegno è stato stabilito chiamando _*_gx_canvas_drawing_initiate_**.
 
-Quando GUIX richiama le funzioni di disegno della finestra e del widget come parte di un'operazione di aggiornamento posticipato dell'area di disegno, l'area di disegno di destinazione viene aperta per il disegno prima di chiamare le funzioni di disegno del widget. Di conseguenza, le funzioni di disegno standard del widget non sono necessarie per aprire l'area di disegno di destinazione. Questa operazione è stata eseguita per tali funzioni.
+Quando GUIX richiama le funzioni di disegno della finestra e del widget come parte di un'operazione di aggiornamento dell'area di disegno posticipata, l'area di disegno di destinazione viene aperta per il disegno prima di chiamare le funzioni di disegno del widget. Pertanto, le funzioni di disegno del widget standard non sono necessarie per aprire l'area di disegno di destinazione. Questa operazione è stata eseguita per loro.
 
-In alcuni casi l'applicazione potrebbe voler forzare il disegno immediato in un'area di disegno. In questo caso, l'applicazione può eseguire i passaggi seguenti.
+In alcuni casi l'applicazione potrebbe voler forzare il disegno immediato su un'area di disegno. In questo caso, l'applicazione può eseguire la procedura seguente.
 
-1. Chiamare la funzione ***API gx_canvas_drawing_initiate,*** passando l'area di disegno di destinazione e il rettangolo all'interno dell'area di disegno su cui l'applicazione vuole disegnare. 
+1. Chiamare la ***funzione API gx_canvas_drawing_initiate,*** passando l'area di disegno e il rettangolo di destinazione all'interno dell'area di disegno su cui l'applicazione vuole disegnare. 
 
 2. Chiamare un numero qualsiasi di API di disegno canvas per eseguire il disegno desiderato.
 
-3. Chiamare la ***gx_canvas_drawing_complete*** API per segnalare che il disegno è stato completato. In questo modo l'area di disegno viene scaricata nel buffer dei frame visibile e/o viene attivata un'operazione di attivazione/disattivazione del buffer, a seconda dell'architettura della memoria di sistema.
+3. Chiamare la ***gx_canvas_drawing_complete*** API per segnalare che il disegno è stato completato. In questo modo l'area di disegno viene scaricata nel buffer dei frame visibile e/o viene attivata un'operazione di attivazione/disattivazione del buffer, a seconda dell'architettura di memoria di sistema.
 
 ### <a name="drawing-apis"></a>API di disegno 
 
-Esistono diverse primitive di disegno principali richieste da GUIX per disegnare tutti gli elementi visivi sullo schermo. Queste API di disegno possono essere richiamate anche dal software applicativo, in genere come parte di una funzione di disegno personalizzata del widget. Queste API di disegno canvas GUIX eseguono la convalida e il ritaglio dei parametri e quindi passano le coordinate di disegno ritagliate al driver di visualizzazione per le implementazioni di disegno specifiche del formato hardware e del colore. Queste funzioni dell'API di disegno sono definite nel modo seguente.
+Esistono diverse primitive di disegno principali richieste da GUIX per disegnare tutti gli elementi visivi sullo schermo. Queste API di disegno possono anche essere richiamate dal software dell'applicazione, in genere come parte di una funzione di disegno di widget personalizzata. Queste API di disegno guiX canvas eseguono la convalida e il ritaglio dei parametri e quindi passano le coordinate di disegno ritagliate al driver di visualizzazione per le implementazioni di disegno specifiche dell'hardware e del formato colore. Queste funzioni api di disegno sono definite come indicato di seguito.
 
 - gx_canvas_alpha_set
 - gx_canvas_arc_draw
@@ -469,9 +469,9 @@ Esistono diverse primitive di disegno principali richieste da GUIX per disegnare
 - gx_canvas_show
 - gx_canvas_text_draw
 
-L'API di disegno viene richiamata tramite l'API Canvas GUIX e tutte le attività di disegno vengono eseguite gx_canvas_* funzioni API. Il disegno viene eseguito usando il pennello corrente nel contesto di disegno corrente. Qualsiasi funzione di disegno della forma precedente può essere delineata, colorata a tinta unita o mappa pixel riempita in base a quanto definito dal pennello corrente. Per modificare lo spessore, il colore o il riempimento del contorno della forma, usare le funzioni api gx_context_brush_* per definire il pennello all'interno del contesto di disegno corrente.
+L'API di disegno viene richiamata tramite l'API GUIX Canvas e tutto il disegno viene eseguito usando gx_canvas_* funzioni API. Il disegno viene eseguito usando il pennello corrente nel contesto di disegno corrente. Qualsiasi funzione di disegno della forma precedente può essere strutturata, colorata a tinta unita o mappa pixel riempita in base a quanto definito dal pennello corrente. Per modificare lo spessore, il colore o il riempimento del contorno della forma, usare le funzioni API gx_context_brush_* per definire il pennello all'interno del contesto di disegno corrente.
 
-Le API di disegno a livello di applicazione precedenti non ese tracciano effettivamente l'area di disegno, ma verificano i parametri del chiamante prima di richiamare la funzione di disegno a livello di driver di visualizzazione. La funzione di disegno a livello di driver scrive effettivamente i dati pixel nella memoria dell'area di disegno.
+Le API di disegno a livello di applicazione precedenti non ese tracciano effettivamente nell'area di disegno, ma verificano invece i parametri del chiamante prima di richiamare la funzione di disegno a livello di driver di visualizzazione. La funzione di disegno a livello di driver scrive effettivamente i dati pixel nella memoria dell'area di disegno.
 
 GUIX offre funzioni di disegno di driver di visualizzazione stock o generiche per diverse profondità di colore, tra cui 1, 2, 4, 8, 16, 24 e 32 bit per pixel (bpp). In alcuni casi, l'implementazione del disegno software predefinita viene sostituita da implementazioni con accelerazione hardware per le destinazioni hardware che forniscono un acceleratore di disegno 2D.
 
@@ -494,7 +494,7 @@ GUIX supporta profondità di colore fino a 32 bpp, nonché monocroma e gradazion
 
 ### <a name="mouse-support"></a>Supporto del mouse 
 
-GUIX supporta il disegno di un cursore del mouse su qualsiasi area di disegno desiderata. Il cursore del mouse può essere di disegno nel software o potrebbe essere supportato dalla sovrapposizione del cursore hardware. In entrambi i casi, l'API fornita all'applicazione correlata al supporto del cursore del mouse è la stessa sia che si utilizzi il disegno del cursore del mouse software o hardware.
+GUIX supporta il disegno di un cursore del mouse su qualsiasi area di disegno desiderata. Il cursore del mouse può essere di disegno nel software o può essere supportato dalla sovrapposizione del cursore hardware. In entrambi i casi, l'API fornita all'applicazione correlata al supporto del cursore del mouse è la stessa sia che si utilizzi il disegno del cursore del mouse software o hardware.
 
 Il supporto del mouse GUIX è abilitato solo se è definito nel file di intestazione gx_user.h prima di `#define GX_MOUSE_SUPPORT` compilare la libreria GUIX.
 
@@ -508,17 +508,17 @@ Il componente di visualizzazione è fondamentale in GUIX, poiché gestisce l'ela
 
 Un oggetto di visualizzazione può essere creato durante l'inizializzazione o in qualsiasi momento durante l'esecuzione dei thread dell'applicazione. In genere un'applicazione crea un oggetto di visualizzazione per gestire ogni schermo fisico. Se GUIX Studio è stato usato per definire l'applicazione e gli schermi fisici disponibili, si userà la funzione API gx_studio_display_configure per creare e inizializzare ogni visualizzazione.
 
-### <a name="display-control-block"></a>Visualizzare il blocco di controllo 
+### <a name="display-control-block"></a>Visualizza blocco di controllo 
 
 Le caratteristiche di ogni oggetto di visualizzazione si trovano nel blocco di controllo *** GX_DISPLAY** _ e sono definite in _*_gx_api.h_**. La memoria necessaria per un oggetto di visualizzazione viene fornita dall'applicazione e può essere posizionata in qualsiasi punto della memoria. Tuttavia, è più comune fare in modo che il controllo di visualizzazione blocchi una struttura globale definendo il controllo all'esterno dell'ambito di qualsiasi funzione.
 
 ### <a name="resource-management"></a>Gestione delle risorse 
 
-Le risorse sono componenti dell'interfaccia utente necessari per l'applicazione, ma non sono codice dell'applicazione. Le risorse sono dati dell'applicazione e sono in genere definite in modo statico. I tipi di risorse includono mappe pixel, tipi di carattere, colori e stringhe. Queste risorse possono essere modificate in qualsiasi momento, in genere senza modificare il software dell'applicazione. È importante mantenere l'archiviazione di e i riferimenti alle risorse separati dal software dell'applicazione per consentire la modifica dell'aspetto dell'interfaccia utente senza modificare il codice dell'applicazione poiché le modifiche al software dell'applicazione richiedono in genere il test e la verifica associati di tale software.
+Le risorse sono componenti dell'interfaccia utente necessari per l'applicazione, ma non sono codice dell'applicazione. Le risorse sono dati dell'applicazione e in genere sono definite in modo statico. I tipi di risorse includono mappe pixel, tipi di carattere, colori e stringhe. Queste risorse possono essere modificate in qualsiasi momento, in genere senza modificare il software dell'applicazione. È importante mantenere l'archiviazione di e i riferimenti alle risorse separati dal software dell'applicazione per consentire la modifica dell'aspetto dell'interfaccia utente senza modificare il codice dell'applicazione perché le modifiche al software dell'applicazione richiedono in genere il test e la verifica associati di tale software.
 
 Il modulo di ***visualizzazione*** GUIX fornisce funzionalità di gestione delle risorse per tutte le risorse che dipendono dalla profondità del colore e dal formato della visualizzazione. Queste funzionalità includono la gestione della tabella pixelmap attiva, della tabella dei caratteri attiva e della tabella dei colori attiva. La risorsa della tabella di stringhe viene gestita dal modulo di sistema GUIX, poiché le risorse stringa in genere non devono essere modificate in base alla profondità e al formato del colore.
 
-Il software dell'applicazione fa riferimento alle risorse in base al relativo ID risorsa, ovvero un indice nella tabella delle risorse corrispondente. In questo modo è possibile modificare la tabella, ad esempio la tabella dei colori potrebbe essere modificata quando un prodotto cambia da "modalità giorno" a "modalità notte", ma i valori dell'ID colore rimangono invariati.
+Il software dell'applicazione fa riferimento alle risorse in base al relativo ID risorsa, ovvero un indice nella tabella delle risorse corrispondente. In questo modo è possibile modificare la tabella, ad esempio la tabella dei colori potrebbe essere modificata quando un prodotto cambia da "modalità giorno" a "modalità notte", ma i valori id colore rimangono invariati.
 
 Le risorse dell'applicazione vengono scritte in un file di risorse (o in un set di file di risorse) dall'applicazione GUIX Studio. I colori predefiniti, le mappe pixel e i tipi di carattere vengono forniti automaticamente quando si crea un nuovo progetto GUIX Studio, ma questi valori predefiniti vengono facilmente sostituiti quando si definisce l'aspetto dell'applicazione.
 
@@ -567,7 +567,7 @@ Le impostazioni dei colori predefinite sono definite dalla tabella dei colori as
 
 Questi valori id colore vengono mappati a un valore di colore specifico, come definito dalla tabella dei colori assegnata a ogni visualizzazione. Queste impostazioni predefinite possono essere modificate come gruppo per una visualizzazione chiamando la gx_display_color_table_set ***api.*** Se si usa GUIX Studio, la tabella dei colori di visualizzazione viene inizializzata automaticamente quando l'applicazione chiama la ***gx_studio_display_configure*** funzione.
 
-Il componente di visualizzazione GUIX mantiene anche una tabella dei tipi di carattere predefinita. La tabella dei tipi di carattere predefinita definisce il tipo di carattere usato da ogni tipo di widget, a meno che non sia specificato in modo specifico dall'applicazione. Gli ID predefiniti della tabella dei tipi di carattere di visualizzazione includono i valori seguenti.
+Il componente di visualizzazione GUIX gestisce anche una tabella dei tipi di carattere predefinita. La tabella dei tipi di carattere predefinita definisce il tipo di carattere usato da ogni tipo di widget, a meno che non sia specificato in modo specifico dall'applicazione. Gli ID predefiniti della tabella dei tipi di carattere di visualizzazione includono i valori seguenti.
 
 | &nbsp;ID carattere | Descrizione |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------|
@@ -575,7 +575,7 @@ Il componente di visualizzazione GUIX mantiene anche una tabella dei tipi di car
 | GX_FONT_ID_BUTTON | Tipo di carattere predefinito usato per tutto il testo sui pulsanti |
 | GX_FONT_ID_TEXT_INPUT | Tipo di carattere predefinito usato per i campi di modifica del testo |
 
-L'ID carattere usato da qualsiasi widget di tipo testo può essere assegnato nuovamente usando l'API **gx_<widget_type>_font_set** fornita per ogni tipo di widget correlato al testo. L'intera tabella dei tipi di carattere può essere riasserta chiamando la **gx_display_font_table_set** api.
+L'ID carattere usato da qualsiasi widget di tipo testo può essere assegnato nuovamente usando l'API **gx_<widget_type>_font_set** fornita per ogni tipo di widget correlato al testo. L'intera tabella dei tipi di carattere può essere assegnata nuovamente chiamando la **gx_display_font_table_set** api.
 
 ### <a name="scrollbar-appearance"></a>Aspetto della barra di scorrimento 
 
@@ -604,7 +604,7 @@ typedef struct GX_SCROLLBAR_APPEARANCE_STRUCT
 | gx_scroll_thumb_width | Larghezza dei pulsanti dell'ascensore e della fine, in pixel. |
 | gx_scroll_thumb_travel_max | Offset dalla fine della barra di scorrimento al punto di spostamento massimo del pulsante di scorrimento. |
 | gx_scroll_fill_pixelmap | Mappa pixel usata per riempire lo sfondo dello scorrimento. |
-| gx_scroll_thumb_pixelmap | Mappa pixel usata per disegnare il pulsante di scorrimento della casella di scorrimento. |
+| gx_scroll_thumb_pixelmap | Mappa pixel usata per disegnare il pulsante della casella di scorrimento. |
 | gx_scroll_up_pixelmap | Mappa pixel usata per disegnare il pulsante di scorrimento verso l'alto. |
 | gx_scroll_down_pixelmap | Mappa pixel usata per disegnare il pulsante di scorrimento verso il basso. |
 | gx_scroll_fill_color | ID colore del colore usato per riempire lo sfondo della barra di scorrimento. |
@@ -630,66 +630,66 @@ Se si usa la funzione generata da GUIX Studio denominata ***gx_studio_display_co
 
 L'antialiasing è una funzionalità facoltativa di GUIX usata per smussare linee, curve e tipi di carattere. L'antialiasing è supportato solo quando si esegue con un driver di visualizzazione che usa una profondità di colore di 16 bpp o superiore.
 
-Il disegno a linee con antialiasing viene abilitato impostando GX_BRUSH_ALIAS **flash** nel pennello attivo. Questo vale per le linee disegnate direttamente, nonché per le linee disegnate come bordo di un poligono o di un cerchio.
+Il disegno a linee con antialiasing viene abilitato impostando **GX_BRUSH_ALIAS** flash nel pennello attivo. Ciò si applica alle linee disegnate direttamente, nonché alle linee disegnate come bordo di un poligono o di un cerchio.
 
-Il disegno di testo con anti-aliasing viene abilitato usando un tipo di carattere con anti-aliasing prodotto dall'applicazione GUIX Studio. Specificare se un tipo di carattere deve essere generato come antialias o binario quando si crea il tipo di carattere.
-I tipi di carattere con anti-aliasing in GUIX utilizzano 16 livelli di trasparenza per ogni pixel.
+Il disegno di testo con antialiasing viene abilitato usando un tipo di carattere con antialiasing prodotto dall'applicazione GUIX Studio. Specificare se un tipo di carattere deve essere generato come antialias o binario quando si crea il tipo di carattere.
+I tipi di carattere con antialiasing in GUIX utilizzano 16 livelli di trasparenza per ogni pixel.
 
 ### <a name="clipping"></a>Ritaglio 
 
-Il ritaglio è supportato internamente dal componente di visualizzazione GUIX e nei livelli finestra e widget dall'architettura padre-figlio gestita dai widget GUIX. Non è mai consentito disegnare all'esterno dell'area del widget e un widget non può mai disegnare all'esterno dell'area dell'elemento padre del widget.
+Il ritaglio è supportato internamente dal componente di visualizzazione GUIX e nei livelli finestra e widget dall'architettura padre-figlio gestita dai widget GUIX. Non è mai consentito disegnare finestre o widget all'esterno dell'area del widget e un widget non può mai disegnare all'esterno dell'area dell'elemento padre del widget.
 
-In questo modo si impedisce anche ai widget di disegnare in corrispondenza di coordinate di pixel che si trova all'esterno della memoria dell'area di disegno, causando probabilmente un danneggiamento della memoria o un errore di sistema. I widget non possono disegnare all'esterno dell'area del widget, dell'area padre del widget o oltre l'estensione dell'area di disegno.
+In questo modo si impedisce anche ai widget di disegnare in corrispondenza di coordinate pixel che si trovano all'esterno della memoria dell'area di disegno, causando probabilmente un danneggiamento della memoria o un errore di sistema. I widget non possono disegnare all'esterno dell'area del widget, dell'area padre del widget o oltre l'estensione canvas.
 
-Inoltre, i widget possono essere disegnati solo in aree precedentemente contrassegnate come dirty. Ciò impedisce che venga disegnata un'intera finestra, ad esempio quando viene visualizzato solo un angolo della finestra. Solo la parte della finestra che deve essere effettivamente aggiornata è contrassegnata come dirty, quindi la funzione di disegno della finestra aggiorna effettivamente solo i pixel nell'area dirty.
+Inoltre, i widget possono essere disegnati solo in aree contrassegnate in precedenza come dirty. Ciò impedisce il disegno di un'intera finestra, ad esempio quando viene visualizzato solo un angolo della finestra. Solo la parte della finestra che deve essere effettivamente aggiornata è contrassegnata come dirty e quindi la funzione di disegno della finestra aggiorna effettivamente solo i pixel nell'area dirty.
 
 Il componente di visualizzazione GUIX applica questi algoritmi di ritaglio prima di richiamare le funzioni di disegno a livello di driver.
 
 ### <a name="views"></a>Viste 
 
-GUIX mantiene sempre un set di visualizzazioni per ogni finestra radice e ogni finestra figlio della finestra radice. Le visualizzazioni sono un'area di ritaglio dinamica e determinata in fase di esecuzione che cambia in base alla posizione della finestra e all'ordine Z.
-GUIX usa le visualizzazioni per impedire il disegno di una finestra o un widget in background sopra una finestra o un widget in primo piano. Le visualizzazioni applicano la disciplina ordine Z. Inoltre, le visualizzazioni sono importanti per l'efficienza, in quanto impediscono a una finestra in background di disegnare in qualsiasi area dell'area di disegno che non può essere visualizzata. Se una finestra è completamente coperta da un'altra finestra, la finestra coperta non sarà affatto autorizzata a disegnare nell'area di disegno, anche se tenta di eseguire questa operazione.
+GUIX mantiene sempre un set di visualizzazioni per ogni finestra radice e ogni finestra figlio della finestra radice. Le visualizzazioni sono un'area di ritaglio dinamica, determinata in fase di esecuzione, che cambia in base alla posizione della finestra e all'ordine Z.
+GUIX usa le visualizzazioni per impedire a una finestra o a un widget in background di disegnare sopra una finestra o un widget in primo piano. Le viste applicano la disciplina dell'ordine Z. Inoltre, le visualizzazioni sono importanti per l'efficienza in quanto impediscono il disegno di una finestra in background in qualsiasi area dell'area di disegno che non può essere visualizzata. Se una finestra è completamente coperta da un'altra finestra, la finestra coperta non sarà affatto autorizzata a disegnare sull'area di disegno, anche se sta tentando di eseguire questa operazione.
 
 ### <a name="display-driver-interface"></a>Interfaccia del driver di visualizzazione 
 
 I driver di visualizzazione GUIX sono responsabili di tutte le interazioni con lo schermo fisico sottostante. I driver di visualizzazione hanno tre funzioni di base: inizializzazione, disegno e visualizzazione del buffer dei frame.
-L'inizializzazione è responsabile della preparazione dell'hardware di visualizzazione fisico, dell'informare GUIX delle proprietà dell'hardware di visualizzazione fisico e di informare GUIX delle funzioni di disegno specifiche da usare. L'inizializzazione del driver di  visualizzazione principale viene chiamata dalla funzione gx_display_create GUIX. Inoltre, il thread GUIX chiamerà anche l'inizializzazione di un driver di visualizzazione secondario dal contesto del thread. Questo driver video secondario è necessario solo se il driver richiede servizi RTOS durante l'inizializzazione, ad esempio interruzioni del dispositivo o richieste ***tx_thread_sleep*** di ritardo tra i passaggi del processo di inizializzazione.
+L'inizializzazione è responsabile della preparazione dell'hardware di visualizzazione fisico, dell'informare GUIX delle proprietà dell'hardware di visualizzazione fisico e di informare GUIX quali funzioni di disegno specifiche devono essere usate. L'inizializzazione del driver di  visualizzazione principale viene chiamata dalla funzione gx_display_create GUIX. Inoltre, il thread GUIX chiamerà anche l'inizializzazione di un driver di visualizzazione secondario dal contesto del thread. Questo driver video secondario è necessario solo se il driver richiede servizi RTOS  durante l'inizializzazione, ad esempio interruzioni del dispositivo o richieste tx_thread_sleep di ritardo tra i passaggi del processo di inizializzazione.
 
-Al termine dell'inizializzazione, il driver di visualizzazione è responsabile di qualsiasi disegno diretto che può essere eseguito nell'hardware dello schermo fisico.
+Al termine dell'inizializzazione, il driver di visualizzazione è responsabile di qualsiasi disegno diretto che può essere eseguito nell'hardware di visualizzazione fisico.
 Infine, il driver di visualizzazione è responsabile della visualizzazione del buffer dei frame.
 
-## <a name="guix-widget-component"></a>Componente GUIX Widget
+## <a name="guix-widget-component"></a>Componente widget GUIX
 
-Un widget GUIX è un elemento grafico visibile. Alcuni componenti GUIX non sono visibili, ad esempio timer e funzioni di utilità matematica.
+Un widget GUIX è un elemento grafico visibile. Sono presenti componenti GUIX che non sono visibili, ad esempio timer e funzioni di utilità matematica.
 Tuttavia, tutti i componenti visibili derivano dal componente widget GUIX di base. Un widget GUIX è il blocco predefinito principale della visualizzazione GUIX: tutti gli altri elementi grafici derivano dalla funzionalità del widget di base.
 
-I widget GUIX vengono implementati in modo orientato agli oggetti con supporto completo dell'ereditarietà. Questa operazione viene eseguita tramite ANSI C, che comporta i più piccoli requisiti di memoria ed elaborazione possibili. Quando si parla di un particolare widget, ad  esempio **GX_BUTTON ,** derivato da un altro widget, ad esempio il **GX_WIDGET** di base, si intende che la struttura del controllo **GX_BUTTON** contiene tutte le variabili membro e i puntatori a funzione di **GX_WIDGET**, con alcune variabili aggiuntive specifiche di **GX_BUTTON**. GUIX crea livelli di widget in questo modo, in modo che i widget più complessi siano sempre basati su un widget più semplice prima di essi. Questo modello gerarchico di derivazione semplifica l'apprendimento delle API usate per modificare i parametri del widget. Se si vuole modificare il colore di un pulsante, usare la stessa API che si usa per modificare il colore di un widget, vale a gx_widget_fill_color_set ***.***
+I widget GUIX vengono implementati in modo orientato agli oggetti con il supporto completo dell'ereditarietà. Questa operazione viene eseguita usando ANSI C, che comporta il minor numero possibile di requisiti di memoria ed elaborazione. Quando si parla di un particolare widget, ad  esempio **GX_BUTTON ,** derivato da un altro widget, ad esempio il **GX_WIDGET** di base, si intende che la struttura di controllo **GX_BUTTON** contiene tutte le variabili membro e i puntatori a funzione di **GX_WIDGET**, con alcune variabili aggiuntive specifiche di **GX_BUTTON**. GUIX crea livelli di widget in questo modo, in modo che i widget più complessi siano sempre basati su un widget più semplice prima di essi. Questo modello gerarchico di derivazione semplifica l'apprendimento delle API usate per modificare i parametri del widget. Se si vuole modificare il colore di un pulsante, usare la stessa API utilizzata per modificare il colore di un widget, vale a gx_widget_fill_color_set ***.***
 
-L'organizzazione dei widget visibili viene gestita in modo padre-figlio usando elenchi strutturati ad albero che collegano i widget figlio ai relativi elementi padre. Gli elementi figlio ereditano caratteristiche dai rispettivi elementi padre, ad esempio le visualizzazioni in cui possono disegnare e l'area di disegno su cui disegnano.
+L'organizzazione dei widget visibili viene mantenuta in modo padre-figlio usando elenchi strutturati ad albero che collegano i widget figlio ai relativi elementi padre. Gli elementi figlio ereditano caratteristiche dagli elementi padre, ad esempio le visualizzazioni in cui possono disegnare e l'area di disegno su cui disegnano.
 I widget figlio possono avere i propri widget figlio, ereditando di nuovo varie caratteristiche dall'elemento padre. Le caratteristiche di qualsiasi widget possono essere ridefinite in modo esplicito tramite varie chiamate API GUIX.
 
 ### <a name="widget-creation"></a>Creazione di widget 
 
 Un oggetto widget può essere creato durante l'inizializzazione o in qualsiasi momento durante l'esecuzione dei thread dell'applicazione. Non esiste alcun limite al numero di oggetti widget che possono essere creati da un'applicazione. Non esiste inoltre alcun limite al numero di elementi figlio che un widget può avere, entro i limiti di memoria dell'hardware di destinazione.
 
-Ogni tipo di widget ha una propria funzione di creazione, ad esempio ***gx_button_create** _ o _*_gx_prompt_create_**. I primi tre parametri di queste funzioni sono sempre gli stessi, vale a esempio un puntatore alla struttura di controllo del widget, un puntatore di stringa al nome del widget e un puntatore all'elemento padre del widget. Ogni funzione di creazione può avere un numero qualsiasi di parametri aggiuntivi a seconda dei requisiti di quel particolare tipo di widget.
+Ogni tipo di widget ha una propria funzione di creazione, ad esempio ***gx_button_create** _ o __*_ gx_prompt_create **. I primi tre parametri di queste funzioni sono sempre gli stessi, vale a esempio un puntatore alla struttura del controllo widget, un puntatore di stringa al nome del widget e un puntatore all'elemento padre del widget. Ogni funzione di creazione può avere un numero qualsiasi di parametri aggiuntivi a seconda dei requisiti di quel particolare tipo di widget.
 
 ### <a name="widget-control-block"></a>Blocco di controllo widget 
 
-Le caratteristiche di ogni oggetto widget si trovano nel blocco **di controllo** GX_WIDGET e sono definite in **_gx_api.h._** La memoria necessaria per un oggetto widget viene fornita dall'applicazione e può essere posizionata in qualsiasi punto della memoria. Tuttavia, è più comune fare in modo che il controllo oggetto widget blocchi una struttura globale definendo l'oggetto all'esterno dell'ambito di qualsiasi funzione. Se si usa GUIX Studio, i blocchi di controllo widget possono essere allocati staticamente all'interno del file delle specifiche generate da Studio oppure possono essere allocati dinamicamente dall'applicazione.
+Le caratteristiche di ogni oggetto widget si trovano nel blocco **di controllo** GX_WIDGET e sono definite in **_gx_api.h_**. La memoria necessaria per un oggetto widget viene fornita dall'applicazione e può essere posizionata in qualsiasi punto della memoria. Tuttavia, è più comune fare in modo che il controllo oggetto widget blocchi una struttura globale definendo il controllo all'esterno dell'ambito di qualsiasi funzione. Se si usa GUIX Studio, i blocchi di controllo widget possono essere allocati in modo statico all'interno del file di specifiche generate da Studio oppure possono essere allocati dinamicamente dall'applicazione.
 
-### <a name="dynamic-widget-control-block-allocation-and-de-allocation"></a>Allocazione e deallocazione dei blocchi di controllo widget dinamici 
+### <a name="dynamic-widget-control-block-allocation-and-de-allocation"></a>Allocazione e deallocazione del blocco del controllo Widget dinamico 
 
-Se si usa l'allocazione dinamica dei blocchi di controllo, è necessario definire due funzioni che GUIX userà per allocare e liberare la memoria necessaria per i blocchi di controllo del widget. Le funzioni per la gestione della memoria vengono passate al componente di sistema GUIX tramite la ***gx_system_memory_allocator_set*** API. Questa funzione consente di passare due puntatori a funzione in GUIX: il primo è un puntatore a una funzione di allocazione di memoria e il secondo è un puntatore a una funzione senza memoria. Nella maggior parte dei casi, queste funzioni vengono implementate usando pool di byte ThreadX, ma la progettazione di GUIX consente di implementare la gestione dinamica della memoria nel modo preferito.
+Se si usa l'allocazione di blocchi di controllo dinamico, è necessario definire due funzioni che GUIX userà per allocare e liberare la memoria necessaria per i blocchi di controllo widget. Le funzioni per la gestione della memoria vengono passate al componente di sistema GUIX tramite la ***gx_system_memory_allocator_set*** API. Questa funzione consente di passare due puntatori a funzione in GUIX: il primo è un puntatore a una funzione di allocazione di memoria e il secondo è un puntatore a una funzione senza memoria. Molto spesso queste funzioni vengono implementate usando pool di byte ThreadX, ma la progettazione di GUIX consente di implementare la gestione dinamica della memoria nel modo preferito.
 
-L'allocazione dinamica dei widget viene spesso utilizzata all'interno del file di specifiche dell'applicazione generato da Studio, quando si seleziona l'opzione "allocata dinamicamente" nel campo Proprietà del widget di Studio. Tuttavia, è anche possibile usare l'allocazione dinamica dei blocchi di controllo all'interno dell'applicazione. Se si usa l'allocazione dinamica dei blocchi di controllo all'interno dell'applicazione, è necessario richiamare la funzione ***gx_widget_allocate** _API per allocare il blocco di controllo widget. Successivamente, quando si crea il widget, assicurarsi di passare il flag di stile _ GX_WIDGET_STYLE_DYNAMICALLY_ALLOCATED * (insieme *a* tutti gli altri flag di stile necessari) alla funzione di creazione del widget. Questo flag viene usato per contrassegnare il widget come allocato dinamicamente nel campo stato del widget. Quando e se il widget viene eliminato in un secondo momento **_usando gx_widget_delete_**, GUIX controlla questo campo di stato e chiama automaticamente la funzione di deallocazione della memoria per assicurare che non si siano verificate perdite di memoria.
+L'allocazione dinamica dei widget viene spesso utilizzata all'interno del file delle specifiche dell'applicazione generato da Studio, quando si seleziona l'opzione "allocata dinamicamente" nel campo Delle proprietà del widget di Studio. Tuttavia, è anche possibile usare l'allocazione dei blocchi di controllo dinamico all'interno dell'applicazione. Se si usa l'allocazione dinamica dei blocchi di controllo all'interno dell'applicazione, è necessario richiamare la funzione ***gx_widget_allocate** _ API per allocare il blocco di controllo widget. Successivamente, quando si crea il widget, assicurarsi di passare il flag di stile _ GX_WIDGET_STYLE_DYNAMICALLY_ALLOCATED * (insieme *a* tutti gli altri flag di stile necessari) alla funzione di creazione del widget. Questo flag viene usato per contrassegnare il widget come allocato dinamicamente nel campo dello stato del widget. Quando e se il widget viene eliminato in un secondo momento **_usando gx_widget_delete_**, GUIX controlla questo campo di stato e chiama automaticamente la funzione di deallocazione della memoria per assicurare che non si siano verificate perdite di memoria.
 
 > [!IMPORTANT]
-> Un widget creato usando un blocco di controllo allocato dinamicamente deve essere creato con il flag **GX_WIDGET_STYLE_DYNAMICALLY_ALLOCATED** per evitare la perdita di memoria.
+> Un widget creato usando un blocco di  controllo allocato dinamicamente deve essere creato con il flag GX_WIDGET_STYLE_DYNAMICALLY_ALLOCATED di stile per evitare la perdita di memoria.
 
 ### <a name="types"></a>Tipi
 
-GUIX offre un set completo e funzionale di widget predefiniti. Come accennato in precedenza, tutti i widget specializzati derivano dal widget di base. Di seguito è riportato un elenco dei widget predefiniti in GUIX:
+GUIX offre un set completo e completamente funzionale di widget predefiniti. Come accennato in precedenza, tutti i widget specializzati derivano dal widget di base. Di seguito è riportato un elenco dei widget predefiniti in GUIX:
 
 **GX_TYPE_WIDGET**
 
@@ -784,7 +784,7 @@ Lo stile del widget iniziale è sempre un parametro passato alla funzione di cre
 ### <a name="colors"></a>Colori 
 
 I widget si disegnano usando i colori definiti nella tabella dei colori di sistema.
-Gli ID colore sono definiti per lo sfondo dell'area di disegno, il colore di riempimento predefinito del widget, il colore di riempimento del pulsante, il colore di riempimento del widget di testo, il colore di riempimento della finestra e diversi altri valori di colore predefiniti. Inoltre, gli **GX_WINDOW** supportano la visualizzazione di una bitmap o di uno sfondo mentre il client della finestra viene riempito.
+Gli ID colore sono definiti per lo sfondo dell'area di disegno, il colore di riempimento predefinito del widget, il colore di riempimento del pulsante, il colore di riempimento del widget di testo, il colore di riempimento della finestra e diversi altri valori di colore predefiniti. Inoltre, gli **GX_WINDOW** supportano la visualizzazione di una bitmap o di uno sfondo quando il client della finestra viene riempito.
 
 Il metodo più semplice per modificare la combinazione colori predefinita è usare GUIX Studio e creare o definire una combinazione colori che soddisfi i requisiti.
 È anche possibile definire manualmente la combinazione colori creando una matrice di GX_COLOR valori e richiamando la gx_system_color_table_set API.
@@ -795,14 +795,14 @@ Gli eventi GUIX sono richieste inviate a uno o più widget per eseguire una dete
 
 Gli eventi vengono passati attraverso la coda di eventi GUIX e ogni evento è un'istanza della **struttura GX_EVENT** dati. La **GX_EVENT** dei dati è definita in ***gx_api.h***, tuttavia i campi più importanti della struttura sono **gx_event_type**, **gx_event_sender**, **gx_event_target** e **gx_event_payload**.
 
-Il **gx_event_type** viene usato per identificare la classe di evento specifica. Il tipo di evento indica se si tratta, ad esempio, di un evento **GX_EVENT_PEN_DOWN** o di un **GX_EVENT_TIMER** eventi. Il **gx_event_payload** è un'unione di vari campi dati e non sono tutti validi per ogni tipo di evento.
-Usare prima il campo del tipo di evento prima di esaminare gli altri campi dati dell'evento.
+Il **gx_event_type** viene usato per identificare la classe di evento specifica. Il tipo di evento indica se si  tratta, ad esempio, di un evento GX_EVENT_PEN_DOWN o di un **GX_EVENT_TIMER** eventi. Il **gx_event_payload** è un'unione di vari campi dati e non sono tutti validi per ogni tipo di evento.
+Prima di esaminare gli altri campi dati dell'evento, usare il campo del tipo di evento.
 
 Il **gx_event_sender** contiene l'ID del widget che ha generato l'evento se l'evento è una notifica del widget figlio.
 
-Il **gx_event_target** campo può essere usato per instradare gli eventi definiti dall'utente a una determinata finestra o widget. Se **si** vuole inviare un evento a una determinata finestra, è necessario assegnare alla finestra un valore ID univoco (in modo che possa essere identificato in modo positivo) e, quando si compila l'evento, inserire il valore id della finestra nel campo gx_event_target. Se non si conosce l'ID di destinazione o si vuole solo che l'evento sia indirizzato al widget con lo stato attivo per l'input, assicurarsi di impostare il campo gx_event_target su 0. 
+Il **gx_event_target** campo può essere usato per instradare gli eventi definiti dall'utente a una finestra o un widget specifico. Se **si** vuole inviare un evento a una determinata finestra, è necessario assegnare alla finestra un valore ID univoco (in modo che possa essere identificato in modo positivo) e, quando si compila l'evento, inserire il valore id della finestra nel campo gx_event_target. Se non si conosce l'ID di destinazione o si vuole solo che l'evento sia indirizzato al widget con lo stato attivo per l'input, assicurarsi di impostare il campo gx_event_target su 0. 
 
-Infine, il **gx_event_payload** è un'unione di vari tipi di dati. Per **GX_EVENT_PEN_DOWN** e **GX_EVENT_PEN_UP** eventi, il  campo gx_event_pointdata contiene la coordinata x,y pixel della posizione della penna. Per gli eventi timer, **il gx_event_timer_id** contiene l'ID del timer scaduto. Altri campi dati di payload vengono utilizzati per altri tipi di evento. L'elenco completo dei tipi di evento predefiniti e dei relativi campi di payload è definito [nell'Appendice E - Descrizioni degli](appendix-e.md)eventi GUIX .
+Infine, il **gx_event_payload** è un'unione di vari tipi di dati. Per **GX_EVENT_PEN_DOWN** e **GX_EVENT_PEN_UP** eventi, il  campo gx_event_pointdata contiene la coordinata x,y pixel della posizione della penna. Per gli eventi timer, **il gx_event_timer_id** contiene l'ID del timer scaduto. Altri campi di dati di payload vengono utilizzati per altri tipi di evento. L'elenco completo dei tipi di evento predefiniti e dei relativi campi di payload è definito [nell'Appendice E - Descrizioni degli](appendix-e.md)eventi GUIX .
 
 L'applicazione può anche aggiungere i propri eventi personalizzati, iniziando numericamente dopo la **costante GX_FIRST_APP_EVENT**. Tutti i numeri di evento dopo questa costante sono riservati per l'uso dell'applicazione. Naturalmente, il gestore eventi widget dell'applicazione deve disporre dell'elaborazione per tali eventi dell'applicazione.
 
@@ -820,7 +820,7 @@ L'elaborazione degli eventi viene chiamata esclusivamente dal contesto del threa
 È possibile fornire la propria funzione di elaborazione degli eventi per qualsiasi widget o finestra nel sistema GUIX. Se si sta creando un tipo di widget personalizzato, in genere si installerà il gestore eventi personalizzato nella funzione di creazione del widget. Se si sta semplicemente estendendo o modificando il funzionamento di un widget o di una finestra esistente, è possibile chiamare la funzione API gx_widget_event_process_set dopo la creazione del widget o della finestra. Quasi sempre si fornirà la propria gestione degli eventi per le finestre di primo livello (denominate anche schermate) per elaborare gli eventi generati dai controlli figlio. L'elaborazione dell'evento generato dai controlli figlio di una schermata è il modo principale per aggiungere funzionalità all'applicazione GUIX.
 
 Si supponga, ad esempio, di definire una schermata di primo livello denominata "main_menu".
-Questa schermata può essere definita usando GUIX Studio oppure è possibile creare questa schermata nel codice dell'applicazione. Se si definisce la schermata all'interno di GUIX Studio, è sufficiente digitare il nome del gestore eventi nel campo delle proprietà di Studio per tale schermata e il codice delle specifiche generate da Studio installerà automaticamente il gestore eventi. In questo caso, verrà chiamato il gestore eventi personalizzato main_menu_event_handler ***e*** deve essere codificato nel modo seguente:
+Questa schermata può essere definita usando GUIX Studio oppure è possibile creare questa schermata nel codice dell'applicazione. Se si definisce la schermata all'interno di GUIX Studio, è sufficiente digitare il nome del gestore eventi nel campo delle proprietà di Studio per tale schermata e il codice delle specifiche generato da Studio installerà automaticamente il gestore eventi. In questo caso, verrà chiamato il gestore eventi personalizzato main_menu_event_handler ***e*** deve essere codificato nel modo seguente:
 
 ```C
 int main_menu_item; /* example: variable to keep track of selected item */
@@ -952,11 +952,11 @@ Il **gx_brush_style** è un set di flag di stile che possono essere ord insieme 
 **GX_BRUSH_UNDERLINE**  
 **GX_BRUSH_ROUND**
 
-Il **gx_brush_width** definisce la linea con per il disegno a linee o lo spessore del contorno per il disegno di forme con contorno.
+Il **gx_brush_width** definisce la linea con per il disegno a linee o la larghezza del contorno per il disegno di forme con contorno.
 
 Il **gx_brush_line_color** definisce il colore di primo piano per il disegno di linee e per il disegno di testo.
 
-Il **gx_brush_fill_color** definisce il colore di riempimento a tinta unita usato per il riempimento della forma. Il componente di contesto GUIX fornisce un set di API progettate per semplificare la modifica del pennello corrente all'interno del contesto attivo. Queste API **includono** gx_context_brush_define , **gx_context_line_color_set**, **gx_context_fill_color_set**, **gx_context_font_set** e molti altri.
+Il **gx_brush_fill_color** membro definisce il colore di riempimento a tinta unita usato per il riempimento della forma. Il componente di contesto GUIX fornisce un set di API progettate per semplificare la modifica del pennello corrente all'interno del contesto attivo. Queste API **includono** gx_context_brush_define , **gx_context_line_color_set**, **gx_context_fill_color_set**, **gx_context_font_set** e molti altri.
 
 Il contesto di disegno di un oggetto padre viene ereditato dagli oggetti figlio. In realtà, un clone del contesto di disegno padre viene ereditato dagli oggetti figlio quando vengono richiamate le relative funzioni di disegno. L'elemento figlio può modificare il contesto senza influire sul disegno padre, ma può anche ereditare informazioni dall'elemento padre, ad esempio il colore e lo stile del pennello, se lo si desidera.
 
@@ -1044,7 +1044,7 @@ Le funzioni del componente Lettore di immagini includono:
 
 Il componente GUIX Animation è un set di funzioni e servizi usati per automatizzare le automazioni delle transizioni di schermo e widget. Il componente GUIX Animation supporta le animazioni di dissolversi, dissolversi e movimento o tipo di diapositiva di qualsiasi tipo di widget.
 
-Le animazioni di tipo dissolvenza possono essere supportate variando il valore alfa interno dei widget in dissolvenza (se **GX_BRUSH_ALPHA_SUPPORT** è abilitato) o disegnando qualsiasi raccolta di widget in un'area di disegno della memoria separata quando viene quindi misto con lo sfondo. Per le destinazioni hardware che supportano più livelli di grafica hardware, è possibile ottenere il supporto per effetti uniformi di dissolvezza usando questo approccio di fusione dell'area di disegno, spesso con una larghezza di banda della CPU di base molto ridotta. Per le destinazioni hardware che non supportano più livelli grafici, la fusione con il valore alfa del pennello GUIX è supportata quando l'esecuzione è a 16 bpp e a profondità di colore superiori.
+Le animazioni di tipo dissolvenza possono essere supportate variando il valore alfa interno dei widget di dissolvenza (se **GX_BRUSH_ALPHA_SUPPORT** è abilitato) o disegnando qualsiasi raccolta di widget in un'area di disegno della memoria separata quando viene quindi sfumare con lo sfondo. Per le destinazioni hardware che supportano più livelli di grafica hardware, è possibile ottenere il supporto per effetti uniformi di dissolvezza usando questo approccio di fusione dell'area di disegno, spesso con una larghezza di banda della CPU di base molto ridotta. Per le destinazioni hardware che non supportano più livelli di grafica, la fusione con il valore alfa del pennello GUIX è supportata quando l'esecuzione è a 16 bpp e a una profondità di colore superiore.
 
 Se un'animazione deve usare un'area di disegno separata, il componente di animazione GUIX fornisce il servizio API gx_animation_canvas_define a questo scopo. Altri tipi di animazione non richiedono un'area di disegno separata, ma la utilizzeranno se disponibile. In questo modo è possibile usare al meglio qualsiasi supporto hardware sottostante per più superfici hardware.
 
@@ -1052,7 +1052,7 @@ Le variabili che controllano un'animazione sono definite da due blocchi di contr
 
 Il componente di sistema GUIX può fornire un blocco riutilizzabile di strutture di controllo **GX_ANIMATION,** che possono essere richieste dall'applicazione quando è necessaria l'animazione e vengono restituite automaticamente al pool di sistema al termine della sequenza di animazione. In questo modo l'applicazione non definisce in modo statico una **GX_ANIMATION** per ogni animazione che potrebbe essere implementata. Le dimensioni di questo pool di **strutture GX_ANIMATION** sono definite dalla costante **GX_ANIMATION_POOL_SIZE**, che per impostazione predefinita è 6, il che significa che per impostazione predefinita è possibile allocare 6 animazioni simultanee dal pool di sistema. È ovviamente possibile ridefinire questa costante nel file di intestazione gx_user.h. Sono necessarie più animazioni simultanee. Se **GX_ANIMATION_POOL_SIZE** è impostato su zero, il componente di sistema GUIX non fornisce un pool di animazioni o i servizi correlati.
 
-Il secondo blocco di controllo o struttura usato per definire un'animazione è la **GX_ANIMATION_INFO** struttura . Questa struttura viene usata per definire una sequenza di animazione specifica. Questa struttura di informazioni viene passata al controller di animazione per avviare una sequenza di animazione usando il gx_animation_start API. La **GX_ANIMATION_INFO** contiene i campi seguenti:
+Il secondo blocco o struttura di controllo usato per definire un'animazione è la **GX_ANIMATION_INFO** struttura . Questa struttura viene usata per definire una sequenza di animazione specifica. Questa struttura di informazioni viene passata al controller di animazione per avviare una sequenza di animazione usando il gx_animation_start API. La **GX_ANIMATION_INFO** contiene i campi seguenti:
 
 ```C
 typedef struct GX_ANIMATION_INFO_STRUCT
@@ -1105,7 +1105,7 @@ Il **gx_animation_id** viene restituito all'elemento padre dell'animazione nel c
 
 Il **gx_animation_start_delay** è un conteggio di tick GUIX che indica il numero di tick del timer da ritardare dopo che gx_animation_start _ viene chiamato prima di eseguire effettivamente ***l'animazione. Il valore può essere 0 per avviare l'animazione immediatamente dopo la chiamata a _*_gx_animation_start_**.
 
-Il **gx_animation_frame_interval** definisce il numero di tick del timer GUIX (un multiplo della frequenza dei tick del sistema operativo sottostante) per ritardare tra ogni fotogramma della sequenza di animazione. Il valore minimo è 1.
+Il **gx_animation_frame_interval** definisce il numero di tick del timer GUIX (un multiplo della frequenza dei tick del sistema operativo sottostante) per ritardare ogni fotogramma della sequenza di animazione. Il valore minimo è 1.
 
 Il **gx_animation_start_position** definisce il punto iniziale in alto a sinistra per il widget di destinazione per le animazioni di traslazione.
 
@@ -1115,7 +1115,7 @@ Il **gx_animation_start_alpha** definisce il valore alfa dell'area di disegno in
 
 Il **gx_animation_end_alpha** definisce il valore alfa dell'area di disegno finale per le animazioni con tipo di traslazione.
 
-Il **gx_animation_steps** definisce il numero di passaggi o fotogrammi che il controller deve eseguire per le animazioni di traslazione. Un numero maggiore di passaggi produce una diapositiva e/o un aspetto di dissolvenza più smussato, ma richiede anche una maggiore larghezza di banda del sistema.
+Il **gx_animation_steps** definisce il numero di passaggi o fotogrammi che il controller deve eseguire per le animazioni di traslazione. Un numero maggiore di passaggi produce una diapositiva e/o un aspetto di dissolvenza più uniformi, ma richiede anche una maggiore larghezza di banda del sistema.
 
 Per implementare gli effetti di animazione nell'applicazione, è innanzitutto necessario chiamare ***gx_animation_create*** per inizializzare il controller di animazione. Se l'animazione usa un canvas secondario, inizializzare l'area di disegno chiamando gx_animation_canvas_define. È quindi necessario inizializzare la **GX_ANIMATION_INFO** per definire il tipo specifico di animazione da eseguire e gli altri parametri di animazione. Infine, chiamare gx_animation_start per attivare la sequenza di animazione.
 

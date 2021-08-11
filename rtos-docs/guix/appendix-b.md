@@ -1,21 +1,21 @@
 ---
-title: Appendice B-formati colori GUIX
+title: Appendice B - Formati di colore GUIX
 description: Informazioni sui formati di colore GUIX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e99e40dd334b28e74a0b7570a09d0deb4e0a6436
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 21fa35db7b04f9249da0948bb8b6b5b18f7ab96079c927fa0878c7ab87adeee8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823186"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784666"
 ---
-# <a name="appendix-b---guix-color-formats"></a>Appendice B-formati colori GUIX
+# <a name="appendix-b---guix-color-formats"></a>Appendice B - Formati di colore GUIX
 
-| Colore                               | Valore |
+| Color                               | Valore |
 |------------------------------------ | ----- |
 | GX_COLOR_FORMAT_MONOCHROME          | 1     |
 | GX_COLOR_FORMAT_MONOCHROME_INVERTED | 2     |

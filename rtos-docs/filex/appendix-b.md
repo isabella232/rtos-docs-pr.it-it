@@ -1,23 +1,23 @@
 ---
-title: Appendice B-costanti FileX di Azure RTO
-description: Informazioni sulle costanti FileX di Azure RTO.
+title: Appendice B - Azure RTOS costanti FileX
+description: Informazioni sulle costanti Azure RTOS FileX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a40eef204f9d524abc1ca02e07785c98ff1aba53
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5846a47e9de16ad39f946640bcb0d7682630b5fa4dd6fb1b9012b2a83052b67a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821473"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783816"
 ---
-# <a name="appendix-b---azure-rtos-filex-constants"></a>Appendice B-costanti FileX di Azure RTO
+# <a name="appendix-b---azure-rtos-filex-constants"></a>Appendice B - Azure RTOS costanti FileX
 
-## <a name="alphabeticlistings"></a>Alfabetico | Elenchi 
+## <a name="alphabeticlistings"></a>Alfabetico| Annunci 
 
-| Costante (per alfabeto) | Valore          |
+| Costante (in ordine alfabetico) | Valore          |
 |-----------|-----------|
 |EXFAT_BIT_MAP_FIRST_TABLE|0|
 |EXFAT_BOOT_REGION_SIZE|24|
@@ -29,7 +29,7 @@ ms.locfileid: "104821473"
 |EXFAT_FAT_NUM_OF_FATS|0x001|
 |EXFAT_FAT_VOLUME_FLAG|0x000|
 |EXFAT_FAT_VOLUME_NAME_FIELD_SIZE|11|
-|EXFAT_LAST_CLUSTER_MASK|0xFFFFFFFF|
+|EXFAT_LAST_CLUSTER_MASK|0xffffffff|
 |EXFAT_MIN_NUM_OF_RESERVED_SECTORS|1|
 |EXFAT_NUM_OF_DIR_ENTRIES|2|
 |FX_12_BIT_FAT_SIZE|4086|
@@ -139,7 +139,7 @@ ms.locfileid: "104821473"
 |FX_INVALID_MONTH|0x13|
 |FX_INVALID_NAME|0x0C|
 |FX_INVALID_OPTION|0x24|
-|FX_INVALID_PATH|0x0D|
+|FX_INVALID_PATH|0x0d|
 |FX_INVALID_SECOND|0x17|
 |FX_INVALID_STATE|0x97|
 |FX_INVALID_YEAR|0x12|
@@ -176,7 +176,7 @@ ms.locfileid: "104821473"
 |FX_MINUTE_SHIFT|5|
 |FX_MONTH_MASK|0x0F|
 |FX_MONTH_SHIFT|5|
-|FX_NO_FAT|0xFF|
+|FX_NO_FAT|0xff|
 |FX_NO_MORE_ENTRIES|0x0F|
 |FX_NO_MORE_SPACE|0x0A|
 |FX_NOT_A_FILE|0x05|
@@ -232,7 +232,7 @@ ms.locfileid: "104821473"
 |FX_VOLUME_ID|0x027|
 |FX_VOLUME_LABEL|0x02B|
 |FX_WRITE_PROTECT|0x23|
-|FX_YEAR_MASK|0x7F|
+|FX_YEAR_MASK|0x7f|
 |FX_YEAR_SHIFT|9|
 
 ## <a name="listings-by-value"></a>Elenchi per valore
@@ -328,7 +328,7 @@ EXFAT_NUM_OF_DIR_ENTRIES|2|
 |FX_INVALID_NAME|0x0C|
 |FX_MAXIMUM_MONTH|12|
 |FX_EXFAT_FAT_MAIN_SYSTEM_AREA_SIZE|12|
-|FX_INVALID_PATH|0x0D|
+|FX_INVALID_PATH|0x0d|
 |FX_SECTORS_CLUSTER|0x00D|
 |FX_LONG_NAME_ENTRY_LEN|13|
 |FX_MAX_SHORT_NAME_LEN|13|
@@ -403,7 +403,7 @@ EXFAT_FAT_BITS|32|
 |FX_EF_PERCENT_IN_USE|112|
 |FX_EF_RESERVED|113|
 |FX_EF_BOOT_CODE|120|
-|FX_YEAR_MASK|0x7F|
+|FX_YEAR_MASK|0x7f|
 |EXFAT_FAT_DRIVE_SELECT|0x80|
 |FX_FAT_MAP_SIZE|128|
 EXFAT_DEFAULT_BOUNDARY_UNIT|128|
@@ -418,7 +418,7 @@ EXFAT_DEFAULT_BOUNDARY_UNIT|128|
 |FX_INVALID_STATE|0x97|
 |FX_SIG_BYTE_2|0xAA|
 |FX_DIR_ENTRY_FREE|0xE5|
-|FX_NO_FAT|0xFF|
+|FX_NO_FAT|0xff|
 |EXFAT_FAT_FILE_SYS_REVISION|0x100|
 |FX_MAX_EX_FAT_NAME_LEN|255|
 |FX_MAXIMUM_PATH|256|
@@ -452,5 +452,5 @@ EXFAT_DEFAULT_BOUNDARY_UNIT|128|
 |FX_RESERVED_1_EXFAT|0xFFFFFFF8|
 |FX_RESERVED_2_EXFAT|0xFFFFFFFE|
 |FX_BAD_CLUSTER_EXFAT|0xFFFFFFF7|
-|FX_LAST_CLUSTER_EXFAT|0xFFFFFFFF|
-EXFAT_LAST_CLUSTER_MASK|0xFFFFFFFF|
+|FX_LAST_CLUSTER_EXFAT|0xffffffff|
+EXFAT_LAST_CLUSTER_MASK|0xffffffff|

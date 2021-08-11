@@ -1,70 +1,70 @@
-- name: Documentazione di Azure RTO USBX
+- name: Azure RTOS documentazione di USBX
   href: index.yml
 - name: Panoramica di USBX
   href: overview-usbx.md
-- name: Manuale dell'utente dello stack di dispositivi USBX
+- name: Guida dell'utente per lo stack di dispositivi USBX
   items:
     - name: Informazioni sulla guida
       href: usbx-device-stack-about.md
-    - name: Ch. 1-Introduzione a USBX
+    - name: Ch. 1 - Introduzione a USBX
       href: usbx-device-stack-1.md
-    - name: Ch. 2-installazione di USBX
+    - name: Ch. 2 - Installazione di USBX
       href: usbx-device-stack-2.md
-    - name: Ch. 3-componenti funzionali dello stack di dispositivi USBX
+    - name: Ch. 3 - Componenti funzionali dello stack di dispositivi USBX
       href: usbx-device-stack-3.md
-    - name: Ch. 4-Descrizione dei servizi per dispositivi USBX
+    - name: Ch. 4 - Descrizione dei servizi del dispositivo USBX
       href: usbx-device-stack-4.md
-    - name: Ch. 5-considerazioni sulle classi di dispositivi USBX
+    - name: Ch. 5 - Considerazioni sulla classe di dispositivo USBX
       href: usbx-device-stack-5.md
-- name: USBX stack del dispositivo supplementare
+- name: Stack di dispositivi USBX supplementare
   items:
-    - name: Ch. 1-Introduzione al supplemento manuale per l'utente dello stack di dispositivi USBX
+    - name: Ch. 1 - Introduzione al supplemento usbx device stack user guide
       href: usbx-device-stack-supplemental-1.md
-    - name: Ch. 2-Considerazioni sulle classi di dispositivi USBX
+    - name: Ch. 2 - Considerazioni sulla classe di dispositivo USBX
       href: usbx-device-stack-supplemental-2.md
-    - name: Ch. 3-Considerazioni sulle classi DPUMP di USBX
+    - name: Ch. 3 - Considerazioni sulla classe DPUMP USBX
       href: usbx-device-stack-supplemental-3.md
-    - name: Ch. 4-implementazione di USBX PictBridge
+    - name: Ch. 4 - Implementazione di USBX Pictbridge
       href: usbx-device-stack-supplemental-4.md
-    - name: Ch. 5-USBX OTG
+    - name: Ch. 5 - USBX OTG
       href: usbx-device-stack-supplemental-5.md
-- name: Guida dell'utente dello stack host USBX
+- name: Guida dell'utente dello stack di host USBX
   items:
     - name: Informazioni sulla guida
       href: usbx-host-stack-about.md
-    - name: Ch. 1-Introduzione a USBX
+    - name: Ch. 1 - Introduzione a USBX
       href: usbx-host-stack-1.md
-    - name: Ch. 2-installazione di USBX
+    - name: Ch. 2 - Installazione di USBX
       href: usbx-host-stack-2.md
-    - name: Ch. 3-componenti funzionali dello stack host USBX
+    - name: Ch. 3 - Componenti funzionali dello stack host USBX
       href: usbx-host-stack-3.md
-    - name: Ch. 4-Descrizione dei servizi host USBX
+    - name: Ch. 4 - Descrizione dei servizi host USBX
       href: usbx-host-stack-4.md
-    - name: Ch. 5-API classi host USBX
+    - name: Ch. 5 - API delle classi host USBX
       href: usbx-host-stack-5.md
-    - name: Ch. 6-USBX CDC-ECM Class Usage
+    - name: Ch. 6 - Utilizzo della classe USBX CDC-ECM
       href: usbx-host-stack-6.md
-- name: USBX stack host supplementare
+- name: Stack di host USBX supplementare
   items:
-    - name: Ch. 1-Introduzione al supplemento manuale dell'utente dello stack host USBX
+    - name: Ch. 1 - Introduzione al supplemento della guida per l'utente dello stack di host USBX
       href: usbx-host-stack-supplemental-1.md
-    - name: Ch. 2-API delle classi host USBX
+    - name: Ch. 2 - API classi host USBX
       href: usbx-host-stack-supplemental-2.md
-    - name: Ch. 3-Considerazioni sulle classi DPUMP di USBX
+    - name: Ch. 3 - Considerazioni sulla classe DPUMP USBX
       href: usbx-host-stack-supplemental-3.md
-    - name: Ch. 4-implementazione di USBX PictBridge
+    - name: Ch. 4 - Implementazione di USBX Pictbridge
       href: usbx-host-stack-supplemental-4.md
-    - name: Ch. 5-USBX OTG
+    - name: Ch. 5 - USBX OTG
       href: usbx-host-stack-supplemental-5.md
 - name: Repository USBX
   href: 'https://github.com/azure-rtos/usbx/'
 - name: Servizi correlati
   items:
-    - name: Defender per Internet delle cose-RTO (anteprima)
+    - name: Defender per IoT - RTOS (anteprima)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
-- name: Componenti Microsoft Azure RTO
+- name: Microsoft Azure Componenti RTOS
   items:
-    - name: Microsoft Azure RTO
+    - name: Microsoft Azure Rtos
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
@@ -72,7 +72,7 @@
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
-    - name: NetX
+    - name: Netx
       href: ../netx/index.yml
     - name: GUIX
       href: ../guix/index.yml

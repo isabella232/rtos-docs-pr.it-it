@@ -1,33 +1,33 @@
 ---
-title: Capitolo 4-Descrizione dei servizi di Azure RTO NetX Duo
-description: Questo capitolo contiene una descrizione di tutti i servizi di Azure RTO NetX Duo in ordine alfabetico.
+title: Capitolo 4 - Descrizione di Azure RTOS NetX Duo Services
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS NetX Duo in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 85617aadab7f484a4f4e467fd13f815f4d8b5609
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d28ca64a6a655bb3f1ad10c563450a0e65b645a1e1a2a464c4137f9a999815bc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822949"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785023"
 ---
-# <a name="chapter-4---description-of-azure-rtos-netx-duo-services"></a>Capitolo 4-Descrizione dei servizi di Azure RTO NetX Duo
+# <a name="chapter-4---description-of-azure-rtos-netx-duo-services"></a>Capitolo 4 - Descrizione di Azure RTOS NetX Duo Services
 
-Questo capitolo contiene una descrizione di tutti i servizi di Azure RTO NetX Duo in ordine alfabetico. I nomi dei servizi sono progettati in modo da raggruppare tutti i servizi simili. Ad esempio, tutti i servizi ARP sono disponibili all'inizio di questo capitolo. 
+Questo capitolo contiene una descrizione di tutti i Azure RTOS NetX Duo in ordine alfabetico. I nomi dei servizi sono progettati in modo da raggruppare tutti i servizi simili. Ad esempio, tutti i servizi ARP si trovano all'inizio di questo capitolo. 
 
-In NetX Duo sono stati introdotti numerosi nuovi servizi per il supporto di operazioni e protocolli basati su IPv6. I servizi abilitati per IPv6 in NET Duo hanno il prefisso ***NXD**, * a indicare che sono progettati per l'operazione dual stack IPv4 e IPv6.
+In NetX Duo sono stati introdotti numerosi nuovi servizi per supportare le operazioni e i protocolli basati su IPv6. I servizi abilitati per IPv6 in Net Duo hanno il prefisso ***nxd**,* che indica che sono progettati per l'operazione dual stack IPv4 e IPv6.
 
-I servizi esistenti in NetX sono completamente supportati in NetX Duo. È possibile eseguire la migrazione delle applicazioni NetX a NetX Duo con un minimo sforzo di porting.
+I servizi esistenti in NetX sono completamente supportati in NetX Duo. È possibile eseguire la migrazione di applicazioni NetX a NetX Duo con un minimo sforzo di porting.
 
 > [!NOTE]
-> Si *noti che un'API Socket BSD-Compatible è disponibile per il codice dell'applicazione legacy che non è in grado di sfruttare appieno l'API NETX Duo a prestazioni elevate. Per altre informazioni sull'API socket BSD-Compatible, vedere l'Appendice D*.
+> Si noti che è disponibile BSD-Compatible API Socket per il codice dell'applicazione legacy che non può sfruttare appieno *l'API NetX Duo ad alte prestazioni. Per altre informazioni sull'API socket di BSD-Compatible, vedere l'appendice D.*
 
-Nella sezione "valori restituiti" di ogni descrizione, i valori in **grassetto** non sono interessati dall'opzione NX_DISABLE_ERROR_CHECKING usata per disabilitare il controllo degli errori dell'API, mentre i valori in grassetto non sono completamente disabilitati. Le sezioni "consentito da" indicano che è possibile chiamare ogni servizio NetX Duo.
+Nella sezione "Valori restituiti" di ogni descrizione i valori in **GRASSETTO** non sono interessati dall'opzione NX_DISABLE_ERROR_CHECKING usata per disabilitare il controllo degli errori dell'API, mentre i valori in grassetto non sono completamente disabilitati. Le sezioni "Allowed From" indicano da cui è possibile chiamare ogni servizio NetX Duo.
 
 ## <a name="nx_arp_dynamic_entries_invalidate"></a>nx_arp_dynamic_entries_invalidate   
-Invalida tutte le voci dinamiche nella cache ARP
+Invalidare tutte le voci dinamiche nella cache ARP
 
 ### <a name="prototype"></a>Prototipo     
 
@@ -36,23 +36,23 @@ UINT nx_arp_dynamic_entries_invalidate(NX_IP *ip_ptr);
 ```
 
 ### <a name="description"></a>Descrizione   
-Questo servizio invalida tutte le voci ARP dinamiche attualmente presenti nella cache ARP.
+Questo servizio invalida tutte le voci ARP dinamiche attualmente nella cache ARP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'invalidamento della cache ARP riuscita **NX_SUCCESS** (0x00).
-- **NX_NOT_ENABLED** (0X14) ARP non è abilitato.
-- **NX_PTR_ERROR** (0x07) indirizzo IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread.
+- **NX_SUCCESS** (0x00) Invalidazione della cache ARP completata.
+- **NX_NOT_ENABLED** (0x14) ARP non è abilitato.
+- **NX_PTR_ERROR** (0x07) Indirizzo IP non valido.
+- **NX_CALLER_ERROR** (0x11) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da   
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile    
+### <a name="preemption-possible"></a>Possibile preemption    
 No
 
 ### <a name="example"></a>Esempio
@@ -83,7 +83,7 @@ status = nx_arp_dynamic_entries_invalidate(&ip_0);
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_dynamic_entry_set"></a>nx_arp_dynamic_entry_set  
-Imposta voce ARP dinamica
+Impostare una voce ARP dinamica
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -96,28 +96,28 @@ UINT nx_arp_dynamic_entry_set(
 ```
 
 ### <a name="description"></a>Descrizione    
-Questo servizio alloca una voce dinamica dalla cache ARP e imposta l'indirizzo IP specificato sul mapping degli indirizzi fisici. Se viene specificato un indirizzo fisico zero, alla rete viene inviata una richiesta ARP effettiva per poter risolvere l'indirizzo fisico. Si noti inoltre che questa voce verrà rimossa se ARP aging è attivo o se la cache ARP è esaurita e si tratta della voce ARP usata meno di recente.
+Questo servizio alloca una voce dinamica dalla cache ARP e configura il mapping dell'indirizzo IP specificato a quello fisico. Se viene specificato un indirizzo fisico pari a zero, viene inviata alla rete una richiesta ARP effettiva per risolvere l'indirizzo fisico. Si noti anche che questa voce verrà rimossa se il periodo di aging ARP è attivo o se la cache ARP è esaurita e si tratta della voce ARP usata meno di recente.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **ip_address** Indirizzo IP da mappare.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **ip_address** Indirizzo IP di cui eseguire il mapping.
 - **physical_msw** Primi 16 bit (47-32) dell'indirizzo fisico.
-- **physical_lsw** Inferiore 32 bit (31-0) dell'indirizzo fisico.
+- **physical_lsw** 32 bit inferiori (31-0) dell'indirizzo fisico.
 
 ### <a name="return-values"></a>Valori restituiti    
 
-- Il set di voci dinamiche ARP riuscite **NX_SUCCESS** (0x00).
-- **NX_NO_MORE_ENTRIES** (0x17) non sono disponibili altre voci ARP nella cache ARP.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_PTR_ERROR** (0x07) puntatore a istanza IP non valido.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Set di voci dinamiche ARP riuscito.
+- **NX_NO_MORE_ENTRIES** (0x17) Non sono disponibili altre voci ARP nella cache ARP.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore di istanza IP non valido.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da    
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile    
+### <a name="preemption-possible"></a>Possibile preemption    
 No
 
 ### <a name="example"></a>Esempio
@@ -151,7 +151,7 @@ status = nx_arp_dynamic_entry_set(&ip_0, IP_ADDRESS(1,2,3,4),
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_enable"></a>nx_arp_enable  
-Abilita ARP (Address Resolution Protocol)
+Abilitare il protocollo ARP (Address Resolution Protocol)
 
 ### <a name="prototype"></a>Prototipo    
 
@@ -164,26 +164,26 @@ UINT nx_arp_enable(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Inizializza il componente ARP di NetX Duo per l'istanza IP specifica. L'inizializzazione ARP include la configurazione della cache ARP e delle varie routine di elaborazione ARP necessarie per l'invio e la ricezione di messaggi ARP.
+Questo servizio inizializza il componente ARP di NetX Duo per l'istanza IP specifica. L'inizializzazione ARP include la configurazione della cache ARP e varie routine di elaborazione ARP necessarie per l'invio e la ricezione di messaggi ARP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **arp_cache_memory** Puntatore all'area memoria per inserire la cache ARP.
-- **arp_cache_size** Ogni voce ARP è 52 byte, il numero totale di voci ARP è, di conseguenza, la dimensione divisa per 52.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **arp_cache_memory** Puntatore all'area di memoria per inserire la cache ARP.
+- **arp_cache_size** Ogni voce ARP è di 52 byte, il numero totale di voci ARP è quindi la dimensione divisa per 52.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Abilitazione ARP riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) un puntatore di memoria cache o un indirizzo IP non valido.
-- La memoria della cache ARP fornita dall'utente **NX_SIZE_ERROR** (0x09) è troppo piccola.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_ALREADY_ENABLED** (0X15) questo componente è già stato abilitato.
+- **NX_SUCCESS** (0x00) ARP abilitato.
+- **NX_PTR_ERROR** (0x07) Indirizzo IP o puntatore di memoria della cache non valido.
+- **NX_SIZE_ERROR** (0x09) La memoria cache ARP fornita dall'utente è troppo piccola.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_ALREADY_ENABLED** (0x15) Questo componente è già stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da   
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile  
+### <a name="preemption-possible"></a>Preemption Possible  
 No
 
 ### <a name="example"></a>Esempio
@@ -215,7 +215,7 @@ instance.*/
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_entry_delete"></a>nx_arp_entry_delete   
-Elimina una voce ARP
+Eliminare una voce ARP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -230,21 +230,21 @@ Questo servizio rimuove una voce ARP per l'indirizzo IP specificato dalla relati
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_address** La voce ARP con l'indirizzo IP specificato deve essere eliminata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Abilitazione ARP riuscita **NX_SUCCESS** (0x00).
-- **NX_ENTRY_NOT_FOUND** (0x16) non è possibile trovare alcuna voce con l'indirizzo IP specificato.
-- **NX_PTR_ERROR** (0x07) un puntatore di memoria cache o un indirizzo IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- Il **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP specificato non è valido.
+- **NX_SUCCESS** (0x00) ARP riuscito.
+- **NX_ENTRY_NOT_FOUND** (0x16) Non è possibile trovare alcuna voce con l'indirizzo IP specificato.
+- **NX_PTR_ERROR** (0x07) IP o puntatore di memoria della cache non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_IP_ADDRESS_ERROR** (0x21) L'indirizzo IP specificato non è valido.
 
 ### <a name="allowed-from"></a>Consentito da  
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile  
+### <a name="preemption-possible"></a>Preemption Possible  
 No
 
 ### <a name="example"></a>Esempio
@@ -287,27 +287,27 @@ UINT nx_arp_gratuitous_send(
 ```                               
 ### <a name="description"></a>Descrizione
 
-Questo servizio attraversa tutte le interfacce fisiche per trasmettere richieste ARP gratuite, purché l'indirizzo IP dell'interfaccia sia valido. Se successivamente viene ricevuta una risposta ARP, viene chiamato il gestore di risposta fornito per elaborare la risposta all'ARP gratuito.
+Questo servizio passa attraverso tutte le interfacce fisiche per trasmettere richieste ARP gratuite, purché l'indirizzo IP dell'interfaccia sia valido. Se successivamente viene ricevuta una risposta ARP, viene chiamato il gestore di risposta fornito per elaborare la risposta all'ARP gratuito.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **response_handler** Puntatore alla funzione di gestione delle risposte. Se viene specificato NX_NULL, le risposte verranno ignorate.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **response_handler** Puntatore alla funzione di gestione della risposta. Se NX_NULL viene specificato , le risposte vengono ignorate.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la trasmissione ARP gratuita è stata completata.
-- **NX_NO_PACKET** (0x01) non è disponibile alcun pacchetto.
-- **NX_NOT_ENABLED** (0X14) ARP non è abilitato.
-- L'indirizzo IP corrente **NX_IP_ADDRESS_ERROR** (0x21) non è valido.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread.
+- **NX_SUCCESS** (0x00) Invio gratuito ARP riuscito.
+- **NX_NO_PACKET** (0x01) Nessun pacchetto disponibile.
+- **NX_NOT_ENABLED** (0x14) ARP non è abilitato.
+- **NX_IP_ADDRESS_ERROR** (0x21) L'indirizzo IP corrente non è valido.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Caller non è un thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -353,29 +353,29 @@ UINT nx_arp_hardware_address_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di trovare un indirizzo hardware fisico nella cache ARP che è associato all'indirizzo IP specificato.
+Questo servizio tenta di trovare un indirizzo hardware fisico nella cache ARP associata all'indirizzo IP fornito.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_address** Indirizzo IP da cercare.
-- **physical_msw** Puntatore alla variabile per la restituzione dei primi 16 bit (47-32) dell'indirizzo fisico.
-- **physical_lsw** Puntatore alla variabile per la restituzione dei 32 bit inferiori (31-0) dell'indirizzo fisico.
+- **physical_msw** Puntatore alla variabile per restituire i primi 16 bit (47-32) dell'indirizzo fisico.
+- **physical_lsw** Puntatore alla variabile per restituire i 32 bit inferiori (31-0) dell'indirizzo fisico.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Ricerca di indirizzi hardware ARP riuscita **NX_SUCCESS** (0x00).
-- Il mapping di **NX_ENTRY_NOT_FOUND** (0x16) non è stato trovato nella cache ARP.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_PTR_ERROR** (0x07) un puntatore di memoria o un indirizzo IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Trovato indirizzo hardware ARP riuscito.
+- **NX_ENTRY_NOT_FOUND** mapping (0x16) non è stato trovato nella cache ARP.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_PTR_ERROR** (0x07) Indirizzo IP o puntatore di memoria non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -433,32 +433,32 @@ UINT nx_arp_info_get(
 Questo servizio recupera informazioni sulle attività ARP per l'istanza IP associata.
 
 > [!NOTE]
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se un puntatore di destinazione NX_NULL, queste informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **arp_requests_sent** Puntatore alla destinazione per le richieste ARP totali inviate da questa istanza IP.
-- **arp_requests_received** Puntatore alla destinazione per le richieste ARP totali ricevute dalla rete.
-- **arp_responses_sent** Puntatore alla destinazione per le risposte ARP totali inviate da questa istanza IP.
-- **arp_responses_received** Puntatore alla destinazione per le risposte ARP totali ricevute dalla rete.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **arp_requests_sent** Puntatore alla destinazione per il totale delle richieste ARP inviate da questa istanza IP.
+- **arp_requests_received** Puntatore alla destinazione per il totale delle richieste ARP ricevute dalla rete.
+- **arp_responses_sent** Puntatore alla destinazione per il totale delle risposte ARP inviate da questa istanza IP.
+- **arp_responses_received** Puntatore alla destinazione per il totale delle risposte ARP ricevute dalla rete.
 - **arp_dynamic_entries** Puntatore alla destinazione per il numero corrente di voci ARP dinamiche.
 - **arp_static_entries** Puntatore alla destinazione per il numero corrente di voci ARP statiche.
-- **arp_aged_entries** Puntatore alla destinazione del numero totale di voci ARP obsolete e diventate non valide.
-- **arp_invalid_messages** Puntatore alla destinazione del totale dei messaggi ARP non validi ricevuti.
+- **arp_aged_entries** Puntatore alla destinazione del numero totale di voci ARP obsolete e non valide.
+- **arp_invalid_messages** Puntatore alla destinazione dei messaggi ARP non validi totali ricevuti.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il recupero delle informazioni ARP riuscite **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni ARP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -497,7 +497,7 @@ status = nx_arp_info_get(&ip_0, &arp_requests_sent,
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_ip_address_find"></a>nx_arp_ip_address_find
-Individuare l'indirizzo IP in base a un indirizzo fisico
+Individuare l'indirizzo IP dato un indirizzo fisico
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -514,25 +514,25 @@ Questo servizio tenta di trovare un indirizzo IP nella cache ARP associata all'i
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **ip_address** Puntatore per restituire l'indirizzo IP, se ne viene trovato uno mappato.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **ip_address** Puntatore all'indirizzo IP restituito, se ne viene trovato uno di cui è stato eseguito il mapping.
 - **physical_msw** Primi 16 bit (47-32) dell'indirizzo fisico da cercare.
-- **physical_lsw** Inferiore 32 bit (31-0) dell'indirizzo fisico da cercare.
+- **physical_lsw** 32 bit inferiori (31-0) dell'indirizzo fisico da cercare.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Ricerca di indirizzi IP ARP riusciti **NX_SUCCESS** (0x00) 
-- Il mapping di **NX_ENTRY_NOT_FOUND** (0x16) non è stato trovato nella cache ARP.
-- **NX_PTR_ERROR** (0x07) un puntatore di memoria o un indirizzo IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4d) Physical_msw e physical_lsw sono entrambi 0.
+- **NX_SUCCESS** (0x00) Ricerca dell'indirizzo IP ARP riuscita 
+- **NX_ENTRY_NOT_FOUND** mapping (0x16) non è stato trovato nella cache ARP.
+- **NX_PTR_ERROR** (0x07) Indirizzo IP o puntatore di memoria non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_INVALID_PARAMETERS** (0x4D) Physical_msw e physical_lsw sono entrambi 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -566,7 +566,7 @@ status = nx_arp_ip_address_find(&ip_0, &ip_address, 0x0, 0x1234);
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_static_entries_delete"></a>nx_arp_static_entries_delete
-Elimina tutte le voci ARP statiche
+Eliminare tutte le voci ARP statiche
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -576,24 +576,24 @@ UINT nx_arp_static_entries_delete(NX_IP *ip_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina tutte le voci statiche nella cache ARP.
+Questo servizio elimina tutte le voci statiche nella cache ARP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Vengono eliminate le voci statiche **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) Ip_ptr puntatore non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Le voci statiche vengono eliminate.
+- **NX_PTR_ERROR** (0x07) Puntatore ip_ptr non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -626,7 +626,7 @@ status = nx_arp_static_entries_delete(&ip_0);
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_static_entry_create"></a>nx_arp_static_entry_create
-Creare un indirizzo IP statico al mapping hardware nella cache ARP
+Creare un mapping da IP statico a hardware nella cache ARP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -639,30 +639,30 @@ UINT nx_arp_static_entry_create(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un mapping statico da indirizzo IP a fisico nella cache ARP per l'istanza IP specificata. Le voci ARP statiche non sono soggette ad aggiornamenti periodici ARP.
+Questo servizio crea un mapping statico da IP a indirizzo fisico nella cache ARP per l'istanza IP specificata. Le voci ARP statiche non sono soggette a aggiornamenti periodici ARP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **ip_address** Indirizzo IP da mappare.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **ip_address** Indirizzo IP di cui eseguire il mapping.
 - **physical_msw** Primi 16 bit (47-32) dell'indirizzo fisico da mappare.
-- **physical_lsw** Inferiore 32 bit (31-0) dell'indirizzo fisico da mappare.
+- **physical_lsw** 32 bit inferiori (31-0) dell'indirizzo fisico di cui eseguire il mapping.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Creazione di una voce statica ARP riuscita **NX_SUCCESS** (0x00).
-- **NX_NO_MORE_ENTRIES** (0x17) non sono disponibili altre voci ARP nella cache ARP.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4d) Physical_msw e physical_lsw sono entrambi 0.
+- **NX_SUCCESS** (0x00) Creazione della voce statica ARP completata.
+- **NX_NO_MORE_ENTRIES** (0x17) Non sono disponibili altre voci ARP nella cache ARP.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_INVALID_PARAMETERS** (0x4D) Physical_msw e physical_lsw sono entrambi 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -697,7 +697,7 @@ status = nx_arp_static_entry_create(&ip_0, IP_ADDRESS(1,2,3,4),
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_arp_static_entry_delete"></a>nx_arp_static_entry_delete 
-Eliminare l'indirizzo IP statico al mapping hardware nella cache ARP
+Eliminare l'indirizzo IP statico per il mapping hardware nella cache ARP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -710,30 +710,30 @@ UINT nx_arp_static_entry_delete(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio trova ed elimina un mapping statico da indirizzo IP a fisico creato in precedenza nella cache ARP per l'istanza IP specificata.
+Questo servizio trova ed elimina un mapping statico da IP a indirizzo fisico creato in precedenza nella cache ARP per l'istanza IP specificata.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_address** Indirizzo IP mappato in modo statico.
-- **physical_msw** Primi 16 bit (47-* * 32) dell'indirizzo fisico mappato in modo statico.
-- **physical_lsw** Inferiore 32 bit (31-* * 0) dell'indirizzo fisico mappato in modo statico.
+- **physical_msw** Primi 16 bit (47 - **32) dell'indirizzo fisico mappato in modo statico.
+- **physical_lsw** 32 bit inferiori (31 - **0) dell'indirizzo fisico mappato in modo statico.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione di una voce statica ARP riuscita **NX_SUCCESS** (0x00).
-- La voce ARP statica **NX_ENTRY_NOT_FOUND** (0x16) non è stata trovata nella cache ARP.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4d) Physical_msw e physical_lsw sono entrambi 0.
+- **NX_SUCCESS** (0x00) Eliminazione della voce statica ARP completata.
+- **NX_ENTRY_NOT_FOUND** (0x16) Voce ARP statica non trovata nella cache ARP.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_INVALID_PARAMETERS** (0x4D) Physical_msw e physical_lsw sono entrambi 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -767,7 +767,7 @@ status = nx_arp_static_entry_delete(&ip_0, IP_ADDRESS(1,2,3,4),
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nx_icmp_enable"></a>nx_icmp_enable
-Abilita Internet Control Message Protocol (ICMP)
+Abilitare Internet Control Message Protocol (ICMP)
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -776,27 +776,27 @@ UINT nx_icmp_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita il componente ICMP per l'istanza IP specificata. Il componente ICMP è responsabile della gestione dei messaggi di errore Internet e delle richieste di ping e delle risposte. 
+Questo servizio abilita il componente ICMP per l'istanza IP specificata. Il componente ICMP è responsabile della gestione dei messaggi di errore Internet e delle richieste ping e delle risposte. 
 
 > [!IMPORTANT]  
-> *Questo servizio Abilita solo ICMP per il servizio IPv4. Per abilitare sia ICMPv4 che ICMPv6, le applicazioni devono usare il servizio **nxd_icmp_enable***.
+> *Questo servizio abilita solo ICMP per il servizio IPv4. Per abilitare sia  ICMPv4 che ICMPv6, le* applicazioni devono usare il nxd_icmp_enable servizio .
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Abilitazione ICMP riuscita **NX_SUCCESS** (0x00).
-- Il protocollo ICMP **NX_ALREADY_ENABLED** (0x15) è già abilitato.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Abilita ICMP riuscito.
+- **NX_ALREADY_ENABLED** (0x15) ICMP è già abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -837,30 +837,30 @@ UINT nx_icmp_info_get(
 Questo servizio recupera informazioni sulle attività ICMP per l'istanza IP specificata.
 
 > [!NOTE]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se un puntatore di destinazione NX_NULL, queste informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **pings_sent** Puntatore alla destinazione per il numero totale di ping inviati.
-- **ping_timeouts** Puntatore alla destinazione per il numero totale di timeout del ping.
-- **ping_threads_suspended** Puntatore alla destinazione del numero totale di thread sospesi nelle richieste di ping.
+- **ping_timeouts** Puntatore alla destinazione per il numero totale di timeout ping.
+- **ping_threads_suspended** Puntatore alla destinazione del numero totale di thread sospesi nelle richieste ping.
 - **ping_responses_received** Puntatore alla destinazione del numero totale di risposte ping ricevute.
 - **icmp_checksum_errors** Puntatore alla destinazione del numero totale di errori di checksum ICMP.
 - **icmp_unhandled_messages** Puntatore alla destinazione del numero totale di messaggi ICMP non gestiti.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il recupero delle informazioni ICMP riuscite **NX_SUCCESS** (0x00).
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni ICMP riuscito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -886,7 +886,7 @@ status = nx_icmp_info_get(&ip_0, &pings_sent, &ping_timeouts,
 - nxd_icmpv6_ra_flag_callback_set
 
 ## <a name="nx_icmp_ping"></a>nx_icmp_ping  
-Invia richiesta ping all'indirizzo IP specificato
+Inviare una richiesta ping all'indirizzo IP specificato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -900,45 +900,45 @@ UINT nx_icmp_ping(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia una richiesta ping all'indirizzo IP specificato e attende il periodo di tempo specificato per un messaggio di risposta ping. Se non viene ricevuta alcuna risposta, viene restituito un errore. In caso contrario, viene restituito l'intero messaggio di risposta nella variabile a cui punta response_ptr. 
+Questo servizio invia una richiesta ping all'indirizzo IP specificato e attende la quantità di tempo specificata per un messaggio di risposta ping. Se non viene ricevuta alcuna risposta, viene restituito un errore. In caso contrario, l'intero messaggio di risposta viene restituito nella variabile a cui punta response_ptr. 
 
-Per inviare una richiesta ping a una destinazione IPv6, le applicazioni devono usare il servizio ***nxd_icmp_ping** _ o _ *_nxd_icmp_source_ping_**.
+Per inviare una richiesta ping a una destinazione IPv6, le applicazioni devono usare il servizio ***nxd_icmp_ping** _ o _ *_nxd_icmp_source_ping_** .
 
 > [!WARNING]  
-> *Se viene restituito NX_SUCCESS, l'applicazione è responsabile del rilascio del pacchetto ricevuto dopo che non è più necessario*.
+> *Se NX_SUCCESS viene restituito , l'applicazione è* responsabile del rilascio del pacchetto ricevuto dopo che non è più necessario .
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **ip_address** Indirizzo IP, in ordine byte host, per eseguire il ping.
-- **dati** di Puntatore all'area dati per il messaggio ping.
-- **DATA_SIZE** Numero di byte nei dati ping
-- **response_ptr** Puntatore al puntatore del pacchetto per restituire il messaggio di risposta ping in.
-- **WAIT_OPTION** Definisce il numero di cicli del timer ThreadX per l'attesa di una risposta ping. Le opzioni di attesa sono definite come segue:
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **ip_address** Indirizzo IP, in ordine di byte host, per eseguire il ping.
+- **dati** Puntatore all'area dati per il messaggio ping.
+- **data_size** Numero di byte nei dati ping
+- **response_ptr** Puntatore al puntatore a pacchetto in cui restituire il messaggio di risposta ping.
+- **wait_option** Definisce il numero di tick del timer ThreadX in attesa di una risposta ping. Le opzioni di attesa sono definite nel modo seguente:
 
-| Opzione wait            | Valore                           |
+| Opzione Wait            | Valore                           |
 | -----------------------|---------------------------------|
-| NX_NO_WAIT             | 0x00000000                    |
-| valore di timeout in cicli | (da 0x00000001 a 0xFFFFFFFE) |
-| NX_WAIT_FOREVER        | 0xFFFFFFFF                      |
+| NX_NO_WAIT             | (0x00000000)                    |
+| valore di timeout in tick | (da 0x00000001 a 0xFFFFFFFE) |
+| NX_WAIT_FOREVER        | 0xffffffff                      |
 
 ### <a name="return-values"></a>Valori restituiti 
 
 - **NX_SUCCESS** (0x00) Ping riuscito. Il puntatore del messaggio di risposta è stato inserito nella variabile a cui punta response_ptr.
-- **NX_NO_PACKET** (0x01) non è in grado di allocare un pacchetto di richieste ping.
-- L'area dati specificata **NX_OVERFLOW** (0x03) supera la dimensione predefinita del pacchetto per questa istanza IP.
-- L'IP richiesto **NX_NO_RESPONSE** (0x29) non ha risposto.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_PTR_ERROR** (0x07) un puntatore IP o risposta non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_NO_PACKET** (0x01) Impossibile allocare un pacchetto di richiesta ping.
+- **NX_OVERFLOW** (0x03) L'area dati specificata supera le dimensioni predefinite del pacchetto per questa istanza IP.
+- **NX_NO_RESPONSE** (0x29) L'INDIRIZZO IP richiesto non ha risposto.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_PTR_ERROR** (0x07) IP o puntatore di risposta non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -965,7 +965,7 @@ status = nx_icmp_ping(&ip_0, IP_ADDRESS(1,2,3,5), "abcd", 4,
 - nxd_icmpv6_ra_flag_callback_set
 
 ## <a name="nx_igmp_enable"></a>nx_igmp_enable
-Abilita IGMP (Internet Group Management Protocol)
+Abilitare Internet Group Management Protocol (IGMP)
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -974,24 +974,24 @@ UINT nx_igmp_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita il componente IGMP nell'istanza IP specificata. Il componente IGMP è responsabile della fornitura del supporto per le operazioni di gestione dei gruppi multicast IP.
+Questo servizio abilita il componente IGMP nell'istanza IP specificata. Il componente IGMP è responsabile del supporto per le operazioni di gestione del gruppo multicast IP.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'abilitazione di IGMP è riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_ALREADY_ENABLED** (0X15) questo componente è già stato abilitato.
+- **NX_SUCCESS** (0x00) IGMP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_ALREADY_ENABLED** (0x15) Questo componente è già stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1035,28 +1035,28 @@ UINT nx_igmp_info_get(
 Questo servizio recupera informazioni sulle attività IGMP per l'istanza IP specificata.
 
 > [!IMPORTANT]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se viene utilizzato un puntatore NX_NULL destinazione, le informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **igmp_reports_sent** Puntatore alla destinazione per il numero totale di report ICMP inviati.
 - **igmp_queries_received** Puntatore alla destinazione per il numero totale di query ricevute dal router multicast.
 - **igmp_checksum_errors** Puntatore alla destinazione del numero totale di errori di checksum IGMP nei pacchetti di ricezione.
-- **current_groups_joined** Puntatore alla destinazione del numero corrente di gruppi Uniti tramite questa istanza IP.
+- **current_groups_joined** Puntatore alla destinazione del numero corrente di gruppi uniti tramite questa istanza IP.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Il recupero delle informazioni IGMP riuscite **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni IGMP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1096,24 +1096,24 @@ UINT nx_igmp_loopback_disable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita il loopback IGMP per tutti i gruppi multicast successivi Uniti in join.
+Questo servizio disabilita il loopback IGMP per tutti i gruppi multicast successivi aggiunti.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) la disabilitazione del loopback IGMP è riuscita.
-- Il **NX_NOT_ENABLED** (0X14) IGMP non è abilitato.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread o un'inizializzazione.
+- **NX_SUCCESS** (0x00) Fail IGMP loopback disable (Disabilitazione loopback IGMP riuscita).
+- **NX_NOT_ENABLED** (0x14) IGMP non è abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** chiamante (0x11) non è un thread o un'inizializzazione.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1141,7 +1141,7 @@ status = nx_igmp_loopback_disable(&ip_0);
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_igmp_loopback_enable"></a>nx_igmp_loopback_enable
-Abilita loopback loopback
+Abilitare il loopback IGMP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1150,24 +1150,24 @@ UINT nx_igmp_loopback_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita il loopback IGMP per tutti i gruppi multicast successivi Uniti in join.
+Questo servizio abilita il loopback IGMP per tutti i gruppi multicast successivi aggiunti.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) la disabilitazione del loopback IGMP è riuscita.
-- Il **NX_NOT_ENABLED** (0X14) IGMP non è abilitato.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread o un'inizializzazione.
+- **NX_SUCCESS** (0x00) Fail IGMP loopback disable (Disabilitazione loopback IGMP riuscita).
+- **NX_NOT_ENABLED** (0x14) IGMP non è abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** chiamante (0x11) non è un thread o un'inizializzazione.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1194,7 +1194,7 @@ status = nx_igmp_loopback_enable(&ip_0);
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_igmp_multicast_interface_join"></a>nx_igmp_multicast_interface_join
-Unisci istanza IP al gruppo multicast specificato tramite un'interfaccia
+Aggiungere un'istanza IP a un gruppo multicast specificato tramite un'interfaccia
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1206,29 +1206,29 @@ UINT nx_igmp_multicast_interface_join(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio unisce un'istanza IP al gruppo multicast specificato tramite un'interfaccia di rete specificata. Viene mantenuto un contatore interno per tenere traccia del numero di volte in cui lo stesso gruppo è stato aggiunto. Dopo l'aggiunta al gruppo multicast, il componente IGMP consentirà la ricezione di pacchetti IP con questo indirizzo di gruppo tramite l'interfaccia di rete specificata e segnalerà anche ai router che questo IP è membro di questo gruppo multicast. I messaggi di join di appartenenza IGMP, di report e di uscita vengono inviati anche tramite l'interfaccia di rete specificata. Per aggiungere un gruppo multicast IPv4 senza inviare il report di appartenenza a gruppi IGMP, l'applicazione deve utilizzare il servizio ***nx_ipv4_multicast_interface_join***.
+Questo servizio aggiunge un'istanza IP al gruppo multicast specificato tramite un'interfaccia di rete specificata. Viene mantenuto un contatore interno per tenere traccia del numero di volte in cui lo stesso gruppo è stato unito. Dopo l'aggiunta al gruppo multicast, il componente IGMP consentirà la ricezione di pacchetti IP con questo indirizzo di gruppo tramite l'interfaccia di rete specificata e segnalerà anche ai router che questo indirizzo IP è membro di questo gruppo multicast. I messaggi di appartenenza, report e uscita IGMP vengono inviati anche tramite l'interfaccia di rete specificata. Per partecipare a un gruppo multicast IPv4 senza inviare il report di appartenenza al gruppo IGMP, l'applicazione deve usare il servizio ***nx_ipv4_multicast_interface_join***.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **group_address** Indirizzo del gruppo multicast IP di classe D da unire in ordine byte host.
-- **interface_index** Indice dell'interfaccia associata all'istanza di NetX Duo.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **group_address** Indirizzo del gruppo multicast IP di classe D da aggiungere nell'ordine dei byte dell'host.
+- **interface_index** Indice dell'interfaccia collegata all'istanza di NetX Duo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il join del gruppo multicast è riuscito.
-- **NX_NO_MORE_ENTRIES** (0x17) non è possibile unire in join più gruppi multicast. è stato superato il limite massimo.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida.
-- L'indirizzo del gruppo multicast **NX_IP_ADDRESS_ERROR** (0x21) specificato non è un indirizzo di classe D valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- Il supporto multicast IP **NX_NOT_ENABLED** (0x14) non è abilitato.
+- **NX_SUCCESS** (0x00) Join a gruppi multicast riuscito.
+- **NX_NO_MORE_ENTRIES** (0x17) Non è possibile aggiungere altri gruppi multicast, il massimo è stato superato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice del dispositivo punta a un'interfaccia di rete non valida.
+- **NX_IP_ADDRESS_ERROR** indirizzo del gruppo multicast (0x21) specificato non è un indirizzo di classe D valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** il supporto multicast IP (0x14) IP non è abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1260,7 +1260,7 @@ status = nx_igmp_multicast_interface_join
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_igmp_multicast_interface_leave"></a>nx_igmp_multicast_interface_leave
-Lascia il gruppo multicast specificato tramite un'interfaccia
+Lasciare il gruppo multicast specificato tramite un'interfaccia
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1272,29 +1272,29 @@ UINT nx_igmp_multicast_interface_leave(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio lascia il gruppo multicast specificato tramite un'interfaccia di rete specificata. Viene mantenuto un contatore interno per tenere traccia del numero di volte in cui lo stesso gruppo è membro. Dopo aver lasciato il gruppo multicast, il componente IGMP invierà il report di appartenenza appropriato e potrebbe lasciare il gruppo se non sono presenti membri da questo nodo. Per lasciare un gruppo multicast IPv4 senza inviare il report di appartenenza a un gruppo IGMP, l'applicazione deve utilizzare il servizio ***nx_ipv4_multicast_interface_leave***.
+Questo servizio lascia il gruppo multicast specificato tramite un'interfaccia di rete specificata. Viene mantenuto un contatore interno per tenere traccia del numero di volte in cui lo stesso gruppo è stato membro. Dopo aver lasciato il gruppo multicast, il componente IGMP invierà un report di appartenenza appropriato e potrebbe lasciare il gruppo se non sono presenti membri da questo nodo. Per lasciare un gruppo multicast IPv4 senza inviare il report di appartenenza al gruppo IGMP, l'applicazione userà il servizio ***nx_ipv4_multicast_interface_leave***.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **group_address** Indirizzo del gruppo multicast IP di classe D da lasciare. L'indirizzo IP è nell'ordine dei byte dell'host.
-- **interface_index** Indice dell'interfaccia associata all'istanza di NetX Duo.
+- **interface_index** Indice dell'interfaccia collegata all'istanza di NetX Duo.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) il join del gruppo multicast è riuscito.
-- **NX_ENTRY_NOT_FOUND** (0x16) Impossibile trovare l'indirizzo del gruppo multicast specificato nella tabella multicast locale.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida.
-- L'indirizzo del gruppo multicast **NX_IP_ADDRESS_ERROR** (0x21) specificato non è un indirizzo di classe D valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- Il supporto multicast IP **NX_NOT_ENABLED** (0x14) non è abilitato.
+- **NX_SUCCESS** (0x00) Join a gruppi multicast riuscito.
+- **NX_ENTRY_NOT_FOUND** (0x16) L'indirizzo del gruppo multicast specificato non è stato trovato nella tabella multicast locale.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice del dispositivo punta a un'interfaccia di rete non valida.
+- **NX_IP_ADDRESS_ERROR** indirizzo del gruppo multicast (0x21) specificato non è un indirizzo di classe D valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** il supporto multicast IP (0x14) IP non è abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1324,7 +1324,7 @@ status = nx_igmp_multicast_interface_leave
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_igmp_multicast_join"></a>nx_igmp_multicast_join
-Unisci istanza IP al gruppo multicast specificato
+Aggiungere l'istanza IP al gruppo multicast specificato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1335,31 +1335,31 @@ UINT nx_igmp_multicast_join(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio unisce un'istanza IP al gruppo multicast specificato. Viene mantenuto un contatore interno per tenere traccia del numero di volte in cui lo stesso gruppo è stato aggiunto. Il driver viene indirizzato per l'invio di un report IGMP se si tratta della prima richiesta di join in rete che indica l'intenzione dell'host di partecipare al gruppo. Dopo l'Unione, il componente IGMP consentirà la ricezione di pacchetti IP con questo indirizzo di gruppo e report ai router che questo IP è membro di questo gruppo multicast. Per aggiungere un gruppo multicast IPv4 senza inviare il report di appartenenza a gruppi IGMP, l'applicazione deve utilizzare il servizio ***nx_ipv4_multicast_interface_join***.
+Questo servizio aggiunge un'istanza IP al gruppo multicast specificato. Viene mantenuto un contatore interno per tenere traccia del numero di volte in cui lo stesso gruppo è stato unito. Al driver viene richiesto di inviare un report IGMP se si tratta della prima richiesta di join in rete che indica l'intenzione dell'host di partecipare al gruppo. Dopo l'aggiunta, il componente IGMP consentirà la ricezione di pacchetti IP con questo indirizzo di gruppo e segnalerà ai router che questo indirizzo IP è membro di questo gruppo multicast. Per partecipare a un gruppo multicast IPv4 senza inviare il report di appartenenza al gruppo IGMP, l'applicazione deve usare il servizio ***nx_ipv4_multicast_interface_join***.
 
 > [!NOTE]  
-> *Per aggiungere un gruppo multicast in un dispositivo non primario, usare il nx_igmp_multicast_interface_join di servizio **.***
+> *Per aggiungere un gruppo multicast in un dispositivo non primario, usare il servizio **nx_igmp_multicast_interface_join.***
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **group_address** Indirizzo del gruppo multicast IP di classe D da unire.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **group_address** Indirizzo del gruppo multicast IP di classe D da aggiungere.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) il join del gruppo multicast è riuscito.
-- **NX_NO_MORE_ENTRIES** (0x17) non è possibile unire in join più gruppi multicast. è stato superato il limite massimo.
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo del gruppo IP non valido.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Join a gruppi multicast riuscito.
+- **NX_NO_MORE_ENTRIES** (0x17) Non è possibile aggiungere altri gruppi multicast, il massimo è stato superato.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice del dispositivo punta a un'interfaccia di rete non valida.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo del gruppo IP non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1388,7 +1388,7 @@ status = nx_igmp_multicast_join(&ip_0, IP_ADDRESS(224,0,0,200);
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_igmp_multicast_leave"></a>nx_igmp_multicast_leave
-Genera l'istanza IP per uscire dal gruppo multicast specificato
+Fare in modo che l'istanza IP lasci il gruppo multicast specificato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1399,28 +1399,28 @@ UINT nx_igmp_multicast_leave(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio fa in modo che un'istanza IP lasci il gruppo multicast specificato, se il numero di equests di uscita corrisponde al numero di richieste di join. In caso contrario, il conteggio interno dei join viene semplicemente decrementato. Per lasciare un gruppo multicast IPv4 senza inviare il report di appartenenza a un gruppo IGMP, l'applicazione deve utilizzare il servizio ***nx_ipv4_multicast_interface_leave***.
+Questo servizio fa in modo che un'istanza IP lasci il gruppo multicast specificato, se il numero di richieste di partecipazione corrisponde al numero di richieste di join. In caso contrario, il numero di join interno viene semplicemente decrementato. Per lasciare un gruppo multicast IPv4 senza inviare il report di appartenenza al gruppo IGMP, l'applicazione userà il servizio ***nx_ipv4_multicast_interface_leave***.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **group_address** Gruppo multicast da lasciare.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) il join del gruppo multicast è riuscito.
-- Impossibile trovare **NX_ENTRY_NOT_FOUND** (0x16) la richiesta di join precedente.
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo del gruppo IP non valido.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Join a gruppi multicast riuscito.
+- **NX_ENTRY_NOT_FOUND** (0x16) Richiesta di join precedente non trovata.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice del dispositivo punta a un'interfaccia di rete non valida.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo del gruppo IP non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -1448,7 +1448,7 @@ status = nx_igmp_multicast_leave(&ip_0, IP_ADDRESS(224,0,0,200);
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_ip_address_change_notifiy"></a>nx_ip_address_change_notifiy
-Notifica all'applicazione se le modifiche all'indirizzo IP
+Notificare all'applicazione se l'indirizzo IP cambia
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1464,21 +1464,21 @@ Questo servizio registra una funzione di notifica dell'applicazione che viene ch
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **CHANGE_NOTIFY** Puntatore alla funzione di notifica della modifica IP. Se questo parametro è NX_NULL, la notifica di modifica degli indirizzi IP è disabilitata.
-- **additional_info** Puntatore a informazioni aggiuntive facoltative fornite anche alla funzione di notifica quando viene modificato l'indirizzo IP.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **change_notify** Puntatore alla funzione di notifica delle modifiche IP. Se questo parametro è NX_NULL, la notifica di modifica dell'indirizzo IP è disabilitata.
+- **additional_info** Puntatore a informazioni aggiuntive facoltative che vengono fornite anche alla funzione di notifica quando viene modificato l'indirizzo IP.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Notifica di modifica dell'indirizzo IP riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Notifica di modifica dell'indirizzo IP completata.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1520,7 +1520,7 @@ status = nx_ip_address_change_notify(&ip_0, my_ip_changed,
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_address_get"></a>nx_ip_address_get
-Recuperare l'indirizzo IPv4 e la network mask
+Recuperare l'indirizzo IPv4 e network mask
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1532,28 +1532,28 @@ UINT nx_ip_address_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera l'indirizzo IPv4 e la relativa subnet mask dell'interfaccia di rete primaria.
+Questo servizio recupera l'indirizzo IPv4 e il subnet mask'interfaccia di rete primaria.
 
 > [!IMPORTANT]   
-> * Per ottenere informazioni sul dispositivo secondario, utilizzare il servizio * * nx_ip_interface_address_get * * *.
+> *Per ottenere informazioni sul dispositivo secondario, usare il servizio **nx_ip_interface_address_get***.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_address** Puntatore alla destinazione per l'indirizzo IP.
 - **network_mask** Puntatore alla destinazione per network mask.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) indirizzo IP riuscito Get.
-- **NX_PTR_ERROR** (0x07) indirizzo IP non valido o puntatore alla variabile restituita.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Ottenere l'indirizzo IP corretto.
+- **NX_PTR_ERROR** (0x07) Ip non valido o puntatore a variabile restituita.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1594,7 +1594,7 @@ status = nx_ip_address_get(&ip_0, &ip_address, &network_mask);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_address_set"></a>nx_ip_address_set
-Imposta indirizzo IPv4 e network mask
+Impostare l'indirizzo IPv4 e network mask
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1606,29 +1606,29 @@ UINT nx_ip_address_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'indirizzo IPv4 e la network mask per l'interfaccia di rete primaria.
+Questo servizio imposta l'indirizzo IPv4 e network mask per l'interfaccia di rete primaria.
 
 > [!IMPORTANT]  
-> * Per impostare l'indirizzo IP e il network mask per il dispositivo secondario, utilizzare il servizio * * nx_ip_interface_address_set * * *.
+> *Per impostare l'indirizzo IP e network mask per il dispositivo secondario, usare il servizio **nx_ip_interface_address_set****.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_address** Nuovo indirizzo IP.
 - **network_mask** Nuovo network mask.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Set di indirizzi IP riusciti **NX_SUCCESS** (0x00).
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) L'indirizzo IP è stato impostato correttamente.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1681,27 +1681,27 @@ UINT nx_ip_auxiliary_packet_pool_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura un pool di pacchetti ausiliario nell'istanza IP. Per un sistema con vincoli di memoria, l'utente può aumentare l'efficienza della memoria creando il pool di pacchetti predefinito con le dimensioni del pacchetto MTU e creando un pool di pacchetti ausiliario con dimensioni di pacchetto inferiori per il thread IP per la trasmissione di pacchetti di piccole dimensioni con. Le dimensioni consigliate per il pool ausiliario sono pari a 256 byte, supponendo che IPv6 e IPsec siano entrambi abilitati.
+Questo servizio configura un pool di pacchetti ausiliario nell'istanza IP. Per un sistema vincolato alla memoria, l'utente può aumentare l'efficienza della memoria creando il pool di pacchetti predefinito con dimensioni del pacchetto MTU e creando un pool di pacchetti ausiliario con dimensioni di pacchetto inferiori con cui il thread IP trasmette pacchetti di piccole dimensioni. Le dimensioni dei pacchetti consigliate per il pool ausiliario sono di 256 byte, presupponendo che IPv6 e IPsec siano entrambi abilitati.
 
-Per impostazione predefinita, l'istanza IP non accetta il pool di pacchetti ausiliari. Per abilitare questa funzionalità, è necessario definire *NX_DUAL_PACKET_POOL_ENABLE* quando si compila la libreria NETX Duo.
+Per impostazione predefinita, l'istanza IP non accetta il pool di pacchetti ausiliario. Per abilitare questa funzionalità, *NX_DUAL_PACKET_POOL_ENABLE* deve essere definito durante la compilazione della libreria NetX Duo.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **aux_pool** Pool di pacchetti ausiliario da configurare per l'istanza IP.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Set di indirizzi IP riusciti **NX_SUCCESS** (0x00).
-- **NX_NOT_SUPPORTED** (0X4B) la funzionalità del pool di pacchetti duale non è compilata nella libreria.
-- **NX_PTR_ERROR** (0x07) puntatore IP o puntatore al pool non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) L'indirizzo IP è stato impostato correttamente.
+- **NX_NOT_SUPPORTED** (0x4B) La funzionalità dual packet pool non viene compilata nella libreria.
+- **NX_PTR_ERROR** (0x07) Puntatore IP o puntatore pool non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile  
+### <a name="preemption-possible"></a>Possibile preemption  
 
 No
 
@@ -1753,35 +1753,35 @@ UINT nx_ip_create(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza IP con l'indirizzo IP e il driver di rete specificati dall'utente. Inoltre, l'applicazione deve fornire un pool di pacchetti creato in precedenza per l'istanza IP da usare per l'allocazione dei pacchetti interna. Si noti che il driver di rete dell'applicazione fornito non viene chiamato fino a quando non viene eseguito il thread di questo indirizzo IP.
+Questo servizio crea un'istanza IP con l'indirizzo IP e il driver di rete specificati dall'utente. Inoltre, l'applicazione deve fornire un pool di pacchetti creato in precedenza per l'istanza IP da usare per l'allocazione interna dei pacchetti. Si noti che il driver di rete dell'applicazione fornito non viene chiamato finché non viene eseguito il thread di questo indirizzo IP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore al blocco di controllo per creare una nuova istanza di IP.
-- **nome** Nome della nuova istanza di IP.
-- **ip_address** Indirizzo IP per la nuova istanza di IP.
-- **network_mask** Maschera per delineare la parte di rete dell'indirizzo IP per la suddivisione in subnet e l'uso di super-reti.
+- **ip_ptr** Puntatore al blocco di controllo per creare una nuova istanza IP.
+- **name** Nome della nuova istanza IP.
+- **ip_address** Indirizzo IP per questa nuova istanza IP.
+- **network_mask** Maschera per delineare la parte di rete dell'indirizzo IP per gli usi di rete secondaria e super-rete.
 - **default_pool** Puntatore al blocco di controllo del pool di pacchetti NetX Duo creato in precedenza.
-- **ip_network_driver** Driver di rete fornito dall'utente utilizzato per inviare e ricevere pacchetti IP.
+- **ip_network_driver** Driver di rete fornito dall'utente usato per inviare e ricevere pacchetti IP.
 - **memory_ptr** Puntatore all'area di memoria per l'area dello stack del thread helper IP.
 - **memory_size** Numero di byte nell'area di memoria per lo stack del thread helper IP.
-- **priorità** di Priorità del thread helper IP.
+- **priorità** Priorità del thread helper IP.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Creazione dell'istanza IP riuscita **NX_SUCCESS** (0x00).
-- **NX_NOT_IMPLEMENTED** (0X4A) NETX Duo Library non è configurato correttamente.
-- **NX_PTR_ERROR** (0x07) IP non valido, puntatore alla funzione del driver di rete, pool di pacchetti o puntatore di memoria.
-- **NX_SIZE_ERROR** (0x09) la dimensione dello stack fornita è troppo piccola.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_IP_ADDRESS_ERROR** (0X21) l'indirizzo IP specificato non è valido.
-- **NX_OPTION_ERROR** (0X21) la priorità del thread IP specificata non è valida.
+- **NX_SUCCESS** (0x00) Creazione dell'istanza IP completata.
+- **NX_NOT_IMPLEMENTED** libreria NetX Duo (0x4A) non è configurata correttamente.
+- **NX_PTR_ERROR** (0x07) IP non valido, puntatore a funzione del driver di rete, pool di pacchetti o puntatore di memoria.
+- **NX_SIZE_ERROR** (0x09) Le dimensioni dello stack fornite sono troppo piccole.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_IP_ADDRESS_ERROR** (0x21) L'indirizzo IP fornito non è valido.
+- **NX_OPTION_ERROR** (0x21) La priorità del thread IP fornita non è valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1827,7 +1827,7 @@ status = nx_ip_create(&ip_0, "NetX IP Instance ip_0",
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_delete"></a>nx_ip_delete
-Elimina istanza IP creata in precedenza
+Eliminare un'istanza IP creata in precedenza
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1836,24 +1836,24 @@ UINT nx_ip_delete(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza IP creata in precedenza e rilascia tutte le risorse di sistema di proprietà dell'istanza IP.
+Questo servizio elimina un'istanza IP creata in precedenza e rilascia tutte le risorse di sistema di proprietà dell'istanza IP.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione IP riuscita **NX_SUCCESS** (0x00).
-- **NX_SOCKETS_BOUND** (0x28) a questa istanza IP sono ancora associati socket UDP o TCP. Prima di eliminare l'istanza IP, è necessario che tutti i socket siano non associati ed eliminati.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Eliminazione IP riuscita.
+- **NX_SOCKETS_BOUND** (0x28) A questa istanza IP sono ancora associati socket UDP o TCP. Tutti i socket devono essere non associati ed eliminati prima di eliminare l'istanza IP.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -1893,7 +1893,7 @@ status = nx_ip_delete(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_driver_direct_command"></a>nx_ip_driver_direct_command
-Invia comando al driver di rete
+Eseguire il comando per il driver di rete
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1905,15 +1905,15 @@ UINT nx_ip_driver_direct_command
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio fornisce un'interfaccia diretta al driver dell'interfaccia di rete primaria dell'applicazione specificato durante la chiamata di ***nx_ip_create*** . I comandi specifici dell'applicazione possono essere utilizzati per fornire un valore numerico maggiore o uguale a NX_LINK_USER_COMMAND.
+Questo servizio fornisce un'interfaccia diretta al driver dell'interfaccia di rete principale dell'applicazione specificato durante la ***nx_ip_create*** chiamata. È possibile usare comandi specifici dell'applicazione specificando che il valore numerico è maggiore o uguale a NX_LINK_USER_COMMAND.
 
 > [!IMPORTANT]  
-> *Per eseguire il comando per il dispositivo secondario, usare il servizio **nx_ip_driver_interface_direct_command***.
+> *Per eseguire il comando per il dispositivo secondario, usare il **nx_ip_driver_interface_direct_command** .*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **comando** Codice di comando numerico. I comandi standard vengono definiti come segue:
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **comando** Codice di comando numerico. I comandi standard sono definiti come segue:
     - NX_LINK_GET_STATUS (10)
     - NX_LINK_GET_SPEED (11)
     - NX_LINK_GET_DUPLEX_TYPE (12)
@@ -1926,17 +1926,17 @@ Questo servizio fornisce un'interfaccia diretta al driver dell'interfaccia di re
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) il comando diretto del driver di rete è riuscito.
-- Comando del driver di rete non gestito o non implementato **NX_UNHANDLED_COMMAND** (0x44).
-- **NX_PTR_ERROR** (0x07) un indirizzo IP o un puntatore al valore restituito non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_INVALID_INTERFACE** (0x4C) indice di interfaccia non valido.
+- **NX_SUCCESS** (0x00) Comando diretto del driver di rete riuscito.
+- **NX_UNHANDLED_COMMAND** comando (0x44) Unhandled or unimplemented network driver (Driver di rete non gestito o non implementata).
+- **NX_PTR_ERROR** (0x07) Ip non valido o puntatore al valore restituito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_INVALID_INTERFACE** (0x4C) Indice di interfaccia non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1980,7 +1980,7 @@ status = nx_ip_driver_direct_command(&ip_0, NX_LINK_GET_STATUS,
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_driver_interface_direct_command"></a>nx_ip_driver_interface_direct_command
-Invia comando al driver di rete
+Eseguire il comando per il driver di rete
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -1993,12 +1993,12 @@ UINT nx_ip_driver_interface_direct_command(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio fornisce un comando diretto al driver di dispositivo di rete dell'applicazione nell'istanza di IP. I comandi specifici dell'applicazione possono essere utilizzati per fornire un valore numerico maggiore o uguale a *NX_LINK_USER_COMMAND*.
+Questo servizio fornisce un comando diretto al driver di dispositivo di rete dell'applicazione nell'istanza IP. È possibile usare comandi specifici dell'applicazione specificando che il valore numerico è maggiore o uguale *a NX_LINK_USER_COMMAND*.
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **comando** Codice di comando numerico. I comandi standard vengono definiti come segue:
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **comando** Codice di comando numerico. I comandi standard sono definiti come segue:
     - NX_LINK_GET_STATUS (10)
     - NX_LINK_GET_SPEED (11)
     - NX_LINK_GET_DUPLEX_TYPE (12)
@@ -2012,17 +2012,17 @@ Questo servizio fornisce un comando diretto al driver di dispositivo di rete del
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) il comando diretto del driver di rete è riuscito.
-- Comando del driver di rete non gestito o non implementato **NX_UNHANDLED_COMMAND** (0x44).
-- Indice di interfaccia **NX_INVALID_INTERFACE** (0X4C) non valido
-- **NX_PTR_ERROR** (0x07) un indirizzo IP o un puntatore al valore restituito non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Comando diretto del driver di rete riuscito.
+- **NX_UNHANDLED_COMMAND** comando (0x44) Unhandled or unimplemented network driver (Driver di rete non gestito o non implementata).
+- **NX_INVALID_INTERFACE** (0x4C) Indice di interfaccia non valido
+- **NX_PTR_ERROR** (0x07) IP non valido o puntatore al valore restituito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2072,7 +2072,7 @@ status = nx_ip_driver_interface_direct_command(&ip_0,
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_forwarding_disable"></a>nx_ip_forwarding_disable  
-Disabilitare l'invio di pacchetti IP
+Disabilitare l'inoltro di pacchetti IP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2081,23 +2081,23 @@ UINT nx_ip_forwarding_disable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita l'invio di pacchetti IP all'interno del componente IP NetX Duo. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
+Questo servizio disabilita l'inoltro dei pacchetti IP all'interno del componente IP di NetX Duo. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) la disabilitazione dell'invio IP è riuscita.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) L'inoltro IP ha avuto esito positivo.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile  
+### <a name="preemption-possible"></a>Preemption Possible  
 
 No
 
@@ -2137,7 +2137,7 @@ status = nx_ip_forwarding_disable(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_forwarding_enable"></a>nx_ip_forwarding_enable
-Abilita l'invio di pacchetti IP
+Abilitare l'inoltro di pacchetti IP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2146,23 +2146,23 @@ UINT nx_ip_forwarding_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente l'invio di pacchetti IP all'interno del componente IP NetX Duo. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
+Questo servizio consente l'inoltro di pacchetti IP all'interno del componente IP NetX Duo. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) abilitata per l'invio di indirizzi IP riuscita.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) L'inoltro IP è riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -2202,7 +2202,7 @@ status = nx_ip_forwarding_enable(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_fragment_disable"></a>nx_ip_fragment_disable
-Disabilitare la frammentazione di pacchetti IP
+Disabilitare la frammentazione dei pacchetti IP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2211,24 +2211,24 @@ UINT nx_ip_fragment_disable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita la funzionalità di rimontaggio e frammentazione di pacchetti IPv4 e IPv6. Per i pacchetti in attesa di essere riassemblati, questo servizio rilascia questi pacchetti. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
+Questo servizio disabilita la funzionalità di frammentazione e riassemblamento dei pacchetti IPv4 e IPv6. Per i pacchetti in attesa di essere riassemblati, questo servizio rilascia questi pacchetti. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) la disabilitazione del FRAMMENTo IP è riuscita.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- La frammentazione IP **NX_NOT_ENABLED** (0x14) non è abilitata nell'istanza IP.
+- **NX_SUCCESS** (0x00) Frammento IP riuscito disabilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** frammentazione IP (0x14) non è abilitata nell'istanza IP.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -2269,7 +2269,7 @@ status = nx_ip_fragment_disable(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_fragment_enable"></a>nx_ip_fragment_enable
-Abilitare la frammentazione di pacchetti IP
+Abilitare la frammentazione dei pacchetti IP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2278,24 +2278,24 @@ UINT nx_ip_fragment_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita la funzionalità di frammentazione e riassemblaggio di pacchetti IPv4 e IPv6. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
+Questo servizio consente la frammentazione e il riassemblamento dei pacchetti IPv4 e IPv6. Al momento della creazione dell'attività IP, questo servizio viene disabilitato automaticamente.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Abilitazione del frammento IP **NX_SUCCESS** (0x00) riuscita.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- Le funzionalità di frammentazione IP **NX_NOT_ENABLED** (0x14) non vengono compilate in NETX Duo.
+- **NX_SUCCESS** (0x00) Correttamente abilitato il frammento IP.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** funzionalità di 0x14 IP non vengono compilate in NetX Duo.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2335,7 +2335,7 @@ status = nx_ip_fragment_enable(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ip_gateway_address_clear"></a>nx_ip_gateway_address_clear
-Cancellare l'indirizzo IPv4 del gateway
+Cancellare l'indirizzo del gateway IPv4
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2344,23 +2344,23 @@ UINT nx_ip_gateway_address_clear(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cancella l'indirizzo del gateway IPv4 configurato nell'istanza di. Per cancellare un valore predefinito IPv6 esterno dall'istanza IP, le applicazioni utilizzeranno il ***nxd_ipv6_default_router_delete*** del servizio.
+Questo servizio cancella l'indirizzo del gateway IPv4 configurato nell'istanza di . Per cancellare un valore predefinito IPv6 esterno dall'istanza IP, le applicazioni devono usare il servizio ***nxd_ipv6_default_router_delete.***
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) ha cancellato correttamente l'indirizzo del gateway IP.
-- **NX_PTR_ERROR** (0x07) blocco di controllo IP non valido
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) L'indirizzo del gateway IP è stato cancellato.
+- **NX_PTR_ERROR** (0x07) Blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2375,10 +2375,10 @@ status = nx_ip_gateway_address_clear(&ip_0);
 ```
 ### <a name="see-also"></a>Vedere anche
 
--nx_ip_gateway_address_get-nx_ip_gateway_address_set-nx_ip_info_get-nx_ip_static_route_add-nx_ip_static_route_delete-nxd_ipv6_default_router_add-nxd_ipv6_default_router_delete-nxd_ipv6_default_router_entry_get-nxd_ipv6_default_router_get-nxd_ipv6_default_router_number_of_entries_get
+-nx_ip_gateway_address_get -nx_ip_gateway_address_set -nx_ip_info_get -nx_ip_static_route_add -nx_ip_static_route_delete -nxd_ipv6_default_router_add -nxd_ipv6_default_router_delete -nxd_ipv6_default_router_entry_get -nxd_ipv6_default_router_get -nxd_ipv6_default_router_number_of_entries_get
 
 ## <a name="nx_ip_gateway_address_get"></a>nx_ip_gateway_address_get
-Ottenere l'indirizzo IPv4 del gateway
+Ottenere l'indirizzo del gateway IPv4
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2389,25 +2389,25 @@ UINT nx_ip_gateway_address_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera l'indirizzo IPv4 del gateway configurato nell'istanza IP.
+Questo servizio recupera l'indirizzo del gateway IPv4 configurato nell'istanza IP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **ip_address** Puntatore alla memoria in cui è archiviato l'indirizzo del gateway
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Get riuscita 
-- **NX_PTR_ERROR** (0x07) puntatore a blocco di controllo IP o puntatore a indirizzo IP non valido
-- Impossibile trovare l'indirizzo del gateway **NX_NOT_FOUND** (0x4E)
-- **NX_CALLER_ERROR** (0X11) S ervizio non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Operazione get riuscita 
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP o puntatore all'indirizzo IP non valido
+- **NX_NOT_FOUND** (0x4E) Gateway non trovato
+- **NX_CALLER_ERROR** (0x11) S non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2447,25 +2447,25 @@ UINT nx_ip_gateway_address_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'indirizzo IP del gateway IPv4. Tutto il traffico fuori rete viene indirizzato a questo gateway per la trasmissione. Il gateway deve essere direttamente accessibile tramite una delle interfacce di rete. Per configurare l'indirizzo del gateway IPv6, usare il nxd_ipv6_default_router_add di servizio ***.*** 
+Questo servizio imposta l'indirizzo IP del gateway IPv4. Tutto il traffico fuori rete viene instradato a questo gateway per la trasmissione. Il gateway deve essere accessibile direttamente tramite una delle interfacce di rete. Per configurare l'indirizzo del gateway IPv6, usare il ***nxd_ipv6_default_router_add.*** 
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_address** Indirizzo IP del gateway.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) set di indirizzi IP del gateway riuscito.
-- **NX_PTR_ERROR** (0x07) puntatore a istanza IP non valido.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) L'indirizzo IP del gateway è stato impostato correttamente.
+- **NX_PTR_ERROR** (0x07) Puntatore all'istanza IP non valido.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2516,11 +2516,11 @@ UINT nx_ip_info_get(
 Questo servizio recupera informazioni sulle attività IP per l'istanza IP specificata.
 
 > [!NOTE]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se viene utilizzato un puntatore NX_NULL destinazione, le informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **ip_total_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti IP inviati.
 - **ip_total_bytes_sent** Puntatore alla destinazione per il numero totale di byte inviati.
 - **ip_total_packets_received** Puntatore alla destinazione del numero totale di pacchetti di ricezione IP.
@@ -2534,15 +2534,15 @@ Questo servizio recupera informazioni sulle attività IP per l'istanza IP specif
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Il recupero delle informazioni IP riuscite **NX_SUCCESS** (0x00).
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni IP riuscito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2605,30 +2605,30 @@ UINT nx_ip_interface_address_get (
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera l'indirizzo IPv4 di un'interfaccia di rete specificata. Per recuperare l'indirizzo IPv6, l'applicazione deve usare il servizio ***nxd_ipv6_address_get***
+Questo servizio recupera l'indirizzo IPv4 di un'interfaccia di rete specificata. Per recuperare l'indirizzo IPv6, l'applicazione userà il servizio ***nxd_ipv6_address_get***
 
 > [!CAUTION]  
-> *Il dispositivo specificato, se non il dispositivo primario, deve essere precedentemente collegato all'istanza IP*.
+> *Il dispositivo specificato, se non il dispositivo primario, deve essere* collegato in precedenza all'istanza IP .
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **interface_index** Indice dell'interfaccia, lo stesso valore dell'indice per l'interfaccia di rete collegata all'istanza IP.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **interface_index** Indice dell'interfaccia, lo stesso valore dell'indice dell'interfaccia di rete collegata all'istanza IP.
 - **ip_address** Puntatore alla destinazione per l'indirizzo IP dell'interfaccia del dispositivo.
-- **network_mask** Puntatore alla destinazione per l'interfaccia del dispositivo network mask.
+- **network_mask** Puntatore alla destinazione per l'interfaccia network mask.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) indirizzo IP riuscito Get.
-- L'interfaccia di rete specificata **NX_INVALID_INTERFACE** (0x4C) non è valida.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
+- **NX_SUCCESS** (0x00) Ottenere l'indirizzo IP corretto.
+- **NX_INVALID_INTERFACE** (0x4C) L'interfaccia di rete specificata non è valida.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -2674,26 +2674,26 @@ UINT nx_ip_interface_address_mapping_configure(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura se è necessario l'indirizzo IP per il mapping degli indirizzi MAC per l'interfaccia di rete specificata. Questo servizio viene in genere chiamato dal driver di dispositivo dell'interfaccia per notificare allo stack IP se l'interfaccia sottostante richiede l'indirizzo IP per il mapping degli indirizzi di livello due (MAC).
+Questo servizio configura se l'indirizzo IP e il mapping degli indirizzi MAC sono necessari per l'interfaccia di rete specificata. Questo servizio viene in genere chiamato dal driver di dispositivo dell'interfaccia per notificare lo stack IP se l'interfaccia sottostante richiede il mapping degli indirizzi IP al livello 2 (MAC).
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indicizzare l'interfaccia di rete
-- **mapping_needed** NX_TRUE--mapping degli indirizzi necessario NX_FALSE--mapping degli indirizzi non necessario
+- **mapping_needed** NX_TRUE -- mapping degli indirizzi necessario NX_FALSE -- mapping degli indirizzi non necessario
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Configurazione di **NX_SUCCESS** (0x00) riuscita
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) non è valido
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Configurazione riuscita
+- **NX_INVALID_INTERFACE** (0x4C) Indice del dispositivo non valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) il servizio non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -2728,7 +2728,7 @@ status = nx_ip_interface_address_mapping_configure(&ip_0,
 - nx_ip_link_status_change_notify_set
 
 ## <a name="nx_ip_interface_address_set"></a>nx_ip_interface_address_set
-Impostare l'indirizzo IP e la network mask dell'interfaccia
+Impostare l'indirizzo IP dell'interfaccia e network mask
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2741,31 +2741,31 @@ UINT nx_ip_interface_address_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'indirizzo IPv4 e network mask per l'interfaccia IP specificata. Per configurare l'indirizzo dell'interfaccia IPv6, l'applicazione deve utilizzare il ***nxd_ipv6_address_set*** del servizio. 
+Questo servizio imposta l'indirizzo IPv4 e network mask per l'interfaccia IP specificata. Per configurare l'indirizzo dell'interfaccia IPv6, l'applicazione deve usare il servizio ***nxd_ipv6_address_set***. 
  
 > [!WARNING]  
-> *L'interfaccia specificata deve essere precedentemente collegata all'istanza IP*. 
+> *L'interfaccia specificata deve essere collegata in precedenza all'istanza IP*. 
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **interface_index** Indice dell'interfaccia associata all'istanza di NetX Duo.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **interface_index** Indice dell'interfaccia collegata all'istanza di NetX Duo.
 - **ip_address** Nuovo indirizzo IP dell'interfaccia di rete.
 - **network_mask** Nuova interfaccia network mask.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Set di indirizzi IP riusciti **NX_SUCCESS** (0x00).
-- L'interfaccia di rete specificata **NX_INVALID_INTERFACE** (0x4C) non è valida.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) puntatori non validi.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido
+- **NX_SUCCESS** (0x00) L'indirizzo IP è stato impostato correttamente.
+- **NX_INVALID_INTERFACE** (0x4C) L'interfaccia di rete specificata non è valida.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatori non validi.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -2813,37 +2813,37 @@ UINT nx_ip_interface_attach(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un'interfaccia di rete fisica all'interfaccia IP. Si noti che l'istanza IP viene creata con l'interfaccia primaria, quindi ogni interfaccia aggiuntiva è secondaria all'interfaccia primaria. Il numero totale di interfacce di rete collegate all'istanza IP (inclusa l'interfaccia primaria) non può superare **NX_MAX_PHYSICAL_INTERFACES**.
+Questo servizio aggiunge un'interfaccia di rete fisica all'interfaccia IP. Si noti che l'istanza IP viene creata con l'interfaccia primaria, quindi ogni interfaccia aggiuntiva è secondaria all'interfaccia primaria. Il numero totale di interfacce di rete collegate all'istanza IP (inclusa **l'interfaccia primaria)** non può superare NX_MAX_PHYSICAL_INTERFACES .
 
 Se il thread IP non è ancora in esecuzione, le interfacce secondarie verranno inizializzate come parte del processo di avvio del thread IP che inizializza tutte le interfacce fisiche.
 
-Se il thread IP non è ancora in esecuzione, l'interfaccia secondaria viene inizializzata come parte del servizio ***nx_ip_interface_attach*** .
+Se il thread IP non è ancora in esecuzione, l'interfaccia secondaria viene inizializzata come parte del ***nx_ip_interface_attach*** servizio.
 
 > [!WARNING]  
-> *ip_ptr deve puntare a una struttura IP NETX Duo valida. Per il numero di interfacce di rete per l'istanza IP, è necessario configurare **NX_MAX_PHYSICAL_INTERFACES** . Il valore predefinito è uno*.
+> *ip_ptr deve puntare a una struttura IP NetX Duo valida. **NX_MAX_PHYSICAL_INTERFACES** deve essere configurato per il numero di interfacce di rete per l'istanza IP. Il valore predefinito è .*
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **INTERFACE_NAME** Puntatore alla stringa del nome di interfaccia.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **interface_name** Puntatore alla stringa del nome dell'interfaccia.
 - **ip_address** Indirizzo IP del dispositivo nell'ordine dei byte dell'host.
-- **network_mask** Network mask del dispositivo nell'ordine dei byte dell'host.
+- **network_mask** L'network mask del dispositivo nell'ordine dei byte dell'host.
 - **ip_link_driver** Driver Ethernet per l'interfaccia.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- La voce **NX_SUCCESS** (0x00) viene aggiunta alla tabella di routing statica.
-- Numero massimo di interfacce **NX_NO_MORE_ENTRIES** (0x17). Viene superato NX_MAX_PHYSICAL_INTERFACES. Se IPv6 è abilitato, questo errore può indicare anche che il driver potrebbe non disporre di risorse sufficienti per gestire le operazioni multicast IPv6.
-- **NX_DUPLICATED_ENTRY** (0X52) l'indirizzo IP specificato è già in uso in questa istanza IP.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- L'input del puntatore **NX_PTR_ERROR** (0x07) non è valido.
-- **NX_IP_ADDRESS_ERROR** (0x21) l'input dell'indirizzo IP non è valido.
+- **NX_SUCCESS** voce (0x00) viene aggiunta alla tabella di routing statica.
+- **NX_NO_MORE_ENTRIES** (0x17) Numero massimo di interfacce. NX_MAX_PHYSICAL_INTERFACES superato. Se IPv6 è abilitato, questo errore può anche indicare che il driver potrebbe non avere risorse sufficienti per gestire le operazioni multicast IPv6.
+- **NX_DUPLICATED_ENTRY** (0x52) L'indirizzo IP fornito è già usato in questa istanza IP.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido.
+- **NX_IP_ADDRESS_ERROR** (0x21) Input indirizzo IP non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -2888,27 +2888,27 @@ UINT nx_ip_interface_capability_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il flag di funzionalità dall'interfaccia di rete specificata. Per usare questo servizio, è necessario compilare la libreria NetX Duo con l'opzione ***NX_ENABLE_INTERFACE_CAPABILITY*** abilitata.
+Questo servizio recupera il flag di funzionalità dall'interfaccia di rete specificata. Per usare questo servizio, la libreria NetX Duo deve essere compilata con l'opzione ***NX_ENABLE_INTERFACE_CAPABILITY*** abilitata.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indice dell'interfaccia di rete
-- **interface_capability_flag** Puntatore allo spazio di memoria per il flag funzionalità
+- **interface_capability_flag** Puntatore allo spazio di memoria per il flag di funzionalità
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto correttamente le informazioni sulla funzionalità di interfaccia.
-- La funzionalità della funzionalità dell'interfaccia **NX_NOT_SUPPORTED** (0x4B) non è supportata in questa compilazione.
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- **NX_PTR_ERROR** (0x07) puntatore a blocchi di controllo IP non valido o puntatore al flag di funzionalità non valido
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Le informazioni sulle funzionalità dell'interfaccia sono state ottenute correttamente.
+- **NX_NOT_SUPPORTED** funzionalità dell'0x4B (0x4B) non è supportata in questa build.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido o Puntatore al flag di funzionalità non valido
+- **NX_CALLER_ERROR** (0x11) il servizio non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -2942,7 +2942,7 @@ status = nx_ip_interface_capability_get(&ip_0,
 - nx_ip_link_status_change_notify_set
 
 ## <a name="nx_ip_interface_capability_set"></a>nx_ip_interface_capability_set
-Imposta il flag funzionalità hardware
+Impostare il flag di funzionalità hardware
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -2954,27 +2954,27 @@ UINT nx_ip_interface_capability_set(
 ```                           
 ### <a name="description"></a>Descrizione
 
-Questo servizio viene utilizzato dal driver di dispositivo di rete per configurare il flag funzionalità per un'interfaccia di rete specificata. Per usare questo servizio, è necessario compilare la libreria NetX Duo con l'opzione ***NX_ENABLE_INTERFACE_CAPABILITY*** definita.
+Questo servizio viene usato dal driver di dispositivo di rete per configurare il flag di funzionalità per un'interfaccia di rete specificata. Per usare questo servizio, la libreria NetX Duo deve essere compilata con ***l'opzione NX_ENABLE_INTERFACE_CAPABILITY*** definita.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indice dell'interfaccia di rete
-- **interface_capability_flag** Flag funzionalità per l'output
+- **interface_capability_flag** Flag di funzionalità per l'output
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il flag di capacità hardware dell'interfaccia è stato impostato **NX_SUCCESS** (0x00).
-- La funzionalità della funzionalità dell'interfaccia **NX_NOT_SUPPORTED** (0x4B) non è supportata in questa compilazione.
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido 
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido 
-- **NX_CALLER_ERROR** (0X11) S ervizio non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Impostare correttamente il flag di funzionalità hardware dell'interfaccia.
+- **NX_NOT_SUPPORTED** funzionalità dell'0x4B (0x4B) non è supportata in questa build.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido 
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido 
+- **NX_CALLER_ERROR** (0x11) S ervice non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3011,7 +3011,7 @@ status = nx_ip_interface_capability_set(&ip_0,
 - nx_ip_link_status_change_notify_set
 
 ## <a name="nx_ip_interface_detach"></a>nx_ip_interface_detach
-Scollega l'interfaccia specificata dall'istanza IP
+Scollegare l'interfaccia specificata dall'istanza IP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3022,24 +3022,24 @@ UINT nx_ip_interface_address_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio scollega l'interfaccia IP specificata dall'istanza IP. Una volta scollegata un'interfaccia, tutti i socket TCP connessi chiusi e le voci della cache ND e ARP per questa interfaccia vengono rimossi dalle rispettive tabelle. Le appartenenze IGMP per questa interfaccia vengono rimosse.
+Questo servizio scollega l'interfaccia IP specificata dall'istanza IP. Dopo lo scollegamento di un'interfaccia, tutti i socket TCP connessi vengono chiusi e le voci ND cache e ARP per questa interfaccia vengono rimosse dalle rispettive tabelle. Le appartenenze IGMP per questa interfaccia vengono rimosse.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **Indice** di Indice dell'interfaccia da rimuovere.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **index** Indice dell'interfaccia da rimuovere.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha rimosso correttamente un'interfaccia fisica.
-- L'interfaccia di rete specificata **NX_INVALID_INTERFACE** (0x4C) non è valida.
-- **NX_PTR_ERROR** (0x07) puntatori non validi.
+- **NX_SUCCESS** (0x00) È stata rimossa correttamente un'interfaccia fisica.
+- **NX_INVALID_INTERFACE** (0x4C) L'interfaccia di rete specificata non è valida.
+- **NX_PTR_ERROR** (0x07) Puntatori non validi.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3091,13 +3091,13 @@ UINT nx_ip_interface_info_get(
 Questo servizio recupera informazioni sui parametri di rete per l'interfaccia di rete specificata. Tutti i dati vengono recuperati nell'ordine dei byte dell'host. 
 
 > [!WARNING]  
-> *ip_ptr deve puntare a una struttura IP NETX Duo valida. L'interfaccia specificata, se non l'interfaccia primaria, deve essere precedentemente collegata all'istanza IP*.
+> *ip_ptr deve puntare a una struttura IP NetX Duo valida. L'interfaccia specificata, se non l'interfaccia primaria, deve essere collegata in precedenza all'istanza IP*.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **interface_index** Indice che specifica l'interfaccia di rete.
-- **INTERFACE_NAME** Puntatore al buffer che include il nome dell'interfaccia di rete.
+- **interface_name** Puntatore al buffer che contiene il nome dell'interfaccia di rete.
 - **ip_address** Puntatore alla destinazione per l'indirizzo IP dell'interfaccia.
 - **network_mask** Puntatore alla destinazione per network mask.
 - **mtu_size** Puntatore alla destinazione per l'unità di trasferimento massima per questa interfaccia.
@@ -3106,16 +3106,16 @@ Questo servizio recupera informazioni sui parametri di rete per l'interfaccia di
 
 ### <a name="return-values"></a>Valori restituiti   
 
-- Sono state ottenute le informazioni sull'interfaccia **NX_SUCCESS** (0x00).
-- L'input del puntatore **NX_PTR_ERROR** (0x07) non è valido.
-- **NX_INVALID_INTERFACE** (0x4C) puntatore IP non valido.
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Sono state ottenute informazioni sull'interfaccia.
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido.
+- **NX_INVALID_INTERFACE** (0x4C) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) il servizio non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3167,22 +3167,22 @@ Questo servizio viene usato dal driver di dispositivo per configurare il valore 
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indicizzare l'interfaccia di rete
 - **mtu_size** Dimensioni MTU IP
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il valore MTU
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Impostare correttamente il valore MTU
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) il servizio non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3231,23 +3231,23 @@ Questo servizio recupera l'indirizzo fisico di un'interfaccia di rete dall'istan
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indice dell'interfaccia di rete
 - **physical_msw** Puntatore alla destinazione per i primi 16 bit dell'indirizzo MAC del dispositivo
 - **physical_lsw** Puntatore alla destinazione per i 32 bit inferiori dell'indirizzo MAC del dispositivo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Get riuscita
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- **NX_PTR_ERROR** (0x07) puntatore a blocco di controllo IP o puntatore a indirizzo fisico non valido
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Operazione riuscita
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido o puntatore di indirizzo fisico
+- **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3283,7 +3283,7 @@ status = nx_ip_interface_physical_address_get(&ip_0,
 - nx_ip_link_status_change_notify_set
 
 ## <a name="nx_ip_interface_physical_address_set"></a>nx_ip_interface_physical_address_set
-Imposta l'indirizzo fisico per un'interfaccia di rete specificata
+Impostare l'indirizzo fisico per un'interfaccia di rete specificata
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3297,32 +3297,32 @@ UINT nx_ip_interface_physical_address_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio viene usato dall'applicazione o da un driver di dispositivo per configurare l'indirizzo fisico dell'indirizzo MAC dell'interfaccia di rete specificata. Il nuovo indirizzo MAC viene applicato al blocco di controllo della struttura dell'interfaccia. Se viene impostato il flag di ***update_driver*** , viene emesso un comando a livello di driver in modo che il driver di dispositivo sia in grado di aggiornare il proprio indirizzo Mac programmato nel controller Ethernet.
+Questo servizio viene usato dall'applicazione o da un driver di dispositivo per configurare l'indirizzo fisico dell'indirizzo MAC dell'interfaccia di rete specificata. Il nuovo indirizzo MAC viene applicato al blocco di controllo della struttura dell'interfaccia. Se il flag ***update_driver*** è impostato, viene eseguito un comando a livello di driver in modo che il driver di dispositivo sia in grado di aggiornare l'indirizzo MAC programmato nel controller Ethernet.
 
-In una situazione tipica, questo servizio viene chiamato dal driver di dispositivo di interfaccia durante la fase di inizializzazione per notificare lo stack IP del relativo indirizzo MAC. In questo caso, il flag di ***update_driver*** non deve essere impostato.
+In una situazione tipica, questo servizio viene chiamato dal driver di dispositivo dell'interfaccia durante la fase di inizializzazione per notificare lo stack IP del relativo indirizzo MAC. In questo caso, il ***flag update_driver*** non deve essere impostato.
 
-Questa routine può essere chiamata anche dall'applicazione utente per riconfigurare l'indirizzo MAC dell'interfaccia in fase di esecuzione. In questo caso di utilizzo, è necessario impostare il flag di ***update_driver*** , in modo che il nuovo indirizzo Mac possa essere applicato al driver di dispositivo.
+Questa routine può essere chiamata anche dall'applicazione utente per riconfigurare l'indirizzo MAC dell'interfaccia in fase di esecuzione. In questo caso ***d'uso, update_driver*** deve essere impostato il flag , in modo che il nuovo indirizzo MAC possa essere applicato al driver di dispositivo.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indicizzare l'interfaccia di rete
 - **physical_msw** Puntatore alla destinazione per i primi 16 bit dell'indirizzo MAC del dispositivo
 - **physical_lsw** Puntatore alla destinazione per i 32 bit inferiori dell'indirizzo MAC del dispositivo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Set di **NX_SUCCESS** (0x00) riuscito
-- Comando **NX_UNHANDLED_COMMAND** (0x4B) non riconosciuto dal driver
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Operazione riuscita
+- **NX_UNHANDLED_COMMAND** (0x4B) non riconosciuto dal driver
+- **NX_INVALID_INTERFACE** (0x4C) Interface index is not valid (Indice dell'interfaccia di 0x4C non valido)
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3373,12 +3373,12 @@ UINT nx_ip_interface_status_check(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio controlla ed eventualmente attende lo stato specificato dell'interfaccia di rete di un'istanza IP creata in precedenza.
+Questo servizio controlla e, facoltativamente, attende lo stato specificato dell'interfaccia di rete di un'istanza IP creata in precedenza.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **interface_index** Numero di indice dell'interfaccia needed_status stato IP richiesto, definito nel formato mappa di bit, come indicato di seguito:
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **interface_index** Il numero di indice needed_status lo stato IP richiesto, definito nel formato mappa di bit come segue:
   - **NX_IP_INITIALIZE_DONE** (0x0001)
   - **NX_IP_ADDRESS_RESOLVED** (0x0002)
   - **NX_IP_LINK_ENABLED** (0x0004)
@@ -3388,25 +3388,25 @@ Questo servizio controlla ed eventualmente attende lo stato specificato dell'int
   - **NX_IP_IGMP_ENABLED** (0x0040)
   - **NX_IP_RARP_COMPLETE** (0x0080)
   - **NX_IP_INTERFACE_LINK_ENABLED** (0x0100)
-- **actual_status** Puntatore alla destinazione del set di bit effettivo. wait_option definisce il comportamento del servizio se i bit di stato richiesti non sono disponibili. Le opzioni di attesa sono definite come segue:
+- **actual_status** Puntatore alla destinazione dei bit effettivi impostati. wait_option definisce il comportamento del servizio se i bit di stato richiesti non sono disponibili. Le opzioni di attesa sono definite come segue:
   - **NX_NO_WAIT** (0x00000000)
-  - **valore di timeout** (0x00000001 tramite 0xfffffffe)
+  - **valore di timeout** (0x00000001 tramite 0xFFFFFFFE)
   - **NX_WAIT_FOREVER** 0xFFFFFFFF
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Verifica stato IP riuscito.
-- La richiesta di stato **NX_NOT_SUCCESSFUL** (0x43) non è stata soddisfatta entro il timeout specificato.
-- Il puntatore IP **NX_PTR_ERROR** (0x07) è o è diventato non valido oppure il puntatore di stato effettivo non è valido.
-- **NX_OPTION_ERROR** (0x0A) opzione di stato necessaria non valida.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- Il Interface_index **NX_INVALID_INTERFACE** (0x4C) non è compreso nell'intervallo. oppure l'interfaccia non è valida.
+- **NX_SUCCESS** (0x00) Controllo dello stato IP riuscito.
+- **NX_NOT_SUCCESSFUL** richiesta di stato (0x43) non è stata soddisfatta entro il timeout specificato.
+- **NX_PTR_ERROR** puntatore IP (0x07) è o è diventato non valido oppure il puntatore di stato effettivo non è valido.
+- **NX_OPTION_ERROR** (0x0a) Stato necessario non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_INVALID_INTERFACE** (0x4C) Interface_index non è compreso nell'intervallo. o l'interfaccia non è valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3437,7 +3437,7 @@ status = nx_ip_interface_status_check(&ip_0, 1, NX_IP_LINK_ENABLED,
 - nx_ip_link_status_change_notify_set
 
 ## <a name="nx_ip_link_status_change_notify_set"></a>nx_ip_link_status_change_notify_set
-Impostare la funzione di callback notifica modifica stato collegamento
+Impostare la funzione di callback di notifica della modifica dello stato del collegamento
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3448,24 +3448,24 @@ UINT nx_ip_link_status_change_notify_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura la funzione di callback notifica modifica stato collegamento. La routine di *link_status_change_notify* fornita dall'utente viene richiamata quando viene modificato lo stato dell'interfaccia primaria o secondaria, ad esempio se viene modificato l'indirizzo IP. Se *link_status_change_notify* è null, la funzionalità di callback notifica modifica stato collegamento è disabilitata.
+Questo servizio configura la funzione di callback di notifica della modifica dello stato del collegamento. La routine di  link_status_change_notify specificata dall'utente viene richiamata quando viene modificato lo stato dell'interfaccia primaria o secondaria,ad esempio quando viene modificato l'indirizzo IP. Se *link_status_change_notify* è NULL, la funzionalità di callback di notifica della modifica dello stato del collegamento è disabilitata.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
-- **link_status_change_notify** Funzione di callback fornita dall'utente da chiamare su una modifica all'interfaccia fisica.
+- **ip_ptr** Puntatore a blocco di controllo IP
+- **link_status_change_notify** Funzione di callback fornita dall'utente da chiamare in base a una modifica all'interfaccia fisica.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Set di **NX_SUCCESS** (0x00) riuscito
-- **NX_PTR_ERROR** (0x07) puntatore a blocco di controllo IP non valido o nuovo puntatore a indirizzo fisico
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** (0x00) Operazione riuscita
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido o nuovo puntatore di indirizzo fisico
+- **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3496,7 +3496,7 @@ status = nx_ip_link_status_change_notify_set(&ip_0,
 - nx_ip_interface_status_check
 
 ## <a name="nx_ip_max_payload_size_find"></a>nx_ip_max_payload_size_find
-Calcolo del payload massimo dei dati del pacchetto
+Calcolare il payload massimo dei dati dei pacchetti
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3513,14 +3513,14 @@ UINT nx_ip_max_payload_size_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rileva la dimensione massima del payload dell'applicazione che non richiede la frammentazione IP per raggiungere la destinazione. ad esempio, il payload è inferiore alle dimensioni MTU dell'interfaccia locale. (oppure il valore MTU del percorso ottenuto tramite l'individuazione MTU del percorso IPv6). L'intestazione IP e la dimensione superiore dell'intestazione dell'applicazione (TCP o UDP) vengono sottratte dal payload totale. Se il criterio di sicurezza IPsec NetX duo si applica a questo endpoint, vengono sottratte anche le intestazioni IPsec (ESP/AH) e il sovraccarico associato, ad esempio il vettore iniziale. Questo servizio è applicabile per i pacchetti IPv4 e IPv6.
+Questo servizio trova le dimensioni massime del payload dell'applicazione che non richiederanno la frammentazione IP per raggiungere la destinazione. Ad esempio, il payload è inferiore o inferiore alle dimensioni MTU dell'interfaccia locale. (o il valore MTU del percorso ottenuto tramite l'individuazione MTU del percorso IPv6). L'intestazione IP e le dimensioni superiori dell'intestazione dell'applicazione (TCP o UDP) vengono sottratti dal payload totale. Se i criteri di sicurezza IPsec di NetX Duo si applicano a questo punto finale, anche le intestazioni IPsec (ESP/AH) e il sovraccarico associato, ad esempio vettore iniziale, vengono sottratti dall'MTU. Questo servizio è applicabile sia per i pacchetti IPv4 che per i pacchetti IPv6.
 
-Il parametro *if_index* specifica l'interfaccia da utilizzare per l'invio del pacchetto. Per un sistema multihome, il chiamante deve specificare il *if_index* parametro se la destinazione è un indirizzo broadcast (solo IPv4), multicast o IPv6 collegamento locale.
+Il parametro *if_index* specifica l'interfaccia da usare per inviare il pacchetto. Per un sistema multihome, il chiamante deve specificare il parametro if_index se la destinazione è un indirizzo locale di collegamento *broadcast* (solo IPv4), multicast o IPv6.
 
 Questo servizio restituisce due valori al chiamante:
 
-1) start_offset_ptr: posizione dopo le intestazioni TCP/UDP/IP/IPsec.
-2) payload_length_ptr: la quantità di applicazioni dati può essere trasferita senza superare la MTU.
+1) start_offset_ptr: questo è il percorso dopo le intestazioni TCP/UDP/IP/IPsec.
+2) payload_length_ptr: la quantità di dati che l'applicazione può trasferire senza superare MTU.
 
 Non esiste un servizio NetX equivalente.
 
@@ -3530,30 +3530,30 @@ L'istanza IP deve essere creata in precedenza.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 - **dest_address** Puntatore all'indirizzo di destinazione del pacchetto
-- **if_index** Indica l'indice dell'interfaccia da utilizzare.
+- **if_index** Indica l'indice dell'interfaccia da utilizzare
 - **src_port** Numero di porta di origine
 - **dest_port** Numero di porta di destinazione
-- **protocollo** di Protocollo di livello superiore da usare
-- **start_offset_ptr** Puntatore all'inizio dei dati per il payload del pacchetto massimo
-- **payload_length_ptr** Puntatore a dimensioni del payload escluse le intestazioni
+- **protocollo** Protocollo di livello superiore da usare
+- **start_offset_ptr** Puntatore all'inizio dei dati per il payload massimo dei pacchetti
+- **payload_length_ptr** Puntatore alle dimensioni del payload escluse le intestazioni
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il payload **NX_SUCCESS** (0x00) è stato calcolato
-- L'indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non è valido oppure l'interfaccia non è valida.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido o indirizzo di destinazione non valido
-- Indirizzo di **NX_IP_ADDRESS_ERROR** (0X21) non valido specificato 
-- **NX_NOT_SUPPORTED** (0x4B) protocollo non valido (non UDP o TCP)
-- Il servizio **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
+- **NX_SUCCESS** payload (0x00) calcolato correttamente
+- **NX_INVALID_INTERFACE** di interfaccia (0x4C) non è valido o l'interfaccia non è valida.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido o indirizzo di destinazione non valido
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo non valido specificato 
+- **NX_NOT_SUPPORTED** (0x4B) Protocollo non valido (non UDP o TCP)
+- **NX_CALLER_ERROR** (0x11) non viene chiamato dall'inizializzazione del sistema o dal contesto del thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3611,23 +3611,23 @@ UINT nx_ip_raw_packet_disable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita la trasmissione e la ricezione di pacchetti IP non elaborati per questa istanza IP. Se il servizio pacchetti non elaborati è stato precedentemente abilitato e sono presenti pacchetti non elaborati nella coda di ricezione, il servizio rilascerà tutti i pacchetti non elaborati ricevuti.
+Questo servizio disabilita la trasmissione e la ricezione di pacchetti IP non elaborati per questa istanza IP. Se il servizio di pacchetti non elaborati è stato abilitato in precedenza e nella coda di ricezione sono presenti pacchetti non elaborati, questo servizio rilascerà tutti i pacchetti non elaborati ricevuti.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) la disabilitazione del pacchetto non elaborato IP è riuscita.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Il pacchetto IP non elaborato è stato disabilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3651,7 +3651,7 @@ status = nx_ip_raw_packet_disable(&ip_0);
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nx_ip_raw_packet_enable"></a>nx_ip_raw_packet_enable
-Abilita elaborazione pacchetti non elaborati
+Abilitare l'elaborazione di pacchetti non elaborati
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3660,23 +3660,23 @@ UINT nx_ip_raw_packet_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente la trasmissione e la ricezione di pacchetti IP non elaborati per questa istanza IP. I pacchetti TCP, UDP, ICMP e IGMP in ingresso vengono ancora elaborati da NetX Duo. I pacchetti con tipi di protocollo di livello superiore sconosciuti vengono elaborati dalla routine di ricezione dei pacchetti non elaborati.
+Questo servizio consente la trasmissione e la ricezione di pacchetti IP non elaborati per questa istanza IP. I pacchetti TCP, UDP, ICMP e IGMP in ingresso vengono comunque elaborati da NetX Duo. I pacchetti con tipi di protocollo di livello superiore sconosciuti vengono elaborati dalla routine di ricezione dei pacchetti non elaborati.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) abilitata per i pacchetti non elaborati IP riusciti.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Il pacchetto IP non elaborato è stato abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3701,7 +3701,7 @@ status = nx_ip_raw_packet_enable(&ip_0);
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nx_ip_raw_packet_filter_set"></a>nx_ip_raw_packet_filter_set
-Imposta filtro pacchetti IP non elaborato
+Impostare il filtro di pacchetti IP non elaborati
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3712,25 +3712,25 @@ UINT nx_ip_raw_packet_filter_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura il filtro dei pacchetti non elaborati IP. La funzione di filtro dei pacchetti non elaborati, implementata dall'applicazione utente, consente a un'applicazione di ricevere pacchetti non elaborati in base ai criteri forniti dall'utente. Si noti che NetX Duo BSD wrapper layer usa la funzionalità di filtro dei pacchetti non elaborati per gestire il socket non elaborato nel livello BSD. Per usare questo servizio, è necessario compilare la libreria NetX Duo con l'opzione ***NX_ENABLE_IP_RAW_PACKET_FILTER*** definita.
+Questo servizio configura il filtro di pacchetti non elaborati IP. La funzione di filtro dei pacchetti non elaborati, implementata dall'applicazione utente, consente a un'applicazione di ricevere pacchetti non elaborati in base ai criteri specificati dall'utente. Si noti che il livello wrapper BSD di NetX Duo usa la funzionalità di filtro di pacchetti non elaborati per gestire i socket non elaborati nel livello BSD. Per usare questo servizio, la libreria NetX Duo deve essere compilata con ***l'opzione NX_ENABLE_IP_RAW_PACKET_FILTER*** definita.
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore del blocco di controllo IP
-- **raw_packet_filter** Puntatore a funzione del filtro pacchetti non elaborati
+- **ip_ptr** Puntatore a blocco di controllo IP
+- **raw_packet_filter** Puntatore a funzione del filtro di pacchetti non elaborati
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente la routine di filtro dei pacchetti non elaborati
-- Il supporto per i pacchetti non elaborati **NX_NOT_SUPPORT** (0x4B) non è disponibile
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Impostare correttamente la routine del filtro di pacchetti non elaborati
+- **NX_NOT_SUPPORT** (0x4B) Non è disponibile il supporto per pacchetti non elaborati
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3771,7 +3771,7 @@ status = nx_ip_raw_packet_filter_set(&ip_0,
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nx_ip_raw_packet_receive"></a>nx_ip_raw_packet_receive
-Ricevi pacchetto IP non elaborato
+Ricevere un pacchetto IP non elaborato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3783,34 +3783,34 @@ UINT nx_ip_raw_packet_receive(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio riceve un pacchetto IP non elaborato dall'istanza IP specificata. Se nella coda di ricezione di pacchetti non elaborati sono presenti pacchetti IP, il primo pacchetto (meno recente) viene restituito al chiamante. In caso contrario, se non sono disponibili pacchetti, il chiamante potrebbe sospendere come specificato dall'opzione wait.
+Questo servizio riceve un pacchetto IP non elaborato dall'istanza IP specificata. Se sono presenti pacchetti IP nella coda di ricezione di pacchetti non elaborati, il primo pacchetto (meno recente) viene restituito al chiamante. In caso contrario, se non sono disponibili pacchetti, il chiamante può sospendere come specificato dall'opzione wait.
 
 > [!CAUTION]   
-> *Se viene restituito NX_SUCCESS, l'applicazione è responsabile del rilascio del pacchetto ricevuto quando non è più necessario*.
+> *Se NX_SUCCESS, viene restituito , l'applicazione* è responsabile del rilascio del pacchetto ricevuto quando non è più necessario.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **packet_ptr** Puntatore al puntatore in cui inserire il pacchetto IP non elaborato ricevuto.
-- **WAIT_OPTION** Definisce il comportamento del servizio se i pacchetti non sono disponibili. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce il comportamento del servizio se i pacchetti non sono disponibili. Le opzioni di attesa sono definite come segue:
    - **NX_NO_WAIT** (0x00000000)
    - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-   - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+   - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) la ricezione di pacchetti non elaborati IP riuscita.
-- **NX_NO_PACKET** (0x01) non è disponibile alcun pacchetto.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- **NX_PTR_ERROR** (0x07) indirizzo IP non valido o puntatore al pacchetto restituito.
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Ricezione di pacchetti ip non elaborati riuscita.
+- **NX_NO_PACKET** (0x01) Nessun pacchetto disponibile.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_PTR_ERROR** (0x07) IP non valido o puntatore a pacchetto restituito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3836,7 +3836,7 @@ status = nx_ip_raw_packet_receive(&ip_0, &packet_ptr, 4);
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nx_ip_raw_packet_send"></a>nx_ip_raw_packet_send
-Invia pacchetto IP non elaborato
+Inviare un pacchetto IP non elaborato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3849,21 +3849,21 @@ UINT nx_ip_raw_packet_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto IPv4 non elaborato all'indirizzo IP di destinazione. Si noti che questa routine viene restituita immediatamente e non è quindi noto se il pacchetto IP è stato effettivamente inviato. Il driver di rete sarà responsabile del rilascio del pacchetto al termine della trasmissione.
+Questo servizio invia un pacchetto IPv4 non elaborato all'indirizzo IP di destinazione. Si noti che questa routine restituisce immediatamente e non è quindi noto se il pacchetto IP è stato effettivamente inviato. Il driver di rete sarà responsabile del rilascio del pacchetto al termine della trasmissione.
 
-Per un sistema multihome, NetX Duo usa l'indirizzo IP di destinazione per trovare un'interfaccia di rete appropriata e usa l'indirizzo IP dell'interfaccia come indirizzo di origine. Se l'indirizzo IP di destinazione è broadcast o multicast, viene utilizzata la prima interfaccia valida. In questo caso, le applicazioni usano la ***nx_ip_raw_packet_source_send*** .
+Per un sistema multihome, NetX Duo usa l'indirizzo IP di destinazione per trovare un'interfaccia di rete appropriata e usa l'indirizzo IP dell'interfaccia come indirizzo di origine. Se l'indirizzo IP di destinazione è broadcast o multicast, viene usata la prima interfaccia valida. Le applicazioni usano ***nx_ip_raw_packet_source_send*** in questo caso.
 
 Per inviare un pacchetto IPv6 non elaborato, l'applicazione deve usare il servizio ***nxd_ip_raw_packet_send,** _ o _ *_nxd_ip_raw_packet_source_send._**
 
 > [!WARNING]  
-> *A meno che non venga restituito un errore, l'applicazione non deve rilasciare il pacchetto dopo questa chiamata. Questa operazione causerà risultati imprevedibili perché il driver di rete rilascerà il pacchetto dopo la trasmissione*.
+> *A meno che non venga restituito un errore, l'applicazione non deve rilasciare il pacchetto dopo questa chiamata. Questa operazione causerà risultati imprevedibili perché il driver di rete rilascerà il pacchetto dopo la trasmissione* di .
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **packet_ptr** Puntatore al pacchetto IP non elaborato da inviare.
-- **destination_ip** Indirizzo IP di destinazione, che può essere un indirizzo IP host specifico, una trasmissione di rete, un ciclo interno o un indirizzo multicast.
-- **Type_of_Service** Definisce il tipo di servizio per la trasmissione. i valori validi sono i seguenti:
+- **destination_ip** Indirizzo IP di destinazione, che può essere un indirizzo IP host specifico, una trasmissione di rete, un loop-back interno o un indirizzo multicast.
+- **type_of_service** Definisce il tipo di servizio per la trasmissione, i valori validi sono i seguenti:
     - **NX_IP_NORMAL** (0x00000000)
     - **NX_IP_MIN_DELAY** (0x00100000)
     - **NX_IP_MAX_DATA** (0x00080000)
@@ -3872,20 +3872,20 @@ Per inviare un pacchetto IPv6 non elaborato, l'applicazione deve usare il serviz
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- È stata avviata l'operazione di invio di pacchetti non elaborati non elaborati (0x00) **NX_SUCCESS**
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- La funzionalità IP raw **NX_NOT_ENABLED** (0x14) non è abilitata.
-- Il tipo di servizio **NX_OPTION_ERROR** (0X0A) non è valido.
-- **NX_UNDERFLOW** (0x02) spazio insufficiente per anteporre un'intestazione IP al pacchetto.
-- Il puntatore di aggiunta del pacchetto **NX_OVERFLOW** (0x03) non è valido.
-- **NX_PTR_ERROR** (0x07) un puntatore IP o di pacchetto non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Avvio dell'invio di pacchetti ip non elaborati riuscito.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_NOT_ENABLED** (0x14) La funzionalità IP non elaborato non è abilitata.
+- **NX_OPTION_ERROR** (0x0A) Tipo di servizio non valido.
+- **NX_UNDERFLOW** (0x02) Spazio insufficiente per anteporre un'intestazione IP al pacchetto.
+- **NX_OVERFLOW** (0x03) Puntatore di accodamento pacchetti non valido.
+- **NX_PTR_ERROR** (0x07) IP o puntatore a pacchetto non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3913,7 +3913,7 @@ status = nx_ip_raw_packet_send(&ip_0, packet_ptr,
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nx_ip_raw_packet_source_send"></a>nx_ip_raw_packet_source_send
-Invia pacchetto IP non elaborato tramite l'interfaccia di rete specificata
+Inviare un pacchetto IP non elaborato tramite l'interfaccia di rete specificata
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -3927,13 +3927,13 @@ UINT nx_ip_raw_packet_source_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto IP non elaborato all'indirizzo IP di destinazione utilizzando l'indirizzo IPv4 locale specificato come indirizzo di origine e tramite l'interfaccia di rete associata. Si noti che questa routine restituisce immediatamente un risultato e, pertanto, non è noto se il pacchetto IP è effettivamente stato inviato. Il driver di rete sarà responsabile del rilascio del pacchetto al termine della trasmissione. Questo servizio differisce da altri servizi in quanto non esiste alcun modo per sapere se il pacchetto è stato effettivamente inviato. Potrebbe andare persa in Internet.
+Questo servizio invia un pacchetto IP non elaborato all'indirizzo IP di destinazione usando l'indirizzo IPv4 locale specificato come indirizzo di origine e tramite l'interfaccia di rete associata. Si noti che questa routine restituisce immediatamente e pertanto non è noto se il pacchetto IP è stato effettivamente inviato. Il driver di rete sarà responsabile del rilascio del pacchetto al termine della trasmissione. Questo servizio è diverso da altri servizi in quanto non è possibile sapere se il pacchetto è stato effettivamente inviato. Potrebbe perdersi in Internet.
 
 > [!CAUTION]  
-> *Si noti che è necessario abilitare l'elaborazione di indirizzi IP non elaborati*.
+> *Si noti che l'elaborazione IP non elaborata deve essere abilitata.*
 
 > [!WARNING]  
-> *Questo servizio è simile a **nx_ip_raw_packet_send,** ad eccezione del fatto che questo servizio consente a un'applicazione di inviare un pacchetto IPv4 non elaborato da un'interfaccia fisica specificata*.
+> *Questo servizio è simile a **nx_ip_raw_packet_send,*** ad eccezione del fatto che questo servizio consente a un'applicazione di inviare un pacchetto IPv4 non elaborato da un'interfaccia fisica specificata.
 
 ### <a name="parameters"></a>Parametri  
 
@@ -3941,25 +3941,25 @@ Questo servizio invia un pacchetto IP non elaborato all'indirizzo IP di destinaz
 - **packet_ptr** Puntatore al pacchetto da trasmettere.
 - **destination_ip** Indirizzo IP per l'invio del pacchetto.
 - **address_index** Indice dell'indirizzo dell'interfaccia su cui inviare il pacchetto.
-- **Type_of_Service** Tipo di servizio per il pacchetto.
+- **type_of_service** Tipo di servizio per il pacchetto.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Il pacchetto **NX_SUCCESS** (0x00) è stato trasmesso correttamente.
-- **NX_IP_ADDRESS_ERROR** (0X21) non è disponibile alcuna interfaccia in uscita adatta.
-- L'elaborazione dei pacchetti IP non elaborati **NX_NOT_ENABLED** (0x14) non è abilitata.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- L'input del puntatore **NX_PTR_ERROR** (0x07) non è valido.
-- Il tipo di servizio specificato **NX_OPTION_ERROR** (0X0A) non è valido.
-- **NX_OVERFLOW** (0x03) puntatore a anteporre il pacchetto non valido.
-- **NX_UNDERFLOW** (0x02) puntatore a anteporre il pacchetto non valido.
-- **NX_INVALID_INTERFACE** (0x4C) è stato specificato un indice di interfaccia non valido.
+- **NX_SUCCESS** (0x00) Il pacchetto è stato trasmesso correttamente.
+- **NX_IP_ADDRESS_ERROR** (0x21) Nessuna interfaccia in uscita adatta disponibile.
+- **NX_NOT_ENABLED** (0x14) L'elaborazione di pacchetti IP non elaborati non è abilitata.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido.
+- **NX_OPTION_ERROR** (0x0A) Specificato tipo di servizio non valido.
+- **NX_OVERFLOW** (0x03) Puntatore anteposto pacchetto non valido.
+- **NX_UNDERFLOW** (0x02) Puntatore anteposto pacchetto non valido.
+- **NX_INVALID_INTERFACE** (0x4C) Indice di interfaccia non valido specificato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3990,7 +3990,7 @@ status = nx_ip_raw_packet_source_send(ip_ptr, packet_ptr,
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nx_ip_raw_receive_queue_max_set"></a>nx_ip_raw_receive_queue_max_set
-Imposta dimensione massima coda di ricezione non elaborata
+Impostare le dimensioni massime della coda di ricezione non elaborata
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4001,24 +4001,24 @@ UINT nx_ip_raw_receive_queue_max_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura la profondità massima della coda di ricezione pacchetti non elaborati IP. Si noti che la coda di ricezione di pacchetti non elaborati IP è condivisa con i pacchetti IPv4 e IPv6. Quando la coda di ricezione pacchetti non elaborati raggiunge la profondità massima di userconfigured, i pacchetti non elaborati appena ricevuti vengono eliminati. La profondità della coda di ricezione pacchetti non elaborati IP predefinita è 20.
+Questo servizio configura la profondità massima della coda di ricezione di pacchetti non elaborati IP. Si noti che la coda di ricezione di pacchetti non elaborati IP è condivisa con i pacchetti IPv4 e IPv6. Quando la coda di ricezione di pacchetti non elaborati raggiunge la profondità massima configurata dall'utente, i pacchetti non elaborati appena ricevuti vengono eliminati. La profondità predefinita della coda di ricezione pacchetti non elaborati IP è 20.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **queue_max** Nuovo valore per le dimensioni della coda
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente la profondità massima della coda di ricezione non elaborata
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Impostare correttamente la profondità massima della coda di ricezione non elaborata
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4059,32 +4059,32 @@ UINT nx_ip_static_route_add(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una voce alla tabella di routing statica. Si noti che l'indirizzo di *next_hop* deve essere direttamente accessibile da uno dei dispositivi di rete locali.
+Questo servizio aggiunge una voce alla tabella di routing statico. Si noti che *next_hop'indirizzo* deve essere direttamente accessibile da uno dei dispositivi di rete locale.
 
 > [!CAUTION]  
-> *Si noti che ip_ptr necessario puntare a una struttura IP NETX Duo valida e che la libreria NETX Duo deve essere compilata con NX_ENABLE_IP_STATIC_ROUTING definito per l'utilizzo di questo servizio. Per impostazione predefinita, NetX Duo viene compilato senza NX_ENABLE_IP_STATIC_ROUTING definito*.
+> Si noti ip_ptr deve puntare a una struttura IP di NetX Duo valida e che la libreria NetX Duo deve essere compilata con NX_ENABLE_IP_STATIC_ROUTING definito per *usare questo servizio. Per impostazione predefinita, NetX Duo viene compilato senza NX_ENABLE_IP_STATIC_ROUTING definito.*
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **Network_Address** Indirizzo di rete di destinazione, in ordine byte host 
-- **net_mask** Network mask di destinazione, in ordine byte host
-- **next_hop** Indirizzo hop successivo per la rete di destinazione, in ordine byte host
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **network_address** Indirizzo di rete di destinazione, in ordine di byte host 
+- **net_mask** Destinazione network mask, nell'ordine dei byte dell'host
+- **next_hop** Indirizzo hop successivo per la rete di destinazione, in ordine di byte host
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- La voce **NX_SUCCESS** (0x00) viene aggiunta alla tabella di routing statica.
-- La tabella di routing statica **NX_OVERFLOW** (0x03) è piena.
-- **NX_NOT_SUPPORTED** (0X4B) questa funzionalità non è compilata in.
-- L'hop successivo **NX_IP_ADDRESS_ERROR** (0x21) non è direttamente accessibile tramite interfacce locali.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) Ip_ptr puntatore non valido.
+- **NX_SUCCESS** voce (0x00) viene aggiunta alla tabella di routing statica.
+- **NX_OVERFLOW** (0x03) La tabella di routing statica è piena.
+- **NX_NOT_SUPPORTED** (0x4B) Questa funzionalità non viene compilata in .
+- **NX_IP_ADDRESS_ERROR** (0x21) L'hop successivo non è direttamente accessibile tramite interfacce locali.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatore ip_ptr non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4114,7 +4114,7 @@ status = nx_ip_static_route_add(ip_ptr, IP_ADDRESS(192,168,1,0),
 - nxd_ipv6_default_router_number_of_entries_get
 
 ## <a name="nx_ip_static_route_delete"></a>nx_ip_static_route_delete
-Elimina route statica dalla tabella di routing
+Eliminare una route statica dalla tabella di routing
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4126,30 +4126,30 @@ UINT nx_ip_static_route_delete(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina una voce dalla tabella di routing statica.
+Questo servizio elimina una voce dalla tabella di routing statico.
 
 > [!WARNING]  
-> *Si noti che ip_ptr necessario puntare a una struttura IP NETX Duo valida e che la libreria NETX Duo deve essere compilata con NX_ENABLE_IP_STATIC_ROUTING definito per l'utilizzo di questo servizio. Per impostazione predefinita, NetX Duo viene compilato senza NX_ENABLE_IP_STATIC_ROUTING definito*.
+> Si noti ip_ptr deve puntare a una struttura IP di NetX Duo valida e che la libreria NetX Duo deve essere compilata con NX_ENABLE_IP_STATIC_ROUTING definito per *usare questo servizio. Per impostazione predefinita, NetX Duo viene compilato senza NX_ENABLE_IP_STATIC_ROUTING definito.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **Network_Address** Indirizzo di rete di destinazione, in ordine byte host.
-- **net_mask** Network mask di destinazione, in ordine byte host.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **network_address** Indirizzo di rete di destinazione, in ordine di byte host.
+- **net_mask** Destinazione network mask, nell'ordine dei byte dell'host.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- L'eliminazione di **NX_SUCCESS** (0x00) dalla tabella di routing statica è riuscita.
-- Impossibile trovare la voce **NX_NOT_SUCCESSFUL** (0x43) nella tabella di routing.
-- **NX_NOT_SUPPORTED** (0X4B) questa funzionalità non è compilata in.
-- **NX_PTR_ERROR** (0x07) Ip_ptr puntatore non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Eliminazione riuscita dalla tabella di routing statica.
+- **NX_NOT_SUCCESSFUL** (0x43) Impossibile trovare la voce nella tabella di routing.
+- **NX_NOT_SUPPORTED** (0x4B) Questa funzionalità non viene compilata in .
+- **NX_PTR_ERROR** (0x07) Puntatore ip_ptr non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4192,12 +4192,12 @@ UINT nx_ip_status_check(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio controlla ed eventualmente attende lo stato specificato dell'interfaccia di rete primaria di un'istanza IP creata in precedenza. Per ottenere lo stato sulle interfacce secondarie, le applicazioni devono utilizzare il servizio ***nx_ip_interface_status_check.***
+Questo servizio controlla e, facoltativamente, attende lo stato specificato dell'interfaccia di rete primaria di un'istanza IP creata in precedenza. Per ottenere lo stato nelle interfacce secondarie, le applicazioni devono usare il servizio ***nx_ip_interface_status_check.***
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **needed_status** Stato IP richiesto, definito in formato mappa di bit, come indicato di seguito:
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **needed_status** Lo stato IP richiesto, definito nel formato mappa di bit come indicato di seguito:
   - **NX_IP_INITIALIZE_DONE** (0x0001)
   - **NX_IP_ADDRESS_RESOLVED** (0x0002)
   - **NX_IP_LINK_ENABLED** (0x0004)
@@ -4207,25 +4207,25 @@ Questo servizio controlla ed eventualmente attende lo stato specificato dell'int
   - **NX_IP_IGMP_ENABLED** (0x0040)
   - **NX_IP_RARP_COMPLETE** (0x0080)
   - **NX_IP_INTERFACE_LINK_ENABLED** (0x0100)
-- **actual_status** Puntatore alla destinazione del set di bit effettivo.
-- **WAIT_OPTION** Definisce il comportamento del servizio se i bit di stato richiesti non sono disponibili. Le opzioni di attesa sono definite come segue:
+- **actual_status** Puntatore alla destinazione dei bit effettivi impostati.
+- **wait_option** Definisce il comportamento del servizio se i bit di stato richiesti non sono disponibili. Le opzioni di attesa sono definite come segue:
   - **NX_NO_WAIT** 0x00000000)
-  - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+  - **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFE)
   - **NX_WAIT_FOREVER** 0xFFFFFFFF
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) Verifica stato IP riuscito.
-- La richiesta di stato **NX_NOT_SUCCESSFUL** (0x43) non è stata soddisfatta entro il timeout specificato.
-- Il puntatore IP **NX_PTR_ERROR** (0x07) è o è diventato non valido oppure il puntatore di stato effettivo non è valido.
-- **NX_OPTION_ERROR** (0x0A) opzione di stato necessaria non valida.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Controllo dello stato IP riuscito.
+- **NX_NOT_SUCCESSFUL** richiesta di stato (0x43) non è stata soddisfatta entro il timeout specificato.
+- **NX_PTR_ERROR** puntatore IP (0x07) è o è diventato non valido oppure il puntatore di stato effettivo non è valido.
+- **NX_OPTION_ERROR** (0x0a) Stato necessario non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -4267,7 +4267,7 @@ status = nx_ip_status_check(&ip_0, NX_IP_LINK_ENABLED,
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_ipv4_multicast_interface_join"></a>nx_ipv4_multicast_interface_join
-Unisci istanza IP al gruppo multicast specificato tramite un'interfaccia
+Aggiungere un'istanza IP a un gruppo multicast specificato tramite un'interfaccia
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4279,29 +4279,29 @@ UINT nx_ipv4_multicast_interface_join(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio unisce un'istanza IP al gruppo multicast specificato tramite un'interfaccia di rete specificata. Una volta che l'istanza IP è stata aggiunta a un gruppo multicast, la logica di ricezione IP inizia a inoltrare i pacchetti di dati dal gruppo Give multicast al livello superiore. Si noti che questo servizio viene unito a un gruppo multicast senza inviare report IGMP.
+Questo servizio aggiunge un'istanza IP al gruppo multicast specificato tramite un'interfaccia di rete specificata. Quando l'istanza IP viene aggiunta a un gruppo multicast, la logica di ricezione IP inizia a inoltrare i pacchetti di dati dal gruppo di assegnazione multicast al livello superiore. Si noti che questo servizio aggiunge un gruppo multicast senza inviare report IGMP.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **group_address** Indirizzo del gruppo multicast IP di classe D da unire in ordine byte host.
-- **interface_index** Indice dell'interfaccia associata all'istanza di NetX Duo.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **group_address** Indirizzo del gruppo multicast IP di classe D da aggiungere nell'ordine dei byte dell'host.
+- **interface_index** Indice dell'interfaccia collegata all'istanza di NetX Duo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il join del gruppo multicast è riuscito.
-- **NX_NO_MORE_ENTRIES** (0x17) non è possibile unire in join più gruppi multicast. è stato superato il limite massimo.
-- **NX_PTR_ERROR** (0x07) puntatore non valido a un'istanza IP o l'istanza IP non è valida
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_EANABLED** (0X14) IGMP non è abilitato in questa istanza IP
-- L'indirizzo del gruppo multicast **NX_IP_ADDRESS_ERROR** (0x21) specificato non è un indirizzo di classe D valido.
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida.
+- **NX_SUCCESS** (0x00) Join a gruppi multicast riuscito.
+- **NX_NO_MORE_ENTRIES** (0x17) Non è possibile aggiungere altri gruppi multicast, il massimo è stato superato.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido all'istanza IP oppure l'istanza IP non è valida
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_EANABLED** IGMP (0x14) non è abilitato in questa istanza IP
+- **NX_IP_ADDRESS_ERROR** indirizzo del gruppo multicast (0x21) specificato non è un indirizzo di classe D valido.
+- **NX_INVALID_INTERFACE** (0x4C) L'indice del dispositivo punta a un'interfaccia di rete non valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -4333,7 +4333,7 @@ status = nx_ipv4_multicast_interface_join
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_ipv4_multicast_interface_leave"></a>nx_ipv4_multicast_interface_leave
-Lascia il gruppo multicast specificato tramite un'interfaccia
+Lasciare il gruppo multicast specificato tramite un'interfaccia
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4345,28 +4345,28 @@ UINT nx_ipv4_multicast_interface_leave(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio lascia il gruppo multicast specificato tramite un'interfaccia di rete specificata. Dopo aver lasciato il gruppo, il servizio non attiverà i messaggi IGMP generati.
+Questo servizio lascia il gruppo multicast specificato tramite un'interfaccia di rete specificata. Dopo aver lasciato il gruppo, questo servizio non attiva la generazione di messaggi IGMP.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **group_address** Indirizzo del gruppo multicast IP di classe D da lasciare. L'indirizzo IP è nell'ordine dei byte dell'host.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **group_address** Indirizzo del gruppo multicast IP di classe D da lasciare. L'indirizzo IP è in ordine di byte host.
 - **interface_index** Indice dell'interfaccia associata all'istanza di NetX Duo.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) il join del gruppo multicast è riuscito.
+- **NX_SUCCESS** (0x00) Aggiunta al gruppo multicast riuscita.
 - **NX_ENTRY_NOT_FOUND** (0x16) Impossibile trovare l'indirizzo del gruppo multicast specificato nella tabella multicast locale.
-- L'indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida.
-- L'indirizzo del gruppo multicast **NX_IP_ADDRESS_ERROR** (0x21) specificato non è un indirizzo di classe D valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) puntatore non valido a un'istanza IP o l'istanza IP non è valida
+- **NX_INVALID_INTERFACE** (0x4C) L'indice del dispositivo punta a un'interfaccia di rete non valida.
+- **NX_IP_ADDRESS_ERROR** (0x21) l'indirizzo del gruppo multicast specificato non è un indirizzo di classe D valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido all'istanza IP oppure l'istanza IP non è valida
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4397,7 +4397,7 @@ status = nx_ipv4_multicast_interface_leave
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nx_packet_allocate"></a>nx_packet_allocate
-Alloca pacchetto dal pool specificato
+Allocare il pacchetto dal pool specificato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4410,33 +4410,33 @@ UINT nx_packet_allocate(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca un pacchetto dal pool specificato e regola il puntatore anteposto nel pacchetto in base al tipo di pacchetto specificato. Se non è disponibile alcun pacchetto, il servizio viene sospeso in base all'opzione wait specificata.
+Questo servizio alloca un pacchetto dal pool specificato e regola il puntatore anteposto nel pacchetto in base al tipo di pacchetto specificato. Se non è disponibile alcun pacchetto, il servizio viene sospeso in base all'opzione di attesa fornita.
 
 ### <a name="parameters"></a>Parametri
 
 - **pool_ptr** Puntatore al pool di pacchetti creato in precedenza.
 - **packet_ptr** Puntatore al puntatore del puntatore del pacchetto allocato.
-- **packet_type** Definisce il tipo di pacchetto richiesto. Per un elenco dei tipi di pacchetti supportati, vedere "pool di pacchetti" nella pagina 63 del capitolo 3.
-- **WAIT_OPTION** Definisce il tempo di attesa in cicli se non sono disponibili pacchetti nel pool di pacchetti. Le opzioni di attesa sono definite come segue:
+- **packet_type** Definisce il tipo di pacchetto richiesto. Per un elenco dei tipi di pacchetti supportati, vedere "Pool di pacchetti" a pagina 63 nel capitolo 3.
+- **wait_option** Definisce il tempo di attesa in tick se non sono disponibili pacchetti nel pool di pacchetti. Le opzioni di attesa sono definite nel modo seguente:
   - **NX_NO_WAIT** (0x00000000)
   - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-  - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+  - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) allocare il pacchetto correttamente.
-- **NX_NO_PACKET** (0x01) non è disponibile alcun pacchetto.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- Le dimensioni del pacchetto **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non supportano il protocollo.
-- Il tipo di pacchetto **NX_OPTION_ERROR** (0X0A) non è valido.
-- **NX_PTR_ERROR** (0x07) il pool o il puntatore di ritorno al pacchetto non valido.
-- **NX_CALLER_ERROR** (0x11) opzione di attesa non valida da un thread non.
+- **NX_SUCCESS** (0x00) L'allocazione dei pacchetti è riuscita.
+- **NX_NO_PACKET** (0x01) Nessun pacchetto disponibile.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_INVALID_PARAMETERS** (0x4D) Le dimensioni del pacchetto non supportano il protocollo.
+- **NX_OPTION_ERROR** (0x0A) Tipo di pacchetto non valido.
+- **NX_PTR_ERROR** (0x07) Pool o puntatore restituito pacchetto non valido.
+- **NX_CALLER_ERROR** (0x11) Opzione di attesa non valida da non thread.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs (driver di rete dell'applicazione). L'opzione wait deve essere *NX_NO_WAIT* quando viene usata in ISR o nel contesto del timer.
+Inizializzazione, thread, timer e ISR (driver di rete dell'applicazione). L'opzione wait deve *essere NX_NO_WAIT* se usata in ISR o nel contesto del timer.
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4468,7 +4468,7 @@ status = nx_packet_allocate(&pool_0, &packet_ptr,
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_copy"></a>nx_packet_copy
-Copia pacchetto
+Copiare un pacchetto
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4481,35 +4481,35 @@ UINT nx_packet_copy(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Copia le informazioni del pacchetto fornito in uno o più nuovi pacchetti allocati dal pool di pacchetti fornito. In caso di esito positivo, il puntatore al nuovo pacchetto viene restituito nella destinazione a cui punta **new_packet_ptr**.
+Questo servizio copia le informazioni nel pacchetto fornito in uno o più nuovi pacchetti allocati dal pool di pacchetti fornito. In caso di esito positivo, il puntatore al nuovo pacchetto viene restituito nella destinazione a cui punta **new_packet_ptr**.
 
 ### <a name="parameters"></a>Parametri
 
 - **packet_ptr** Puntatore al pacchetto di origine.
 - **new_packet_ptr** Puntatore alla destinazione di dove restituire il puntatore alla nuova copia del pacchetto.
-- **pool_ptr** Puntatore al pool di pacchetti creato in precedenza usato per allocare uno o più pacchetti per la copia.
-- **WAIT_OPTION** Definisce il modo in cui il servizio resta in attesa se non sono disponibili pacchetti. Le opzioni di attesa sono definite come segue:
+- **pool_ptr** Puntatore al pool di pacchetti creato in precedenza utilizzato per allocare uno o più pacchetti per la copia.
+- **wait_option** Definisce il modo in cui il servizio attende se non sono disponibili pacchetti. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) copia di pacchetti riuscita.
-- Il pacchetto **NX_NO_PACKET** (0x01) non è disponibile per la copia.
-- Il pacchetto o la copia di origine vuota **NX_INVALID_PACKET** (0x12) non è riuscito.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- Le dimensioni del pacchetto **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non supportano il protocollo.
-- **NX_PTR_ERROR** (0x07) un pool, un pacchetto o un puntatore di destinazione non valido.
-- **NX_UNDERFLOW** (0x02) puntatore a anteporre il pacchetto non valido.
-- **NX_OVERFLOW** (0x03) puntatore di Accodamento pacchetti non valido.
-- **NX_CALLER_ERROR** (0x11) è stata specificata un'opzione Wait nell'inizializzazione o in un ISR.
+- **NX_SUCCESS** (0x00) Copia del pacchetto completata.
+- **NX_NO_PACKET** (0x01) Pacchetto non disponibile per la copia.
+- **NX_INVALID_PACKET** (0x12) Pacchetto di origine vuoto o copia non riuscita.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_INVALID_PARAMETERS** (0x4D) Le dimensioni del pacchetto non supportano il protocollo.
+- **NX_PTR_ERROR** (0x07) Pool, pacchetto o puntatore di destinazione non valido.
+- **NX_UNDERFLOW** (0x02) Puntatore anteposto pacchetto non valido.
+- **NX_OVERFLOW** (0x03) Puntatore di accodamento di pacchetti non valido.
+- **NX_CALLER_ERROR** (0x11) È stata specificata un'opzione di attesa nell'inizializzazione o in un ISR.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs
+Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -4540,7 +4540,7 @@ status = nx_packet_copy(old_packet, &new_copy_ptr, &pool_0, 20);
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_data_append"></a>nx_packet_data_append
-Accoda dati alla fine del pacchetto
+Accodare dati alla fine del pacchetto
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4553,36 +4553,36 @@ UINT nx_packet_data_append(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge i dati alla fine del pacchetto specificato. L'area dati fornita viene copiata nel pacchetto. Se la memoria disponibile non è sufficiente e la funzionalità per i pacchetti concatenati è abilitata, per soddisfare la richiesta verranno allocati uno o più pacchetti. Se la funzionalità di pacchetto concatenato non è abilitata, viene restituito *NX_SIZE_ERROR* .
+Questo servizio aggiunge i dati alla fine del pacchetto specificato. L'area dati fornita viene copiata nel pacchetto. Se la memoria disponibile non è sufficiente e la funzionalità dei pacchetti concatenati è abilitata, verranno allocati uno o più pacchetti per soddisfare la richiesta. Se la funzionalità dei pacchetti concatenati non è abilitata, *NX_SIZE_ERROR* viene restituito .
 
 ### <a name="parameters"></a>Parametri
 
-- **packet_ptr** Puntatore del pacchetto.
-- **DATA_START** Puntatore all'inizio dell'area dati dell'utente da accodare al pacchetto.
-- **DATA_SIZE** Dimensioni dell'area dati dell'utente.
-- **pool_ptr** Puntatore al pool di pacchetti da cui allocare un altro pacchetto se non c'è spazio sufficiente nel pacchetto corrente.
-- **WAIT_OPTION** Definisce il comportamento del servizio se non sono disponibili pacchetti. Le opzioni di attesa sono definite come segue:
+- **packet_ptr** Puntatore al pacchetto.
+- **data_start** Puntatore all'inizio dell'area dati dell'utente da aggiungere al pacchetto.
+- **data_size** Dimensioni dell'area dati dell'utente.
+- **pool_ptr** Puntatore al pool di pacchetti da cui allocare un altro pacchetto se lo spazio nel pacchetto corrente non è sufficiente.
+- **wait_option** Definisce il comportamento del servizio se non sono disponibili pacchetti. Le opzioni di attesa sono definite come segue:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Accodamento pacchetti riuscito.
-- **NX_NO_PACKET** (0x01) non è disponibile alcun pacchetto.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- Le dimensioni del pacchetto **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non supportano il protocollo.
-- Il puntatore **NX_UNDERFLOW** (0x02) Prepend è inferiore all'avvio del payload.
-- Il puntatore di Accodamento **NX_OVERFLOW** (0x03) è maggiore della fine del payload.
-- **NX_PTR_ERROR** (0x07) il pool, il pacchetto o il puntatore ai dati non valido.
-- Dimensioni dei dati **NX_SIZE_ERROR** (0x09) non valide.
-- **NX_CALLER_ERROR** (0x11) opzione di attesa non valida da un thread non.
+- **NX_SUCCESS** (0x00) Aggiunta pacchetti riuscita.
+- **NX_NO_PACKET** (0x01) Nessun pacchetto disponibile.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_INVALID_PARAMETERS** (0x4D) Le dimensioni del pacchetto non supportano il protocollo.
+- **NX_UNDERFLOW** (0x02) Il puntatore anteposto è minore dell'inizio del payload.
+- **NX_OVERFLOW** (0x03) Il puntatore Append è maggiore dell'estremità del payload.
+- **NX_PTR_ERROR** (0x07) Pool, pacchetto o puntatore dati non valido.
+- **NX_SIZE_ERROR** (0x09) Dimensioni dei dati non valide.
+- **NX_CALLER_ERROR** (0x11) Opzione di attesa non valida da nonthread.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs (driver di rete dell'applicazione)
+Inizializzazione, thread, timer e ISR (driver di rete dell'applicazione)
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -4612,7 +4612,7 @@ status = nx_packet_data_append(packet_ptr, "abcd", 4, &pool_0, 5);
 
 
 ## <a name="nx_packet_data_extract_offset"></a>nx_packet_data_extract_offset
-Estrai i dati dal pacchetto tramite un offset
+Estrarre dati dal pacchetto tramite un offset
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4626,27 +4626,27 @@ UINT nx_packet_data_extract_offset(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio copia i dati da un pacchetto NetX Duo (o catena di pacchetti) a partire dall'offset specificato, dal puntatore a prependi del pacchetto della dimensione specificata, in byte, nel buffer specificato. Il numero di byte effettivamente copiati viene restituito in *bytes_copied.* Questo servizio non rimuove i dati dal pacchetto, né modifica il puntatore anteposto o altre informazioni sullo stato interno.
+Questo servizio copia i dati da un pacchetto NetX Duo (o catena di pacchetti) a partire dall'offset specificato dal puntatore anteposto al pacchetto della dimensione specificata in byte nel buffer specificato. Il numero di byte effettivamente copiati viene restituito in *bytes_copied.* Questo servizio non rimuove i dati dal pacchetto né regola il puntatore anteposto o altre informazioni sullo stato interno.
 
 ### <a name="parameters"></a>Parametri
 
 - **packet_ptr** Puntatore al pacchetto da estrarre
-- **offset** Offset dal puntatore a anteporre corrente.
+- **offset** Offset dal puntatore anteposto corrente.
 - **buffer_start** Puntatore all'inizio del buffer di salvataggio
-- **BUFFER_LENGTH** Numero di byte da copiare
+- **buffer_length** Numero di byte da copiare
 - **bytes_copied** Numero di byte effettivamente copiati
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) copia di pacchetti riuscita
-- È stato specificato un valore di offset non valido **NX_PACKET_OFFSET_ERROR** (0x53)
-- **NX_PTR_ERROR** (0x07) puntatore a pacchetto o puntatore al buffer non valido
+- **NX_SUCCESS** (0x00) Copia del pacchetto riuscita
+- **NX_PACKET_OFFSET_ERROR** (0x53) È stato specificato un valore di offset non valido
+- **NX_PTR_ERROR** (0x07) Puntatore a pacchetto o puntatore al buffer non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs
+Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -4691,7 +4691,7 @@ Questo servizio copia i dati dal pacchetto fornito nel buffer fornito. Il numero
 Si noti che questo servizio non modifica lo stato interno del pacchetto. I dati recuperati sono ancora disponibili nel pacchetto. 
 
 > [!CAUTION]  
-> *Il buffer di destinazione deve essere sufficientemente grande da contenere il contenuto del pacchetto. In caso contrario, la memoria verrà danneggiata causando risultati imprevedibili*.
+> *Il buffer di destinazione deve essere sufficientemente grande da contenere il contenuto del pacchetto. In caso contrario, la memoria verrà danneggiata causando risultati imprevedibili.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -4701,15 +4701,15 @@ Si noti che questo servizio non modifica lo stato interno del pacchetto. I dati 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il recupero dei dati del pacchetto **NX_SUCCESS** (0x00) riuscito.
-- Il pacchetto **NX_INVALID_PACKET** (0X12) non è valido.
-- **NX_PTR_ERROR** (0x07) pacchetto non valido, avvio del buffer o puntatore di byte copiato.
+- **NX_SUCCESS** (0x00) Recupero dei dati del pacchetto riuscito.
+- **NX_INVALID_PACKET** (0x12) Pacchetto non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido per il pacchetto, l'avvio del buffer o i byte copiati.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs
+Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4741,7 +4741,7 @@ status = nx_packet_data_retrieve(packet_ptr, buffer, &bytes_copied);
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_length_get"></a>nx_packet_length_get
-Ottenere la lunghezza dei dati del pacchetto
+Ottenere la lunghezza dei dati dei pacchetti
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4761,14 +4761,14 @@ Questo servizio ottiene la lunghezza dei dati nel pacchetto specificato.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) ha completato la lunghezza del pacchetto Get.
-- **NX_PTR_ERROR** (0x07) puntatore al pacchetto non valido.
+- **NX_SUCCESS** (0x00) Ottiene la lunghezza del pacchetto riuscita.
+- **NX_PTR_ERROR** (0x07) Puntatore a pacchetto non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs
+Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4796,7 +4796,7 @@ status = nx_packet_length_get(my_packet, &my_length);
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_pool_create"></a>nx_packet_pool_create
-Crea pool di pacchetti nell'area di memoria specificata
+Creare un pool di pacchetti nell'area di memoria specificata
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4810,28 +4810,28 @@ UINT nx_packet_pool_create(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un pool di pacchetti con le dimensioni del pacchetto specificate nell'area di memoria fornita dall'utente.
+Questo servizio crea un pool di pacchetti delle dimensioni del pacchetto specificate nell'area di memoria fornita dall'utente.
 
 ### <a name="parameters"></a>Parametri
 
 - **pool_ptr** Puntatore al blocco di controllo del pool di pacchetti.
-- **nome** Puntatore al nome dell'applicazione per il pool di pacchetti.
-- **payload_size** Numero di byte in ogni pacchetto nel pool. Questo valore deve essere almeno di 40 byte e deve essere divisibile anche per 4.
+- **name** Puntatore al nome dell'applicazione per il pool di pacchetti.
+- **payload_size** Numero di byte in ogni pacchetto nel pool. Questo valore deve essere di almeno 40 byte e deve anche essere divisibile in modo uniforme per 4.
 - **memory_ptr** Puntatore all'area di memoria in cui inserire il pool di pacchetti. Il puntatore deve essere allineato su un limite ULONG.
 - **memory_size** Dimensioni dell'area di memoria del pool.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Creazione pool di pacchetti riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) il pool o il puntatore di memoria non valido.
-- **NX_SIZE_ERROR** (0x09) dimensione del blocco o della memoria non valida.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Creazione del pool di pacchetti riuscita.
+- **NX_PTR_ERROR** (0x07) Pool o puntatore di memoria non valido.
+- **NX_SIZE_ERROR** (0x09) Blocco o dimensione di memoria non valida.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4862,7 +4862,7 @@ status = nx_packet_pool_create(&pool_0, "Default Pool", 128,
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_pool_delete"></a>nx_packet_pool_delete
-Elimina pool di pacchetti creato in precedenza
+Eliminare il pool di pacchetti creato in precedenza
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -4871,23 +4871,23 @@ UINT  nx_packet_pool_delete(NX_PACKET_POOL *pool_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un pool di pacchetti creato in precedenza. NetX duo controlla la presenza di eventuali thread attualmente sospesi nei pacchetti nel pool di pacchetti e cancella la sospensione.
+Questo servizio elimina un pool di pacchetti creato in precedenza. NetX Duo verifica la presenza di thread attualmente sospesi sui pacchetti nel pool di pacchetti e cancella la sospensione.
 
 ### <a name="parameters"></a>Parametri
 
-- **pool_ptr** Puntatore al blocco di controllo del pool di pacchetti.
+- **pool_ptr** Puntatore a blocco di controllo del pool di pacchetti.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Eliminazione del pool di pacchetti riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al pool non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Eliminazione del pool di pacchetti completata.
+- **NX_PTR_ERROR** (0x07) Puntatore del pool non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -4932,31 +4932,31 @@ UINT nx_packet_pool_info_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera le informazioni sul pool di pacchetti specificato.
+Questo servizio recupera informazioni sul pool di pacchetti specificato.
 
 > [!IMPORTANT]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se un puntatore di destinazione NX_NULL, queste informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
 - **pool_ptr** Puntatore al pool di pacchetti creato in precedenza.
 - **total_packets** Puntatore alla destinazione per il numero totale di pacchetti nel pool.
 - **free_packets** Puntatore alla destinazione per il numero totale di pacchetti attualmente disponibili.
-- **empty_pool_requests** Puntatore alla destinazione del numero totale di richieste di allocazione quando il pool è vuoto.
-- **empty_pool_suspensions** Puntatore alla destinazione del numero totale di sospensioni del pool vuote.
-- **invalid_packet_releases** Puntatore alla destinazione del numero totale di versioni di pacchetti non valide.
+- **empty_pool_requests** Puntatore alla destinazione del numero totale di richieste di allocazione quando il pool era vuoto.
+- **empty_pool_suspensions** Puntatore alla destinazione del numero totale di sospensioni del pool vuoto.
+- **invalid_packet_releases** Puntatore alla destinazione del numero totale di versioni di pacchetti non validi.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Il recupero delle informazioni sul pool di pacchetti è stato completato **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni del pool di pacchetti riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread e timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4990,7 +4990,7 @@ status = nx_packet_pool_info_get(&pool_0,
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_pool_low_watermark_set"></a>nx_packet_pool_low_watermark_set
-Imposta limite minimo pool di pacchetti
+Impostare il limite minimo del pool di pacchetti
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5001,25 +5001,25 @@ UINT nx_packet_pool_low_watermark_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura il limite minimo per il pool di pacchetti specificato. Una volta impostato il valore limite minimo, TCP o UDP non accoda i pacchetti ricevuti se il numero di pacchetti disponibili nel pool di pacchetti è inferiore al limite minimo del pool di pacchetti, evitando che il pool di pacchetti venga privo di pacchetti. Questo servizio è disponibile se la libreria NetX Duo viene compilata con l'opzione ***NX_ENABLE_LOW_WATERMARK*** definita.
+Questo servizio configura il limite basso per il pool di pacchetti specificato. Dopo aver impostato il valore limite basso, TCP o UDP non accoderà i pacchetti ricevuti se il numero di pacchetti disponibili nel pool di pacchetti è inferiore al limite basso del pool di pacchetti, impedendo al pool di pacchetti di essere affamato di pacchetti. Questo servizio è disponibile se la libreria NetX Duo viene compilata con ***l'opzione NX_ENABLE_LOW_WATERMARK*** definita.
 
 ### <a name="parameters"></a>Parametri
 
 - **pool_ptr** Puntatore al blocco di controllo del pool di pacchetti.
-- **low_watermark** Valore limite minimo da configurare
+- **low_watermark** Valore limite basso da configurare
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente il valore limite minimo.
-- **NX_NOT_SUPPORTED** (0X4B) la funzionalità limite minimo non è incorporata in NETX Duo.
-- **NX_PTR_ERROR** (0x07) puntatore al pool non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Impostare correttamente il valore limite basso.
+- **NX_NOT_SUPPORTED** (0x4B) La funzionalità limite basso non è incorporata in NetX Duo.
+- **NX_PTR_ERROR** (0x07) Puntatore del pool non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -5048,7 +5048,7 @@ status = nx_packet_pool_create(&pool_0, 2);
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_release"></a>nx_packet_release
-Versione del pacchetto allocato in precedenza
+Rilasciare un pacchetto allocato in precedenza
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5057,27 +5057,27 @@ UINT nx_packet_release(NX_PACKET *packet_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rilascia un pacchetto, inclusi eventuali pacchetti aggiuntivi concatenati al pacchetto specificato. Se un altro thread è bloccato per l'allocazione dei pacchetti, riceve il pacchetto e lo riprende.
+Questo servizio rilascia un pacchetto, inclusi eventuali pacchetti aggiuntivi concatenati al pacchetto specificato. Se un altro thread viene bloccato all'allocazione dei pacchetti, il pacchetto viene assegnato e ripreso.
 
 > [!NOTE]  
-> *L'applicazione deve impedire il rilascio di un pacchetto più di una volta, perché questa operazione provocherà risultati imprevedibili*.
+> *L'applicazione deve impedire il rilascio di un pacchetto più di una volta, perché questa operazione causerà risultati imprevedibili.*
 
 ### <a name="parameters"></a>Parametri
 
-- **packet_ptr** Puntatore del pacchetto.
+- **packet_ptr** Puntatore al pacchetto.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) versione del pacchetto completata.
-- **NX_PTR_ERROR** (0x07) puntatore al pacchetto non valido.
-- Il puntatore **NX_UNDERFLOW** (0x02) Prepend è inferiore all'avvio del payload.
-- Il puntatore di Accodamento **NX_OVERFLOW** (0x03) è maggiore della fine del payload.
+- **NX_SUCCESS** (0x00) Rilascio pacchetti riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore a pacchetto non valido.
+- **NX_UNDERFLOW** (0x02) Il puntatore anteposto è minore dell'inizio del payload.
+- **NX_OVERFLOW** (0x03) Il puntatore Append è maggiore dell'estremità del payload.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs (driver di rete dell'applicazione)
+Inizializzazione, thread, timer e ISR (driver di rete dell'applicazione)
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -5106,7 +5106,7 @@ status = nx_packet_release(packet_ptr);
 - nx_packet_transmit_release
 
 ## <a name="nx_packet_transmit_release"></a>nx_packet_transmit_release
-Rilascia un pacchetto trasmesso
+Rilasciare un pacchetto trasmesso
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5115,27 +5115,27 @@ UINT nx_packet_transmit_release(NX_PACKET *packet_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Per i pacchetti non TCP, questo servizio rilascia un pacchetto trasmesso, inclusi eventuali pacchetti aggiuntivi concatenati al pacchetto specificato. Se un altro thread è bloccato per l'allocazione dei pacchetti, riceve il pacchetto e lo riprende. Per un pacchetto TCP trasmesso, il pacchetto è contrassegnato come trasmesso ma non rilasciato finché il pacchetto non viene riconosciuto. Questo servizio viene in genere chiamato dal driver di rete dell'applicazione dopo la trasmissione di un pacchetto.
+Per i pacchetti non TCP, questo servizio rilascia un pacchetto trasmesso, inclusi eventuali pacchetti aggiuntivi concatenati al pacchetto specificato. Se un altro thread viene bloccato all'allocazione dei pacchetti, il pacchetto viene assegnato e ripreso. Per un pacchetto TCP trasmesso, il pacchetto viene contrassegnato come trasmesso ma non rilasciato fino a quando il pacchetto non viene riconosciuto. Questo servizio viene in genere chiamato dal driver di rete dell'applicazione dopo la trasmissione di un pacchetto.
 
 > [!WARNING] 
-> *Il driver di rete deve rimuovere l'intestazione supporto fisico e regolare la lunghezza del pacchetto prima di chiamare il servizio*.
+> *Il driver di rete deve rimuovere l'intestazione del supporto fisico e regolare la lunghezza del pacchetto prima di chiamare questo servizio*.
 
 ### <a name="parameters"></a>Parametri
 
-- **packet_ptr** Puntatore del pacchetto.
+- **packet_ptr** Puntatore al pacchetto.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) ha completato la trasmissione del pacchetto.
-- **NX_PTR_ERROR** (0x07) puntatore al pacchetto non valido.
-- Il puntatore **NX_UNDERFLOW** (0x02) Prepend è inferiore all'avvio del payload.
-- Il puntatore di Accodamento **NX_OVERFLOW** (0x03) è maggiore della fine del payload.
+- **NX_SUCCESS** (0x00) Rilascio del pacchetto di trasmissione riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore a pacchetto non valido.
+- **NX_UNDERFLOW** (0x02) Il puntatore anteposto è minore dell'inizio del payload.
+- **NX_OVERFLOW** (0x03) Il puntatore Append è maggiore dell'estremità del payload.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer, driver di rete dell'applicazione (incluso ISRs)
+Inizializzazione, thread, timer, driver di rete dell'applicazione (inclusi gli ISR)
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -5165,7 +5165,7 @@ status = nx_packet_transmit_release(packet_ptr);
 - nx_packet_release
 
 ## <a name="nx_rarp_disable"></a>nx_rarp_disable
-Disabilitare il protocollo RARP (inverse Address Resolution Protocol)
+Disabilitare RARP (Reverse Address Resolution Protocol)
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5175,24 +5175,24 @@ UINT nx_rarp_disable(NX_IP *ip_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita il componente RARP di NetX Duo per l'istanza IP specifica. Per un sistema multihome, questo servizio Disabilita RARP su tutte le interfacce.
+Questo servizio disabilita il componente RARP di NetX Duo per l'istanza IP specifica. Per un sistema multihome, questo servizio disabilita RARP in tutte le interfacce.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) DISABILITAto RARP con esito positivo.
-- **NX_NOT_ENABLED** (0X14) RARP non è stato abilitato.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Riuscito RARP disabilitare.
+- **NX_NOT_ENABLED** raRP (0x14) non è stato abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5210,7 +5210,7 @@ status = nx_rarp_disable(&ip_0);
 - nx_rarp_info_get
 
 ## <a name="nx_rarp_enable"></a>nx_rarp_enable
-Abilita il protocollo RARP (Reverse Address Resolution Protocol)
+Abilitare RARP (Reverse Address Resolution Protocol)
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5219,25 +5219,25 @@ UINT nx_rarp_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita il componente RARP di NetX Duo per l'istanza IP specifica. Il componente RARP esegue la ricerca in tutte le interfacce di rete collegate per un indirizzo IP zero. Un indirizzo IP zero indica che l'interfaccia non è ancora stata assegnata all'indirizzo IP. RARP tenta di risolvere l'indirizzo IP abilitando il processo RARP su tale interfaccia.
+Questo servizio abilita il componente RARP di NetX Duo per l'istanza IP specifica. I componenti RARP cerca in tutte le interfacce di rete collegate l'indirizzo IP zero. Un indirizzo IP zero indica che l'interfaccia non ha ancora un'assegnazione di indirizzo IP. RARP tenta di risolvere l'indirizzo IP abilitando il processo RARP su tale interfaccia.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Abilitazione di **NX_SUCCESS** (0x00) RARP riuscita.
-- L'indirizzo IP **NX_IP_ADDRESS_ERROR** (0x21) è già valido.
-- **NX_ALREADY_ENABLED** (0X15) RARP è già abilitato.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) L'opzione RARP è stata abilitata.
+- **NX_IP_ADDRESS_ERROR(0x21)** è già valido.
+- **NX_ALREADY_ENABLED** (0x15) RARP era già abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5272,27 +5272,27 @@ UINT nx_rarp_info_get(
 Questo servizio recupera informazioni sulle attività RARP per l'istanza IP specificata.
 
 > [!IMPORTANT]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se viene utilizzato un puntatore NX_NULL destinazione, le informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **rarp_requests_sent** Puntatore alla destinazione per il numero totale di richieste RARP inviate.
 - **rarp_responses_received** Puntatore alla destinazione per il numero totale di risposte RARP ricevute.
 - **rarp_invalid_messages** Puntatore alla destinazione del numero totale di messaggi non validi.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il recupero delle informazioni RARP riuscito **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni RARP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5323,7 +5323,7 @@ VOID nx_system_initialize(VOID);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Inizializza le risorse di sistema di base di NetX Duo in preparazione per l'uso. Deve essere chiamata dall'applicazione durante l'inizializzazione e prima che venga eseguita qualsiasi altra chiamata a NetX Duo.
+Questo servizio inizializza le risorse di sistema NetX Duo di base in preparazione all'uso. Deve essere chiamato dall'applicazione durante l'inizializzazione e prima che venga effettuata qualsiasi altra chiamata a NetX Duo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -5331,13 +5331,13 @@ nessuno
 
 ### <a name="return-values"></a>Valori restituiti
 
-nessuno
+Nessuno
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer, ISRs
+Inizializzazione, thread, timer, ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5379,7 +5379,7 @@ nx_system_initialize();
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nx_tcp_client_socket_bind"></a>nx_tcp_client_socket_bind
-Associa socket TCP client a porta TCP
+Associare il socket TCP del client alla porta TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5391,34 +5391,34 @@ UINT nx_tcp_client_socket_bind(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio associa il socket client TCP creato in precedenza alla porta TCP specificata. I socket TCP validi sono compresi tra 0 e 0xFFFF. Se la porta TCP specificata non è disponibile, il servizio viene sospeso in base all'opzione di attesa fornita.
+Questo servizio associa il socket client TCP creato in precedenza alla porta TCP specificata. I socket TCP validi sono compreso tra 0 e 0xFFFF. Se la porta TCP specificata non è disponibile, il servizio viene sospeso in base all'opzione di attesa fornita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP creata in precedenza.
-- numero di **porta di porta** da associare (da 1 a 0xFFFF). Se il numero di porta è NX_ANY_PORT (0x0000), l'istanza IP cercherà la porta libera successiva e la utilizzerà per l'associazione.
-- **WAIT_OPTION** Definisce il comportamento del servizio se la porta è già associata a un altro socket. Le opzioni di attesa sono definite come segue:
+- **socket_ptr** Puntatore all'istanza del socket TCP creata in precedenza.
+- **numero di porta** da associare (da 1 a 0xFFFF). Se il numero di porta NX_ANY_PORT (0x0000), l'istanza IP cerca la porta libera successiva e la usa per l'associazione.
+- **wait_option** Definisce il comportamento del servizio se la porta è già associata a un altro socket. Le opzioni di attesa sono definite come segue:
 - **NX_NO_WAIT** (0x00000000)
 - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-- **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+- **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) associazione Socket riuscita.
-- **NX_ALREADY_BOUND** (0X22) questo socket è già associato a un'altra porta TCP.
-- La porta **NX_PORT_UNAVAILABLE** (0x23) è già associata a un socket diverso.
-- **NX_NO_FREE_PORTS** (0X45) non è disponibile alcuna porta.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- La porta **NX_INVALID_PORT** (0x46) non è valida.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Associazione socket riuscita.
+- **NX_ALREADY_BOUND** (0x22) Questo socket è già associato a un'altra porta TCP.
+- **NX_PORT_UNAVAILABLE** porta (0x23) è già associata a un socket diverso.
+- **NX_NO_FREE_PORTS** (0x45) Nessuna porta disponibile.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_INVALID_PORT** (0x46) Porta non valida.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5458,7 +5458,7 @@ status = nx_tcp_client_socket_bind(&client_socket, 12, 7);
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_client_socket_connect"></a>nx_tcp_client_socket_connect
-Connetti socket TCP client
+Connessione socket TCP del client
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5471,37 +5471,37 @@ UINT nx_tcp_client_socket_connect(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio connette il socket client TCP precedentemente creato e associato alla porta del server specificato. Le porte del server TCP valide sono comprese tra 0 e 0xFFFF. Se la connessione non viene completata immediatamente, il servizio viene sospeso in base all'opzione wait specificata.
+Questo servizio connette il socket client TCP creato in precedenza e associato alla porta del server specificato. Le porte del server TCP valide sono da 0 a 0xFFFF. Se la connessione non viene completata immediatamente, il servizio viene sospeso in base all'opzione di attesa fornita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP creata in precedenza.
+- **socket_ptr** Puntatore all'istanza del socket TCP creata in precedenza.
 - **server_ip** Indirizzo IP del server.
-- **SERVER_PORT** Numero di porta del server a cui connettersi * * (da 1 a 0xFFFF).
-- **WAIT_OPTION** Definisce il comportamento del servizio mentre viene stabilita la connessione. Le opzioni di attesa sono definite come segue:
+- **server_port** Numero di porta del server a cui connettersi** (da 1 a 0xFFFF).
+- **wait_option** Definisce il comportamento del servizio mentre viene stabilita la connessione. Le opzioni di attesa sono definite come segue:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) connessione socket riuscita.
-- Il socket **NX_NOT_BOUND** (0x24) non è associato.
-- Il socket **NX_NOT_CLOSED** (0x35) non è in uno stato chiuso.
-- **NX_IN_PROGRESS** (0x37) non è stata specificata alcuna attesa. il tentativo di connessione è in corso.
-- Non è stata specificata l'interfaccia **NX_INVALID_INTERFACE** (0x4C).
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP del server non valido.
-- La porta **NX_INVALID_PORT** (0x46) non è valida.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Connessione socket riuscita.
+- **NX_NOT_BOUND** (0x24) Socket non è associato.
+- **NX_NOT_CLOSED** socket (0x35) non è chiuso.
+- **NX_IN_PROGRESS** (0x37) Non è stata specificata alcuna attesa, il tentativo di connessione è in corso.
+- **NX_INVALID_INTERFACE** (0x4C) È stata specificata un'interfaccia non valida.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP del server non valido.
+- **NX_INVALID_PORT** (0x46) Porta non valida.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5546,7 +5546,7 @@ status = nx_tcp_client_socket_connect(&client_socket,
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_client_socket_port_get"></a>nx_tcp_client_socket_port_get
-Ottenere il numero di porta associato al socket TCP client
+Ottenere il numero di porta associato al socket TCP del client
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5557,26 +5557,26 @@ UINT nx_tcp_client_socket_port_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il numero di porta associato al socket, che è utile per trovare la porta allocata da NetX Duo nelle situazioni in cui il NX_ANY_PORT è stato specificato al momento dell'associazione del socket.
+Questo servizio recupera il numero di porta associato al socket, utile per trovare la porta allocata da NetX Duo nelle situazioni in cui il NX_ANY_PORT è stato specificato al momento dell'associazione del socket.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP creata in precedenza.
-- **port_ptr** Puntatore alla destinazione per il numero di porta restituito. I numeri di porta validi sono compresi tra 1 e 0xFFFF.
+- **socket_ptr** Puntatore all'istanza del socket TCP creata in precedenza.
+- **port_ptr** Puntatore alla destinazione per il numero di porta restituito. I numeri di porta validi sono (da 1 a 0xFFFF).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) associazione Socket riuscita.
-- **NX_NOT_BOUND** (0X24) questo socket non è associato a una porta.
-- **NX_PTR_ERROR** (0x07) puntatore a socket non valido o puntatore a porta restituita.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Associazione socket riuscita.
+- **NX_NOT_BOUND** (0x24) Questo socket non è associato a una porta.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido o puntatore di porta restituito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5616,7 +5616,7 @@ status = nx_tcp_client_socket_port_get(&client_socket, &port);
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_client_socket_unbind"></a>nx_tcp_client_socket_unbind
-Annulla Binding socket client TCP dalla porta TCP
+Disassociare il socket client TCP dalla porta TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5629,22 +5629,22 @@ Questo servizio rilascia l'associazione tra il socket client TCP e una porta TCP
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP creata in precedenza.
+- **socket_ptr** Puntatore all'istanza del socket TCP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- La disassociazione del socket è riuscita **NX_SUCCESS** (0x00).
-- Il socket **NX_NOT_BOUND** (0x24) non è stato associato ad alcuna porta.
-- Il socket **NX_NOT_CLOSED** (0x35) non è stato disconnesso.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Socket completato.
+- **NX_NOT_BOUND** (0x24) Socket non è stato associato ad alcuna porta.
+- **NX_NOT_CLOSED** socket (0x35) non è stato disconnesso.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -5683,7 +5683,7 @@ status = nx_tcp_client_socket_unbind(&client_socket);
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_enable"></a>nx_tcp_enable
-Abilita il componente TCP di NetX Duo
+Abilitare il componente TCP di NetX Duo
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5692,24 +5692,24 @@ UINT nx_tcp_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita il componente Transmission Control Protocol (TCP) di NetX Duo. Dopo l'abilitazione, le connessioni TCP possono essere stabilite dall'applicazione.
+Questo servizio abilita il Transmission Control Protocol (TCP) di NetX Duo. Dopo l'abilito, le connessioni TCP possono essere stabilite dall'applicazione.
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) abilitato per TCP.
-- **NX_ALREADY_ENABLED** (0X15) TCP è già abilitato.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) TCP riuscito.
+- **NX_ALREADY_ENABLED** tcp (0x15) è già abilitato.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5747,7 +5747,7 @@ status = nx_tcp_enable(&ip_0);
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_free_port_find"></a>nx_tcp_free_port_find
-Trova la porta TCP successiva disponibile
+Trovare la porta TCP successiva disponibile
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5759,31 +5759,31 @@ UINT nx_tcp_free_port_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di individuare una porta TCP gratuita (senza binding) a partire dalla porta fornita dall'applicazione. La logica di ricerca eseguirà il wrapping se la ricerca viene eseguita per raggiungere il valore di porta massimo di 0xFFFF. Se la ricerca ha esito positivo, la porta libera viene restituita nella variabile a cui punta *free_port_ptr*.
+Questo servizio tenta di individuare una porta TCP libera (non in ingresso) a partire dalla porta fornita dall'applicazione. La logica di ricerca va a capo se la ricerca raggiunge il valore massimo della porta 0xFFFF. Se la ricerca ha esito positivo, la porta libera viene restituita nella variabile a cui punta *free_port_ptr*.
 
 > [!WARNING]  
-> *Questo servizio può essere chiamato da un altro thread e deve essere restituita la stessa porta. Per evitare questo race condition, è possibile che l'applicazione inserisca il servizio e che il socket client effettivo venga associato sotto la protezione di un mutex*.
+> *Questo servizio può essere chiamato da un altro thread e restituire la stessa porta. Per evitare questo race condition,* l'applicazione potrebbe voler inserire questo servizio e l'effettiva associazione socket client sotto la protezione di un mutex.
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **porta** Numero di porta da cui iniziare la ricerca (da 1 a 0xFFFF).
 - **free_port_ptr** Puntatore al valore restituito della porta libera di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) riuscite dalla porta libera.
-- **NX_NO_FREE_PORTS** (0X45) non sono state trovate porte gratuite.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- **NX_INVALID_PORT** (0x46) il numero di porta specificato non è valido.
+- **NX_SUCCESS** (0x00) Ricerca porta libera riuscita.
+- **NX_NO_FREE_PORTS** (0x45) Nessuna porta disponibile trovata.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_INVALID_PORT** (0x46) Il numero di porta specificato non è valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5847,11 +5847,11 @@ UINT nx_tcp_info_get(
 Questo servizio recupera informazioni sulle attività TCP per l'istanza IP specificata.
 
 > [!IMPORTANT]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se viene utilizzato un puntatore NX_NULL destinazione, le informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **tcp_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti TCP inviati.
 - **tcp_bytes_sent** Puntatore alla destinazione per il numero totale di byte TCP inviati.
 - **tcp_packets_received** Puntatore alla destinazione del numero totale di pacchetti TCP ricevuti.
@@ -5866,16 +5866,16 @@ Questo servizio recupera informazioni sulle attività TCP per l'istanza IP speci
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Il recupero delle informazioni TCP riuscite **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni TCP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5925,7 +5925,7 @@ status = nx_tcp_info_get(&ip_0,
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_server_socket_accept"></a>nx_tcp_server_socket_accept
-Accetta connessione TCP
+Accettare la connessione TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -5936,37 +5936,37 @@ UINT nx_tcp_server_socket_accept(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio accetta o prepara l'accettazione di una richiesta di connessione socket client TCP per una porta precedentemente configurata per l'ascolto. Questo servizio può essere chiamato immediatamente dopo che l'applicazione chiama il servizio di ascolto o di riascolto o dopo che la routine di callback di ascolto viene chiamata quando la connessione client è effettivamente presente. Se non è possibile stabilire una connessione immediatamente, il servizio viene sospeso in base all'opzione wait specificata.
+Questo servizio accetta (o si prepara ad accettare) una richiesta di connessione socket client TCP per una porta precedentemente impostata per l'ascolto. Questo servizio può essere chiamato immediatamente dopo che l'applicazione chiama il servizio di ascolto o di ascolto oppure dopo che la routine di callback di ascolto viene chiamata quando la connessione client è effettivamente presente. Se non è possibile stabilire subito una connessione, il servizio viene sospeso in base all'opzione di attesa fornita.
 
 > [!WARNING]  
-> *L'applicazione deve chiamare **nx_tcp_server_socket_unaccept** dopo che la connessione non è più necessaria per rimuovere l'associazione del socket server alla porta del server*.
+> *L'applicazione deve **nx_tcp_server_socket_unaccept** dopo che la connessione* non è più necessaria per rimuovere l'associazione del socket del server alla porta del server .
 
 > [!IMPORTANT]  
-> *Le routine di callback dell'applicazione vengono chiamate dall'interno del thread helper dell'IP*.
+> *Le routine di callback dell'applicazione vengono chiamate dall'interno del thread helper dell'indirizzo IP.*
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al blocco di controllo socket del server TCP.
-- **WAIT_OPTION** Definisce il comportamento del servizio mentre viene stabilita la connessione. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce il comportamento del servizio mentre viene stabilita la connessione. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) accettazione socket server TCP riuscita (connessione passiva).
-- **NX_NOT_LISTEN_STATE** (0X36) il socket del server specificato non è in uno stato di attesa.
-- **NX_IN_PROGRESS** (0x37) non è stata specificata alcuna attesa. il tentativo di connessione è in corso.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- Errore del puntatore del socket **NX_PTR_ERROR** (0x07).
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Accettazione socket del server TCP (connessione passiva) riuscita.
+- **NX_NOT_LISTEN_STATE** (0x36) Il socket del server fornito non è in stato di ascolto.
+- **NX_IN_PROGRESS** (0x37) Non è stata specificata alcuna attesa, il tentativo di connessione è in corso.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_PTR_ERROR** (0x07) Errore del puntatore del socket.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -6094,7 +6094,7 @@ UINT status, i;
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_server_socket_listen"></a>nx_tcp_server_socket_listen
-Abilita l'ascolto della connessione client sulla porta TCP
+Abilitare l'ascolto per la connessione client sulla porta TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -6107,40 +6107,40 @@ UINT nx_tcp_server_socket_listen(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente l'attesa di una richiesta di connessione client sulla porta TCP specificata. Quando viene ricevuta una richiesta di connessione client, il socket del server fornito viene associato alla porta specificata e viene chiamata la funzione di callback di ascolto fornita.
+Questo servizio abilita l'ascolto di una richiesta di connessione client sulla porta TCP specificata. Quando viene ricevuta una richiesta di connessione client, il socket del server fornito viene associato alla porta specificata e viene chiamata la funzione di callback di ascolto fornita.
 
-L'elaborazione della routine di callback di ascolto è stata completata fino all'applicazione. Può contenere la logica per riattivare un thread dell'applicazione che esegue successivamente un'operazione Accept. Se l'applicazione dispone già di un thread sospeso durante l'accettazione dell'elaborazione per questo socket, la routine di callback di ascolto potrebbe non essere necessaria.
+L'elaborazione della routine di callback di ascolto è completamente all'applicazione. Può contenere logica per riattivare un thread dell'applicazione che successivamente esegue un'operazione di accettazione. Se l'applicazione ha già un thread sospeso durante l'elaborazione di accettazione per questo socket, la routine di callback di ascolto potrebbe non essere necessaria.
 
-Se l'applicazione desidera gestire connessioni client aggiuntive sulla stessa porta, il ***nx_tcp_server_socket_relisten*** deve essere chiamato con un socket disponibile (un socket nello stato Closed) per la connessione successiva. Fino a quando non viene chiamato il servizio di riascolto, le connessioni client aggiuntive vengono accodate. Quando viene superata la profondità massima della coda, la richiesta di connessione meno recente viene eliminata a favore dell'accodamento della nuova richiesta di connessione. La profondità massima della coda è specificata da questo servizio.
+Se l'applicazione vuole gestire connessioni client aggiuntive sulla stessa porta, il ***nx_tcp_server_socket_relisten*** deve essere chiamato con un socket disponibile (un socket nello stato CLOSED) per la connessione successiva. Fino a quando non viene chiamato il servizio di ri ascolto, vengono accodati ulteriori connessioni client. Quando viene superata la profondità massima della coda, la richiesta di connessione meno recente viene eliminata a favore dell'accodamento della nuova richiesta di connessione. La profondità massima della coda viene specificata da questo servizio.
 
 > [!IMPORTANT]  
-> *Le routine di callback dell'applicazione vengono chiamate dal thread di supporto IP interno*.
+> *Le routine di callback dell'applicazione vengono chiamate dal thread helper IP interno.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **porta** Numero di porta su cui restare in ascolto (da 1 a 0xFFFF).
 - **socket_ptr** Puntatore al socket da utilizzare per la connessione.
-- **listen_queue_size** Numero di richieste di connessione client che possono essere accodate.
-- **Listen_Callback** Funzione dell'applicazione da chiamare quando viene ricevuta la connessione. Se viene specificato un valore NULL, la funzionalità di callback di ascolto è disabilitata.
+- **listen_queue_size** Numero di richieste di connessione client che possono essere accodati.
+- **listen_callback** Funzione dell'applicazione da chiamare quando viene ricevuta la connessione. Se viene specificato un valore NULL, la funzionalità di callback di ascolto è disabilitata.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) la porta TCP abilitata per l'ascolto è riuscita.
-- **NX_MAX_LISTEN** (0X33) non sono disponibili altre strutture di richiesta di ascolto. La costante NX_MAX_LISTEN_REQUESTS in **_nx_api. h_** definisce il numero di richieste di ascolto attive possibili.
-- **NX_NOT_CLOSED** (0x35) il socket server specificato non si trova in uno stato chiuso.
-- **NX_ALREADY_BOUND** (0X22) il socket del server specificato è già associato a una porta.
-- **NX_DUPLICATE_LISTEN** (0x34) è già presente una richiesta di ascolto attiva per questa porta.
-- La porta **NX_INVALID_PORT** (0x46) specificata non è valida.
-- **NX_PTR_ERROR** (0x07) un puntatore IP o socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Abilitare l'ascolto porta TCP riuscita.
+- **NX_MAX_LISTEN** (0x33) Non sono disponibili altre strutture di richiesta di ascolto. La costante NX_MAX_LISTEN_REQUESTS in **_nx_api.h_** definisce il numero di richieste di ascolto attive possibili.
+- **NX_NOT_CLOSED** (0x35) Il socket del server fornito non è in stato chiuso.
+- **NX_ALREADY_BOUND** (0x22) Il socket del server fornito è già associato a una porta.
+- **NX_DUPLICATE_LISTEN** (0x34) Esiste già una richiesta di ascolto attiva per questa porta.
+- **NX_INVALID_PORT** (0x46) È stata specificata una porta non valida.
+- **NX_PTR_ERROR** (0x07) Puntatore IP o socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -6268,7 +6268,7 @@ UINT status, i;
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_server_socket_relisten"></a>nx_tcp_server_socket_relisten
-Re-ascolto della connessione client sulla porta TCP
+Riascolta la connessione client sulla porta TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -6280,34 +6280,34 @@ UINT nx_tcp_server_socket_relisten(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio viene chiamato dopo la ricezione di una connessione su una porta che è stata impostata in precedenza per l'ascolto. Lo scopo principale di questo servizio è fornire un nuovo socket server per la successiva connessione client. Se una richiesta di connessione viene accodata, la connessione verrà elaborata immediatamente durante la chiamata al servizio.
+Questo servizio viene chiamato dopo la ricezione di una connessione su una porta precedentemente impostata per l'ascolto. Lo scopo principale di questo servizio è fornire un nuovo socket del server per la connessione client successiva. Se una richiesta di connessione viene accodata, la connessione verrà elaborata immediatamente durante questa chiamata al servizio.
 
 > [!IMPORTANT]  
-> *La stessa routine di callback specificata dalla richiesta di ascolto originale viene chiamata anche quando è presente una connessione per questo nuovo socket del server*.
+> *La stessa routine di callback specificata dalla richiesta di ascolto originale* viene chiamata anche quando è presente una connessione per questo nuovo socket del server.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **porta** Numero di porta su cui eseguire di nuovo l'ascolto (da 1 a 0xFFFF).
-- **socket_ptr** Socket da utilizzare per la connessione client successiva.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **porta** Numero di porta su cui eseguire nuovamente l'ascolto (da 1 a 0xFFFF).
+- **socket_ptr** Socket da usare per la connessione client successiva.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) la porta TCP riascoltata è riuscita.
-- **NX_NOT_CLOSED** (0x35) il socket server specificato non si trova in uno stato chiuso.
-- **NX_ALREADY_BOUND** (0X22) il socket del server specificato è già associato a una porta.
-- **NX_INVALID_RELISTEN** (0x47) è già presente un puntatore socket valido per questa porta oppure la porta specificata non ha una richiesta di ascolto attiva.
-- **NX_CONNECTION_PENDING** (0X48) uguale NX_SUCCESS, ad eccezione del fatto che è stata eseguita una richiesta di connessione in coda ed è stata elaborata durante questa chiamata.
-- La porta **NX_INVALID_PORT** (0x46) specificata non è valida.
-- **NX_PTR_ERROR** (0x07) un IP non valido o un puntatore di callback di ascolto.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Riascolta porta TCP riuscita.
+- **NX_NOT_CLOSED** (0x35) Il socket del server fornito non è in stato chiuso.
+- **NX_ALREADY_BOUND** (0x22) Il socket del server fornito è già associato a una porta.
+- **NX_INVALID_RELISTEN** (0x47) È già presente un puntatore socket valido per questa porta o la porta specificata non ha una richiesta di ascolto attiva.
+- **NX_CONNECTION_PENDING** (0x48) Uguale a NX_SUCCESS, ad eccezione della richiesta di connessione in coda che è stata elaborata durante questa chiamata.
+- **NX_INVALID_PORT** (0x46) È stata specificata una porta non valida.
+- **NX_PTR_ERROR** (0x07) Ip non valido o puntatore di callback di ascolto.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -6437,7 +6437,7 @@ UINT status, i;
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_server_socket_unaccept"></a>nx_tcp_server_socket_unaccept
-Rimuovi associazione socket con porta di ascolto
+Rimuovere l'associazione socket con la porta di ascolto
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -6446,25 +6446,25 @@ UINT nx_tcp_server_socket_unaccept(NX_TCP_SOCKET *socket_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove l'associazione tra questo socket server e la porta del server specificata. L'applicazione deve chiamare questo servizio dopo una disconnessione o dopo una chiamata Accept non riuscita.
+Questo servizio rimuove l'associazione tra questo socket del server e la porta del server specificata. L'applicazione deve chiamare questo servizio dopo una disconnessione o dopo una chiamata accept non riuscita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore all'istanza del socket del server di installazione precedente.
+- **socket_ptr** Puntatore all'istanza del socket del server precedentemente impostata.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Impossibile accettare il socket server riuscito **NX_SUCCESS** (0x00).
-- Il socket del server **NX_NOT_LISTEN_STATE** (0x36) si trova in uno stato non valido e probabilmente non è disconnesso.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Socket del server non cept riuscito.
+- **NX_NOT_LISTEN_STATE** (0x36) Il socket del server si trova in uno stato non corretto e probabilmente non è disconnesso.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -6602,27 +6602,27 @@ UINT nx_tcp_server_socket_unlisten(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita l'attesa di una richiesta di connessione client sulla porta TCP specificata.
+Questo servizio disabilita l'ascolto di una richiesta di connessione client sulla porta TCP specificata.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **porta** Numero di porta da disabilitare in ascolto (da 0 a 0xFFFF).
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **porta** Numero di porte per disabilitare l'ascolto (da 0 a 0xFFFF).
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) la disabilitazione dell'ascolto TCP è riuscita.
-- L'attesa **NX_ENTRY_NOT_FOUND** (0x16) non è stata abilitata per la porta specificata.
-- La porta **NX_INVALID_PORT** (0x46) specificata non è valida.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) L'ascolto TCP riuscito è disabilitato.
+- **NX_ENTRY_NOT_FOUND** (0x16) L'ascolto non è stato abilitato per la porta specificata.
+- **NX_INVALID_PORT** (0x46) È stata specificata una porta non valida.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -6765,22 +6765,22 @@ Questo servizio ottiene il numero di byte disponibili per il recupero nel socket
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore al socket TCP precedentemente creato e connesso.
-- **bytes_available** Puntatore alla destinazione per byte disponibili.
+- **socket_ptr** Puntatore al socket TCP creato in precedenza e connesso.
+- **bytes_available** Puntatore alla destinazione per i byte disponibili.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il servizio **NX_SUCCESS** (0x00) viene eseguito correttamente. Il numero di byte disponibili per la lettura viene restituito al chiamante.
-- Il socket **NX_NOT_CONNECTED** (0x38) non si trova in uno stato connesso.
-- **NX_PTR_ERROR** (0x07) puntatori non validi.
-- **NX_NOT_ENABLED** TCP (0x14) non è abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) viene eseguito correttamente. Il numero di byte disponibili per la lettura viene restituito al chiamante.
+- **NX_NOT_CONNECTED** socket (0x38) non è connesso.
+- **NX_PTR_ERROR** (0x07) Puntatori non validi.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitato.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -6819,7 +6819,7 @@ status = nx_tcp_socket_bytes_available(&my_socket,&bytes_available);
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_socket_create"></a>nx_tcp_socket_create
-Creazione di un client TCP o di un server socket
+Creare un socket client o server TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -6837,41 +6837,41 @@ UINT nx_tcp_socket_create(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un client TCP o un socket server per l'istanza IP specificata.
+Questo servizio crea un socket client o server TCP per l'istanza IP specificata.
 
 > [!NOTE]  
-> *Le routine di callback dell'applicazione vengono chiamate dal thread associato a questa istanza IP*.
+> *Le routine di callback dell'applicazione vengono chiamate dal thread associato a questa istanza IP.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **socket_ptr** Puntatore al nuovo blocco di controllo socket TCP.
-- **nome** Nome dell'applicazione per questo socket TCP.
-- **Type_of_Service** Definisce il tipo di servizio per la trasmissione. i valori validi sono i seguenti:
+- **name** Nome dell'applicazione per questo socket TCP.
+- **type_of_service** Definisce il tipo di servizio per la trasmissione, i valori validi sono i seguenti:
     - **NX_IP_NORMAL** (0x00000000)
     - **NX_IP_MIN_DELAY** (0x00100000)
     - **NX_IP_MAX_DATA** (0x00080000)
     - **NX_IP_MAX_RELIABLE** (0x00040000)
     - **NX_IP_MIN_COST** (0x00020000)
-- **frammento** Specifica se la frammentazione IP è consentita o meno. Se viene specificato NX_FRAGMENT_OKAY * * (0x0), è consentita la frammentazione IP. Se viene specificato NX_DONT_FRAGMENT (0x4000), la frammentazione IP è disabilitata.
-- **Time_to_live** Specifica il valore a 8 bit che definisce il numero di router che questo pacchetto può superare prima di essere eliminato. Il valore predefinito è specificato dal NX_IP_TIME_TO_LIVE.
+- **frammento** Specifica se è consentita o meno la frammentazione IP. Se NX_FRAGMENT_OKAY** (0x0), la frammentazione IP è consentita. Se NX_DONT_FRAGMENT (0x4000), la frammentazione IP è disabilitata.
+- **time_to_live** Specifica il valore a 8 bit che definisce il numero di router che questo pacchetto può passare prima di essere buttato via. Il valore predefinito viene specificato da NX_IP_TIME_TO_LIVE.
 - **window_size** Definisce il numero massimo di byte consentiti nella coda di ricezione per questo socket
 - **urgent_data_callback** Funzione dell'applicazione che viene chiamata ogni volta che vengono rilevati dati urgenti nel flusso di ricezione. Se questo valore è NX_NULL, i dati urgenti vengono ignorati.
-- **disconnect_callback** Funzione dell'applicazione che viene chiamata ogni volta che una disconnessione viene emessa dal socket all'altra estremità della connessione. Se questo valore è NX_NULL, la funzione di callback di disconnessione è disabilitata.
+- **disconnect_callback** Funzione dell'applicazione che viene chiamata ogni volta che viene stabilita una disconnessione dal socket all'altra estremità della connessione. Se questo valore è NX_NULL, la funzione di callback di disconnessione è disabilitata.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Creazione socket client TCP riuscita **NX_SUCCESS** (0x00).
-- **NX_OPTION_ERROR** (0x0A) tipo di servizio non valido, frammento, dimensioni della finestra non valide o opzione Time-tolive.
-- **NX_PTR_ERROR** (0x07) un puntatore IP o socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Creazione del socket client TCP riuscita.
+- **NX_OPTION_ERROR** (0x0A) Tipo di servizio, frammento, dimensione della finestra non valida o opzione time-to-live non valida.
+- **NX_PTR_ERROR** (0x07) Puntatore IP o socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -6918,7 +6918,7 @@ status = nx_tcp_socket_create(&ip_0, &client_socket,
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_socket_delete"></a>nx_tcp_socket_delete
-Elimina socket TCP
+Eliminare un socket TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -6928,7 +6928,7 @@ UINT nx_tcp_socket_delete(NX_TCP_SOCKET *socket_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un socket TCP creato in precedenza. Se il socket è ancora associato o connesso, il servizio restituisce un codice di errore.
+Questo servizio elimina un socket TCP creato in precedenza. Se il socket è ancora associato o connesso, il servizio restituisce un codice di errore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -6936,18 +6936,18 @@ Questo servizio Elimina un socket TCP creato in precedenza. Se il socket è anco
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione del socket riuscita **NX_SUCCESS** (0x00).
-- Il socket **NX_NOT_CREATED** (0x27) non è stato creato.
-- Il socket **NX_STILL_BOUND** (0x42) è ancora associato.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Eliminazione del socket riuscita.
+- **NX_NOT_CREATED** (0x27) Socket non è stato creato.
+- **NX_STILL_BOUND** (0x42) Il socket è ancora associato.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -6996,31 +6996,31 @@ UINT nx_tcp_socket_disconnect(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio disconnette una connessione client o socket server stabilita. Una disconnessione di un socket del server deve essere seguita da una richiesta di non accettazione, mentre un socket client disconnesso viene lasciato in uno stato pronto per un'altra richiesta di connessione. Se non è possibile completare immediatamente il processo di disconnessione, il servizio viene sospeso in base all'opzione wait specificata.
+Questo servizio disconnette una connessione socket client o server stabilita. Una disconnessione di un socket del server deve essere seguita da una richiesta non crittografata, mentre un socket client disconnesso viene lasciato in uno stato pronto per un'altra richiesta di connessione. Se il processo di disconnessione non può terminare immediatamente, il servizio viene sospeso in base all'opzione di attesa fornita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del client o del socket del server connessa in precedenza.
-- **WAIT_OPTION** Definisce il comportamento del servizio mentre è in corso la disconnessione. Le opzioni di attesa sono definite come segue:
+- **socket_ptr** Puntatore a un'istanza del socket client o server connessa in precedenza.
+- **wait_option** Definisce il comportamento del servizio mentre è in corso la disconnessione. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Disconnessione socket riuscite **NX_SUCCESS** (0x00).
-- Il socket specificato **NX_NOT_CONNECTED** (0x38) non è connesso.
-- È in corso la disconnessione **NX_IN_PROGRESS** (0x37). non è stata specificata alcuna attesa.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Disconnessione socket riuscita.
+- **NX_NOT_CONNECTED** (0x38) Il socket specificato non è connesso.
+- **NX_IN_PROGRESS** (0x37) Disconnessione in corso, non è stata specificata alcuna attesa.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì 
 
@@ -7061,7 +7061,7 @@ status = nx_tcp_socket_disconnect(&client_socket, 400);
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_socket_disconnect_complete_notify"></a>nx_tcp_socket_disconnect_complete_notify
-Installazione della funzione di callback di disconnessione TCP completata
+Installare la funzione di callback di notifica completa disconnessione TCP
  
 ### <a name="prototype"></a>Prototipo  
 
@@ -7072,25 +7072,25 @@ UINT nx_tcp_socket_disconnect_complete_notify(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio registra una funzione di callback che viene richiamata dopo il completamento di un'operazione di disconnessione del socket. La funzione di callback completa di disconnessione socket TCP è disponibile se NetX Duo viene compilato con l'opzione ***NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** definita.
+Questo servizio registra una funzione di callback che viene richiamata dopo il completamento di un'operazione di disconnessione del socket. La funzione di callback di disconnessione completa del socket TCP è disponibile se NetX Duo viene compilato con ***l'opzione NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** definita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del client o del socket del server connessa in precedenza.
+- **socket_ptr** Puntatore a un'istanza del socket client o server connessa in precedenza.
 - **tcp_disconnect_complete_notify** Funzione di callback da installare.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) ha registrato correttamente la funzione di callback.
-- **NX_NOT_SUPPORTED** (0X4B) la funzionalità di notifica estesa non è incorporata nella libreria NetX Duo NX_PTR_ERROR * * (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- La funzionalità TCP **NX_NOT_ENABLED** (0x14) non è abilitata.
+- **NX_SUCCESS** (0x00) La funzione di callback è stata registrata correttamente.
+- **NX_NOT_SUPPORTED** (0x4B) La funzionalità di notifica estesa non è incorporata nella libreria NetX Duo NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) la funzionalità TCP non è abilitata.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7116,7 +7116,7 @@ status = nx_tcp_socket_disconnect_complete_notify(&client_socket,
 - nx_tcp_socket_window_update_notify_set
 
 ## <a name="nx_tcp_socket_establish_notify"></a>nx_tcp_socket_establish_notify
-Impostare la funzione TCP establishe Notify callback
+Impostare la funzione di callback di notifica tcp establish
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7127,26 +7127,26 @@ UINT nx_tcp_socket_establish_notify(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio registra una funzione di callback, che viene chiamata dopo che un socket TCP crea una connessione. La funzione di callback socket TCP establish è disponibile se NetX Duo viene compilato con l'opzione ***NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** definita.
+Questo servizio registra una funzione di callback, che viene chiamata dopo che un socket TCP effettua una connessione. La funzione di callback tcp socket establish è disponibile se NetX Duo viene compilato con ***l'opzione NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** definita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del client o del socket del server connessa in precedenza.
+- **socket_ptr** Puntatore a un'istanza del socket client o server connessa in precedenza.
 - **tcp_establish_notify** Funzione di callback richiamata dopo che è stata stabilita una connessione TCP.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) imposta correttamente la funzione Notify.
-- **NX_NOT_SUPPORTED** (0X4B) la funzionalità di notifica estesa non è integrata nella libreria NETX Duo 
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) TCP non è stato abilitato dall'applicazione.
+- **NX_SUCCESS** (0x00) Imposta correttamente la funzione notify.
+- **NX_NOT_SUPPORTED** (0x4B) La funzionalità di notifica estesa non è incorporata nella libreria NetX Duo 
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) TCP non è stato abilitato dall'applicazione.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7173,7 +7173,7 @@ status = nx_tcp_socket_establish_notify(&client_socket, callback);
 - nx_tcp_socket_window_update_notify_set
 
 ## <a name="nx_tcp_socket_info_get"></a>nx_tcp_socket_info_get
-Recuperare informazioni sulle attività dei socket TCP
+Recuperare informazioni sulle attività socket TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7194,38 +7194,38 @@ UINT nx_tcp_socket_info_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle attività socket TCP per l'istanza di socket TCP specificata.
+Questo servizio recupera informazioni sulle attività socket TCP per l'istanza del socket TCP specificata.
 
 > [!NOTE]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se un puntatore di destinazione NX_NULL, queste informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP creata in precedenza.
-- **tcp_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti TCP inviati al socket.
-- **tcp_bytes_sent** Puntatore alla destinazione per il numero totale di byte TCP inviati al socket.
-- **tcp_packets_received** Puntatore alla destinazione del numero totale di pacchetti TCP ricevuti sul socket.
-- **tcp_bytes_received** Puntatore alla destinazione del numero totale di byte TCP ricevuti sul socket.
+- **socket_ptr** Puntatore all'istanza del socket TCP creata in precedenza.
+- **tcp_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti TCP inviati sul socket.
+- **tcp_bytes_sent** Puntatore alla destinazione per il numero totale di byte TCP inviati sul socket.
+- **tcp_packets_received** Puntatore alla destinazione del numero totale di pacchetti TCP ricevuti nel socket.
+- **tcp_bytes_received** Puntatore alla destinazione del numero totale di byte TCP ricevuti nel socket.
 - **tcp_retransmit_packets** Puntatore alla destinazione del numero totale di ritrasmissioni di pacchetti TCP.
 - **tcp_packets_queued** Puntatore alla destinazione del numero totale di pacchetti TCP in coda nel socket.
 - **tcp_checksum_errors** Puntatore alla destinazione del numero totale di pacchetti TCP con errori di checksum nel socket.
 - **tcp_socket_state** Puntatore alla destinazione dello stato corrente del socket.
 - **tcp_transmit_queue_depth** Puntatore alla destinazione del numero totale di pacchetti di trasmissione ancora in coda in attesa di ACK.
-- **tcp_transmit_window** Puntatore alla destinazione della dimensione della finestra di trasmissione corrente.
+- **tcp_transmit_window** Puntatore alla destinazione delle dimensioni correnti della finestra di trasmissione.
 - **tcp_receive_window** Puntatore alla destinazione delle dimensioni correnti della finestra di ricezione.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Il recupero delle informazioni sul socket TCP riuscite **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido. 
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni sul socket TCP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido. 
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7275,7 +7275,7 @@ status = nx_tcp_socket_info_get(&socket_0,
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_socket_mss_get"></a>nx_tcp_socket_mss_get
-Ottenere la MSS del socket
+Ottenere MSS del socket
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7286,25 +7286,25 @@ UINT nx_tcp_socket_mss_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera la dimensione del segmento massimo locale (MSS) del socket specificato.
+Questo servizio recupera le dimensioni massime del segmento (MSS) locali del socket specificato.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket creato in precedenza.
-- **MSS** Destinazione per la restituzione di MSS.
+- **mss** Destinazione per la restituzione di MSS.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) riuscite MSS Get.
-- **NX_PTR_ERROR** (0x07) o un puntatore di destinazione MSS non valido.
-- **NX_NOT_ENABLED** TCP (0x14) non è abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread o un'inizializzazione.
+- **NX_SUCCESS** (0x00) MSS riuscito.
+- **NX_PTR_ERROR** (0x07) Socket o puntatore di destinazione MSS non valido.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitato.
+- **NX_CALLER_ERROR** (0x11) Caller non è un thread o un'inizializzazione.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7333,7 +7333,7 @@ status = nx_tcp_socket_mss_get(&my_socket, &mss_value);
 - nx_tcp_socket_window_update_notify_set
 
 ## <a name="nx_tcp_socket_mss_peer_get"></a>nx_tcp_socket_mss_peer_get
-Ottenere la MSS del socket TCP peer
+Ottenere MSS del socket TCP peer
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7344,25 +7344,25 @@ UINT nx_tcp_socket_mss_peer_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera le dimensioni massime del segmento (MSS) annunciate dal socket peer.
+Questo servizio recupera le dimensioni massime del segmento annunciate dal socket peer.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore al socket precedentemente creato e connesso.
-- **MSS** Destinazione per la restituzione dell'oggetto MSS.
+- **socket_ptr** Puntatore al socket creato e connesso in precedenza.
+- **mss** Destinazione per la restituzione di MSS.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) il peer MSS riuscito Get.
-- **NX_PTR_ERROR** (0x07) o un puntatore di destinazione MSS non valido.
-- **NX_NOT_ENABLED** TCP (0x14) non è abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread o un'inizializzazione.
+- **NX_SUCCESS** (0x00) Ottiene MSS peer riuscito.
+- **NX_PTR_ERROR** (0x07) Socket o puntatore di destinazione MSS non valido.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitato.
+- **NX_CALLER_ERROR** (0x11) Caller non è un thread o un'inizializzazione.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7391,7 +7391,7 @@ status = nx_tcp_socket_mss_peer_get(&my_socket, &mss_value);
 - nx_tcp_socket_window_update_notify_set
 
 ## <a name="nx_tcp_socket_mss_set"></a>nx_tcp_socket_mss_set
-Imposta MSS del socket
+Impostare MSS del socket
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7402,29 +7402,29 @@ UINT nx_tcp_socket_mss_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la dimensione massima del segmento (MSS) del socket specificato. Si noti che il valore MSS deve rientrare nell'IP dell'interfaccia di rete MTU, consentendo spazio per le intestazioni IP e TCP.
+Questo servizio imposta la dimensione massima del segmento (MSS) del socket specificato. Si noti che il valore MSS deve essere all'interno dell'interfaccia di rete MTU IP, consentendo spazio per le intestazioni IP e TCP.
 
-Questo servizio deve essere utilizzato prima che un socket TCP avvii il processo di connessione. Se il servizio viene utilizzato dopo che è stata stabilita una connessione TCP, il nuovo valore non ha alcun effetto sulla connessione.
+Questo servizio deve essere usato prima che un socket TCP inizi il processo di connessione. Se il servizio viene usato dopo che è stata stabilita una connessione TCP, il nuovo valore non ha alcun effetto sulla connessione.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket creato in precedenza.
-- **MSS** Valore di MSS da impostare.
+- **mss** Valore di MSS da impostare.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Set di MSS riusciti **NX_SUCCESS** (0x00).
-- Il valore MSS specificato per **NX_SIZE_ERROR** (0x09) è troppo grande.
-- Non è stata stabilita la connessione TCP **NX_NOT_CONNECTED** (0x38) 
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- **NX_NOT_ENABLED** TCP (0x14) non è abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0x11) non è un thread o un'inizializzazione.
+- **NX_SUCCESS** (0x00) set MSS riuscito.
+- **NX_SIZE_ERROR** (0x09) Il valore MSS specificato è troppo grande.
+- **NX_NOT_CONNECTED** (0x38) non è stata stabilita una connessione TCP 
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitato.
+- **NX_CALLER_ERROR** (0x11) Caller non è un thread o un'inizializzazione.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7465,27 +7465,27 @@ UINT nx_tcp_socket_peer_info_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera le informazioni sull'indirizzo IP e sulla porta del peer per il socket TCP connesso sulla rete IPv4. Il servizio equivalente che supporta anche la rete IPv6 è ***nxd_tcp_socket_peer_info_get.***
+Questo servizio recupera le informazioni sull'indirizzo IP peer e sulla porta per il socket TCP connesso sulla rete IPv4. Il servizio equivalente che supporta anche la rete IPv6 è ***nxd_tcp_socket_peer_info_get.***
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket TCP creato in precedenza.
-- **peer_ip_address** Puntatore alla destinazione per l'indirizzo IP del peer nell'ordine dei byte dell'host.
-- **peer_port** Puntatore alla destinazione per il numero di porta peer nell'ordine dei byte dell'host.
+- **peer_ip_address** Puntatore alla destinazione per l'indirizzo IP peer, nell'ordine dei byte dell'host.
+- **peer_port** Puntatore alla destinazione per il numero di porta peer, nell'ordine dei byte dell'host.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Il servizio **NX_SUCCESS** (0x00) viene eseguito correttamente. Il numero di porta e l'indirizzo IP del peer vengono restituiti al chiamante.
-- Il socket **NX_NOT_CONNECTED** (0x38) non si trova in uno stato connesso.
-- **NX_PTR_ERROR** (0x07) puntatori non validi.
-- **NX_NOT_ENABLED** TCP (0x14) non è abilitato.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) il servizio viene eseguito correttamente. L'indirizzo IP peer e il numero di porta vengono restituiti al chiamante.
+- **NX_NOT_CONNECTED** (0x38) Il socket non è in stato connesso.
+- **NX_PTR_ERROR** (0x07) Puntatori non validi.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitato.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7514,7 +7514,7 @@ status = nx_tcp_socket_peer_info_get(&my_socket, &peer_ip_address,
 - nx_tcp_socket_window_update_notify_set
 
 ## <a name="nx_tcp_socket_queue_depth_notify_set"></a>nx_tcp_socket_queue_depth_notify_set
-Impostazione della funzione di notifica della coda di trasmissione TCP
+Impostare la funzione di notifica della coda di trasmissione TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7525,26 +7525,26 @@ UINT nx_tcp_socket_queue_depth_notify_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la funzione di notifica dell'aggiornamento della profondità della coda di trasmissione specificata dall'applicazione, che viene chiamata ogni volta che il socket specificato stabilisce che i pacchetti sono stati rilasciati dalla coda di trasmissione in modo che la profondità della coda non superi il limite. Se un'applicazione viene bloccata durante la trasmissione a causa della profondità della coda, la funzione di callback funge da notifica all'applicazione che può iniziare a trasmettere nuovamente. Questo servizio è disponibile solo se la libreria NetX Duo è compilata con l'opzione ***NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY*** definita.
+Questo servizio imposta la funzione di notifica dell'aggiornamento della profondità della coda di trasmissione specificata dall'applicazione, che viene chiamata ogni volta che il socket specificato determina che ha rilasciato pacchetti dalla coda di trasmissione in modo che la profondità della coda non superi più il limite. Se un'applicazione viene bloccata durante la trasmissione a causa della profondità della coda, la funzione di callback funge da notifica all'applicazione che potrebbe avviare nuovamente la trasmissione. Questo servizio è disponibile solo se la libreria NetX Duo viene compilata con ***l'opzione NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY*** definita.
 
 ### <a name="parameters"></a>Parametri 
 
 - **socket_ptr** Puntatore alla struttura del socket 
-- **tcp_socket_queue_depth_notify** Funzione Notify da installare
+- **tcp_socket_queue_depth_notify** Funzione notify da installare
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) ha installato correttamente la funzione Notify
-- **NX_NOT_SUPPORTED** (0X4B) la funzionalità di notifica della profondità della coda di socket TCP non è integrata nella libreria NETX Duo
-- **NX_PTR_ERROR** (0x07) puntatore non valido al blocco di controllo socket o alla funzione Notify
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- La funzionalità TCP **NX_NOT_ENABLED** (0x14) non è abilitata.
+- **NX_SUCCESS** (0x00) La funzione notify è stata installata correttamente
+- **NX_NOT_SUPPORTED** (0x4B) La funzionalità di notifica della profondità della coda del socket TCP non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Puntatore non valido al blocco di controllo socket o alla funzione notify
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitata.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -7592,36 +7592,36 @@ UINT nx_tcp_socket_receive(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio riceve i dati TCP dal socket specificato. Se non viene accodato alcun dato nel socket specificato, il chiamante viene sospeso in base all'opzione wait fornita.
+Questo servizio riceve i dati TCP dal socket specificato. Se nessun dato viene accodato nel socket specificato, il chiamante viene sospeso in base all'opzione di attesa fornita.
 
 > [!CAUTION]  
-> *Se viene restituito NX_SUCCESS, l'applicazione è responsabile del rilascio del pacchetto ricevuto quando non è più necessario*.
+> *Se NX_SUCCESS viene restituito , l'applicazione* è responsabile del rilascio del pacchetto ricevuto quando non è più necessario.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP creata in precedenza.
-- **packet_ptr** Puntatore al puntatore del pacchetto TCP.
-- **WAIT_OPTION** Definisce il comportamento del servizio se i dati sono attualmente accodati in questo socket. Le opzioni di attesa sono definite come segue:
+- **socket_ptr** Puntatore all'istanza del socket TCP creata in precedenza.
+- **packet_ptr** Puntatore al puntatore al pacchetto TCP.
+- **wait_option** Definisce il comportamento del servizio se i dati vengono attualmente accodati in questo socket. Le opzioni di attesa sono definite come segue:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) la ricezione dei dati socket è riuscita.
-- Il socket **NX_NOT_BOUND** (0x24) non è ancora associato.
-- **NX_NO_PACKET** (0x01) non sono stati ricevuti dati.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- **NX_NOT_CONNECTED** (0X38) il socket non è più connesso.
-- **NX_PTR_ERROR** (0x07) socket non valido o puntatore al pacchetto restituito.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Ricezione di dati socket riuscita.
+- **NX_NOT_BOUND** (0x24) Socket non è ancora associato.
+- **NX_NO_PACKET** (0x01) Nessun dato ricevuto.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_NOT_CONNECTED** (0x38) Il socket non è più connesso.
+- **NX_PTR_ERROR** (0x07) Socket non valido o puntatore a pacchetto restituito.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -7673,25 +7673,25 @@ UINT nx_tcp_socket_receive_notify(
 ```
 ### <a name="description"></a>Descrizione 
 
-Questo servizio configura il puntatore della funzione receive Notify con la funzione di callback specificata dall'applicazione. Questa funzione di callback viene quindi chiamata ogni volta che vengono ricevuti uno o più pacchetti nel socket. Se viene fornito un puntatore NX_NULL, la funzione Notify è disabilitata.
+Questo servizio configura il puntatore a funzione receive notify con la funzione di callback specificata dall'applicazione. Questa funzione di callback viene quindi chiamata ogni volta che uno o più pacchetti vengono ricevuti nel socket. Se viene NX_NULL un puntatore di notifica, la funzione notify è disabilitata.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket TCP.
-- **tcp_receive_notify** Puntatore alla funzione di callback dell'applicazione che viene chiamato quando uno o più pacchetti vengono ricevuti sul socket.
+- **tcp_receive_notify** Puntatore a funzione di callback dell'applicazione chiamato quando uno o più pacchetti vengono ricevuti nel socket.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- La notifica di ricezione del socket riuscite **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- La funzionalità TCP **NX_NOT_ENABLED** (0x14) non è abilitata.
+- **NX_SUCCESS** (0x00) Notifica di ricezione socket riuscita.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) la funzionalità TCP non è abilitata.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7735,41 +7735,41 @@ UINT nx_tcp_socket_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia dati TCP tramite un socket TCP connesso in precedenza. Se le ultime dimensioni della finestra annunciata del ricevitore sono inferiori a questa richiesta, il servizio viene sospeso facoltativamente in base all'opzione wait specificata. Questo servizio garantisce che non vengano inviati dati di pacchetto di dimensioni superiori a MSS al livello IP. 
+Questo servizio invia i dati TCP tramite un socket TCP connesso in precedenza. Se le dimensioni dell'ultima finestra annunciata del ricevitore sono inferiori a questa richiesta, il servizio viene sospeso facoltativamente in base all'opzione di attesa specificata. Questo servizio garantisce che al livello IP non siano inviati dati di pacchetti di dimensioni superiori a MSS. 
 
 > [!WARNING]  
-> *A meno che non venga restituito un errore, l'applicazione non deve rilasciare il pacchetto dopo questa chiamata. Questa operazione causerà risultati imprevedibili perché il driver di rete tenterà anche di rilasciare il pacchetto dopo la trasmissione*.
+> *A meno che non venga restituito un errore, l'applicazione non deve rilasciare il pacchetto dopo questa chiamata. Questa operazione causerà risultati imprevedibili perché anche il driver* di rete tenterà di rilasciare il pacchetto dopo la trasmissione di .
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP connessa in precedenza.
-- **packet_ptr** Puntatore al pacchetto di dati TCP.
-- **WAIT_OPTION** Definisce il comportamento del servizio se la richiesta è maggiore delle dimensioni della finestra del destinatario. Le opzioni di attesa sono definite come segue:
+- **socket_ptr** Puntatore all'istanza del socket TCP precedentemente connessa.
+- **packet_ptr** Puntatore a pacchetti di dati TCP.
+- **wait_option** Definisce il comportamento del servizio se la richiesta è maggiore delle dimensioni della finestra del ricevitore. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) del socket inviato correttamente.
-- Il socket **NX_NOT_BOUND** (0x24) non è stato associato ad alcuna porta.
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è stata trovata alcuna interfaccia in uscita adatta.
-- Il socket **NX_NOT_CONNECTED** (0x38) non è più connesso.
-- La richiesta **NX_WINDOW_OVERFLOW** (0x39) è maggiore della dimensione della finestra annunciata del ricevitore in byte.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- Il pacchetto **NX_INVALID_PACKET** (0x12) non è allocato.
-- È stata raggiunta la profondità massima della coda di trasmissione **NX_TX_QUEUE_DEPTH** (0x49).
-- Il puntatore di aggiunta del pacchetto **NX_OVERFLOW** (0x03) non è valido.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- Il puntatore **NX_UNDERFLOW** (0x02) non è valido.
+- **NX_SUCCESS** (0x00) Invio socket riuscito.
+- **NX_NOT_BOUND** (0x24) Il socket non è stato associato ad alcuna porta.
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Nessuna interfaccia in uscita appropriata trovata.
+- **NX_NOT_CONNECTED** (0x38) Il socket non è più connesso.
+- **NX_WINDOW_OVERFLOW** (0x39) La richiesta è maggiore della dimensione della finestra annunciata del ricevitore in byte.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_INVALID_PACKET** (0x12) Il pacchetto non viene allocato.
+- **NX_TX_QUEUE_DEPTH** (0x49) È stata raggiunta la profondità massima della coda di trasmissione.
+- **NX_OVERFLOW** (0x03) Puntatore di accodamento pacchetti non valido.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_UNDERFLOW** (0x02) Il puntatore anteposto al pacchetto non è valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -7822,12 +7822,12 @@ UINT nx_tcp_socket_state_wait(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio attende che il socket entri nello stato desiderato. Se il socket non è nello stato desiderato, il servizio viene sospeso in base all'opzione wait specificata.
+Questo servizio attende che il socket entri nello stato desiderato. Se il socket non è nello stato desiderato, il servizio viene sospeso in base all'opzione di attesa fornita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza di socket TCP connessa in precedenza.
-- **desired_state** Stato TCP desiderato. Gli Stati di socket TCP validi sono definiti come segue:
+- **socket_ptr** Puntatore all'istanza del socket TCP precedentemente connessa.
+- **desired_state** Stato TCP desiderato. Gli stati del socket TCP validi sono definiti come segue:
     - **NX_TCP_CLOSED** (0x01)
     - **NX_TCP_LISTEN_STATE** (0x02)
     - **NX_TCP_SYN_SENT** (0x03)
@@ -7839,25 +7839,25 @@ Questo servizio attende che il socket entri nello stato desiderato. Se il socket
     - **NX_TCP_CLOSING** (0x09)
     - **NX_TCP_TIMED_WAIT** (0x0A)
     - **NX_TCP_LAST_ACK** (0x0B)
-- **WAIT_OPTION** Definisce il comportamento del servizio se lo stato richiesto non è presente. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce il comportamento del servizio se lo stato richiesto non è presente. Le opzioni di attesa sono definite come segue:
     - **NX_NO_WAIT** (0x00000000)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xFFFFFFFF)
+    - **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFF)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Attesa stato riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Lo stato **NX_NOT_SUCCESSFUL** (0x43) non è presente entro il tempo di attesa specificato.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- **NX_OPTION_ERROR** (0X0A) lo stato del socket desiderato non è valido.
+- **NX_SUCCESS** (0x00) Operazione riuscita.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_NOT_SUCCESSFUL** (0x43) non presente entro il tempo di attesa specificato.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_OPTION_ERROR** (0x0A) Lo stato del socket desiderato non è valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -7898,7 +7898,7 @@ status = nx_tcp_socket_state_wait(&client_socket,
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nx_tcp_socket_timed_wait_callback"></a>nx_tcp_socket_timed_wait_callback
-Installa callback per lo stato di attesa programmato
+Callback di installazione per lo stato di attesa programmato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -7909,26 +7909,26 @@ UINT nx_tcp_socket_timed_wait_callback(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio registra una funzione di callback che viene richiamata quando il socket TCP è in stato di attesa programmato. Per usare questo servizio, è necessario compilare la libreria NetX Duo con l'opzione ***NX_ENABLE_EXTENDED_NOTIFY*** definita.
+Questo servizio registra una funzione di callback che viene richiamata quando il socket TCP è in stato di attesa a tempo. Per usare questo servizio, la libreria NetX Duo deve essere compilata con ***l'opzione NX_ENABLE_EXTENDED_NOTIFY*** definita.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del client o del socket del server connessa in precedenza.
-- **tcp_timed_wait_callback** Funzione di callback Wait temporizzata
+- **socket_ptr** Puntatore a un'istanza del socket client o server precedentemente connessa.
+- **tcp_timed_wait_callback** Funzione di callback di attesa a tempo
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) registra correttamente il socket della funzione di callback
-- **NX_NOT_SUPPORTED** (0X4B) NETX Duo Library è compilata senza la funzionalità di notifica estesa abilitata.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- La funzionalità TCP **NX_NOT_ENABLED** (0x14) non è abilitata.
+- **NX_SUCCESS** (0x00) Registra correttamente il socket della funzione di callback
+- **NX_NOT_SUPPORTED** libreria NetX Duo (0x4B) viene compilata senza la funzionalità di notifica estesa abilitata.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitata.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -7975,23 +7975,23 @@ Questo servizio configura vari parametri di trasmissione del socket TCP specific
 
 - **socket_ptr** Puntatore al socket TCP.
 - **max_queue_depth** Numero massimo di pacchetti che possono essere accodati per la trasmissione.
-- **timeout** Numero di cicli del timer ThreadX in attesa di un ACK prima che il pacchetto venga nuovamente inviato.
+- **timeout** Numero di tick del timer ThreadX che un ACK attende prima che il pacchetto venga inviato di nuovo.
 - **max_retries** Numero massimo di tentativi consentiti.
-- **timeout_shift** Valore per spostare il timeout per ogni nuovo tentativo successivo. Il valore 0 comporta lo stesso timeout tra i tentativi successivi. Il valore 1, raddoppia il timeout tra i tentativi.
+- **timeout_shift** Valore per spostare il timeout per ogni tentativo successivo. Il valore 0 comporta lo stesso timeout tra tentativi successivi. Il valore 1 raddoppia il timeout tra i tentativi.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Configurazione socket di trasmissione riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Opzione profondità coda non valida **NX_OPTION_ERROR** (0x0A).
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- La funzionalità TCP **NX_NOT_ENABLED** (0x14) non è abilitata.
+- **NX_SUCCESS** (0x00) Configurazione del socket di trasmissione riuscita.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_OPTION_ERROR** (0x0a) Opzione Profondità coda non valida.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) TCP non è abilitata.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8022,7 +8022,7 @@ status = nx_tcp_socket_transmit_configure(&client_socket,12,100,20,1);
 - nx_tcp_socket_window_update_notify_set
 
 ## <a name="nx_tcp_socket_window_update_notify_set"></a>nx_tcp_socket_window_update_notify_set
-Notifica dell'applicazione degli aggiornamenti delle dimensioni della finestra
+Notificare all'applicazione gli aggiornamenti delle dimensioni della finestra
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8033,25 +8033,25 @@ UINT nx_tcp_socket_window_update_notify_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio installa una routine di callback di aggiornamento della finestra del socket. Questa routine viene chiamata automaticamente ogni volta che il socket specificato riceve un pacchetto che indica un aumento delle dimensioni della finestra dell'host remoto.
+Questo servizio installa una routine di callback di aggiornamento della finestra socket. Questa routine viene chiamata automaticamente ogni volta che il socket specificato riceve un pacchetto che indica un aumento delle dimensioni della finestra dell'host remoto.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket TCP creato in precedenza.
-- **tcp_window_update_notify** Routine di callback da chiamare quando cambiano le dimensioni della finestra. Il valore NULL disabilita l'aggiornamento delle modifiche della finestra.
+- **tcp_window_update_notify** Routine di callback da chiamare quando le dimensioni della finestra cambiano. Il valore NULL disabilita l'aggiornamento delle modifiche della finestra.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Nel socket è installata la routine di callback **NX_SUCCESS** (0x00).
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_PTR_ERROR** (0x07) puntatori non validi.
-- La funzionalità TCP **NX_NOT_ENABLED** (0x14) non è abilitata.
+- **NX_SUCCESS** routine di callback (0x00) viene installata nel socket.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_PTR_ERROR** (0x07) Puntatori non validi.
+- **NX_NOT_ENABLED** (0x14) la funzionalità TCP non è abilitata.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -8087,7 +8087,7 @@ void my_windows_update_callback(&data_socket)
 - nx_tcp_socket_transmit_configure
 
 ## <a name="nx_udp_enable"></a>nx_udp_enable
-Abilita componente UDP di NetX Duo
+Abilitare il componente UDP di NetX Duo
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8096,24 +8096,24 @@ UINT nx_udp_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita il componente UDP (User Datagram Protocol) di NetX Duo. Dopo l'abilitazione, i datagrammi UDP possono essere inviati e ricevuti dall'applicazione.
+Questo servizio abilita il componente USER Datagram Protocol (UDP) di NetX Duo. Dopo aver abilitato, i datagrammi UDP possono essere inviati e ricevuti dall'applicazione.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) Enable UDP riuscito.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_ALREADY_ENABLED** (0X15) questo componente è già stato abilitato.
+- **NX_SUCCESS** (0x00) L'abilitazione UDP è riuscita.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_ALREADY_ENABLED** (0x15) Questo componente è già stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -8151,7 +8151,7 @@ status = nx_udp_enable(&ip_0);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_free_port_find"></a>nx_udp_free_port_find
-Trova la porta UDP successiva disponibile
+Trovare la porta UDP disponibile successiva
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8163,31 +8163,31 @@ UINT nx_udp_free_port_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio cerca una porta UDP gratuita (senza binding) a partire dal numero di porta fornito dall'applicazione. Se la ricerca raggiunge il valore massimo della porta di 0xFFFF, viene eseguito il wrapping della logica di ricerca. Se la ricerca ha esito positivo, la porta libera viene restituita nella variabile a cui punta free_port_ptr.
+Questo servizio cerca una porta UDP gratuita (non associata) a partire dal numero di porta fornito dall'applicazione. La logica di ricerca verrà incapsulata se la ricerca raggiunge il valore di porta massimo di 0xFFFF. Se la ricerca ha esito positivo, la porta disponibile viene restituita nella variabile a cui punta free_port_ptr.
 
 > [!WARNING]  
-> *Questo servizio può essere chiamato da un altro thread e può avere la stessa porta restituita. Per evitare questo race condition, è possibile che l'applicazione inserisca il servizio e il socket effettivo associato alla protezione di un mutex*.
+> *Questo servizio può essere chiamato da un altro thread e può avere la stessa porta restituita. Per evitare questo race condition,* l'applicazione potrebbe voler inserire questo servizio e l'effettivo binding socket sotto la protezione di un mutex.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **porta** Numero di porta da cui iniziare la ricerca (da 1 a 0xFFFF).
-- **free_port_ptr** Puntatore alla variabile di restituzione della porta libera di destinazione.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **porta** Numero di porta per avviare la ricerca (da 1 a 0xFFFF).
+- **free_port_ptr** Puntatore alla variabile restituita della porta libera di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) riuscite dalla porta libera.
-- **NX_NO_FREE_PORTS** (0X45) non sono state trovate porte gratuite.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
-- Il numero di porta specificato **NX_INVALID_PORT** (0x46) non è valido.
+- **NX_SUCCESS** (0x00) Ricerca porta gratuita riuscita.
+- **NX_NO_FREE_PORTS** (0x45) Nessuna porta disponibile trovata.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
+- **NX_INVALID_PORT** (0x46) Il numero di porta specificato non è valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8246,11 +8246,11 @@ UINT nx_udp_info_get(
 Questo servizio recupera informazioni sulle attività UDP per l'istanza IP specificata.
 
 > [!IMPORTANT]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se viene utilizzato un puntatore NX_NULL destinazione, le informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
 - **udp_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti UDP inviati.
 - **udp_bytes_sent** Puntatore alla destinazione per il numero totale di byte UDP inviati.
 - **udp_packets_received** Puntatore alla destinazione del numero totale di pacchetti UDP ricevuti.
@@ -8261,16 +8261,16 @@ Questo servizio recupera informazioni sulle attività UDP per l'istanza IP speci
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il recupero delle informazioni UDP è riuscito.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni UDP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread e timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8314,7 +8314,7 @@ status = nx_udp_info_get(&ip_0, &udp_packets_sent,
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_packet_info_extract"></a>nx_udp_packet_info_extract
-Estrai parametri di rete dal pacchetto UDP
+Estrarre i parametri di rete dal pacchetto UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8328,28 +8328,28 @@ UINT nx_udp_packet_info_extract(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio estrae i parametri di rete, ad esempio l'indirizzo IPv4, il numero di porta peer, il tipo di protocollo (questo servizio restituisce sempre il tipo UDP) da un pacchetto ricevuto su un'interfaccia in ingresso. Per ottenere informazioni su un pacchetto proveniente da una rete IPv4 o IPv6, è necessario che l'applicazione utilizzi il servizio ***nxd_udp_packet_info_extract.***
+Questo servizio estrae i parametri di rete, ad esempio indirizzo IPv4, numero di porta peer, tipo di protocollo (questo servizio restituisce sempre il tipo UDP) da un pacchetto ricevuto su un'interfaccia in ingresso. Per ottenere informazioni su un pacchetto proveniente dalla rete IPv4 o IPv6, l'applicazione deve usare il servizio ***nxd_udp_packet_info_extract.***
 
 ### <a name="parameters"></a>Parametri
 
 - **packet_ptr** Puntatore al pacchetto.
 - **ip_address** Puntatore all'indirizzo IP del mittente.
-- **protocollo** di Puntatore a protocollo (UDP).
+- **protocollo** Puntatore al protocollo (UDP).
 - **porta** Puntatore al numero di porta del mittente.
-- **interface_index** Puntatore all'indice dell'interfaccia ricevente.
+- **interface_index** Puntatore alla ricezione dell'indice dell'interfaccia.
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Estrazione dei dati dell'interfaccia di pacchetti **NX_SUCCESS** (0x00) completata.
-- Il pacchetto **NX_INVALID_PACKET** (0x12) non contiene un frame IPv4.
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Packet interface data successfully extracted ( Dati dell'interfaccia di pacchetto estratti correttamente).
+- **NX_INVALID_PACKET** (0x12) Packet non contiene frame IPv4.
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8389,7 +8389,7 @@ status = nx_udp_packet_info_extract(packet_ptr, &ip_address,
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_bind"></a>nx_udp_socket_bind
-Associa socket UDP a porta UDP
+Associare il socket UDP alla porta UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8401,34 +8401,34 @@ UINT nx_udp_socket_bind(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio associa il socket UDP creato in precedenza alla porta UDP specificata. I socket UDP validi sono compresi tra 0 e 0xFFFF. Se il numero di porta richiesto è associato a un altro socket, il servizio attende il periodo di tempo specificato affinché il socket venga dissociato dal numero di porta.
+Questo servizio associa il socket UDP creato in precedenza alla porta UDP specificata. I socket UDP validi sono compreso tra 0 e 0xFFFF. Se il numero di porta richiesto è associato a un altro socket, questo servizio attende il periodo di tempo specificato per la dissociazione del socket dal numero di porta.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del socket UDP creata in precedenza.
-- **porta** Numero di porta da associare a * * (da 1 a 0xFFFF). Se il numero di porta è NX_ANY_PORT * * (0x0000), l'istanza IP cercherà la porta libera successiva e la utilizzerà per l'associazione.
-- **WAIT_OPTION** Definisce il comportamento del servizio se la porta è già associata a un altro socket. Le opzioni di attesa sono definite come segue:
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza.
+- **porta** Numero di porta da associare a** (da 1 a 0xFFFF). Se il numero di porta NX_ANY_PORT** (0x0000), l'istanza IP cerca la porta gratuita successiva e la usa per l'associazione.
+- **wait_option** Definisce il comportamento del servizio se la porta è già associata a un altro socket. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) associazione Socket riuscita.
-- **NX_ALREADY_BOUND** (0X22) questo socket è già associato a un'altra porta.
-- La porta **NX_PORT_UNAVAILABLE** (0x23) è già associata a un socket diverso.
-- **NX_NO_FREE_PORTS** (0X45) non è disponibile alcuna porta.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- La porta **NX_INVALID_PORT** (0x46) specificata non è valida.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Associazione socket riuscita.
+- **NX_ALREADY_BOUND** (0x22) Questo socket è già associato a un'altra porta.
+- **NX_PORT_UNAVAILABLE** (0x23) La porta è già associata a un socket diverso.
+- **NX_NO_FREE_PORTS** (0x45) Nessuna porta disponibile.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_INVALID_PORT** (0x46) È stata specificata una porta non valida.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -8484,21 +8484,21 @@ Questo servizio recupera il numero di byte disponibili per la ricezione nel sock
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket UDP creato in precedenza.
-- **bytes_available** Puntatore alla destinazione per byte disponibili.
+- **bytes_available** Puntatore alla destinazione per i byte disponibili.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) byte riusciti di recupero disponibili.
-- Il socket **NX_NOT_SUCCESSFUL** (0x43) non è associato a una porta.
-- **NX_PTR_ERROR** (0x07) puntatori non validi.
-- La funzionalità UDP **NX_NOT_ENABLED** (0x14) non è abilitata.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Recupero dei byte disponibili riuscito.
+- **NX_NOT_SUCCESSFUL** (0x43) Socket non associato a una porta.
+- **NX_PTR_ERROR** (0x07) Puntatori non validi.
+- **NX_NOT_ENABLED** la funzionalità UDP (0x14) non è abilitata.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -8546,11 +8546,11 @@ UINT nx_udp_socket_checksum_disable(NX_UDP_SOCKET *socket_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita la logica di checksum per l'invio e la ricezione di pacchetti sul socket UDP specificato. Quando la logica di checksum è disabilitata, il valore zero viene caricato nel campo checksum dell'intestazione UDP per tutti i pacchetti inviati tramite questo socket. Un valore di checksum con valore zero nell'intestazione UDP segnala al ricevitore che checksum non viene calcolato per questo pacchetto.
+Questo servizio disabilita la logica di checksum per l'invio e la ricezione di pacchetti sul socket UDP specificato. Quando la logica di checksum è disabilitata, il valore zero viene caricato nel campo checksum dell'intestazione UDP per tutti i pacchetti inviati tramite questo socket. Un valore di checksum di valore zero nell'intestazione UDP segnala al ricevitore che il checksum non viene calcolato per questo pacchetto.
 
-Si noti inoltre che questa operazione non ha effetto se vengono definiti **NX_DISABLE_UDP_RX_CHECKSUM** e **NX_DISABLE_UDP_TX_CHECKSUM** durante la ricezione e l'invio di pacchetti UDP rispettivamente.
+Si noti anche che  questa operazione non ha alcun effetto se NX_DISABLE_UDP_RX_CHECKSUM e **NX_DISABLE_UDP_TX_CHECKSUM** vengono definiti rispettivamente durante la ricezione e l'invio di pacchetti UDP,
 
-Si noti che questo servizio non ha alcun effetto sui pacchetti nella rete IPv6, perché il checksum UDP è obbligatorio per IPv6.
+Si noti che questo servizio non ha alcun effetto sui pacchetti nella rete IPv6 perché il checksum UDP è obbligatorio per IPv6.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8558,17 +8558,17 @@ Si noti che questo servizio non ha alcun effetto sui pacchetti nella rete IPv6, 
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) disabilitato checksum del socket riuscito.
-- Il socket **NX_NOT_BOUND** (0x24) non è associato.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Checksum socket riuscito disabilitato.
+- **NX_NOT_BOUND** (0x24) Socket non è associato.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8606,7 +8606,7 @@ status = nx_udp_socket_checksum_disable(&udp_socket);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_checksum_enable"></a>nx_udp_socket_checksum_enable
-Abilita checksum per socket UDP
+Abilitare il checksum per il socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8615,11 +8615,11 @@ UINT nx_udp_socket_checksum_enable(NX_UDP_SOCKET *socket_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita la logica di checksum per l'invio e la ricezione di pacchetti sul socket UDP specificato. Il checksum copre l'intera area dati UDP e un'intestazione pseudo-IP.
+Questo servizio abilita la logica di checksum per l'invio e la ricezione di pacchetti sul socket UDP specificato. Il checksum copre l'intera area dati UDP e una pseudo-intestazione IP.
 
-Si noti inoltre che questa operazione non ha effetto se vengono definiti **NX_DISABLE_UDP_RX_CHECKSUM** e **NX_DISABLE_UDP_TX_CHECKSUM** durante la ricezione e l'invio di pacchetti UDP rispettivamente.
+Si noti inoltre che questa operazione non ha alcun effetto **se NX_DISABLE_UDP_RX_CHECKSUM** e **NX_DISABLE_UDP_TX_CHECKSUM** vengono definiti rispettivamente durante la ricezione e l'invio di pacchetti UDP.
 
-Si noti che questo servizio non ha alcun effetto sui pacchetti nella rete IPv6. Checksum UDP è obbligatorio in IPv6.
+Si noti che questo servizio non ha alcun effetto sui pacchetti nella rete IPv6. Il checksum UDP è obbligatorio in IPv6.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8627,17 +8627,17 @@ Si noti che questo servizio non ha alcun effetto sui pacchetti nella rete IPv6. 
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Abilitazione del checksum del socket **NX_SUCCESS** (0x00) riuscita.
-- Il socket **NX_NOT_BOUND** (0x24) non è associato.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Checksum socket riuscito.
+- **NX_NOT_BOUND** (0x24) Socket non è associato.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8675,7 +8675,7 @@ status = nx_udp_socket_checksum_enable(&udp_socket);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_create"></a>nx_udp_socket_create
-Crea socket UDP
+Creare un socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8695,32 +8695,32 @@ Questo servizio crea un socket UDP per l'istanza IP specificata.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **socket_ptr** Puntatore al nuovo blocco di controllo socket UDP.
-- **nome** Nome dell'applicazione per questo socket UDP.
-- **Type_of_Service** Definisce il tipo di servizio per la trasmissione. i valori validi sono i seguenti:
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **socket_ptr** Puntatore al blocco di controllo del nuovo socket UDP.
+- **name** Nome dell'applicazione per questo socket UDP.
+- **type_of_service** Definisce il tipo di servizio per la trasmissione. I valori validi sono i seguenti:
     - **NX_IP_NORMAL** (0x00000000)
     - **NX_IP_MIN_DELAY** (0x00100000)
     - **NX_IP_MAX_DATA** (0x00080000)
     - **NX_IP_MAX_RELIABLE** (0x00040000)
     - **NX_IP_MIN_COST** (0x00020000)
-- il **frammento specifica** se la frammentazione IP è consentita o meno. Se viene specificato NX_FRAGMENT_OKAY (0x0), è consentita la frammentazione IP. Se viene specificato NX_DONT_FRAGMENT (0x4000), la frammentazione IP è disabilitata.
-- **Time_to_live** Specifica il valore a 8 bit che definisce il numero di router che questo pacchetto può superare prima di essere eliminato. Il valore predefinito è specificato dal NX_IP_TIME_TO_LIVE.
-- **queue_maximum** Definisce il numero massimo di datagrammi UDP che possono essere accodati per il socket. Una volta raggiunto il limite della coda, per ogni nuovo pacchetto ricevuto viene rilasciato il pacchetto UDP meno recente.
+- **fragment Specifica se è** consentita o meno la frammentazione IP. Se NX_FRAGMENT_OKAY (0x0), la frammentazione IP è consentita. Se NX_DONT_FRAGMENT (0x4000), la frammentazione IP è disabilitata.
+- **time_to_live** Specifica il valore a 8 bit che definisce il numero di router che questo pacchetto può passare prima di essere buttato via. Il valore predefinito viene specificato da NX_IP_TIME_TO_LIVE.
+- **queue_maximum** Definisce il numero massimo di datagrammi UDP che possono essere accodati per questo socket. Dopo aver raggiunto il limite della coda, per ogni nuovo pacchetto ricevuto viene rilasciato il pacchetto UDP meno recente.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Creazione socket UDP riuscita **NX_SUCCESS** (0x00).
-- **NX_OPTION_ERROR** (0x0A) tipo di servizio, frammento o opzione di durata (TTL) non valida.
-- **NX_PTR_ERROR** (0x07) un puntatore IP o socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Creazione socket UDP riuscita.
+- **NX_OPTION_ERROR** (0x0A) Tipo di servizio, frammento o opzione di time-to-live non valido.
+- **NX_PTR_ERROR** (0x07) IP o puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8760,7 +8760,7 @@ status = nx_udp_socket_create(&ip_0, &udp_socket, "Sample UDP Socket",
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_delete"></a>nx_udp_socket_delete
-Elimina socket UDP
+Eliminare un socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8769,7 +8769,7 @@ UINT nx_udp_socket_delete(NX_UDP_SOCKET *socket_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un socket UDP creato in precedenza. Se il socket è stato associato a una porta, il socket deve essere prima non associato.
+Questo servizio elimina un socket UDP creato in precedenza. Se il socket è stato associato a una porta, il socket deve essere prima di tutto non associato.
 
 ### <a name="parameters"></a>Parametri
 
@@ -8777,17 +8777,17 @@ Questo servizio Elimina un socket UDP creato in precedenza. Se il socket è stat
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Eliminazione del socket riuscita **NX_SUCCESS** (0x00).
-- Il socket **NX_STILL_BOUND** (0x42) è ancora associato.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Eliminazione socket riuscita.
+- **NX_STILL_BOUND** (0x42) Socket è ancora associato.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -8825,7 +8825,7 @@ status = nx_udp_socket_delete(&udp_socket);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_info_get"></a>nx_udp_socket_info_get
-Recuperare informazioni sulle attività del socket UDP
+Recuperare informazioni sulle attività socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8845,31 +8845,31 @@ UINT nx_udp_socket_info_get(
 Questo servizio recupera informazioni sulle attività socket UDP per l'istanza del socket UDP specificata.
 
 > [!IMPORTANT]  
-> *Se un puntatore di destinazione è NX_NULL, le informazioni specifiche non vengono restituite al chiamante*.
+> *Se un puntatore di destinazione NX_NULL, queste informazioni specifiche non vengono restituite al chiamante.*
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del socket UDP creata in precedenza.
-- **udp_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti UDP inviati al socket.
-- **udp_bytes_sent** Puntatore alla destinazione per il numero totale di byte UDP inviati al socket.
-- **udp_packets_received** Puntatore alla destinazione del numero totale di pacchetti UDP ricevuti sul socket.
-- **udp_bytes_received** Puntatore alla destinazione del numero totale di byte UDP ricevuti sul socket.
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza.
+- **udp_packets_sent** Puntatore alla destinazione per il numero totale di pacchetti UDP inviati sul socket.
+- **udp_bytes_sent** Puntatore alla destinazione per il numero totale di byte UDP inviati sul socket.
+- **udp_packets_received** Puntatore alla destinazione del numero totale di pacchetti UDP ricevuti nel socket.
+- **udp_bytes_received** Puntatore alla destinazione del numero totale di byte UDP ricevuti nel socket.
 - **udp_packets_queued** Puntatore alla destinazione del numero totale di pacchetti UDP in coda nel socket.
-- **udp_receive_packets_dropped** Puntatore alla destinazione del numero totale di pacchetti di ricezione UDP eliminati per il socket a causa del superamento della dimensione della coda.
+- **udp_receive_packets_dropped** Puntatore alla destinazione del numero totale di pacchetti di ricezione UDP eliminati per il socket a causa del superamento delle dimensioni della coda.
 - **udp_checksum_errors** Puntatore alla destinazione del numero totale di pacchetti UDP con errori di checksum nel socket.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Il recupero delle informazioni sul socket UDP riuscite **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Recupero delle informazioni sul socket UDP riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread e timer
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -8913,7 +8913,7 @@ status = nx_udp_socket_info_get(&socket_0,
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_port_get"></a>nx_udp_socket_port_get
-Preleva il numero di porta associato al socket UDP
+Selezionare il numero di porta associato al socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8924,26 +8924,26 @@ UINT nx_udp_socket_port_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il numero di porta associato al socket, che è utile per trovare la porta allocata da NetX Duo nelle situazioni in cui il NX_ANY_PORT è stato specificato al momento dell'associazione del socket.
+Questo servizio recupera il numero di porta associato al socket, utile per trovare la porta allocata da NetX Duo nelle situazioni in cui il NX_ANY_PORT è stato specificato al momento dell'associazione del socket.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del socket UDP creata in precedenza.
-- **port_ptr** Puntatore alla destinazione per il numero di porta restituito. I numeri di porta validi sono (1-0xFFFF).
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza.
+- **port_ptr** Puntatore alla destinazione per il numero di porta restituito. I numeri di porta validi sono (1- 0xFFFF).
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) associazione Socket riuscita.
-- **NX_NOT_BOUND** (0X24) questo socket non è associato a una porta.
-- **NX_PTR_ERROR** (0x07) puntatore a socket non valido o puntatore a porta restituita.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Associazione socket riuscita.
+- **NX_NOT_BOUND** (0x24) Questo socket non è associato a una porta.
+- **NX_PTR_ERROR** (0x07) Puntatore socket o puntatore di porta restituito non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -8981,7 +8981,7 @@ status = nx_udp_socket_port_get(&udp_socket, &port);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_receive"></a>nx_udp_socket_receive
-Ricevi datagramma dal socket UDP
+Ricevere un datagramma dal socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -8993,35 +8993,35 @@ UINT nx_udp_socket_receive(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio riceve un datagramma UDP dal socket specificato. Se non viene accodato alcun datagramma sul socket specificato, il chiamante viene sospeso in base all'opzione wait fornita.
+Questo servizio riceve un datagramma UDP dal socket specificato. Se nessun datagramma viene accodato nel socket specificato, il chiamante viene sospeso in base all'opzione di attesa fornita.
 
 > [!CAUTION]  
-> *Se viene restituito NX_SUCCESS, l'applicazione è responsabile del rilascio del pacchetto ricevuto quando non è più necessario*.
+> *Se NX_SUCCESS viene restituito , l'applicazione è* responsabile del rilascio del pacchetto ricevuto quando non è più necessario .
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del socket UDP creata in precedenza.
-- **packet_ptr** Puntatore al puntatore del pacchetto del datagramma UDP.
-- **WAIT_OPTION** Definisce il comportamento del servizio se un datagramma non è attualmente accodato in questo socket. Le opzioni di attesa sono definite come segue:
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza.
+- **packet_ptr** Puntatore al puntatore a pacchetti di datagrammi UDP.
+- **wait_option** Definisce il comportamento del servizio se un datagramma non è attualmente accodato in questo socket. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- La ricezione del socket è riuscita **NX_SUCCESS** (0x00).
-- Il socket **NX_NOT_BOUND** (0x24) non è stato associato ad alcuna porta.
-- **NX_NO_PACKET** (0x01) non è disponibile alcun datagramma UDP da ricevere.
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort.
-- **NX_PTR_ERROR** (0x07) il puntatore del socket o del pacchetto restituito non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Ricezione socket riuscita.
+- **NX_NOT_BOUND** (0x24) Il socket non è stato associato ad alcuna porta.
+- **NX_NO_PACKET** (0x01) Non è stato ricevuto alcun datagramma UDP.
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort.
+- **NX_PTR_ERROR** (0x07) Socket o puntatore restituito pacchetto non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9061,7 +9061,7 @@ status = nx_udp_socket_receive(&udp_socket, &packet_ptr, 500);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_receive_notify"></a>nx_udp_socket_receive_notify
-Invia una notifica all'applicazione di ogni pacchetto ricevuto
+Notificare all'applicazione ogni pacchetto ricevuto
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9072,23 +9072,23 @@ UINT nx_udp_socket_receive_notify(
 ```
 ### <a name="description"></a>Descrizione 
 
-Questo servizio imposta il puntatore della funzione receive Notify per la funzione di callback specificata dall'applicazione. Questa funzione di callback viene quindi chiamata ogni volta che viene ricevuto un pacchetto nel socket. Se viene fornito un puntatore NX_NULL, la funzione receive Notify è disabilitata.
+Questo servizio imposta il puntatore a funzione receive notify sulla funzione di callback specificata dall'applicazione. Questa funzione di callback viene quindi chiamata ogni volta che viene ricevuto un pacchetto nel socket. Se viene NX_NULL un puntatore di notifica, la funzione di notifica di ricezione è disabilitata.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket UDP.
-- **udp_receive_notify** Puntatore alla funzione di callback dell'applicazione che viene chiamato quando viene ricevuto un pacchetto nel socket.
+- **udp_receive_notify** Puntatore a funzione di callback dell'applicazione chiamato quando viene ricevuto un pacchetto nel socket.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) ha impostato correttamente la funzione socket Receive Notify.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
+- **NX_SUCCESS** (0x00) Impostare correttamente la funzione di notifica di ricezione socket.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread, timer e ISRs
+Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9142,37 +9142,37 @@ UINT nx_udp_socket_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un datagramma UDP tramite un socket UDP precedentemente creato e associato per le reti IPv4. NetX Duo trova un indirizzo IP locale appropriato come indirizzo di origine in base all'indirizzo IP di destinazione. Per specificare un'interfaccia e un indirizzo IP di origine specifici, l'applicazione deve usare il servizio  **nxd_udp_socket_source_send** .
+Questo servizio invia un datagramma UDP tramite un socket UDP creato in precedenza e associato per le reti IPv4. NetX Duo trova un indirizzo IP locale appropriato come indirizzo di origine in base all'indirizzo IP di destinazione. Per specificare un'interfaccia e un indirizzo IP di origine specifici, l'applicazione deve usare il  **nxd_udp_socket_source_send** servizio.
 
-Si noti che questo servizio viene restituito immediatamente, indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente. Il servizio equivalente NetX Duo (IPv4/IPv6) viene ***nxd_udp_socket_send***.
+Si noti che questo servizio restituisce immediatamente indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente. Il servizio equivalente NetX Duo (IPv4/IPv6) è ***nxd_udp_socket_send***.
 
 Il socket deve essere associato a una porta locale.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore all'istanza Socket UDP creata in precedenza
-- **packet_ptr** Puntatore al pacchetto del datagramma UDP
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza
+- **packet_ptr** Puntatore a pacchetti di datagrammi UDP
 - **ip_address** Indirizzo IPv4 di destinazione
-- **porta** Numero di porta di destinazione valido compreso tra 1 e 0xFFFF), in ordine byte host
+- **porta** Numero di porta di destinazione valido compreso tra 1 e 0xFFFF), nell'ordine dei byte dell'host
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) trasmissione socket UDP riuscita
-- Socket **NX_NOT_BOUND** (0x24) non associato ad alcuna porta
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita adatta.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP del server non valido
-- Lo spazio di **NX_UNDERFLOW** (0x02) non è sufficiente per l'intestazione UDP nel pacchetto
-- Puntatore di aggiunta pacchetto di **NX_OVERFLOW** (0x03) non valido
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Il **NX_NOT_ENABLED** UDP (0x14) non è stato abilitato
-- Il numero di porta **NX_INVALID_PORT** (0x46) non è compreso in un intervallo valido
+- **NX_SUCCESS** (0x00) Invio socket UDP riuscito
+- **NX_NOT_BOUND** (0x24) Socket non associato ad alcuna porta
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare un'interfaccia in uscita appropriata.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP del server non valido
+- **NX_UNDERFLOW** (0x02) Spazio insufficiente per l'intestazione UDP nel pacchetto
+- **NX_OVERFLOW** (0x03) Il puntatore di accodamento del pacchetto non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** (0x14) UDP non è stato abilitato
+- **NX_INVALID_PORT** (0x46) Il numero di porta non è compreso in un intervallo valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9216,7 +9216,7 @@ status = nx_udp_socket_send(&client_socket, packet_ptr,
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_source_send"></a>nx_udp_socket_source_send
-Invia datagramma tramite socket UDP
+Inviare un datagramma tramite socket UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9230,11 +9230,11 @@ UINT nx_udp_socket_source_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un datagramma UDP tramite un socket UDP precedentemente creato e associato tramite l'interfaccia di rete con l'indirizzo IP specificato come indirizzo di origine. Si noti che il servizio restituisce immediatamente un risultato, indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente o meno. ***nxd_udp_socket_source_send*** funziona sia per le reti IPv4 sia per quelle IPv6.
+Questo servizio invia un datagramma UDP tramite un socket UDP creato in precedenza e associato tramite l'interfaccia di rete con l'indirizzo IP specificato come indirizzo di origine. Si noti che il servizio restituisce immediatamente, indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente o meno. ***nxd_udp_socket_source_send*** funziona sia per le reti IPv4 che per le reti IPv6.
 
 ### <a name="parameters"></a>Parametri 
 
-- **socket_ptr** Socket per la trasmissione del pacchetto.
+- **socket_ptr** Socket su cui trasmettere il pacchetto.
 - **packet_ptr** Puntatore al pacchetto da trasmettere.
 - **ip_address** Indirizzo IP di destinazione per l'invio del pacchetto.
 - **porta** Porta di destinazione.
@@ -9242,22 +9242,22 @@ Questo servizio invia un datagramma UDP tramite un socket UDP precedentemente cr
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il pacchetto **NX_SUCCESS** (0x00) è stato inviato correttamente.
-- Il socket **NX_NOT_BOUND** (0x24) non è associato a una porta.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IP non valido.
-- L'elaborazione UDP di **NX_NOT_ENABLED** (0x14) non è abilitata.
-- **NX_PTR_ERROR** (0x07) puntatore non valido.
-- **NX_OVERFLOW** (0x03) puntatore di Accodamento pacchetti non valido.
-- **NX_UNDERFLOW** (0x02) puntatore a anteporre il pacchetto non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_INVALID_INTERFACE** (0x4C) indice di indirizzo non valido.
-- Il numero di porta **NX_INVALID_PORT** (0x46) supera il numero di porta massimo.
+- **NX_SUCCESS** (0x00) Il pacchetto è stato inviato correttamente.
+- **NX_NOT_BOUND** (0x24) Socket non associato a una porta.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IP non valido.
+- **NX_NOT_ENABLED** (0x14) l'elaborazione UDP non è abilitata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido.
+- **NX_OVERFLOW** (0x03) Puntatore di accodamento pacchetti non valido.
+- **NX_UNDERFLOW** (0x02) Puntatore anteposto pacchetto non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_INVALID_INTERFACE** (0x4C) Indice di indirizzi non valido.
+- **NX_INVALID_PORT** (0x46) Il numero di porta supera il numero massimo di porta.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9300,7 +9300,7 @@ status = nx_udp_socket_source_send(socket_ptr, packet_ptr,
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_socket_unbind"></a>nx_udp_socket_unbind
-Separa socket UDP dalla porta UDP
+Scollegare il socket UDP dalla porta UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9315,21 +9315,21 @@ Se sono presenti altri thread in attesa di associare un altro socket alla porta 
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore a un'istanza del socket UDP creata in precedenza.
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- La disassociazione del socket è riuscita **NX_SUCCESS** (0x00).
-- Il socket **NX_NOT_BOUND** (0x24) non è stato associato ad alcuna porta.
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido.
-- Il chiamante **NX_CALLER_ERROR** (0X11) non è valido per il servizio.
-- **NX_NOT_ENABLED** (0X14) questo componente non è stato abilitato.
+- **NX_SUCCESS** (0x00) Operazione riuscita di annullamento dell'associazione del socket.
+- **NX_NOT_BOUND** (0x24) Il socket non è stato associato ad alcuna porta.
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio.
+- **NX_NOT_ENABLED** (0x14) Questo componente non è stato abilitato.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -9367,7 +9367,7 @@ status = nx_udp_socket_unbind(&udp_socket);
 - nxd_udp_source_extract
 
 ## <a name="nx_udp_source_extract"></a>nx_udp_source_extract
-Estrarre IP e la porta di trasmissione dal datagramma UDP
+Estrarre l'INDIRIZZO IP e inviare la porta dal datagramma UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9379,7 +9379,7 @@ UINT nx_udp_source_extract(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio estrae l'IP e il numero di porta del mittente dalle intestazioni IP e UDP del datagramma UDP fornito. Si noti che il ***nxd_udp_source_extract*** del servizio funziona con i pacchetti di una rete IPv4 o IPv6.
+Questo servizio estrae l'indirizzo IP e il numero di porta del mittente dalle intestazioni IP e UDP del datagramma UDP fornito. Si noti che il ***nxd_udp_source_extract*** funziona con i pacchetti provenienti dalla rete IPv4 o IPv6.
 
 ### <a name="parameters"></a>Parametri
 
@@ -9389,15 +9389,15 @@ Questo servizio estrae l'IP e il numero di porta del mittente dalle intestazioni
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) l'estrazione IP/porta di origine è riuscita.
-- **NX_INVALID_PACKET** (0X12) il pacchetto fornito non è valido.
-- **NX_PTR_ERROR** (0x07) pacchetto non valido o destinazione IP o porta.
+- **NX_SUCCESS** (0x00) Estrazione porta/IP di origine completata.
+- **NX_INVALID_PACKET** (0x12) Il pacchetto fornito non è valido.
+- **NX_PTR_ERROR** (0x07) Pacchetto o IP o destinazione porta non valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer, ISR
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -9444,30 +9444,30 @@ UINT nxd_icmp_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita sia i servizi ICMPv4 che ICMPv6 e può essere chiamato solo dopo la creazione dell'istanza IP. Il servizio può essere abilitato prima o dopo l'abilitazione di IPv6 (vedere *nxd_ipv6_enable*). I servizi ICMPv4 includono richiesta/risposta echo. I servizi ICMPv6 includono richieste/risposte echo, individuazione Neighbor, rilevamento di indirizzi duplicati, individuazione router e configurazione automatica degli indirizzi senza stato. L'equivalente IPv4 in NetX è *nx_icmp_enable*.
+Questo servizio abilita i servizi ICMPv4 e ICMPv6 e può essere chiamato solo dopo la creazione dell'istanza IP. Il servizio può essere abilitato prima o dopo aver abilitato IPv6 (vedere *nxd_ipv6_enable*). I servizi ICMPv4 includono Echo Request/Reply. I servizi ICMPv6 includono Echo Request/Reply, Neighbor Discovery, Duplicate Address Detection, Router Discovery e Stateless Address Auto-configuration. L'equivalente IPv4 in NetX *è nx_icmp_enable*.
 
 > [!NOTE] 
-> *Se l'indirizzo IPv6 viene configurato manualmente prima di abilitare ICMPv6, il IPv6 configurato manualmente non è soggetto a un processo di rilevamento degli indirizzi duplicato*.
+> *Se l'indirizzo IPv6* viene configurato manualmente prima di abilitare ICMPv6, il IPv6 configurato manualmente non è soggetto al processo di rilevamento degli indirizzi duplicati .
 
-*nx_icmp_enable* avvia i servizi ICMP solo per le operazioni IPv4. Le applicazioni che utilizzano i servizi ICMPv6 devono utilizzare *nxd_icmp_enable* anziché *nx_icmp_enable*.
+*nx_icmp_enable* avvia i servizi ICMP solo per le operazioni IPv4. Le applicazioni che usano servizi ICMPv6 *devono usare nxd_icmp_enable* anziché *nx_icmp_enable*.
 
-Per utilizzare la richiesta router IPv6 e la configurazione degli indirizzi automatici senza stato IPv6, è necessario abilitare ICMPv6.
+Per utilizzare la richiesta di router IPv6 e la configurazione dell'indirizzo automatico senza stato IPv6, È necessario che ICMPv6 sia abilitato.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- I servizi ICMP **NX_SUCCESS** (0x00) sono stati abilitati
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** i servizi ICMP 0x00 (0x00) sono stati abilitati correttamente
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -9505,43 +9505,43 @@ UINT nxd_icmp_ping(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto di richiesta echo ICMP tramite un'interfaccia fisica appropriata e attende una risposta echo dall'host di destinazione. NetX Duo determina l'interfaccia appropriata, in base all'indirizzo di destinazione, per l'invio del messaggio ping. Le applicazioni devono utilizzare il ***nxd_icmp_source_ping*** di servizio per specificare l'interfaccia fisica e l'indirizzo IP di origine preciso da utilizzare per la trasmissione dei pacchetti.
+Questo servizio invia un pacchetto Echo Request ICMP tramite un'interfaccia fisica appropriata e attende una risposta Echo dall'host di destinazione. NetX Duo determina l'interfaccia appropriata, in base all'indirizzo di destinazione, per inviare il messaggio ping . Le applicazioni devono usare il ***servizio*** nxd_icmp_source_ping specificare l'interfaccia fisica e l'indirizzo IP di origine preciso da usare per la trasmissione dei pacchetti.
 
-È necessario che l'istanza IP sia stata creata e che i servizi ICMPv4/ICMPv6 siano abilitati. vedere ***nxd_icmp_enable***.
+L'istanza IP deve essere stata creata e i servizi ICMPv4/ICMPv6 devono essere abilitati (vedere ***nxd_icmp_enable***).
 
 > [!WARNING]  
-> Se viene restituito NX_SUCCESS, l'applicazione è responsabile del rilascio del pacchetto ricevuto dopo che non è più necessario.
+> Se NX_SUCCESS viene restituito , l'applicazione è responsabile del rilascio del pacchetto ricevuto quando non è più necessario.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP
-- **ip_address** Indirizzo IP di destinazione per il ping, in ordine byte host
-- **DATA_PTR** Puntatore all'area dati del pacchetto ping
-- **DATA_SIZE** Numero di byte di dati ping
-- **response_ptr** Puntatore al puntatore del pacchetto di risposta
-- **WAIT_OPTION** Tempo di attesa per una risposta. Le opzioni di attesa sono definite come segue:
+- **ip_ptr** Puntatore all'istanza IP
+- **ip_address** Indirizzo IP di destinazione per il ping, nell'ordine dei byte dell'host
+- **data_ptr** Puntatore all'area dati del pacchetto ping
+- **data_size** Numero di byte di dati ping
+- **response_ptr** Puntatore al puntatore al pacchetto di risposta
+- **wait_option** Tempo di attesa per una risposta. Le opzioni di attesa sono definite come segue:
     - **NX_NO_WAIT** (0x00000000)
-    - **valore di timeout in cicli (da 0x00000001 a** 
-    - **NX_WAIT_FOREVER** 0xfffffffe)
+    - **valore di timeout in tick** (da 0x00000001 a 
+    - **NX_WAIT_FOREVER** 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) correttamente inviato e ricevuto ping
-- Il protocollo IPv6 **NX_NOT_SUPPORTED** (0x4B) non è abilitato
-- I dati di ping **NX_OVERFLOW** (0x03) superano il payload del pacchetto
-- L'host di destinazione **NX_NO_RESPONSE** (0x29) non ha risposto
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da tx_thread_wait_abort
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita adatta.
-- **NX_PTR_ERROR** (0x07) un puntatore IP o risposta non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Il componente **NX_NOT_ENABLED** (0X14) IP o ICMP non è abilitato
-- Indirizzo IP di input **NX_IP_ADDRESS_ERROR** (0x21) non valido
+- **NX_SUCCESS** (0x00) Ping inviato e ricevuto
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è abilitato
+- **NX_OVERFLOW** (0x03) I dati ping superano il payload del pacchetto
+- **NX_NO_RESPONSE(0x29)** L'host di destinazione non ha risposto
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da tx_thread_wait_abort
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare alcuna interfaccia in uscita appropriata.
+- **NX_PTR_ERROR** (0x07) IP o puntatore di risposta non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** ip (0x14) o componente ICMP non è abilitato
+- **NX_IP_ADDRESS_ERROR'indirizzo** IP di input 0x21 (0x21) non è valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -9616,44 +9616,44 @@ UINT nxd_icmp_source_ping(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto di richiesta echo ICMP usando l'indice specificato di un indirizzo IPv4 o IPv6 e tramite l'interfaccia di rete a cui è associato l'indirizzo di origine e attende una risposta echo dall'host di destinazione. Questo servizio è compatibile con gli indirizzi IPv4 e IPv6. Il parametro *address_index* indica l'indirizzo IPv4 o IPv6 di origine da usare. Per l'indirizzo IPv4, il *address_index* è lo stesso indice dell'interfaccia di rete collegata. Per IPv6, il *address_index* indica la voce nella tabella degli indirizzi IPv6.
+Questo servizio invia un pacchetto echo request ICMP usando l'indice specificato di un indirizzo IPv4 o IPv6 e tramite l'interfaccia di rete a cui è associato l'indirizzo di origine e attende una risposta Echo dall'host di destinazione. Questo servizio funziona sia con gli indirizzi IPv4 che con gli indirizzi IPv6. Il parametro *address_index* indica l'indirizzo IPv4 o IPv6 di origine da utilizzare. Per l'indirizzo IPv4, *address_index* è lo stesso indice dell'interfaccia di rete collegata. Per IPv6, *il address_index* indica la voce nella tabella degli indirizzi IPv6.
 
-È necessario che sia stata creata l'istanza IP ed è necessario abilitare i servizi ICMPv4 e ICMPv6 (vedere *nxd_icmp_enable*).
+L'istanza IP deve essere stata creata e i servizi ICMPv4 e ICMPv6 devono essere abilitati (vedere *nxd_icmp_enable*).
 
 > [!CAUTION] 
-> *Se viene restituito NX_SUCCESS, l'applicazione è responsabile del rilascio del pacchetto ricevuto dopo che non è più necessario*.
+> *Se NX_SUCCESS viene restituito , l'applicazione è* responsabile del rilascio del pacchetto ricevuto quando non è più necessario.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP
-- **ip_address** Indirizzo IP di destinazione per il ping, in ordine byte host
-- **address_index** Indica l'indirizzo IP da utilizzare come indirizzo di origine
-- **DATA_PTR** Puntatore all'area dati del pacchetto ping
-- **DATA_SIZE** Numero di byte di dati ping
+- **ip_ptr** Puntatore all'istanza IP
+- **ip_address** Indirizzo IP di destinazione per il ping, nell'ordine dei byte dell'host
+- **address_index** Indica l'indirizzo IP da usare come indirizzo di origine
+- **data_ptr** Puntatore all'area dati del pacchetto ping
+- **data_size** Numero di byte di dati ping
 - **response_ptr** Puntatore al puntatore del pacchetto di risposta
-- **WAIT_OPTION** Tempo di attesa per una risposta. Le opzioni di attesa sono definite come segue:
+- **wait_option** Tempo di attesa per una risposta. Le opzioni di attesa sono definite come segue:
     - **NX_NO_WAIT** (0x00000000)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe
+    - **valore di timeout in tick** (da 0x00000001 a 0xFFFFFFFE
     - **NX_WAIT_FOREVER** 0xFFFFFFFF)
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) correttamente inviato e ricevuto ping
-- Il protocollo IPv6 **NX_NOT_SUPPORTED** (0x4B) non è abilitato
-- I dati di ping **NX_OVERFLOW** (0x03) superano il payload del pacchetto
-- L'host di destinazione **NX_NO_RESPONSE** (0x29) non ha risposto
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da tx_thread_wait_abort
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita appropriata
-- **NX_PTR_ERROR** (0x07) un puntatore IP o risposta non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Il componente **NX_NOT_ENABLED** (0X14) IP o ICMP non è abilitato
-- Indirizzo IP di input **NX_IP_ADDRESS_ERROR** (0x21) non valido
+- **NX_SUCCESS** (0x00) Ping inviato e ricevuto
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è abilitato
+- **NX_OVERFLOW** (0x03) I dati ping superano il payload del pacchetto
+- **NX_NO_RESPONSE(0x29)** L'host di destinazione non ha risposto
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da tx_thread_wait_abort
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare alcuna interfaccia in uscita appropriata
+- **NX_PTR_ERROR** (0x07) IP o puntatore di risposta non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** ip (0x14) o componente ICMP non è abilitato
+- **NX_IP_ADDRESS_ERROR'indirizzo** IP di input 0x21 (0x21) non è valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -9723,7 +9723,7 @@ status = nxd_icmp_source_ping(&ip_0, &ip_address,
 - nxd_icmpv6_ra_flag_callback_set
 
 ## <a name="nxd_icmpv6_ra_flag_callback_set"></a>nxd_icmpv6_ra_flag_callback_set
-Impostare la funzione di callback per la modifica del flag ICMPv6 RA
+Impostare la funzione di callback di modifica del flag ra ICMPv6
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9734,25 +9734,25 @@ UINT nxd_icmpv6_ra_flag_callback_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta la funzione di callback Change del flag di annuncio router ICMPv6. La funzione di callback fornita dall'utente viene richiamata quando NetX duo riceve un messaggio di annuncio router.
+Questo servizio imposta la funzione di callback di modifica del flag router advertisement ICMPv6. La funzione di callback fornita dall'utente viene richiamata quando NetX Duo riceve un messaggio di annuncio router.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 - **ra_callback** Funzione di callback fornita dall'utente
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) ha impostato la funzione di callback del contrassegno ra
-- Il protocollo IPv6 **NX_NOT_SUPPORTED** (0x4B) non è abilitato
+- **NX_SUCCESS** (0x00) Impostare correttamente la funzione di callback del flag RA
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è abilitato
 - **NX_PTR_ERROR** (0x07) IP non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9783,7 +9783,7 @@ status = nxd_icmpv6_ra_flag_callback_set(&ip_0,
 - nxd_icmp_source_ping
 
 ## <a name="nxd_ip_raw_packet_send"></a>nxd_ip_raw_packet_send
-Invia pacchetto IP non elaborato
+Inviare un pacchetto IP non elaborato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9798,36 +9798,36 @@ UINT nxd_ip_raw_packet_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto IPv4 o IPv6 non elaborato (nessuna intestazione del protocollo del livello di trasporto). In un sistema multihome, se il sistema non è in grado di determinare un'interfaccia appropriata (ad esempio, se l'indirizzo IP di destinazione è broadcast IPv4, multicast o indirizzo multicast IPv6), viene selezionato il dispositivo primario. Il servizio ***nxd_ip_raw_packet_source_send** _ può essere usato per specificare un'interfaccia in uscita. L'equivalente NetX è _ *_nx_ip_raw_packet_send_.**
+Questo servizio invia un pacchetto IPv4 o IPv6 non elaborato (nessuna intestazione del protocollo a livello di trasporto). In un sistema multihome, se il sistema non è in grado di determinare un'interfaccia appropriata (ad esempio, se l'indirizzo IP di destinazione è un indirizzo multicast IPv4 broadcast, multicast o IPv6), viene selezionato il dispositivo primario. Il servizio ***nxd_ip_raw_packet_source_send** _ può essere usato per specificare un'interfaccia in uscita. L'equivalente di NetX è _ *_nx_ip_raw_packet_send_.**
 
-È necessario che l'istanza IP sia stata creata in precedenza e che la gestione dei pacchetti IP non elaborati sia abilitata usando il servizio ***nx_ip_raw_packet_enable*** .
+L'istanza IP deve essere creata in precedenza e la gestione dei pacchetti IP non elaborati deve essere abilitata usando ***nx_ip_raw_packet_enable*** servizio.
 
 ### <a name="parameters"></a>Parametri
 
 - **ip_ptr** Puntatore all'istanza IP creata in precedenza
 - **packet_ptr** Puntatore al pacchetto da trasmettere
 - **destination_ip** Puntatore all'indirizzo di destinazione
-- **protocollo** di Protocollo Packet archiviato nell'intestazione IP
-- valore **TTL** Valore per TTL o limite hop
-- **TOS** Valore per TOS o classe di traffico e etichetta di flusso
+- **protocollo** Protocollo di pacchetti archiviato nell'intestazione IP
+- **ttl** Valore per TTL o limite hop
+- **tos** Valore per TOS o classe di traffico ed etichetta di flusso
 
 ### <a name="return-value"></a>Valore restituito 
 
-- Pacchetto IP non elaborato **NX_SUCCESS** (0x00) inviato correttamente
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita appropriata
-- Gestione degli indirizzi IP non elaborati **NX_NOT_ENABLED** (0x14) non abilitata
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv4 o IPv6 non valido
-- Lo spazio di **NX_UNDERFLOW** (0x02) non è sufficiente per l'intestazione IPv4 o IPv6 nel pacchetto
-- Puntatore di aggiunta pacchetto di **NX_OVERFLOW** (0x03) non valido
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido o puntatore al pacchetto
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non è un input di indirizzo IPv6 valido
+- **NX_SUCCESS** (0x00) Il pacchetto IP non elaborato è stato inviato correttamente
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare un'interfaccia in uscita adatta
+- **NX_NOT_ENABLED** (0x14) Gestione ip non elaborato non abilitata
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv4 o IPv6 non valido
+- **NX_UNDERFLOW** (0x02) Spazio insufficiente per l'intestazione IPv4 o IPv6 nel pacchetto
+- **NX_OVERFLOW** (0x03) Il puntatore di accodamento del pacchetto non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore IP o puntatore a pacchetto non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_INVALID_PARAMETERS** (0x4D) Input indirizzo IPv6 non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9874,7 +9874,7 @@ status = nxd_ip_raw_packet_send(&ip_0, packet_ptr, dest_address,
 - nxd_ip_raw_packet_source_send
 
 ## <a name="nxd_ip_raw_packet_source_send"></a>nxd_ip_raw_packet_source_send
-Invia pacchetto RAW usando l'indirizzo di origine specificato
+Inviare un pacchetto non elaborato usando l'indirizzo di origine specificato
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9890,37 +9890,37 @@ UINT nxd_ip_raw_packet_source_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto IPv4 o IPv6 non elaborato utilizzando l'indirizzo IPv4 o IPv6 specificato come indirizzo di origine. Questo servizio viene in genere usato in un sistema multihome, se il sistema non è in grado di determinare un'interfaccia appropriata (ad esempio, se l'indirizzo IP di destinazione è broadcast IPv4, multicast o indirizzo multicast IPv6). Il parametro *address_index* consente all'applicazione di specificare l'indirizzo di origine da usare per l'invio di questo pacchetto non elaborato.
+Questo servizio invia un pacchetto IPv4 o IPv6 non elaborato usando l'indirizzo IPv4 o IPv6 specificato come indirizzo di origine. Questo servizio viene in genere usato in un sistema multihome, se il sistema non è in grado di determinare un'interfaccia appropriata, ad esempio se l'indirizzo IP di destinazione è un indirizzo multicast IPv4 broadcast, multicast o IPv6. Il parametro *address_index* consente all'applicazione di specificare l'indirizzo di origine da usare per l'invio di questo pacchetto non elaborato.
 
-È necessario che l'istanza IP sia stata creata in precedenza e che la gestione dei pacchetti IP non elaborati sia abilitata usando il servizio ***nx_ip_raw_packet_enable*** .
+L'istanza IP deve essere creata in precedenza e la gestione dei pacchetti IP non elaborati deve essere abilitata usando ***nx_ip_raw_packet_enable*** servizio.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 - **packet_ptr** Puntatore al pacchetto da inviare
 - **destination_ip** Indirizzo IP di destinazione
-- **address_index** Indice agli indirizzi IPv4 o IPv6 da utilizzare come indirizzo di origine.
-- **protocollo** di Valore per il campo protocollo
-- valore **TTL** Valore per TTL o limite hop
-- **TOS** Valore per TOS o classe di traffico e etichetta di flusso
+- **address_index** Indice degli indirizzi IPv4 o IPv6 da usare come indirizzo di origine.
+- **protocollo** Valore per il campo del protocollo
+- **ttl** Valore per il limite di ttl o hop
+- **tos** Valore per tos o traffic class e flow label
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Il pacchetto di **NX_SUCCESS** (0x00) viene inviato correttamente
-- Lo spazio di **NX_UNDERFLOW** (0x02) non è sufficiente per l'intestazione IPv4 o IPv6 nel pacchetto
-- Puntatore di aggiunta pacchetto di **NX_OVERFLOW** (0x03) non valido
-- **NX_PTR_ERROR** (0x07) puntatore non valido a un blocco di controllo IP, a un pacchetto o a destination_ip
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Elaborazione non elaborata di **NX_NOT_ENABLED** (0x14) non abilitata
-- Errore di indirizzo **NX_IP_ADDRESS_ERROR** (0x21)
-- Indice di interfaccia **NX_INVALID_INTERFACE** (0X4C) non valido
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non è un input di indirizzo IPv6 valido
+- **NX_SUCCESS** (0x00) Il pacchetto viene inviato correttamente
+- **NX_UNDERFLOW** (0x02) Spazio insufficiente per l'intestazione IPv4 o IPv6 nel pacchetto
+- **NX_OVERFLOW** (0x03) Il puntatore di accodamento del pacchetto non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore non valido a blocco di controllo IP, pacchetto o destination_ip
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** (0x14) Elaborazione non elaborata non abilitata
+- **NX_IP_ADDRESS_ERROR** (0x21) Errore di indirizzo
+- **NX_INVALID_INTERFACE** (0x4C) Indice di interfaccia non valido
+- **NX_INVALID_PARAMETERS** (0x4D) Input indirizzo IPv6 non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -9952,7 +9952,7 @@ status = nxd_ip_raw_packet_source_send(&ip_0, packet_ptr,
 - nxd_ip_raw_packet_send
 
 ## <a name="nxd_ipv6_address_change_notify"></a>nxd_ipv6_address_change_notify
-Imposta notifica modifica indirizzo IPv6
+Impostare una notifica di modifica dell'indirizzo ipv6
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -9963,28 +9963,28 @@ UINT nxd_ipv6_address_change_notify(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio registra una routine di callback dell'applicazione che NetX Duo chiama ogni volta che viene modificato l'indirizzo IPv6.
+Questo servizio registra una routine di callback dell'applicazione chiamata da NetX Duo ogni volta che viene modificato l'indirizzo IPv6.
 
-Questo servizio è disponibile se viene compilata la libreria NetX Duo è l'opzione ***NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY*** definita.
+Questo servizio è disponibile se la libreria NetX Duo è compilata è ***l'opzione NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY*** definita.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **ip_address_change_notify** Funzione di callback dell'applicazione
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Set di **NX_SUCCESS** (0x00) riuscito
-- La funzionalità di notifica delle modifiche degli indirizzi IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- La notifica della modifica dell'indirizzo IPv6 **NX_NOT_ENABLED** (0x14) non è compilata
+- **NX_SUCCESS** (0x00) Operazione riuscita
+- **NX_NOT_SUPPORTED** funzionalità di notifica della modifica dell'indirizzo IPv6 (0x4B) non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** notifica della modifica dell'indirizzo IPv6 0x14 (0x14) non è stata compilata
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10048,26 +10048,26 @@ UINT nxd_ipv6_address_delete(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina l'indirizzo IPv6 in corrispondenza dell'indice specificato nella tabella degli indirizzi IPv6 dell'istanza IP specificata. Nessun NetX equivalente.
+Questo servizio elimina l'indirizzo IPv6 in corrispondenza dell'indice specificato nella tabella degli indirizzi IPv6 dell'istanza IP specificata. Non esiste un equivalente NetX.
 
 ### <a name="parameters"></a>Parametri 
 
 - **ip_ptr** Puntatore all'istanza IP creata in precedenza
-- **address_index** Tabella degli indirizzi IPv6 dell'istanza IP da indicizzare
+- **address_index** Indice nella tabella degli indirizzi IPv6 dell'istanza IP
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'indirizzo **NX_SUCCESS** (0x00) è stato eliminato
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita appropriata
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) L'indirizzo è stato eliminato
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare alcuna interfaccia in uscita appropriata
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10125,29 +10125,29 @@ UINT nxd_ipv6_address_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera l'indirizzo IPv6 e il prefisso in corrispondenza dell'indice specificato nella tabella degli indirizzi dell'istanza IP specificata. Nell'indicatore di *interface_index* viene restituito l'indice dell'interfaccia fisica a cui è associato l'indirizzo IPv6. I servizi equivalenti NetX sono ***nx_ip_address_get** _ e _ *_nx_ip_interface_address_get_* *.
+Questo servizio recupera l'indirizzo IPv6 e il prefisso in corrispondenza dell'indice specificato nella tabella degli indirizzi dell'istanza IP specificata. L'indice dell'interfaccia fisica a cui è associato l'indirizzo IPv6 viene restituito nel *puntatore interface_index* corrente. I servizi equivalenti NetX sono ***nx_ip_address_get** _ e _*_nx_ip_interface_address_get_**.
 
 ### <a name="parameters"></a>Parametri 
 
 - **ip_ptr** Puntatore all'istanza IP creata in precedenza
-- **address_index** Tabella degli indirizzi dell'istanza IP da indicizzare
+- **address_index** Indice nella tabella degli indirizzi dell'istanza IP
 - **ip_address** Puntatore all'indirizzo da impostare
-- **Prefix_Length** Lunghezza del prefisso dell'indirizzo (subnet mask)
+- **prefix_length** Lunghezza del prefisso dell'indirizzo (subnet mask)
 - **interface_index** Puntatore all'indice dell'interfaccia
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'abilitazione di **NX_SUCCESS** (0x00) IPv6 è stata completata
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- **NX_NO_INTERFACE_ADDRESS** (0X50) nessun indirizzo di interfaccia o address_index non valido
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) IPv6 è stato abilitato correttamente
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Nessun indirizzo di interfaccia o indirizzo di address_index
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10198,7 +10198,7 @@ status = nxd_ipv6_address_get(&ip_0, address_index, &ip_address,
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nxd_ipv6_address_set"></a>nxd_ipv6_address_set
-Imposta indirizzo e prefisso IPv6
+Impostare l'indirizzo e il prefisso IPv6
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -10212,32 +10212,32 @@ UINT nxd_ipv6_address_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'indirizzo IPv6 fornito e il prefisso per l'istanza IP specificata. Se l'argomento *address_index* non è null, viene restituito l'indice nella tabella degli indirizzi IPv6 in cui viene inserito l'indirizzo. I servizi equivalenti NetX sono ***nx_ip_address_set** _ e _ *_nx_ip_interface_address_set_* *.
+Questo servizio imposta l'indirizzo IPv6 e il prefisso specificati sull'istanza IP specificata. Se *l address_index'argomento* non è Null, viene restituito l'indice nella tabella degli indirizzi IPv6 in cui viene inserito l'indirizzo. I servizi equivalenti NetX sono ***nx_ip_address_set** _ e _*_nx_ip_interface_address_set_**.
 
 ### <a name="parameters"></a>Parametri  
 
 - **ip_ptr** Puntatore all'istanza IP creata in precedenza
 - **interface_index** Indice dell'interfaccia a cui è associato l'indirizzo IPv6
 - **ip_address** Puntatore all'indirizzo da impostare
-- **Prefix_Length** Lunghezza del prefisso dell'indirizzo (subnet mask)
+- **prefix_length** Lunghezza del prefisso dell'indirizzo (subnet mask)
 - **address_index** Puntatore all'indice nella tabella degli indirizzi in cui viene inserito l'indirizzo
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'abilitazione di **NX_SUCCESS** (0x00) IPv6 è stata completata
-- La tabella di indirizzi IP **NX_NO_MORE_ENTRIES** (0x15) è piena
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- **NX_DUPLICATED_ENTRY** (0X52) l'indirizzo IP specificato è già in uso in questa istanza IP
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv6 non valido
-- L'interfaccia **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida
+- **NX_SUCCESS** (0x00) IPv6 è stato abilitato correttamente
+- **NX_NO_MORE_ENTRIES** tabella degli indirizzi IP 0x15 (0x15) è piena
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_DUPLICATED_ENTRY** (0x52) L'indirizzo IP specificato è già usato in questa istanza IP
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv6 non valido
+- **NX_INVALID_INTERFACE** (0x4C) punta a un'interfaccia di rete non valida
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10316,35 +10316,35 @@ UINT nxd_ipv6_default_router_add(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un router predefinito IPv6 nell'interfaccia fisica specificata alla tabella router predefinita. Il servizio NetX IPv4 equivalente è ***nx_ip_gateway_address_set***.
+Questo servizio aggiunge un router predefinito IPv6 nell'interfaccia fisica specificata alla tabella del router predefinito. Il servizio IPv4 NetX equivalente è ***nx_ip_gateway_address_set***.
 
-*router_address* deve puntare a un indirizzo IPv6 valido e il router deve essere direttamente accessibile dall'interfaccia fisica specificata.
+*router_address* deve puntare a un indirizzo IPv6 valido e il router deve essere accessibile direttamente dall'interfaccia fisica specificata.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
 - **router_address** Puntatore all'indirizzo del router predefinito, nell'ordine dei byte dell'host
-- **router_lifetime** Tempo di vita del router predefinito, in secondi. I valori validi sono:
+- **router_lifetime** Durata predefinita del router, in secondi. I valori validi sono:
     - **0xFFFF:** Nessun timeout
     - **0-0xFFFE:** Valore di timeout, in secondi
-- **index_index** Puntatore alla posizione di memoria valida per l'indice dell'indice di rete tramite il quale è possibile raggiungere il router
+- **index_index** Puntatore alla posizione di memoria valida per l'indice di rete attraverso il quale è possibile raggiungere il router
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Il router predefinito **NX_SUCCESS** (0x00) è stato aggiunto
-- **NX_NO_MORE_ENTRIES** (0x17) non sono più presenti voci nella tabella router predefinita.
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv6 non valido
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non è un input di indirizzo IPv6 valido
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Indice dell'interfaccia router **NX_INVALID_INTERFACE** (0X4C) non valido
+- **NX_SUCCESS** router predefinito (0x00) è stato aggiunto correttamente
+- **NX_NO_MORE_ENTRIES** (0x17) Non sono disponibili altre voci nella tabella del router predefinito.
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv6 non valido
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_INVALID_PARAMETERS** (0x4D) Input indirizzo IPv6 non valido
+- **NX_PTR_ERROR** (0x07) Istanza IP o spazio di archiviazione non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_INVALID_INTERFACE** (0x4C) Indice dell'interfaccia router non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10388,7 +10388,7 @@ status = nxd_ipv6_default_router_add(ip_ptr, &router_address,
 - nxd_ipv6_default_router_number_of_entries_get
 
 ## <a name="nxd_ipv6_default_router_delete"></a>nxd_ipv6_default_router_delete
-Rimuovi router IPv6 dalla tabella router predefinita
+Rimuovere il router IPv6 dalla tabella router predefinita
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -10399,31 +10399,31 @@ UINT nxd_ipv6_default_router_delete (
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un router predefinito IPv6 dalla tabella router predefinita. Il servizio NetX IPv4 equivalente è ***nx_ip_gateway_address_clear***.
+Questo servizio elimina un router predefinito IPv6 dalla tabella del router predefinito. Il servizio NetX IPv4 equivalente è ***nx_ip_gateway_address_clear***.
 
 ### <a name="restrictions"></a>Restrizioni
 
-L'istanza IP è stata creata. *router_address* necessario puntare a informazioni valide.
+L'istanza IP è stata creata. *router_address* deve puntare a informazioni valide.
 
 ### <a name="parameters"></a>Parametri
 
 - **ip_ptr** Puntatore a un'istanza IP creata in precedenza
-- **router_address** Puntatore all'indirizzo gateway predefinito IPv6
+- **router_address** Puntatore all'indirizzo del gateway predefinito IPv6
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Il router **NX_SUCCESS** (0x00) è stato eliminato
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
+- **NX_SUCCESS** router (0x00) eliminato correttamente
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
 - **NX_NOT_FOUND** (0x4E) Impossibile trovare la voce del router
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- **NX_INVALID_PARAMETERS** (0x82) non è stato inserito alcun puntatore non valido
+- **NX_PTR_ERROR** (0x07) Istanza IP o spazio di archiviazione non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_INVALID_PARAMETERS** (0x82) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10468,7 +10468,7 @@ nxd_ipv6_default_router_delete(ip_ptr, &router_address);
 - nxd_ipv6_default_router_number_of_entries_get
 
 ## <a name="nxd_ipv6_default_router_entry_get"></a>nxd_ipv6_default_router_entry_get
-Ottieni voce router predefinita
+Ottenere la voce predefinita del router
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -10488,27 +10488,27 @@ Questo servizio recupera una voce del router dalla tabella di routing IPv6 prede
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indice dell'interfaccia di rete
-- **entry_index** Indice voce
+- **entry_index** Indice delle voci
 - **router_addr** Indirizzo IPv6 router
-- **router_lifetime** Puntatore alla durata del router
-- **Prefix_Length** Puntatore alla lunghezza del prefisso
-- **configuration_method** Puntatore alle informazioni sul modo in cui è stata configurata la voce
+- **router_lifetime** Puntatore al tempo di vita del router
+- **prefix_length** Puntatore alla lunghezza del prefisso
+- **configuration_method** Puntatore alle informazioni sulla configurazione della voce
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) Get riuscita
-- Impossibile trovare la voce del router **NX_NOT_FOUND** (0x4E)
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Operazione get riuscita
+- **NX_NOT_FOUND** (0x4E) Router non trovato
+- **NX_INVALID_INTERFACE** (0x4C) Interface index is not valid (Indice dell'interfaccia di 0x4C non valido)
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10561,32 +10561,32 @@ UINT nxd_ipv6_default_router_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera un indirizzo del router predefinito IPv6, la durata e la lunghezza del prefisso nell'interfaccia fisica specificata dalla tabella router predefinita. Il servizio NetX IPv4 equivalente è ***nx_ip_gateway_address_get *.**
+Questo servizio recupera un indirizzo del router predefinito IPv6, la durata e la lunghezza del prefisso nell'interfaccia fisica specificata dalla tabella del router predefinito. Il servizio IPv4 NetX equivalente è ***nx_ip_gateway_address_get*.**
 
-*router_address* deve puntare a una struttura NXD_ADDRESS valida, in modo che il servizio possa inserire l'indirizzo IPv6 del router predefinito.
+*router_address* deve puntare a una struttura di NXD_ADDRESS valida, in modo che questo servizio possa compilare l'indirizzo IPv6 del router predefinito.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
-- **interface_index** Indice dell'interfaccia di rete accessibile dal router
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
+- **interface_index** Indice dell'interfaccia di rete tramite cui il router è accessibile
 - **router_address** Puntatore allo spazio di archiviazione per il valore restituito dell'indirizzo del router predefinito, nell'ordine dei byte dell'host.
 - **router_lifetime** Puntatore alla durata del router
-- **Prefix_Length** Puntatore alla lunghezza del prefisso dell'indirizzo del router
+- **prefix_length** Puntatore alla lunghezza del prefisso dell'indirizzo del router
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Il router predefinito **NX_SUCCESS** (0x00) è stato aggiunto
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- Il router predefinito **NX_NOT_FOUND** (0x4E) non è stato trovato
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Indice dell'interfaccia router **NX_INVALID_INTERFACE** (0X4C) non valido
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
+- **NX_SUCCESS** router predefinito (0x00) è stato aggiunto correttamente
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_NOT_FOUND** (0x4E) Router predefinito non trovato
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_INVALID_INTERFACE** (0x4C) Indice dell'interfaccia router non valido
+- **NX_PTR_ERROR** (0x07) Istanza IP o spazio di archiviazione non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10637,26 +10637,26 @@ UINT nxd_ipv6_default_router_number_of_entries_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il numero di router predefiniti IPv6 configurati in una determinata interfaccia di rete.
+Questo servizio recupera il numero di router IPv6 predefiniti configurati in una determinata interfaccia di rete.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore del blocco di controllo IP
+- **ip_ptr** Puntatore a blocco di controllo IP
 - **interface_index** Indice dell'interfaccia di rete
 - **num_entries** Destinazione per il numero di router IPv6 in un dispositivo di rete specificato
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) Get riuscita
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- Il valore di indice del dispositivo **NX_INVALID_INTERFACE** (0x4C) non è valido
-- **NX_PTR_ERROR** (0x07) puntatore a blocco di controllo IP o puntatore Num_entries non valido
+- **NX_SUCCESS** (0x00) Operazione get riuscita
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_INVALID_INTERFACE** (0x4C) Il valore di indice del dispositivo non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido o num_entries puntatore
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10697,25 +10697,25 @@ UINT nxd_ipv6_disable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita il protocollo IPv6 per l'istanza IP specificata. Cancella inoltre la tabella dei router predefinita, la cache ND e la tabella degli indirizzi IPv6, lascia tutti i gruppi multicast e reimposta le variabili di richiesta router. Questo servizio non ha alcun effetto se IPv6 non è abilitato.
+Questo servizio disabilita il protocollo IPv6 per l'istanza IP specificata. Cancella anche la tabella del router predefinita, la cache ND e la tabella degli indirizzi IPv6, lascia tutti i gruppi multicast e reimposta le variabili di richiesta del router. Questo servizio non ha alcun effetto se IPv6 non è abilitato.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- Disabilitazione di **NX_SUCCESS** (0x00) riuscita
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- Il modulo IPv6 **NX_NOT_SUPPORT** (0x4B) non è compilato
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Disabilitazione riuscita
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_NOT_SUPPORT** modulo IPv6 (0x4B) non è compilato
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -10754,7 +10754,7 @@ status = nxd_ipv6_disable(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nxd_ipv6_enable"></a>nxd_ipv6_enable
-Abilita servizi IPv6
+Abilitare i servizi IPv6
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -10763,7 +10763,7 @@ UINT nxd_ipv6_enable(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita i servizi IPv6. Quando i servizi IPv6 sono abilitati, l'istanza IP viene aggiunta al gruppo multicast tutti i nodi (FF02:: 1). Questo servizio non imposta l'indirizzo locale o l'indirizzo globale del collegamento. Le applicazioni devono usare *nxd_ipv6_address_set* per configurare gli indirizzi di rete del dispositivo. Nessun NetX equivalente.
+Questo servizio abilita i servizi IPv6. Quando i servizi IPv6 sono abilitati, l'istanza IP viene aggiunta al gruppo multicast tutti i nodi (FF02::1). Questo servizio non imposta l'indirizzo locale del collegamento o l'indirizzo globale. Le applicazioni devono usare *nxd_ipv6_address_set* per configurare gli indirizzi di rete del dispositivo. Non esiste alcun equivalente NetX.
 
 ### <a name="parameters"></a>Parametri
 
@@ -10771,17 +10771,17 @@ Questo servizio Abilita i servizi IPv6. Quando i servizi IPv6 sono abilitati, l'
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- L'abilitazione di **NX_SUCCESS** (0x00) IPv6 è stata completata
-- Il protocollo IPv6 **NX_ALREADY_ENABLED** (0x15) è già abilitato
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo.
-- **NX_PTR_ERROR** (0x07) puntatore IP non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) IPv6 è stato abilitato correttamente
+- **NX_ALREADY_ENABLED** (0x15) IPv6 è già abilitato
+- **NX_NOT_SUPPORTED** (0x4B) la funzionalità IPv6 non è incorporata nella libreria NetX Duo.
+- **NX_PTR_ERROR** (0x07) Puntatore IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -10828,7 +10828,7 @@ status = nxd_ipv6_enable(&ip_0);
 - nxd_ipv6_stateless_address_autoconfig_enable
 
 ## <a name="nxd_ipv6_multicast_interface_join"></a>nxd_ipv6_multicast_interface_join
-Unisciti a un gruppo multicast IPv6
+Aggiungere un gruppo multicast IPv6
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -10841,30 +10841,30 @@ UINT nxd_ipv6_multicast_interface_join(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente a un'applicazione di aggiungere un indirizzo multicast IPv6 specifico in un'interfaccia di rete specifica. Al driver del collegamento viene inviata una notifica per aggiungere l'indirizzo multicast. Questo servizio è disponibile se la libreria NetX Duo viene compilata con l'opzione ***NX_ENABLE_IPV6_MULTICAST*** definita.
+Questo servizio consente a un'applicazione di aggiungere un indirizzo multicast IPv6 specifico in un'interfaccia di rete specifica. Al driver di collegamento viene notificato di aggiungere l'indirizzo multicast. Questo servizio è disponibile se la libreria NetX Duo viene compilata con ***l'opzione NX_ENABLE_IPV6_MULTICAST*** definita.
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 - **group_address** Indirizzo multicast IPv6
 - **interface_index** Indice dell'interfaccia di rete associata al gruppo multicast
 
 ### <a name="return-values"></a>Valori restituiti  
 
-- **NX_SUCCESS** (0x00) consente di ricevere correttamente l'indirizzo multicast IPv6
-- **NX_NO_MORE_ENTRIES** (0x17) non sono presenti altre voci nella tabella multicast IPv6.
-- **NX_OVERFLOW** (0X03) non sono più disponibili indirizzi di gruppo nel driver di dispositivo
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) o la funzionalità multicast IPv6 non è integrata nella libreria NETX Duo
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv6 non valido
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
+- **NX_SUCCESS** (0x00) Abilita correttamente la ricezione sull'indirizzo multicast IPv6
+- **NX_NO_MORE_ENTRIES** (0x17) Non sono presenti altre voci nella tabella multicast IPv6.
+- **NX_OVERFLOW** (0x03) Nessun altro indirizzo di gruppo disponibile nel driver di dispositivo
+- **NX_NOT_SUPPORTED** funzionalità IPv6 (0x4B) o multicast IPv6 non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv6 non valido
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -10895,7 +10895,7 @@ status = nxd_ipv6_multicast_interface_join(&ip_0,
 - nxd_ipv6_multicast_interface_leave
 
 ## <a name="nxd_ipv6_multicast_interface_leave"></a>nxd_ipv6_multicast_interface_leave
-Lascia un gruppo multicast IPv6
+Lasciare un gruppo multicast IPv6
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -10907,29 +10907,29 @@ UINT nxd_ipv6_multicast_interface_leave(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove l'indirizzo multicast IPv6 specifico dal dispositivo di rete specifico. Al driver del collegamento viene inoltre notificata la rimozione dell'indirizzo multicast IPv6. Questo servizio è disponibile se la libreria NetX Duo viene compilata con l'opzione ***NX_ENABLE_IPV6_MULTICAST*** definita.
+Questo servizio rimuove l'indirizzo multicast IPv6 specifico dal dispositivo di rete specifico. Il driver di collegamento viene inoltre informato della rimozione dell'indirizzo multicast IPv6. Questo servizio è disponibile se la libreria NetX Duo viene compilata con ***l'opzione NX_ENABLE_IPV6_MULTICAST*** definita.
 
 ### <a name="parameters"></a>Parametri  
 
-- **ip_ptr** Puntatore istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 - **group_address** Indirizzo multicast IPv6
 - **interface_index** Indice dell'interfaccia di rete associata al gruppo
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) uscita multicast riuscita
-- Voce **NX_ENTRY_NOT_FOUND** (0x16) non trovata
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) o la funzionalità multicast IPv6 non è integrata nella libreria NETX Duo
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv6 non valido
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
+- **NX_SUCCESS** (0x00) Lasciare multicast riuscito
+- **NX_ENTRY_NOT_FOUND** (0x16) Voce non trovata
+- **NX_NOT_SUPPORTED** funzionalità IPv6 (0x4B) o multicast IPv6 non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv6 non valido
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -10972,28 +10972,28 @@ UINT nxd_ipv6_stateless_address_autoconfig_disable(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita la funzionalità di configurazione automatica degli indirizzi senza stato IPv6 in un dispositivo di rete specificato. Non ha alcun effetto se l'indirizzo IPv6 è stato configurato.
+Questo servizio disabilita la funzionalità di configurazione automatica degli indirizzi senza stato IPv6 in un dispositivo di rete specificato. Non ha alcun effetto se l'indirizzo IPv6 è stato configurato.
 
-Questo servizio è disponibile se la libreria NetX Duo viene compilata con l'opzione ***NX_IPV6_STATELESS_AUTOCONFIG_CONTROL*** definita.
+Questo servizio è disponibile se la libreria NetX Duo viene compilata con ***l'opzione NX_IPV6_STATELESS_AUTOCONFIG_CONTROL*** definita.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore istanza IP
-- **interface_index** Indice dell'interfaccia di rete che la configurazione automatica dell'indirizzo senza stato IPv6 deve essere disabilitata.
+- **ip_ptr** Puntatore all'istanza IP
+- **interface_index** Indice dell'interfaccia di rete in cui deve essere disabilitata la configurazione automatica degli indirizzi senza stato IPv6.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) Disabilita la funzionalità di configurazione autocompleta degli indirizzi senza stato.
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) o la funzionalità di controllo della configurazione automatica degli indirizzi senza stato IPv6 non è integrata nella libreria NETX Duo
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Disabilita correttamente la funzionalità di configurazione automatica degli indirizzi senza stato.
+- **NX_NOT_SUPPORTED** funzionalità IPv6 (0x4B) o la funzionalità di controllo della configurazione automatica degli indirizzi senza stato IPv6 non è incorporata nella libreria NetX Duo
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11047,29 +11047,29 @@ UINT nxd_ipv6_stateless_address_autoconfig_enable(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita la funzionalità di configurazione automatica degli indirizzi senza stato IPv6 in un dispositivo di rete specificato.
+Questo servizio abilita la funzionalità di configurazione automatica degli indirizzi senza stato IPv6 in un dispositivo di rete specificato.
 
-Questo servizio è disponibile se la libreria NetX Duo viene compilata con l'opzione ***NX_IPV6_STATELESS_AUTOCONFIG_CONTROL*** definita.
+Questo servizio è disponibile se la libreria NetX Duo viene compilata con ***l'opzione NX_IPV6_STATELESS_AUTOCONFIG_CONTROL*** definita.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore istanza IP
-- **interface_index** Indice dell'interfaccia di rete che deve essere abilitata per la configurazione automatica dell'indirizzo senza stato IPv6.
+- **ip_ptr** Puntatore all'istanza IP
+- **interface_index** Indice dell'interfaccia di rete in cui deve essere abilitata la configurazione automatica degli indirizzi senza stato IPv6.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- **NX_SUCCESS** (0x00) consente la funzionalità di configurazione automatica degli indirizzi senza stato.
-- **NX_ALREADY_ENABLED** (0X15) già abilitata
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) o la funzionalità di controllo della configurazione automatica degli indirizzi senza stato IPv6 non è integrata nella libreria NETX Duo
-- Indice dell'interfaccia **NX_INVALID_INTERFACE** (0x4C) non valido
-- Puntatore a blocco di controllo IP **NX_PTR_ERROR** (0x07) non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Abilita correttamente la funzionalità di configurazione automatica degli indirizzi senza stato.
+- **NX_ALREADY_ENABLED** (0x15) Già abilitato
+- **NX_NOT_SUPPORTED** funzionalità IPv6 (0x4B) o la funzionalità di controllo della configurazione automatica degli indirizzi senza stato IPv6 non è incorporata nella libreria NetX Duo
+- **NX_INVALID_INTERFACE** (0x4C) L'indice dell'interfaccia non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore a blocco di controllo IP non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11113,7 +11113,7 @@ status = nxd_ipv6_stateless_address_autoconfig_enable(&ip_0,
 - nxd_ipv6_stateless_address_autoconfig_disable
 
 ## <a name="nxd_nd_cache_entry_delete"></a>nxd_nd_cache_entry_delete
-Elimina la voce dell'indirizzo IPv6 nella cache del router adiacente
+Eliminare la voce indirizzo IPv6 nella cache dei router adiacenti
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11124,26 +11124,26 @@ UINT nxd_nd_cache_entry_delete(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina una voce della cache di individuazione router adiacente IPv6 per l'indirizzo IP specificato. La funzione NetX IPv4 equivalente è ***nx_arp_static_entry_delete***.
+Questo servizio elimina una voce della cache di individuazione adiacente IPv6 per l'indirizzo IP fornito. La funzione NetX IPv4 equivalente è ***nx_arp_static_entry_delete***.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
-- **ip_address** Puntatore all'indirizzo IPv6 da eliminare, in ordine byte host
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
+- **ip_address** Puntatore all'indirizzo IPv6 da eliminare, nell'ordine dei byte dell'host
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha eliminato correttamente l'indirizzo
-- Impossibile trovare l'indirizzo **NX_ENTRY_NOT_FOUND** (0x16) nella cache del router adiacente IPv6
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) L'indirizzo è stato eliminato
+- **NX_ENTRY_NOT_FOUND** (0x16) non trovato nella cache adiacente IPv6
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Istanza IP o spazio di archiviazione non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -11187,7 +11187,7 @@ status = nxd_nd_cache_entry_delete(&ip_0,
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nxd_nd_cache_entry_set"></a>nxd_nd_cache_entry_set
-Aggiungere un mapping indirizzo/MAC IPv6 alla cache adiacente
+Aggiungere un mapping indirizzo IPv6/MAC alla cache adiacente
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11201,29 +11201,29 @@ UINT nxd_nd_cache_entry_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una voce alla cache di individuazione vicina per l'indirizzo IP specificato *ip_address* mappato all'indirizzo Mac hardware nell'indice dell'interfaccia di rete specificato (interface_index). Il servizio NetX IPv4 equivalente è ***nx_arp_static_entry_create***.
+Questo servizio aggiunge una voce alla cache di individuazione adiacente per l'indirizzo IP specificato *ip_address* mappato all'indirizzo MAC hardware nell'indice dell'interfaccia di rete (interface_index). Il servizio IPv4 NetX equivalente è ***nx_arp_static_entry_create***.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
-- **dest_ip** Puntatore all'istanza di indirizzo IPv6
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
+- **dest_ip** Puntatore all'istanza dell'indirizzo IPv6
 - **interface_index** Indice che specifica l'interfaccia di rete fisica in cui è possibile raggiungere l'indirizzo IPv6 di destinazione 
-- **Mac** Puntatore all'indirizzo hardware.
+- **mac** Puntatore all'indirizzo hardware.
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Aggiunta voce **NX_SUCCESS** (0x00) completata
-- La cache **NX_NOT_SUCCESSFUL** (0X43) non è valida o non è disponibile alcuna voce della cache vicina
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Il valore di indice dell'interfaccia **NX_INVALID_INTERFACE** (0X4C) non è valido.
+- **NX_SUCCESS** (0x00) entry successfully added (Aggiunta della voce (0x00) completata
+- **NX_NOT_SUCCESSFUL** (0x43) Cache non valida o nessuna voce della cache adiacente disponibile
+- **NX_NOT_SUPPORTED** (0x4B) IPv6 non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Istanza IP o spazio di archiviazione non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_INVALID_INTERFACE** (0x4C) Valore di indice dell'interfaccia non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -11289,30 +11289,30 @@ UINT nxd_nd_cache_hardware_address_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di trovare un indirizzo hardware fisico nella cache di individuazione dei router adiacenti IPv6 associata all'indirizzo IPv6 fornito. Anche l'indice dell'interfaccia di rete tramite cui è possibile raggiungere il router adiacente viene restituito nel parametro *interface_index.* Il servizio NetX IPv4 equivalente è ***nx_arp_hardware_address_find***.
+Questo servizio tenta di trovare un indirizzo hardware fisico nella cache di individuazione adiacente IPv6 associata all'indirizzo IPv6 fornito. L'indice dell'interfaccia di rete tramite cui è possibile raggiungere l'elemento adiacente viene restituito anche nel parametro *interface_index.* Il servizio NetX IPv4 equivalente è ***nx_arp_hardware_address_find***.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
-- **ip_address** Puntatore a indirizzo IP da trovare, ordine byte host
-- **physical_msw** Puntatore ai primi 16 bit (47-32) dell'indirizzo fisico nell'ordine dei byte dell'host 
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
+- **ip_address** Puntatore all'indirizzo IP da trovare, ordine dei byte dell'host
+- **physical_msw** Puntatore ai primi 16 bit (47-32) dell'indirizzo fisico, nell'ordine dei byte dell'host 
 - **physical_lsw** Puntatore ai 32 bit inferiori (31-0) dell'indirizzo fisico nell'ordine dei byte dell'host
-- **interface_index** Puntatore alla posizione di memoria valida per l'indice dell'interfaccia che specifica il dispositivo di rete in cui è possibile raggiungere l'indirizzo IPv6.
+- **interface_index** Puntatore alla posizione di memoria valida per l'indice di interfaccia che specifica il dispositivo di rete in cui è possibile raggiungere l'indirizzo IPv6.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha individuato correttamente l'indirizzo
-- Mapping **NX_ENTRY_NOT_FOUND** (0x16) non presente nella cache del router adiacente
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) l'indirizzo IP specificato non è la versione 6.
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) L'indirizzo è stato trovato correttamente
+- **NX_ENTRY_NOT_FOUND** (0x16) Mapping non presente nella cache adiacente
+- **NX_NOT_SUPPORTED** (0x4B) la funzionalità IPv6 non è incorporata nella libreria NetX Duo
+- **NX_INVALID_PARAMETERS** (0x4D) L'indirizzo IP fornito non è la versione 6.
+- **NX_PTR_ERROR** (0x07) Spazio di archiviazione o istanza IP non valida
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11365,7 +11365,7 @@ status = nxd_nd_cache_hardware_address_find(&ip_0, &ip_address,
 - nxd_nd_cache_ip_address_find
 
 ## <a name="nxd_nd_cache_invalidate"></a>nxd_nd_cache_invalidate
-Invalida la cache di individuazione vicina
+Invalidare la cache dell'individuazione adiacente
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11374,24 +11374,24 @@ UINT nxd_nd_cache_invalidate(NX_IP *ip_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invalida l'intera cache di individuazione dei router adiacenti IPv6. Questo servizio può essere richiamato prima o dopo l'abilitazione di ICMPv6. Questo servizio non è applicabile alla connettività IPv4, quindi non esiste alcun servizio equivalente NetX.
+Questo servizio invalida l'intera cache di individuazione adiacente IPv6. Questo servizio può essere richiamato prima o dopo che ICMPv6 è stato abilitato. Questo servizio non è applicabile alla connettività IPv4, quindi non esiste alcun servizio equivalente a NetX.
 
 ### <a name="parameters"></a>Parametri
 
-- **ip_ptr** Puntatore a istanza IP
+- **ip_ptr** Puntatore all'istanza IP
 
 ### <a name="return-values"></a>Valori restituiti
 
-- La cache **NX_SUCCESS** (0x00) è stata invalidata
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- **NX_PTR_ERROR** (0x07) istanza IP non valida
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Cache invalidata correttamente
+- **NX_NOT_SUPPORTED** (0x4B) la funzionalità IPv6 non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Istanza IP non valida
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11439,30 +11439,30 @@ UINT nxd_nd_cache_ip_address_find(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di trovare un indirizzo IPv6 nella cache di individuazione dei router adiacenti IPv6 associata all'indirizzo fisico fornito. Viene restituito anche l'indice dell'interfaccia di rete tramite cui è possibile raggiungere il router adiacente. Il servizio NetX IPv4 equivalente è ***nx_arp_ip_address_find***.
+Questo servizio tenta di trovare un indirizzo IPv6 nella cache di individuazione adiacente IPv6 associata all'indirizzo fisico fornito. Viene restituito anche l'indice dell'interfaccia di rete tramite cui è possibile raggiungere l'adiacente. Il servizio NetX IPv4 equivalente è ***nx_arp_ip_address_find***.
 
 ### <a name="parameters"></a>Parametri 
 
-- **ip_ptr** Puntatore a istanza IP creata in precedenza
-- **ip_address** Puntatore a una struttura di NXD_ADDRESS valida
-- **physical_msw** Primi 16 bit (47-32) dell'indirizzo fisico da trovare, ordine dei byte dell'host
-- **physical_lsw** Inferiore 32 bit (31-0) dell'indirizzo fisico da trovare, ordine dei byte dell'host
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza
+- **ip_address** Puntatore a una struttura NXD_ADDRESS valida
+- **physical_msw** Primi 16 bit (47-32) dell'indirizzo fisico da trovare, ordine dei byte host
+- **physical_lsw** 32 bit inferiori (31-0) dell'indirizzo fisico da trovare, ordine dei byte host
 - **interface_index** Puntatore all'indice del dispositivo di rete tramite il quale è possibile raggiungere l'indirizzo IPv6
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha individuato correttamente l'indirizzo
-- Indirizzo fisico **NX_ENTRY_NOT_FOUND** (0x16) non trovato nella cache del router adiacente
-- La funzionalità IPv6 **NX_NOT_SUPPORTED** (0x4B) non è integrata nella libreria NETX Duo
-- **NX_PTR_ERROR** (0x07) un'istanza IP o uno spazio di archiviazione non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio 
-- **NX_INVALID_PARAMETERS** indirizzo Mac (irreversibile 0x4D) è zero.
+- **NX_SUCCESS** (0x00) L'indirizzo è stato trovato correttamente
+- **NX_ENTRY_NOT_FOUND** (0x16) Indirizzo fisico non trovato nella cache adiacente
+- **NX_NOT_SUPPORTED** (0x4B) la funzionalità IPv6 non è incorporata nella libreria NetX Duo
+- **NX_PTR_ERROR** (0x07) Spazio di archiviazione o istanza IP non valida
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio 
+- **NX_INVALID_PARAMETERS** (0x4D) l'indirizzo MAC è zero.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11506,7 +11506,7 @@ status = nxd_nd_cache_ip_address_find(&ip_0, &ip_address,
 - nxd_nd_cache_invalidate
 
 ## <a name="nxd_tcp_client_socket_connect"></a>nxd_tcp_client_socket_connect
-Creare una connessione TCP
+Stabilire una connessione TCP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11519,41 +11519,41 @@ UINT nxd_tcp_client_socket_connect(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue la connessione TCP utilizzando un socket client TCP creato in precedenza sulla porta del server specificato. Questo servizio funziona su reti IPv4 o IPv6. Le porte del server TCP valide sono comprese tra 0 e 0xFFFF. NetX Duo determina l'interfaccia fisica appropriata in base all'indirizzo IP del server. L'equivalente IPv4 NetX è ***nx_tcp_client_socket_connect***.
+Questo servizio esegue la connessione TCP usando un socket client TCP creato in precedenza alla porta del server specificato. Questo servizio funziona su reti IPv4 o IPv6. Le porte del server TCP valide sono da 0 a 0xFFFF. NetX Duo determina l'interfaccia fisica appropriata in base all'indirizzo IP del server. L'equivalente netx IPv4 è ***nx_tcp_client_socket_connect***.
 
 Il socket deve essere stato associato a una porta locale.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket TCP creato in precedenza
-- **server_ip** Puntatore all'indirizzo di destinazione IPv4 o IPv6, in ordine byte host
-- **SERVER_PORT** Numero di porta del server a cui connettersi (da 1 a 0xFFFF), nell'ordine dei byte dell'host
-- **WAIT_OPTION** Opzione wait mentre viene stabilita la connessione. Le opzioni di attesa sono definite come segue:
+- **server_ip** Puntatore all'indirizzo di destinazione IPv4 o IPv6, in ordine di byte host
+- **server_port** Numero di porta del server a cui connettersi (da 1 a 0xFFFF), nell'ordine dei byte dell'host
+- **wait_option** Opzione di attesa durante la connessione. Le opzioni di attesa sono definite nel modo seguente:
     - **NX_NO_WAIT** (0x00000000)
     - **NX_WAIT_FOREVER** (0xFFFFFFFF)
-    - **valore di timeout in cicli (da 0x00000001 a** 0xfffffffe)
+    - **valore di timeout nei tick** (da 0x00000001 a 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Connessione socket **NX_SUCCESS** (0x00) riuscita
-- La sospensione richiesta **NX_WAIT_ABORTED** (0x1A) è stata interrotta da una chiamata al tx_thread_wait_abort
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv4 o IPv6 del server non valido
-- Il socket **NX_NOT_BOUND** (0x24) non è associato
-- Il socket **NX_NOT_CLOSED** (0x35) non è in uno stato chiuso
-- **NX_IN_PROGRESS** (0x37) non è stata specificata alcuna attesa. il tentativo di connessione è in corso
-- **NX_INVALID_INTERFACE** (0x4C) indice di interfaccia non valido.
-- **NX_NO_INTERFACE_ADDRESS** (0X50) l'interfaccia di rete non dispone di un indirizzo IPv6 valido
-- TCP **NX_NOT_ENABLED** (0x14) non abilitato
-- Porta **NX_INVALID_PORT** (0x46) non valida
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- La connessione **NX_NOT_CONNECTED** (0x38) non riesce.
+- **NX_SUCCESS** (0x00) Connessione socket riuscita
+- **NX_WAIT_ABORTED** (0x1A) La sospensione richiesta è stata interrotta da una chiamata a tx_thread_wait_abort
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv4 o IPv6 del server non valido
+- **NX_NOT_BOUND** (0x24) Il socket non è associato
+- **NX_NOT_CLOSED** (0x35) Il socket non è in stato chiuso
+- **NX_IN_PROGRESS** (0x37) Non è stata specificata alcuna attesa, è in corso un tentativo di connessione
+- **NX_INVALID_INTERFACE** (0x4C) Indice di interfaccia non valido.
+- **NX_NO_INTERFACE_ADDRESS** (0x50) L'interfaccia di rete non ha un indirizzo IPv6 valido
+- **NX_NOT_ENABLED** TCP (0x14) non abilitato
+- **NX_INVALID_PORT** (0x46) Porta non valida
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_CONNECTED** (0x38) La connessione ha esito negativo.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11604,7 +11604,7 @@ status = nxd_tcp_client_socket_connect(socket_ptr,
 - nxd_tcp_socket_peer_info_get
 
 ## <a name="nxd_tcp_socket_peer_info_get"></a>nxd_tcp_socket_peer_info_get
-Recupera il numero di porta e l'indirizzo IP del socket TCP peer
+Recupera l'indirizzo IP del socket TCP peer e il numero di porta
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11616,29 +11616,29 @@ UINT nxd_tcp_socket_peer_info_get
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera le informazioni sull'indirizzo IP e sulla porta del peer per il socket TCP connesso tramite la rete IPv4 o IPv6. Il servizio NetX IPv4 equivalente è ***nx_tcp_socket_peer_info_get***.
+Questo servizio recupera le informazioni sull'indirizzo IP peer e sulla porta per il socket TCP connesso tramite la rete IPv4 o IPv6. Il servizio NetX IPv4 equivalente è ***nx_tcp_socket_peer_info_get***.
 
-Si noti che *socket_ptr* deve puntare a un socket TCP che si trova già nello stato connesso.
+Si noti *socket_ptr* deve puntare a un socket TCP che si trova già nello stato connesso.
 
 ### <a name="parameters"></a>Parametri
 
 - **socket_ptr** Puntatore al socket TCP connesso all'host peer
-- **peer_ip_address** Puntatore a indirizzo peer IPv4 o IPv6. L'indirizzo IP restituito è nell'ordine dei byte dell'host.
-- **peer_port** Puntatore al numero di porta peer. Il numero di porta restituito è nell'ordine dei byte dell'host.
+- **peer_ip_address** Puntatore all'indirizzo peer IPv4 o IPv6. L'indirizzo IP restituito è in ordine di byte host.
+- **peer_port** Puntatore al numero di porta peer. Il numero di porta restituito è in ordine di byte host.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Recupero delle informazioni sul socket **NX_SUCCESS** (0x00) completato
-- Socket **NX_NOT_CONNECTED** (0x38) non connesso al peer
-- TCP **NX_NOT_ENABLED** (0x14) non abilitato
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Le informazioni sul socket sono state recuperate correttamente
+- **NX_NOT_CONNECTED** (0x38) Socket non connesso al peer
+- **NX_NOT_ENABLED** TCP (0x14) non abilitato
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11687,7 +11687,7 @@ if(peer_ip_address.nxd_ip_version == NX_IP_VERSION_V6)
 - nxd_tcp_client_socket_connect
 
 ## <a name="nxd_udp_packet_info_extract"></a>nxd_udp_packet_info_extract
-Estrai parametri di rete dal pacchetto UDP
+Estrarre i parametri di rete dal pacchetto UDP
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11701,28 +11701,28 @@ UINT nxd_udp_packet_info_extract(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio estrae i parametri di rete da un pacchetto ricevuto nelle reti UDP IPv4 o IPv6. Il servizio equivalente NetX è ***nx_udp_packet_info_extract.***
+Questo servizio estrae i parametri di rete da un pacchetto ricevuto su reti UDP IPv4 o IPv6. Il servizio equivalente NetX è ***nx_udp_packet_info_extract.***
 
 ### <a name="parameters"></a>Parametri
 
 - **packet_ptr** Puntatore al pacchetto.
 - **ip_address** Puntatore all'indirizzo IP del mittente.
-- **protocollo** di Puntatore al protocollo da restituire.
+- **protocollo** Puntatore al protocollo da restituire.
 - **porta** Puntatore al numero di porta del mittente.
 - **interface_index** Puntatore all'indice dell'interfaccia di rete da cui viene ricevuto il pacchetto
 
 ### <a name="return-values"></a>Valori restituiti 
 
-- Estrazione dei dati dell'interfaccia di pacchetti **NX_SUCCESS** (0x00) completata.
-- Il pacchetto **NX_INVALID_PACKET** (0x12) non è né IPv4 né IPv6.
-- **NX_PTR_ERROR** (0x07) input puntatore non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) I dati dell'interfaccia di pacchetto sono stati estratti correttamente.
+- **NX_INVALID_PACKET** (0x12) Il pacchetto non è IPv4 o IPv6.
+- **NX_PTR_ERROR** (0x07) Input puntatore non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11774,37 +11774,37 @@ UINT nxd_udp_socket_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un datagramma UDP tramite un socket UDP precedentemente creato e associato per le reti IPv4 o IPv6. NetX Duo trova un indirizzo IP locale appropriato come indirizzo di origine in base all'indirizzo IP di destinazione. Per specificare un'interfaccia e un indirizzo IP di origine specifici, l'applicazione deve usare il servizio ***nxd_udp_socket_source_send*** .
+Questo servizio invia un datagramma UDP tramite un socket UDP creato in precedenza e associato per reti IPv4 o IPv6. NetX Duo trova un indirizzo IP locale appropriato come indirizzo di origine in base all'indirizzo IP di destinazione. Per specificare un'interfaccia e un indirizzo IP di origine specifici, l'applicazione deve usare il ***nxd_udp_socket_source_send*** servizio.
 
-Si noti che questo servizio viene restituito immediatamente, indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente. Il servizio equivalente NetX (IPv4) è ***nx_udp_socket_send***.
+Si noti che questo servizio restituisce immediatamente indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente. Il servizio equivalente NetX (IPv4) è ***nx_udp_socket_send***.
 
 Il socket deve essere associato a una porta locale.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore all'istanza Socket UDP creata in precedenza
-- **packet_ptr** Puntatore al pacchetto del datagramma UDP
-- **ip_address** Puntatore a indirizzo IPv4 o IPv6 di destinazione
-- **porta** Numero di porta di destinazione valido compreso tra 1 e 0xFFFF), in ordine byte host
+- **socket_ptr** Puntatore all'istanza del socket UDP creata in precedenza
+- **packet_ptr** Puntatore a pacchetti di datagrammi UDP
+- **ip_address** Puntatore all'indirizzo IPv4 o IPv6 di destinazione
+- **porta** Numero di porta di destinazione valido compreso tra 1 e 0xFFFF), nell'ordine dei byte dell'host
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) trasmissione socket UDP riuscita
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv4 o IPv6 del server non valido
-- Socket **NX_NOT_BOUND** (0x24) non associato ad alcuna porta
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita adatta.
-- Lo spazio di **NX_UNDERFLOW** (0x02) non è sufficiente per l'intestazione UDP nel pacchetto
-- Puntatore di aggiunta pacchetto di **NX_OVERFLOW** (0x03) non valido
-- **NX_PTR_ERROR** (0x07) puntatore a socket non valido, puntatore all'indirizzo o puntatore al pacchetto.
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Il **NX_NOT_ENABLED** UDP (0x14) non è stato abilitato
-- Il numero di porta **NX_INVALID_PORT** (0x46) non è compreso in un intervallo valido
+- **NX_SUCCESS** (0x00) Invio socket UDP riuscito
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv4 o IPv6 del server non valido
+- **NX_NOT_BOUND** (0x24) Socket non associato ad alcuna porta
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare un'interfaccia in uscita appropriata.
+- **NX_UNDERFLOW** (0x02) Spazio insufficiente per l'intestazione UDP nel pacchetto
+- **NX_OVERFLOW** (0x03) Il puntatore di accodamento del pacchetto non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore socket, puntatore di indirizzo o puntatore a pacchetto non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** (0x14) UDP non è stato abilitato
+- **NX_INVALID_PORT** (0x46) Il numero di porta non è compreso in un intervallo valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -11885,39 +11885,39 @@ UINT nxd_udp_socket_source_send(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un datagramma UDP tramite un socket UDP precedentemente creato e associato per le reti IPv4 o IPv6. Il parametro *address_index* specifica l'indirizzo IP di origine da utilizzare per il pacchetto in uscita. Si noti che la funzione viene restituita immediatamente, indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente.
+Questo servizio invia un datagramma UDP tramite un socket UDP creato e associato in precedenza per reti IPv4 o IPv6. Il parametro *address_index* specifica l'indirizzo IP di origine da usare per il pacchetto in uscita. Si noti che la funzione restituisce immediatamente indipendentemente dal fatto che il datagramma UDP sia stato inviato correttamente.
 
 Il socket deve essere associato a una porta locale.
 
-Il servizio equivalente NetX (IPv4) è ***nx_udp_socket_source_send***.
+Il servizio equivalente NetX (IPv4) ***è nx_udp_socket_source_send***.
 
 ### <a name="parameters"></a>Parametri
 
-- **socket_ptr** Puntatore all'istanza Socket UDP creata in precedenza
+- **socket_ptr** Puntatore a un'istanza del socket UDP creata in precedenza
 - **packet_ptr** Puntatore al pacchetto del datagramma UDP
-- **ip_address** Puntatore a destinazione indirizzo IPv4 o IPv6 numero di porta di destinazione valido compreso tra 1 e 0xFFFF), in ordine byte host
+- **ip_address** Puntatore alla porta dell'indirizzo IPv4 o IPv6 di destinazione Numero di porta di destinazione valido compreso tra 1 e 0xFFFF), nell'ordine dei byte dell'host
 - **address_index** Indice che specifica l'indirizzo di origine da usare per il pacchetto
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) trasmissione socket UDP riuscita
-- **NX_IP_ADDRESS_ERROR** (0x21) indirizzo IPv4 o IPv6 del server non valido
-- Socket **NX_NOT_BOUND** (0x24) non associato ad alcuna porta
-- **NX_NO_INTERFACE_ADDRESS** (0X50) non è possibile trovare un'interfaccia in uscita adatta.
-- **NX_NOT_FOUND** (0X4E) non è possibile trovare un'interfaccia appropriata
-- **NX_PTR_ERROR** (0x07) puntatore al socket, indirizzo o puntatore di pacchetto non valido.
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
-- Il **NX_NOT_ENABLED** UDP (0x14) non è stato abilitato
-- Il numero di porta **NX_INVALID_PORT** (0x46) non è compreso nell'intervallo valido.
-- L'interfaccia di rete specificata **NX_INVALID_INTERFACE** (0x4C) è valida
-- Lo spazio di **NX_UNDERFLOW** (0x02) non è sufficiente per l'intestazione UDP nel pacchetto
-- Puntatore di aggiunta pacchetto di **NX_OVERFLOW** (0x03) non valido
+- **NX_SUCCESS** (0x00) Invio socket UDP riuscito
+- **NX_IP_ADDRESS_ERROR** (0x21) Indirizzo IPv4 o IPv6 del server non valido
+- **NX_NOT_BOUND** (0x24) Socket non associato ad alcuna porta
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Non è possibile trovare alcuna interfaccia in uscita appropriata.
+- **NX_NOT_FOUND** (0x4E) Non è possibile trovare alcuna interfaccia appropriata
+- **NX_PTR_ERROR** (0x07) Puntatore socket, indirizzo o puntatore a pacchetto non valido.
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
+- **NX_NOT_ENABLED** udp (0x14) non è stato abilitato
+- **NX_INVALID_PORT** (0x46) Il numero di porta non è compreso nell'intervallo valido.
+- **NX_INVALID_INTERFACE** (0x4C) L'interfaccia di rete specificata è valida
+- **NX_UNDERFLOW** (0x02) Spazio insufficiente per l'intestazione UDP nel pacchetto
+- **NX_OVERFLOW** (0x03) Puntatore di accodamento pacchetti non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -11983,7 +11983,7 @@ status = nxd_udp_socket_source_send(&client_socket, packet_ptr,
 - nxd_udp_source_extract
 
 ## <a name="nxd_udp_source_extract"></a>nxd_udp_source_extract
-Recuperare le informazioni sull'origine del pacchetto UPD
+Recuperare le informazioni sull'origine dei pacchetti UPD
 
 ### <a name="prototype"></a>Prototipo  
 
@@ -11995,26 +11995,26 @@ UINT nxd_udp_source_extract(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio estrae l'indirizzo IP di origine e il numero di porta da un pacchetto UDP ricevuto tramite il socket UDP host. L'equivalente NetX (IPv4) è ***nx_udp_source_extract***.
+Questo servizio estrae l'indirizzo IP di origine e il numero di porta da un pacchetto UDP ricevuto tramite il socket UDP dell'host. L'equivalente NetX (IPv4) ***è nx_udp_source_extract***.
 
 ### <a name="parameters"></a>Parametri
 
 - **packet_ptr** Puntatore al pacchetto UDP ricevuto
-- **ip_address** Puntatore alla struttura NXD_ADDRESS per archiviare l'indirizzo IP di origine del pacchetto
+- **ip_address** Puntatore alla struttura NXD_ADDRESS per archiviare l'indirizzo IP di origine dei pacchetti
 - **porta** Puntatore al numero di porta del socket UDP
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Estrazione origine riuscita **NX_SUCCESS** (0x00)
-- Il pacchetto di **NX_INVALID_PACKET** (0x12) non è valido
-- **NX_PTR_ERROR** (0x07) puntatore al socket non valido
-- **NX_CALLER_ERROR** (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Estrazione origine riuscita
+- **NX_INVALID_PACKET** pacchetto (0x12) non è valido
+- **NX_PTR_ERROR** (0x07) Puntatore socket non valido
+- **NX_CALLER_ERROR** (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Precedenza possibile
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 

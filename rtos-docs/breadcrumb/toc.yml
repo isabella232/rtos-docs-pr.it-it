@@ -6,7 +6,7 @@
       tocHref: /azure/
       topicHref: /azure/index
       items:
-        - name: Microsoft Azure RTO
+        - name: Microsoft Azure Rtos
           tocHref: /azure/rtos/
           topicHref: /azure/rtos/index
           items:

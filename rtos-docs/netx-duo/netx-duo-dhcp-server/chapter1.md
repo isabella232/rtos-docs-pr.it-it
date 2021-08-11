@@ -1,72 +1,72 @@
 ---
-title: Capitolo 1-Introduzione al server DHCP di Azure RTO NetX Duo
-description: In NetX Duo, l'indirizzo IP dell'applicazione è uno dei parametri specificati per la chiamata al servizio *nx_ip_create* .
+title: Capitolo 1 - Introduzione a Azure RTOS server DHCP NetX Duo
+description: In NetX Duo l'indirizzo IP dell'applicazione è uno dei parametri forniti per la chiamata nx_ip_create *servizio.*
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 678b9ed77f07d0b526525c740f0fae7adc6d2c95
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a56f692059cbd3e2a72d64cf80ee90a917b80987add8130d3a1df70b3b0c3a71
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822019"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788474"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-duo-dhcp-server"></a>Capitolo 1-Introduzione al server DHCP di Azure RTO NetX Duo
+# <a name="chapter-1---introduction-to-azure-rtos-netx-duo-dhcp-server"></a>Capitolo 1 - Introduzione al server DHCP Azure RTOS NetX Duo
 
-In NetX Duo, l'indirizzo IP dell'applicazione è uno dei parametri specificati per la chiamata al servizio *nx_ip_create* . La fornitura dell'indirizzo IP non costituisce un problema se l'indirizzo IP è noto all'applicazione, in modo statico o tramite la configurazione dell'utente. Tuttavia, esistono alcuni casi in cui l'applicazione non è in grado di conoscere il proprio indirizzo IP. In tali situazioni, è necessario specificare un indirizzo IP zero per la funzione *nx_ip_create* e l'applicazione stabilisce la comunicazione con il server DHCP per richiedere e ottenere un indirizzo IP in modo dinamico.
+In NetX Duo l'indirizzo IP dell'applicazione è uno dei parametri forniti per la chiamata nx_ip_create *servizio.* La fornitura dell'indirizzo IP non comporta alcun problema se l'indirizzo IP è noto all'applicazione, in modo statico o tramite la configurazione utente. Esistono tuttavia alcuni casi in cui l'applicazione non conosce o non si preoccupa dell'indirizzo IP. In questi casi, alla funzione nx_ip_create deve essere fornito un indirizzo IP pari *a* zero e l'applicazione stabilisce la comunicazione con il server DHCP per richiedere e ottenere dinamicamente un indirizzo IP.
 
 ## <a name="dynamic-ip-address-assignment"></a>Assegnazione di indirizzi IP dinamici
 
-Il servizio di base usato per ottenere un indirizzo IP dinamico dalla rete è il protocollo RARP (Reverse Address Resolution Protocol). Questo protocollo è simile a ARP, ad eccezione del fatto che è stato progettato per ottenere un indirizzo IP per se stesso anziché per trovare l'indirizzo MAC per un altro nodo di rete. Il messaggio RARP di basso livello viene trasmesso sulla rete locale ed è responsabilità di un server nella rete rispondere con una risposta RARP, che contiene un indirizzo IP allocato dinamicamente.
+Il servizio di base usato per ottenere un indirizzo IP dinamico dalla rete è il protocollo RARP (Reverse Address Resolution Protocol). Questo protocollo è simile a ARP, ma è progettato per ottenere un indirizzo IP per se stesso anziché trovare l'indirizzo MAC per un altro nodo di rete. Il messaggio RARP di basso livello viene trasmesso nella rete locale ed è responsabilità di un server nella rete rispondere con una risposta RARP, che contiene un indirizzo IP allocato dinamicamente.
 
-Sebbene RARP fornisca un servizio per l'allocazione dinamica di indirizzi IP, presenta diversi difetti. Il difetto più evidente è che il RARP fornisce solo l'allocazione dinamica dell'indirizzo IP. Nella maggior parte dei casi, è necessario disporre di altre informazioni per consentire a un dispositivo di partecipare correttamente a una rete. Oltre a un indirizzo IP, per la maggior parte dei dispositivi sono necessari il network mask e l'indirizzo IP del gateway. Potrebbe essere necessario anche l'indirizzo IP di un server DNS e altre informazioni sulla rete. RARP non è in grado di fornire queste informazioni.
+Sebbene RARP ofni un servizio per l'allocazione dinamica degli indirizzi IP, presenta diverse lacune. La mancanza più importante è che RARP fornisce solo l'allocazione dinamica dell'indirizzo IP. Nella maggior parte dei casi, sono necessarie altre informazioni per consentire a un dispositivo di partecipare correttamente a una rete. Oltre a un indirizzo IP, la maggior parte dei dispositivi network mask l'indirizzo IP del gateway. Potrebbe essere necessario anche l'indirizzo IP di un server DNS e altre informazioni di rete. RARP non ha la possibilità di fornire queste informazioni.
 
 ## <a name="rarp-alternatives"></a>Alternative RARP
 
-Per ovviare alle carenze di RARP, i ricercatori hanno sviluppato un meccanismo di allocazione indirizzi IP più completo denominato BOOTP (Bootstrap Protocol). Questo protocollo è in grado di allocare dinamicamente un indirizzo IP e di fornire altre informazioni importanti sulla rete. Tuttavia, BOOTP presenta lo svantaggio di essere progettato per le configurazioni di rete statiche. Non consente l'assegnazione di indirizzi rapidi o automatici.
+Per superare le carenze di RARP, i ricercatori hanno sviluppato un meccanismo di allocazione degli indirizzi IP più completo denominato protocollo Bootstrap (BOOTP). Questo protocollo ha la possibilità di allocare dinamicamente un indirizzo IP e fornire anche informazioni di rete importanti aggiuntive. BootP presenta tuttavia lo svantaggio di essere progettato per le configurazioni di rete statiche. Non consente l'assegnazione rapida o automatica degli indirizzi.
 
-Questo è il punto in cui il Dynamic Host Configuration Protocol (DHCP) è estremamente utile. DHCP è progettato per estendere le funzionalità di base di BOOTP per includere l'allocazione del server IP completamente automatizzata e l'allocazione di indirizzi IP completamente dinamica tramite il "leasing" di un indirizzo IP a un client per un periodo di tempo specificato. DHCP può inoltre essere configurato in modo da allocare gli indirizzi IP in modo statico, ad esempio BOOTP.
+In questo caso il Dynamic Host Configuration Protocol (DHCP) è estremamente utile. DHCP è progettato per estendere le funzionalità di base di BOOTP per includere l'allocazione del server IP completamente automatizzata e l'allocazione di indirizzi IP completamente dinamici tramite il "leasing" di un indirizzo IP a un client per un periodo di tempo specificato. È anche possibile configurare DHCP per allocare indirizzi IP in modo statico, ad esempio BOOTP.
 
 ## <a name="dhcp-messages"></a>Messaggi DHCP
 
-Sebbene DHCP migliori significativamente la funzionalità di BOOTP, DHCP usa lo stesso formato di messaggio BOOTP e supporta le stesse opzioni del fornitore di BOOTP. Per eseguire la funzione, DHCP introduce sette nuove opzioni specifiche di DHCP, come indicato di seguito:
+Anche se DHCP migliora notevolmente le funzionalità di BOOTP, DHCP usa lo stesso formato di messaggio di BOOTP e supporta le stesse opzioni del fornitore di BOOTP. Per eseguire la funzione, DHCP introduce sette nuove opzioni specifiche di DHCP, come indicato di seguito:
 
 - DISCOVER (1) (inviato dal client DHCP)
-- OFFERTA (2) (inviata dal server DHCP)
+- OFFER (2) (inviato dal server DHCP)
 - REQUEST (3) (inviato dal client DHCP)
-- RIFIUTARE (4) (inviato dal client DHCP)
+- DECLINE (4) (inviato dal client DHCP)
 - ACK (5) (inviato dal server DHCP)
 - NACK (6) (inviato dal server DHCP)
-- VERSIONE (7) (inviata dal client DHCP)
-- INFORMA (8) (inviato dal client DHCP)
+- RELEASE (7) (inviato dal client DHCP)
+- INFORM (8) (inviato dal client DHCP)
 - FORCERENEW (9) (inviato dal client DHCP)
 
 ## <a name="dhcp-communication"></a>Comunicazione DHCP
 
-Il server DHCP utilizza il protocollo UDP per ricevere le richieste dei client DHCP e trasmettere le risposte. Prima di avere un indirizzo IP, i messaggi UDP che contengono le informazioni DHCP vengono inviati e ricevuti tramite l'indirizzo di trasmissione IP di 255.255.255.255. Tuttavia, se il client conosce l'indirizzo del server DHCP, può inviare messaggi DHCP utilizzando messaggi unicast.
+Il server DHCP utilizza il protocollo UDP per ricevere richieste client DHCP e trasmettere risposte. Prima di avere un indirizzo IP, i messaggi UDP che trasportano le informazioni DHCP vengono inviati e ricevuti usando l'indirizzo di trasmissione IP 255.255.255.255. Tuttavia, se il client conosce l'indirizzo del server DHCP, può inviare messaggi DHCP usando messaggi unicast.
 
-## <a name="dhcp-server-state-machine"></a>Macchina a Stati del server DHCP
+## <a name="dhcp-server-state-machine"></a>Computer a stati del server DHCP
 
-Il server DHCP viene implementato come macchina a stati in due passaggi elaborata da un thread DHCP interno creato durante *nx_dhcp_server_create* elaborazione. Lo stato principale del server DHCP è 1) la ricezione di un messaggio di individuazione da un client DHCP e 2) la ricezione di un messaggio di richiesta.
+Il server DHCP viene implementato come macchina a stati in *due* passaggi elaborata da un thread DHCP interno creato durante l nx_dhcp_server_create di elaborazione. Gli stati principali del server DHCP sono 1) la ricezione di un messaggio DISCOVER da un client DHCP e 2) la ricezione di un messaggio REQUEST.
 
-Di seguito sono riportati gli Stati client DHCP corrispondenti:
+Di seguito sono riportati gli stati del client DHCP corrispondenti:
 
 - **NX_DHCP_STATE_BOOT** A partire da un indirizzo IP precedente
-- **NX_DHCP_STATE_INIT** A partire da nessun valore dell'indirizzo IP precedente
-- **NX_DHCP_STATE_SELECTING** In attesa di una risposta da un server DHCP
-- **NX_DHCP_STATE_REQUESTING** Server DHCP identificato, richiesta indirizzo IP inviata
-- **NX_DHCP_STATE_BOUND** Lease indirizzi IP DHCP stabilito
-- **NX_DHCP_STATE_RENEWING** Tempo di rinnovo del lease di indirizzi IP DHCP scaduto, rinnovo richiesto
-- **NX_DHCP_STATE_REBINDING** Tempo di riassociazione lease indirizzi IP DHCP scaduto, rinnovo richiesto
-- **NX_DHCP_STATE_FORCERENEW** Lease degli indirizzi IP DHCP stabilito, forzare il rinnovo del server o dell'applicazione
-- **NX_DHCP_STATE_FAILED** Non è stato trovato alcun server o non è stata ricevuta alcuna risposta dal server
+- **NX_DHCP_STATE_INIT** A partire da nessun valore di indirizzo IP precedente
+- **NX_DHCP_STATE_SELECTING** In attesa di una risposta da qualsiasi server DHCP
+- **NX_DHCP_STATE_REQUESTING** Server DHCP identificato, richiesta di indirizzo IP inviata
+- **NX_DHCP_STATE_BOUND** Lease dell'indirizzo IP DHCP stabilito
+- **NX_DHCP_STATE_RENEWING** Tempo di rinnovo lease indirizzo IP DHCP trascorso, rinnovo richiesto
+- **NX_DHCP_STATE_REBINDING** Tempo di riassociato lease indirizzo IP DHCP trascorso, rinnovo richiesto
+- **NX_DHCP_STATE_FORCERENEW** Lease dell'indirizzo IP DHCP stabilito, rinnovo forzato in base al server o all'applicazione
+- **NX_DHCP_STATE_FAILED** Nessun server trovato o nessuna risposta dal server ricevuta
 
 ## <a name="dhcp-additional-parameters"></a>Parametri aggiuntivi DHCP
 
-Il server DHCP NetX Duo dispone di un elenco predefinito di parametri di opzione impostati nell'opzione configurabile NX_DHCP_DEFAULT_SERVER_OPTION_LIST in *nxd_dhcp_server. h* per fornire ai client DHCP i parametri di configurazione di rete comuni/critici, ad esempio l'indirizzo del router o del gateway e il server DNS per il client DHCP.
+Il server DHCP NetX Duo dispone di un elenco predefinito di parametri di opzione impostati nell'opzione configurabile NX_DHCP_DEFAULT_SERVER_OPTION_LIST in *nxd_dhcp_server.h* per fornire ai client DHCP parametri di configurazione di rete comuni/critici, ad esempio l'indirizzo del router o del gateway e il server DNS per il client DHCP.
 
 ## <a name="dhcp-rfcs"></a>RFC DHCP
 
-Il server DHCP NetX Duo è conforme a RFC2132, RFC2131 e RFC correlate.
+Il server DHCP NetX Duo è conforme a RFC2132, RFC2131 e alle RFC correlate.

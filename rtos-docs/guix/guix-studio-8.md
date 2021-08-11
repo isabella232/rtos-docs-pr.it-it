@@ -6,12 +6,12 @@ ms.author: kemaxwel
 ms.date: 9/30/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 374471df85c4cd0fffae5b5cc7ad31d2237877f2
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: d57aa4034aaa6bbb3b29e79ba2b38443822ea5ce554b62af9e3c9ea874614488
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178281"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785466"
 ---
 # <a name="chapter-8-notes-on-editing-specific-widget-types"></a>Capitolo 8: Note sulla modifica di tipi di widget specifici
 
@@ -50,7 +50,7 @@ I codici di formato seguenti sono supportati per la formattazione del testo.
 |\<b>\</b> | Eseguire il rendering del tipo di carattere del testo con l'ID carattere in grassetto specificato dall'utente|
 |\<i>\</i> | Eseguire il rendering del tipo di carattere del testo con l'ID carattere corsivo specificato dall'utente|
 |\<u>\</u> | Eseguire il rendering del testo sottolineato|
-|\<f GX_FONT_ID>\</f> | Eseguire il rendering del testo usando l'ID del tipo di carattere specificato. |
+|\<f GX_FONT_ID>\</f> | Esegue il rendering del testo usando l'ID del tipo di carattere specificato. |
 |\<c GX_COLOR_ID>\</c> | Eseguire il rendering del testo usando l'ID colore specificato|
 |\<hc GX_COLOR_ID>\</hc> | Eseguire il rendering del testo usando l'ID colore di sfondo specificato|
 |\<align left/right/center>\</align> | Assegnare l'allineamento del testo|
@@ -71,13 +71,13 @@ Il riquadro sinistro è il campo rich text edit. È possibile usare le icone del
 
 Il riquadro destro è l'anteprima del widget che mostra come viene eseguito il rendering del testo nella visualizzazione di destinazione. Il colore di sfondo dell'anteprima del widget è fisso, che potrebbe non corrispondere al colore di sfondo assegnato del widget nella visualizzazione di destinazione.
 
-I nomi degli ID risorsa vengono usati in formato RTF per fare riferimento a risorse specifiche relative a tipi di carattere o colori. Se il nome della risorsa di un tipo di carattere o di un colore viene modificato dopo che è stato fatto riferimento dalla stringa di testo RTF, GUIX Studio aggiornerà automaticamente la stringa di testo RTF in modo da riflettere le modifiche apportate al nome della risorsa. D'altra parte, se si elimina una risorsa di tipo di carattere o colore a cui fa riferimento un widget di testo RTF, è necessario modificare manualmente il testo RTF interessato per rimuovere o modificare i nomi degli ID risorsa che sono stati eliminati.
+I nomi degli ID risorsa vengono usati in formato RTF per fare riferimento a specifiche risorse relative a tipi di carattere o colori. Se il nome della risorsa di un tipo di carattere o di un colore viene modificato dopo che è stato fatto riferimento dalla stringa di testo RTF, GUIX Studio aggiornerà automaticamente la stringa di testo RTF in modo da riflettere le modifiche apportate al nome della risorsa. D'altra parte, se si elimina una risorsa di tipo di carattere o colore a cui fa riferimento un widget di testo RTF, è necessario modificare manualmente il testo RTF interessato per rimuovere o modificare i nomi degli ID risorsa che sono stati eliminati.
 
 Quando si seleziona il pulsante Salva in questa finestra di dialogo, la stringa di testo RTF definita viene aggiunta alla tabella delle stringhe del progetto.
 
 ## <a name="string-scroll-wheel"></a>String Scroll Wheel
 
-Un widget della rotellina di scorrimento di stringhe supporta la visualizzazione di una matrice di stringhe. Queste stringhe possono essere assegnate in modo dinamico oppure, nel caso in cui l'applicazione supporti più lingue, è possibile eseguire il pulled delle stringhe assegnate dalla tabella delle stringhe attive.
+Un widget della rotellina di scorrimento di stringhe supporta la visualizzazione di una matrice di stringhe. Queste stringhe possono essere assegnate in modo dinamico oppure, nel caso in cui l'applicazione supporti più lingue, è possibile eseguire il pulled delle stringhe assegnate dalla tabella di stringhe attiva.
 
 Il widget della rotellina di scorrimento della stringa supporta una matrice di stringhe. Per consentire all'utente di assegnare questa matrice di stringhe, viene visualizzata la finestra di dialogo String Scroll Wheel Edit (Modifica della rotellina di scorrimento della stringa), illustrata nella figura 8.2.
 
@@ -91,17 +91,17 @@ Per assegnare una stringa per ogni indice di testo, è possibile selezionare un 
 
 ## <a name="sprite"></a>Sprite
 
-Un widget sprite viene usato per visualizzare una sequenza di immagini per fornire un effetto di animazione. Un widget sprite richiede un elenco di frame, ovvero una matrice di ID immagine e parametri univoci applicati a ogni immagine nel frame. Per creare questo elenco di frame per il widget sprite, è disponibile la finestra di dialogo Modifica frame Sprite, illustrata nella figura 8.3:
+Un widget sprite viene usato per visualizzare una sequenza di immagini per fornire un effetto di animazione. Un widget sprite richiede un elenco di frame, ovvero una matrice di ID immagine e parametri univoci applicati a ogni immagine nel frame. Per compilare questo elenco di frame per il widget sprite, è disponibile la finestra di dialogo Modifica fotogrammi Sprite, illustrata nella figura 8.3:
 
 ![Screenshot della finestra di dialogo Modifica frame Sprite di GUIX Studio.](./media/guix-studio/edit_sprite_frames.png)
 
 **Figura 8.3**
 
-Per richiamare questa finestra di dialogo, selezionare un widget sprite in *Target View (Visualizzazione di destinazione)* *o Project View (Visualizza).* Dopo aver selezionato questo tipo di widget, la *visualizzazione Proprietà* includerà un pulsante Modifica **elenco frame.** Selezionare questo pulsante per richiamare la finestra di dialogo String Scroll Wheel Edit (Modifica rotellina di scorrimento stringa).
+Per richiamare questa finestra di dialogo, selezionare un widget sprite all'interno di *Target View (Visualizzazione di destinazione)* *o Project View (Visualizza).* Dopo aver selezionato questo tipo di widget, la *visualizzazione Proprietà* includerà un pulsante Modifica **elenco frame.** Selezionare questo pulsante per richiamare la finestra di dialogo String Scroll Wheel Edit (Modifica rotellina di scorrimento stringa).
 
 Il campo Total number of Sprite Frames (Numero totale di fotogrammi *sprite)* è un campo di input che consente di immettere il numero intero totale di fotogrammi che devono essere visualizzati dal widget sprite. Le immagini possono essere riutilizzate all'interno dell'elenco di frame, vale a dire che non tutte le immagini devono essere univoche.
 
-Il campo Sprite Frame ID (ID fotogramma sprite) è un valore di selezione dell'indice dei frame compreso tra 1 e Numero totale di frame. Incrementare e decrementare questo valore per passare da un frame sprite a quello successivo.
+Il campo Sprite Frame ID (ID fotogramma sprite) è un valore di selezione dell'indice dei frame compreso tra 1 e Numero totale di frame. Incrementare e decrementare questo valore per passare da un frame sprite al successivo.
 
 Ogni frame sprite ha diversi parametri. Il primo è l'operazione in background. Questo campo simula le funzionalità del diffuso formato di animazione GIF. Le opzioni disponibili includono:
 
@@ -113,15 +113,15 @@ Il campo ID mappa pixel consente di selezionare qualsiasi mappa pixel aggiunta i
 
 Il campo Valore alfa viene applicato all'intero disegno mappa pixel. Questo campo ha effetto solo quando l'esecuzione ha una profondità di colore di 8 bpp e superiore. Il valore alfa 0 è completamente trasparente e il valore alfa 255 è opaco.
 
-È possibile specificare un offset all'interno del frame sprite in corrispondenza del quale verrà disegnata la mappa pixel corrente usando i campi Offset x frame e Offset y frame. In altre parole, ogni immagine disegnata non deve avere le dimensioni complete del widget sprite.
+È possibile specificare un offset all'interno del frame sprite in corrispondenza del quale verrà disegnata la mappa pixel corrente usando i campi Frame x-offset e Frame y-offset. In altre parole, ogni immagine disegnata non deve essere la dimensione completa del widget sprite.
 
 Il periodo di ritardo specifica il tempo di ritardo prima di passare al frame dello sprite successivo. Questo valore è in tick, che per la configurazione predefinita del timer GUIX/ThreadX ogni tick rappresenta 50 ms.
 
-Quando si salvano le modifiche nella finestra di dialogo Modifica frame Sprite, GUIX Studio è in grado di generare la matrice dell'elenco di frame completo come parte della generazione del file delle specifiche di output.
+Quando si salvano le modifiche nella finestra di dialogo Modifica frame Sprite, GUIX Studio è in grado di generare la matrice completa dell'elenco di frame come parte della generazione del file delle specifiche di output.
 
 ### <a name="assign-a-sprite-widget-with-gif-resource"></a>Assegnare un widget sprite con una risorsa GIF
-È possibile aggiungere una risorsa GIF al **gruppo di risorse Pixelmap** e assegnare la risorsa GIF direttamente al widget sprite. Dopo aver impostato la risorsa GIF, verrà generato automaticamente un elenco di frame. È possibile modificare ulteriormente ogni frame dell'elenco di frame tramite la finestra di dialogo di modifica dello sprite:
+È possibile aggiungere una risorsa GIF al gruppo di risorse **Pixelmap** e assegnare la risorsa GIF direttamente al widget sprite. Dopo aver impostato la risorsa GIF, verrà generato automaticamente un elenco di frame, è possibile modificare ulteriormente ogni frame dell'elenco di frame tramite la finestra di dialogo di modifica dello sprite:
 
-![Screenshot della finestra di dialogo Modifica frame Sprite di GUIX Studio per la risorsa GIF.](./media/guix-studio/edit_sprite_gif_frames.jpg)
+![Screenshot della finestra di dialogo GUIX Studio Edit Sprite Frames per la risorsa GIF.](./media/guix-studio/edit_sprite_gif_frames.jpg)
 
 **Figura 8.4**

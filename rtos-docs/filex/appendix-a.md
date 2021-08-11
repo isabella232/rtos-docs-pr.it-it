@@ -1,19 +1,19 @@
 ---
-title: Appendice A-Servizi FileX di Azure RTO
-description: Informazioni sui servizi FileX di Azure RTO.
+title: Appendice A - Azure RTOS servizi FileX
+description: Informazioni sui servizi Azure RTOS FileX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3a26f1bce9834c66db82e9f206bed59657e908a0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ecde168dc67269d257429a33e4caa979f9c7f6bc791666364c74a6c1d08c88d8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821452"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783221"
 ---
-# <a name="appendix-a---azure-rtos-filex-services"></a>Appendice A-Servizi FileX di Azure RTO
+# <a name="appendix-a---azure-rtos-filex-services"></a>Appendice A - Azure RTOS servizi FileX
 
 ## <a name="system-services"></a>Servizi di sistema
 

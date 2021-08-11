@@ -1,153 +1,153 @@
 ---
-title: Capitolo 4-Descrizione dei servizi CLIENT di LWM2M
-description: Questo capitolo contiene una descrizione di tutti i servizi client di LWM2M in ordine alfabetico.
+title: Capitolo 4 - Descrizione dei servizi CLIENT LWM2M
+description: Questo capitolo contiene una descrizione di tutti i servizi client LWM2M in ordine alfabetico.
 author: v-condav
 ms.author: v-condav
 ms.date: 01/22/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 825a215ba756b39b6d76e6cc773c288e8b8aab01
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 0956cb43f4fcd87d5bd4d90b2288ce6f8d5295ee0be8b8a9f4719ad842e00b2a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821833"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783442"
 ---
-# <a name="chapter-4--description-of-lwm2m-client-services"></a>Capitolo 4 Descrizione dei servizi CLIENT di LWM2M
+# <a name="chapter-4--description-of-lwm2m-client-services"></a>Capitolo 4 Descrizione dei servizi CLIENT LWM2M
 
-Questo capitolo contiene una descrizione di tutti i servizi client di LWM2M elencati di seguito in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i servizi client LWM2M elencati di seguito in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal  **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione  **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 **Gestione client LWM2M:**
 
-- nx_lwm2m_client_create: *creare un client lwm2m*
+- nx_lwm2m_client_create: *Creare il client LWM2M*
 
-- nx_lwm2m_client_delete: *eliminare il client lwm2m*
+- nx_lwm2m_client_delete: *Eliminare il client LWM2M*
 
-- nx_lwm2m_client_lock: *bloccare il client lwm2m*
+- nx_lwm2m_client_lock: Bloccare *il client LWM2M*
 
-- nx_lwm2m_client_unlock: *sbloccare il client lwm2m*
+- nx_lwm2m_client_unlock: *Sbloccare il client LWM2M*
 
-**Gestione delle sessioni client di LWM2M:**
+**Gestione sessione client LWM2M:**
 
-- nx_lwm2m_client_session_create: *creare una sessione client lwm2m*
+- nx_lwm2m_client_session_create: *Creare una sessione client LWM2M*
 
-- nx_lwm2m_client_session_delete: *eliminare la sessione del client lwm2m*
+- nx_lwm2m_client_session_delete: Eliminare *la sessione client LWM2M*
 
-- nx_lwm2m_client_session_bootstrap: *avviare una sessione con un server bootstrap*
+- nx_lwm2m_client_session_bootstrap: Avviare *una sessione con un server Bootstrap*
 
-- nx_lwm2m_client_session_bootstrap_dtls: *avviare una sessione protetta con un server bootstrap*
+- nx_lwm2m_client_session_bootstrap_dtls: Avviare *una sessione protetta con un server Bootstrap*
 
-- nx_lwm2m_client_session_register_info_get: *ottenere informazioni sul registro del server lwm2m*
+- nx_lwm2m_client_session_register_info_get: Ottenere *le informazioni di registrazione del server LWM2M*
 
-- nx_lwm2m_client_session_register: *avviare una sessione con un server lwm2m*
+- nx_lwm2m_client_session_register: Avviare *una sessione con un server LWM2M*
 
-- nx_lwm2m_client_session_register_dtls: *avviare una sessione protetta con un server lwm2m*
+- nx_lwm2m_client_session_register_dtls: Avviare *una sessione protetta con un server LWM2M*
 
-- nx_lwm2m_client_session_update: *aggiornare una sessione con un server lwm2m*
+- nx_lwm2m_client_session_update: Aggiornare *una sessione con un server LWM2M*
 
-- nx_lwm2m_client_session_deregister: *terminare una sessione con un server lwm2m*
+- nx_lwm2m_client_session_deregister: *Terminare una sessione con un server LWM2M*
 
-- nx_lwm2m_client_session_error_get: *ottenere l'ultimo errore di una sessione*
+- nx_lwm2m_client_session_error_get: Ottenere *l'ultimo errore di una sessione*
 
 **Implementazione dell'oggetto dispositivo:**
 
-- nx_lwm2m_client_device_callbacks_set: *impostare i callback dell'applicazione oggetto dispositivo*
+- nx_lwm2m_client_device_callbacks_set: Impostare *i callback dell'applicazione Dell'oggetto dispositivo*
 
-- nx_lwm2m_client_device_error_push: *aggiungere il codice di errore all'oggetto dispositivo*
+- nx_lwm2m_client_device_error_push: Aggiungere *il codice di errore all'oggetto dispositivo*
 
-- nx_lwm2m_client_device_error_reset: *Reimposta i codici di errore dell'oggetto dispositivo*
+- nx_lwm2m_client_device_error_reset: Reimpostare *i codici di errore dell'oggetto dispositivo*
 
 - nx_lwm2m_client_device_resource_changed: *modifica del segnale della risorsa oggetto dispositivo*
 
 **Implementazione dell'oggetto di aggiornamento del firmware:**
 
-- nx_lwm2m_firmware_create: *creare un oggetto di aggiornamento del firmware*
+- nx_lwm2m_firmware_create: Creare *un oggetto di aggiornamento del firmware*
 
-- nx_lwm2m_firmware_package_info_set: *impostare le informazioni sul pacchetto di aggiornamento del firmware*
+- nx_lwm2m_firmware_package_info_set: Impostare *le informazioni sul pacchetto di aggiornamento del firmware*
 
-- nx_lwm2m_firmware_result_set: *impostare il risultato dell'aggiornamento del firmware*
+- nx_lwm2m_firmware_result_set: Impostare *il risultato dell'aggiornamento del firmware*
 
-- nx_lwm2m_firmware_state_set: *impostare lo stato di aggiornamento del firmware*
+- nx_lwm2m_firmware_state_set: Impostare *lo stato di aggiornamento del firmware*
 
 **Implementazione di oggetti personalizzati:**
 
-- nx_lwm2m_client_object_add: *aggiungere l'implementazione dell'oggetto al client lwm2m*
+- nx_lwm2m_client_object_add: Aggiungere *l'implementazione dell'oggetto al client LWM2M*
 
-- nx_lwm2m_client_object_remove: *rimuovere l'implementazione dell'oggetto dal client lwm2m*
+- nx_lwm2m_client_object_remove: Rimuovere *l'implementazione dell'oggetto dal client LWM2M*
 
-- nx_lwm2m_client_object_instance_add: *aggiungere un'istanza dell'oggetto al client lwm2m*
+- nx_lwm2m_client_object_instance_add: Aggiungere *un'istanza di oggetto al client LWM2M*
 
-- nx_lwm2m_client_object_instance_remove: *rimuovere l'istanza dell'oggetto dal client lwm2m*
+- nx_lwm2m_client_object_instance_remove: Rimuovere *l'istanza dell'oggetto dal client LWM2M*
 
-- nx_lwm2m_object_resource_changed: *modifica del segnale di un valore di risorsa di un'istanza dell'oggetto*
+- nx_lwm2m_object_resource_changed: segnalare *la modifica di un valore di risorsa di un'istanza dell'oggetto*
 
 **Gestione dei dispositivi locali**
 
-- nx_lwm2m_client_object_create: *creare una nuova istanza dell'oggetto*
+- nx_lwm2m_client_object_create: Creare *una nuova istanza dell'oggetto*
 
-- nx_lwm2m_client_object_delete: *eliminare un'istanza dell'oggetto*
+- nx_lwm2m_client_object_delete: Eliminare *un'istanza di oggetto*
 
-- nx_lwm2m_client_object_discover: *individuazione delle risorse di un'istanza dell'oggetto*
+- nx_lwm2m_client_object_discover: Individuare *le risorse di un'istanza di oggetto*
 
-- nx_lwm2m_client_object_execute: *eseguire la risorsa di un'istanza dell'oggetto*
+- nx_lwm2m_client_object_execute: Eseguire *una risorsa di un'istanza di oggetto*
 
-- nx_lwm2m_client_object_next_get: *Ottiene l'elenco di oggetti implementati dal client lwm2m*
+- nx_lwm2m_client_object_next_get: *ottenere l'elenco di oggetti implementati dal client LWM2M*
 
-- nx_lwm2m_client_object_instance_next_get: *Ottiene l'elenco di istanze di un oggetto*
+- nx_lwm2m_client_object_instance_next_get: *Ottenere l'elenco di istanze di un oggetto*
 
-- nx_lwm2m_client_object_read: *leggere i valori delle risorse di un'istanza dell'oggetto*
+- nx_lwm2m_client_object_read: Leggere *i valori delle risorse di un'istanza dell'oggetto*
 
-- nx_lwm2m_client_object_write: *modificare i valori delle risorse di un'istanza dell'oggetto*
+- nx_lwm2m_client_object_write: Modificare *i valori delle risorse di un'istanza dell'oggetto*
 
-**Impostazione informazioni risorse e valori:**
+**Impostazione delle informazioni e dei valori delle risorse:**
 
-- nx_lwm2m_client_resource_info_set: *impostare le informazioni sulla risorsa*
+- nx_lwm2m_client_resource_info_set: impostare *le informazioni sulla risorsa*
 
 - nx_lwm2m_client_resource_string_set: *impostare il valore della risorsa come stringa*
 
-- nx_lwm2m_client_resource_integer32_set: *impostare il valore della risorsa come intero a 32 bit*
+- nx_lwm2m_client_resource_integer32_set: impostare il valore della risorsa come intero a *32 bit*
 
-- nx_lwm2m_client_resource_integer64_set: *impostare il valore della risorsa come intero a 64 bit*
+- nx_lwm2m_client_resource_integer64_set: impostare il valore della risorsa come intero a *64 bit*
 
-- nx_lwm2m_client_resource_float32_set: *impostare il valore della risorsa come float a 32 bit*
+- nx_lwm2m_client_resource_float32_set: impostare *il valore della risorsa su float a 32 bit*
 
-- nx_lwm2m_client_resource_float64_set: *impostare il valore della risorsa come float a 64 bit*
+- nx_lwm2m_client_resource_float64_set: *impostare il valore della risorsa su float a 64 bit*
 
-- nx_lwm2m_client_resource_boolean_set: *impostare il valore della risorsa come valore booleano*
+- nx_lwm2m_client_resource_boolean_set: *impostare il valore della risorsa come booleano*
 
-- nx_lwm2m_client_resource_objlnk_set: *impostare il valore della risorsa come collegamento all'oggetto*
+- nx_lwm2m_client_resource_objlnk_set: impostare *il valore della risorsa come collegamento all'oggetto*
 
-- nx_lwm2m_client_resource_opaque_set: *impostare il valore della risorsa come opaco*
+- nx_lwm2m_client_resource_opaque_set: impostare *il valore della risorsa come opaco*
 
-- nx_lwm2m_client_resource_instance_set: *impostare il valore della risorsa come istanza di per più risorse*
+- nx_lwm2m_client_resource_instance_set: impostare *il valore della risorsa come istanza per più risorse*
 -
-- nx_lwm2m_client_resource_dim_set: *impostare la dimensione della risorsa per più risorse.*
+- nx_lwm2m_client_resource_dim_set: impostare *la dimensione della risorsa per più risorse.*
 
-**Informazioni sulle risorse e valori per ottenere:**
+**Recupero di informazioni e valori delle risorse:**
 
-- nx_lwm2m_client_resource_info_get: *ottenere le informazioni sulle risorse*
+- nx_lwm2m_client_resource_info_get: ottenere *le informazioni sulla risorsa*
 
-- nx_lwm2m_client_resource_string_get: *recuperare il valore di una risorsa di stringa*
+- nx_lwm2m_client_resource_string_get: ottenere *il valore di una risorsa stringa*
 
-- nx_lwm2m_client_resource_integer32_get: *recuperare il valore di una risorsa Integer a 32 bit*
+- nx_lwm2m_client_resource_integer32_get: ottenere *il valore di una risorsa integer a 32 bit*
 
-- nx_lwm2m_client_resource_integer64_get: *recuperare il valore di una risorsa Integer a 64 bit*
+- nx_lwm2m_client_resource_integer64_get: ottenere il valore di una risorsa integer *a 64 bit*
 
-- nx_lwm2m_client_resource_float32_get: *recuperare il valore di una risorsa float a 32 bit*
+- nx_lwm2m_client_resource_float32_get: ottenere *il valore di una risorsa float a 32 bit*
 
-- nx_lwm2m_client_resource_float64_get: *recuperare il valore di una risorsa float a 64 bit*
+- nx_lwm2m_client_resource_float64_get: *ottenere il valore di una risorsa float a 64 bit*
 
-- nx_lwm2m_client_resource_boolean_get: *recuperare il valore di una risorsa booleana*
+- nx_lwm2m_client_resource_boolean_get: *ottenere il valore di una risorsa booleana*
 
-- nx_lwm2m_client_resource_objlnk_get: *recuperare il valore di una risorsa di collegamento a un oggetto*
+- nx_lwm2m_client_resource_objlnk_get: ottenere *il valore di una risorsa di collegamento a un oggetto*
 
-- nx_lwm2m_client_resource_opaque_get: *recuperare il valore di una risorsa opaca*
+- nx_lwm2m_client_resource_opaque_get: ottenere *il valore di una risorsa opaca*
 
-- nx_lwm2m_client_resource_instance_get: *ottenere l'istanza della risorsa per più risorse*
+- nx_lwm2m_client_resource_instance_get: Ottenere *l'istanza della risorsa per più risorse*
 
-- nx_lwm2m_client_resource_dim_get: *ottenere la dimensione della risorsa per più risorse.*
+- nx_lwm2m_client_resource_dim_get: ottenere *la dimensione della risorsa per più risorse.*
 
 ## <a name="nx_lwm2m_client_create"></a>nx_lwm2m_client_create
 
@@ -174,21 +174,21 @@ UINT nx_lwm2m_client_create(
 
 Questo servizio crea un'istanza del client LWM2M, che viene eseguita nel contesto del proprio thread ThreadX.
 
-Il client LWM2M implementa i seguenti oggetti LWM2M OMA: Security (0), server (1), controllo di accesso (2) e Device (3). Le altre implementazioni di oggetti devono essere aggiunte dall'applicazione.
+Il client LWM2M implementa gli oggetti OMA LWM2M seguenti: Sicurezza (0), Server (1), Controllo di accesso (2) e Dispositivo (3). Le altre implementazioni di oggetti devono essere aggiunte dall'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.
-- **packet_pool_ptr** Puntatore al pool di pacchetti predefinito per il client LWM2M.
-- **name_ptr** Puntatore al nome dell'endpoint del client LWM2M.
-- **name_length** Lunghezza del nome dell'endpoint del client LWM2M.
-- **msisdn_ptr** Puntatore a MSISDN in cui è possibile raggiungere il client LWM2M per l'utilizzo con l'associazione SMS. può essere NULL se l'associazione SMS non è supportata.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.
+- **packet_pool_ptr** Puntatore al pool di pacchetti predefinito per questo client LWM2M.
+- **name_ptr** Puntatore al nome dell'endpoint client LWM2M.
+- **name_length** Lunghezza del nome dell'endpoint client LWM2M.
+- **msisdn_ptr** Puntatore all'MSISDN in cui è possibile raggiungere il client LWM2M per l'uso con l'associazione SMS, può essere NULL se l'associazione SMS non è supportata.
 - **msisdn_length** Lunghezza del numero MSISDN.
-- **binding_modes** Il binding e le modalità supportate dal client LWM2M devono essere costituiti da una combinazione di flag di NX_LWM2M_BINDING_U, NX_LWM2M_BINDING_UQ, NX_LWM2M_BINDING_S e NX_LWM2M_BINDING_SQ.
+- **binding_modes** L'associazione e le modalità supportate dal client LWM2M devono essere una combinazione di NX_LWM2M_BINDING_U, NX_LWM2M_BINDING_UQ, NX_LWM2M_BINDING_S e NX_LWM2M_BINDING_SQ flag.
 - **stack_ptr** Puntatore all'area dello stack di thread del client LWM2M.
-- **stack_size** Dimensioni dello stack dei thread del client LWM2M.
-- **priorità** di Priorità del client LWM2M.
+- **stack_size** Dimensioni dello stack del thread del client LWM2M.
+- **priorità** Priorità del client LWM2M.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -201,7 +201,7 @@ Il client LWM2M implementa i seguenti oggetti LWM2M OMA: Security (0), server (1
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -227,9 +227,9 @@ UINT nx_lwm2m_client_delete(NX_LWM2M_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del client LWM2M creata in precedenza.
+Questo servizio elimina un'istanza del client LWM2M creata in precedenza.
 
-Tutte le sessioni attualmente associate al client vengono eliminate anche da questa chiamata.
+Anche tutte le sessioni attualmente collegate al client vengono eliminate da questa chiamata.
 
 ### <a name="parameters"></a>Parametri
 
@@ -242,7 +242,7 @@ Tutte le sessioni attualmente associate al client vengono eliminate anche da que
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -267,9 +267,9 @@ UINT **nx_lwm2m_client_device_callback_set**(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio installa il callback dell'applicazione per l'implementazione di operazioni sulle risorse dell'oggetto dispositivo LWM2M che non sono gestite dal client LWM2M.
+Questo servizio installa il callback dell'applicazione per l'implementazione di operazioni sulle risorse oggetto dispositivo LWM2M non gestite dal client LWM2M.
 
-Il client LWM2M implementa le risorse seguenti: codice errore (11), Reimposta codice errore (12), binding supportato e modalità (16), le operazioni per le altre risorse vengono reindirizzate all'applicazione.
+Il client LWM2M implementa le risorse seguenti: Codice errore (11), Reimposta codice errore (12) e Associazione e modalità supportate (16), le operazioni alle altre risorse vengono reindirizzate all'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -283,7 +283,7 @@ Il client LWM2M implementa le risorse seguenti: codice errore (11), Reimposta co
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -307,7 +307,7 @@ UINT **nx_lwm2m_client_device_error_push**(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una nuova istanza alla risorsa del codice di errore (11) del dispositivo dell'oggetto.
+Questo servizio aggiunge una nuova istanza alla risorsa Codice errore (11) del dispositivo oggetto.
 
 ### <a name="parameters"></a>Parametri
 
@@ -316,10 +316,10 @@ Questo servizio aggiunge una nuova istanza alla risorsa del codice di errore (11
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL**
 
-Il numero massimo di codici di errore archiviati è
+Numero massimo di codici di errore archiviati
 
 è stato raggiunto.
 
@@ -327,7 +327,7 @@ NX_PTR_ERROR puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -350,7 +350,7 @@ UINT nx_lwm2m_client_device_error_reset(NX_LWM2M_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina tutte le istanze di risorse del codice di errore dall'oggetto dispositivo. Equivale a eseguire il codice di errore di reimpostazione della risorsa (12).
+Questo servizio elimina tutte le istanze della risorsa del codice di errore dall'oggetto dispositivo. Equivale all'esecuzione del codice di errore di reimpostazione della risorsa (12).
 
 ### <a name="parameters"></a>Parametri
 
@@ -358,12 +358,12 @@ Questo servizio Elimina tutte le istanze di risorse del codice di errore dall'og
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -389,21 +389,21 @@ UINT nx_lwm2m_client_device_resource_changed(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio viene usato dall'applicazione per segnalare al client LWM2M che una risorsa del dispositivo oggetto è cambiata. Il client LWM2M invierà una notifica se la risorsa viene osservata da un server LWM2M.
+Il servizio viene usato dall'applicazione per segnalare al client LWM2M che una risorsa del dispositivo oggetto è stata modificata. Il client LWM2M invierà una notifica se la risorsa viene osservata da un server LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **risorsa** di Puntatore alla struttura che descrive la risorsa che è stata modificata.
+- **risorsa** Puntatore alla struttura che descrive la risorsa modificata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -432,25 +432,25 @@ UINT nx_lwm2m_client_firmware_create(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio viene usato dall'applicazione per creare un oggetto firmware.
+Il servizio viene usato dall'applicazione per creare l'oggetto firmware.
 
 ### <a name="parameters"></a>Parametri
 
 - **firmware_ptr** Puntatore all'oggetto firmware del client LWM2M.
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **protocolli** di Protocolli supportati.
+- **protocolli** Protocolli supportati.
 - **package_callback** Callback del pacchetto.
-- **package_uri_callback** Callback dell'URI del pacchetto.
-- **update_callback** Callback dell'aggiornamento.
+- **package_uri_callback** Callback DELL'URI del pacchetto.
+- **update_callback** Callback di aggiornamento.
 
 ### <a name="return-values"></a>Valori restituiti
 
-**NX_SUCCESS** Operazione completata.
+**NX_SUCCESS** Operazione riuscita.
 **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -466,7 +466,7 @@ status = nx_lwm2m_client_firmware_create(&firmware, &lwm2m_client,
 
 ##  <a name="nx_lwm2m_client_firmware_package_info_set"></a>nx_lwm2m_client_firmware_package_info_set
 
-Imposta le informazioni del pacchetto del firmware del client LWM2M.
+Imposta le informazioni sul pacchetto firmware del client LWM2M.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -481,24 +481,24 @@ UINT nx_lwm2m_client_firmware_package_info_set(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio viene utilizzato dall'applicazione per impostare le risorse di informazioni sul pacchetto dell'oggetto di aggiornamento del firmware.
+Il servizio viene usato dall'applicazione per impostare le risorse di informazioni sul pacchetto dell'oggetto di aggiornamento del firmware.
 
 ### <a name="parameters"></a>Parametri
 
 - **firmware_ptr** Puntatore all'oggetto firmware del client LWM2M.
-- **nome** Nome del pacchetto del firmware.
+- **name** Nome del pacchetto del firmware.
 - **name_length** Lunghezza del nome.
-- **versione** di Versione del pacchetto del firmware.
+- **versione** Versione del pacchetto del firmware.
 - **version_length** Lunghezza della versione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -513,7 +513,7 @@ status = nx_lwm2m_client_firmware_package_info_set(&firmware, 2m_client,
 
 ##  <a name="nx_lwm2m_client_firmware_result_set"></a>nx_lwm2m_client_firmware_result_set
 
-Imposta la risorsa risultato aggiornamento dell'oggetto aggiornamento firmware.
+Imposta la risorsa risultato dell'aggiornamento dell'oggetto di aggiornamento del firmware.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -525,7 +525,7 @@ UINT nx_lwm2m_client_firmware_result_set(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio viene usato dall'applicazione per impostare la risorsa del risultato dell'aggiornamento dell'oggetto di aggiornamento del firmware.
+Il servizio viene usato dall'applicazione per impostare la risorsa risultato dell'aggiornamento dell'oggetto di aggiornamento del firmware.
 
 ### <a name="parameters"></a>Parametri
 
@@ -534,12 +534,12 @@ Il servizio viene usato dall'applicazione per impostare la risorsa del risultato
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -553,7 +553,7 @@ status = nx_lwm2m_client_firmware_result_set(&firmware,
 
 ##  <a name="nx_lwm2m_client_firmware_state_set"></a>nx_lwm2m_client_firmware_state_set
 
-Imposta la risorsa risultato aggiornamento dell'oggetto aggiornamento firmware.
+Imposta la risorsa risultato dell'aggiornamento dell'oggetto di aggiornamento del firmware.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -570,16 +570,16 @@ Il servizio viene usato dall'applicazione per impostare lo stato dell'oggetto di
 ### <a name="parameters"></a>Parametri
 
 - **firmware_ptr** Puntatore all'oggetto firmware del client LWM2M.
-- **stato** di Stato dell'oggetto firmware.
+- **state** Stato dell'oggetto firmware.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -605,9 +605,9 @@ UINT **nx_lwm2m_client_lock**(NX_LWM2M_CLIENT *client_ptr);
 
 Questo servizio blocca il client LWM2M per impedire l'accesso simultaneo agli oggetti LWM2M dai server o da un altro thread dell'applicazione.
 
-Se il client LWM2M è attualmente bloccato da un altro thread, la funzione si bloccherà fino a quando non viene sbloccato il client LWM2M.
+Se il client LWM2M è attualmente bloccato da un altro thread, la funzione si blocca fino a quando il client LWM2M non viene sbloccato.
 
-Le chiamate alle coppie ***nx_lwm2m_client_lock** _/_ *_nx_lwm2m_client_unlock_** possono essere nidificate.
+Le chiamate a ***nx_lwm2m_client_lock** _/_ *_nx_lwm2m_client_unlock_** possono essere annidate.
 
 ### <a name="parameters"></a>Parametri
 
@@ -615,12 +615,12 @@ Le chiamate alle coppie ***nx_lwm2m_client_lock** _/_ *_nx_lwm2m_client_unlock_*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -633,7 +633,7 @@ status = nx_lwm2m_client_lock(&lwm2m_client);
 
 ## <a name="nx_lwm2m_client_object_add"></a>nx_lwm2m_client_object_add
 
-Aggiunge un'implementazione dell'oggetto al client LWM2M.
+Aggiunge un'implementazione object al client LWM2M.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -647,24 +647,24 @@ UINT **nx_lwm2m_client_object_add**(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una nuova implementazione dell'oggetto al client di LWM2M.
+Questo servizio aggiunge una nuova implementazione dell'oggetto al client LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
 - **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto.
-- **object_id** ID dell'oggetto.
+- **object_id** ID oggetto.
 - **object_operation** Funzione di callback dell'operazione dell'oggetto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ALREADY_EXIST** ID oggetto già esistente.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ALREADY_EXIST** L'ID oggetto esiste già.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -693,20 +693,20 @@ UINT nx_lwm2m_client_object_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un'operazione di creazione su un oggetto del client LWM2M per creare una nuova istanza dell'oggetto.
+Questo servizio esegue un'operazione 'Create' su un oggetto del client LWM2M per creare una nuova istanza dell'oggetto.
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **instance_id_ptr** Puntatore all'ID della nuova istanza, può essere **null** se il client LWM2M deve assegnare un ID istanza. Se l'ID è il valore riservato 65535, il client LWM2M assegnerà un ID istanza. Se non è NULL, l'ID assegnato viene restituito dopo la chiamata.
+- **object_id** ID oggetto.
+- **instance_id_ptr** Puntatore all'ID della nuova istanza, può essere **NULL** se il client LWM2M deve assegnare un ID istanza. Se l'ID è il valore riservato 65535, il client LWM2M assegna un ID istanza. Se non è NULL, l'ID assegnato viene restituito dopo la chiamata.
 - **num_values** Numero di valori da impostare.
 - **values_ptr** Puntatore a una matrice di valori di risorsa per inizializzare la nuova istanza dell'oggetto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ALREADY_EXIST** L'ID dell'istanza dell'oggetto esiste già.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ALREADY_EXIST** L'ID istanza dell'oggetto esiste già.
 - **NX_LWM2M_CLIENT_METHOD_NOT_ALLOWED** L'oggetto non supporta la creazione di istanze.
 - **NX_LWM2M_CLIENT_NO_MEMORY** Impossibile allocare memoria per archiviare la nuova istanza.
 - **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto non esiste.
@@ -714,7 +714,7 @@ Questo servizio esegue un'operazione di creazione su un oggetto del client LWM2M
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -745,19 +745,19 @@ Questo servizio esegue un'operazione di eliminazione su un'istanza di oggetto de
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **Instance_Id** ID dell'istanza dell'oggetto.
+- **object_id** ID oggetto.
+- **instance_id** ID dell'istanza dell'oggetto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_METHOD_NOT_ALLOWED** L'oggetto non supporta l'eliminazione dell'istanza.
-- **NX_LWM2M_CLIENT_NOT_FOUND** ID oggetto o ID istanza oggetto inesistente.
+- **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto o l'ID istanza oggetto non esiste.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -786,26 +786,26 @@ UINT nx_lwm2m_client_object_discover(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un'operazione di individuazione su un'istanza dell'oggetto del client LWM2M, restituisce l'elenco delle risorse implementate dall'oggetto.
+Questo servizio esegue un'operazione "Discover" su un'istanza di oggetto del client LWM2M. In questo modo viene restituito l'elenco di risorse implementate dall'oggetto .
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **Instance_Id** ID dell'istanza dell'oggetto.
-- **num_resources** In input dimensione del buffer di destinazione, in output il numero di elementi scritti nel buffer.
-- **risorse** di Puntatore al buffer di destinazione.
+- **object_id** ID oggetto.
+- **instance_id** ID dell'istanza dell'oggetto.
+- **num_resources** All'input delle dimensioni del buffer di destinazione, nell'output viene restituito il numero di elementi scritti nel buffer.
+- **risorse** Puntatore al buffer di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- *NX_SUCCESS** operazione riuscita.
-- **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL** Il buffer di risorse è troppo piccolo per archiviare l'elenco di risorse.
-- **NX_LWM2M_CLIENT_NOT_FOUND** ID oggetto o ID istanza oggetto inesistente.
+- *NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL** Il buffer delle risorse è troppo piccolo per archiviare l'elenco di risorse.
+- **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto o l'ID istanza oggetto non esiste.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -822,7 +822,7 @@ status = nx_lwm2m_client_object_discover(&lwm2m_client, 3303, 0,
 
 ## <a name="nx_lwm2m_client_object_execute"></a>nx_lwm2m_client_object_execute
 
-Esegue un'operazione di esecuzione su una risorsa di un'istanza dell'oggetto.
+Esegue un'operazione 'Execute' su una risorsa di un'istanza dell'oggetto.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -838,27 +838,27 @@ UINT **nx_lwm2m_client_object_execute**(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue l'operazione di esecuzione su una risorsa dell'istanza di oggetto del client LWM2M.
+Questo servizio esegue l'operazione 'Execute' su una risorsa istanza oggetto del client LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **Instance_Id** ID dell'istanza dell'oggetto.
-- **resource_id** ID della risorsa.
+- **object_id** ID oggetto.
+- **instance_id** ID dell'istanza dell'oggetto.
+- **resource_id** ID risorsa.
 - **arguments_ptr** Puntatore agli argomenti dell'operazione di esecuzione. Può essere NULL se arguments_length è zero.
 - **arguments_length** Lunghezza degli argomenti.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL** Il buffer di risorse è troppo piccolo per archiviare l'elenco di risorse.
-- **NX_LWM2M_CLIENT_NOT_FOUND** ID oggetto o ID istanza oggetto inesistente.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL** Il buffer delle risorse è troppo piccolo per archiviare l'elenco di risorse.
+- **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto o l'ID istanza oggetto non esiste.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -872,7 +872,7 @@ status = nx_lwm2m_client_object_execute (&lwm2m_client, 3303, 0, 0,
 
 ## <a name="nx_lwm2m_client_object_instance_add"></a>nx_lwm2m_client_object_instance_add
 
-Aggiunge un'implementazione dell'istanza di oggetto a un oggetto.
+Aggiunge un'implementazione dell'istanza Object a un oggetto .
 
 ### <a name="prototype"></a>Prototipo
 
@@ -885,23 +885,23 @@ UINT nx_lwm2m_client_object_instance_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una nuova implementazione dell'istanza di oggetto al client di LWM2M. Se il valore di instance_id_ptr è **NX_LWM2M_CLIENT_RESERVED_ID**, il client di LWM2M assegna automaticamente un ID istanza non usato. in caso contrario, il client LWM2M utilizzerà il valore impostato per l'applicazione. Una volta aggiunta la nuova istanza, l'instance_id verrà compilata instance_id_ptr per tornare all'applicazione.
+Questo servizio aggiunge una nuova implementazione dell'istanza Object al client LWM2M. Se il valore di instance_id_ptr è **NX_LWM2M_CLIENT_RESERVED_ID**, il client LWM2M assegna automaticamente un ID istanza inutilizzato. In caso contrario, il client LWM2M userà il set di applicazioni valore. Dopo che la nuova istanza è stata aggiunta correttamente, instance_id verrà compilato il instance_id_ptr per tornare all'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto.
-- **instance_ptr** Puntatore alla struttura che definisce l'implementazione dell'istanza dell'oggetto.
-- **instance_id_ptr** Puntatore all'ID dell'istanza dell'oggetto.
+- **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto .
+- **instance_ptr** Puntatore alla struttura che definisce l'implementazione dell'istanza object.
+- **instance_id_ptr** Puntatore all'ID istanza dell'oggetto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_CLIENT_LWM2M_ALREADY_EXIST** ID oggetto già esistente.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_CLIENT_LWM2M_ALREADY_EXIST** L'ID oggetto esiste già.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -915,7 +915,7 @@ status = nx_lwm2m_client_object_instance_add(&object, &object_instance,
 
 ## <a name="nx_lwm2m_client_object_instance_next_get"></a>nx_lwm2m_client_object_instance_next_get
 
-Ottiene l'istanza successiva di un oggetto.
+Ottiene l'istanza successiva di un oggetto .
 
 ### <a name="prototype"></a>Prototipo
 
@@ -928,23 +928,23 @@ UINT nx_lwm2m_client_object_instance_next_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce l'ID dell'istanza di oggetto successiva dell'oggetto specificato. Se l'ID istanza corrente è impostato su NX_LWM2M_RESERVED_ID (65535), viene restituito l'ID della prima istanza.
+Questo servizio restituisce l'ID dell'istanza dell'oggetto successiva dell'oggetto specificato. Se l'ID istanza corrente è impostato su NX_LWM2M_RESERVED_ID (65535), viene restituito l'ID della prima istanza.
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **instance_id_ptr** Puntatore all'ID dell'istanza dell'oggetto corrente. In return contiene l'ID dell'istanza successiva dell'oggetto.
+- **object_id** ID oggetto.
+- **instance_id_ptr** Puntatore all'ID istanza dell'oggetto corrente. In caso di restituzione contiene l'ID istanza successivo dell'oggetto .
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_CLIENT_LWM2M_NOT_FOUND** L'ID istanza specificato è l'ultimo dell'oggetto o l'ID oggetto non è implementato.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_CLIENT_LWM2M_NOT_FOUND** L'ID istanza specificato è l'ultimo dell'oggetto oppure l'ID oggetto non è implementato.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -958,7 +958,7 @@ status = nx_lwm2m_client_object_instance_next_get(&lwm2m_client, 3303,
 
 ## <a name="nx_lwm2m_client_object_instance_remove"></a>nx_lwm2m_client_object_instance_remove
 
-Rimuove un'implementazione dell'istanza di oggetto da un oggetto.
+Rimuove un'implementazione dell'istanza object da un oggetto .
 
 ### <a name="prototype"></a>Prototipo
 
@@ -970,22 +970,22 @@ UINT nx_lwm2m_client_object_instance_remove(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove un'istanza di oggetto da un oggetto.
+Questo servizio rimuove un'istanza object da un oggetto .
 
 ### <a name="parameters"></a>Parametri
 
-- ***object_ptr*** Puntatore alla struttura che definisce l'implementazione dell'oggetto.
-- **instance_ptr** Puntatore alla struttura che definisce l'implementazione dell'istanza dell'oggetto.
+- ***object_ptr*** Puntatore alla struttura che definisce l'implementazione dell'oggetto .
+- **instance_ptr** Puntatore alla struttura che definisce l'implementazione dell'istanza object.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ALREADY_EXIST** ID oggetto già esistente.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ALREADY_EXIST** L'ID oggetto esiste già.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1015,17 +1015,17 @@ Questo servizio restituisce l'ID dell'oggetto successivo implementato dal client
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id_ptr** Puntatore all'ID dell'oggetto corrente. Il risultato restituito contiene l'ID oggetto successivo implementato dal client LWM2M.
+- **object_id_ptr** Puntatore all'ID oggetto corrente. In caso di restituzione, contiene l'ID oggetto successivo implementato dal client LWM2M.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto specificato è l'ultimo del database.
 **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1038,7 +1038,7 @@ status = nx_lwm2m_client_object_next_get(&lwm2m_client, &object_id);
 
 ## <a name="nx_lwm2m_client_object_read"></a>nx_lwm2m_client_object_read
 
-Legge i valori resource's di un'istanza di oggetto.
+Legge i valori della risorsa di un'istanza di oggetto.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1058,21 +1058,21 @@ Questo servizio esegue un'operazione di lettura su un'istanza di oggetto del cli
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **Instance_Id** ID dell'istanza dell'oggetto.
+- **object_id** ID oggetto.
+- **instance_id** ID dell'istanza dell'oggetto.
 - **num_values** Numero di risorse da leggere.
-- **values_ptr** Puntatore a una matrice di NX_LWM2M_RESOURCE contenente gli ID delle risorse da leggere. In restituzione la matrice viene riempita con i tipi e i valori corrispondenti.
+- **values_ptr** Puntatore a una matrice di NX_LWM2M_RESOURCE contenente gli ID delle risorse da leggere. Al ritorno la matrice viene riempita con i tipi e i valori corrispondenti.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_METHOD_NOT_ALLOWED** Una risorsa non supporta l'operazione di lettura.
-- **NX_LWM2M_CLIENT_NOT_FOUND** ID oggetto, ID istanza oggetto o ID risorsa inesistente.
+- **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto, l'ID istanza dell'oggetto o un ID risorsa non esiste.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1085,7 +1085,7 @@ status = nx_lwm2m_client_object_read(&lwm2m_client, 3303, 0, 2, &resource);
 
 ## <a name="nx_lwm2m_client_object_remove"></a>nx_lwm2m_client_object_remove
 
-Rimuove un'implementazione dell'istanza di oggetto da un oggetto.
+Rimuove un'implementazione dell'istanza object da un oggetto .
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1102,18 +1102,18 @@ Questo servizio rimuove un oggetto dal client LWM2M.
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto.
+- **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto .
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ALREADY_EXIST** ID oggetto già esistente.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ALREADY_EXIST** L'ID oggetto esiste già.
 - **NX_PTR_ERROR** Puntatore non valido.
-- **NX_LWM2M_CLIENT_FORBIDDEN** La rimozione dell'oggetto interno non è consentita.
+- **NX_LWM2M_CLIENT_FORBIDDEN** La rimozione di un oggetto interno non è consentita.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1126,7 +1126,7 @@ status = nx_lwm2m_client_object_remove(&lwm2m_client, &object);
 
 ## <a name="nx_lwm2m_client_object_resource_changed"></a>nx_lwm2m_client_object_resource_changed
 
-Segnala una modifica di una risorsa dell'oggetto.
+Segnala una modifica di una risorsa Oggetto.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1143,18 +1143,18 @@ Il servizio viene usato dall'applicazione per segnalare al client LWM2M che una 
 
 ### <a name="parameters"></a>Parametri
 
-- **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto.
-- ***instance_ptr*** Puntatore alla struttura che definisce l'implementazione dell'istanza dell'oggetto.
-- **risorsa** di Puntatore alla struttura che descrive la risorsa che è stata modificata.
+- **object_ptr** Puntatore alla struttura che definisce l'implementazione dell'oggetto .
+- ***instance_ptr*** Puntatore alla struttura che definisce l'implementazione dell'istanza object.
+- **resource** Puntatore alla struttura che descrive la risorsa modificata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1167,7 +1167,7 @@ status = nx_lwm2m_client_object_resource_changed(&object, &instance, &resource);
 
 ## <a name="nx_lwm2m_client_object_write"></a>nx_lwm2m_client_object_write
 
-Modifica i valori della risorsa di un'istanza dell'oggetto.
+Modifica i valori della risorsa di un'istanza object.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1183,41 +1183,41 @@ UINT nx_lwm2m_client_object_write(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un'operazione di scrittura su un'istanza di oggetto del client LWM2M.
+Questo servizio esegue un'operazione di scrittura in un'istanza di oggetto del client LWM2M.
 
-È possibile specificare le operazioni di scrittura seguenti per il parametro *write_op* .
+Le operazioni di scrittura seguenti possono essere specificate nel *parametro write_op.*
 
-| Valore | Operazione di scrittura &nbsp; | Descrizione |
+| Valore | Operazione di &nbsp; scrittura | Descrizione |
 | --- | ---| --- |
 | 0 | Aggiornamento parziale | Aggiunge o aggiorna le risorse fornite nel nuovo valore e lascia invariate le altre risorse esistenti. |
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_INSTANCE** | Sostituisci istanza | Sostituisce l'istanza dell'oggetto con i nuovi valori di risorsa specificati. |
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_RESOURCE** | Sostituisci risorsa | Sostituisce le risorse con i nuovi valori di risorsa forniti, usati per sostituire più risorse. |
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_BOOTSTRAP** | Scrittura bootstrap | Indica una chiamata da una sequenza di bootstrap. |
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_INSTANCE** | Sostituire l'istanza | Sostituisce l'istanza dell'oggetto con i nuovi valori di risorsa specificati. |
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_RESOURCE** | Sostituire la risorsa | Sostituisce le risorse con i nuovi valori di risorsa forniti (usati per sostituire più risorse). |
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_BOOTSTRAP** | Scrittura bootstrap | Indica una chiamata da una sequenza bootstrap. |
 
 ### <a name="parameters"></a>Parametri
 
 - **client_ptr** Puntatore al blocco di controllo client LWM2M.
-- **object_id** ID dell'oggetto.
-- **Instance_Id** ID dell'istanza dell'oggetto.
+- **object_id** ID oggetto.
+- **instance_id** ID dell'istanza dell'oggetto.
 - **num_values** Numero di risorse da scrivere.
 - **values_ptr** Puntatore a una matrice di NX_LWM2M_RESOURCE contenente gli ID delle risorse, i tipi e i valori da scrivere.
 - **write_op** Tipo di operazione di scrittura.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il tipo di una risorsa non è valido.
-- **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL** La lunghezza di un valore è troppo grande per essere archiviata nell'istanza di.
+- **NX_LWM2M_CLIENT_BUFFER_TOO_SMALL** La lunghezza di un valore è troppo grande per essere archiviata nell'istanza di .
 - **NX_LWM2M_CLIENT_METHOD_NOT_ALLOWED** Una risorsa non supporta l'operazione di scrittura.
 - **NX_LWM2M_CLIENT_NO_MEMORY** Impossibile allocare memoria per archiviare un valore di risorsa.
 - **NX_LWM2M_CLIENT_NOT_ACCEPTABLE** Il valore di una risorsa non è valido.
-- **NX_LWM2M_CLIENT_NOT_FOUND** ID oggetto, ID istanza oggetto o ID risorsa inesistente.
+- **NX_LWM2M_CLIENT_NOT_FOUND** L'ID oggetto, l'ID istanza dell'oggetto o un ID risorsa non esiste.
 - **NX_OPTION_ERROR** Tipo di operazione di scrittura non valido. 
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1247,18 +1247,18 @@ Il servizio recupera il valore di una risorsa booleana.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla descrizione del valore della risorsa.
+- **risorsa** Puntatore alla descrizione del valore della risorsa.
 - **bool_ptr** Puntatore al valore booleano di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore booleano.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1287,17 +1287,17 @@ Il servizio imposta il valore di una risorsa booleana.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **bool_data** Dati booleani.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1326,18 +1326,18 @@ Il servizio recupera la dimensione della risorsa per più risorse.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
-- puntatore **Dim** alla dimensione di destinazione.
+- **risorsa** Puntatore alla risorsa.
+- **dim** Puntatore alla dimensione di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore booleano.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1366,17 +1366,17 @@ Il servizio imposta la dimensione della risorsa per più risorse.
 
 ### <a name="parameters"></a>Parametri
 
-- **valore** di Puntatore alla descrizione del valore della risorsa.
-- valore **Dim** della dimensione.
+- **value** Puntatore alla descrizione del valore della risorsa.
+- **Valore dimensione dim.**
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1389,7 +1389,7 @@ status = nx_lwm2m_client_resource_dim_set(&resource, 3);
 
 ## <a name="nx_lwm2m_client_resource_float32_get"></a>nx_lwm2m_client_resource_float32_get
 
-Ottiene il valore di una risorsa **float** a 32 bit.
+Ottiene il valore di una risorsa **float** a 32 bit
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1405,18 +1405,18 @@ Il servizio recupera il valore di una risorsa **float** a 32 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
-- **float32_ptr** Puntatore al valore **float** a 32 bit di destinazione.
+- **risorsa** Puntatore alla risorsa.
+- **float32_ptr** Puntatore al valore float a 32 bit **di** destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore booleano.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1445,17 +1445,17 @@ Il servizio imposta il valore di una risorsa **float** a 32 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **float32_data** dati **float** a 32 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1484,18 +1484,18 @@ Il servizio recupera il valore di una risorsa **float** a 64 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
-- **float64_ptr** Puntatore al valore **float** a 64 bit di destinazione.
+- **risorsa** Puntatore alla risorsa.
+- **float64_ptr** Puntatore al valore float a 64 bit **di** destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore float.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1524,17 +1524,17 @@ Il servizio imposta il valore di una risorsa **float** a 64 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **float64_data** dati **float** a 64 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1560,22 +1560,22 @@ UINT nx_lwm2m_client_resource_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio recupera le informazioni sulla risorsa della risorsa.
+Il servizio recupera le informazioni sulle risorse della risorsa.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **resource_id** Puntatore all'ID risorsa di destinazione.
-- **operazione** di Puntatore all'operazione della risorsa di destinazione.
+- **operazione** Puntatore all'operazione della risorsa di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1604,18 +1604,18 @@ Il servizio imposta le informazioni sulla risorsa.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **resource_id** ID della risorsa.
-- **operazione** di Operazione della risorsa.
+- **operazione** Operazione della risorsa.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1641,24 +1641,24 @@ UINT nx_lwm2m_client_resource_instances_get(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio recupera le informazioni sulla risorsa della risorsa.
+Il servizio recupera le informazioni sulle risorse della risorsa.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **resource_instances** Puntatore all'ID risorsa di destinazione.
-- **numero** di Puntatore al conteggio.
+- **count** Puntatore al conteggio.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore booleano.
-- **NX_LWM2M_CLIENT_NO_MEMORY** Nessuna memoria per compilare le istanze.
+- **NX_LWM2M_CLIENT_NO_MEMORY** Memoria insufficiente per compilare le istanze.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1684,22 +1684,22 @@ UINT nx_lwm2m_client_resource_instances_set(
 ```
 ### <a name="description"></a>Descrizione
 
-Il servizio imposta le istanze di risorse per più risorse.
+Il servizio imposta le istanze delle risorse per più risorse.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
-- **resource_instance** Puntatore a istanze di risorse.
-- **numero** di Conteggio delle istanze di risorse.
+- **risorsa** Puntatore alla risorsa.
+- **resource_instance** Puntatore alle istanze di risorsa.
+- **count** Numero di istanze di risorse.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1712,7 +1712,7 @@ status = nx_lwm2m_client_resource_instances_set(&resource, &resource_instance, 2
 
 ## <a name="nx_lwm2m_client_resource_integer32_get"></a>nx_lwm2m_client_resource_integer32_get
 
-Ottiene il valore di una risorsa Integer a 32 bit.
+Ottiene il valore di una risorsa integer a 32 bit.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1724,22 +1724,22 @@ UINT nx_lwm2m_client_resource_integer32_get(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio recupera il valore di una risorsa Integer a 32 bit.
+Il servizio recupera il valore di una risorsa integer a 32 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **integer32_ptr** Puntatore al valore integer a 32 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore intero.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1752,7 +1752,7 @@ status = nx_lwm2m_client_resource_integer32_get(&resource, &integer32);
 
 ## <a name="nx_lwm2m_client_resource_integer32_set"></a>nx_lwm2m_client_resource_integer32_set
 
-Imposta il valore di una risorsa Integer a 32 bit.
+Imposta il valore di una risorsa integer a 32 bit.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1764,21 +1764,21 @@ UINT nx_lwm2m_client_resource_integer32_set(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio imposta il valore di una risorsa Integer a 32 bit.
+Il servizio imposta il valore di una risorsa integer a 32 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **resource** Puntatore alla risorsa.
 - **integer32_data** dati integer a 32 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1791,7 +1791,7 @@ status = nx_lwm2m_client_resource_integer32_set(&resource, 8);
 
 ## <a name="nx_lwm2m_client_resource_integer64_get"></a>nx_lwm2m_client_resource_integer64_get
 
-Ottiene il valore di una risorsa Integer a 64 bit.
+Ottiene il valore di una risorsa integer a 64 bit.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1803,22 +1803,22 @@ UINT nx_lwm2m_client_resource_integer64_get(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio recupera il valore di una risorsa Integer a 64 bit.
+Il servizio recupera il valore di una risorsa integer a 64 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **resource** Puntatore alla risorsa.
 - **integer64_ptr** Puntatore al valore integer a 64 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore integer a 64 bit.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore intero a 64 bit.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1831,7 +1831,7 @@ status = nx_lwm2m_client_resource_integer64_get(&resource, &integer64);
 
 ## <a name="nx_lwm2m_client_resource_integer64_set"></a>nx_lwm2m_client_resource_integer64_set
 
-## <a name="set-the-value-of-a-64-bit-integer-resource"></a>Impostare il valore di una risorsa Integer a 64 bit
+## <a name="set-the-value-of-a-64-bit-integer-resource"></a>Impostare il valore di una risorsa integer a 64 bit
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1843,21 +1843,21 @@ UINT nx_lwm2m_client_resource_integer64_set(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio imposta il valore di una risorsa Integer a 64 bit.
+Il servizio imposta il valore di una risorsa integer a 64 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **resource** Puntatore alla risorsa.
 - **integer64_data** intero a 64 bit.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1870,7 +1870,7 @@ status = nx_lwm2m_client_resource_integer64_set(&resource, 32323);
 
 ##  <a name="nx_lwm2m_client_resource_objlnk_get"></a>nx_lwm2m_client_resource_objlnk_get
 
-Ottiene il valore di una risorsa di collegamento a un oggetto.
+Ottiene il valore di una risorsa di collegamento all'oggetto.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1887,19 +1887,19 @@ Il servizio recupera il valore del collegamento all'oggetto.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
-- **object_id** Puntatore all'ID dell'oggetto.
-- **Instance_Id** Puntatore all'ID dell'istanza dell'oggetto.
+- **resource** Puntatore alla risorsa.
+- **object_id** Puntatore all'ID oggetto.
+- **instance_id** Puntatore all'ID istanza dell'oggetto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore di collegamento all'oggetto.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1912,7 +1912,7 @@ status = nx_lwm2m_client_resource_objlnk_get(&resource, &object_id, &instance_id
 
 ## <a name="nx_lwm2m_client_resource_objlnk_set"></a>nx_lwm2m_client_resource_objlnk_set
 
-Imposta le istanze di risorse
+Imposta le istanze della risorsa
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1925,22 +1925,22 @@ UINT nx_lwm2m_client_resource_objlnk_set(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio imposta il valore della risorsa collegamento a oggetti.
+Il servizio imposta il valore della risorsa di collegamento all'oggetto.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **resource** Puntatore alla risorsa.
 - **object_id** ID oggetto.
-- **Instance_Id** ID istanza dell'oggetto.
+- **instance_id** ID dell'istanza dell'oggetto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -1967,23 +1967,23 @@ UINT nx_lwm2m_client_resource_opaque_get(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio recupera il valore di una risorsa opaca. Un valore di risorsa opaco è costituito da un puntatore a un buffer e una lunghezza.
+Il servizio recupera il valore di una risorsa opaca. Un valore di risorsa opaco è costituito da un puntatore a un buffer e da una lunghezza.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **resource** Puntatore alla risorsa.
 - **opaque_ptr** Puntatore ai dati opachi.
-- **opaque_length** Puntatore alla lunghezza dei dati opachi.
+- **opaque_length** Puntatore alla lunghezza dei dati opaca.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è una risorsa opaca.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2013,18 +2013,18 @@ Il servizio imposta il valore di una risorsa opaca.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **opaque_ptr** Puntatore ai dati opachi.
 - **opaque_length** Lunghezza dei dati opachi.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2037,7 +2037,7 @@ status = nx_lwm2m_client_resource_opaque_set(&resource, “AQIDBAU=”, 8);
 
 ## <a name="nx_lwm2m_client_resource_string_get"></a>nx_lwm2m_client_resource_string_get
 
-Ottiene il valore di una risorsa di stringa.
+Ottiene il valore di una stringa Resource.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2050,23 +2050,23 @@ UINT nx_lwm2m_client_resource_string_get(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio recupera il valore di una risorsa di stringa.
+Il servizio recupera il valore di una risorsa stringa.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **string_ptr** Puntatore al puntatore della stringa di destinazione.
-- **string_length** Puntatore alla lunghezza della stringa di destinazione. Può essere **null** se la stringa è con terminazione null.
+- **string_length** Puntatore alla lunghezza della stringa di destinazione. Può essere **NULL se** la stringa ha terminazione Null.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_BAD_ENCODING** Il valore della risorsa non è un valore stringa.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2079,7 +2079,7 @@ status = nx_lwm2m_client_resource_string_get(&resource, &string_ptr, &string_len
 
 ## <a name="nx_lwm2m_client_resource_string_set"></a>nx_lwm2m_client_resource_string_set
 
-Imposta il valore di una risorsa di stringa.
+Imposta il valore di una stringa Resource.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2092,22 +2092,22 @@ UINT nx_lwm2m_client_resource_string_set(
 
 ### <a name="description"></a>Descrizione
 
-Il servizio imposta il valore di una risorsa Integer a 64 bit.
+Il servizio imposta il valore di una risorsa integer a 64 bit.
 
 ### <a name="parameters"></a>Parametri
 
-- **risorsa** di Puntatore alla risorsa.
+- **risorsa** Puntatore alla risorsa.
 - **string_ptr** Puntatore alla stringa.
 - **string_length** Lunghezza della stringa.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2120,7 +2120,7 @@ status = nx_lwm2m_client_resource_string_set(&resource, “test”, sizeof(“te
 
 ## <a name="nx_lwm2m_client_session_bootstrap"></a>nx_lwm2m_client_session_bootstrap
 
-Avvia una sessione con un server bootstrap.
+Avvia una sessione con un server Bootstrap.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2134,29 +2134,29 @@ UINT nx_lwm2m_client_session_bootstrap(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia una sessione con un server bootstrap. Il server deve disporre di un'istanza di sicurezza corrispondente nell'oggetto di sicurezza.
+Questo servizio avvia una sessione con un server Bootstrap. Il server deve avere un'istanza di sicurezza corrispondente nell'oggetto di sicurezza.
 
-Se la risorsa ' Mantieni fuori ' è diversa da zero nell'istanza di sicurezza associata a questo server, la sessione attenderà il bootstrap avviato dal server, se non è stato avviato alcun bootstrap dal server dopo questo periodo di tempo in cui verrà eseguito un bootstrap avviato dal client.
+Se la risorsa "Hold Off" è diversa da zero nell'istanza di sicurezza associata a questo server, la sessione attenderà un bootstrap avviato dal server. Se non viene avviato alcun bootstrap dal server dopo questo periodo di tempo, verrà eseguito un boostrap avviato dal client.
 
-Tutte le sessioni attive correnti vengono interrotte dalla chiamata e sostituite dalla nuova sessione del server bootstrap.
+Qualsiasi sessione attiva corrente viene interrotta da questa chiamata e sostituita dalla nuova sessione del server Bootstrap.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore al blocco di controllo della sessione client LWM2M.
-- **security_id** L'ID dell'istanza di sicurezza del server bootstrap deve essere impostato su NX_LWM2M_RESERVED_ID (65535) se nel server bootstrap non è definita alcuna istanza di sicurezza.
+- **security_id** L'ID dell'istanza di sicurezza del server Bootstrap deve essere impostato su NX_LWM2M_RESERVED_ID (65535) se per il server Bootstrap non è definita alcuna istanza di sicurezza.
 - **ip_address** Indirizzo IP del server.
 - **porta** Porta UDP del server.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ERROR** Errore bootstrap.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ERROR** Errore di bootstrap.
 - **NX_LWM2M_CLIENT_PORT_UNAVAILABLE** La porta non è disponibile.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2169,7 +2169,7 @@ status = nx_lwm2m_client_session_bootstrap(&lwm2m_client, 0, &ip_address, 5783);
 
 ## <a name="nx_lwm2m_client_session_bootstrap_dtls"></a>nx_lwm2m_client_session_bootstrap_dtls
 
-Avvia una sessione protetta con un server bootstrap
+Avvia una sessione protetta con un server Bootstrap
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2184,33 +2184,33 @@ UINT nx_lwm2m_client_session_bootstrap_dtls(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia una sessione con un server bootstrap usando una connessione DTLS sicura. Il server deve disporre di un'istanza di sicurezza corrispondente nell'oggetto di sicurezza.
+Questo servizio avvia una sessione con un server Bootstrap usando una connessione DTLS protetta. Il server deve avere un'istanza di sicurezza corrispondente nell'oggetto di sicurezza.
 
-Prima di chiamare questa funzione, è necessario che la sessione DTLS sia stata configurata con i pacchetti di crittografia e il materiale della chiave appropriati. È necessario definire **NX_SECURE_ENABLE_DTLS** .
+La sessione DTLS deve essere stata configurata con i pacchetti di crittografia e il materiale della chiave appropriato prima di chiamare questa funzione. **NX_SECURE_ENABLE_DTLS** deve essere definito.
 
-Se la risorsa ' Mantieni fuori ' è diversa da zero nell'istanza di sicurezza associata a questo server, la sessione attenderà il bootstrap avviato dal server, se non è stato avviato alcun bootstrap dal server dopo questo periodo di tempo in cui verrà eseguito un bootstrap avviato dal client. 
+Se la risorsa "Hold Off" è diversa da zero nell'istanza di sicurezza associata a questo server, la sessione attenderà un bootstrap avviato dal server, se non viene avviato alcun bootstrap dal server dopo questo periodo di tempo verrà eseguito un boostrap avviato dal client. 
 
-Tutte le sessioni attive correnti vengono interrotte dalla chiamata e sostituite dalla nuova sessione del server bootstrap.
+Qualsiasi sessione attiva corrente viene interrotta da questa chiamata e sostituita dalla nuova sessione del server Bootstrap.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore al blocco di controllo della sessione client LWM2M.
-- **security_id** L'ID dell'istanza di sicurezza del server bootstrap deve essere impostato su **NX_LWM2M_RESERVED_ID** (65535) se nel server bootstrap non è definita alcuna istanza di sicurezza.
+- **security_id** L'ID dell'istanza di sicurezza del server Bootstrap deve essere impostato su **NX_LWM2M_RESERVED_ID** (65535) se per il server Bootstrap non è definita alcuna istanza di sicurezza.
 - **ip_address** Indirizzo IP del server.
 - **porta** Porta UDP del server.
-- **dtls_session_ptr** Sessione DTLS da utilizzare per la sessione bootstrap.
+- **dtls_session_ptr** Sessione DTLS da usare per la sessione bootstrap.
 - **dtls_local_port** Porta UDP locale utilizzata per la sessione DTLS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ERROR** Errore bootstrap.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ERROR** Errore di bootstrap.
 - **NX_LWM2M_CLIENT_PORT_UNAVAILABLE** La porta non è disponibile.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2236,7 +2236,7 @@ UINT nx_lwm2m_client_session_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una nuova sessione client di LWM2M collegata a un client LWM2M esistente. La sessione viene usata dal client LWM2M per comunicare con un server bootstrap o un server LWM2M. 
+Questo servizio crea una nuova sessione client LWM2M collegata a un client LWM2M esistente. La sessione viene usata dal client LWM2M per comunicare con un server Bootstrap o un server LWM2M. 
 
 L'applicazione deve fornire una funzione di callback che verrà chiamata quando viene aggiornato lo stato della sessione.
 
@@ -2244,16 +2244,16 @@ L'applicazione deve fornire una funzione di callback che verrà chiamata quando 
 
 - **session_ptr** Puntatore al blocco di controllo della sessione client LWM2M.
 - **client_ptr** Puntatore al client LWM2M creato in precedenza.
-- **state_callback** Callback dell'applicazione che viene chiamato quando lo stato della sessione viene modificato.
+- **state_callback** Callback dell'applicazione chiamato quando lo stato della sessione viene modificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2276,9 +2276,9 @@ UINT nx_lwm2m_client_session_delete(NX_LWM2M_CLIENT_SESSION *session_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina una sessione client di LWM2M.
+Questo servizio elimina una sessione client LWM2M.
 
-Quando un client LWM2M viene eliminato chiamando nx_lwm2m_client_delete vengono eliminate anche tutte le sessioni associate al client.
+Quando un client LWM2M viene eliminato chiamando nx_lwm2m_client_delete vengono eliminate anche tutte le sessioni collegate al client.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2286,12 +2286,12 @@ Quando un client LWM2M viene eliminato chiamando nx_lwm2m_client_delete vengono 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2314,7 +2314,7 @@ UINT nx_lwm2m_client_session_deregister(NX_LWM2M_CLIENT_SESSION *session_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un'operazione di annullamento della registrazione in un server LWM2M.
+Questo servizio esegue un'operazione di "deregistrazione" in un server LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2322,13 +2322,13 @@ Questo servizio esegue un'operazione di annullamento della registrazione in un s
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_NOT_REGISTERED** Il client non è registrato nel server.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2351,7 +2351,7 @@ UINT nx_lwm2m_client_session_error_get(NX_LWM2M_CLIENT_SESSION *session_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce il codice di errore della sessione quando la sessione è in stato di errore.
+Questo servizio restituisce il codice di errore della sessione quando la sessione si trova in uno stato di errore.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2360,19 +2360,19 @@ Questo servizio restituisce il codice di errore della sessione quando la session
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** La sessione non è in stato di errore.
-- **NX_LWM2M_CLIENT_ADDRESS_ERROR** Indirizzo server non valido.
+- **NX_LWM2M_CLIENT_ADDRESS_ERROR** Indirizzo del server non valido.
 - **NX_LWM2M_ CLIENT_BUFFER_TOO_SMALL** Il payload della richiesta non rientra nel buffer di rete.
 - **NX_LWM2M_ CLIENT_DTLS_ERROR** Impossibile stabilire una connessione protetta con il server.
 - **NX_LWM2M_ CLIENT_ERROR** Errore non specificato.
-- **NX_LWM2M_ CLIENT_FORBIDDEN** La registrazione è stata rifiutata dal server.
-- **NX_LWM2M_ CLIENT_NOT_FOUND** Client non trovato dal server durante l'aggiornamento/annullamento della registrazione.
+- **NX_LWM2M_ CLIENT_FORBIDDEN** Registrazione rifiutata dal server.
+- **NX_LWM2M_ CLIENT_NOT_FOUND** Client non trovato dal server durante l'aggiornamento o l'annullamento della registrazione.
 - **NX_LWM2M_ CLIENT_SERVER_INSTANCE_DELETED** L'istanza dell'oggetto server corrispondente alla sessione è stata eliminata.
 - **NX_LWM2M_ CLIENT_TIMED_OUT** Nessuna risposta dal server.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2397,11 +2397,11 @@ UINT nx_lwm2m_client_session_register(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un'operazione di registrazione in un server LWM2M. Il server deve disporre di un'istanza del server corrispondente nell'oggetto server.
+Questo servizio esegue un'operazione 'Register' in un server LWM2M. Il server deve disporre di un'istanza del server corrispondente nell'oggetto server.
 
-Se la registrazione ha esito positivo, il client LWM2M elaborerà ulteriori operazioni dal server e invierà periodicamente messaggi di aggiornamento finché il client non viene deregistrato.
+Se la registrazione ha esito positivo, il client LWM2M eelaborare altre operazioni dal server e invierà periodicamente messaggi "Update" fino a quando il client non viene de-registrato.
 
-Tutte le sessioni attive correnti vengono interrotte dalla chiamata e sostituite dalla nuova sessione del server LWM2M.
+Qualsiasi sessione attiva corrente viene interrotta da questa chiamata e sostituita dalla nuova sessione del server LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2412,14 +2412,14 @@ Tutte le sessioni attive correnti vengono interrotte dalla chiamata e sostituite
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ERROR** Errore bootstrap.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ERROR** Errore di bootstrap.
 - **NX_LWM2M_CLIENT_PORT_UNAVAILABLE** La porta non è disponibile.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2447,13 +2447,13 @@ UINT nx_lwm2m_client_session_register_dtls(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue un'operazione di registrazione in un server LWM2M usando una connessione DTLS sicura. Il server deve disporre di un'istanza del server corrispondente nell'oggetto server.
+Questo servizio esegue un'operazione 'Register' in un server LWM2M usando una connessione DTLS protetta. Il server deve disporre di un'istanza del server corrispondente nell'oggetto server.
 
-Prima di chiamare questa funzione, è necessario che la sessione DTLS sia stata configurata con i pacchetti di crittografia e il materiale della chiave appropriati. È necessario definire **NX_SECURE_ENABLE_DTLS** .
+La sessione DTLS deve essere stata configurata con i pacchetti di crittografia e il materiale della chiave appropriato prima di chiamare questa funzione. **NX_SECURE_ENABLE_DTLS** deve essere definito.
 
-Se la registrazione ha esito positivo, il client LWM2M elaborerà ulteriori operazioni dal server e invierà periodicamente messaggi di aggiornamento finché il client non viene deregistrato.
+Se la registrazione ha esito positivo, il client LWM2M eelaborare altre operazioni dal server e invierà periodicamente messaggi "Update" fino a quando il client non viene de-registrato.
 
-Tutte le sessioni attive correnti vengono interrotte dalla chiamata e sostituite dalla nuova sessione del server LWM2M.
+Qualsiasi sessione attiva corrente viene interrotta da questa chiamata e sostituita dalla nuova sessione del server LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2461,18 +2461,18 @@ Tutte le sessioni attive correnti vengono interrotte dalla chiamata e sostituite
 - **server_id** ID server breve del server LWM2M.
 - **ip_address** Indirizzo IP del server.
 - **porta** Porta UDP del server.
-- **dtls_session_ptr** Sessione DTLS da utilizzare per la sessione LWM2M.
+- **dtls_session_ptr** Sessione DTLS da usare per la sessione LWM2M.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_ERROR** Errore bootstrap.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_ERROR** Errore di bootstrap.
 - **NX_LWM2M_CLIENT_PORT_UNAVAILABLE** La porta non è disponibile.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2507,32 +2507,32 @@ UINT nx_lwm2m_client_session_register_dtls(
 
 ### <a name="description"></a>Descrizione
 
-Una volta stabilita una sessione di comunicazione con un server bootstrap. L'applicazione può chiamare questa API per ottenere le informazioni sul server e sulla sicurezza per il passaggio di registrazione successivo.
+Dopo aver stabilito una sessione di comunicazione con un server Bootstrap. L'applicazione può chiamare questa API per ottenere il server e le informazioni di sicurezza per il passaggio di registrazione successivo.
 
 ### <a name="parameters"></a>Parametri
 
-- **session_ptr** Puntatore al blocco di controllo della sessione client LWM2M.
-- **security_instance_id** ID istanza di sicurezza.
+- **session_ptr** Puntatore al blocco di controllo sessione client LWM2M.
+- **security_instance_id** ID dell'istanza di sicurezza.
 - **server_id** Puntatore all'ID del server di destinazione.
 - **server_uri** Puntatore all'URI del server di destinazione.
 - **server_uri_len** Puntatore alla lunghezza dell'URI del server di destinazione.
 - **security_mode** Puntatore alla modalità di sicurezza di destinazione.
-- **pub_key_or_id** Puntatore alla chiave pubblica o all'identità di destinazione.
-- **pub_key_or_id_len** Puntatore alla chiave pubblica della destinazione o alla lunghezza dell'identità.
+- **pub_key_or_id** Puntatore all'identità o alla chiave pubblica di destinazione.
+- **pub_key_or_id_len** Puntatore alla chiave pubblica o alla lunghezza dell'identità di destinazione.
 - **server_pub_key** Puntatore alla chiave pubblica del server di destinazione.
 - **server_pub_key_len** Puntatore alla lunghezza della chiave pubblica del server di destinazione.
-- **SECRET_KEY** Puntatore alla chiave privata di destinazione.
+- **secret_key** Puntatore alla chiave privata di destinazione.
 - **secret_key_len** Puntatore alla lunghezza della chiave privata di destinazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
-- **NX_LWM2M_CLIENT_NOT_FOUND** Nessuna istanza di oggetto di sicurezza.
+- **NX_SUCCESS** Operazione riuscita.
+- **NX_LWM2M_CLIENT_NOT_FOUND** Non è presente alcuna istanza dell'oggetto di sicurezza.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2559,17 +2559,17 @@ Questo servizio esegue un'operazione di aggiornamento in un server LWM2M.
 
 ### <a name="parameters"></a>Parametri
 
-- **session_ptr** Puntatore al blocco di controllo della sessione client LWM2M.
+- **session_ptr** Puntatore al blocco di controllo sessione client LWM2M.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_LWM2M_CLIENT_NOT_REGISTERED** Il client non è registrato nel server.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 
@@ -2592,7 +2592,7 @@ UINT nx_lwm2m_client_unlock(NX_LWM2M_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Sblocca il client LWM2M precedentemente bloccato da una chiamata a ***nx_lwm2m_client_unlock***.
+Questo servizio sblocca il client LWM2M precedentemente bloccato da una chiamata a ***nx_lwm2m_client_unlock***.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2600,12 +2600,12 @@ Questo servizio Sblocca il client LWM2M precedentemente bloccato da una chiamata
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** Operazione completata.
+- **NX_SUCCESS** Operazione riuscita.
 - **NX_PTR_ERROR** Puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Thread, inizializzazione
+thread, inizializzazione
 
 ### <a name="example"></a>Esempio
 

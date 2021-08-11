@@ -1,38 +1,38 @@
 ---
-title: Capitolo 6-sistema dimostrativo per Azure RTO ThreadX
-description: Questo capitolo contiene una descrizione del sistema di dimostrazione fornito con tutti i pacchetti di supporto del processore ThreadX di Azure RTO.
+title: Capitolo 6 - Sistema dimostrativo per Azure RTOS ThreadX
+description: Questo capitolo contiene una descrizione del sistema dimostrativo fornito con tutti i Azure RTOS di supporto del processore ThreadX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: be85ba77e5c27366f61899c0939be7cad1845bbe
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 67054d67d0a6babc50a489c4ec4b738abf3efccab10060d307106e8344b00d02
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821356"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783374"
 ---
-# <a name="chapter-6---demonstration-system-for-azure-rtos-threadx"></a>Capitolo 6-sistema dimostrativo per Azure RTO ThreadX
+# <a name="chapter-6---demonstration-system-for-azure-rtos-threadx"></a>Capitolo 6 - Sistema dimostrativo per Azure RTOS ThreadX
 
-Questo capitolo contiene una descrizione del sistema di dimostrazione fornito con tutti i pacchetti di supporto del processore ThreadX di Azure RTO.
+Questo capitolo contiene una descrizione del sistema dimostrativo fornito con tutti i Azure RTOS di supporto del processore ThreadX.
 
 ## <a name="overview"></a>Panoramica
 
 Ogni distribuzione del prodotto ThreadX contiene un sistema dimostrativo che viene eseguito su tutti i microprocessori supportati.
 
-Questo sistema di esempio è definito nel file di distribuzione ***demo_threadx. c*** ed è progettato per illustrare il modo in cui threadX viene usato in un ambiente multithread incorporato. La dimostrazione è costituita dall'inizializzazione, da otto thread, da un pool di byte, da un pool di blocchi, da una coda, da un semaforo, da un mutex e da un gruppo di flag di evento.
+Questo sistema di esempio è definito nel file di ***distribuzione demo_threadx.c*** ed è progettato per illustrare l'uso di ThreadX in un ambiente multithread incorporato. La dimostrazione è costituita da inizializzazione, otto thread, un pool di byte, un pool di blocchi, una coda, un semaforo, un mutex e un gruppo di flag di evento.
 
 > [!NOTE]
-> *Ad eccezione delle dimensioni dello stack del thread, l'applicazione dimostrativa è identica in tutti i processori supportati da ThreadX.*
+> *Fatta eccezione per le dimensioni dello stack del thread, l'applicazione dimostrativa è identica in tutti i processori supportati da ThreadX.*
 
-Elenco completo di ***demo_threadx. c***, inclusi i numeri di riga a cui si fa riferimento nel resto di questo capitolo.
+Elenco completo di ***demo_threadx.c,*** inclusi i numeri di riga a cui si fa riferimento nel resto di questo capitolo.
 
-## <a name="application-define"></a>Definizione applicazione
+## <a name="application-define"></a>Definizione dell'applicazione
 
-La funzione ***tx_application_define*** viene eseguita dopo il completamento dell'inizializzazione di base di threadX. È responsabile della configurazione di tutte le risorse di sistema iniziali, inclusi thread, code, semafori, mutex, flag di evento e pool di memoria.
+La ***tx_application_define*** viene eseguita dopo il completamento dell'inizializzazione ThreadX di base. È responsabile della configurazione di tutte le risorse di sistema iniziali, inclusi thread, code, semafori, mutex, flag di eventi e pool di memoria.
 
-La ***tx_application_define** _ (_line numbers 60-164 *) del sistema di dimostrazione crea gli oggetti dimostrativi nell'ordine seguente:
+Il sistema dimostrativo ***tx_application_define** _ (numeri _line 60-164*) crea gli oggetti dimostrativi nell'ordine seguente:
 
 - byte_pool_0
 - thread_0
@@ -53,56 +53,56 @@ Il sistema dimostrativo non crea altri oggetti ThreadX aggiuntivi. Tuttavia, un'
 
 ### <a name="initial-execution"></a>Esecuzione iniziale
 
-Tutti i thread vengono creati con l'opzione **TX_AUTO_START** . Che li rende inizialmente pronti per l'esecuzione. Al termine dell' ***tx_application_define*** , il controllo viene trasferito all'utilità di pianificazione dei thread e da tale posizione a ogni singolo thread.
+Tutti i thread vengono creati con **l'TX_AUTO_START** predefinita. Questo li rende inizialmente pronti per l'esecuzione. Al ***tx_application_define,*** il controllo viene trasferito all'utilità di pianificazione dei thread e da qui a ogni singolo thread.
 
-L'ordine in cui vengono eseguiti i thread è determinato dalla loro priorità e dall'ordine in cui sono stati creati. Nel sistema di dimostrazione, ***Thread_0*** viene eseguito per primo perché ha la priorità più alta, ovvero è *stata creata con una priorità pari a 1*. Dopo la sospensione ***Thread_0*** , viene eseguito ***Thread_5*** , seguito dall'esecuzione di ***Thread_3** _, _*_Thread_4_*_, _*_Thread_6_*_, _* _Thread_7_* *, ***Thread_1**_ e infine _ *_Thread_2_* *.
+L'ordine di esecuzione dei thread è determinato dalla priorità e dall'ordine in cui sono stati creati. Nel sistema dimostrativo, ***thread_0*** viene eseguito per primo perché ha la priorità più alta ( è stato creato *con una priorità di 1*). Dopo ***thread_0,*** viene eseguito ***thread_5,*** seguito dall'esecuzione di ***thread_3** _, _*_thread_4_*_, _*_thread_6_*_, _* _thread_7_**, ***thread_1**_ e infine _*_thread_2_**.
 
 > [!NOTE]
-> *Anche se **Thread_3** e **Thread_4** hanno la stessa priorità (entrambi creati con una priorità pari a 8), **Thread_3** viene eseguita per prima. Questo perché **Thread_3** è stato creato e pronto prima di **Thread_4**. I thread con uguale priorità vengono eseguiti in modalità FIFO.*
+> *Anche se **thread_3** e **thread_4** hanno la stessa priorità (entrambe create con priorità 8), thread_3 viene eseguita per prima.  Ciò è dovuto **al thread_3** stato creato e pronto **prima thread_4**. I thread con uguale priorità vengono eseguiti in modo FIFO.*
 
 ## <a name="thread-0"></a>Thread 0
 
-La funzione ***thread_0_entry*** contrassegna il punto di ingresso del thread *(righe 167-190*). ***Thread_0*** è il primo thread del sistema dimostrativo da eseguire. L'elaborazione è semplice: incrementa il contatore, dorme per 10 cicli del timer, imposta un flag di evento per riattivare ***Thread_5***, quindi ripete la sequenza.
+La funzione ***thread_0_entry*** il punto di ingresso del thread *(righe 167-190*). ***Thread_0*** è il primo thread del sistema dimostrativo da eseguire. L'elaborazione è semplice: incrementa il contatore, viene inattiva per 10 tick timer, imposta un flag di evento per la riattivazione thread_5 ***e*** quindi ripete la sequenza.
 
-***Thread_0*** è il thread con priorità più elevata nel sistema. Quando la sospensione richiesta scade, viene interrotta qualsiasi altro thread in esecuzione nella dimostrazione.
+***Thread_0*** è il thread con la priorità più alta nel sistema. Alla scadenza della sospensione richiesta, verrà eseguito qualsiasi altro thread in esecuzione nella dimostrazione.
 
 ## <a name="thread-1"></a>Thread 1
 
-La funzione ***thread_1_entry** _ contrassegna il punto di ingresso del thread _(righe 193-216 *). ***Thread_1*** è il penultimo thread del sistema dimostrativo da eseguire. L'elaborazione è costituita dall'incremento del contatore, dall'invio di un messaggio a ***Thread_2*** (* tramite * ***queue_0***) e dalla ripetizione della sequenza. Si noti che ***Thread_1**_ viene sospeso ogni volta che _*_queue_0_*_ diventa pieno (_line 207 *).
+La funzione ***thread_1_entry** _ contrassegna il punto di ingresso del thread _(righe 193-216).****Thread_1*** è il secondo e ultimo thread del sistema dimostrativo da eseguire. L'elaborazione consiste  nell'incremento* del contatore, nell'invio di un messaggio thread_2 ( da * ***queue_0***) e nella ripetizione della sequenza. Si noti che *** thread_1**_ sospende ogni _*_queue_0_*_ diventa piena (_line 207*).
 
 ## <a name="thread-2"></a>Thread 2
 
-La funzione ***thread_2_entry*** contrassegna il punto di ingresso del thread *(righe 219-243*). ***Thread_2*** è l'ultimo thread del sistema dimostrativo da eseguire. L'elaborazione prevede l'incremento del contatore, il recupero di un messaggio da ***Thread_1*** (tramite ***queue_0***) e la ripetizione della sequenza. Si noti che ***Thread_2** _ sospende ogni volta che _*_queue_0_*_ diventa vuoto (_line 233 *).
+La funzione ***thread_2_entry*** contrassegna il punto di ingresso del thread *(righe 219-243).* ***Thread_2*** è l'ultimo thread del sistema dimostrativo da eseguire. L'elaborazione consiste nell'incremento del contatore, nel recupero di un messaggio ***thread_1*** (tramite ***queue_0***) e nella ripetizione della sequenza. Si noti che *** thread_2** _ sospende ogni _*_queue_0_*_ vuoto (_line 233*).
 
-Anche se ***Thread_1** _ e _ *_Thread_2_** condividono la priorità più bassa nel sistema dimostrativo (* priorità 16 *), i *thread 3 e 4*
+Anche ***thread_1** _ e _ *_thread_2_*** condividono la priorità più bassa nel sistema dimostrativo (priorità 16*), i thread *3 e 4*
 
-sono anche gli unici thread pronti per l'esecuzione nella maggior parte dei casi. Sono anche gli unici thread creati con il sezionamento del tempo (*righe 87 e 93*). Ogni thread può essere eseguito per un massimo di 4 cicli di timer prima dell'esecuzione dell'altro thread.
+sono anche gli unici thread pronti per l'esecuzione nella maggior parte dei casi. Sono anche gli unici thread creati con la sezione temporale (*righe 87 e 93*). Ogni thread può essere eseguito per un massimo di 4 tick timer prima dell'esecuzione dell'altro thread.
 
 ## <a name="threads-3-and-4"></a>Thread 3 e 4
 
-La funzione ***thread_3_and_4_entry*** contrassegna il punto di ingresso di ***Thread_3** _ e _ *_Thread_4_** (righe 246-280). Entrambi i thread hanno una priorità di 8, che li rende il terzo e il quarto thread del sistema dimostrativo da eseguire. L'elaborazione di ogni thread è la stessa: incrementando il contatore, ottenendo ***semaphore_0***, dormendo due cicli del timer, rilasciando ***semaphore_0*** e ripetendo la sequenza. Si noti che ogni thread viene sospeso ogni volta che ***semaphore_0*** non è disponibile (riga 264).
+La funzione ***thread_3_and_4_entry*** il punto di ingresso di ***thread_3** _ e _ *_thread_4_** (righe 246-280). Entrambi i thread hanno una priorità di 8, che li rende il terzo e il quarto thread del sistema dimostrativo da eseguire. L'elaborazione per ogni thread è la stessa: incremento del contatore, recupero di ***semaphore_0,*** sospensione per 2 tick timer, rilascio ***semaphore_0*** e ripetizione della sequenza. Si noti che ogni thread viene sospeso ***ogni semaphore_0*** non è disponibile (riga 264).
 
-Inoltre, entrambi i thread utilizzano la stessa funzione per l'elaborazione principale.
-Questo non presenta alcun problema perché entrambi hanno uno stack univoco e C è naturalmente rientrante. Ogni thread determina quale sia l'esame del parametro di input del thread (riga 258), che viene configurato quando vengono create (righe 102 e 109).
+Entrambi i thread usano anche la stessa funzione per l'elaborazione principale.
+Questo non presenta problemi perché entrambi hanno un proprio stack univoco e C è naturalmente rientrante. Ogni thread determina quale si tratta verificando il parametro di input del thread (riga 258), che viene impostato al momento della creazione (righe 102 e 109).
 
 > [!NOTE]
 > *È anche ragionevole ottenere il punto di thread corrente durante l'esecuzione del thread e confrontarlo con l'indirizzo del blocco di controllo per determinare l'identità del thread.*
 
 ## <a name="thread-5"></a>Thread 5
 
-La funzione ***thread_5_entry*** contrassegna il punto di ingresso del thread (righe 283-305). ***Thread_5*** è il secondo thread del sistema di dimostrazione da eseguire. L'elaborazione prevede l'incremento del contatore, il recupero di un flag di evento da ***Thread_0*** (tramite ***event_flags_0***) e la ripetizione della sequenza. Si noti che ***Thread_5*** viene sospesa ogni volta che il flag di evento ***event_flags_0*** non è disponibile (riga 298).
+La funzione ***thread_5_entry*** contrassegna il punto di ingresso del thread (righe 283-305). ***Thread_5*** è il secondo thread del sistema dimostrativo da eseguire. L'elaborazione consiste nell'incrementare il contatore, ottenere un flag di evento ***da*** thread_0 (tramite ***event_flags_0***) e ripetere la sequenza. Si noti ***thread_5*** viene sospesa ogni volta che il flag di evento ***event_flags_0*** non è disponibile (riga 298).
 
 ## <a name="threads-6-and-7"></a>Thread 6 e 7
 
-La funzione ***thread_6_and_7_entry*** contrassegna il punto di ingresso di ***Thread_6** _ e _ *_Thread_7_** (righe 307-358). Entrambi i thread hanno una priorità di 8, che li rende il quinto e il sesto thread del sistema dimostrativo da eseguire. L'elaborazione di ogni thread è la stessa: incrementando il contatore, ottenendo ***mutex_0*** due volte, dormendo per due cicli timer, rilasciando ***mutex_0*** due volte e ripetendo la sequenza. Si noti che ogni thread viene sospeso ogni volta che ***mutex_0*** non è disponibile (riga 325).
+La funzione ***thread_6_and_7_entry*** contrassegna il punto di ingresso di ***thread_6** _ e _ *_thread_7_** (righe 307-358). Entrambi i thread hanno una priorità di 8, che li rende il quinto e il sesto thread del sistema dimostrativo da eseguire. L'elaborazione per ogni thread è la stessa: incremento del contatore, recupero di mutex_0 due volte, sospensione di 2 tick timer, rilascio ***mutex_0 due*** volte e ripetizione della sequenza.  Si noti che ogni thread viene sospeso ogni ***mutex_0*** non è disponibile (riga 325).
 
-Inoltre, entrambi i thread utilizzano la stessa funzione per l'elaborazione principale. Questo non presenta alcun problema perché entrambi hanno uno stack univoco e C è naturalmente rientrante.
-Ogni thread determina quale sia l'esame del parametro di input del thread (riga 319), che viene configurato quando vengono create (righe 126 e 133).
+Entrambi i thread usano anche la stessa funzione per l'elaborazione principale. Questo non presenta problemi perché entrambi hanno un proprio stack univoco e C è naturalmente rientrante.
+Ogni thread determina quale si tratta verificando il parametro di input del thread (riga 319), che viene impostato al momento della creazione (righe 126 e 133).
 
 ## <a name="observing-the-demonstration"></a>Osservazione della dimostrazione
 
 Ognuno dei thread dimostrativi incrementa il proprio contatore univoco.
-È possibile esaminare i contatori seguenti per verificare l'operazione della demo:
+I contatori seguenti possono essere esaminati per verificare l'operazione della demo:
 
 - thread_0_counter
 - thread_1_counter
@@ -113,11 +113,11 @@ Ognuno dei thread dimostrativi incrementa il proprio contatore univoco.
 - thread_6_counter
 - thread_7_counter
 
-Ognuno di questi contatori dovrebbe continuare ad aumentare quando viene eseguita la dimostrazione, con ***thread_1_counter** _ e _ *_thread_2_counter_** aumentando alla velocità più elevata.
+Ognuno di questi contatori dovrebbe continuare ad aumentare durante l'esecuzione della dimostrazione, con ***thread_1_counter** _ e _ *_thread_2_counter_** che aumentano alla velocità più rapida.
 
-## <a name="distribution-file-demo_threadxc"></a>File di distribuzione: demo_threadx. c
+## <a name="distribution-file-demo_threadxc"></a>File di distribuzione: demo_threadx.c
 
-In questa sezione viene visualizzato l'elenco completo di ***demo_threadx. c***, inclusi i numeri di riga a cui si fa riferimento in questo capitolo.
+In questa sezione viene visualizzato l'elenco completo ***di demo_threadx.c***, inclusi i numeri di riga a cui si fa riferimento in questo capitolo.
 
 ```c
 /* This is a small demo of the high-performance ThreadX kernel. It includes examples of eight

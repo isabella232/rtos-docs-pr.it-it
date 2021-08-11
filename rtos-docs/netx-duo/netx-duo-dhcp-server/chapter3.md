@@ -1,26 +1,26 @@
 ---
-title: Capitolo 3-Descrizione dei servizi server DHCP di Azure RTO NetX Duo
-description: Questo capitolo contiene una descrizione di tutti i servizi server DHCP di NetX Duo (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS server DHCP NetX Duo
+description: Questo capitolo contiene una descrizione di tutti i servizi del server DHCP NetX Duo (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 33eb0b4bd98f808124b9a6a1f01950639243d612
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8496d9158c06e79ed86cb2f09ed9986a4eae5ed176352ff01c317df9f2399127
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822010"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788440"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-dhcp-server-services"></a>Capitolo 3-Descrizione dei servizi server DHCP di Azure RTO NetX Duo
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-dhcp-server-services"></a>Capitolo 3 - Descrizione dei Azure RTOS server DHCP NetX Duo
 
-Questo capitolo contiene una descrizione di tutti i servizi server DHCP di NetX Duo (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i servizi del server DHCP NetX Duo (elencati di seguito) in ordine alfabetico.
 
 > [!NOTE]
-> Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+> Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
-## <a name="nx_dhcp_server-create"></a>creazione nx_dhcp_server
+## <a name="nx_dhcp_server-create"></a>nx_dhcp_server creare
 
 Creare un'istanza del server DHCP
 
@@ -37,24 +37,24 @@ UINT nx_dhcp_server_create(NX_DHCP_SERVER *dhcp_ptr, NX_IP *ip_ptr,
 Questo servizio crea un'istanza del server DHCP con un'istanza IP creata in precedenza.
 
 > [!IMPORTANT]
-> L'applicazione deve verificare che il pool di pacchetti creato per il servizio di creazione IP disponga di un payload di 548 byte minimo, esclusi le intestazioni UDP, IP e Ethernet.
+> L'applicazione deve assicurarsi che il pool di pacchetti creato per il servizio di creazione IP abbia un payload minimo di 548 byte, senza includere le intestazioni UDP, IP ed Ethernet.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dhcp_ptr** Puntatore al blocco di controllo server DHCP.
+- **dhcp_ptr** Puntatore al blocco di controllo del server DHCP.
 - **ip_ptr** Puntatore all'istanza IP del server DHCP.
-- **stack_ptr** Posizione dello stack del server DHCP del puntatore.
-- **Stack_size dimensioni dello stack server DHCP** input_address_list puntatore all'elenco di indirizzi IP del server
-- puntatore **name_ptr al nome del server dhcp** packet_pool_ptr puntatore al pool di pacchetti del server DHCP
+- **stack_ptr** Percorso dello stack del server DHCP del puntatore.
+- **stack_size dimensioni dello stack del server DHCP input_address_list** puntatore all'elenco di indirizzi IP del server
+- **name_ptr puntatore al nome del server DHCP packet_pool_ptr** puntatore al pool di pacchetti del server DHCP
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il server DHCP è stato creato correttamente.
-- Errore del payload del pacchetto **NX_DHCP_INADEQUATE_PACKET_POOL_PAYLOAD** (0xA9) troppo piccolo
-- L'elenco di opzioni del server **NX_DHCP_NO_SERVER_OPTION_LIST** (0x96) è vuoto
-- NX_DHCP_PARAMETER_ERROR (0x92) non è stato inserito alcun puntatore non valido
-- NX_CALLER_ERROR (0x11) il chiamante del servizio non è valido.
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- **NX_SUCCESS** (0x00) Creazione riuscita del server DHCP.
+- **NX_DHCP_INADEQUATE_PACKET_POOL_PAYLOAD** (0xA9) Errore di payload del pacchetto troppo piccolo
+- **NX_DHCP_NO_SERVER_OPTION_LIST** (0x96) L'elenco di opzioni server è vuoto
+- NX_DHCP_PARAMETER_ERROR (0x92) Input non puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante del servizio non valido.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -85,11 +85,11 @@ UINT nx_dhcp_create_server_ip_address_list(NX_DHCP_SERVER *dhcp_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un pool specifico dell'interfaccia di rete di indirizzi IP disponibili per il server DHCP specificato da assegnare. Gli indirizzi IP di inizio e di fine devono corrispondere all'interfaccia di rete specificata. Il numero effettivo di indirizzi IP aggiunti può essere inferiore al totale degli indirizzi se l'elenco di indirizzi IP non è sufficientemente grande (impostazione configurabile dall'utente *NX_DHCP_IP_ADDRESS_MAX_LIST_SIZE* parametro).
+Questo servizio crea un pool specifico dell'interfaccia di rete di indirizzi IP disponibili per il server DHCP specificato da assegnare. Gli indirizzi IP iniziale e finale devono corrispondere all'interfaccia di rete specificata. Il numero effettivo di indirizzi IP aggiunti può essere inferiore al totale degli indirizzi se l'elenco di indirizzi IP non è sufficientemente grande (che è impostato nel parametro NX_DHCP_IP_ADDRESS_MAX_LIST_SIZE *utente).*
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dhcp_ptr** Puntatore al blocco di controllo server DHCP.
+- **dhcp_ptr** Puntatore al blocco di controllo del server DHCP.
 - **iface_index** Indice corrispondente all'interfaccia di rete
 - **start_ip_address** Primo indirizzo IP disponibile
 - **end_ip_address** Ultimo indirizzo IP disponibile
@@ -97,11 +97,11 @@ Questo servizio crea un pool specifico dell'interfaccia di rete di indirizzi IP 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il server DHCP è stato creato correttamente.
-- L'indice **NX_DHCP_SERVER_BAD_INTERFACE_INDEX** (0xA1) non corrisponde agli indirizzi
-- Input dell'indirizzo di **NX_DHCP_INVALID_IP_ADDRESS_LIST** (0X99) non valido
-- Indirizzi di inizio/fine illogici NX_DHCP_INVALID_IP_ADDRESS (0x9B)
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- **NX_SUCCESS** (0x00) Creazione riuscita del server DHCP.
+- **NX_DHCP_SERVER_BAD_INTERFACE_INDEX** (0xA1) l'indice non corrisponde agli indirizzi
+- **NX_DHCP_INVALID_IP_ADDRESS_LIST** (0x99) Input indirizzo non valido
+- NX_DHCP_INVALID_IP_ADDRESS (0x9B) Indirizzi iniziali/finali illogici
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -122,7 +122,7 @@ status = nx_dhcp_create_server_ip_list(&dhcp_server, iface_index,
 
 ## <a name="nx_dhcp_clear_client_record"></a>nx_dhcp_clear_client_record
 
-Rimuovi record client dal database del server
+Rimuovere il record client dal database del server
 
 ### <a name="prototype"></a>Prototipo
 
@@ -133,18 +133,18 @@ UINT nx_dhcp_clear_client_record(NX_DHCP_SERVER *dhcp_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cancella il record client dal database del server.
+Questo servizio cancella il record client dal database server.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dhcp_ptr** Puntatore al blocco di controllo server DHCP.
+- **dhcp_ptr** Puntatore al blocco di controllo del server DHCP.
 - **dhcp_client_ptr puntatore al client DHCP da rimuovere**
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il server DHCP è stato creato correttamente.
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
-- NX_CALLER_ERROR (0x11) chiamante non thread del servizio
+- **NX_SUCCESS** (0x00) Creazione riuscita del server DHCP.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non thread del servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -174,22 +174,22 @@ UINT nx_dhcp_set_interface_network_parameters(NX_DHCP_SERVER *dhcp_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta i valori predefiniti per i parametri critici della rete per l'interfaccia specificata. Il server DHCP includerà queste opzioni nell'offerta e le risposte ACK al client DHCP. Se i parametri dell'interfaccia del set di host in cui è in esecuzione un server DHCP, i parametri vengono impostati come predefiniti come indicato di seguito: il router impostato sul gateway di interfaccia principale per il server DHCP stesso, l'indirizzo del server DNS per il server DHCP stesso e il subnet mask allo stesso modo in cui è configurata l'interfaccia server DHCP.
+Questo servizio imposta i valori predefiniti per i parametri critici di rete per l'interfaccia specificata. Il server DHCP includerà queste opzioni nelle risposte OFFER e ACK al client DHCP. Se i parametri dell'interfaccia del set di host in cui è in esecuzione un server DHCP, i parametri verranno impostati come segue: il router impostato sul gateway dell'interfaccia primaria per il server DHCP stesso, l'indirizzo del server DNS al server DHCP stesso e il subnet mask alla stessa interfaccia del server DHCP è configurato con .
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dhcp_ptr** Puntatore al blocco di controllo server DHCP.
+- **dhcp_ptr** Puntatore al blocco di controllo del server DHCP.
 - **iface_index** Indice corrispondente all'interfaccia di rete
-- **subnet_mask** Subnet mask per rete client
+- **subnet_mask** Subnet mask per la rete client
 - **default_gateway_address** Indirizzo IP del router del client
 - **dns_server_address** Server DNS per la rete del client
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) il server DHCP è stato creato correttamente.
-- L'indice **NX_DHCP_SERVER_BAD_INTERFACE_INDEX** (0xA1) non corrisponde agli indirizzi
-- Parametri di rete non validi per **NX_DHCP_INVALID_NETWORK_PARAMETERS** (0xA3)
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
+- **NX_SUCCESS** (0x00) Creazione riuscita del server DHCP.
+- **NX_DHCP_SERVER_BAD_INTERFACE_INDEX** (0xA1) l'indice non corrisponde agli indirizzi
+- **NX_DHCP_INVALID_NETWORK_PARAMETERS** (0xA3) Parametri di rete non validi
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -219,7 +219,7 @@ UINT nx_dhcp_server_delete(NX_DHCP_SERVER *dhcp_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del server DHCP creata in precedenza.
+Questo servizio elimina un'istanza del server DHCP creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -227,10 +227,10 @@ Questo servizio Elimina un'istanza del server DHCP creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione del server DHCP riuscita **NX_SUCCESS** (0x00).
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
-- NX_DHCP_PARAMETER_ERROR (0x92) non è stato inserito alcun puntatore non valido
-- NX_CALLER_ERROR (0x11) il chiamante del servizio non è valido.
+- **NX_SUCCESS** (0x00) Eliminazione del server DHCP completata.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
+- NX_DHCP_PARAMETER_ERROR (0x92) Input non puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -258,7 +258,7 @@ UINT nx_dhcp_server_start(NX_DHCP_SERVER *dhcp_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia l'elaborazione del server DHCP, che include la creazione di un socket UDP del server, l'associazione della porta DHCP e l'attesa per la ricezione delle richieste DHCP del client.
+Questo servizio avvia l'elaborazione del server DHCP, che include la creazione di un socket UDP del server, l'associazione della porta DHCP e l'attesa di ricevere richieste DHCP client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -266,11 +266,11 @@ Questo servizio avvia l'elaborazione del server DHCP, che include la creazione d
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Inizio del server **NX_SUCCESS** (0x00) riuscito.
-- **NX_DHCP_ALREADY_STARTED** DHCP (0x93) già avviato.
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
-- NX_CALLER_ERROR (0x11) il chiamante del servizio non è valido.
-- NX_DHCP_PARAMETER_ERROR (0x92) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) Avvio del server riuscito.
+- **NX_DHCP_ALREADY_STARTED** dhcp (0x93) è già stato avviato.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
+- NX_CALLER_ERROR (0x11) Chiamante del servizio non valido.
+- NX_DHCP_PARAMETER_ERROR (0x92) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -298,7 +298,7 @@ UINT nx_dhcp_server_stop(NX_DHCP_SERVER *dhcp_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio interrompe l'elaborazione del server DHCP, che include la ricezione di richieste client DHCP.
+Questo servizio arresta l'elaborazione del server DHCP, che include la ricezione di richieste client DHCP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -306,11 +306,11 @@ Questo servizio interrompe l'elaborazione del server DHCP, che include la ricezi
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Arresto DHCP **NX_SUCCESS** (0x00) riuscito.
-- **NX_DHCP_ALREADY_STARTED** DHCP (0x93) già avviato.
-- L'input del puntatore NX_PTR_ERROR (0x16) non è valido.
-- NX_CALLER_ERROR (0x11) il chiamante del servizio non è valido.
-- NX_DHCP_PARAMETER_ERROR (0x92) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) Arresto DHCP riuscito.
+- **NX_DHCP_ALREADY_STARTED** dhcp (0x93) è già stato avviato.
+- NX_PTR_ERROR (0x16) Input puntatore non valido.
+- NX_CALLER_ERROR (0x11) Chiamante del servizio non valido.
+- NX_DHCP_PARAMETER_ERROR (0x92) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 

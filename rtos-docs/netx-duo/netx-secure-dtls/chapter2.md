@@ -1,52 +1,52 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX Secure DTLS
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente DTLS protetto NetX di Azure RTO.
+title: Capitolo 2 - Installazione e uso di Azure RTOS DTLS sicuri di NetX
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX Secure DTLS.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3533471edf17ec6e812027ef0af672a00773f968
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c84d9e4f0ff99475c92e96cfaaf48201c605e80547696c44820015cbf348393f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821596"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784088"
 ---
-# <a name="chapter-2-installation-and-use-of-azure-rtos-netx-secure-dtls"></a>Capitolo 2: installazione e uso di Azure RTO NetX Secure DTLS
+# <a name="chapter-2-installation-and-use-of-azure-rtos-netx-secure-dtls"></a>Capitolo 2: Installazione e uso di Azure RTOS DTLS sicuri di NetX
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente DTLS protetto NetX di Azure RTO.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX Secure DTLS.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
 NetX Secure è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include i file di origine, i file di inclusione e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nx_secure_dtls_api. h** File di intestazione dell'API pubblica per NetX Secure DTLS
-- **nx_secure_dtls_user. h** Il file di intestazione definito dall'utente per NetX Secure DTLS
-- **nx_secure_ Port. h** Definizioni specifiche della piattaforma per NetX Secure
-- **nx_secure_dtls. h** File di intestazione per NetX Secure DTLS
-- **nx_secure_tls. h** File di intestazione per NetX Secure TLS
-- file di origine **nx_secure_dtls \* . c/h** c/h per NETX Secure DTLS
-- nx_secure_tls file di origine c/h c/h per NetX Secure TLS **\***
-- file di origine **nx_crypto \* . c/h** c/h per la crittografia sicura NETX
-- **nx_secure_x509 \*** file di origine c/h c/h per i certificati digitali X. 509.
-- **demo_netx_secure_dtls. c** File di origine C per NetX Secure DTLS demo
+- **nx_secure_dtls_api.h** File di intestazione dell'API pubblica per NetX Secure DTLS
+- **nx_secure_dtls_user.h** L'utente definisce il file di intestazione per NetX Secure DTLS
+- **nx_secure_ port.h** Definizioni specifiche della piattaforma per NetX Secure
+- **nx_secure_dtls.h** File di intestazione per NetX Secure DTLS
+- **nx_secure_tls.h** File di intestazione per NetX Secure TLS
+- **nx_secure_dtls file \* di origine C/H** con estensione c/h per NetX Secure DTLS
+- **nx_secure_tls \* file di origine C/H** con estensione c/h per NetX Secure TLS
+- **nx_crypto file \* di origine C/H** con estensione c/h per NetX Secure Cryptography
+- **nx_secure_x509 file \* di origine C/H** con estensione c/h per i certificati digitali X.509.
+- **demo_netx_secure_dtls.c** Demo del file di origine C per NetX Secure DTLS
 - **NetX_Secure_DTLS_User_Guide.pdf** Descrizione PDF del prodotto NetX Secure
 
 > [!NOTE]
-> I file nx_crypto * vengono forniti per diverse piattaforme hardware in una sottodirectory della directory padre protetta NetX.
+> I nx_crypto* vengono forniti per piattaforme hardware diverse in una sottodirectory della directory padre NetX Secure.
 
-## <a name="netx-secure-dtls-installation"></a>Installazione di DTLS Secure NetX
+## <a name="netx-secure-dtls-installation"></a>Installazione di NetX Secure DTLS
 
-Per usare NetX Secure DTLS, l'intera distribuzione indicata in precedenza deve essere copiata nello stesso livello di directory in cui è installato NetX. Ad esempio, se NETX è installato nella directory "*\threadx\arm7\NetX*", il *nx_secure \* . \** directory deve essere copiato in "*\threadx\arm7\NetXSecure*".
+Per usare NetX Secure DTLS, l'intera distribuzione indicata in precedenza deve essere copiata nello stesso livello di directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\NetX*", le directory *nx_secure \* . \** devono essere copiate in "*\threadx\arm7\NetXSecure*".
 
 ## <a name="using-netx-secure-dlts"></a>Uso di NetX Secure DLTS
 
-L'uso di NetX Secure DTLS è semplice. Il codice dell'applicazione deve includere *nx_secure_dtls_api. h* dopo aver incluso *tx_api. h* e *nx_api. h* (rispettivamente per threadX e NETX). Una volta incluso *nx_secure_dtls_api. h* , il codice dell'applicazione è in grado di eseguire le chiamate di funzione NETX Secure DTLS specificate più avanti in questa guida. L'applicazione deve inoltre importare i *file \* nx_secure \* .* files in una libreria NetXSecure e i file *nx_crypto \* \** specifici della piattaforma in una libreria NetXCrypto che vengono quindi collegati al file binario dell'applicazione finale.
+L'uso di NetX Secure DTLS è semplice. Il codice dell'applicazione deve includere *nx_secure_dtls_api.h* dopo aver incluso *tx_api.h* e *nx_api.h* (che sono rispettivamente per ThreadX e NetX). Dopo *nx_secure_dtls_api.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione DTLS sicure netx specificate più avanti in questa guida. L'applicazione deve anche importare i file *nx_secure \* . \** in una libreria NetXSecure e i file *nx_crypto \* . \** specifici della piattaforma in una libreria NetXCrypto che vengono quindi collegati al file binario dell'applicazione finale.
 
-## <a name="small-example-system-dtls-client"></a>Sistema di esempio di piccole dimensioni (client DTLS)
+## <a name="small-example-system-dtls-client"></a>Small Example System (client DTLS)
 
-Un esempio di come è facile usare NetX Secure DTLS è descritto nella figura 1,1, che viene visualizzato di seguito e illustra un semplice client DTLS, progettato per funzionare con un server DTLS OpenSSL (o simile). Si noti che la struttura del programma client DTLS è molto simile a un client TLS protetto da NetX (vedere la documentazione di NetX Secure TLS). Questo è dovuto al fatto che il protocollo DTLS è essenzialmente una versione di TLS per l'uso su protocolli di rete di trasporto non affidabili, ad esempio UDP.
+Un esempio di quanto sia semplice usare NetX Secure DTLS è descritto nella figura 1.1, che viene visualizzata di seguito e illustra un semplice client DTLS, progettato per funzionare con un server DTLS OpenSSL (o simile). Si noti che la struttura del programma client DTLS è molto simile a un client NETX Secure TLS (vedere la documentazione di NetX Secure TLS). Questo perché il protocollo DTLS è essenzialmente una versione di TLS da usare su protocolli di rete di trasporto non affidabili, ad esempio UDP.
 
 ```C
 #include "tx_api.h"
@@ -259,11 +259,11 @@ void client_thread_entry(ULONG thread_input)
 }
 ```
 
-**Figura 1,1 esempio di uso sicuro di NetX con NetX**
+**Figura 1.1 Esempio di uso sicuro di NetX con NetX**
 
-## <a name="small-example-system-dtls-server"></a>Sistema di esempio di piccole dimensioni (server DTLS)
+## <a name="small-example-system-dtls-server"></a>Small Example System (server DTLS)
 
-Un esempio di come è facile usare NetX Secure è descritto nella figura 1,2, che viene visualizzato di seguito e viene illustrato un semplice server DTLS. Si noti che le funzionalità del server DTLS sono piuttosto diverse dal client di DTLS e dal client/server TLS poiché il server DTLS deve gestire più richieste client in ingresso su una singola porta UDP, archiviata nell'istanza del server DTLS.
+Un esempio di quanto sia semplice usare NetX Secure è descritto nella figura 1.2, che viene visualizzata di seguito e illustra un semplice server DTLS. Si noti che la funzionalità del server DTLS è piuttosto diversa dal client DTLS e dal client/server TLS poiché il server DTLS deve gestire più richieste client in ingresso su una singola porta UDP (archiviata nell'istanza del server DTLS).
 
 ```C
 #include "tx_api.h"
@@ -500,20 +500,20 @@ void server_thread_entry(ULONG thread_input)
 }
 ```
 
-**Figura 1,2 esempio di NetX Secure DTLS server**
+**Figura 1.2 Esempio di server DTLS sicuro NetX**
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
 Sono disponibili diverse opzioni di configurazione per la creazione di NetX Secure.
-Di seguito è riportato un elenco di tutte le opzioni, in cui ciascuna è descritta in dettaglio:
+Di seguito è riportato un elenco di tutte le opzioni, in cui ognuna è descritta in dettaglio:
 
 | Definire                                                 | Significato                                                                                                                                                                                                                |
 |--------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **NX_SECURE_ENABLE_DTLS**                           | Per abilitare la logica DTLS in NetX Secure, è necessario definire questa macro.                                                                                                                                                       |
-| **NX_SECURE_DISABLE_ERROR_CHECKING**               | Definita, questa opzione rimuove il controllo degli errori di base di NetX Secure. Viene in genere usato dopo il debug dell'applicazione.                                                                                     |
-| **NX_SECURE_TLS_CLIENT_DISABLED**                  | Definita, questa opzione rimuove tutti i codici dello stack TLS/DTLS correlati alla modalità client, riducendo il codice e l'utilizzo dei dati.                                                                                                            |
-| **NX_SECURE_TLS_SERVER_DISABLED**                  | Definita, questa opzione rimuove tutti i codici dello stack TLS/DTLS correlati alla modalità server, riducendo il codice e l'utilizzo dei dati.                                                                                                            |
-| **NX_SECURE_ENABLE_PSK_CIPHERSUITES**              | Definita, questa opzione Abilita la funzionalità di chiave precondivisa (PSK). Non Disabilita i certificati digitali.                                                                                                        |
-| **NX_SECURE_X509_STRICT_NAME_COMPARE**            | Definita, questa opzione Abilita il confronto dei nomi distinti per i certificati X. 509 per la ricerca e la verifica dei certificati. Il valore predefinito è confrontare solo i campi nome comune, ovvero i nomi distinti. |
-| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES**     | Definita, questa opzione Abilita i campi del nome distinto X. 509 facoltativi, a scapito dell'utilizzo di memoria aggiuntivo per i certificati X. 509.                                                                               |
-| **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**                | Definita, questa opzione fornisce il modulo RSA massimo previsto in bit. Il valore predefinito è 4096 per un modulo a 4096 \- bit. Gli altri valori possono essere 3072, 2048 o 1024 (scelta non consigliata).                               |
+| **NX_SECURE_ENABLE_DTLS**                           | Questa macro deve essere definita per abilitare la logica DTLS in NetX Secure.                                                                                                                                                       |
+| **NX_SECURE_DISABLE_ERROR_CHECKING**               | Definita, questa opzione rimuove il controllo degli errori NetX Secure di base. Viene in genere usato dopo il debug dell'applicazione.                                                                                     |
+| **NX_SECURE_TLS_CLIENT_DISABLED**                  | Definita, questa opzione rimuove tutto il codice dello stack TLS/DTLS correlato alla modalità client, riducendo l'utilizzo del codice e dei dati.                                                                                                            |
+| **NX_SECURE_TLS_SERVER_DISABLED**                  | Definita, questa opzione rimuove tutto il codice dello stack TLS/DTLS correlato alla modalità Server, riducendo l'utilizzo del codice e dei dati.                                                                                                            |
+| **NX_SECURE_ENABLE_PSK_CIPHERSUITES**              | Definita, questa opzione abilita la funzionalità chiave precondifazione (PSK). Non disabilita i certificati digitali.                                                                                                        |
+| **NX_SECURE_X509_STRICT_NAME_COMPARE**            | Definita, questa opzione abilita il confronto rigoroso dei nomi distinti per i certificati X.509 per la ricerca e la verifica dei certificati. L'impostazione predefinita consente di confrontare solo i campi Nome comune con i nomi distinti. |
+| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES**     | Definita, questa opzione abilita i campi facoltativi del nome distinto X.509, a scapito dell'uso aggiuntivo della memoria per i certificati X.509.                                                                               |
+| **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**                | Definita, questa opzione fornisce il modulo RSA massimo previsto, in bit. Il valore predefinito è 4096 per un modulo a 4096 \- bit. Altri valori possono essere 3072, 2048 o 1024 (scelta non consigliata).                               |

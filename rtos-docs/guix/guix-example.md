@@ -1,21 +1,21 @@
 ---
-title: Esempio di GUIX
-description: Il sistema dimostrativo GUIX viene fornito con un piccolo esempio, definito in examples/HelloWorld/HelloWorld. c.
+title: Esempio GUIX
+description: Il sistema di dimostrazione GUIX viene fornito con un piccolo esempio, definito in examples/helloworld/helloworld.c.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 79d342fc8697fcb40e1f402f9b040621ed43e3fb
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8af9ee437902467ba40c74266f59d358f3919fe0146d0a5bca3d6e6e5722359e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822244"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786400"
 ---
-# <a name="guix-example"></a>Esempio di GUIX
+# <a name="guix-example"></a>Esempio GUIX
 
-Il sistema dimostrativo GUIX viene fornito con un piccolo esempio, definito in examples/HelloWorld/HelloWorld. c. In questo esempio vengono illustrati i passaggi necessari per inizializzare il sistema GUIX, per configurare i driver di visualizzazione. Il codice sorgente è elencato nelle pagine seguenti.
+Il sistema di dimostrazione GUIX viene fornito con un piccolo esempio, definito in examples/helloworld/helloworld.c. Questo esempio illustra i passaggi necessari per inizializzare il sistema GUIX, per configurare i driver di visualizzazione. Il codice sorgente è elencato nelle pagine seguenti.
 
 ```c
 /* This is a small demonstration of the high-performance GUIX embedded UI run-time environment. This demonstration consists of a simple "Hello World" prompt on top of the root window. */

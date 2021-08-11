@@ -1,19 +1,19 @@
 ---
-title: Appendice A-Servizi NetX di Azure RTO
-description: Esplorare i servizi NetX di Azure RTO.
+title: Appendice A - Azure RTOS Servizi NetX
+description: Esplorare i Azure RTOS NetX Services.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 632e6ee2b2813421ad37109f77b28d95f01ab972
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e2ec90a63fba9a3464a5984a005ce83abe410af387787c792b19314bcb6d27c5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821551"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784139"
 ---
-# <a name="appendix-a---azure-rtos-netx-services"></a>Appendice A-Servizi NetX di Azure RTO
+# <a name="appendix-a---azure-rtos-netx-services"></a>Appendice A - Azure RTOS Servizi NetX
 
 ## <a name="address-resolution-protocol-arp"></a>ARP (Address Resolution Protocol)  
 
@@ -107,7 +107,7 @@ UINT nx_igmp_multicast_leave(
     ULONG group_address);
 ```
 
-## <a name="internet-protocol-ip"></a>Protocollo IP (Internet Protocol)  
+## <a name="internet-protocol-ip"></a>Ip (Internet Protocol)  
 
 ```c
 UINT nx_ip_address_change_notify(
@@ -277,7 +277,7 @@ UINT nx_packet_release(NX_PACKET *packet_ptr);
 UINT nx_packet_transmit_release(NX_PACKET *packet_ptr);
 ```
 
-## <a name="reverse-address-resolution-protocol-rarp"></a>Protocollo RARP (Reverse Address Resolution Protocol)  
+## <a name="reverse-address-resolution-protocol-rarp"></a>RaRP (Reverse Address Resolution Protocol)  
 
 ```c
 UINT nx_rarp_disable(NX_IP *ip_ptr);
@@ -295,7 +295,7 @@ UINT nx_rarp_info_get(
 VOID nx_system_initialize(VOID);
 ```
 
-## <a name="transmission-control-protocol-tcp"></a>Transmission Control Protocol (TCP)  
+## <a name="transmission-control-protocol-tcp"></a>TCP (Transmission Control Protocol)  
 
 ```c
 UINT nx_tcp_client_socket_bind(
@@ -418,7 +418,7 @@ UINT nx_tcp_socket_window_update_notify_set(
     VOID (*tcp_window_update_notify) (NX_TCP_SOCKET *socket_ptr));
 ```
 
-## <a name="user-datagram-protocol-udp"></a>UDP (User Datagram Protocol)  
+## <a name="user-datagram-protocol-udp"></a>Udp (User Datagram Protocol)  
 
 ```c
 UINT nx_udp_enable(NX_IP *ip_ptr);

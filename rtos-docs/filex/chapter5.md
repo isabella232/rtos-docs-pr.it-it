@@ -1,133 +1,133 @@
 ---
-title: Capitolo 5-driver I/O per Azure RTO FileX
-description: Questo capitolo contiene una descrizione dei driver I/O per Azure RTO FileX ed è progettato per consentire agli sviluppatori di scrivere driver specifici dell'applicazione.
+title: Capitolo 5 - Driver di I/O per Azure RTOS FileX
+description: Questo capitolo contiene una descrizione dei driver di I/O per Azure RTOS FileX ed è progettato per consentire agli sviluppatori di scrivere driver specifici dell'applicazione.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8f2ef697f68a269b24a34147a4bc076b8a2b1660
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 163893119837a46479b3f346c2bd47d200de2af75232f91a23bbc3f64e20ea50
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550083"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782915"
 ---
-# <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Capitolo 5-driver I/O per Azure RTO FileX
+# <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Capitolo 5 - Driver di I/O per Azure RTOS FileX
 
-Questo capitolo contiene una descrizione dei driver I/O per Azure RTO FileX ed è progettato per consentire agli sviluppatori di scrivere driver specifici dell'applicazione.
+Questo capitolo contiene una descrizione dei driver di I/O per Azure RTOS FileX ed è progettato per consentire agli sviluppatori di scrivere driver specifici dell'applicazione.
 
-## <a name="io-driver-introduction"></a>Introduzione al driver I/O
+## <a name="io-driver-introduction"></a>Introduzione al driver di I/O
 
-FileX supporta più dispositivi multimediali. La struttura FX_MEDIA definisce tutti gli elementi necessari per la gestione di un dispositivo multimediale. Questa struttura contiene tutte le informazioni multimediali, inclusi i driver i/O specifici del supporto e i parametri associati per il passaggio di informazioni e stato tra il driver e FileX. Nella maggior parte dei sistemi è presente un driver di I/O univoco per ogni istanza del supporto FileX.
+FileX supporta più dispositivi multimediali. La FX_MEDIA definisce tutti gli elementi necessari per gestire un dispositivo multimediale. Questa struttura contiene tutte le informazioni multimediali, inclusi il driver di I/O specifico del supporto e i parametri associati per il passaggio di informazioni e stato tra il driver e FileX. Nella maggior parte dei sistemi è disponibile un driver di I/O univoco per ogni istanza di file multimediali FileX.
 
-## <a name="io-driver-entry"></a>Voce driver I/O
+## <a name="io-driver-entry"></a>Voce del driver di I/O
 
-Ogni driver di I/O FileX dispone di una singola funzione entry definita dalla chiamata al servizio ***fx_media_open*** . La funzione entry driver ha il formato seguente:
+Ogni driver di I/O FileX ha una singola funzione di immissione definita dalla fx_media_open ***del*** servizio. Il formato della funzione di immissione del driver è il seguente:
 
 ```c
 void my_driver_entry(FX_MEDIA *media_ptr);
 ```
 
-FileX chiama la funzione entry driver I/O per richiedere l'accesso a tutti i supporti fisici, inclusa l'inizializzazione e la lettura del settore di avvio. Le richieste effettuate al driver vengono eseguite in sequenza; ad esempio, FileX attende il completamento della richiesta corrente prima che venga inviata un'altra richiesta.
+FileX chiama la funzione di immissione del driver di I/O per richiedere l'accesso a tutti i supporti fisici, inclusa la lettura del settore di inizializzazione e avvio. Le richieste effettuate al driver vengono eseguite in sequenza. Ad esempio, FileX attende il completamento della richiesta corrente prima che venga inviata un'altra richiesta.
 
-## <a name="io-driver-requests"></a>Richieste driver I/O
+## <a name="io-driver-requests"></a>Richieste di driver di I/O
 
-Poiché ogni driver di I/O ha una singola funzione entry, FileX esegue richieste specifiche tramite il blocco di controllo multimediale. In particolare, il membro  **fx_media_driver_request** di **FX_MEDIA** viene usato per specificare la richiesta di driver esatta. Il driver di I/O comunica l'esito positivo o negativo della richiesta tramite il membro **fx_media_driver_status** di **FX_MEDIA**. Se la richiesta del driver ha avuto esito positivo, **FX_SUCCESS** viene inserita in questo campo prima che il driver venga restituito. In caso contrario, se viene rilevato un errore, FX_IO_ERROR viene inserito in questo campo.
+Poiché ogni driver di I/O ha una singola funzione di immissione, FileX effettua richieste specifiche tramite il blocco di controllo multimediale. In particolare, il  **fx_media_driver_request** membro di **FX_MEDIA** viene usato per specificare la richiesta esatta del driver. Il driver di I/O comunica l'esito positivo o negativo della richiesta **tramite** fx_media_driver_status membro di **FX_MEDIA**. Se la richiesta del driver ha avuto esito **positivo, FX_SUCCESS** in questo campo prima che il driver venga restituito. In caso contrario, se viene rilevato un errore, FX_IO_ERROR viene inserito in questo campo.
 
-### <a name="driver-initialization"></a>Inizializzazione driver
+### <a name="driver-initialization"></a>Inizializzazione del driver
 
-Sebbene l'effettivo processo di inizializzazione dei driver sia specifico dell'applicazione, in genere è costituito dall'inizializzazione della struttura dei dati e possibilmente da un'inizializzazione preliminare Questa richiesta è la prima eseguita da FileX e viene eseguita dall'interno del servizio fx_media_open.
+Anche se l'elaborazione effettiva dell'inizializzazione del driver è specifica dell'applicazione, in genere è costituita dall'inizializzazione della struttura dei dati e possibilmente da un'inizializzazione hardware preliminare. Questa richiesta è la prima effettuata da FileX e viene eseguita dall'interno del fx_media_open servizio.
 
-Se viene rilevata la protezione da scrittura media, il fx_media_driver_write_protect membro del FX_MEDIA deve essere impostato su FX_TRUE.
+Se viene rilevata la protezione da scrittura multimediale, il fx_media_driver_write_protect del FX_MEDIA deve essere impostato su FX_TRUE.
 
-Per la richiesta di inizializzazione del driver I/O vengono utilizzati i membri FX_MEDIA seguenti:
+I membri FX_MEDIA seguenti vengono usati per la richiesta di inizializzazione del driver di I/O:
 
-|Membro FX_MEDIA|Significato|
+|FX_MEDIA membro|Significato|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_INIT|
 
-FileX fornisce un meccanismo per informare il driver dell'applicazione quando i settori non vengono più utilizzati. Questa operazione è particolarmente utile per i gestori di memoria FLASH che devono gestire tutti i settori logici in uso mappati al FLASH.
+FileX fornisce un meccanismo per informare il driver dell'applicazione quando i settori non vengono più usati. Ciò è particolarmente utile per i gestori di memoria FLASH che devono gestire tutti i settori logici in uso mappati a FLASH.
 
-Se è necessaria una notifica di settori gratuiti, il driver dell'applicazione imposta semplicemente il campo *fx_media_driver_free_sector_update* nella struttura di **FX_MEDIA** associata a **FX_TRUE**. Dopo l'impostazione, FileX esegue una chiamata al driver di I/O **_FX_DRIVER_RELEASE_SECTORS_** che indica quando uno o più settori consecutivi diventano disponibili.
+Se è necessaria una notifica di questo tipo  di settori gratuiti, il driver dell'applicazione imposta semplicemente il campo fx_media_driver_free_sector_update nella struttura FX_MEDIA **associata** su **FX_TRUE**. Dopo l'impostazione, FileX esegue FX_DRIVER_RELEASE_SECTORS chiamata del driver **_di_** I/O che indica quando uno o più settori consecutivi diventano gratuiti.
 
 ### <a name="boot-sector-read"></a>Lettura settore di avvio
 
-Invece di usare una richiesta di lettura standard, FileX esegue una richiesta specifica per leggere il settore di avvio del supporto. Per la richiesta di lettura del settore di avvio del driver I/O vengono utilizzati i membri **FX_MEDIA** seguenti:
+Invece di usare una richiesta di lettura standard, FileX effettua una richiesta specifica per leggere il settore di avvio del supporto. I membri **FX_MEDIA** seguenti vengono usati per la richiesta di lettura del settore di avvio del driver di I/O:
 
-|Membro FX_MEDIA|Significato|
+|FX_MEDIA membro|Significato|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_BOOT_READ|
-|fx_media_driver_buffer| Indirizzo della destinazione per il settore di avvio.|
+|fx_media_driver_buffer| Indirizzo di destinazione per il settore di avvio.|
 
 ### <a name="boot-sector-write"></a>Scrittura settore di avvio
 
-Invece di usare una richiesta di scrittura standard, FileX esegue una richiesta specifica per scrivere il settore di avvio del supporto. Per la richiesta di scrittura del settore di avvio del driver I/O vengono utilizzati i membri **FX_MEDIA** seguenti:
+Invece di usare una richiesta di scrittura standard, FileX effettua una richiesta specifica per scrivere il settore di avvio del supporto. I **membri** FX_MEDIA seguenti vengono usati per la richiesta di scrittura del settore di avvio del driver di I/O:
 
-|Membro FX_MEDIA|Significato|
+|FX_MEDIA membro|Significato|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_BOOT_WRITE|
-|fx_media_driver_buffer| Indirizzo dell'origine per il settore di avvio.|
+|fx_media_driver_buffer| Indirizzo di origine per il settore di avvio.|
 
 ### <a name="sector-read"></a>Lettura settore
 
-FileX legge uno o più settori nella memoria emettendo una richiesta di lettura al driver di I/O. Per la richiesta di lettura del driver di I/O vengono usati i membri **FX_MEDIA** seguenti:
+FileX legge uno o più settori in memoria emettendo una richiesta di lettura al driver di I/O. I membri **FX_MEDIA** seguenti vengono usati per la richiesta di lettura del driver di I/O:
 
-|Membro FX_MEDIA|Significato|
+|FX_MEDIA membro|Significato|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_READ|
 |fx_media_driver_logical_sector|Settore logico da leggere|
 |fx_media_driver_sectors|Numero di settori da leggere|
-|fx_media_driver_buffer|Buffer di destinazione per i settori letti|
-|fx_media_driver_data_sector_read|Impostare su FX_TRUE se viene richiesto un settore di dati di file. In caso contrario, FX_FALSE se viene richiesto un settore di sistema (FAT o directory).|
+|fx_media_driver_buffer|Buffer di destinazione per la lettura dei settori|
+|fx_media_driver_data_sector_read|Impostare su FX_TRUE se è richiesto un settore dati file. In caso contrario, FX_FALSE se viene richiesto un settore di sistema (FAT o directory).|
 |fx_media_driver_sector_type|Definisce il tipo esplicito di settore richiesto, come indicato di seguito:<br />FX_FAT_SECTOR (2)<br />FX_DIRECTORY_SECTOR (3)<br />FX_DATA_SECTOR (4)|
 
 ### <a name="sector-write"></a>Scrittura settore
 
-FileX scrive uno o più settori nel supporto fisico inviando una richiesta di scrittura al driver di I/O. Per la richiesta di scrittura del driver i/O vengono utilizzati i membri FX_MEDIA seguenti:
+FileX scrive uno o più settori nel supporto fisico emettendo una richiesta di scrittura al driver di I/O. I membri FX_MEDIA seguenti vengono usati per la richiesta di scrittura del driver di I/O:
 
-|Membro FX_MEDIA| Significato|
+|FX_MEDIA membro| Significato|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_WRITE|
 |fx_media_driver_logical_sector|Settore logico da scrivere|
 |fx_media_driver_sectors|Numero di settori da scrivere|
-|fx_media_driver_buffer|Buffer di origine per i settori da scrivere|
-|fx_media_driver_system_write| Impostare su FX_TRUE se viene richiesto un settore di sistema (FAT o settore di directory). In caso contrario, FX_FALSE se viene richiesto un settore di dati di file.|
+|fx_media_driver_buffer|Buffer di origine per settori da scrivere|
+|fx_media_driver_system_write| Impostare su FX_TRUE se è richiesto un settore di sistema (FAT o settore directory). In caso contrario, FX_FALSE se è richiesto un settore di dati di file.|
 |fx_media_driver_sector_type|Definisce il tipo esplicito di settore richiesto, come indicato di seguito:<br> <br>FX_FAT_SECTOR (2) <br> FX_DIRECTORY_SECTOR (3) <br>FX_DATA_SECTOR (4).|
 
-### <a name="driver-flush"></a>Scaricamento driver
+### <a name="driver-flush"></a>Scaricamento del driver
 
-FileX Scarica tutti i settori attualmente presenti nella cache del settore del driver nel supporto fisico inviando una richiesta di scaricamento al driver di I/O. Naturalmente, se il driver non è la memorizzazione nella cache dei settori, questa richiesta non richiede l'elaborazione del driver. Per la richiesta di scaricamento del driver I/O vengono utilizzati i membri FX_MEDIA seguenti:
+FileX scarica tutti i settori attualmente presenti nella cache del settore del driver nel supporto fisico emettendo una richiesta di scaricamento al driver di I/O. Naturalmente, se il driver non memorizza nella cache settori, questa richiesta non richiede alcuna elaborazione del driver. I membri FX_MEDIA seguenti vengono usati per la richiesta di scaricamento del driver di I/O:
 
-|Membro FX_MEDIA| Significato|
+|FX_MEDIA membro| Significato|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_FLUSH|
 
-### <a name="driver-abort"></a>Interruzione driver
+### <a name="driver-abort"></a>Interruzione del driver
 
-FileX indica al driver di interrompere tutte le altre attività di I/O fisiche con i supporti fisici inviando una richiesta di interruzione al driver di I/O. Il driver non deve eseguire nuovamente le operazioni di I/O fino a quando non viene nuovamente inizializzato. Per la richiesta di interruzione del driver I/O vengono utilizzati i membri FX_MEDIA seguenti:
+FileX informa il driver di interrompere tutte le altre attività di I/O fisico con il supporto fisico emettendo una richiesta di interruzione al driver di I/O. Il driver non deve eseguire di nuovo alcuna operazione di I/O fino a quando non viene inizializzato nuovamente. I membri FX_MEDIA seguenti vengono usati per la richiesta di interruzione del driver di I/O:
 
-|Membro FX_MEDIA| Significato|
+|FX_MEDIA membro| Significato|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_ABORT|
 
 ### <a name="release-sectors"></a>Settori di rilascio
 
-Se selezionato in precedenza dal driver durante l'inizializzazione, FileX informa il driver ogni volta che uno o più settori consecutivi diventano disponibili. Se il driver è effettivamente una gestione FLASH, queste informazioni possono essere usate per indicare a gestione FLASH che questi settori non sono più necessari. Per la richiesta dei settori di rilascio i/O vengono usati i membri **FX_MEDIA** seguenti:
+Se selezionato in precedenza dal driver durante l'inizializzazione, FileX informa il driver ogni volta che uno o più settori consecutivi diventano gratuiti. Se il driver è effettivamente un gestore FLASH, queste informazioni possono essere usate per indicare al gestore FLASH che questi settori non sono più necessari. I membri **FX_MEDIA** seguenti vengono usati per la richiesta dei settori di rilascio di I/O:
 
-|Membro FX_MEDIA| Significato|
+|FX_MEDIA membro| Significato|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_RELEASE_SECTORS|
 |fx_media_driver_logical_sector|Inizio del settore gratuito|
-|fx_media_driver_sectors|Numero di settori disponibili|
+|fx_media_driver_sectors|Numero di settori gratuiti|
 
-### <a name="driver-suspension"></a>Sospensione driver
+### <a name="driver-suspension"></a>Sospensione del driver
 
-Poiché l'I/O con supporti fisici potrebbe richiedere del tempo, è spesso consigliabile sospendere il thread chiamante. Naturalmente, ciò presuppone che il completamento dell'operazione di I/O sottostante sia basato sull'interrupt. In tal caso, la sospensione dei thread viene facilmente implementata con un semaforo ThreadX. Dopo l'avvio dell'operazione di input o di output, il driver di I/O viene sospeso sul proprio semaforo di I/O interno, creato con un conteggio iniziale pari a zero durante l'inizializzazione del driver. Come parte dell'elaborazione dell'interrupt di completamento i/O del driver, viene impostato lo stesso semaforo di I/O, che a sua volta riattiva il thread sospeso.
+Poiché l'I/O con supporti fisici può richiedere tempo, la sospensione del thread chiamante è spesso preferibile. Naturalmente, si presuppone che il completamento dell'operazione di I/O sottostante sia basato sull'interrupt. In tal caso, la sospensione dei thread viene implementata facilmente con un semaforo ThreadX. Dopo aver avviato l'operazione di input o output, il driver di I/O viene sospeso nel proprio semaforo di I/O interno (creato con un conteggio iniziale pari a zero durante l'inizializzazione del driver). Come parte dell'elaborazione dell'interrupt di completamento I/O del driver, viene impostato lo stesso semaforo di I/O, che a sua volta riattiva il thread sospeso.
 
-### <a name="sector-translation"></a>Conversione settore
+### <a name="sector-translation"></a>Traduzione di settori
 
-Poiché FileX Visualizza i supporti come settori logici lineari, le richieste di I/O effettuate al driver di I/O vengono eseguite con i settori logici. Il conducente è responsabile della conversione tra i settori logici e la geometria fisica del supporto, che può includere testine, tracce e settori fisici. Per i supporti disco FLASH e RAM, i settori logici in genere mappano la directory ai settori fisici. In ogni caso, di seguito sono riportate le formule tipiche per eseguire il mapping logico a settore fisico nel driver I/O:
+Poiché FileX visualizza i supporti come settori logici lineari, le richieste di I/O effettuate al driver di I/O vengono effettuate con settori logici. È responsabilità del driver tradursi tra settori logici e la geometria fisica dei supporti, che possono includere teste, tracce e settori fisici. Per i supporti su disco FLASH e RAM, i settori logici in genere esercitono il mapping tra directory e settori fisici. In ogni caso, ecco le formule tipiche per eseguire il mapping del settore logico-fisico nel driver di I/O:
 
 ```c
 media_ptr -> fx_media_driver_physical_sector =
@@ -146,15 +146,15 @@ Si noti che i settori fisici iniziano da uno, mentre i settori logici iniziano d
 
 ### <a name="hidden-sectors"></a>Settori nascosti
 
-I settori nascosti risiedevano prima del record di avvio sui supporti. Poiché si trovano realmente al di fuori dell'ambito del layout file system FAT, è necessario che siano contabilizzate in ogni operazione di settore logico eseguita dal driver.
+I settori nascosti risiedevano prima del record di avvio nel supporto. Poiché sono realmente al di fuori dell'ambito del layout fat file system, devono essere contabili in ogni operazione di settore logico eseguita dal driver.
 
-### <a name="media-write-protect"></a>Protezione scrittura supporti
+### <a name="media-write-protect"></a>Protezione da scrittura multimediale
 
-Il driver FileX può attivare la protezione da scrittura impostando il campo fx_media_driver_write_protect nel blocco di controllo multimediale. In questo modo verrà restituito un errore se vengono effettuate chiamate FileX durante un tentativo di scrittura nei supporti.
+Il driver FileX può attivare la protezione da scrittura impostando il campo fx_media_driver_write_protect nel blocco di controllo multimediale. In questo modo verrà restituito un errore se vengono effettuate chiamate FileX nel tentativo di scrivere nel supporto.
 
 ## <a name="sample-ram-driver"></a>Driver RAM di esempio
 
-Il sistema di dimostrazione FileX viene fornito con un piccolo driver di disco RAM, definito nel file fx_ram_driver. c. Il driver presuppone uno spazio di memoria 32K e crea un record di avvio per i settori a 256 128 byte. Questo file fornisce un valido esempio di implementazione di driver di I/O FileX specifici dell'applicazione.
+Il sistema dimostrativo FileX viene fornito con un driver di disco RAM di piccole dimensioni, definito nel file fx_ram_driver.c. Il driver presuppone uno spazio di memoria di 32.000 e crea un record di avvio per settori da 256 a 128 byte. Questo file fornisce un buon esempio di come implementare driver di I/O FileX specifici dell'applicazione.
 
 ```c
 /*FUNCTION: _fx_ram_driver

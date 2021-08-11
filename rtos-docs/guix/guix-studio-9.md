@@ -1,46 +1,46 @@
 ---
 title: Riga di comando di GUIX Studio
-description: GUIX Studio fornisce la chiamata della riga di comando utile per le pipeline di compilazione necessarie per aggiornare i file di output generati da studio.
+description: GUIX Studio offre una chiamata da riga di comando utile per le pipeline di compilazione necessarie per aggiornare i file di output generati da Studio.
 author: jdeere5220
 ms.author: kemaxwel
 ms.date: 9/30/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 9f9bfc67c524a77b5bf736407bf2ca372ce98308
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: bd88054d974aabea30b50c6f4e10b4c5df9994db03ab84a4a5d8f9394b4d6ed8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822196"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785397"
 ---
-# <a name="chapter-9-guix-studio-command-line"></a>Capitolo 9: riga di comando di GUIX Studio
+# <a name="chapter-9-guix-studio-command-line"></a>Capitolo 9: Riga di comando di GUIX Studio
 
-GUIX Studio supporta la chiamata della riga di comando, utile per le pipeline di compilazione richieste per aggiornare i file di output generati da studio.
+GUIX Studio supporta la chiamata dalla riga di comando, utile per le pipeline di compilazione necessarie per aggiornare i file di output generati da Studio.
 
-## <a name="command-line-usage"></a>Utilizzo Command-Line
+## <a name="command-line-usage"></a>Command-Line utilizzo
 
-**Sintassi:** guix_studio \[ \] \[ argomento Option\]
+**Utilizzo: guix_studio** \[ OPTION \] \[ ARGUMENT\]
 
-Aprire il progetto *. GXP* .
+Aprire il *progetto con estensione gxp.*
 
-Aprire il progetto studio e generare i file di output desiderati.
+Aprire il progetto di Studio e generare i file di output desiderati.
 
 
 **Esempi:**
 
 `guix_studio demo.gxp`  
-Apri progetto "demo. GXP"
+Aprire il progetto "demo.gxp"
 
 
 `guix_studio.exe –p demo.gxp`  
-Apri progetto "demo. GXP"
+Aprire il progetto "demo.gxp"
 
 
 `guix_studio.exe –n –p demo.gxp`  
-Genera tutti i file di output del progetto demo. GXP.
+Generare tutti i file di output del progetto demo.gxp.
 
 `guix_studio.exe –n –r –p demo.gxp`  
-Genera file di risorse del progetto demo. GXP
+Generare i file di risorse del progetto demo.gxp
 
 
 ## <a name="command-line-options"></a>Opzioni della riga di comando
@@ -49,7 +49,7 @@ Genera file di risorse del progetto demo. GXP
 ***-n --nogui***  
 ```
 
-Opzione "nogui". Indicare a GUIX studio di essere eseguito senza avviare l'interfaccia dell'interfaccia utente di windowing.
+Opzione "nogui". Indicare a GUIX Studio di eseguire senza avviare l'interfaccia utente di windowing.
 
 ```C
 ***-o pathname***  
@@ -63,56 +63,56 @@ Opzione log, specificare un file di log.
 ***--binary***  
 ```
 
-Opzione di risorsa binaria. Produce un file di risorse binario anziché un file C.
+Opzione della risorsa binaria. Produce un file di risorse binario anziché un file C.
 
 ```C
 ***-d display1, display2***  
 ***--display***  
 ```
 
-Opzione nome visualizzato. Se si usa questa opzione, solo i nomi visualizzati specificati verranno inclusi in tutti i file delle risorse o delle specifiche generate. Se questa opzione non viene usata, vengono incluse tutte le visualizzazioni.
+Opzione Nomi visualizzati. Se si usa questa opzione, in tutti i file di risorse o di specifica generati vengono inclusi solo i nomi visualizzati specificati. Se questa opzione non viene utilizzata, vengono incluse tutte le schermi.
 
 ```C
 ***-t theme1, theme2***  
 ***--theme***  
 ```
 
-Opzione nome tema/i. Se si usa questa opzione, solo i nomi di tema specificati verranno inclusi in tutti i file delle risorse o delle specifiche generate. Se questa opzione non viene usata, vengono inclusi tutti i temi.
+Opzione nome/i tema. Se si usa questa opzione, in tutti i file di risorse o di specifica generati vengono inclusi solo i nomi dei temi specificati. Se questa opzione non viene usata, vengono inclusi tutti i temi.
 
 ```C
 ***-l langage1, language2***  
 ***--language***  
 ```
 
-Opzione del nome della lingua. Se si usa questa opzione, i nomi di lingua specificati vengono inclusi nei file di risorse o di specifica generati. In caso contrario, verranno inclusi tutti i nomi di lingua.
+Opzione nome/i linguaggio. Se si utilizza questa opzione, i nomi di lingua specificati vengono inclusi nei file di risorse o di specifica generati. In caso contrario, vengono inclusi tutti i nomi delle lingue.
 
 ```C
 ***-r [filename]***  
 ***--resource***  
 ```
 
-L'opzione resource specifica che studio deve produrre un file di risorse per le visualizzazioni designate in precedenza, i temi e le lingue.
+L'opzione della risorsa specifica che Studio deve produrre un file di risorse per le impostazioni di visualizzazione, i temi e le lingue designati in precedenza.
 
 ```C
 ***-s [filename]***  
 ***--specification***  
 ```
 
-L'opzione specifica, specifica che studio deve produrre un file di specifica per gli schermi designati, i temi e le lingue.
+L'opzione specification specifica specifica che Studio deve produrre un file di specifica per le lingue, i temi e le lingue designati.
 
 ```C
 ***-p project_pathname***  
 ***--project***  
 ```
 
-Nome percorso progetto, specificare il progetto di esempio da caricare.
+Project'opzione pathname specificare il progetto di esempio da caricare.
 
 ```C
 ***-i [pathname]***  
 ***--import***  
 ```
 
-Importa la stringa da un file di formato CSV o XLIFF.
+Importare una stringa da un file di formato xliff o CSV.
 
 ***--big_endian***  
-Generare dati di risorse in formato big endian.
+Generare i dati delle risorse in formato big-endian.

@@ -1,32 +1,32 @@
 ---
-title: Capitolo 1-Introduzione ad Azure RTO NetX LWM2M
-description: Il protocollo LWM2M di Azure RTO NetX implementa la parte client del computer leggero con il protocollo machine standard.
+title: Capitolo 1 - Introduzione a Azure RTOS NetX LWM2M
+description: Il Azure RTOS NetX LWM2M implementa la parte client dello standard del protocollo Lightweight Machine to Machine.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c29af430975266eed684bd1de38d9e5d7e2586a6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: fe9c90ec10b241c72c71882b28b5fe0e3e60e3913435ec27f797eade4ca4eca5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822613"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784921"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-lwm2m"></a>Capitolo 1-Introduzione ad Azure RTO NetX LWM2M
+# <a name="chapter-1---introduction-to-azure-rtos-netx-lwm2m"></a>Capitolo 1 - Introduzione a Azure RTOS NetX LWM2M
 
-Il protocollo LWM2M di Azure RTO NetX implementa la parte client del computer leggero con il protocollo machine standard.
+Il Azure RTOS NetX LWM2M implementa la parte client dello standard del protocollo Lightweight Machine to Machine.
 
-## <a name="netx-lwm2m-requirements"></a>Requisiti LWM2M di NetX
+## <a name="netx-lwm2m-requirements"></a>Requisiti di NetX LWM2M
 
-Per funzionare correttamente, la libreria di runtime NetX LWM2M richiede che sia già stata creata un'istanza IP NetX. Il pacchetto LWM2M NetX non ha altri requisiti.
+Per funzionare correttamente, la libreria di runtime NetX LWM2M richiede che sia già stata creata un'istanza IP NetX. Il pacchetto NetX LWM2M non ha altri requisiti.
 
 ## <a name="netx-lwm2m-rfcs"></a>RFC NetX LWM2M
 
-LWM2M NetX è conforme a OMA-TS-LightweightM2M-V1_0 -20170208-A e ai seguenti RFC correlati al protocollo applicativo vincolato (CoAP):
+NetX LWM2M è conforme a OMA-TS-LightweightM2M-V1_0-20170208-A e alle RFC seguenti correlate al protocollo CoAP (Constrained Application Protocol):
 
-- **RFC 7252**: protocollo applicativo vincolato (CoAP)
+- **RFC 7252:** Protocollo coAP (Constrained Application Protocol)
 
-- **RFC 7641**: osservazione delle risorse nel protocollo applicativo vincolato (CoAP)
+- **RFC 7641:** Osservazione delle risorse nel protocollo CoAP (Constrained Application Protocol)
 
-- **RFC 6690**: formato di collegamento ambienti RESTful con vincoli (Core)
+- **RFC 6690:** Constrained RESTful Environments (CoRE) Link Format
