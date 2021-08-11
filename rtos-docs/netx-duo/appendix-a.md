@@ -1,19 +1,19 @@
 ---
-title: Appendice A-Azure RTO NetX Duo Services
-description: Informazioni sui servizi di Azure RTO NetX Duo.
+title: Appendice A - Azure RTOS NetX Duo Services
+description: Informazioni sull'Azure RTOS NetX Duo Services.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d093fbd8abe50ee1a21f62141329e84051c70006
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a5c4f209819935e771ca47c8ff9b8cf8e4872978e1b73d3ea24e590e792e2059
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822952"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790140"
 ---
-# <a name="appendix-a---azure-rtos-netx-duo-services"></a>Appendice A-Azure RTO NetX Duo Services
+# <a name="appendix-a---azure-rtos-netx-duo-services"></a>Appendice A - Azure RTOS NetX Duo Services
 
 ## <a name="address-resolution-protocol-arp"></a>ARP (Address Resolution Protocol)  
 
@@ -129,7 +129,7 @@ UINT     nx_igmp_multicast_join(NX_IP *ip_ptr,
 UINT     nx_igmp_multicast_leave(NX_IP *ip_ptr,
             ULONG group_address);
 ```
-## <a name="internet-protocol-ip"></a>Protocollo IP (Internet Protocol) 
+## <a name="internet-protocol-ip"></a>Ip (Internet Protocol) 
 
 ```c
 UINT     nx_ip_address_change_notify(NX_IP *ip_ptr,
@@ -382,7 +382,7 @@ UINT     nx_packet_release(NX_PACKET *packet_ptr);
 UINT     nx_packet_transmit_release(NX_PACKET *packet_ptr);
 ```
 
-## <a name="reverse-address-resolution-protocol-rarp"></a>Protocollo RARP (Reverse Address Resolution Protocol)  
+## <a name="reverse-address-resolution-protocol-rarp"></a>RaRP (Reverse Address Resolution Protocol)  
 
 ```c
 UINT     nx_rarp_disable(NX_IP *ip_ptr);
@@ -403,7 +403,7 @@ UINT     nx_rarp_info_get(NX_IP *ip_ptr,
 VOID     nx_system_initialize(VOID);
 ```
 
-## <a name="transmission-control-protocol-tcp"></a>Transmission Control Protocol (TCP)  
+## <a name="transmission-control-protocol-tcp"></a>TCP (Transmission Control Protocol)  
 
 ```c
 UINT     nx_tcp_client_socket_bind(NX_TCP_SOCKET *socket_ptr,
@@ -551,7 +551,7 @@ UINT     nxd_tcp_socket_peer_info_get(NX_TCP_SOCKET
                 ULONG *peer_port)
 ```                                                                        
 
-## <a name="user-datagram-protocol-udp"></a>UDP (User Datagram Protocol)  
+## <a name="user-datagram-protocol-udp"></a>Udp (User Datagram Protocol)  
 
 ```c
 UINT     nx_udp_enable(NX_IP *ip_ptr);

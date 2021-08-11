@@ -1,23 +1,23 @@
 ---
-title: Appendice A-codici di errore irreversibili di Azure RTO NetX Duo SNTP
-description: I codici di errore seguenti comporteranno l'interruzione degli aggiornamenti temporali del client di Azure RTO NetX Duo SNTP con il server corrente.
+title: Appendice A - Azure RTOS di errore irreversibile di NetX Duo SNTP
+description: I codici di errore seguenti causano l Azure RTOS client NetX Duo SNTP che interrompe gli aggiornamenti dell'ora con il server corrente.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 065e7a3e65b3cf8d7fcfb34bb9568a673791609a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e0152c1342b3edffd42f7442c51e7c5d62b199a5b38085dac06b4c0dbee9e9a8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821665"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790106"
 ---
-# <a name="appendix-a---azure-rtos-netx-duo-sntp-fatal-error-codes"></a>Appendice A-codici di errore irreversibili di Azure RTO NetX Duo SNTP
+# <a name="appendix-a---azure-rtos-netx-duo-sntp-fatal-error-codes"></a>Appendice A - Azure RTOS di errore irreversibile di NetX Duo SNTP
 
-I codici di errore seguenti comporteranno l'interruzione degli aggiornamenti temporali del client di Azure RTO NetX Duo SNTP con il server corrente. Spetta all'applicazione decidere se il server deve essere rimosso dall'elenco client di SNTP dei server disponibili o semplicemente passare al server successivo disponibile nell'elenco. La definizione di ogni stato di errore è definita in * nxd_sntp_client. h. *
+I codici di errore seguenti causano l Azure RTOS client NetX Duo SNTP che interrompe gli aggiornamenti dell'ora con il server corrente. È l'applicazione a decidere se il server deve essere rimosso dall'elenco di server disponibili del client SNTP o semplicemente passare al successivo server disponibile nell'elenco. La definizione di ogni stato di errore è definita in *nxd_sntp_client.h. *
 
-Quando il client SNTP restituisce un errore dall'elenco seguente all'applicazione, è probabile che il server venga sostituito con un altro server. Si noti che lo stato di errore NX_SNTP_KOD_REMOVE_SERVER viene lasciato al SNTP client Kiss of Death handler (funzione di callback) per impostare:
+Quando il client SNTP restituisce un errore dall'elenco seguente all'applicazione, è probabile che il server debba essere sostituito con un altro server. Si noti che NX_SNTP_KOD_REMOVE_SERVER stato di errore viene lasciato al gestore di decesso del client SNTP (funzione di callback) da impostare:
 
 - NX_SNTP_KOD_REMOVE_SERVER 0xD0C  
 - NX_SNTP_SERVER_AUTH_FAIL 0xD0D  
@@ -25,7 +25,7 @@ Quando il client SNTP restituisce un errore dall'elenco seguente all'applicazion
 - NX_SNTP_INVALID_SERVER_MODE 0xD12  
 - NX_SNTP_INVALID_SERVER_STRATUM 0xD15  
 
-Quando il client SNTP restituisce un errore dall'elenco seguente all'applicazione, il server può solo temporaneamente non essere in grado di fornire aggiornamenti temporali validi e non deve essere rimosso:
+Quando il client SNTP restituisce un errore dall'elenco seguente all'applicazione, il server potrebbe non essere temporaneamente in grado di fornire aggiornamenti di ora validi e non deve essere rimosso:
 
 - HNX_SNTP_NO_UNICAST_FROM_SERVER 0xD09  
 - NX_SNTP_SERVER_CLOCK_NOT_SYNC 0xD0A  

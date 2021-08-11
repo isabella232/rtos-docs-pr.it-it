@@ -1,34 +1,34 @@
 ---
-title: Capitolo 3-Descrizione dei servizi client PPPoE di Azure RTO NetX
-description: Questo capitolo contiene una descrizione di tutti i servizi client PPPoE di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS client PPPoE NetX
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS client NETX PPPoE (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 07/13/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 246115fc97d7597246f7fd5b4fb88cb615baab33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8310006b7c188fa63402c931459ffd84ebb776c207dc520959208449862fe27f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821494"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790208"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-pppoe-client-services"></a>Capitolo 3-Descrizione dei servizi client PPPoE di Azure RTO NetX
+# <a name="chapter-3---description-of-azure-rtos-netx-pppoe-client-services"></a>Capitolo 3 - Descrizione dei Azure RTOS client PPPoE NetX
 
-Questo capitolo contiene una descrizione di tutti i servizi client PPPoE di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i Azure RTOS client NETX PPPoE (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 - **nx_pppoe_client_create** *creare un'istanza del client PPPoE*
 - **nx_pppoe_client_delete** *eliminare un'istanza del client PPPoE*
-- **nx_pppoe_client_host_uniq_set** *impostare l'host univoco per il client PPPoE*
-- **nx_pppoe_client_host_uniq_set_extended** *impostare l'host univoco per il client PPPoE*
-- **nx_pppoe_client_service_name_set** *impostare il nome del servizio per il client PPPoE*
+- **nx_pppoe_client_host_uniq_set** *l'host univoco per il client PPPoE*
+- **nx_pppoe_client_host_uniq_set_extended** *l'host univoco per il client PPPoE*
+- **nx_pppoe_client_service_name_set** *il nome del servizio per il client PPPoE*
 - **nx_pppoe_client_service_name_set_extended** *impostare il nome del servizio per il client PPPoE*
-- **nx_pppoe_client_session_connect** *connettere la sessione client PPPoE al server PPPoE*
-- **nx_pppoe_client_session_packet_send** *inviare il pacchetto di sessione PPPoE*
+- **nx_pppoe_client_session_connect** *Connessione sessione client PPPoE nel server PPPoE*
+- **nx_pppoe_client_session_packet_send** *pacchetto di sessione PPPoE*
 - **nx_pppoe_client_session_terminate** *terminare la sessione PPPoE*
-- **nx_pppoe_client_session_get** *ottenere il inf della sessione PPPoE specificato*
+- **nx_pppoe_client_session_get** *ottenere l'inf della sessione PPPoE specificata*
 
 ## <a name="nx_pppoe_client_create"></a>nx_pppoe_client_create
 
@@ -53,36 +53,36 @@ UINT  nx_pppoe_client_create(NX_PPPOE_CLIENT *pppoe_client_ptr,
 
 Questo servizio crea un'istanza del client PPPoE con il driver di collegamento fornito dall'utente per l'istanza IP NetX specificata. Se il driver di collegamento non è stato inizializzato e abilitato, il software client PPPoE è responsabile dell'inizializzazione del driver di collegamento.
 
-Inoltre, l'applicazione deve fornire un pool di pacchetti creato in precedenza per l'istanza del client PPPoE da usare per l'allocazione dei pacchetti interna.
+Inoltre, l'applicazione deve fornire un pool di pacchetti creato in precedenza per l'istanza del client PPPoE da usare per l'allocazione interna dei pacchetti.
 
 > [!NOTE]
-> In genere è consigliabile creare il thread IP NetX con una priorità più alta rispetto alla priorità del thread del client PPPoE. Per ulteriori informazioni su come specificare la priorità del thread IP, fare riferimento al servizio *nx_ip_create* .
+> In genere è consigliabile creare il thread IP NetX con una priorità più alta rispetto alla priorità del thread del client PPPoE. Fare riferimento al servizio *nx_ip_create* per altre informazioni su come specificare la priorità del thread IP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_client_ptr** Puntatore al blocco di controllo client PPPoE.
- - **nome** Nome dell'istanza del client PPPoE.
+ - **name** Nome di questa istanza del client PPPoE.
  - **ip_ptr** Puntatore al blocco di controllo per l'istanza IP.
  - **interface_index** Indice dell'interfaccia.
  - **pool_ptr** Puntatore al pool di pacchetti.
- - **stack_ptr** Puntatore all'inizio dell'area dello stack del thread del client PPPoE.
- - **stack_size** Dimensioni in byte nello stack del thread.
- - **priorità** di Priorità dei thread client PPPoE interni (1-31).
+ - **stack_ptr** Puntatore all'inizio dell'area dello stack del thread client PPPoE.
+ - **stack_size** Dimensione in byte nello stack del thread.
+ - **priorità** Priorità dei thread interni del client PPPoE (1-31).
  - **pppoe_link_driver** Driver di collegamento fornito dall'utente.
  - **pppoe_packet_receive** Funzione di ricezione pacchetti fornita dall'utente.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - Creazione del client PPPoE riuscita **NX_PPPOE_CLIENT_SUCCESS** (0x00).
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) client PPPoE, IP, pool di pacchetti o puntatore dello stack non validi.
- - L'interfaccia NX_PPPOE_CLIENT_INVALID_INTERFACE (0xD2) non è valida.
- - Dimensioni del payload del pool di pacchetti NX_PPPOE_CLIENT_PACKET_PAYLOAD_ERROR (0xD3) non valide.
- - Dimensioni della memoria NX_PPPOE_CLIENT_MEMORY_SIZE_ERROR (0xD4) non valide.
- - NX_PPPOE_CLIENT_PRIORITY_ERROR (0xD5) priorità non valida del thread del client PPPoE.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Creazione del client PPPoE completata.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Client PPPoE, IP, pool di pacchetti o puntatore dello stack non valido.
+ - NX_PPPOE_CLIENT_INVALID_INTERFACE (0xD2) Interfaccia non valida.
+ - NX_PPPOE_CLIENT_PACKET_PAYLOAD_ERROR (0xD3) Dimensioni del payload del pool di pacchetti non valide.
+ - NX_PPPOE_CLIENT_MEMORY_SIZE_ERROR (0xD4) Dimensioni della memoria non valide.
+ - NX_PPPOE_CLIENT_PRIORITY_ERROR (0xD5) Priorità del thread client PPPoE non valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -107,7 +107,7 @@ UINT nx_pppoe_client_delete(NX_PPPOE_CLIENT *pppoe_client_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina l'istanza del client PPPoE creata in precedenza.
+Questo servizio elimina l'istanza del client PPPoE creata in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -115,8 +115,8 @@ Questo servizio Elimina l'istanza del client PPPoE creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - L'eliminazione del client PPPoE riuscita **NX_PPPOE_CLIENT_SUCCESS** (0x00).
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) puntatore client PPPoE non valido.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Eliminazione del client PPPoE completata.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Puntatore client PPPoE non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -133,7 +133,7 @@ status =  nx_pppoe_client_delete(&my_pppoe_client);
 
 ## <a name="nx_pppoe_client_host_uniq_set"></a>nx_pppoe_client_host_uniq_set
 
-Imposta host client PPPoE univoco
+Impostare l'host client PPPoE univoco
 
 ### <a name="prototype"></a>Prototipo
 
@@ -145,28 +145,28 @@ UINT nx_pppoe_client_host_uniq_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'host client PPPoE come univoco. Host-Uniq viene utilizzato da un host per associare in modo univoco un concentratore di accesso a una determinata richiesta host.
-Può essere dati binari di qualsiasi valore e lunghezza che l'host sceglie.
+Questo servizio imposta l'host client PPPoE univoco. Host-Uniq viene usato da un host per associare in modo univoco un concentratore di accesso a una richiesta host specifica.
+Possono essere dati binari di qualsiasi valore e lunghezza che l'host sceglie.
 
 > [!NOTE]
-> l'host univoco deve essere una stringa con terminazione null.
+> host unique deve essere una stringa con terminazione Null.
 
 > [!NOTE]
-> questo servizio è deprecato. Gli sviluppatori sono invitati a eseguire la migrazione a *nx_pppoe_client_host_uniq_set_extended ()*.
+> questo servizio è deprecato. Gli sviluppatori sono invitati a eseguire la migrazione *a nx_pppoe_client_host_uniq_set_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_client_ptr** Puntatore al blocco di controllo client PPPoE.
- - **host_uniq** Puntatore a un host univoco. L'host univoco deve essere una stringa con terminazione null.
+ - **host_uniq** Puntatore a un host univoco. L'host univoco deve essere una stringa con terminazione Null.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - Il set univoco dell'host client PPPoE **NX_PPPOE_CLIENT_SUCCESS** (0x00) riuscito.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) puntatore client PPPoE non valido.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Set univoco host client PPPoE riuscito.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Puntatore client PPPoE non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -180,7 +180,7 @@ status =  nx_pppoe_client_host_uniq_set(&my_pppoe_client,
 
 ## <a name="nx_pppoe_client_host_uniq_set_extended"></a>nx_pppoe_client_host_uniq_set_extended
 
-Imposta host client PPPoE univoco
+Impostare l'host client PPPoE univoco
 
 ### <a name="prototype"></a>Prototipo
 
@@ -192,30 +192,30 @@ UINT nx_pppoe_client_host_uniq_set_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'host client PPPoE come univoco. Host-Uniq viene utilizzato da un host per associare in modo univoco un concentratore di accesso a una determinata richiesta host.
-Può essere dati binari di qualsiasi valore e lunghezza che l'host sceglie.
+Questo servizio imposta l'host client PPPoE univoco. Host-Uniq viene usato da un host per associare in modo univoco un concentratore di accesso a una richiesta host specifica.
+Possono essere dati binari di qualsiasi valore e lunghezza che l'host sceglie.
 
 > [!NOTE]
-> l'host univoco deve essere una stringa con terminazione null.
+> host unique deve essere una stringa con terminazione Null.
 
 > [!NOTE]
-> Questo servizio sostituisce *nx_pppoe_client_host_uniq_set ()*. Questa versione fornisce informazioni aggiuntive sulla lunghezza per il servizio.
+> Questo servizio sostituisce *nx_pppoe_client_host_uniq_set()*. Questa versione fornisce informazioni aggiuntive sulla lunghezza al servizio.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_client_ptr** Puntatore al blocco di controllo client PPPoE.
- - **host_uniq** Puntatore a un host univoco. L'host univoco deve essere una stringa con terminazione null.
- - **host_uniq_length** Lunghezza di host_uniq
+ - **host_uniq** Puntatore a un host univoco. L'host univoco deve essere una stringa con terminazione Null.
+ - **host_uniq_length** Lunghezza del host_uniq
 
 ### <a name="return-values"></a>Valori restituiti
 
- - Il set univoco dell'host client PPPoE **NX_PPPOE_CLIENT_SUCCESS** (0x00) riuscito.
- - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) puntatore client PPPoE non valido.
- - Controllo **NX_SIZE_ERROR** (0x09) host_uniq_length esito negativo
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Set univoco host client PPPoE riuscito.
+ - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) Puntatore client PPPoE non valido.
+ - **NX_SIZE_ERROR** (0x09) Controllare host_uniq_length esito negativo
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -229,7 +229,7 @@ status =  nx_pppoe_client_host_uniq_set_extended(&my_pppoe_client,
 
 ## <a name="nx_pppoe_client_service_name_set"></a>nx_pppoe_client_service_name_set
 
-Imposta il nome del servizio client PPPoE
+Impostare il nome del servizio client PPPoE
 
 ### <a name="prototype"></a>Prototipo
 
@@ -241,27 +241,27 @@ UINT nx_pppoe_client_service_name_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il nome del servizio client PPPoE. Service-Name che indica il servizio richiesto dall'host. Se Service-Name non è impostato, indica che l'host accetterà un numero qualsiasi di servizi.
+Questo servizio imposta il nome del servizio client PPPoE. Valore Service-Name che indica il servizio richiesto dall'host. Se Service-Name non è impostato, l'host accetterà un numero qualsiasi di servizi.
 
 > [!NOTE]
-> il nome del servizio deve essere una stringa con terminazione null
+> il nome del servizio deve essere una stringa con terminazione Null
 
 > [!NOTE]
-> questo servizio è deprecato. Gli sviluppatori sono invitati a eseguire la migrazione a *nx_pppoe_client_service_name_set_extended ()*.
+> questo servizio è deprecato. Gli sviluppatori sono invitati a eseguire la migrazione *a nx_pppoe_client_service_name_set_extended()*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_client_ptr** Puntatore al blocco di controllo client PPPoE.
- - **SERVICE_NAME** Puntatore a un nome di servizio. Il nome del servizio deve essere una stringa con terminazione null.
+ - **service_name** Puntatore a un nome di servizio. Il nome del servizio deve essere una stringa con terminazione Null.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) il nome del servizio client PPPoE è stato impostato correttamente.
- - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) puntatore client PPPoE non valido.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Set di nomi di servizio client PPPoE riuscito.
+ - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) Puntatore client PPPoE non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -275,7 +275,7 @@ status =  nx_pppoe_client_service_name_set(&my_pppoe_client,
 
 ## <a name="nx_pppoe_client_service_name_set_extended"></a>nx_pppoe_client_service_name_set_extended
 
-Imposta il nome del servizio client PPPoE
+Impostare il nome del servizio client PPPoE
 
 ### <a name="prototype"></a>Prototipo
 
@@ -287,29 +287,29 @@ UINT nx_pppoe_client_service_name_set_extended(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta il nome del servizio client PPPoE. Service-Name che indica il servizio richiesto dall'host. Se Service-Name non è impostato, indica che l'host accetterà un numero qualsiasi di servizi.
+Questo servizio imposta il nome del servizio client PPPoE. Valore Service-Name che indica il servizio richiesto dall'host. Se Service-Name non è impostato, l'host accetterà un numero qualsiasi di servizi.
 
 > [!NOTE]
-> il nome del servizio deve essere una stringa con terminazione null.
+> il nome del servizio deve essere una stringa con terminazione Null.
 
 > [!NOTE]
-> Questo servizio sostituisce *nx_pppoe_client_service_name_set ()*. Questa versione fornisce informazioni aggiuntive sulla lunghezza del nome del servizio alla funzione.
+> Questo servizio sostituisce *nx_pppoe_client_service_name_set()*. Questa versione fornisce informazioni aggiuntive sulla lunghezza del nome del servizio alla funzione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_client_ptr** Puntatore al blocco di controllo client PPPoE.
- - **SERVICE_NAME** Puntatore a un nome di servizio. Il nome del servizio deve essere una stringa con terminazione null.
- - **service_name_length** Lunghezza di service_name
+ - **service_name** Puntatore a un nome di servizio. Il nome del servizio deve essere una stringa con terminazione Null.
+ - **service_name_length** Lunghezza del service_name
 
 ### <a name="return-values"></a>Valori restituiti
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) il nome del servizio client PPPoE è stato impostato correttamente.
- - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) puntatore client PPPoE non valido.
- - Controllo **NX_SIZE_ERROR** (0x09) service_name_length esito negativo
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Set di nomi di servizio client PPPoE riuscito.
+ - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) Puntatore client PPPoE non valido.
+ - **NX_SIZE_ERROR** (0x09) Controllare service_name_length esito negativo
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -323,7 +323,7 @@ status =  nx_pppoe_client_service_name_set_extended(&my_pppoe_client,
 
 ## <a name="nx_pppoe_client_session_connect"></a>nx_pppoe_client_session_connect
 
-Connetti sessione client PPPoE
+Connessione Sessione client PPPoE
 
 ### <a name="prototype"></a>Prototipo
 
@@ -334,24 +334,24 @@ UINT nx_pppoe_client_session_connect(NX_PPPOE_CLIENT *pppoe_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue la connessione di sessione PPPoE utilizzando un client PPPoE creato in precedenza al server PPPoE specificato.
+Questo servizio crea una connessione di sessione PPPoE usando un client PPPoE creato in precedenza al server PPPoE specificato.
 
 > [!NOTE]
-> Questa funzione deve essere chiamata dopo *nx_pppoe_client_create*, *nx_pppoe_client_host_uniq_set* e *nx_pppoe_client_service_name_set*.
+> Questa funzione deve essere chiamata *dopo* nx_pppoe_client_create , *nx_pppoe_client_host_uniq_set* e *nx_pppoe_client_service_name_set*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_client_ptr** Puntatore al blocco di controllo client PPPoE.
- - **WAIT_OPTION** Opzione wait mentre viene stabilita la connessione.
+ - **wait_option** Opzione di attesa durante la connessione.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) connessione della sessione client PPPoE riuscita.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) puntatore client PPPoE non valido.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Connessione della sessione client PPPoE riuscita.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Puntatore client PPPoE non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -364,7 +364,7 @@ status =  nx_pppoe_client_session_connect(&my_pppoe_client);
 
 ## <a name="nx_pppoe_client_session_packet_send"></a>nx_pppoe_client_session_packet_send
 
-Invia pacchetto client PPPoE alla sessione specificata
+Inviare un pacchetto client PPPoE alla sessione specificata
 
 ### <a name="prototype"></a>Prototipo
 
@@ -385,14 +385,14 @@ Questo servizio invia il pacchetto PPPoE usando l'ID sessione specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) ha completato l'invio di pacchetti client PPPoE.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) puntatore client PPPoE non valido.
- - NX_PPPOE_CLIENT_PACKET_PAYLOAD_ERROR (0xD3) pacchetto client PPPoE non valido.
- - La sessione PPPoE NX_PPPOE_CLIENT_SESSION_NOT_ESTABLISHED (0xD8) non è stata stabilita.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Invio di pacchetti client PPPoE riuscito.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Puntatore client PPPoE non valido.
+ - NX_PPPOE_CLIENT_PACKET_PAYLOAD_ERROR (0xD3) Pacchetto client PPPoE non valido.
+ - NX_PPPOE_CLIENT_SESSION_NOT_ESTABLISHED (0xD8) la sessione PPPoE non è stata stabilita.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -405,7 +405,7 @@ status =  nx_pppoe_client_session_packet_send(&my_pppoe_client, packet_ptr);
 
 ## <a name="nx_pppoe_client_session_terminate"></a>nx_pppoe_client_session_terminate
 
-Termina sessione client PPPoE
+Terminare la sessione client PPPoE
 
 ### <a name="prototype"></a>Prototipo
 
@@ -424,12 +424,12 @@ Questo servizio termina la sessione PPPoE specificata.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) termina la sessione client PPPoE riuscita.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) puntatore client PPPoE non valido.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Terminazione della sessione client PPPoE completata.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Puntatore client PPPoE non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -455,20 +455,20 @@ UINT nx_pppoe_client_session_get(NX_PPPOE_CLIENT *pppoe_client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio ottiene le informazioni sulla sessione PPPoE specificate, l'indirizzo fisico del server e l'ID di sessione.
+Questo servizio ottiene le informazioni di sessione PPPoE specificate, l'indirizzo fisico del server e l'ID sessione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
  - **pppoe_server_ptr** Puntatore al blocco di controllo client PPPoE.
- - **server_mac_msw** Puntatore a RSU indirizzo fisico server.
- - **server_mac_lsw** Puntatore a RSU indirizzo fisico server.
+ - **server_mac_msw** Puntatore MSW dell'indirizzo fisico del server.
+ - **server_mac_lsw** Puntatore MSW dell'indirizzo fisico del server.
  - **session_id** Puntatore ID sessione.
 
 ### <a name="return-values"></a>Valori restituiti
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) riuscita sessione client PPPoE Get.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) puntatore client PPPoE non valido.
- - La sessione PPPoE NX_PPPOE_CLIENT_SESSION_NOT_ESTABLISHED (0xD8) non è stata stabilita.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Riuscita della sessione client PPPoE.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Puntatore client PPPoE non valido.
+ - NX_PPPOE_CLIENT_SESSION_NOT_ESTABLISHED (0xD8) la sessione PPPoE non è stata stabilita.
 
 ### <a name="allowed-from"></a>Consentito da
 

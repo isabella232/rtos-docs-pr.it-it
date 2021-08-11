@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: b40a57bf385ddcf623ff7cbe0d2e798c547227d7
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: 4fa67f9a740e731618c200b80e2ff3278530abe8aaf7f1d73b9a7f4acc02e543
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754897"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791634"
 ---
 # <a name="overview-of-azure-rtos-netx-duo"></a>Panoramica di Azure RTOS NetX Duo
 
-Azure RTOS stack di rete TCP/IP incorporato di NetX Duo è lo stack di rete TCP/IP avanzato e di livello industriale di Microsoft, progettato appositamente per le applicazioni IoT e IPv4 avanzate di livello industriale. NetX Duo offre applicazioni incorporate con protocolli di rete di base come IPv4, IPv6, TCP e UDP, nonché una suite completa di protocolli aggiuntivi aggiuntivi di livello superiore. Azure RTOS NetX Duo offre sicurezza tramite altri prodotti di sicurezza aggiuntivi, tra cui Azure RTOS NetX Secure IPsec e Azure RTOS NetX Secure SSL/TLS/DTLS. Tutto questo in combinazione con un footprint ridotto, un'esecuzione rapida e una maggiore facilità d'uso rendono Azure RTOS NetX Duo la scelta ideale per le applicazioni IoT incorporate più complesse.
+Azure RTOS stack di rete TCP/IP incorporato di NetX Duo è lo stack di rete TCP/IP avanzato e di livello industriale di Microsoft, progettato appositamente per applicazioni IoT e IPv4 avanzate di livello industriale. NetX Duo offre applicazioni incorporate con protocolli di rete di base come IPv4, IPv6, TCP e UDP, nonché una suite completa di protocolli aggiuntivi aggiuntivi di livello superiore. Azure RTOS NetX Duo offre sicurezza tramite altri prodotti di sicurezza aggiuntivi, tra cui Azure RTOS NetX Secure IPsec e Azure RTOS NetX Secure SSL/TLS/DTLS. Tutto questo in combinazione con un footprint ridotto, un'esecuzione rapida e una maggiore facilità d'uso rendono Azure RTOS NetX Duo la scelta ideale per le applicazioni IoT incorporate più complesse.
 
 ## <a name="api-protocols"></a>Protocolli API
 
@@ -80,7 +80,7 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 * Domain Name System (DNS)
 * Multicast Domain Name System (mDNS)
 * Individuazione dei servizi basati su DNS (DNS-SD)
-* DNS minimo da 2,4 KB a 3 KB FLASH, footprint ram da 1 KB
+* DNS minimo da 2,4 KB a 3 KB FLASH, footprint di RAM da 1 KB
 * Supporto client
 * mDNS e DNS-SD sono disponibili solo con Azure RTOS NetX Duo
 
@@ -138,7 +138,7 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 ### <a name="azure-rtos-netx-secure-dtls"></a>Azure RTOS DTLS sicuri di NetX
 
 * Datagram Transport Layer Security (DTLS) 1.0 e 1.2
-* FLASH minimo di 11 KB
+* Flash minimo di 11 KB
 * Fast, software RSA 2048-bit key size ~1-second @120MHz
 * Implementazione semplificata di X.509
 * Completamente integrato con i Azure RTOS UDP NetX Duo
@@ -150,8 +150,8 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 ### <a name="azure-rtos-netx-secure-tls"></a>Azure RTOS NetX Secure TLS
 
 * Transport Layer Security (TLS) 1.0, 1.1 e 1.2
-* Flash minimo da 8,8 KB
-* Fast, software RSA 2048-bit key size ~1-second @120MHz
+* MEMORIA FLASH minima di 8,8 KB
+* Chiave RSA a 2048 bit veloce e software di dimensioni ~1 secondo @120MHz
 * Implementazione semplificata di X.509
 * Completamente integrato con Azure RTOS TCP NetX Duo
 * Supporto della crittografia hardware
@@ -162,11 +162,11 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 ### <a name="icmp"></a>ICMP
 
 * Internet Control Message Protocol (ICMP)
-* Flash minimo da 2,5 KB
-* Supporto per IPv4 e IPv6
+* MEMORIA FLASH minima di 2,5 KB
+* Supporto di IPv4 e IPv6
 * IXIA IxANVL convalidato
 * Richiesta ping e risposta ping
-* Sospensione facoltativa dei thread nelle richieste ping
+* Sospensione del thread facoltativa nelle richieste ping
 * Timeout facoltativo per tutte le sospensioni
 * Statistiche ICMP facoltative
 * Traccia a livello di sistema tramite Azure RTOS TraceX
@@ -174,15 +174,15 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 
 ### <a name="udp"></a>UDP
 
-* Udp (User Datagram Protocol)
-* MINIMO FLASH da 2,5 KB, 124 socket di RAM per socket
-* Elaborazione rapida dei pacchetti TCP in prossimità di wirespeed:
-    * RX 95 Mbps su 100 Mbps Ethernet, @100MHz MCU, utilizzo MCU del 14%
-    * TX 94 Mbps su 100 Mbps Ethernet, @100MHz MCU, utilizzo MCU del 10%
-* Tecnologia udp Fast Path™
+* User Datagram Protocol (UDP)
+* MEMORIA FLASH minima di 2,5 KB, 124 byte di RAM per socket
+* Elaborazione rapida e quasi in transito dei pacchetti TCP:
+    * RX 95 Mbps su Ethernet a 100 Mbps, @100MHz MCU, utilizzo MCU del 14%
+    * TX 94 Mbps su Ethernet a 100 Mbps, @100MHz MCU, utilizzo MCU del 10%
+* Tecnologia fast path™ UDP
 * Nessun limite al numero di UDP
 * IXIA IxANVL convalidato
-* Sospensione facoltativa alla ricezione socket
+* Sospensione facoltativa alla ricezione del socket
 * Timeout facoltativo per tutte le sospensioni
 * Statistiche UDP facoltative
 * Traccia a livello di sistema tramite Azure RTOS TraceX
@@ -191,14 +191,14 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 ### <a name="tcp"></a>TCP
 
 * TCP (Transmission Control Protocol)
-* Flash minimo da 10,5 KB a 12,5 KB, 280 byte di RAM per socket
-* Elaborazione rapida dei pacchetti TCP in prossimità di wlrespeed:
-    * RX 93 Mbps su 100 Mbps Ethernet, @100MHz MCU, utilizzo MCU del 20%
-    * TX 94 Mbps su 100 Mbps Ethernet, @100MHz MCU, utilizzo MCU del 27%
+* Memoria flash minima da 10,5K8 a 12,5 KB, 280 byte di RAM per socket
+* Elaborazione rapida dei pacchetti TCP da vicino:
+    * RX 93 Mbps su Ethernet a 100 Mbps, @100MHz MCU, utilizzo MCU del 20%
+    * TX 94 Mbps su Ethernet a 100 Mbps, @100MHz MCU, utilizzo MCU del 27%
 * Connessione affidabile
 * Nessun limite al numero di socket TCP
 * IXIA IxANVL convalidato
-* Sospensione facoltativa nella ricezione/trasmissione socket
+* Sospensione facoltativa su ricezione/trasmissione socket
 * Timeout facoltativo per tutte le sospensioni
 * Statistiche TCP facoltative
 * Traccia a livello di sistema tramite Azure RTOS TraceX
@@ -208,8 +208,8 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 
 * ARP (Address Resolution Protocol)
 * RaRP (Reverse Address Resolution Protocol)
-* Minimo 1,7 KB FLASH, dimensioni della RAM
-* Risoluzione dinamica di indirizzi MAC da 32 blt IPv4 e 48 blt
+* Memoria FLASH minima di 1,7 KB, dimensioni della RAM
+* Risoluzione dinamica di indirizzi MAC IPv4 e 48 blt a 32 blt
 * IXIA IxANVL convalidato
 * Cache ARP flessibile e definita dall'utente
 * Supporto gratuito ARP
@@ -220,8 +220,8 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 ### <a name="ipv4-amp-ipv6"></a>IPv4 &amp; IPv6
 
 * Ip (Internet Protocol)
-* Footprint minimo da 3,5 KB a 8,5 KB FLASH, da 2 KB a 3 KB di RAM
-* Architettura di Piconet™
+* Memoria FLASH minima da 3,5 KB a 8,5 KB, footprint di RAM da 2 KB a 3 KB
+* Architettura ™ Piconet
 * Prestazioni veloci e near wirespeed
 * Supporto di più interfacce
 * Supporto multihomed
@@ -229,16 +229,16 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 * Supporto della frammentazione/riassemblaggio IP
 * Supporto degli indirizzi IPv4 e IPv6
 * IXIA IxANVL convalidato
-* Certificazione del logo pronto per IPv6 di fase II
+* Certificazione del logo pronto per IPv6 fase II
 * Statistiche IP facoltative
-* Interfaccia del driver del livello fisico ben definita e intuitiva
+* Interfaccia del driver di livello fisico ben definita e intuitiva
 * Traccia a livello di sistema tramite Azure RTOS TraceX
-* API del livello IP intuitive: *\* nx_ip_*, *nxd_ip_ \** *\** , nxd_ipv6_
+* API intuitive del livello IP: *\* nx_ip_*, *nxd_ip_ \** *\** , nxd_ipv6_
 * Precertificato da TUV e UL a IEC 61508 SIL 4, IEC 62304 Classe C, ISO 26262 ASIL D e EN 50128 SW-SIL4
 
 ### <a name="azure-rtos-netx-secure-ipsec"></a>Azure RTOS IPSEC sicuro di NetX
 
-* IpSec (Internet Protocol Security)
+* IPSEC (Internet Protocol Security)
 * Livello IP
 * Supporto della crittografia hardware
 * Supporto della crittografia software, tra cui:
@@ -250,11 +250,11 @@ NetX Duo supporta i protocolli HTTP/HTTPS seguenti.
 * API IPsec intuitive: *nx_ipsec_ \**
 * IPsec è disponibile solo con Azure RTOS NetX Duo
 
-## <a name="safe-and-secure"></a>Cassaforte e sicuro
+## <a name="safe-and-secure"></a>Cassaforte e sicure
 
 Azure RTOS NetX Duo è sicuro. Questa sicurezza viene fornita tramite prodotti di sicurezza aggiuntivi, tra cui IPsec, SSL, TLS e DTLS. Inoltre, l'applicazione ha il controllo completo su tutti gli accessi esterni Azure RTOS NetX Duo, rendendo molto più semplice la determinazione dei rischi di sicurezza.
 
-Microsoft Azure RTOS fornisce agli OEM componenti per proteggere la comunicazione e creare codice e isolamento dei dati usando i meccanismi di protezione hardware MCU/MPU sottostanti. È in definitiva responsabilità del generatore di dispositivi garantire che il dispositivo soddisfi pienamente i requisiti di sicurezza in evoluzione associati al caso d'uso specifico.
+Microsoft Azure RTOS fornisce agli OEM componenti per proteggere le comunicazioni e creare codice e isolamento dei dati usando i meccanismi di protezione hardware MCU/MPU sottostanti. È responsabilità del generatore di dispositivi assicurarsi che il dispositivo soddisfi completamente i requisiti di sicurezza in continua evoluzione associati al caso d'uso specifico.
 
 ## <a name="interoperability-verification"></a>Verifica dell'interoperabilità
 
@@ -262,7 +262,7 @@ NetX Duo è conforme agli standard RFC e offre interoperabilità completa con i 
 
 ![Logo pronto per IPv6](./media/overview-netx-duo/ipv6-ready-logo.png)
 
-Azure RTOS NetX Duo è uno degli unici stack TCP/IP incorporati per ottenere la rigorosa certificazione del logo IPv6-Ready, dimostrando di aver superato i test di conformità e interoperabilità, amministrati e convalidati dal forum IPv6. NetX Duo usa anche lo standard di settore IxANVL (Automated Network Validation Library) per l'implementazione del protocollo TCP/IP core di NetX Duo.
+Azure RTOS NetX Duo è uno degli unici stack TCP/IP incorporati per ottenere la rigorosa certificazione del logo IPv6-Ready, che dimostra che ha superato i test di conformità e interoperabilità, amministrati e convalidati dal forum IPv6. NetX Duo usa anche lo standard di settore IxANVL (Automated Network Validation Library) per l'implementazione del protocollo TCP/IP core di NetX Duo.
 
 ## <a name="comprehensive-iot-solution"></a>Soluzione IoT completa
 

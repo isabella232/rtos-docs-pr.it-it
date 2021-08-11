@@ -1,43 +1,43 @@
 ---
-title: Capitolo 11-formato del buffer di traccia eventi
-description: ThreadX fornisce il supporto predefinito per la traccia degli eventi per tutti i servizi ThreadX di Azure RTO, le modifiche dello stato dei thread e gli eventi definiti dall'utente.
+title: Capitolo 11 - Formato del buffer di traccia eventi
+description: ThreadX fornisce il supporto predefinito della traccia eventi per tutti i Azure RTOS ThreadX, le modifiche dello stato dei thread e gli eventi definiti dall'utente.
 author: philmea
 ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: d11b827558e9c96df44f462329b7807a500a64a4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b230a6207cec3a0968d88b197455896881e5ef7a0d8b93d4b1fb5a37696a7b6c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823480"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802142"
 ---
-# <a name="chapter-11---format-of-event-trace-buffer"></a>Capitolo 11-formato del buffer di traccia eventi
+# <a name="chapter-11---format-of-event-trace-buffer"></a>Capitolo 11 - Formato del buffer di traccia eventi
 
-Azure RTO ThreadX offre supporto predefinito per la traccia degli eventi per tutti i servizi ThreadX, le modifiche allo stato del thread e gli eventi definiti dall'utente. Per usare la traccia eventi, è sufficiente compilare le librerie ThreadX, NetX e FileX con **TX_ENABLE_EVENT_TRACE** definite e abilitare la traccia chiamando la funzione **_tx_trace_enable_** . In questo capitolo viene descritto il processo.
+Azure RTOS ThreadX fornisce il supporto predefinito della traccia eventi per tutti i servizi ThreadX, le modifiche dello stato dei thread e gli eventi definiti dall'utente. Per usare la traccia eventi, è sufficiente compilare le librerie ThreadX, NetX e FileX con TX_ENABLE_EVENT_TRACE definito **e** abilitare la traccia chiamando la **_tx_trace_enable_** funzione . Questo capitolo descrive tale processo.
 
 ## <a name="event-trace-format"></a>Formato traccia eventi
 
-Il formato del buffer di traccia dell'evento ThreadX è suddiviso in tre sezioni, ovvero l'intestazione del controllo, il registro oggetti e le voci di traccia. Di seguito viene descritto il layout generale del buffer di traccia dell'evento ThreadX:
+Il formato del buffer di traccia degli eventi ThreadX è suddiviso in tre sezioni: l'intestazione del controllo, il registro oggetti e le voci di traccia. Di seguito viene descritto il layout generale del buffer di traccia degli eventi ThreadX:
 
 **Intestazione del controllo**
 
-**Voce del registro di sistema dell'oggetto 0**
+**Voce del Registro di sistema dell'oggetto 0**
 
 **…**
 
-**Voce del registro oggetti "n"**
+**Voce registro oggetti "n"**
 
-**Immissione traccia eventi 0**
+**Voce di traccia eventi 0**
 
 **…**
 
 **Voce di traccia eventi "n"**
 
-### <a name="event-trace-control-header"></a>Intestazione controllo traccia eventi
+### <a name="event-trace-control-header"></a>Intestazione del controllo Traccia eventi
 
-L'intestazione del controllo definisce il layout esatto del buffer di traccia eventi. Ciò include il numero di oggetti ThreadX che è possibile registrare e il numero di eventi che possono essere registrati. Inoltre, l'intestazione del controllo definisce la posizione in cui si trovano tutti gli elementi del buffer di traccia. La struttura dei dati seguente definisce l'intestazione del controllo:
+L'intestazione del controllo definisce il layout esatto del buffer di traccia eventi. Sono inclusi il numero di oggetti ThreadX che è possibile registrare e il numero di eventi che è possibile registrare. Inoltre, l'intestazione del controllo definisce la posizione in cui risiede ogni elemento del buffer di traccia. La struttura di dati seguente definisce l'intestazione del controllo:
 
 ```c
 typedef struct TX_TRACE_CONTROL_HEADER_STRUCT
@@ -58,39 +58,39 @@ typedef struct TX_TRACE_CONTROL_HEADER_STRUCT
 } TX_TRACE_CONTROL_HEADER;
 ```
 
-### <a name="control-header-id"></a>ID intestazione del controllo
+### <a name="control-header-id"></a>ID intestazione controllo
 
-L'ID dell'intestazione del controllo è costituito dal valore ESADECIMALe a 32 bit di 0x54585442, che corrisponde ai caratteri ASCII ***TXTB***. Poiché questo valore viene scritto come variabile senza segno a 32 bit, può essere utilizzato anche per rilevare l'oggetto dell'oggetto buffer di traccia eventi. Se, ad esempio, il valore nei primi quattro addii di memoria è 0x54, 0x58, 0x54, 0x42, il buffer di traccia eventi è stato scritto in formato big endian. In caso contrario, il buffer di traccia eventi è stato scritto in formato little endian.
+L'ID dell'intestazione del controllo è costituito dal valore HEX a 32 bit di 0x54585442, che corrisponde ai caratteri ASCII ***TXTB.*** Poiché questo valore viene scritto come variabile senza segno a 32 bit, può essere usato anche per rilevare l'endianness del buffer di traccia eventi. Ad esempio, se il valore nei primi quattro byte della memoria è 0x54, 0x58, 0x54, 0x42, il buffer di traccia degli eventi è stato scritto in big endian formato. In caso contrario, il buffer di traccia degli eventi è stato little endian formato.
 
-### <a name="timer-valid-mask"></a>Maschera del timer valida
+### <a name="timer-valid-mask"></a>Maschera valida timer
 
-La maschera timer valida definisce il numero di bit del timestamp nelle voci della traccia eventi effettivi validi. Se, ad esempio, l'origine timestamp dispone di 16 bit, il valore in questo campo dovrebbe essere 0xFFFF. Un'origine timestamp a 32 bit avrà un valore 0xFFFFFFFF. Questo valore è definito dalla costante ***TX_TRACE_TIME_MASK** _ in _ *_tx_port. h_* *.
+La maschera valida del timer definisce il numero di bit del timestamp nelle voci di traccia eventi effettive valide. Ad esempio, se l'origine timestamp ha 16 bit, il valore in questo campo deve essere 0xFFFF. Un'origine timestamp a 32 bit avrebbe un valore di 0xFFFFFFFF. Questo valore è definito dalla costante ***TX_TRACE_TIME_MASK** _ in _*_tx_port.h_**.
 
 ### <a name="trace-base-address"></a>Indirizzo di base della traccia
 
-L'indirizzo di base del buffer di traccia è l'indirizzo specificato dall'applicazione come inizio del buffer di traccia nella chiamata ***tx_trace_enable*** . Questo indirizzo viene mantenuto per l'utilizzo esclusivo dello strumento di analisi per derivare gli offset bufferrelative per i vari elementi nel buffer. Ad esempio, l'offset relativo del buffer dell'evento corrente nel buffer di traccia viene calcolato dalla semplice sottrazione dell'indirizzo di base dall'indirizzo dell'evento corrente.
+L'indirizzo di base del buffer di traccia è l'indirizzo specificato dall'applicazione come inizio del buffer di traccia ***nella tx_trace_enable*** chiamata. Questo indirizzo viene mantenuto per l'unico uso dello strumento di analisi per derivare offset bufferrelative per i vari elementi nel buffer. Ad esempio, l'offset relativo del buffer dell'evento corrente nel buffer di traccia viene calcolato dalla semplice sottrazione dell'indirizzo di base dall'indirizzo dell'evento corrente.
 
-### <a name="registry-start-and-end-pointers"></a>Puntatori di inizio e fine del registro di sistema
+### <a name="registry-start-and-end-pointers"></a>Puntatori all'inizio e alla fine del Registro di sistema
 
-Il puntatore di avvio del registro di sistema punta all'indirizzo della prima voce del registro di sistema dell'oggetto, mentre il puntatore di fine del registro di sistema punta all'indirizzo im. /mediately dopo l'ultima voce di registro. Questi valori vengono impostati durante l'elaborazione del *tx_trace_enable* e non vengono modificati durante la durata della traccia.
+Il puntatore di avvio del Registro di sistema punta all'indirizzo della prima voce del Registro di sistema dell'oggetto, mentre il puntatore finale del Registro di sistema punta all'indirizzo im.. /mediamente dopo l'ultima voce di registro. Questi valori vengono specificati durante *l'tx_trace_enable* e non vengono modificati per tutta la durata della traccia.
 
-### <a name="registry-name-size"></a>Dimensioni Nome registro
+### <a name="registry-name-size"></a>Dimensioni del nome del Registro di sistema
 
-Le dimensioni del nome del registro di sistema definiscono le dimensioni massime in byte per ogni nome di oggetto nella voce del registro di sistema ed è definito dal simbolo ***TX_TRACE_OBJECT_REGISTRY_NAME** _. Il valore predefinito è 32 ed è definito in _*_tx_trace. h_*_. Il nome dell'oggetto corrisponde al nome assegnato dall'applicazione al momento della creazione dell'oggetto. Ad esempio, il nome del registro di sistema dell'oggetto per un thread è il nome fornito dall'applicazione alla chiamata _ *_tx_thread_create_* *.
+La dimensione del nome del Registro di sistema definisce le dimensioni massime in byte per ogni nome di oggetto nella voce del Registro di sistema ed è definita dal simbolo ***TX_TRACE_OBJECT_REGISTRY_NAME** _. Il valore predefinito è 32 ed è definito in _*_tx_trace.h._*_ Il nome dell'oggetto corrisponde al nome specificato dall'applicazione al momento della creazione dell'oggetto. Ad esempio, il nome del Registro di sistema dell'oggetto per un thread è il nome fornito dall'applicazione alla chiamata _*_tx_thread_create_**.
 
-### <a name="buffer-start-and-end-pointers"></a>Puntatori di inizio e fine del buffer
+### <a name="buffer-start-and-end-pointers"></a>Puntatori di inizio ed fine del buffer
 
-Il puntatore di avvio del buffer di traccia eventi punta all'indirizzo della prima voce di traccia, mentre il puntatore finale del registro di sistema punta all'indirizzo im. /mediately che segue l'ultima voce di traccia. Questi valori vengono impostati durante l' ***tx_trace_enable</*** elaborazione e non vengono modificati durante la durata della traccia.
+Il puntatore iniziale del buffer di traccia eventi punta all'indirizzo della prima voce di traccia, mentre il puntatore finale del Registro di sistema punta all'indirizzo im.. /mediamente dopo l'ultima voce di traccia. Questi valori vengono specificati durante il ***tx_trace_enable</elaborazione*** e non vengono modificati per tutta la durata della traccia.
 
-### <a name="current-buffer-pointer"></a>Puntatore al buffer corrente
+### <a name="current-buffer-pointer"></a>Puntatore del buffer corrente
 
-Il puntatore corrente del buffer di traccia eventi punta all'indirizzo della voce di traccia meno recente. Poiché le voci di traccia vengono mantenute in un elenco circolare, il puntatore al buffer corrente rappresenta anche la voce di traccia successiva da scrivere. |
+Il puntatore corrente del buffer di traccia eventi punta all'indirizzo della voce di traccia meno recente. Poiché le voci di traccia vengono mantenute in un elenco circolare, il puntatore del buffer corrente rappresenta anche la voce di traccia successiva da scrivere. |
 
 ## <a name="event-trace-object-registry"></a>Registro oggetti traccia eventi
 
-Il registro degli oggetti di traccia eventi contiene le voci del registro di sistema dell'oggetto ***n** che corrispondono agli oggetti creati dall'applicazione. Lo scopo principale del registro oggetti è per gli strumenti di analisi esterna correlare i nomi di oggetto effettivi con gli indirizzi degli oggetti delle voci del buffer di traccia. Il numero di voci del registro di sistema viene specificato dall'applicazione nella chiamata _ *_tx_trace_enable_**.
+Il Registro di sistema dell'oggetto traccia eventi contiene ***n** _ voci del Registro di sistema dell'oggetto che corrispondono agli oggetti creati dall'applicazione. Lo scopo principale del Registro di sistema degli oggetti è quello di mettere in correlazione i nomi degli oggetti effettivi con gli indirizzi degli oggetti delle voci del buffer di traccia. Il numero di voci del Registro di sistema viene specificato dall'applicazione nella chiamata _ *_tx_trace_enable_** .
 
-Ogni voce del registro oggetti contiene informazioni su un oggetto ThreadX specifico creato in precedenza dall'applicazione. La struttura dei dati seguente definisce la voce del registro di sistema di ogni oggetto:
+Ogni voce del registro oggetti contiene informazioni su un oggetto ThreadX specifico creato in precedenza dall'applicazione. La struttura di dati seguente definisce ogni voce del Registro di sistema dell'oggetto:
 
 ```c
 typedef struct TX_TRACE_OBJECT_REGISTRY_ENTRY_STRUCT
@@ -107,11 +107,11 @@ typedef struct TX_TRACE_OBJECT_REGISTRY_ENTRY_STRUCT
 } TX_TRACE_OBJECT_REGISTRY_ENTRY;
 ```
 
-### <a name="object-available-flag"></a>Flag oggetto disponibile
+### <a name="object-available-flag"></a>Flag disponibile per gli oggetti
 
-Il flag oggetto disponibile viene impostato su 1 se è disponibile la voce del registro di sistema dell'oggetto. In caso contrario, se il valore non è 1, la voce del registro di sistema dell'oggetto non è disponibile. Si noti che la voce potrebbe ancora contenere informazioni valide anche se disponibile.
+Il flag object available è impostato su 1 se la voce del Registro di sistema dell'oggetto è disponibile. In caso contrario, se il valore non è 1, la voce del Registro di sistema dell'oggetto non è disponibile. Si noti che la voce potrebbe comunque contenere informazioni valide anche se è disponibile.
 
-### <a name="object-entry-type"></a>Tipo voce oggetto
+### <a name="object-entry-type"></a>Tipo di voce dell'oggetto
 
 Il tipo di voce dell'oggetto identifica il tipo di oggetto in questa voce. Di seguito è riportato un elenco dei tipi di oggetto validi:
 
@@ -123,63 +123,63 @@ Il tipo di voce dell'oggetto identifica il tipo di oggetto in questa voce. Di se
 | 3         | Coda |
 | 4         | Semaphore |
 | 5         | Mutex |
-| 6         | Gruppo flag di evento |
-| 7         | Blocca pool |
-| 8         | Pool di byte |
+| 6         | Gruppo di flag di eventi |
+| 7         | Pool a blocchi |
+| 8         | Byte Pool |
 | 9         | .. /media |
 | 10        | File |
 | 11        | IP |
 | 12        | Pool di pacchetti |
-| 13        | Socket TCP |
-| 14        | Socket UDP |
+| 13        | TCP Socket |
+| 14        | UDP Socket |
 | 15-20     | Riservato |  
 | 21        | Dispositivo stack host USB |
 | 22        | Interfaccia stack host USB |
-| 23        | Endpoint host USB |
+| 23        | USB Host Endpoint |
 | 24        | Classe host USB |
 | 25        | Dispositivo USB |
-| 26        | Interfaccia del dispositivo USB |
+| 26        | Interfaccia dispositivo USB |
 | 27        | Endpoint dispositivo USB |
 | 28        | Classe dispositivo USB |
 
-### <a name="object-pointer"></a>Puntatore all'oggetto
+### <a name="object-pointer"></a>Puntatore a oggetto
 
-Il puntatore all'oggetto specifica l'indirizzo dell'oggetto usato per accedere all'oggetto usando l'API ThreadX.
+Il puntatore a oggetto specifica l'indirizzo dell'oggetto usato per accedere all'oggetto tramite l'API ThreadX.
 
-### <a name="object-reserved-fields"></a>Campi riservati oggetto
+### <a name="object-reserved-fields"></a>Campi riservati dell'oggetto
 
-Per tutti gli oggetti diversi dai thread, questi campi riservati devono essere 0. Per i thread, la priorità del thread nel momento in cui viene immessa nel registro di sistema viene inserita in questi due campi riservati.
+Per tutti gli oggetti diversi da thread, questi campi riservati devono essere 0. Per i thread, la priorità del thread al momento dell'immissione nel Registro di sistema viene inserita in questi due campi riservati.
 
-### <a name="object-parameters"></a>Parametri oggetto
+### <a name="object-parameters"></a>Parametri dell'oggetto
 
-I parametri dell'oggetto contengono informazioni aggiuntive sull'oggetto. Di seguito vengono descritte le informazioni aggiuntive per ogni oggetto ThreadX:
+I parametri dell'oggetto contengono informazioni supplementari sull'oggetto. Di seguito vengono descritte le informazioni supplementari per ogni oggetto ThreadX:
 
 | **Tipo oggetto**        | **Parametro 1**  | **Parametro 2** |
 |----------------------- | ---------------- | --------------- |
-| Thread                 | Inizio dello stack      | Dimensioni dello stack |
-| Timer                  | Cicli iniziali | Ripianificazione di cicli |
+| Thread                 | Avvio dello stack      | Dimensioni dello stack |
+| Timer                  | Tick iniziali | Ripianificare i tick |
 | Coda                  | Dimensione della coda | Dimensioni del messaggio |
 | Semaphore              | Istanze iniziali | - |
-| Mutex                  | Flag ereditarietà | - |
-| Gruppo flag di evento      | - | - |
-| Blocca pool             | Blocchi totali | Dimensione blocco |
-| Pool di byte              | Total Bytes | - |
-| .. /media                  | Dimensioni cache FAT | Dimensioni della cache del settore |
+| Mutex                  | Flag di ereditarietà | - |
+| Gruppo di flag di eventi      | - | - |
+| Pool a blocchi             | Totale blocchi | Dimensione blocco |
+| Byte Pool              | Total Bytes | - |
+| .. /media                  | Dimensioni cache fat | Dimensioni della cache di settore |
 | File                   | - | - |
-| IP                     | Inizio dello stack | Dimensioni dello stack |
+| IP                     | Avvio dello stack | Dimensioni dello stack |
 | Pool di pacchetti            | Dimensione pacchetti | Numero di pacchetti |
-| Socket TCP             | Indirizzo IP | Dimensioni della finestra |
-| Socket UDP             | Indirizzo IP | Massimo coda RX |
+| TCP Socket             | Indirizzo IP | Dimensioni della finestra |
+| UDP Socket             | Indirizzo IP | RX Queue Max |
 
 ### <a name="object-name"></a>Nome oggetto
 
-Il nome dell'oggetto contiene il nome dell'oggetto ThreadX. Il nome è il nome fornito a ThreadX al momento della creazione dell'oggetto. Per impostazione predefinita, il nome dell'oggetto è costituito da un massimo di 32 caratteri. I nomi effettivi maggiori di 32 caratteri vengono troncati.
+Il nome dell'oggetto contiene il nome dell'oggetto ThreadX. Il nome è il nome fornito a ThreadX al momento della creazione dell'oggetto. Per impostazione predefinita, il nome dell'oggetto ha un massimo di 32 caratteri. I nomi effettivi maggiori di 32 caratteri vengono troncati.
 
-## <a name="event-trace-entries"></a>Voci di traccia eventi
+## <a name="event-trace-entries"></a>Voci di Traccia eventi
 
-Le voci della traccia eventi si trovano nella parte inferiore del buffer di traccia eventi. Le voci vengono mantenute in un elenco circolare, con il puntatore alla voce corrente che punta alla voce meno recente. Il numero di voci nell'elenco viene calcolato dalla chiamata ***tx_trace_enable*** .
+Le voci di traccia eventi si trovano nella parte inferiore del buffer di traccia eventi. Le voci vengono mantenute in un elenco circolare, con il puntatore di ingresso corrente che punta alla voce meno recente. Il numero di voci nell'elenco viene calcolato dalla ***tx_trace_enable*** chiamata.
 
-Ogni voce del registro oggetti contiene informazioni su un evento di traccia ThreadX specifico. La struttura dei dati seguente definisce ogni voce dell'evento di traccia:
+Ogni voce del registro oggetti contiene informazioni su un evento di traccia ThreadX specifico. La struttura di dati seguente definisce ogni voce di evento di traccia:
 
 ```c
 typedef struct TX_TRACE_BUFFER_ENTRY_STRUCT
@@ -197,16 +197,16 @@ typedef struct TX_TRACE_BUFFER_ENTRY_STRUCT
 
 ### <a name="thread-pointer"></a>Puntatore thread
 
-Il puntatore al thread contiene l'indirizzo del thread in esecuzione al momento dell'evento. Se l'evento si è verificato durante l'inizializzazione (nessun thread in esecuzione), il valore di questo puntatore è 0xF0F0F0F0. Se l'evento si è verificato durante una routine del servizio di interrupt (ISR), il valore di questo puntatore è 0xFFFFFFFF. Se la voce non è ancora stata utilizzata, il valore di questo puntatore è 0.
+Il puntatore del thread contiene l'indirizzo del thread in esecuzione al momento dell'evento. Se l'evento si è verificato durante l'inizializzazione (nessun thread in esecuzione), il valore di questo puntatore viene 0xF0F0F0F0. Se l'evento si è verificato durante un'istruzione ISR (Interrupt Service Routine), il valore di questo puntatore viene 0xFFFFFFFF. Se la voce non è ancora stata usata, il valore di questo puntatore è 0.
 
 ### <a name="thread-priority"></a>Priorità thread
 
-Il campo priorità thread contiene la priorità del thread e la soglia di precedenza del thread che era in esecuzione al momento dell'evento. Se è presente un contesto di interrupt (puntatore al thread è 0xFFFFFFFF), il valore di questo campo non è la priorità, ma il valore di ***_tx_thread_current_ptr*** al momento dell'evento. In caso contrario, il valore di questo campo è 0.
+Il campo priorità thread contiene la priorità del thread e la soglia di precedenza del thread in esecuzione al momento dell'evento. Se è presente un contesto di interrupt (il puntatore del thread è 0xFFFFFFFF), il valore di questo campo non è la priorità, ma il valore di ***_tx_thread_current_ptr*** al momento dell'evento. In caso contrario, il valore di questo campo è 0.
 
 ### <a name="event-id"></a>ID evento
 
-L'ID evento specifica l'evento che ha avuto luogo. Gli ID evento di traccia ThreadX validi sono compresi tra 1 e 1024. I valori a partire da 1025 e versioni successive sono riservati per gli eventi specifici dell'utente. Per la definizione completa degli ID evento ThreadX, vedere il file ***tx_trace. h*** .</td>
+L'ID evento specifica l'evento che ha avuto luogo. Gli ID di evento di traccia ThreadX validi sono compreso tra 1 e 1024. I valori a partire da 1025 e superiori sono riservati per gli eventi specifici dell'utente. Fare riferimento al file ***tx_trace.h per*** la definizione completa degli ID evento ThreadX.</td>
 
 ### <a name="information-fields-1-4"></a>Campi informazioni (1-4)
 
-I campi informativi contengono informazioni aggiuntive sull'evento specifico. Per una descrizione completa dei campi di informazioni per ogni ID evento ThreadX definito, vedere il file ***tx_trace. h*** .
+I campi di informazioni contengono informazioni aggiuntive sull'evento specifico. Fare riferimento al file ***tx_trace.h per*** la descrizione completa dei campi di informazioni per ogni ID evento ThreadX definito.

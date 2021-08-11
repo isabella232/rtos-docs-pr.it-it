@@ -1,31 +1,31 @@
 ### YamlMime:Landing
-title: Documentazione di Azure RTO LevelX
-summary: Azure RTO LevelX offre funzionalità di livellamento NAND e NOR Flash per le applicazioni incorporate.
+title: Azure RTOS documentazione di LevelX
+summary: Azure RTOS LevelX fornisce funzionalità di livellamento dell'usura flash NAD e NOR alle applicazioni incorporate.
 metadata:
-  title: Che cos'è Azure RTO LevelX?
-  description: Azure RTO LevelX offre funzionalità di livellamento NAND e NOR Flash per le applicazioni incorporate.
+  title: Che cos'Azure RTOS LevelX?
+  description: Azure RTOS LevelX fornisce funzionalità di livellamento dell'usura flash NAD e NOR alle applicazioni incorporate.
   services: rtos
   ms.service: rtos
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 07/10/2020
-  ms.openlocfilehash: 27ce4d34d53b2a6daec651dd83c648024aad0291
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: ea822259a774e57cb9e018a90a1985f291a4cbbd157b086753680f577e8cbc94
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: MT
   ms.contentlocale: it-IT
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797880"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116790548"
 landingContent:
-- title: Introduzione ad Azure RTO LevelX
+- title: Introduzione a Azure RTOS LevelX
   linkLists:
   - linkListType: overview
     links:
-    - text: Che cos'è Azure RTO LevelX?
+    - text: Che cos'Azure RTOS LevelX?
       url: chapter1.md
-- title: Installare e usare Azure RTO LevelX
+- title: Installare e usare Azure RTOS LevelX
   linkLists:
   - linkListType: get-started
     links:
-    - text: Guida dell'utente di Azure RTO LevelX
+    - text: Azure RTOS utente di LevelX
       url: chapter2.md

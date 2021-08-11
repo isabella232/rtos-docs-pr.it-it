@@ -1,45 +1,45 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX BSD
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente RTO NetX BSD di Azure.
+title: Capitolo 2 - Installazione e uso di Azure RTOS NetX BSD
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS BSD NetX.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7539565ccd4956c5354be45000efab8318dc606c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c04175ec18dff160faf853d675c9c85c9a0c6fbc5e834c410a7cb97a739c69f8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822748"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796702"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-bsd"></a>Capitolo 2-installazione e uso di Azure RTO NetX BSD
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-bsd"></a>Capitolo 2 - Installazione e uso di Azure RTOS NetX BSD
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente RTO NetX BSD di Azure.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS BSD NetX.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-È possibile ottenere Azure RTO NetX BSD dal repository di codice sorgente pubblico all'indirizzo [https://github.com/azure-rtos/netx/](https://github.com/azure-rtos/netx/) . Il pacchetto include due file di origine e un file PDF che contiene questo documento, come indicato di seguito:
+Azure RTOS BSD NetX può essere ottenuto dal repository del codice sorgente pubblico all'indirizzo [https://github.com/azure-rtos/netx/](https://github.com/azure-rtos/netx/) . Il pacchetto include due file di origine e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nx_bsd. h**: file di intestazione per NETX BSD
-- **nx_bsd. c**: file di origine c per NETX BSD
-- **nx_bsd.pdf**: manuale dell'utente per NETX BSD
+- **nx_bsd.h:** file di intestazione per NetX BSD
+- **nx_bsd.c**: file di origine C per NetX BSD
+- **nx_bsd.pdf**: Manuale dell'utente per NetX BSD
 
 File demo:
-- **bsd_demo_tcp. c**
-- **bsd_demo_udp. c**
+- **bsd_demo_tcp.c**
+- **bsd_demo_udp.c**
 
 ## <a name="netx-bsd-installation"></a>Installazione di NetX BSD
 
-Per poter usare NetX BSD, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Se, ad esempio, NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_bsd. h* e *nx_bsd. c* devono essere copiati in questa directory.
+Per usare NetX BSD, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_bsd.h* e *nx_bsd.c* devono essere copiati in questa directory.
 
 ## <a name="building-the-threadx-and-netx-components-of-a-bsd-application"></a>Compilazione dei componenti ThreadX e NetX di un'applicazione BSD
 
 ### <a name="threadx"></a>ThreadX
 
-La libreria ThreadX deve definire *bsd_errno* nell'archiviazione locale di thread. Si consiglia la seguente procedura:
+La libreria ThreadX deve *definire* bsd_errno nell'archiviazione locale del thread. È consigliabile seguire questa procedura:
 
-1. In *tx_port. h*, impostare una delle macro TX_THREAD_EXTENSION come indicato di seguito:
+1. In *tx_port.h* impostare una delle macro TX_THREAD_EXTENSION seguenti:
 
   ```c
   #define TX_THREAD_EXTENSION_3     int bsd_errno
@@ -48,17 +48,17 @@ La libreria ThreadX deve definire *bsd_errno* nell'archiviazione locale di threa
 2. Ricompilare la libreria ThreadX.
 
 > [!NOTE]
-> Se TX_THREAD_EXTENSION_3 è già in uso, l'utente è libero di usare una delle altre macro TX_THREAD_EXTENSION.
+> Se TX_THREAD_EXTENSION_3 già usato, l'utente è libero di usare una delle altre macro TX_THREAD_EXTENSION macro.
 
-### <a name="netx"></a>NetX
+### <a name="netx"></a>Netx
 
-Prima di usare NetX BSD Services, è necessario compilare la libreria NetX con NX_ENABLE_EXTENDED_NOTIFY_SUPPORT definito (ad esempio, in *nx_user. h*). Per impostazione predefinita, non è definito.
+Prima di usare NetX BSD Services, la libreria NetX deve essere compilata con NX_ENABLE_EXTENDED_NOTIFY_SUPPORT definito (ad esempio in *nx_user.h*). Per impostazione predefinita, non è definito.
 
 ## <a name="using-netx-bsd"></a>Uso di NetX BSD
 
-L'uso di BSD per NetX è facile. In pratica, il codice dell'applicazione deve includere *nx_bsd. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX. Una volta incluso *nx_bsd. h* , il codice dell'applicazione è in grado di usare i servizi BSD specificati più avanti in questa guida. Nell'applicazione deve inoltre essere incluso *nx_bsd. c* nel processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX BSD.
+L'uso di BSD per NetX è semplice. In pratica, il codice dell'applicazione deve includere *nx_bsd.h* dopo aver incluso *rispettivamente tx_api.h* e *nx_api.h*, per poter usare rispettivamente ThreadX e NetX. Dopo *nx_bsd.h,* il codice dell'applicazione può usare i servizi BSD specificati più avanti in questa guida. L'applicazione deve anche *includere nx_bsd.c* nel processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX BSD.
 
-Per usare i servizi NetX BSD, l'applicazione deve creare un'istanza IP, un pool di pacchetti e inizializzare i servizi BSD chiamando *bsd_initialize.* Questa procedura è illustrata nella sezione "piccolo esempio" più avanti in questa guida. Il prototipo è illustrato di seguito:
+Per utilizzare i servizi BSD NetX, l'applicazione deve creare un'istanza IP, un pool di pacchetti e inizializzare i servizi BSD chiamando *bsd_initialize.* Questo è illustrato nella sezione "Piccolo esempio" più avanti in questa guida. Il prototipo è illustrato di seguito:
 
 ```c
 INT bsd_initialize(NX_IP *default_ip, NX_PACKET_POOL *default_pool,
@@ -66,22 +66,22 @@ INT bsd_initialize(NX_IP *default_ip, NX_PACKET_POOL *default_pool,
                   UINT bsd_thread_priority);
 ```
 
-Gli ultimi tre parametri vengono utilizzati per la creazione di un thread per eseguire attività periodiche, ad esempio la verifica degli eventi TCP e la definizione dello spazio dello stack dei thread.
+Gli ultimi tre parametri vengono usati per creare un thread per l'esecuzione di attività periodiche, ad esempio il controllo degli eventi TCP e la definizione dello spazio dello stack di thread.
 
 > [!NOTE]
-> A differenza dei socket BSD, che funzionano nell'ordine di rete bye, NetX funziona nell'ordine dei byte dell'host del processore host. Per motivi di compatibilità con l'origine, le macro htons (), ntohs (), htonl (), ntohl () sono state definite, ma non modificano l'argomento passato.
+> A differenza dei socket BSD, che funzionano in ordine bye di rete, NetX funziona nell'ordine dei byte host del processore host. Per motivi di compatibilità con l'origine, le macro htons(), ntohs(), htonl()), ntohl() sono state definite, ma non modificare l'argomento passato.
 
 ## <a name="netx-bsd-limitations"></a>Limitazioni di NetX BSD
 
-A causa di problemi relativi alle prestazioni e all'architettura, NetX BSD non supporta tutte le funzionalità socket di BSD 4,3:
+A causa di problemi di prestazioni e architettura, NetX BSD non supporta tutte le funzionalità del socket BSD 4.3:
 
-I flag INT non sono supportati per le chiamate *Send, ricezione, SendTo* e *recvfrom* .
+I flag INT non sono supportati per *le chiamate send, recv, sendto* *e recvfrom.*
 
 ## <a name="netx-bsd-with-dns-support"></a>NetX BSD con supporto DNS
 
-Se NX_BSD_ENABLE_DNS è stato definito, NetX BSD può inviare query DNS per ottenere informazioni sul nome host o sull'indirizzo IP dell'host. Questa funzionalità richiede che un client DNS NetX venga creato in precedenza usando il servizio *nx_dns_create* . Uno o più indirizzi IP del server DNS noti devono essere registrati con l'istanza DNS usando il *nx_dns_server_add* per l'aggiunta degli indirizzi del server.
+Se NX_BSD_ENABLE_DNS definito, NetX BSD può inviare query DNS per ottenere informazioni sul nome host o sull'indirizzo IP dell'host. Questa funzionalità richiede che un client DNS NetX sia stato creato in precedenza usando il *nx_dns_create* servizio. Uno o più indirizzi IP del server DNS noti devono essere registrati con l'istanza DNS *usando* il nx_dns_server_add per l'aggiunta di indirizzi del server.
 
-I servizi DNS e l'allocazione di memoria vengono usati dai servizi *funzione getaddrinfo* e *GetNameInfo* :
+I servizi DNS e l'allocazione di memoria vengono usati *dai servizi getaddrinfo* *e getnameinfo:*
 
 ```c
 INT getaddrinfo(const CHAR *node, const CHAR *service,
@@ -91,84 +91,84 @@ INT getnameinfo(const struct sockaddr *sa, socklen_t salen,
               char *host, size_t hostlen, char *serv, size_t servlen, int flags)
 ```
 
-Quando l'applicazione BSD chiama *funzione getaddrinfo* con un nome host, NETX BSD chiamerà uno dei servizi seguenti per ottenere l'indirizzo IP:
+Quando l'applicazione BSD chiama *getaddrinfo* con un nome host, NetX BSD chiamerà uno dei servizi seguenti per ottenere l'indirizzo IP:
 
 - nx_dns_ipv4_address_by_name_get
 - nx_dns_cname_get
 
-Per *nx_dns_ipv4_address_by_name_get*, NETX BSD usa le aree di memoria ipv4_addr_buffer. Le dimensioni di questi buffer sono definite da ( `NX_BSD_IPV4_ADDR_PER_HOST * 4` ).
+Ad *nx_dns_ipv4_address_by_name_get*, NetX BSD usa le ipv4_addr_buffer di memoria. Le dimensioni di questi buffer sono definite da ( `NX_BSD_IPV4_ADDR_PER_HOST * 4` ).
 
-Per restituire le informazioni sull'indirizzo da *funzione getaddrinfo*, NETX BSD usa la tabella di memoria a blocchi threadX *nx_bsd_addrinfo_pool_memory*, la cui area di memoria è definita da un altro set di opzioni configurabili, *NX_BSD_IPV4_ADDR_MAX_NUM*.
+Per restituire informazioni sull'indirizzo da *getaddrinfo*, NetX BSD usa la tabella di memoria a blocchi ThreadX *nx_bsd_addrinfo_pool_memory*, la cui area di memoria è definita da un altro set di *opzioni configurabili, NX_BSD_IPV4_ADDR_MAX_NUM*.
 
-Per ulteriori informazioni sulle opzioni di configurazione precedenti, vedere **Opzioni di configurazione** .
+Per **altri dettagli sulle** opzioni di configurazione precedenti, vedere Opzioni di configurazione.
 
-Inoltre, se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito e l'input dell'host è un nome canonico, NetX BSD alloca la memoria in modo dinamico da un pool di blocchi creato in precedenza *_nx_bsd_cname_block_pool*
+Inoltre, se NX_DNS_ENABLE_EXTENDED_RR_TYPES definito e l'input host è un nome canonico, NetX BSD alloca la memoria in modo dinamico da un pool di blocchi creato in *precedenza _nx_bsd_cname_block_pool*
 
 > [!NOTE]
-> Dopo la chiamata a *funzione getaddrinfo* , l'applicazione BSD è responsabile del rilascio della memoria a cui fa riferimento l'argomento res alla tabella dei blocchi usando il servizio *FreeAddrInfo* .
+> Dopo aver *chiamato getaddrinfo,* l'applicazione BSD è responsabile del rilascio della memoria a cui punta l'argomento res alla tabella di blocco usando il *servizio freeaddrinfo.*
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Le opzioni configurabili dall'utente in *nx_bsd. h* consentono all'applicazione di ottimizzare i socket NETX BSD per i requisiti specifici. Di seguito è riportato un elenco di questi parametri:
+Le opzioni configurabili dall'utente *in nx_bsd.h* consentono all'applicazione di ottimizzare i socket BSD NetX per i requisiti specifici. Di seguito è riportato un elenco di questi parametri:
 
-- **NX_BSD_TCP_WINDOW**: utilizzato nelle chiamate di creazione socket TCP. 65535 è una tipica dimensione della finestra per Ethernet 100Mb. Il valore predefinito è 65535.
-- **NX_BSD_SOCKFD_START** Si tratta dell'indice logico per il valore iniziale del descrittore del file socket BSD. Per impostazione predefinita, questa opzione è 32.
-- **NX_BSD_MAX_SOCKETS** Specifica il numero massimo di socket totali disponibili nel livello BSD e deve essere un multiplo di 32. per impostazione predefinita, il valore è 32.
+- **NX_BSD_TCP_WINDOW**: usato nelle chiamate di creazione del socket TCP. 65535 è una tipica dimensione della finestra per 100 Mb Ethernet. Il valore predefinito è 65535.
+- **NX_BSD_SOCKFD_START** Si tratta dell'indice logico per il valore di avvio del descrittore del file socket BSD. Per impostazione predefinita, questa opzione è 32.
+- **NX_BSD_MAX_SOCKETS** Specifica il numero massimo di socket totali disponibili nel livello BSD e deve essere un multiplo di 32. Il valore predefinito è 32.
 - **NX_BSD_SOCKET_QUEUE_MAX** Specifica il numero massimo di pacchetti UDP archiviati nella coda del socket di ricezione. Il valore predefinito è 5.
-- **NX_BSD_MAX_LISTEN_BACKLOG** Specifica le dimensioni della coda di ascolto (' backlog ') per i socket TCP BSD. Il valore predefinito è 5.
-- **NX_MICROSECOND_PER_CPU_TICK** Specifica il numero di microsecondi per ogni interrupt del timer
-- **NX_BSD_TIMEOUT** Specifica il timeout nei cicli del timer per le chiamate interne NetX richieste da BSD. Il valore predefinito è 20 * NX_IP_PERIODIC_RATE.
-- **NX_BSD_TCP_SOCKET_DISCONNECT_TIMEOUT**: specifica il timeout nei cicli del timer per la chiamata di disconnessione NETX. Il valore predefinito è 1.
-- **NX_BSD_PRINT_ERRORS** Se impostato, lo stato di errore restituito da una funzione BSD restituisce un numero di riga e il tipo di errore, ad esempio NX_SOC_ERROR in cui si è verificato l'errore. A questo scopo, lo sviluppatore dell'applicazione deve definire l'output di debug. L'impostazione predefinita è disabilitata e non è stato specificato alcun output di debug in *nx_bsd. h*
-- **NX_BSD_TIMER_RATE** Intervallo dopo il quale viene eseguita l'attività del timer periodico BSD. Il valore predefinito è 1 secondo (1 * NX_IP_PERIODIC_RATE).
-- **NX_BSD_TIMEOUT_PROCESS_IN_TIMER** Se impostata, questa opzione consente l'esecuzione del processo di timeout BSD nel contesto del timer di sistema. Il comportamento predefinito è Disabled. Questa funzionalità è descritta in modo più dettagliato nel capitolo 2 "installazione e uso di NetX BSD".
-- **NX_BSD_ENABLE_DNS** Se abilitata, NetX BSD invierà una query DNS per un nome host o un indirizzo IP host. Richiede che un'istanza del client DNS venga creata e avviata in precedenza. Per impostazione predefinita, non è abilitato.
-- **NX_BSD_IPV4_ADDR_MAX_NUM** Numero massimo di indirizzi IPv4 restituiti da *funzione getaddrinfo*. Questo insieme a NX_BSD_IPV4_ADDR_MAX_NUM definisce le dimensioni del pool di blocchi di NetX BSD nx_bsd_addrinfo_block_pool per l'allocazione dinamica della memoria per l'archiviazione delle informazioni di indirizzo in *funzione getaddrinfo*. Il valore predefinito è 5.
+- **NX_BSD_MAX_LISTEN_BACKLOG** Specifica le dimensioni della coda di attesa ('backlog') per i socket TCP BSD. Il valore predefinito è 5.
+- **NX_MICROSECOND_PER_CPU_TICK** Specifica il numero di microsecondi per interrupt timer
+- **NX_BSD_TIMEOUT** Specifica il timeout nei tick timer nelle chiamate interne NetX richieste da BSD. Il valore predefinito è 20*NX_IP_PERIODIC_RATE.
+- **NX_BSD_TCP_SOCKET_DISCONNECT_TIMEOUT**: specifica il timeout nei tick timer nella chiamata di disconnessione NetX. Il valore predefinito è 1.
+- **NX_BSD_PRINT_ERRORS** Se impostato, il valore restituito dello stato di errore di una funzione BSD restituisce un numero di riga e un tipo di errore, ad esempio NX_SOC_ERROR in cui si verifica l'errore. Ciò richiede allo sviluppatore dell'applicazione di definire l'output di debug. L'impostazione predefinita è disabilitata e non viene specificato alcun output di debug *in nx_bsd.h*
+- **NX_BSD_TIMER_RATE** Intervallo dopo il quale viene eseguita l'attività timer periodica BSD. Il valore predefinito è 1 secondo (1 * NX_IP_PERIODIC_RATE).
+- **NX_BSD_TIMEOUT_PROCESS_IN_TIMER** Se impostata, questa opzione consente l'esecuzione del processo di timeout BSD nel contesto del timer di sistema. Il comportamento predefinito è disabilitato. Questa funzionalità è descritta in modo più dettagliato nel capitolo 2 "Installazione e uso di NetX BSD".
+- **NX_BSD_ENABLE_DNS** Se abilitata, NetX BSD invierà una query DNS per un nome host o un indirizzo IP host. Richiede che un'istanza del client DNS sia stata creata e avviata in precedenza. Per impostazione predefinita, non è abilitato.
+- **NX_BSD_IPV4_ADDR_MAX_NUM** Numero massimo di indirizzi IPv4 restituiti da *getaddrinfo*. Insieme a NX_BSD_IPV4_ADDR_MAX_NUM definisce le dimensioni del pool di blocchi NetX BSD nx_bsd_addrinfo_block_pool allocare dinamicamente memoria per l'archiviazione delle informazioni in *getaddrinfo*. Il valore predefinito è 5.
 - **NX_BSD_IPV4_ADDR_PER_HOST**: definisce il numero massimo di indirizzi IPv4 archiviati per ogni query DNS. Il valore predefinito è 5.
 
 ## <a name="bsd-socket-options"></a>Opzioni socket BSD
 
-Il seguente elenco di opzioni socket NetX BSD può essere abilitato (o disabilitato) in fase di esecuzione in base a ogni socket usando il servizio *setsockopt* :
+L'elenco seguente di opzioni socket BSD NetX può essere abilitato (o disabilitato) in fase di esecuzione in base al socket usando il *servizio setsockopt:*
 
 ```c
 INT setsockopt(INT sockID, INT option_level, INT option_name, const
                 void *option_value, INT option_length);
 ```
 
-Esistono due impostazioni diverse per *option_level*.
+Esistono due impostazioni diverse *per* option_level .
 
-Il primo tipo di opzioni dei socket di runtime è SOL_SOCKET per le opzioni a livello di socket. Per abilitare un'opzione a livello di socket, chiamare *setsockopt* con option_level impostato su SOL_SOCKET e option_name impostato sull'opzione specifica, ad esempio SO_BROADCAST. Per recuperare un'impostazione di opzione, chiamare *getsockopt* per la option_name con option_level di nuovo impostato su SOL_SOCKET.
+Il primo tipo di opzioni socket in fase di esecuzione è SOL_SOCKET per le opzioni a livello di socket. Per abilitare un'opzione a livello di socket, chiamare *setsockopt* con option_level impostato su SOL_SOCKET e option_name impostato sull'opzione specifica, ad esempio SO_BROADCAST. Per recuperare un'impostazione di opzione, chiamare *getsockopt* per il option_name con option_level impostato nuovamente su SOL_SOCKET.
 
-Di seguito è riportato l'elenco delle opzioni del livello di socket del runtime.
+Di seguito è riportato l'elenco delle opzioni a livello di socket in fase di esecuzione.
 
-- **SO_BROADCAST**: se impostato, consente l'invio e la ricezione di pacchetti broadcast da NETX Sockets. Questo è il comportamento predefinito per NetX. Questa funzionalità è presente in tutti i socket.
-- **SO_ERROR**: usato per ottenere lo stato del socket per l'operazione socket precedente del socket specificato, usando il servizio *getsockopt* . Questa funzionalità è presente in tutti i socket.
-- **SO_KEEPALIVE**: se impostato, Abilita la funzionalità TCP keep alive. A tale scopo, è necessario compilare la libreria NetX con NX_TCP_ENABLE_KEEPALIVE definito in *nx_user. h*. Per impostazione predefinita, questa funzionalità è disabilitata.
-- **SO_RCVTIMEO**: imposta l'opzione wait in secondi per la ricezione dei pacchetti nei socket NETX BSD. Il valore predefinito è il NX_WAIT_FOREVER (0xFFFFFFFF) o, se il blocco non è abilitato, NX_NO_WAIT (0x0).
-- **SO_RCVBUF**: consente di impostare le dimensioni della finestra del socket TCP. Il valore predefinito, NX_BSD_TCP_WINDOW, è impostato su 64K per i socket TCP BSD. Per impostare la dimensione superiore a 65535, è necessario che la libreria NetX venga compilata con il NX_TCP_ENABLE_WINDOW_SCALING essere definito.
-- **SO_REUSEADDR**: se impostato, consente di eseguire il mapping di più socket a una porta. L'utilizzo tipico è per il socket del server TCP. Si tratta del comportamento predefinito dei socket NetX.
+- **SO_BROADCAST:** se impostato, consente l'invio e la ricezione di pacchetti broadcast dai socket Netx. Questo è il comportamento predefinito per NetX. Tutti i socket hanno questa funzionalità.
+- **SO_ERROR**: usato per ottenere lo stato del socket nell'operazione socket precedente del socket specificato, usando il *servizio getsockopt.* Tutti i socket hanno questa funzionalità.
+- **SO_KEEPALIVE:** se impostato, abilita la funzionalità Keep Alive TCP. Questa operazione richiede che la libreria NetX sia compilata NX_TCP_ENABLE_KEEPALIVE definita in *nx_user.h*. Per impostazione predefinita, questa funzionalità è disabilitata.
+- **SO_RCVTIMEO**: imposta l'opzione di attesa in secondi per la ricezione di pacchetti nei socket BSD NetX. Il valore predefinito è NX_WAIT_FOREVER (0xFFFFFFFF) o, se non è abilitato il blocco, NX_NO_WAIT (0x0).
+- **SO_RCVBUF**: imposta le dimensioni della finestra del socket TCP. Il valore predefinito, NX_BSD_TCP_WINDOW, è impostato su 64.000 per i socket TCP BSD. Per impostare le dimensioni su 65535, è necessario che la libreria NetX sia compilata con la NX_TCP_ENABLE_WINDOW_SCALING essere definita.
+- **SO_REUSEADDR:** se impostato, consente di eseguire il mapping di più socket a una porta. L'utilizzo tipico è per il socket del server TCP. Questo è il comportamento predefinito dei socket NetX.
 
-Il secondo tipo di opzioni del socket di run-time è il livello di opzione IP. Per abilitare un'opzione a livello IP, chiamare *setsockopt* con option_level impostato su IP_PROTO e option_name impostato sull'opzione, ad esempio IP_MULTICAST_TTL. Per recuperare un'impostazione di opzione, chiamare *getsockopt* per la option_name con option_level di nuovo impostato su IP_PROTO.
+Il secondo tipo di opzioni socket in fase di esecuzione è il livello di opzione IP. Per abilitare un'opzione a livello di IP, chiamare *set di chiamateockopt* con option_level impostato su IP_PROTO e option_name impostato sull'opzione , ad esempio IP_MULTICAST_TTL. Per recuperare un'impostazione di opzione, chiamare *getsockopt* per il option_name con option_level impostato nuovamente su IP_PROTO.
 
-Di seguito è riportato l'elenco delle opzioni di livello IP di run-time.
+Di seguito è riportato l'elenco delle opzioni del livello IP della fase di esecuzione.
 
-- **IP_MULTICAST_TTL**: imposta la durata (TTL) per i socket UDP. Il valore predefinito è NX_IP_TIME_TO_LIVE (0x80) al momento della creazione del socket. È possibile eseguire l'override di questo valore chiamando *setsockopt* con questa opzione socket.
-- **IP_ADD_MEMBERSHIP**: se impostata, questa opzione Abilita il socket BSD (si applica solo ai socket UDP) per l'aggiunta al gruppo IGMP specificato.
-- **IP_DROP_MEMBERSHIP**: se impostata, questa opzione Abilita il socket BSD (si applica solo ai socket UDP) per lasciare il gruppo IGMP specificato.
+- **IP_MULTICAST_TTL**: imposta il tempo di vita per i socket UDP. Il valore predefinito è NX_IP_TIME_TO_LIVE (0x80) quando viene creato il socket. Questo valore può essere sostituito chiamando *setsockopt con* questa opzione socket.
+- **IP_ADD_MEMBERSHIP:** se impostata, questa opzione consente al socket BSD (si applica solo ai socket UDP) di partecipare al gruppo IGMP specificato.
+- **IP_DROP_MEMBERSHIP:** se impostata, questa opzione consente al socket BSD (si applica solo ai socket UDP) di uscire dal gruppo IGMP specificato.
 
 ## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
 
-Un esempio di come usare NetX BSD è illustrato nella figura 1,0 riportata di seguito. In questo esempio il file di inclusione *nx_bsd. h* viene introdotto nella riga 7. Successivamente, l'istanza IP *bsd_ip* e *bsd_pool* pool di pacchetti vengono creati come variabili globali alle righe 20 e 21. Si noti che questa demo usa un driver di rete RAM (virtuale) (riga 41). Il client e il server condividono lo stesso indirizzo IP in una singola istanza IP in questo esempio.
+Un esempio di come usare NetX BSD è illustrato nella figura 1.0 seguente. In questo esempio il file di *inclusione nx_bsd.h* viene portato alla riga 7. Successivamente, l'istanza IP *bsd_ip* pool *di* pacchetti bsd_pool vengono create come variabili globali alle righe 20 e 21. Si noti che questa demo usa un driver di rete ram (virtuale) (riga 41). In questo esempio il client e il server condivideranno lo stesso indirizzo IP nella singola istanza IP.
 
-I thread client e server vengono creati alla riga 303 e 309 in *tx_application_define* che imposta l'applicazione ed è definita nelle righe 293-361. Al termine della creazione dell'istanza IP alla riga 327, l'istanza IP è abilitata per i servizi TCP alla riga 350. L'ultimo requisito prima che i servizi BSD possano essere usati è chiamare *bsd_initialize* alla riga 360 per configurare tutte le strutture di dati e NETX e le risorse threadX necessarie per BSD.
+I thread client e server vengono creati nelle righe 303 e 309 *in tx_application_define che* configura l'applicazione ed è definito nelle righe 293-361. Al termine della creazione dell'istanza IP alla riga 327, l'istanza IP viene abilitata per i servizi TCP alla riga 350. L'ultimo requisito prima che sia possibile usare i servizi *BSD* è chiamare bsd_initialize alla riga 360 per configurare tutte le strutture di dati e le risorse NetX e ThreadX necessarie per BSD.
 
-Nella funzione entry thread server *thread_1_entry,* definita nella riga 381-397, l'applicazione attende il driver per inizializzare NETX con i parametri di rete. Al termine, viene chiamato *tcpServer,* definito sulla riga 146-253, per gestire i dettagli della configurazione del socket del server TCP.
+Nella funzione di immissione del thread del server, *thread_1_entry,* definita nelle righe 381-397, l'applicazione attende che il driver inizializza NetX con i parametri di rete. Al termine, chiama *tcpServer,* definito nelle righe 146-253, per gestire i dettagli della configurazione del socket del server TCP.
 
-*tcpServer* crea il socket Master chiamando il servizio *socket* alla riga 159 e lo associa al socket di ascolto usando la chiamata *Bind* alla riga 176. Viene quindi configurata per l'ascolto delle richieste di connessione alla riga 191. Si noti che il socket master non accetta una richiesta di connessione. Viene eseguito in un ciclo continuo che chiama *Select* ogni volta per rilevare le richieste di connessione. Al socket BSD secondario scelto da una matrice di socket BSD viene assegnata la richiesta di connessione dopo la chiamata al servizio *Accept* alla riga 218.
+*tcpServer* crea il socket master chiamando il *servizio socket* sulla riga 159  e lo associa al socket di ascolto usando la chiamata bind sulla riga 176. Viene quindi configurato per l'ascolto delle richieste di connessione alla riga 191. Si noti che il socket master non accetta una richiesta di connessione. Viene eseguito in un ciclo continuo che chiama *select ogni* volta per rilevare le richieste di connessione. A un socket BSD secondario scelto da una matrice di socket BSD viene assegnata la richiesta di connessione dopo aver chiamato il servizio *accept* alla riga 218.
 
-Sul lato client, la funzione di immissione thread del client *thread_0_entry*, definita nelle righe 366-377, deve attendere anche che NETX venga inizializzato dal driver. Qui attendiamo semplicemente il lato server. Chiama quindi *TcpClient* definito alla riga 54-142, per gestire i dettagli della configurazione del socket del client TCP e la richiesta di una connessione TCP.
+Sul lato Client, anche la funzione di immissione del thread client, *thread_0_entry*, definita nelle righe 366-377, deve attendere l'inizializzazione di NetX da parte del driver. In questo caso è sufficiente attendere che il lato server lo faccia. Chiama quindi *tcpClient* definito nella riga 54-142 per gestire i dettagli della configurazione del socket client TCP e della richiesta di una connessione TCP.
 
-Il socket client TCP viene creato alla riga 68. Il socket è associato all'indirizzo IP specificato e tenta di connettersi al server TCP chiamando *Connect* alla riga 84. È ora possibile iniziare l'invio e la ricezione di pacchetti.
+Il socket client TCP viene creato alla riga 68. Il socket è associato all'indirizzo IP specificato e tenta di connettersi al server TCP chiamando *connect* sulla riga 84. È ora possibile iniziare a inviare e ricevere pacchetti.
 
 ```c
 1 /*  This is a small demo of BSD Wrapper for the high-performance NetX TCP/IP stack.

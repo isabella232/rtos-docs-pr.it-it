@@ -1,35 +1,35 @@
 ---
-title: Capitolo 6-Azure RTO LevelX o API
-description: LevelX o API RTO di Azure disponibili per l'applicazione.
+title: Capitolo 6 - Azure RTOS API LevelX NOR
+description: Le Azure RTOS LEVELX NOR disponibili per l'applicazione.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3ab7d3a7e431d7c8f49ef4f5cab9216dc77c8d33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2e109f5916a9e903aa3341f2855ade085e9d9a22b80ec7cb2e0c310e43ff3eac
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822955"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790242"
 ---
-# <a name="chapter-6---azure-rtos-levelx-nor-apis"></a>Capitolo 6-Azure RTO LevelX o API
+# <a name="chapter-6---azure-rtos-levelx-nor-apis"></a>Capitolo 6 - Azure RTOS API LevelX NOR
 
-Le funzioni API o LevelX di Azure RTO non sono disponibili per l'applicazione, come indicato di seguito.
+Le Azure RTOS'API LevelX NOR disponibili per l'applicazione sono le seguenti.
 
-- ***lx_nor_flash_close** _: _Close o l'istanza Flash *
-- ***lx_nor_flash_defragment** _: _Defragment o l'istanza Flash *
-- ***lx_nor_flash_extended_cache_enable** _: _Enable/Disable esteso o cache *
-- ***lx_nor_flash_initialize** _: _Initialize o supporto Flash *
-- ***lx_nor_flash_open** _: _Open o l'istanza Flash *
-- ***lx_nor_flash_partial_defragment** _: _Partial deframmentazione di o di un'istanza Flash *
-- ***lx_nor_flash_sector_read** _: _Read o settore Flash *
-- ***lx_nor_flash_sector_release** _: _Release o settore Flash *
-- ***lx_nor_flash_sector_write** _: _Write o settore Flash *
+- ***lx_nor_flash_close** _: _Close'istanza flash NOR*
+- ***lx_nor_flash_defragment** _: _Defragment'istanza flash NOR*
+- ***lx_nor_flash_extended_cache_enable** _: _Enable/disabilitare la cache NOR estesa*
+- ***lx_nor_flash_initialize** _: _Initialize supporto flash NOR*
+- ***lx_nor_flash_open** _: _Open'istanza flash NOR*
+- ***lx_nor_flash_partial_defragment** _: _Partial deframmentazione dell'istanza flash NOR*
+- ***lx_nor_flash_sector_read** _: _Read SETTORE FLASH NOR*
+- ***lx_nor_flash_sector_release** _: _Release SETTORE FLASH NOR*
+- ***lx_nor_flash_sector_write** _: _Write SETTORE FLASH NOR*
 
 ## <a name="lx_nor_flash_close"></a>lx_nor_flash_close
 
-Istanza Close o Flash
+Chiudere l'istanza flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -39,16 +39,16 @@ UINT lx_nor_flash_close(LX_NOR_FLASH *nor_flash);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio chiude l'istanza precedentemente aperta o Flash.
+Questo servizio chiude l'istanza flash NOR aperta in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash*: né puntatore all'istanza Flash.
+- *nor_flash:* puntatore dell'istanza flash NOR.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore durante la chiusura dell'istanza Flash.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore durante la chiusura dell'istanza flash.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -76,7 +76,7 @@ status = lx_nor_flash_close(&my_nor_flash);
 
 ## <a name="lx_nor_flash_defragment"></a>lx_nor_flash_defragment
 
-Deframmenta o istanza Flash
+Deframmentare l'istanza flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -86,16 +86,16 @@ UINT lx_nor_flash_defragment(LX_NOR_FLASH *nor_flash);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Deframmenta l'istanza precedentemente aperta o Flash. Il processo di deframmentazione ottimizza il numero di settori e blocchi liberi.
+Questo servizio deframmenta l'istanza flash NOR aperta in precedenza. Il processo di deframmentazione ottimizza il numero di settori e blocchi liberi.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash*: né puntatore all'istanza Flash.
+- *nor_flash:* puntatore dell'istanza flash NOR.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore durante la deframmentazione dell'istanza Flash.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore durante la deframmentazione dell'istanza flash.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -123,7 +123,7 @@ status = lx_nor_flash_defragment(&my_nor_flash);
 
 ## <a name="lx_nor_flash_extended_cache_enable"></a>lx_nor_flash_extended_cache_enable
 
-Abilita/Disabilita esteso o cache
+Abilitare/disabilitare la cache NOR estesa
 
 ### <a name="prototype"></a>Prototipo
 
@@ -136,19 +136,19 @@ UINT lx_nor_flash_extended_cache_enable(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio implementa un livello di cache del settore o nella RAM usando la memoria fornita dall'applicazione. Ogni 512 byte di memoria fornita si traduce in uno o più settori che possono essere memorizzati nella cache. I settori memorizzati nella cache sono quelli che contengono le informazioni sul controllo del blocco, ad esempio il conteggio delle cancellazioni, la mappa del settore gratuito e le informazioni sul mapping del settore. I settori dati non vengono archiviati in questa cache.
+Questo servizio implementa un livello di cache del settore NOR nella RAM usando la memoria fornita dall'applicazione. Ogni 512 byte di memoria forniti si traduce in un settore NOR che può essere memorizzato nella cache. I settori memorizzati nella cache sono quelli che contengono le informazioni sul controllo dei blocchi, ad esempio il conteggio delle cancellazioni, la mappa dei settori liberi e le informazioni sul mapping dei settori. I settori di dati non vengono archiviati in questa cache.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **nor_flash**: né puntatore all'istanza Flash.  
-- **Memory**: indirizzo iniziale per la memoria cache, allineato per l'accesso ULONG. Il valore LX_NULL Disabilita la cache.  
-- **size**: dimensione in byte della memoria fornita (deve essere un multiplo di 512 byte).
+- **nor_flash:** puntatore dell'istanza flash NOR.  
+- **memory:** indirizzo iniziale per la memoria cache, allineato per l'accesso ULONG. Il valore LX_NULL disabilita la cache.  
+- **size:** dimensione in byte della memoria fornita (deve essere multiplo di 512 byte).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) memoria insufficiente per uno o più settori.
-- **LX_DISABLED**: (0x09) o la cache estesa disabilitata dall'opzione di configurazione.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR**: (0x01) Memoria insufficiente per un settore NOR.
+- **LX_DISABLED:**(0x09) CACHE estesa NOR disabilitata dall'opzione di configurazione .
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -177,7 +177,7 @@ status = lx_nor_flash_extended_cache_enable(&my_nor_flash,
 
 ## <a name="lx_nor_flash_initialize"></a>lx_nor_flash_initialize
 
-Inizializzazione o supporto Flash
+Inizializzare il supporto flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -187,7 +187,7 @@ UINT lx_nor_flash_initialize(void);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Inizializza LevelX o il supporto Flash. Deve essere chiamato prima di qualsiasi altro LevelX o API.
+Questo servizio inizializza il supporto flash LevelX NOR. Deve essere chiamato prima di qualsiasi altra API LevelX NOR.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -195,8 +195,8 @@ Questo servizio Inizializza LevelX o il supporto Flash. Deve essere chiamato pri
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore durante l'INIZIALIZZAzione o il supporto Flash.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore durante l'inizializzazione del supporto flash NOR.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -224,7 +224,7 @@ status = lx_nor_flash_initialize();
 
 ## <a name="lx_nor_flash_open"></a>lx_nor_flash_open
 
-Apri o istanza Flash
+Aprire l'istanza flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -237,19 +237,19 @@ UINT lx_nor_flash_open(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio apre un'istanza di o Flash con la funzione di inizializzazione del driver e del blocco di controllo flash specificata. Si noti che la funzione di inizializzazione del driver è responsabile dell'installazione di diversi puntatori a funzione per la lettura, la scrittura e la cancellazione dei blocchi dell'hardware o dell'hardware associato a questa istanza di o Flash.
+Questo servizio apre un'istanza flash NOR con il blocco di controllo flash NOR specificato e la funzione di inizializzazione del driver. Si noti che la funzione di inizializzazione del driver è responsabile dell'installazione di vari puntatori a funzione per la lettura, la scrittura e la cancellazione di blocchi dell'hardware NOR associato a questa istanza flash NOR.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash*: né puntatore all'istanza Flash.
-- *nome*: nome dell'istanza di o Flash.
-- *nor_driver_initialize*: puntatore a funzione o funzione di inizializzazione del driver Flash. Vedere il capitolo 5 di questa guida per altre informazioni sulle responsabilità dei driver di o Flash.
+- *nor_flash:* puntatore dell'istanza flash NOR.
+- *name:* nome dell'istanza flash NOR.
+- *nor_driver_initialize:* puntatore a funzione alla funzione di inizializzazione del driver flash NOR. Per altre informazioni sulle responsabilità dei driver FLASH NOR, vedere il capitolo 5 di questa guida.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore durante l'apertura o l'istanza Flash.
-- **LX_NO_MEMORY**: il driver (0x08) non ha fornito il buffer per la lettura di nessun settore nella RAM.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore durante l'apertura dell'istanza flash NOR.
+- **LX_NO_MEMORY:** il driver (0x08) non ha fornito buffer per la lettura di nessun settore nella RAM.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -278,7 +278,7 @@ status = lx_nor_flash_open(&my_nor_flash,"my NOR flash",
 
 ## <a name="lx_nor_flash_partial_defragment"></a>lx_nor_flash_partial_defragment
 
-Deframmentazione parziale dell'istanza di o di Flash
+Deframmentazione parziale dell'istanza flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -290,17 +290,17 @@ UINT lx_nor_flash_partial_defragment(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Deframmenta l'istanza precedentemente aperta o flash fino al numero massimo di blocchi specificato. Il processo di deframmentazione ottimizza il numero di settori e blocchi liberi.
+Questo servizio deframmenta l'istanza flash NOR aperta in precedenza fino al numero massimo di blocchi specificato. Il processo di deframmentazione ottimizza il numero di settori e blocchi liberi.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash*: né puntatore all'istanza Flash.
-- *max_blocks*: numero massimo di blocchi.
+- *nor_flash:* puntatore dell'istanza flash NOR.
+- *max_blocks:* numero massimo di blocchi.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore durante la deframmentazione dell'istanza Flash.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore durante la deframmentazione dell'istanza flash.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -328,7 +328,7 @@ status = lx_nor_flash_partial_defragment(&my_nor_flash, 1);
 
 ## <a name="lx_nor_flash_sector_read"></a>lx_nor_flash_sector_read
 
-Lettura e settore Flash
+Read NOR flash sector
 
 ### <a name="prototype"></a>Prototipo
 
@@ -341,18 +341,18 @@ UINT lx_nor_flash_sector_read(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio legge il settore logico dall'istanza di o Flash e, se ha esito positivo, restituisce il contenuto nel buffer fornito. Si noti che la dimensione del settore è sempre di 512 byte.
+Questo servizio legge il settore logico dall'istanza flash NOR e, in caso di esito positivo, restituisce il contenuto nel buffer fornito. Si noti che le dimensioni del settore NOR sono sempre di 512 byte.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash* O puntatore all'istanza Flash.
-- *logical_sector*: settore logico da leggere.
-- *buffer*: puntatore alla destinazione per il contenuto del settore logico. Si presuppone che il buffer sia 512 byte e che sia allineato per l'accesso ULONG.
+- *nor_flash* Puntatore dell'istanza flash NOR.
+- *logical_sector:* settore logico da leggere.
+- *buffer:* puntatore alla destinazione per il contenuto del settore logico. Si noti che si presuppone che il buffer sia di 512 byte e allineato per l'accesso ULONG.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore durante la lettura o il settore Flash.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore durante la lettura del settore FLASH NOR.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -380,7 +380,7 @@ status = lx_nor_flash_sector_read(&my_nor_flash, 20, buffer);
 
 ## <a name="lx_nor_flash_sector_release"></a>lx_nor_flash_sector_release
 
-Versione o settore Flash
+Rilasciare il settore flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -392,17 +392,17 @@ UINT lx_nor_flash_sector_release(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rilascia il mapping del settore logico nell'istanza di o di Flash. Il rilascio di un settore logico quando non viene usato rende più efficiente il livellamento del LevelX.
+Questo servizio rilascia il mapping del settore logico nell'istanza flash NOR. Il rilascio di un settore logico quando non viene usato rende più efficiente il livellamento dell'usura LevelX.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash*: né puntatore all'istanza Flash.
-- *logical_sector*: settore logico da rilasciare.
+- *nor_flash:* puntatore dell'istanza flash NOR.
+- *logical_sector:* settore logico da rilasciare.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_ERROR**: (0x01) errore o scrittura nel settore Flash.
+- **LX_SUCCESS**: (0x00) Richiesta riuscita.
+- **LX_ERROR:**(0x01) Errore O scrittura settore flash.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -430,7 +430,7 @@ status = lx_nor_flash_sector_release(&my_nor_flash, 20);
 
 ## <a name="lx_nor_flash_sector_write"></a>lx_nor_flash_sector_write
 
-Settore della scrittura e del flash
+Scrivere il settore flash NOR
 
 ### <a name="prototype"></a>Prototipo
 
@@ -443,19 +443,19 @@ UINT lx_nor_flash_sector_write(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio scrive il settore logico specificato nell'istanza di o Flash.
+Questo servizio scrive il settore logico specificato nell'istanza flash NOR.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- *nor_flash*: né puntatore all'istanza Flash.
-- *logical_sector*: settore logico da scrivere.
-- *buffer*: puntatore al contenuto del settore logico. Si presuppone che il buffer sia allineato a 512 byte per l'accesso ULONG.
+- *nor_flash*: puntatore dell'istanza flash NOR.
+- *logical_sector:* settore logico da scrivere.
+- *buffer*: puntatore al contenuto del settore logico. Si noti che si presuppone che il buffer sia allineato a 512 byte per l'accesso ULONG.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **LX_SUCCESS**: (0x00) la richiesta è riuscita.
-- **LX_NO_SECTORS**: (0x02) non sono più disponibili settori gratuiti per eseguire la scrittura.
-- **LX_ERROR**: (0x01) errore durante il rilascio o il settore Flash.
+- **LX_SUCCESS:**(0x00) Richiesta riuscita.
+- **LX_NO_SECTORS**: (0x02) Non sono disponibili altri settori gratuiti per eseguire la scrittura.
+- **LX_ERROR:**(0x01) Errore durante il rilascio del settore FLASH NOR.
 
 ### <a name="allowed-from"></a>Consentito da
 

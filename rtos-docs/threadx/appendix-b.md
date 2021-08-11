@@ -1,26 +1,26 @@
 ---
-title: Appendice B-costanti ThreadX di Azure RTO
-description: Esplorare le costanti ThreadX di Azure RTO.
+title: Appendice B - Azure RTOS costanti ThreadX
+description: Esplorare le Azure RTOS costanti ThreadX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c17af40df7a45a0cdb9961f12e1dcd775b081975
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c749dc2656894e817f8dcce430e7552763f0fa319cd91d4390983f3cd6a95221
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822493"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801846"
 ---
-# <a name="appendix-b---azure-rtos-threadx-constants"></a>Appendice B-costanti ThreadX di Azure RTO
+# <a name="appendix-b---azure-rtos-threadx-constants"></a>Appendice B - Azure RTOS costanti ThreadX
 
 - [**Elenchi alfabetici**](#alphabetic-listings) 
-- [**Elenco per valore**](#listing-by-value)
+- [**Elenco in base al valore**](#listing-by-value)
 
 ## <a name="alphabetic-listings"></a>Elenchi alfabetici
 
-| Costante (per alfabeto) | Valore |
+| Costante (in ordine alfabetico) | Valore |
 | --------- | - |
 | TX_1_ULONG | 1 |
 | TX_2_ULONG | 2 |
@@ -42,7 +42,7 @@ ms.locfileid: "104822493"
 | TX_DONT_START | 0 |
 | TX_EVENT_FLAG | 7 |
 | TX_FALSE | 0 |
-| TX_FEATURE_NOT_ENABLED | 0xFF |
+| TX_FEATURE_NOT_ENABLED | 0xff |
 | TX_FILE | 11 |
 | TX_GROUP_ERROR | 0x06 |
 | TX_INHERIT | 1 |
@@ -55,7 +55,7 @@ ms.locfileid: "104822493"
 | TX_NO_ACTIVATE | 0 |
 | TX_NO_EVENTS | 0x07 |
 | TX_NO_INHERIT | 0 |
-| TX_NO_INSTANCE | 0x0D |
+| TX_NO_INSTANCE | 0x0d |
 | TX_NO_MEMORY | 0x10 |
 | TX_NO_TIME_SLICE | 0 |
 | TX_NO_WAIT | 0 |
@@ -153,7 +153,7 @@ ms.locfileid: "104822493"
 | TX_TCP_IP | 12 |
 | TX_SEMAPHORE_ERROR | 0x0C |
 | TX_MUTEX_SUSP | 13 |
-| TX_NO_INSTANCE | 0x0D |
+| TX_NO_INSTANCE | 0x0d |
 | TX_THREAD_ERROR | 0x0E |
 | TX_PRIORITY_ERROR | 0x0F |
 | TX_16_ULONG | 16 |
@@ -177,7 +177,7 @@ ms.locfileid: "104822493"
 | TX_NOT_DONE | 0x20 |
 | TX_CEILING_EXCEEDED | 0x21 |
 | TX_INVALID_CEILING | 0x22 |
-| TX_FEATURE_NOT_ENABLED | 0xFF |
+| TX_FEATURE_NOT_ENABLED | 0xff |
 | TX_STACK_FILL | 0xEFEFEFEFUL |
 | TX_WAIT_FOREVER | 0xFFFFFFFFUL |
 |               |   |

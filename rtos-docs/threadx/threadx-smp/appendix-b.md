@@ -1,19 +1,19 @@
 ---
-title: Appendice B-costanti SMP di ThreadX per Azure RTO
+title: Appendice B - Azure RTOS costanti SMP ThreadX
 description: Costanti SMP ThreadX
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7245b53e78e657ce8059ee8f013a8d2faa4f7b14
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 32eab718b2b9b4c050ca0f1f39dbf1fda7d74eb49cabfe99be988b60d709d87a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821347"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801767"
 ---
-# <a name="appendix-b---azure-rtos-threadx-smp-constants"></a>Appendice B-costanti SMP di ThreadX per Azure RTO
+# <a name="appendix-b---azure-rtos-threadx-smp-constants"></a>Appendice B - Azure RTOS costanti SMP ThreadX
 
 ## <a name="alphabetic-listings"></a>Elenchi alfabetici
 
@@ -97,7 +97,7 @@ TX_WAIT_ERROR              0x04
 TX_WAIT_FOREVER
 0xFFFFFFFFUL
 ```
-## <a name="listing-by-value"></a>Elenco per valore
+## <a name="listing-by-value"></a>Elenco in base al valore
 
 ```C
 TX_DONT_START              0

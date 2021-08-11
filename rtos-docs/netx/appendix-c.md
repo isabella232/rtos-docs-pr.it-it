@@ -1,19 +1,19 @@
 ---
-title: Appendice C-tipi di dati NetX di Azure RTO
-description: Informazioni sui tipi di dati di Azure RTO NetX.
+title: Appendice C - Azure RTOS di dati NetX
+description: Informazioni sui tipi Azure RTOS dati NetX.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d3b4a383270db7cfa85359e15c32adde7d45565f
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e56c3d2d97ff2d5999bd6ac5e0a70da054622c12bc35ac95e2cd02e8a7c29323
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821554"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801887"
 ---
-# <a name="appendix-c---azure-rtos-netx-data-types"></a>Appendice C-tipi di dati NetX di Azure RTO
+# <a name="appendix-c---azure-rtos-netx-data-types"></a>Appendice C - Azure RTOS di dati NetX
 
 ## <a name="nx_arp"></a>NX_ARP
 

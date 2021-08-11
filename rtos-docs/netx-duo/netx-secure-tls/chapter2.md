@@ -1,31 +1,31 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX Secure
+title: Capitolo 2 - Installazione e uso di Azure RTOS NetX Secure
 description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente NetX Secure.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b3ef82bd113518b35105fb2eefe23bd3e755ca06
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d11e50b2ab74ee147f682567d142768de6108fc18264e9d8bc69bbfc8a32cc0a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822856"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801870"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-secure"></a>Capitolo 2-installazione e uso di Azure RTO NetX Secure
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-secure"></a>Capitolo 2 - Installazione e uso di Azure RTOS NetX Secure
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente protetto Azure RTO NetX.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX Secure.
 
 ## <a name="product-version-number"></a>Numero di versione del prodotto
 
-L'utente può verificare il numero di versione del prodotto individuando i simboli seguenti in nx_secure_tls. h:
+L'utente può verificare il numero di versione del prodotto trovando i simboli seguenti in nx_secure_tls.h:
 
 ***NETX_SECURE_MAJOR_VERSION***
 
 ***NETX_SECURE_MINOR_VERSION***
 
-Le versioni del Service Pack hanno il simbolo seguente definito per indicare il numero Service Pack:
+Nelle versioni del Service Pack è definito il simbolo seguente per indicare il numero del Service Pack:
 
 ***NETX_SECURE_SERVICE_PACK_VERSION***
 
@@ -33,34 +33,34 @@ Le versioni del Service Pack hanno il simbolo seguente definito per indicare il 
 
 NetX Secure è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include i file di origine, i file di inclusione e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nx_secure_tls_api. h** File di intestazione dell'API pubblica per NetX Secure TLS
-- **nx_secure_tls_user. h** Il file di intestazione definito dall'utente per NetX Secure TLS
-- **nx_secure_tls_port. h** Definizioni specifiche della piattaforma per NetX Secure
-- **nx_secure_tls. h** File di intestazione per NetX Secure TLS
-- **nx_secure_tls&#42;. c/h** File di origine C/H per NetX Secure TLS
-- **nx_crypto&#42;. c/h** File di origine C/H per crittografia sicura NetX
-- **nx_secure_x509&#42;. c/h** File di origine C/H per i certificati digitali X. 509.
-- **demo_netx_secure_tls. c** File di origine C per NetX Secure TLS demo
+- **nx_secure_tls_api.h** File di intestazione dell'API pubblica per NetX Secure TLS
+- **nx_secure_tls_user.h** L'utente definisce il file di intestazione per NetX Secure TLS
+- **nx_secure_tls_port.h** Definizioni specifiche della piattaforma per NetX Secure
+- **nx_secure_tls.h** File di intestazione per NetX Secure TLS
+- **nx_secure_tls&#42;.c/h** File di origine C/H per NetX Secure TLS
+- **nx_crypto&#42;.c/h** File di origine C/H per la crittografia sicura NetX
+- **nx_secure_x509&#42;.c/h** File di origine C/H per i certificati digitali X.509.
+- **demo_netx_secure_tls.c** Demo del file di origine C per NetX Secure TLS
 - **NetX_Secure_User_Guide.pdf** Descrizione PDF del prodotto NetX Secure
 
 > [!NOTE]
-> I file nx_crypto * vengono forniti per diverse piattaforme hardware in una sottodirectory della directory padre protetta NetX.
+> I nx_crypto* vengono forniti per piattaforme hardware diverse in una sottodirectory della directory padre NetX Secure.
 
 ## <a name="netx-secure-installation"></a>Installazione sicura di NetX
 
-Per poter usare NetX Secure, l'intera distribuzione indicata in precedenza deve essere copiata nello stesso livello di directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\NetX*" *, il nx_secure * *.* le directory devono essere copiate in "*\threadx\arm7\NetXSecure*".
+Per usare NetX Secure, l'intera distribuzione indicata in precedenza deve essere copiata nello stesso livello di directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\NetX*", il *nx_secure**.* le directory devono essere copiate in "*\threadx\arm7\NetXSecure*".
 
 ## <a name="using-netx-secure"></a>Uso di NetX Secure
 
-L'uso di NetX Secure TLS è semplice. In pratica, il codice dell'applicazione deve includere *nx_secure_tls_api. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter usare threadX e NETX. Una volta incluso *nx_secure_tls_api. h* , il codice dell'applicazione è in grado di eseguire le chiamate di funzione NETX Secure specificate più avanti in questa guida. L'applicazione deve inoltre importare la *nx_secure * *.* file in una libreria NetXSecure e *nx_crypto * ** specifici della piattaforma. file in una libreria NetXCrypto.
+L'uso di NetX Secure TLS è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nx_secure_tls_api.h* dopo aver incluso *tx_api.h* *e nx_api.h* per poter usare ThreadX e NetX. Dopo *nx_secure_tls_api.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione NetX Secure specificate più avanti in questa guida. L'applicazione deve anche importare *il nx_secure**.* in una libreria NetXSecure e nella libreria specifica della *piattaforma nx_crypto**.* file in una libreria NetXCrypto.
 
-## <a name="small-example-system-tls-client"></a>Sistema di esempio di piccole dimensioni (client TLS)
+## <a name="small-example-system-tls-client"></a>Small Example System (client TLS)
 
-Un esempio di come è facile usare NetX Secure è descritto nella figura 1,1, che viene visualizzato di seguito. Questo esempio illustra un semplice client TLS, che usa moduli di crittografia software (non specifici dell'hardware) per la crittografia. È progettato per l'uso con il server echo OpenSSL Reverse (OpenSSL s_server-REV).
+Un esempio della facilità d'uso di NetX Secure è descritto nella figura 1.1, illustrata di seguito. Viene illustrato un semplice client TLS, che usa moduli di crittografia software (non specifici dell'hardware) per la crittografia. È progettato per funzionare con il server di echo inverso OpenSSL (openssl s_server -rev).
 
-Si noti che per eseguire questo esempio, sarà necessario un certificato della CA X. 509 per autenticare il certificato del server di destinazione. Per l'esempio OpenSSL, è sufficiente una semplice infrastruttura a chiave pubblica (PKI) a 2 livelli, ovvero un certificato CA radice-> >certificato server. Sarà necessario compilare la matrice "trusted_ca_data" con una versione binaria con codifica DER del certificato della CA e aggiornare la variabile "trusted_ca_length" per riflettere la lunghezza effettiva del certificato.
+Si noti che per eseguire questo esempio, è necessario un certificato della CA X.509 per autenticare il certificato del server di destinazione. Per l'esempio OpenSSL, è sufficiente un'infrastruttura a chiave pubblica semplice a 2 livelli (certificato CA radice > >server). Sarà necessario compilare la matrice "trusted_ca_data" con una versione binaria con codifica DER del certificato della CA e aggiornare la variabile "trusted_ca_length" per riflettere la lunghezza effettiva del certificato.
 
-Sarà inoltre necessario il driver di rete per l'hardware (sostituire il parametro "nx_driver_xx" nella chiamata nx_ip_create).
+Sarà necessario anche il driver di rete per l'hardware (sostituire il parametro "nx_driver_xx" nella nx_ip_create chiamata.
 
 ```C
 #include "tx_api.h"
@@ -287,18 +287,18 @@ ULONG server_ipv4_address;
 }
 ```
 
-**Figura 1,1 esempio di uso sicuro di NetX con NetX**
+**Figura 1.1 Esempio di uso di NetX Secure con NetX**
 
-## <a name="small-example-system-tls-web-server"></a>Sistema di esempio di piccole dimensioni (server Web TLS)
+## <a name="small-example-system-tls-web-server"></a>Small Example System (server Web TLS)
 
-Un esempio di come è facile usare NetX Secure è descritto nella figura 1,1, che viene visualizzato di seguito e viene illustrato un semplice server Web TLS (HTTPS).
+Un esempio di come sia facile usare NetX Secure è descritto nella figura 1.1, che viene visualizzata di seguito e illustra un semplice server Web TLS (HTTPS).
 
-Si noti che per eseguire questo esempio, è necessario un certificato X. 509 per identificare il server nei client TLS. Per la maggior parte dei Web browser è sufficiente un certificato autofirmato semplice. Il browser si lamenta di non essere in grado di autenticare il server e, in alcuni casi, potrebbe non essere in grado di stabilire una connessione TLS/HTTPS al server<sup>3</sup>. Sarà necessario compilare la matrice "certificate_data" con una versione binaria con codifica DER del certificato del server e aggiornare la variabile "certificate_length" per riflettere la lunghezza effettiva del certificato. È anche necessario compilare la matrice "private_key" con una versione con codifica DER della chiave privata del certificato, formattata con PKCS # 1 per la chiave RSA e RFC 5915 per le chiavi ECC. Compilare la variabile "private_key_length" con la lunghezza effettiva dei dati della chiave.
+Si noti che per eseguire questo esempio, è necessario un certificato X.509 per identificare il server per i client TLS. Per la maggior parte dei browser Web dovrebbe essere sufficiente un certificato autofirmato semplice. Il browser si lamenterà di non essere in grado di autenticare il server e in alcuni casi potrebbe non essere in grado di stabilire una connessione TLS/HTTPS al server<sup>3.</sup> Sarà necessario compilare la matrice "certificate_data" con una versione binaria con codifica DER del certificato del server e aggiornare la variabile "certificate_length" per riflettere la lunghezza effettiva del certificato. È anche necessario compilare la matrice "private_key" con una versione con codifica DER della chiave privata del certificato, formattata usando PKCS#1 per la chiave RSA e RFC 5915 per le chiavi ECC. Compilare la variabile "private_key_length" con la lunghezza effettiva dei dati della chiave.
 
 > [!IMPORTANT]
-> Alcuni browser (in particolare alcune versioni del browser Chrome) potrebbero rifiutare i certificati autofirmati. In questo caso è possibile creare un'infrastruttura a chiave pubblica a due livelli con un certificato CA radice usato per firmare il certificato del server. In questa situazione, il certificato CA radice viene installato come certificato radice attendibile nel browser. !!! IMPORTANTE: rimuovere il certificato CA radice dal browser al termine e non usarlo per applicazioni di produzione!!!
+> Alcuni browser (in particolare alcune versioni del browser Chrome) possono rifiutare i certificati autofirmati. In questo caso è possibile creare un'infrastruttura a chiave pubblica (PKI) a 2 livelli con un certificato CA radice usato per firmare il certificato del server. In questo caso, il certificato CA radice viene installato come certificato radice attendibile nel browser. !!! IMPORTANTE: al termine, rimuovere il certificato della CA radice dal browser e non usarlo per le applicazioni di produzione !!!
 
-Sarà inoltre necessario il driver di rete per l'hardware (sostituire il parametro "nx_driver_xx" nella chiamata nx_ip_create).
+Sarà necessario anche il driver di rete per l'hardware (sostituire il parametro "nx_driver_xx" nella nx_ip_create chiamata.
 
 ```C
 #include "tx_api.h"
@@ -533,15 +533,15 @@ if (status == NX_SUCCESS)
 }
 ```
 
-**Figura 1,2 esempio di uso sicuro di NetX con NetX**
+**Figura 1.2 Esempio di uso di NetX Secure con NetX**
 
 ## <a name="a-note-on-tls-session-error-recovery"></a>Nota sul ripristino degli errori di sessione TLS
 
-I sistemi di esempio descritti in precedenza mostrano rispettivamente le strutture di base per un client e un server TLS, ma per chiarezza la gestione degli errori viene omessa. Tuttavia, parte della sicurezza fornita da TLS dipende dalla corretta gestione delle condizioni di errore. In genere, i problemi potenziali più gravi verranno gestiti nello stack TLS stesso, ma è importante per l'applicazione TLS rispondere e ripristinare correttamente da errori TLS non gestiti nell'implementazione TLS.
+I sistemi di esempio descritti in precedenza illustrano rispettivamente le strutture di base per un client e un server TLS, ma per maggiore chiarezza la gestione degli errori viene omessa. Tuttavia, parte della sicurezza fornita da TLS dipende dalla corretta gestione delle condizioni di errore. In genere, i problemi potenziali più gravi verranno gestiti all'interno dello stack TLS stesso, ma è importante che l'applicazione TLS risponda correttamente e riprisponda da errori TLS non gestiti all'interno dell'implementazione TLS.
 
-Per illustrare la logica necessaria per la corretta gestione degli errori, la funzione seguente illustra una raccolta tipica di servizi API che può essere usata per gestire correttamente gli errori TLS e per reimpostare correttamente lo stato di TLS dopo che è stata rilevata una condizione di errore. A parte la sezione, se nota, la logica si applica alle istanze del server TLS e del client TLS.
+Per illustrare la logica necessaria per una corretta gestione degli errori, la funzione seguente illustra una tipica raccolta di servizi API che possono essere usati per gestire correttamente gli errori TLS e reimpostare correttamente lo stato TLS dopo che è stata rilevata una condizione di errore. A parte la sezione in cui è stato specificato, la logica si applica sia alle istanze del client TLS che del server TLS.
 
-Si noti che le chiamate API più importanti nella funzione sono per i servizi *nx_secure_tls_session_end*, che chiude la sessione TLS o l'handshake e *nx_secure_tls_session_reset*, che cancella lo stato della sessione TLS, in modo che l'istanza della struttura del controllo tls_session possa essere riutilizzata per una nuova sessione TLS. Si noti inoltre che *nx_secure_tls_session_reset* non cancella lo stato configurato dall'utente, ad esempio i certificati o i buffer assegnati, consentendo il riutilizzo della sessione senza chiamare di nuovo *nx_secure_tls_session_create* . Per cancellare completamente tutti gli Stati della sessione TLS, è possibile utilizzare il *nx_secure_tls_session_delete* del servizio.
+Si noti che le chiamate API più importanti nella funzione sono per i servizi nx_secure_tls_session_end , *che* chiude correttamente la sessione o l'handshake TLS, e *nx_secure_tls_session_reset*, che cancella lo stato della sessione TLS in modo che l'istanza della struttura di controllo tls_session possa essere riutilizzata per una nuova sessione TLS. Si noti anche *che nx_secure_tls_session_reset* non cancella lo stato configurato dall'utente, ad esempio i certificati o i buffer assegnati, consentendo il riutilizzo della sessione senza chiamare nx_secure_tls_session_create *nuovo.* Per cancellare completamente tutto lo stato della sessione TLS, *è possibile usare nx_secure_tls_session_delete* servizio.
 
 ```C
 /* Define a helper function to clean up a broken TLS session (to be called on any
@@ -616,25 +616,25 @@ UINT alert_level, alert_value;
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Sono disponibili diverse opzioni di configurazione per la creazione di NetX Secure. Di seguito è riportato un elenco di tutte le opzioni, in cui ciascuna è descritta in dettaglio:
+Sono disponibili diverse opzioni di configurazione per la creazione di NetX Secure. Di seguito è riportato un elenco di tutte le opzioni, in cui ogni opzione è descritta in dettaglio:
 
 | Definire | Significato |
 |----------------------|------------------------------------------------|
-| **NX_SECURE_DISABLE_ERROR_CHECKING**                | Definita, questa opzione rimuove il controllo degli errori di base di NetX Secure. Viene in genere usato dopo il debug dell'applicazione. |
-| **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**                  | Definita, questa opzione fornisce il modulo RSA massimo previsto in bit. Il valore predefinito è 4096 per un modulo a 4096 bit. Gli altri valori possono essere 3072, 2048 o 1024 (scelta non consigliata). |
-| **NX_SECURE_ALLOW_SELF_SIGNED_CERTIFICATES**        | Definita, questa opzione consente a TLS di accettare certificati autofirmati da un host remoto. Per impostazione predefinita, i certificati del server autofirmato vengono rifiutati da TLS come misura di sicurezza. Se questa macro è definita, i certificati autofirmati devono comunque essere aggiunti all'archivio attendibile per essere accettati. |
-| **NX_SECURE_ENABLE_CLIENT_CERTIFICATE_VERIFY**      | Definita, questa opzione Abilita la verifica facoltativa del certificato client X. 509 per i server TLS<sup>4</sup>.  |
-| **NX_SECURE_ENABLE_PSK_CIPHERSUITES**               | Definita, questa opzione Abilita la funzionalità di chiave precondivisa (PSK). Non Disabilita i certificati digitali. |
-| **NX_SECURE_TLS_CLIENT_DISABLED**                   | Definita, questa opzione rimuove tutti i codici dello stack TLS correlati alla modalità client TLS, riducendo il codice e l'utilizzo dei dati. |
-| **NX_SECURE_TLS_SERVER_DISABLED**                   | Definita, questa opzione rimuove tutti i codici dello stack TLS correlati alla modalità server TLS, riducendo il codice e l'utilizzo dei dati.  |
-| **NX_SECURE_DISABLE_ECC_CIPHERSUITE**               | Definita, questa opzione rimuove tutta la logica TLS per la crittografia a curva ellittica (ECC) ciphersuites. Questi ciphersuites sono facoltativi in TLS 1,2 e versioni precedenti e la loro disabilitazione può comportare una riduzione significativa del codice e della dimensione dei dati.|
-| **NX_SECURE_TLS_ENABLE_TLS_1_3**                    | Definita, questa opzione Abilita la modalità TLSv 1.3. TLS 1,3 è la versione più recente di TLS ed è disabilitato per impostazione predefinita. |
-| **NX_SECURE_TLS_ENABLE_TLS_1_0**                    | Definita, questa opzione Abilita la modalità legacy TLSv 1.0. TLSv 1.0 è considerato obsoleto, quindi deve essere abilitato solo per la compatibilità con le versioni precedenti. |
-| **NX_SECURE_TLS_ENABLE_TLS_1_1**                    | Definita, questa opzione Abilita la modalità legacy TLSv 1.1. TLSv 1.1 è considerato obsoleto, quindi deve essere abilitato solo per la compatibilità con le versioni precedenti. |
-| **NX_SECURE_TLS_DISABLE_TLS_1_1**                   | Definita, questa opzione Disabilita la modalità TLSv 1.1. Viene definito per impostazione predefinita. TLSv 1.1 è disabilitato a favore dell'uso di TLSv 1.2<sup>5</sup>più protetti.  |
-| **NX_SECURE_X509_STRICT_NAME_COMPARE**              | Definita, questa opzione Abilita il confronto dei nomi distinti per i certificati X. 509 per la ricerca e la verifica dei certificati. Il valore predefinito è confrontare solo i campi del nome comune dei nomi distinti.|
-| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES** | Definita, questa opzione Abilita i campi del nome distinto X. 509 facoltativi, a scapito dell'utilizzo di memoria aggiuntivo per i certificati X. 509. |
+| **NX_SECURE_DISABLE_ERROR_CHECKING**                | Definita, questa opzione rimuove il controllo degli errori netx secure di base. Viene in genere usato dopo il debug dell'applicazione. |
+| **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**                  | Definita, questa opzione fornisce il modulo RSA massimo previsto, in bit. Il valore predefinito è 4096 per un modulo a 4096 bit. Altri valori possono essere 3072, 2048 o 1024 (scelta non consigliata). |
+| **NX_SECURE_ALLOW_SELF_SIGNED_CERTIFICATES**        | Definita, questa opzione consente a TLS di accettare certificati autofirmati da un host remoto. Per impostazione predefinita, TLS rifiuterà i certificati server autofirmati come misura di sicurezza. Se questa macro è definita, i certificati autofirmati devono comunque essere aggiunti all'archivio attendibile per essere accettati. |
+| **NX_SECURE_ENABLE_CLIENT_CERTIFICATE_VERIFY**      | Definita, questa opzione abilita la verifica del certificato client X.509 facoltativa per i server TLS<sup>4.</sup>  |
+| **NX_SECURE_ENABLE_PSK_CIPHERSUITES**               | Definita, questa opzione abilita la funzionalità chiave precondifazione (PSK). Non disabilita i certificati digitali. |
+| **NX_SECURE_TLS_CLIENT_DISABLED**                   | Definita, questa opzione rimuove tutto il codice dello stack TLS correlato alla modalità client TLS, riducendo l'utilizzo di codice e dati. |
+| **NX_SECURE_TLS_SERVER_DISABLED**                   | Definita, questa opzione rimuove tutto il codice dello stack TLS correlato alla modalità server TLS, riducendo l'utilizzo di codice e dati.  |
+| **NX_SECURE_DISABLE_ECC_CIPHERSUITE**               | Definita, questa opzione rimuove tutta la logica TLS per le crittografie ECC (Elliptic Curve Cryptography). Queste ciphersuit sono facoltative in TLS 1.2 e versioni precedenti e la loro disabilitazione può comportare una riduzione significativa delle dimensioni del codice e dei dati.|
+| **NX_SECURE_TLS_ENABLE_TLS_1_3**                    | Definita, questa opzione abilita la modalità TLSv1.3. TLS 1.3 è la versione più recente di TLS ed è disabilitato per impostazione predefinita. |
+| **NX_SECURE_TLS_ENABLE_TLS_1_0**                    | Definita, questa opzione abilita la modalità legacy TLSv1.0. TLSv1.0 è considerato obsoleto, quindi deve essere abilitato solo per la compatibilità con le versioni precedenti delle applicazioni precedenti. |
+| **NX_SECURE_TLS_ENABLE_TLS_1_1**                    | Definita, questa opzione abilita la modalità TLSv1.1 legacy. TLSv1.1 è considerato obsoleto, quindi deve essere abilitato solo per la compatibilità con le versioni precedenti delle applicazioni. |
+| **NX_SECURE_TLS_DISABLE_TLS_1_1**                   | Definita, questa opzione disabilita la modalità TLSv1.1. È definito per impostazione predefinita. TLSv1.1 è disabilitato a favore dell'uso solo di TLSv1.2 5 più<sup>sicuro.</sup>  |
+| **NX_SECURE_X509_STRICT_NAME_COMPARE**              | Definita, questa opzione abilita il confronto rigoroso dei nomi distinti per i certificati X.509 per la ricerca e la verifica dei certificati. L'impostazione predefinita consente di confrontare solo i campi Nome comune dei nomi distinti.|
+| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES** | Definita, questa opzione abilita i campi facoltativi del nome distinto X.509, a scapito dell'uso aggiuntivo della memoria per i certificati X.509. |
 
-4. Si noti che questa opzione consente solo di collegare il codice nell'applicazione. La funzionalità deve essere abilitata con il servizio API nx_secure_tls_session_client_verify_enable o configurata usando nx_secure_tls_session_x509_client_verify_configure per usare la verifica del certificato client.
+4. Si noti che questa opzione consente solo il collegamento del codice all'applicazione. La funzionalità dovrà essere abilitata con il servizio API nx_secure_tls_session_client_verify_enable o configurata usando nx_secure_tls_session_x509_client_verify_configure per usare la verifica del certificato client.
 
-5. Si noti che è anche possibile disabilitare TLSv 1.2 Se si usa solo TLS 1,0 o TLS 1,1. Questa operazione non è tuttavia consigliata e non è supportata direttamente.
+5. Si noti che è anche possibile disabilitare TLSv1.2 se si usa solo TLS 1.0 o TLS 1.1. Tuttavia, questa operazione non è consigliata e non è supportata direttamente.

@@ -1,81 +1,81 @@
 ---
-title: Capitolo 1-Introduzione ad Azure RTO ThreadX
-description: Questo capitolo contiene un'introduzione ad Azure RTO ThreadX e una descrizione delle relative applicazioni e vantaggi.
+title: Capitolo 1 - Introduzione all'Azure RTOS ThreadX
+description: Questo capitolo contiene un'introduzione Azure RTOS ThreadX e una descrizione delle applicazioni e dei vantaggi.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 83718ddf5469238e2429855908be2ea5d405f874
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 536b2d59bf9f2cf15d320b91277f0efc7bf96097329f690b0849b2145c5a3abc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822484"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802056"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-threadx"></a>Capitolo 1-Introduzione ad Azure RTO ThreadX
+# <a name="chapter-1---introduction-to-azure-rtos-threadx"></a>Capitolo 1 - Introduzione all'Azure RTOS ThreadX
 
-Azure RTO ThreadX è un kernel in tempo reale a prestazioni elevate progettato appositamente per le applicazioni incorporate. Questo capitolo contiene un'introduzione al prodotto e una descrizione delle relative applicazioni e vantaggi.
+Azure RTOS ThreadX è un kernel in tempo reale ad alte prestazioni progettato specificamente per le applicazioni incorporate. Questo capitolo contiene un'introduzione al prodotto e una descrizione delle applicazioni e dei vantaggi.
 
 ## <a name="threadx-unique-features"></a>Funzionalità univoche di ThreadX
 
-A differenza di altri kernel in tempo reale, ThreadX è progettato per essere versatile, semplificando il ridimensionamento tra piccole applicazioni basate su microcontroller tramite quelle che usano potenti processori CISC, RISC e DSP.
+A differenza di altri kernel in tempo reale, ThreadX è progettato per essere versatile, facilmente scalabile tra piccole applicazioni basate su microcontroller tramite quelle che usano potenti processori CISC, RISC e DSP.
 
-ThreadX è scalabile in base all'architettura sottostante. Poiché i servizi ThreadX vengono implementati come una libreria C, solo i servizi effettivamente utilizzati dall'applicazione vengono inseriti nell'immagine di run-time. Di conseguenza, le dimensioni effettive di ThreadX sono completamente determinate dall'applicazione. Per la maggior parte delle applicazioni, l'immagine di istruzione di ThreadX è compresa tra 2 kbyte e 15 Kbyte di dimensioni.
+ThreadX è scalabile in base all'architettura sottostante. Poiché i servizi ThreadX vengono implementati come libreria C, solo i servizi effettivamente usati dall'applicazione vengono inserito nell'immagine di runtime. Di conseguenza, le dimensioni effettive di ThreadX sono completamente determinate dall'applicazione. Per la maggior parte delle applicazioni, l'immagine dell'istruzione di ThreadX ha una dimensione compresa tra 2 kByte e 15 KByte.
 
-### <a name="picokerneltrade-architecture"></a>*&trade;architettura picokernel*
+### <a name="picokerneltrade-architecture"></a>*Architettura di &trade; picokernel*
 
-Invece di sovrapporre le funzioni del kernel su altre, come le architetture tradizionali del *microkernel* , i servizi threadX si collegano direttamente al suo nucleo. Ciò comporta il cambio del contesto più rapido possibile e le prestazioni delle chiamate di servizio. Questa struttura non a livelli viene chiamata architettura *picokernel* .
+Invece di creare livelli tra le funzioni del kernel, ad esempio le architetture *a microkernel* tradizionali, i servizi ThreadX si collegano direttamente al core. Ciò comporta il cambio di contesto più veloce possibile e le prestazioni delle chiamate al servizio. Questa progettazione senza livelli è *un'architettura a forma di grafico.*
 
-### <a name="ansi-c-source-code"></a>Codice sorgente ANSI C
+### <a name="ansi-c-source-code"></a>Codice sorgente C ANSI
 
-ThreadX è scritto principalmente in ANSI C. Per adattare il kernel al processore di destinazione sottostante è necessaria una piccola quantità di linguaggio assembly. Questa progettazione consente di trasferire ThreadX a una nuova famiglia di processori in un intervallo di tempo molto breve, in genere entro settimane.
+ThreadX è scritto principalmente in ANSI C. È necessaria una piccola quantità di linguaggio assembly per adattare il kernel al processore di destinazione sottostante. Questa progettazione consente di eseguire la portabilità di ThreadX in una nuova famiglia di processori in tempi molto brevi, in genere entro settimane.
 
 ### <a name="advanced-technology"></a>Tecnologia avanzata
 
-Di seguito sono riportate le caratteristiche principali della tecnologia avanzata ThreadX.
-- Architettura *picokernel* semplice
+Di seguito sono riportati alcuni punti di rilievo della tecnologia avanzata ThreadX.
+- Semplice *architettura a takernel*
 - Ridimensionamento automatico (footprint ridotto)
 - Elaborazione deterministica
 - Prestazioni veloci in tempo reale
-- Pianificazione di tipo preemptive e cooperativa
-- Supporto per priorità thread flessibili
+- Pianificazione preemptive e cooperativa
+- Supporto flessibile della priorità dei thread
 - Creazione dinamica di oggetti di sistema
 - Numero illimitato di oggetti di sistema
-- Gestione degli interrupt ottimizzata
-- Precedenza-soglia&trade;
-- Ereditarietà priorità
+- Gestione ottimizzata degli interrupt
+- Soglia di preemption&trade;
+- Ereditarietà della priorità
 - Concatenamento di eventi&trade;
 - Timer software veloci
-- Gestione della memoria in fase di esecuzione
+- Gestione della memoria di run-time
 - Monitoraggio delle prestazioni in fase di esecuzione
-- Analisi dello stack della fase di esecuzione
+- Analisi dello stack in fase di esecuzione
 - Traccia di sistema incorporata
-- Supporto del processore esteso
-- Supporto per strumenti di sviluppo vast
-- Completamente endian neutro
+- Supporto di processori vasti
+- Supporto di vasti strumenti di sviluppo
+- Completamente neutro endian
 
-### <a name="not-a-black-box"></a>Non è una scatola nera
+### <a name="not-a-black-box"></a>Non una scatola nera
 
-La maggior parte delle distribuzioni di ThreadX include il codice sorgente C completo, nonché il linguaggio assembly specifico del processore. In questo modo si eliminano i problemi "black-box" che si verificano con molti kernel commerciali. Con ThreadX, gli sviluppatori di applicazioni possono vedere esattamente cosa sta facendo il kernel, senza alcun mistero!
+La maggior parte delle distribuzioni di ThreadX include il codice sorgente C completo e il linguaggio assembly specifico del processore. In questo modo si eliminano i problemi di "black box" che si verificano con molti kernel commerciali. Con ThreadX, gli sviluppatori di applicazioni possono vedere esattamente cosa sta facendo il kernel, senza problemi.
 
-Il codice sorgente consente anche modifiche specifiche dell'applicazione. Sebbene non sia consigliato, è senz'altro utile avere la possibilità di modificare il kernel se è assolutamente necessario.
+Il codice sorgente consente anche modifiche specifiche dell'applicazione. Sebbene non sia consigliabile, è certamente vantaggioso avere la possibilità di modificare il kernel se è assolutamente necessario.
 
-Queste funzionalità sono particolarmente confortanti per gli sviluppatori abituati a lavorare con i propri *kernel interni*. Si aspettano che il codice sorgente e la possibilità di modificare il kernel. ThreadX è il kernel finale per tali sviluppatori.
+Queste funzionalità sono particolarmente confortanti per gli sviluppatori abituati a lavorare con *i propri kernel interno.* Si aspettano di avere codice sorgente e la possibilità di modificare il kernel. ThreadX è il kernel finale per tali sviluppatori.
 
-### <a name="the-rtos-standard"></a>Standard RTO
+### <a name="the-rtos-standard"></a>The RTOS Standard
 
-Grazie alla versatilità, all'architettura *picokernel* ad alte prestazioni, alla tecnologia avanzata e alla portabilità dimostrata, threadX è attualmente distribuito in più di 2 miliardi dispositivi. In questo modo, ThreadX lo standard RTO per le applicazioni Deep embedded.
+Grazie alla versatilità, all'architettura *a takernel* ad alte prestazioni, alla tecnologia avanzata e alla portabilità dimostrata, ThreadX viene attualmente distribuito in più di due miliardi di dispositivi. In questo modo ThreadX è lo standard RTOS per le applicazioni con incorporamenti approfonditi.
 
 ## <a name="safety-certifications"></a>Certificazioni di sicurezza
 
 ### <a name="tv-certification"></a>Certificazione TÜV
 
-ThreadX è stato certificato da SGS-TÜV Saar per l'uso nei sistemi critici per la sicurezza, in base a IEC61508 e IEC-62304. La certificazione conferma che ThreadX può essere usato nello sviluppo di software correlato alla protezione per i livelli di integrità di sicurezza più elevati dei International Electrotechnical Commission (IEC) 61508 e IEC 62304, per la "protezione funzionale dei sistemi elettronici di sicurezza elettronica, elettronici e programmabili". SGS-TÜV Saar, formato da una joint venture di SGSGroup di Germania e TÜV Saarland, è diventato la società leader accreditata e indipendente per il test, il controllo, la verifica e la certificazione del software incorporato per i sistemi correlati alla sicurezza in tutto il mondo. Lo standard di sicurezza industriale IEC 61508 e tutti gli standard derivati da esso, incluso IEC 62304, vengono utilizzati per garantire la sicurezza funzionale di dispositivi medicali, sistemi di controllo dei processi, macchinari industriali e sistemi di controllo ferroviari.
+ThreadX è stato certificato da SGS-TÜV Saar per l'uso in sistemi critici per la sicurezza, secondo IEC61508 e IEC-62304. La certificazione conferma che ThreadX può essere usato nello sviluppo di software correlato alla sicurezza per i livelli di integrità di sicurezza più elevati di International Electrotechnical Commission (IEC) 61508 e IEC 62304, per la "Sicurezza funzionale dei sistemi elettronici, elettronici e programmabili correlati alla sicurezza elettronica". SGS-TÜV Saar, formato tramite un comune gruppo di SGSGroup e TÜV Saarland della Germania, è diventato la principale società indipendente e accreditata per test, controllo, verifica e certificazione di software incorporato per sistemi correlati alla sicurezza in tutto il mondo. Lo standard di sicurezza industriale IEC 61508 e tutti gli standard che ne derivano, incluso lo standard IEC 62304, vengono usati per garantire la sicurezza funzionale dei dispositivi medici elettronici, elettronici e programmabili correlati alla sicurezza elettronica, ai sistemi di controllo dei processi, ai macchinari industriali e ai sistemi di controllo delle apparecchiature.
 
-SGS-TÜV Saar ha certificato ThreadX da usare nei sistemi autonomi per la sicurezza, in base allo standard ISO 26262. Inoltre, ThreadX è certificato per il livello di integrità di sicurezza (ASIL) di Automotive, che rappresenta il livello più elevato di certificazione ISO 26262.
+SGS-TÜV Saar ha certificato ThreadX per l'uso in sistemi automobilistici critici per la sicurezza, in base allo standard ISO 26262. Inoltre, ThreadX è certificato per il livello asil (Automobile Safety Integrity Level) D, che rappresenta il livello più alto di certificazione ISO 26262.
 
-Inoltre, SGS-TÜV Saar ha certificato ThreadX da usare nelle applicazioni ferroviarie critiche per la sicurezza, che soddisfano lo standard EN 50128 fino a SW-SIL 4.
+Inoltre, SGS-TÜV Saar ha certificato ThreadX per l'uso in applicazioni critiche per la sicurezza, in base allo standard EN 50128 fino a SW-SIL 4.
 
 ![Certificazione TÜV](./media/overview-threadx/partener-logo-sgs-tuv-saar-2.png)
 
@@ -88,87 +88,87 @@ Inoltre, SGS-TÜV Saar ha certificato ThreadX da usare nelle applicazioni ferrov
 * EN 50128 SW-SIL 4
 
 > [!NOTE]
-> *Per ulteriori informazioni sulle versioni di ThreadX certificate da TÜV o sulla disponibilità di report di test, certificati e documentazione associata, contattare Microsoft.*
+> *Per altre informazioni sulle versioni di ThreadX certificate da TÜV o per la disponibilità di report di test, certificati e documentazione associata, contattare Microsoft.*
 
-### <a name="misra-c-compliant"></a>Conformità C MISRA
+### <a name="misra-c-compliant"></a>Conforme a MISRA C
 
-MISRA C è un set di linee guida per la programmazione per i sistemi critici che usano il linguaggio di programmazione C. Le linee guida originali di MISRA C erano destinate principalmente alle applicazioni automobilistiche; Tuttavia, MISRA C è ora ampiamente riconosciuto come applicabile a qualsiasi applicazione di sicurezza critica. ThreadX è conforme a tutte le regole "obbligatoria" e "obbligatoria" di MISRA-C:2004 e MISRA C:2012. ThreadX è conforme anche a tutte e tre le regole "consultive". Per ulteriori informazioni, fare riferimento al documento ***ThreadX_MISRA_Compliance.pdf*** .
+MISRA C è un set di linee guida per la programmazione per sistemi critici che usano il linguaggio di programmazione C. Le linee guida originali di MISRA C erano destinate principalmente alle applicazioni per il settore automobilistico; Tuttavia, MISRA C è ora ampiamente riconosciuto come applicabile a qualsiasi applicazione critica per la sicurezza. ThreadX è conforme a tutte le regole "obbligatorie" e "obbligatorie" di MISRA-C:2004 e MISRA C:2012. ThreadX è anche conforme a tutte e tre le regole di "consulenza". Per altri ***dettagliThreadX_MISRA_Compliance.pdf*** vedere il documento sulla gestione dei dati.
 
 ### <a name="ul-certification"></a>Certificazione UL
 
-ThreadX è stato certificato da UL per conformità con UL 60730-1 allegato H, CSA E60730-1 allegato H, IEC 60730-1 allegato H, UL 60335-1 allegato R, IEC 60335-1 allegato R e UL 1998 standard di sicurezza per il software in componenti programmabili. Insieme a IEC/UL 60730-1, che presenta i requisiti per "controlli che usano software" nell'allegato H, lo standard IEC 60335-1 descrive i requisiti per "circuiti elettronici programmabili" nell'allegato R. IEC 60730 allegato H e IEC 60335-1 allegato R, indirizzare la sicurezza dell'hardware e del software MCU usati in Appliance, ad esempio macchine di lavaggio, lavastoviglie, essiccatori, frigoriferi, freezer e forni.
+ThreadX è stato certificato da UL per la conformità con UL 60730-1 Annex H, CSA E60730-1 Annex H, IEC 60730-1 Annex H, UL 60335-1 Annex R, IEC 60335-1 Annex R e UL 1998 standard di sicurezza per il software in componenti programmabili. Insieme a IEC/UL 60730-1, che presenta i requisiti per "Controlli che usano software" nell'allegato H, Lo standard IEC 60335-1 descrive i requisiti per "Circuiti elettronici programmabili" nell'allegato R. IEC 60730 Annex H e IEC 60335-1 Allegato R per la sicurezza dell'hardware e del software MCU usati in appliance come macchine per la lavastoviglie, lavastoviglie, refrigeratori, refrigeratori, refrigeratori e apparecchiature.
 
 ![Certificazione UL](./media/overview-threadx/partener-logo-c-ru-us-2.png)
 
 *UL/IEC 60730, UL/IEC 60335, UL 1998*
 
 > [!NOTE]
-> *Per ulteriori informazioni sulle versioni di ThreadX certificate da TÜV o sulla disponibilità di report di test, certificati e documentazione associata, contattare Microsoft.*
+> *Contattare Microsoft per altre informazioni sulle versioni di ThreadX certificate da TÜV o per la disponibilità di report di test, certificati e documentazione associata.*
 
 ### <a name="certification-pack"></a>Pacchetto di certificazione
 
-Il ThreadX Certification Pack &trade; è un pacchetto autonomo 100% completo, chiavi in mano, specifico per il settore, che fornisce tutte le evidenze threadX necessarie per certificare o inviare correttamente il prodotto basato su threadX ai livelli più elevati di affidabilità e criticità necessari per sistemi aeronautici, medici e industriali critici per la sicurezza. Le certificazioni supportate includono DO-178B, ED-12B, DO-278, FDA510 (k), IEC62304, IEC-60601, ISO-14971, UL-1998, IEC-61508, CENELEC EN50128, BS50128 e 49CFR236. Per ulteriori informazioni sul pacchetto di certificazione, contattare Microsoft.
+Il Pacchetto di certificazione ThreadX è un pacchetto autonomo completo, chiavi in azione, specifico del settore che fornisce tutte le prove ThreadX necessarie per certificare o inviare correttamente il prodotto basato su ThreadX ai livelli di affidabilità e criticità più elevati richiesti per i sistemi medicali, industriali e medici critici per la &trade; sicurezza. Le certificazioni supportate includono DO-178B, ED-12B, DO-278, KPI510(k), IEC62304, IEC-60601, ISO-14971, UL-1998, IEC-61508, CENELEC EN50128, BS50128 e 49CFR236. Per altre informazioni sul Pacchetto di certificazione, contattare Microsoft.
 
 ## <a name="embedded-applications"></a>Applicazioni incorporate
 
-Le applicazioni incorporate vengono eseguite su microprocessori nascosti all'interno di prodotti come dispositivi di comunicazione wireless, motori di automobili, stampanti laser, dispositivi medici e così via. Un'altra distinzione delle applicazioni incorporate è che il software e l'hardware hanno uno scopo dedicato.
+Le applicazioni incorporate vengono eseguite su microprocessori all'interno di prodotti come dispositivi di comunicazione wireless, motori di automobili, stampanti bluetooth, dispositivi medici e così via. Un'altra distinzione delle applicazioni incorporate è che il software e l'hardware hanno uno scopo dedicato.
 
 ### <a name="real-time-software"></a>Software in tempo reale
 
-Quando si impostano vincoli temporali sul software applicativo, questo viene chiamato software in *tempo reale* . Le applicazioni incorporate sono quasi sempre in tempo reale a causa dell'interazione intrinseca con gli eventi esterni.
+Quando al software applicativo vengono imposti vincoli di tempo, si tratta del software *in tempo* reale. Le applicazioni incorporate sono quasi sempre in tempo reale a causa dell'interazione intrinseca con gli eventi esterni.
 
 ### <a name="multitasking"></a>Multitasking
 
-Come indicato in precedenza, le applicazioni incorporate hanno uno scopo dedicato. Per soddisfare questo scopo, il software deve eseguire una serie di *attività*. Un'attività è una parte parzialmente indipendente dell'applicazione che esegue un compito specifico. È anche vero che alcune attività sono più importanti di altre. Una delle principali difficoltà in un'applicazione incorporata è l'allocazione del processore tra le varie attività dell'applicazione. Questa allocazione dell'elaborazione tra attività in competizione è lo scopo principale di ThreadX.
+Come accennato, le applicazioni incorporate hanno uno scopo dedicato. Per soddisfare questo scopo, il software deve eseguire un'ampia gamma di *attività.* Un'attività è una parte semi-indipendente dell'applicazione che svolge un compito specifico. È anche il caso in cui alcune attività sono più importanti di altre. Una delle principali difficoltà in un'applicazione incorporata è l'allocazione del processore tra le varie attività dell'applicazione. Questa allocazione dell'elaborazione tra attività concorrenti è lo scopo principale di ThreadX.
 
-### <a name="tasks-vs-threads"></a>Confronto tra attività e thread
+### <a name="tasks-vs-threads"></a>Attività e thread
 
-Un'altra distinzione sulle attività è che il termine *attività* viene utilizzato in diversi modi. Talvolta significa un programma scaricabile separatamente. In altri casi, può fare riferimento a un segmento di programma interno. Quindi, nei sistemi operativi contemporanei esistono due termini che sostituiscono più o meno l'uso di task: *Process* e *thread*. Un *processo* è un programma completamente indipendente con lo spazio degli indirizzi, mentre un *thread* è un segmento di programma parzialmente indipendente eseguito all'interno di un processo. I thread condividono lo stesso spazio degli indirizzi del processo. Il sovraccarico associato alla gestione dei thread è minimo.
+Un'altra distinzione tra le attività è che il termine *attività* viene usato in diversi modi. A volte significa un programma caricabile separatamente. In altri casi, può fare riferimento a un segmento di programma interno. Pertanto, nei sistemi operativi moderni, esistono due termini che sostituiscono più o meno l'uso dell'attività: *processo* e *thread*. Un *processo* è un programma completamente indipendente con un proprio spazio di indirizzi, mentre un *thread* è un segmento di programma semi-indipendente che viene eseguito all'interno di un processo. I thread condividono lo stesso spazio di indirizzi del processo. L'overhead associato alla gestione dei thread è minimo.
 
-La maggior parte delle applicazioni incorporate non può permettersi l'overhead (sia di memoria che di prestazioni) associato a un sistema operativo completo orientato ai processi. Inoltre, i microprocessori più piccoli non hanno l'architettura hardware per supportare un vero sistema operativo orientato ai processi. Per questi motivi, ThreadX implementa un modello di thread, che è estremamente efficiente e pratico per la maggior parte delle applicazioni incorporate in tempo reale.
+La maggior parte delle applicazioni incorporate non può permettersi l'overhead (memoria e prestazioni) associato a un sistema operativo completamente orientato ai processi. Inoltre, i microprocessori più piccoli non hanno l'architettura hardware per supportare un vero sistema operativo orientato ai processi. Per questi motivi, ThreadX implementa un modello di thread, estremamente efficiente e pratico per la maggior parte delle applicazioni incorporate in tempo reale.
 
-Per evitare confusione, ThreadX non usa il termine *attività*. Viene invece utilizzato il *thread* del nome più descrittivo e contemporaneo.
+Per evitare confusione, ThreadX non usa il termine *attività*. Viene invece usato il *thread* dei nomi più descrittivo e contemporaneo.
 
 ## <a name="threadx-benefits"></a>Vantaggi di ThreadX
 
-L'uso di ThreadX offre molti vantaggi alle applicazioni incorporate. Naturalmente, il vantaggio principale è il modo in cui vengono allocati i tempi di elaborazione dei thread dell'applicazione incorporati.
+L'uso di ThreadX offre molti vantaggi alle applicazioni incorporate. Naturalmente, il vantaggio principale è il tempo di elaborazione allocato ai thread dell'applicazione incorporati.
 
 ### <a name="improved-responsiveness"></a>Velocità di risposta migliorata
 
-Prima di kernel in tempo reale come ThreadX, la maggior parte delle applicazioni incorporate ha allocato tempi di elaborazione con un semplice ciclo di controllo, in genere all'interno della funzione *principale* C. Questo approccio viene comunque utilizzato in applicazioni molto piccole o semplici. Tuttavia, in applicazioni complesse o di grandi dimensioni non è pratico perché il tempo di risposta a un evento è una funzione del tempo di elaborazione peggiore di un passaggio attraverso il ciclo di controllo. 
+Prima dei kernel in tempo reale come ThreadX, la maggior parte delle applicazioni incorporate ha allocato il tempo di elaborazione con un ciclo di controllo semplice, in genere dall'interno della *funzione* principale C. Questo approccio viene ancora usato in applicazioni molto piccole o semplici. Tuttavia, nelle applicazioni di grandi dimensioni o complesse, non è pratico perché il tempo di risposta a qualsiasi evento è una funzione del tempo di elaborazione peggiore di un passaggio attraverso il ciclo di controllo. 
 
-Rendendo le cose peggiori, le caratteristiche temporali dell'applicazione cambiano ogni volta che vengono apportate modifiche al ciclo di controllo. In questo modo l'applicazione è intrinsecamente instabile e difficile da gestire e migliorare.
+Peggiorando le cose, le caratteristiche di temporizzazione dell'applicazione cambiano ogni volta che vengono apportate modifiche al ciclo di controllo. Ciò rende l'applicazione intrinsecamente instabile e difficile da gestire e migliorare.
 
-ThreadX fornisce tempi di risposta rapidi e deterministici a eventi esterni importanti. ThreadX esegue questa operazione tramite il proprio algoritmo di pianificazione di tipo preemptive e con priorità, che consente a un thread con priorità più alta di precedere un thread con priorità più bassa. Di conseguenza, il tempo di risposta del caso peggiore si avvicina al tempo necessario per l'esecuzione di un cambio di contesto. Questo non è solo deterministico, ma è anche estremamente veloce.
+ThreadX fornisce tempi di risposta rapidi e deterministici a eventi esterni importanti. ThreadX esegue questa operazione tramite l'algoritmo di pianificazione preemptive basato sulla priorità, che consente a un thread con priorità più alta di pre-eseguire un thread con priorità inferiore in esecuzione. Di conseguenza, il tempo di risposta peggiore si avvicina al tempo necessario per eseguire un cambio di contesto. Questo non è solo deterministico, ma è anche estremamente veloce.
 
 ### <a name="software-maintenance"></a>Manutenzione del software
 
-Il kernel ThreadX consente agli sviluppatori di applicazioni di concentrarsi su requisiti specifici dei thread dell'applicazione senza doversi preoccupare di modificare la tempistica di altre aree dell'applicazione. Questa funzionalità rende inoltre molto più semplice riparare o migliorare un'applicazione che utilizza ThreadX.
+Il kernel ThreadX consente agli sviluppatori di applicazioni di concentrarsi su requisiti specifici dei thread dell'applicazione senza doversi preoccupare di modificare la tempistica di altre aree dell'applicazione. Questa funzionalità rende anche molto più semplice ripristinare o migliorare un'applicazione che usa ThreadX.
 
 ### <a name="increased-throughput"></a>Maggiore velocità effettiva
 
-Per risolvere il problema del tempo di risposta del ciclo di controllo è possibile aggiungere altro polling. Ciò migliora la velocità di risposta, ma non garantisce comunque un tempo di risposta costante peggiore e non esegue alcuna operazione per migliorare la modifica futura dell'applicazione. Inoltre, il processore sta ora eseguendo un'elaborazione ancora più superflua a causa del polling aggiuntivo. Questa elaborazione non necessaria riduce la velocità effettiva complessiva del sistema.
+Un possibile soluzione al problema del tempo di risposta del ciclo di controllo è l'aggiunta di un altro polling. Ciò migliora la velocità di risposta, ma non garantisce comunque un tempo di risposta costante nel peggiore dei casi e non fa nulla per migliorare le modifiche future dell'applicazione. Inoltre, il processore sta ora eseguendo un'elaborazione ancora più superflua a causa del polling aggiuntivo. Tutte queste elaborazioni non necessarie riducono la velocità effettiva complessiva del sistema.
 
-Un aspetto interessante del sovraccarico è che molti sviluppatori presumono che gli ambienti multithreading come ThreadX aumentino il sovraccarico e abbiano un impatto negativo sulla velocità effettiva totale del sistema. In alcuni casi, tuttavia, il multithreading riduce effettivamente il sovraccarico eliminando tutti i polling ridondanti che si verificano negli ambienti del ciclo di controllo. Il sovraccarico associato ai kernel multithreading è in genere una funzione del tempo necessario per il cambio di contesto. Se il tempo di cambio del contesto è inferiore al processo di polling, ThreadX offre una soluzione con il potenziale sovraccarico e una maggiore velocità effettiva. Questo rende ThreadX una scelta ovvia per le applicazioni che hanno un livello di complessità o dimensione.
+Un aspetto interessante per quanto riguarda l'overhead è che molti sviluppatori presuppongono che gli ambienti multithreading come ThreadX aumentino il sovraccarico e hanno un impatto negativo sulla velocità effettiva totale del sistema. In alcuni casi, tuttavia, il multithreading riduce effettivamente il sovraccarico eliminando tutti i polling ridondanti che si verificano negli ambienti del ciclo di controllo. L'overhead associato ai kernel multithreading è in genere una funzione del tempo necessario per il cambio di contesto. Se il tempo di cambio di contesto è inferiore al processo di polling, ThreadX offre una soluzione con il potenziale di un minore sovraccarico e una maggiore velocità effettiva. Ciò rende ThreadX una scelta ovvia per le applicazioni con qualsiasi grado di complessità o dimensione.
 
-### <a name="processor-isolation"></a>Isolamento processore
+### <a name="processor-isolation"></a>Isolamento del processore
 
-ThreadX fornisce un'interfaccia affidabile indipendente dal processore tra l'applicazione e il processore sottostante. Ciò consente agli sviluppatori di concentrarsi sull'applicazione invece di spendere una quantità significativa di informazioni sull'hardware per l'apprendimento.
+ThreadX offre un'interfaccia affidabile indipendente dal processore tra l'applicazione e il processore sottostante. In questo modo gli sviluppatori possono concentrarsi sull'applicazione anziché dedicarsi a una quantità significativa di tempo per l'apprendimento dei dettagli hardware.
 
 ### <a name="dividing-the-application"></a>Divisione dell'applicazione
 
-Nelle applicazioni basate su ciclo di controllo ogni sviluppatore deve avere una conoscenza approfondita del comportamento e dei requisiti del runtime dell'applicazione. Questo perché la logica di allocazione del processore viene distribuita nell'intera applicazione. Con l'aumentare delle dimensioni o della complessità di un'applicazione, diventa impossibile per tutti gli sviluppatori ricordare i requisiti di elaborazione esatti dell'intera applicazione.
+Nelle applicazioni basate su cicli di controllo, ogni sviluppatore deve avere una conoscenza approfondita del comportamento e dei requisiti dell'intera applicazione in fase di esecuzione. Ciò è dovuto al fatto che la logica di allocazione del processore viene dispersa nell'intera applicazione. Con l'aumentare delle dimensioni o della complessità di un'applicazione, diventa impossibile per tutti gli sviluppatori ricordare i requisiti di elaborazione precisi dell'intera applicazione.
 
-ThreadX libera ogni sviluppatore dalle preoccupazioni associate all'allocazione del processore e consente loro di concentrarsi sulla parte specifica dell'applicazione incorporata. ThreadX impone inoltre che l'applicazione venga divisa in thread chiaramente definiti. Di per sé, questa divisione dell'applicazione nei thread rende lo sviluppo molto più semplice.
+ThreadX libera ogni sviluppatore dalle preoccupazioni associate all'allocazione del processore e consente di concentrarsi sulla parte specifica dell'applicazione incorporata. ThreadX forza inoltre la dividitura dell'applicazione in thread chiaramente definiti. Questa divisione dell'applicazione in thread semplifica di per sé lo sviluppo.
 
-### <a name="ease-of-use"></a>Semplicità d'uso
+### <a name="ease-of-use"></a>Facilità d'uso
 
-ThreadX è progettato tenendo presente lo sviluppatore di applicazioni. L'architettura ThreadX e l'interfaccia di chiamata del servizio sono progettate per essere facilmente comprensibili. Di conseguenza, gli sviluppatori ThreadX possono usare rapidamente le funzionalità avanzate.
+ThreadX è progettato in base allo sviluppatore di applicazioni. L'architettura ThreadX e l'interfaccia delle chiamate di servizio sono progettate per essere facilmente comprensibili. Di conseguenza, gli sviluppatori ThreadX possono usare rapidamente le funzionalità avanzate.
 
-### <a name="improve-time-to-market"></a>Miglioramento del time-to-Market
+### <a name="improve-time-to-market"></a>Migliorare il time-to-market
 
-Tutti i vantaggi di ThreadX accelerano il processo di sviluppo del software. ThreadX gestisce la maggior parte dei problemi del processore e le certificazioni di sicurezza più comuni, rimuovendo così questa operazione dalla pianificazione dello sviluppo. Tutti questi risultati hanno un tempo di immissione sul mercato più rapido.
+Tutti i vantaggi di ThreadX accelerano il processo di sviluppo software. ThreadX si occupa della maggior parte dei problemi del processore e delle certificazioni di sicurezza più comuni, rimuovendo questo impegno dalla pianificazione dello sviluppo. Tutto questo comporta un time-to-market più rapido.
 
 ### <a name="protecting-the-software-investment"></a>Protezione dell'investimento software
 
-Grazie alla relativa architettura, ThreadX è facilmente trasferibile in nuovi ambienti di sviluppo e/o di processore. Questo, associato al fatto che ThreadX isola le applicazioni dai dettagli dei processori sottostanti, rende le applicazioni ThreadX altamente portabili. Di conseguenza, viene garantito il percorso di migrazione dell'applicazione e l'investimento di sviluppo originale è protetto.
+Grazie alla sua architettura, ThreadX viene facilmente connessa a nuovi ambienti di processori e/o strumenti di sviluppo. Questo, insieme al fatto che ThreadX isola le applicazioni dai dettagli dei processori sottostanti, rende le applicazioni ThreadX altamente portabili. Di conseguenza, il percorso di migrazione dell'applicazione è garantito e l'investimento di sviluppo originale è protetto.

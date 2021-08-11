@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0a6ac2c7a76893d516b9beae9b893c9764de60ba
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: faa1bc0d4697a7b5e79430097c2921fd4dde4be9e6390398befc0b89074f2fe6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754931"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790755"
 ---
 # <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>Panoramica di Azure RTOS GUIX e Azure RTOS GUIX Studio
 
-L'interfaccia utente grafica incorporata di GuiX di Azure è la soluzione GUI avanzata di livello industriale di Microsoft progettata specificamente per le applicazioni IoT, real-time e deep embedded. Microsoft offre anche uno strumento di progettazione desktop WYSIWYG completo denominato Azure RTOS GUIX Studio, che consente agli sviluppatori di progettare l'interfaccia utente grafica sul desktop e generare codice GUIX incorporato Azure RTOS GUIX che può quindi essere esportato nella destinazione. Azure RTOS GUIX è completamente integrato con Azure RTOS ThreadX RTOS ed è disponibile per molti degli stessi processori supportati da Azure RTOS ThreadX. Tutto questo combinato con un footprint estremamente ridotto, un'esecuzione rapida e una maggiore facilità d'uso, rendono Azure RTOS GUIX la scelta ideale per le applicazioni IoT incorporate più complesse che richiedono un'interfaccia utente. 
+L'interfaccia utente grafica incorporata di GuiX di Azure è la soluzione GUI avanzata di livello industriale di Microsoft progettata specificamente per applicazioni IoT e deep embedded, in tempo reale. Microsoft offre anche uno strumento di progettazione desktop WYSIWYG completo denominato Azure RTOS GUIX Studio, che consente agli sviluppatori di progettare l'interfaccia utente grafica sul desktop e generare codice GUIX incorporato Azure RTOS GUIX che può quindi essere esportato nella destinazione. Azure RTOS GUIX è completamente integrato con Azure RTOS ThreadX RTOS ed è disponibile per molti degli stessi processori supportati da Azure RTOS ThreadX. Tutto questo combinato con un footprint estremamente ridotto, un'esecuzione rapida e una maggiore facilità d'uso, rendono Azure RTOS GUIX la scelta ideale per le applicazioni IoT incorporate più complesse che richiedono un'interfaccia utente. 
 
 ## <a name="azure-rtos-guix-api"></a>Azure RTOS GUIX API
 
@@ -45,7 +45,7 @@ L'interfaccia utente grafica incorporata di GuiX di Azure è la soluzione GUI av
 * Estremamente piccola, compatta ed efficiente
 * La libreria include pulsante, misuratore, elenco, finestra, scorrimento, dispositivo di scorrimento, indicatore di stato, richiesta e altro ancora
 * Disegno e aspetto completamente personalizzabili
-* Gestione di operazioni e eventi completamente personalizzabili
+* Gestione di operazioni e eventi completamente personalizzabile
 * Solo i widget usati sono collegati al software dell'applicazione
 
 ### <a name="math-and-utilities"></a>Matematica e utilità
@@ -77,7 +77,7 @@ L'interfaccia utente grafica incorporata di GuiX di Azure è la soluzione GUI av
 
 ### <a name="canvas-processing"></a>Elaborazione dell'area di disegno
 
-* Ritaglio e manutenzione dell'ordine Z
+* Manutenzione del ritaglio e dell'ordine Z
 * Isola la libreria di widget dai dettagli hardware
 * Isola l'applicazione dai dettagli hardware
 * Aggiornamento automatico in background delle aree dirty
@@ -148,34 +148,34 @@ Dove "x" e "y" sono le dimensioni dell'area di disegno (visualizzazione).
 
 La maggior parte delle applicazioni usa anche risorse grafiche, che non sono incluse nel core Azure RTOS di archiviazione della libreria GUIX. Queste risorse includono tipi di carattere, icone grafiche (pixelmap) e stringhe statiche. Questi dati possono essere archiviati nella sezione const memory (ad esempio FLASH).
 
-Le dimensioni di questa area di memoria dipendono da diversi fattori, tra cui il numero e le dimensioni dei tipi di carattere univoci usati, il numero e le dimensioni delle icone grafiche usate, il formato del colore di output e se ogni risorsa usa o meno dati compressi, poiché Azure RTOS GUIX supporta la compressione RLE dei dati sia del tipo di carattere che della mappa pixel. I requisiti di archiviazione per ogni risorsa vengono visualizzati all'interno dell'applicazione GUIX Studio di Azure RTOS, consentendo all'utente di tenere traccia e monitorare la quantità di memoria flash che verrà utilizzata dalle risorse dell'applicazione.
+Le dimensioni di questa area di memoria dipendono da diversi fattori, tra cui il numero e le dimensioni dei tipi di carattere univoci usati, il numero e le dimensioni delle icone grafiche usate, il formato del colore di output e se ogni risorsa usa o meno dati compressi, poiché Azure RTOS GUIX supporta la compressione RLE sia dei dati di tipo di carattere che di pixelmap. I requisiti di archiviazione per ogni risorsa vengono visualizzati all'interno dell'applicazione GUIX Studio di Azure RTOS, consentendo all'utente di tenere traccia e monitorare la quantità di memoria flash che verrà utilizzata dalle risorse dell'applicazione.
 
 Come Azure RTOS ThreadX, le dimensioni di Azure RTOS GUIX vengono ridimensionate automaticamente in base ai servizi effettivamente usati dall'applicazione. Questo elimina virtualmente la necessità di parametri di configurazione e compilazione complessi, semplificando le operazioni per lo sviluppatore.
 
-#### <a name="simple-easy-to-use"></a>Semplice e facile da usare
+#### <a name="simple-easy-to-use"></a>Semplice, facile da usare
 
 Azure RTOS GUIX è molto semplice da usare e Azure RTOS GUIX Studio lo rende ancora più semplice consentendo agli sviluppatori di progettare visivamente sul desktop e generare codice C che viene eseguito nella destinazione effettiva. Le applicazioni possono quindi aggiungere funzioni personalizzate di gestione e disegno degli eventi per completare l'interfaccia utente grafica.
 
-L'uso Azure RTOS'API GUIX è semplice. L Azure RTOS aPI GUIX è intuitiva e altamente funzionale. I nomi delle API sono fatti di parole reali e non di "alfabeti" e/o di nomi altamente abbreviati così comuni in altri file system prodotti. Tutte Azure RTOS API GUIX hanno un nome gx_ *e* seguono una convenzione di denominazione sostantivo-verbo. Inoltre, esiste una coerenza funzionale in tutta l'API. Ad esempio, tutte le API che inizializzano un blocco di controllo widget sono denominate widget_type _create e i parametri della funzione create per ogni tipo di widget sono sempre definiti &lt; &gt; nello stesso ordine.
+L'uso Azure RTOS'API GUIX è semplice. L Azure RTOS API GUIX è intuitiva e altamente funzionale. I nomi delle API sono fatti di parole reali e non di "zuppe dell'alfabeto" e/o dei nomi altamente abbreviati così comuni in altri file system prodotti. Tutte Azure RTOS API GUIX hanno un gx_ *e* seguono una convenzione di denominazione sostantivo-verbo. Inoltre, esiste una coerenza funzionale in tutta l'API. Ad esempio, tutte le API che inizializzano un blocco di controllo widget sono denominate widget_type _create e i parametri della funzione create per ogni tipo di widget sono sempre definiti &lt; &gt; nello stesso ordine.
 
 ### <a name="comprehensive-set-of-built-in-widgets"></a>Set completo di widget predefiniti
 
 * Azure RTOS GUIX offre un set di widget predefiniti, tra cui:
 * Accordion Menu
-* Pulsante
+* Button
 * Casella di controllo
 * Misuratore circolare
 * Elenco a discesa
 * Elenco orizzontale
 * Finestra barra di scorrimento orizzontale
 * Icona
-* Pulsante icona
+* Pulsante Icona
 * Grafico a linee
 * Menu
 * Pulsante Testo su più righe
 * Input di testo su più righe
 * Visualizzazione testo su più righe
-* Richiesta di mappa pixel numerica
+* Richiesta mappa pixel numerica
 * Richiesta numerica
 * Rotellina di scorrimento numerica
 * Pulsante Mappa pixel
@@ -189,7 +189,7 @@ L'uso Azure RTOS'API GUIX è semplice. L Azure RTOS aPI GUIX è intuitiva e alta
 * Rotellina
 * Input di testo a riga singola
 * Slider
-* String Scroll Wheel
+* Rotellina di scorrimento delle stringhe
 * Pulsante Testo
 * Visualizzazione ad albero
 * Elenco verticale
@@ -199,79 +199,79 @@ L'uso Azure RTOS'API GUIX è semplice. L Azure RTOS aPI GUIX è intuitiva e alta
 
 ### <a name="complete-low-level-drawing-api"></a>COMPLETARE l'API di disegno di basso livello
 
-Azure RTOS GUIX offre un'API di disegno canvas affidabile, che consente all'applicazione di eseguire il rendering di forme grafiche complesse.
+Azure RTOS GUIX offre un'API di disegno canvas affidabile che consente all'applicazione di eseguire il rendering di forme grafiche complesse.
 
-Tutte le funzioni supportano l'anti-aliasing su destinazioni con profondità di colore elevata e tutte le forme possono essere riempite dal contorno, inclusi i riempimenti a tinta unita e i riempimenti con motivo mappa pixel. Tutte le primitive di disegno supportano il pennello alfa quando l'esecuzione è a 16 bpp e una profondità di colore superiore. Le funzioni di disegno includono:
+Tutte le funzioni supportano l'antialiasing su destinazioni con profondità di colore elevata e tutte le forme possono essere riempite con il contorno, inclusi i riempimenti a tinta unita e a motivi mappa pixel. Tutte le primitive di disegno supportano l'alfa del pennello quando vengono eseguite a 16 bpp e una profondità di colore superiore. Le funzioni di disegno includono:
 
-* Arc Draw
-* Circle Draw
+* Disegno ad arco
+* Disegno di cerchi
 * Disegno di linee
 * Disegno a torta
-* Pixelmap Blend
+* Fusione di mappe pixel
 * Riquadro mappa pixel
 * Disegno poligono
 * Disegno di testo
 * Chord Draw
 * Disegno ellisse
-* Pixel Draw
-* Pixelmap Draw
+* Disegno in pixel
+* Disegno mappa pixel
 * Rotazione mappa pixel
 * Disegno rettangolo
-* Blend di testo
+* Combinazione di testo
 
-### <a name="default-free-fonts-and-easy-to-add-more"></a>Tipi di carattere gratuiti predefiniti e facili da aggiungere
+### <a name="default-free-fonts-and-easy-to-add-more"></a>Tipi di carattere gratuiti predefiniti e facile da aggiungere
 
 Azure RTOS GUIX offre un set gratuito di tipi di carattere TrueType. Gli sviluppatori possono aggiungere altri tipi di carattere TrueType in base alle esigenze.
 
-Il Azure RTOS carattere GUIX supporta l'anti-aliasing 8bpp, l'anti-aliasing 4bpp e i tipi di carattere monocromatici 1bpp. Per le applicazioni con il maggior numero di risorse, Azure RTOS GUIX esegue il pre-rendering dei tipi di carattere TrueType in un formato bitmap compresso usando lo strumento desktop GUIX Studio.
+Il Azure RTOS tipo di carattere GUIX supporta l'anti-aliasing 8bpp, l'anti-aliasing 4bpp e i tipi di carattere monocromatici 1bpp. Per le applicazioni più vincolate alle risorse, Azure RTOS GUIX esegue il pre-rendering dei tipi di carattere TrueType in un formato bitmap compresso usando lo strumento desktop GUIX Studio.
 
 ### <a name="custom-jpg-and-png-decoder-implementation"></a>Implementazione personalizzata del decodificatore JPG e PNG
 
-Implementazione personalizzata del decodificatore JPG e PNG con l'implementazione del decodificatore di file JPG e PNG. Questa implementazione supporta la conversione dello spazio colore, il dithering e la creazione di runtime Azure RTOS immagini in formato pixelmap compatibile con GUIX.
+Implementazione personalizzata del decodificatore JPG e PNG jpg e del decodificatore di file PNG. Questa implementazione supporta la conversione dello spazio dei colori, il dithering e la creazione di runtime Azure RTOS immagini in formato pixelmap compatibili con GUIX.
 
 ### <a name="extensive-display-and-touchscreen-support"></a>Supporto completo dello schermo e del touchscreen
 
-Azure RTOS GUIX fornisce driver di visualizzazione generici per quasi tutti i formati di colore, tra cui 1bpp monocromatico, 8 bpp palette, 8 bpp 3:3:2 format,
+Azure RTOS GUIX fornisce driver di visualizzazione generici per quasi tutti i formati di colore, tra cui 1bpp monocromatico, tavolozza 8 bpp, 8 bpp 3:3:2 formato,
 
-Formato 16 bpp 565 rgb, 16 bpp 4:4:4, 32 bpp x:r:g:b e formato 32 bpp a:r:g:b. Inoltre, Azure RTOS GUIX è integrato con molti dei controller LCD e degli acceleratori hardware più diffusi (ST ChromeArt, Renesas Synergy e così via).
+Formato 16 bpp 565 rgb, 16 bpp 4:4:4:4, 32 bpp x:r:g:b e formato 32 bpp a:r:g:b. Inoltre, Azure RTOS GUIX è integrato con molti dei più diffusi controller LCD e acceleratori hardware (ST ChromeArt, Renesas Synergy e così via).
 
-Azure RTOS GUIX supporta completamente il touchscreen (incluso il supporto movimenti), la penna e i dispositivi di input della tastiera virtuale.
+Azure RTOS GUIX supporta completamente il touchscreen (incluso il supporto dei movimenti), la penna e i dispositivi di input della tastiera virtuale.
 
-### <a name="azure-rtos-guix-studio-desktop-wysiwyg-tool"></a>Azure RTOS STRUMENTO WYSIWYG desktop DI GUIX Studio
+### <a name="azure-rtos-guix-studio-desktop-wysiwyg-tool"></a>Azure RTOS strumento WYSIWYG desktop GUIX Studio
 
-Azure RTOS GUIX Studio offre un ambiente di progettazione schermo WYSIWYG completo che consente all'utente di trascinare gli elementi grafici usati per compilare le schermate gui. Azure RTOS GUIX Studio genera automaticamente codice C compatibile con la libreria GUIX di Azure RTOS, pronto per essere compilato ed eseguito nella destinazione. Gli sviluppatori possono produrre tipi di carattere di cui è stato eseguito il rendering preliminare da usare all'interno di un'applicazione usando lo strumento Azure RTOS di generazione dei tipi di carattere di GUIX Studio. I tipi di carattere possono essere generati in formati monocromatici o con anti-aliasing e sono ottimizzati per risparmiare spazio nella destinazione. I tipi di carattere possono includere qualsiasi set di caratteri, inclusi i caratteri Unicode per le applicazioni multilingue.
+Azure RTOS GUIX Studio offre un ambiente di progettazione dello schermo WYSIWYG completo che consente all'utente di trascinare e rilasciare elementi grafici usati per compilare le schermate GUI. Azure RTOS GUIX Studio genera automaticamente codice C compatibile con la libreria GUIX Azure RTOS, pronta per essere compilata ed eseguita nella destinazione. Gli sviluppatori possono produrre tipi di carattere di cui è stato eseguito il rendering preliminare per l'uso all'interno di un'applicazione usando lo strumento Azure RTOS di generazione dei caratteri di GUIX Studio. I tipi di carattere possono essere generati in formati monocromatici o con antialiasing e sono ottimizzati per risparmiare spazio nella destinazione. I tipi di carattere possono includere qualsiasi set di caratteri, inclusi i caratteri Unicode per applicazioni multilingue.
 
 <img alt="Diagram of SGS-TUV Saar certification logo" class="alignnone size-full wp-image-1500" height="341" sizes="(max-width: 535px) 100vw, 535px" src="./media/overview/studio_screen_shot.png"/>
 
-Azure RTOS GUIX Studio facilita l'importazione di grafica da file PNG o JPG con la conversione Azure RTOS pixelmap GUIX compresse per l'uso nel sistema di destinazione. Molti dei tipi Azure RTOS widget GUIX sono progettati per incorporare grafica utente per un aspetto personalizzato. Inoltre, Azure RTOS GUIX Studio consente la personalizzazione dei colori predefiniti e degli stili di disegno usati dai widget GUIX di Azure RTOS, consentendo agli sviluppatori di ottimizzare molto facilmente l'aspetto di Azure RTOS GUIX. La generazione e la manutenzione delle stringhe dell'applicazione sono un'altra funzionalità incorporata di Azure RTOS GUIX Studio. In questo modo gli sviluppatori possono progettare un'applicazione usando un linguaggio per lo sviluppo e aggiungere in modo semplice e rapido il supporto per altri linguaggi dopo il rilascio del prodotto. Un'applicazione GUIX di Azure RTOS completa può essere eseguita in un pc desktop all'interno dell'ambiente GUIX Studio di Azure RTOS, consentendo una generazione e una dimostrazione rapide e semplici dei concetti relativi all'interfaccia utente grafica, il test dei flussi dello schermo e l'osservazione delle transizioni e delle animazioni dello schermo. Al termine, una progettazione può essere esportata come strutture di dati C pronte per la destinazione, pronte per essere compilate e collegate con le librerie GUIX e threadX Azure RTOS Azure RTOS.
+Azure RTOS GUIX Studio facilita l'importazione di grafica da file PNG o JPG con conversione Azure RTOS pixelmap GUIX compresse per l'uso nel sistema di destinazione. Molti dei tipi Azure RTOS widget GUIX sono progettati per incorporare grafica utente per un aspetto personalizzato. Inoltre, Azure RTOS GUIX Studio consente la personalizzazione dei colori predefiniti e degli stili di disegno usati dai widget GUIX di Azure RTOS, consentendo agli sviluppatori di ottimizzare molto facilmente l'aspetto di Azure RTOS GUIX. La generazione e la manutenzione delle stringhe dell'applicazione è un'altra funzionalità incorporata di Azure RTOS GUIX Studio. In questo modo gli sviluppatori possono progettare un'applicazione usando un linguaggio per lo sviluppo e aggiungere rapidamente e facilmente il supporto per altri linguaggi dopo il rilascio del prodotto. Un'applicazione GUIX Azure RTOS completa può essere eseguita in un desktop pc all'interno dell'ambiente GUIX Studio di Azure RTOS, consentendo una generazione e una dimostrazione rapida e semplice dei concetti relativi all'interfaccia utente grafica, al test dei flussi dello schermo e all'osservazione delle transizioni dello schermo e delle animazioni. Al termine, una progettazione può essere esportata come strutture di dati C pronte per la destinazione, pronte per essere compilate e collegate con le librerie GUIX e threadX Azure RTOS Azure RTOS.
 
-Azure RTOS GUIX e Azure RTOS GUIX Studio supportano più temi di risorse, consentendo di eseguire facilmente il reskin di un'applicazione in fase di esecuzione. I tipi di carattere, i colori e le mappe pixel possono essere modificati in fase di esecuzione con una semplice API.
+Azure RTOS GUIX e Azure RTOS GUIX Studio supportano più temi di risorse, consentendo di riasserire facilmente un'applicazione in fase di esecuzione. I tipi di carattere, i colori e le mappe pixel possono essere modificati in fase di esecuzione con una semplice API.
 
 Altre informazioni su GUIX Studio
 
 ### <a name="complete-win32-simulation"></a>Completare la simulazione Win32
 
-Azure RTOS GUIX viene eseguito in un PC Windows, usando esattamente la stessa libreria di disegno eseguita nella scheda di destinazione. Con Azure RTOS GUIX, è possibile compilare ed eseguire un'applicazione GUI nel PC e usare lo stesso codice dell'applicazione nella destinazione per il debug, la creazione rapida di prototipi, la dimostrazione e l'operazione di destinazione WYSIWYG.
+Azure RTOS GUIX viene eseguito in un PC Windows, usando esattamente la stessa libreria di disegno eseguita sulla scheda di destinazione. Con Azure RTOS GUIX, è possibile compilare ed eseguire un'applicazione GUI nel PC e usare lo stesso codice dell'applicazione nella destinazione per il debug, la creazione rapida di prototipi, la dimostrazione e l'operazione di destinazione WYSIWYG.
 
 ### <a name="advanced-technology"></a>Tecnologia avanzata
 
 * Azure RTOS tecnologia avanzata di GUIX incorpora:
 * Fusione alfa
-* Anti-aliasing
+* Antialiasing
 * Scalabilità automatica
 * Compressione bitmap
-* Fusione di aree di disegno
+* Fusione dell'area di disegno
 * Supporto dei widget personalizzati
 * Supporto del disegno posticipato
 * Supporto del dithering
-* Programmazione neutrale endian
+* Programmazione neutra endiana
 * Supporto dell'acceleratore hardware
 * Supporto multilingue e codifica UTF-8
 * Supporto di più display e canvas
-* Gestione ottimizzata di ritaglio, disegno e eventi
+* Ritaglio, disegno e gestione degli eventi ottimizzati
 * Decodificatore JPEG e PNG di runtime
 * Interfaccia e temi
 * Supporta il colore reale monocromatico a 32 bit con formati di grafica alfa
-* Transizioni, Sprite e supporto dell'animazione
+* Supporto di transizioni, Sprite e animazioni
 * Simulazione Win32
-* Gestione delle finestre, inclusi viewport e manutenzione dell'ordine Z
+* Gestione delle finestre, inclusi i viewport e la manutenzione dell'ordine Z

@@ -1,31 +1,31 @@
 ### YamlMime:Landing
-title: Documentazione di Azure RTO NetX
-summary: Azure RTO NetX è un'implementazione ad alte prestazioni di standard di protocollo TCP/IP, completamente integrato con Azure RTO ThreadX e disponibile per tutti i processori supportati.
+title: Azure RTOS documentazione di NetX
+summary: Azure RTOS NetX è un'implementazione ad alte prestazioni degli standard del protocollo TCP/IP, completamente integrata con Azure RTOS ThreadX e disponibile per tutti i processori supportati.
 metadata:
-  title: Che cos'è Azure RTO NetX?
-  description: Azure RTO NetX è un'implementazione ad alte prestazioni di standard di protocollo TCP/IP, completamente integrato con Azure RTO ThreadX e disponibile per tutti i processori supportati.
+  title: Che cos'Azure RTOS NetX?
+  description: Azure RTOS NetX è un'implementazione ad alte prestazioni degli standard del protocollo TCP/IP, completamente integrata con Azure RTOS ThreadX e disponibile per tutti i processori supportati.
   services: rtos
   ms.service: rtos
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 5/19/2020
-  ms.openlocfilehash: e8af2831320e21bd0e3a197125f97991b14125b8
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: 12603de514cb5a63b7ea793a36e0cb29a4f4b76c16272a7d07a6ca769617fc81
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: MT
   ms.contentlocale: it-IT
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797862"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116801989"
 landingContent:
-- title: Introduzione ad Azure RTO NetX
+- title: Introduzione a Azure RTOS NetX
   linkLists:
   - linkListType: overview
     links:
-    - text: Che cos'è Azure RTO NetX?
+    - text: Che cos'Azure RTOS NetX?
       url: overview-netx.md
-- title: Introduzione ad Azure RTO NetX
+- title: Introduzione a Azure RTOS NetX
   linkLists:
   - linkListType: get-started
     links:
-    - text: Guida dell'utente di Azure RTO NetX
+    - text: Azure RTOS'utente di NetX
       url: about-this-guide.md

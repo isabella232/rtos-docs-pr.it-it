@@ -1,37 +1,37 @@
 ---
-title: 'Capitolo 4: implementazione di USBX PictBridge'
-description: UBSX supporta l'implementazione di PictBridge completa sia sul dispositivo che sull'host. PictBridge si trova sopra la classe USBX PIMA su entrambi i lati.
+title: Capitolo 4 - Implementazione di USBX Pictbridge
+description: UBSX supporta l'implementazione completa di Pictbridge sia nel dispositivo che nell'host. Pictbridge si trova sopra la classe USBX PIMA su entrambi i lati.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4fdf1e46a7123c10d17e11d09c1b16c2f68f4a31
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 5a1bab2cb60ce5df6c0662eb1a31f542a3b1d7a87d4584d485cbd621e3342abc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550236"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791117"
 ---
-# <a name="chapter-4---usbx-pictbridge-implementation"></a>Capitolo 4: implementazione di USBX PictBridge
+# <a name="chapter-4---usbx-pictbridge-implementation"></a>Capitolo 4 - Implementazione di USBX Pictbridge
 
-UBSX supporta l'implementazione di PictBridge completa sia nell'host che nel dispositivo. PictBridge si trova sopra la classe USBX PIMA su entrambi i lati.
+UBSX supporta l'implementazione completa di Pictbridge sia nell'host che nel dispositivo. Pictbridge si trova sopra la classe USBX PIMA su entrambi i lati.
 
-Gli standard PictBridge consentono la connessione di una fotocamera digitale o di uno smartphone direttamente a una stampante senza PC, consentendo la stampa diretta a determinate stampanti compatibili con PictBridge.
+Gli standard di PictBridge consentono la connessione di una fotocamera digitale o di uno smart phone direttamente a una stampante senza PC, consentendo la stampa diretta a determinate stampanti in grado di riconoscere Pictbridge.
 
-Quando una fotocamera o un telefono è connesso a una stampante, la stampante è l'host USB e la fotocamera è il dispositivo USB. Con la tecnologia PictBridge, tuttavia, la fotocamera viene visualizzata come host e i comandi vengono gestiti dalla fotocamera. La fotocamera è il server di archiviazione, ovvero la stampante il client di archiviazione. La fotocamera è il client di stampa e la stampante è naturalmente il server di stampa.
+Quando una fotocamera o un telefono è connesso a una stampante, la stampante è l'host USB e la fotocamera è il dispositivo USB. Tuttavia, con Pictbridge, la fotocamera apparirà come l'host e i comandi vengono guidati dalla fotocamera. La fotocamera è il server di archiviazione, la stampante del client di archiviazione. La fotocamera è il client di stampa e la stampante è ovviamente il server di stampa.
 
-PictBridge utilizza USB come livello di trasporto, ma si basa su PTP (Picture Transfer Protocol) per il protocollo di comunicazione.
+Pictbridge usa USB come livello di trasporto, ma si basa su PTP (Picture Transfer Protocol) per il protocollo di comunicazione.
 
 Di seguito è riportato un diagramma dei comandi/risposte tra il client DPS e il server DPS quando si verifica un processo di stampa:
 
 ![Comandi e risposte DPS](./media/usbx-device-stack-supplemental/dps-client-server.png)
 
-## <a name="pictbridge-client-implementation"></a>Implementazione del client PictBridge
+## <a name="pictbridge-client-implementation"></a>Implementazione del client Pictbridge
 
-La tecnologia PictBridge sul client richiede che lo stack di dispositivi USBX e la classe PIMA vengano eseguiti per primi.
+Pictbridge nel client richiede che lo stack di dispositivi USBX e la classe PIMA siano in esecuzione per primi.
 
-Un Framework di dispositivi descrive la classe PIMA nel modo seguente.
+Un framework di dispositivi descrive la classe PIMA nel modo seguente.
 
 ```C
 UCHAR device_framework_full_speed[] =
@@ -53,11 +53,11 @@ UCHAR device_framework_full_speed[] =
 };
 ```
 
-La classe Pima usa il campo ID 0x06 e la relativa sottoclasse è 0x01 per l'immagine ancora e il protocollo è 0x01 per PIMA 15740.
+La classe Pima usa il campo ID 0x06 e ha la sottoclasse 0x01 per Still Image e il protocollo è 0x01 per PIMA 15740.
 
-In questa classe sono definiti tre endpoint; due operazioni bulk per l'invio e la ricezione di dati e un interrupt per gli eventi.
+In questa classe sono definiti tre endpoint. due operazioni bulk per l'invio/ricezione di dati e un interrupt per gli eventi.
 
-A differenza di altre implementazioni di dispositivi USBX, l'applicazione PictBridge non deve definire una classe. Richiama invece la funzione ***ux_pictbridge_dpsclient_start***. Di seguito è riportato un esempio.
+A differenza di altre implementazioni di dispositivi USBX, l'applicazione Pictbridge non deve definire una classe. Richiama invece la funzione ***ux_pictbridge_dpsclient_start***. Di seguito è riportato un esempio.
 
 ```C
 /* Initialize the Pictbridge string components. */
@@ -85,7 +85,7 @@ if(status != UX_SUCCESS)
     return;
 ```
 
-I parametri passati al client PictBridge sono i seguenti.
+I parametri passati al client di Pictbridge sono i seguenti.
 
 ```C
 pictbridge.ux_pictbridge_dpslocal.ux_pictbridge_devinfo_vendor_name
@@ -100,7 +100,7 @@ pictbridge.ux_pictbridge_dpslocal.ux_pictbridge_devinfo_vendor_specific_version
     : Value set to 0x0100;
 ```
 
-Il passaggio successivo consiste nel fare in modo che il dispositivo e l'host vengano sincronizzati e siano pronti per lo scambio di informazioni.
+Il passaggio successivo consiste nel sincronizzare il dispositivo e l'host e prepararsi per lo scambio di informazioni.
 
 Questa operazione viene eseguita attendendo un flag di evento come indicato di seguito.
 
@@ -111,9 +111,9 @@ status = ux_utility_event_flags_get(&pictbridge.ux_pictbridge_event_flags_group,
     &actual_flags, UX_PICTBRIDGE_EVENT_TIMEOUT);
 ```
 
-Se la macchina a Stati è nello stato **DISCOVERY_COMPLETE** , il lato della fotocamera (il client DPS) raccoglierà le informazioni relative alla stampante e alle relative funzionalità.
+Se la macchina a stati è nello stato **DISCOVERY_COMPLETE,** il lato fotocamera (client DPS) raccoglierà informazioni relative alla stampante e alle relative funzionalità.
 
-Se il client DPS è pronto per accettare un processo di stampa, il relativo stato verrà impostato su **UX_PICTBRIDGE_NEW_JOB_TRUE**. È possibile controllarlo di seguito.
+Se il client DPS è pronto ad accettare un processo di stampa, il relativo stato verrà impostato **su UX_PICTBRIDGE_NEW_JOB_TRUE**. È possibile verificarlo di seguito.
 
 ```C
 /* Check if the printer is ready for a print job. */
@@ -122,7 +122,7 @@ if (pictbridge.ux_pictbridge_dpsclient.ux_pictbridge_devinfo_newjobok ==
 /* We can print something … */
 ```
 
-Successivamente, alcuni descrittori di joib di stampa devono essere riempiti come segue:
+Successivamente, alcuni descrittori di joib di stampa devono essere compilati come segue:
 
 ```C
 /* We can start a new job. Fill in the JobConfig and PrintInfo structures. */
@@ -185,13 +185,13 @@ ux_utility_string_to_unicode("JPEG Image", object ->
 status =ux_pictbridge_dpsclient_api_start_job(&pictbridge);
 ```
 
-Il client PictBridge dispone ora di un processo di stampa che consente di recuperare i blocchi di immagine alla volta dall'applicazione tramite il callback definito nel campo
+Il client Di Pictbridge ha ora un processo di stampa da eseguire e recupererà i blocchi immagine alla volta dall'applicazione tramite il callback definito nel campo
 
 ```C
 jobinfo -> ux_pictbridge_jobinfo_object_data_read
 ```
 
-Il prototipo della funzione è definito come segue:
+Il prototipo di tale funzione è definito come:
 
 ## <a name="ux_pictbridge_jobinfo_object_data_read"></a>ux_pictbridge_jobinfo_object_data_read
 
@@ -210,20 +210,20 @@ UINT ux_pictbridge_jobinfo_object_data_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando il client DPS deve recuperare un blocco di dati da stampare sulla stampante PictBridge di destinazione.
+Questa funzione viene chiamata quando il client DPS deve recuperare un blocco di dati da stampare sulla stampante Pictbridge di destinazione.
 
 ### <a name="parameters"></a>Parametri
 
-- **PictBridge**: puntatore all'istanza della classe PictBridge.
-- **object_buffer**: puntatore al buffer oggetto
-- **object_offset**: inizio della lettura del blocco di dati
-- **object_length**: lunghezza da restituire
-- **actual_length**: lunghezza effettiva restituita
+- **pictbridge:** puntatore all'istanza della classe pictbridge.
+- **object_buffer:** puntatore al buffer dell'oggetto
+- **object_offset:** dove si inizia a leggere il blocco di dati
+- **object_length:** lunghezza da restituire
+- **actual_length:** lunghezza effettiva restituita
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_ERROR** (0x01) l'applicazione non è in grado di recuperare i dati.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0x01) L'applicazione non è stata in grado di recuperare i dati.
 
 ### <a name="example"></a>Esempio
 
@@ -246,11 +246,11 @@ UINT ux_demo_object_data_copy(
 }
 ```
 
-## <a name="pictbridge-host-implementation"></a>Implementazione dell'host PictBridge
+## <a name="pictbridge-host-implementation"></a>Implementazione dell'host Di Pictbridge
 
-L'implementazione dell'host di PictBridge è diversa dal client.
+L'implementazione host di Pictbridge è diversa dal client.
 
-La prima cosa da fare in un ambiente host PictBridge consiste nel registrare la classe Pima come illustrato nell'esempio seguente:
+La prima operazione da eseguire in un ambiente host Di Pictbridge è registrare la classe Pima come illustrato nell'esempio seguente:
 
 ```C
 status = ux_host_stack_class_register(_ux_system_host_class_pima_name,
@@ -259,60 +259,60 @@ if(status != UX_SUCCESS)
     return;
 ```
 
-Questa classe è il livello generico PTP situato tra lo stack USB e il livello PictBridge.
+Questa classe è il livello PTP generico tra lo stack USB e il livello Pictbridge.
 
-Il passaggio successivo consiste nell'inizializzare i valori predefiniti di PictBridge per i servizi di stampa come indicato di seguito:
+Il passaggio successivo consiste nell'inizializzare i valori predefiniti di Pictbridge per i servizi di stampa come indicato di seguito:
 
-| Campo PictBridge       | valore                                  |
+| Campo di Pictbridge       | Valore                                  |
 |------------------------|----------------------------------------|
-| DpsVersion [0]          | 0x00010000                             |
-| DpsVersion [1]          | 0x00010001                             |
-| DpsVersion [2]          | 0x00000000                             |
+| DpsVersion[0]          | 0x00010000                             |
+| DpsVersion[1]          | 0x00010001                             |
+| DpsVersion[2]          | 0x00000000                             |
 | VendorSpecificVersion  | 0x00010000                             |
 | PrintServiceAvailable  | 0x30010000                             |
-| Qualità [0]           | UX_PICTBRIDGE_QUALITIES_DEFAULT        |
-| Qualità [1]           | UX_PICTBRIDGE_QUALITIES_NORMAL         |
-| Qualità [2]           | UX_PICTBRIDGE_QUALITIES_DRAFT          |
-| Qualità [3]           | UX_PICTBRIDGE_QUALITIES_FINE           |
-| PaperSizes [0]          | UX_PICTBRIDGE_PAPER_SIZES_DEFAULT      |
-| PaperSizes [1]          | UX_PICTBRIDGE_PAPER_SIZES_4IX6I        |
-| PaperSizes [2]          | UX_PICTBRIDGE_PAPER_SIZES_L            |
-| PaperSizes [3]          | UX_PICTBRIDGE_PAPER_SIZES_2L           |
-| PaperSizes [4]          | UX_PICTBRIDGE_PAPER_SIZES_LETTER       |
-| PaperTypes [0]          | UX_PICTBRIDGE_PAPER_TYPES_DEFAULT      |
-| PaperTypes [1]          | UX_PICTBRIDGE_PAPER_TYPES_PLAIN        |
-| PaperTypes [2           | UX_PICTBRIDGE_PAPER_TYPES_PHOTO        |
-| Tipi di tipo [0]           | UX_PICTBRIDGE_FILE_TYPES_DEFAULT       |
-| Tipi di tipo [1]           | UX_PICTBRIDGE_FILE_TYPES_EXIF_JPEG     |
-| Tipi di tipo [2]           | UX_PICTBRIDGE_FILE_TYPES_JFIF          |
-| Tipi di tipo [3]           | UX_PICTBRIDGE_FILE_TYPES_DPOF          |
-| DatePrints [0]          | UX_PICTBRIDGE_DATE_PRINTS_DEFAULT      |
-| DatePrints [1]          | UX_PICTBRIDGE_DATE_PRINTS_OFF          |
-| DatePrints [2]          | UX_PICTBRIDGE_DATE_PRINTS_ON           |
-| FileNamePrints [0]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_DEFAULT |
-| FileNamePrints [1]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_OFF     |
-| FileNamePrints [2]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_ON      |
-| ImageOptimizes [0]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_DEFAULT  |
-| ImageOptimizes [1]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_OFF      |
-| ImageOptimizes [2]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_ON       |
-| Layout [0]             | UX_PICTBRIDGE_LAYOUTS_DEFAULT          |
-| Layout [1]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDER      |
-| Layout [2]             | UX_PICTBRIDGE_LAYOUTS_INDEX_PRINT      |
-| Layout [3]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDERLESS  |
-| FixedSizes [0]          | UX_PICTBRIDGE_FIXED_SIZE_DEFAULT       |
-| FixedSizes [1]          | UX_PICTBRIDGE_FIXED_SIZE_35IX5I        |
-| FixedSizes [2]          | UX_PICTBRIDGE_FIXED_SIZE_4IX6I         |
-| FixedSizes [3]          | UX_PICTBRIDGE_FIXED_SIZE_5IX7I         |
-| FixedSizes [4]          | UX_PICTBRIDGE_FIXED_SIZE_7CMX10CM      |
-| FixedSizes [5]          | UX_PICTBRIDGE_FIXED_SIZE_LETTER        |
-| FixedSizes [6]          | UX_PICTBRIDGE_FIXED_SIZE_A4            |
-| Ritaglio [0]           | UX_PICTBRIDGE_CROPPINGS_DEFAULT        |
-| Ritaglio [1]           | UX_PICTBRIDGE_CROPPINGS_OFF            |
-| Ritaglio [2]           | UX_PICTBRIDGE_CROPPINGS_ON             |
+| Qualità[0]           | UX_PICTBRIDGE_QUALITIES_DEFAULT        |
+| Qualità[1]           | UX_PICTBRIDGE_QUALITIES_NORMAL         |
+| Qualità[2]           | UX_PICTBRIDGE_QUALITIES_DRAFT          |
+| Qualità[3]           | UX_PICTBRIDGE_QUALITIES_FINE           |
+| PaperSizes[0]          | UX_PICTBRIDGE_PAPER_SIZES_DEFAULT      |
+| PaperSizes[1]          | UX_PICTBRIDGE_PAPER_SIZES_4IX6I        |
+| PaperSizes[2]          | UX_PICTBRIDGE_PAPER_SIZES_L            |
+| PaperSizes[3]          | UX_PICTBRIDGE_PAPER_SIZES_2L           |
+| PaperSizes[4]          | UX_PICTBRIDGE_PAPER_SIZES_LETTER       |
+| PaperTypes[0]          | UX_PICTBRIDGE_PAPER_TYPES_DEFAULT      |
+| PaperTypes[1]          | UX_PICTBRIDGE_PAPER_TYPES_PLAIN        |
+| PaperTypes[2           | UX_PICTBRIDGE_PAPER_TYPES_PHOTO        |
+| FileTypes[0]           | UX_PICTBRIDGE_FILE_TYPES_DEFAULT       |
+| FileTypes[1]           | UX_PICTBRIDGE_FILE_TYPES_EXIF_JPEG     |
+| FileTypes[2]           | UX_PICTBRIDGE_FILE_TYPES_JFIF          |
+| FileTypes[3]           | UX_PICTBRIDGE_FILE_TYPES_DPOF          |
+| DatePrints[0]          | UX_PICTBRIDGE_DATE_PRINTS_DEFAULT      |
+| DatePrints[1]          | UX_PICTBRIDGE_DATE_PRINTS_OFF          |
+| DatePrints[2]          | UX_PICTBRIDGE_DATE_PRINTS_ON           |
+| FileNamePrints[0]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_DEFAULT |
+| FileNamePrints[1]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_OFF     |
+| FileNamePrints[2]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_ON      |
+| ImageOptimizes[0]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_DEFAULT  |
+| ImageOptimizes[1]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_OFF      |
+| ImageOptimizes[2]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_ON       |
+| Layout[0]             | UX_PICTBRIDGE_LAYOUTS_DEFAULT          |
+| layout[1]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDER      |
+| layout[2]             | UX_PICTBRIDGE_LAYOUTS_INDEX_PRINT      |
+| layout[3]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDERLESS  |
+| FixedSizes[0]          | UX_PICTBRIDGE_FIXED_SIZE_DEFAULT       |
+| FixedSizes[1]          | UX_PICTBRIDGE_FIXED_SIZE_35IX5I        |
+| FixedSizes[2]          | UX_PICTBRIDGE_FIXED_SIZE_4IX6I         |
+| FixedSizes[3]          | UX_PICTBRIDGE_FIXED_SIZE_5IX7I         |
+| FixedSizes[4]          | UX_PICTBRIDGE_FIXED_SIZE_7CMX10CM      |
+| FixedSizes[5]          | UX_PICTBRIDGE_FIXED_SIZE_LETTER        |
+| FixedSizes[6]          | UX_PICTBRIDGE_FIXED_SIZE_A4            |
+| Ritaglio[0]           | UX_PICTBRIDGE_CROPPINGS_DEFAULT        |
+| Ritaglio[1]           | UX_PICTBRIDGE_CROPPINGS_OFF            |
+| Ritaglio[2]           | UX_PICTBRIDGE_CROPPINGS_ON             |
 
-La macchina a Stati dell'host DPS verrà impostata su inattivo e sarà pronta per accettare un nuovo processo di stampa.
+La macchina a stati dell'host DPS verrà impostata su Inattivo e pronta ad accettare un nuovo processo di stampa.
 
-È ora possibile avviare la porzione host di PictBridge come illustrato nell'esempio seguente:
+La parte host di Pictbridge può ora essere avviata come illustrato nell'esempio seguente:
 
 ```C
 /* Activate the pictbridge dpshost. */
@@ -322,7 +322,7 @@ if (status != UX_SUCCESS)
     return;
 ```
 
-La funzione host PictBridge richiede un callback quando i dati sono pronti per la stampa. Questa operazione viene eseguita passando un puntatore a funzione nella struttura dell'host PictBridge come indicato di seguito.
+La funzione host di Pictbridge richiede un callback quando i dati sono pronti per la stampa. Questa operazione viene eseguita passando un puntatore a funzione nella struttura host di Pictbridge come indicato di seguito.
 
 ```C
 /* Set a callback when an object is being received. */
@@ -330,7 +330,7 @@ pictbridge.ux_pictbridge_application_object_data_write =
     tx_demo_object_data_write;
 ```
 
-Questa funzione presenta le proprietà seguenti.
+Questa funzione ha le proprietà seguenti.
 
 ## <a name="ux_pictbridge_application_object_data_write"></a>ux_pictbridge_application_object_data_write
 
@@ -349,20 +349,20 @@ UINT ux_pictbridge_application_object_data_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando il server DPS deve recuperare un blocco di dati dal client DPS per la stampa sulla stampante locale.
+Questa funzione viene chiamata quando il server DPS deve recuperare un blocco di dati dal client DPS per stampare sulla stampante locale.
 
 ### <a name="parameters"></a>Parametri
 
-- **PictBridge**: puntatore all'istanza della classe PictBridge.
-- **object_buffer**: puntatore al buffer oggetto
-- **object_offset**: inizio della lettura del blocco di dati
-- **TOTAL_LENGTH**: lunghezza intera dell'oggetto
+- **pictbridge:** puntatore all'istanza della classe pictbridge.
+- **object_buffer:** puntatore al buffer dell'oggetto
+- **object_offset:** dove si inizia a leggere il blocco di dati
+- **total_length:** lunghezza intera dell'oggetto
 - **length**: lunghezza del buffer
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_ERROR** (0x01) l'applicazione non è in grado di stampare i dati.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0x01) L'applicazione non è stata in grado di stampare i dati.
 
 ### <a name="example"></a>Esempio
 

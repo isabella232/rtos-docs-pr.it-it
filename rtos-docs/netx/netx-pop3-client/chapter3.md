@@ -1,31 +1,31 @@
 ---
-title: Capitolo 3-Descrizione dei servizi client POP3 di Azure RTO NetX
-description: Questo capitolo contiene una descrizione di tutti i servizi client POP3 di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS client POP3 NetX
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS client POP3 NetX (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1a0ab96a454bea9f56ced0d7aa8de5d481b284e9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f68d6ac942c829dbf6eb9be334328b1b58a47ea370a73d37f471ec32cd46a360
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822565"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782388"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-pop3-client-services"></a>Capitolo 3-Descrizione dei servizi client POP3 di Azure RTO NetX
+# <a name="chapter-3---description-of-azure-rtos-netx-pop3-client-services"></a>Capitolo 3 - Descrizione dei Azure RTOS client POP3 NetX
 
-Questo capitolo contiene una descrizione di tutti i servizi client POP3 di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i Azure RTOS client POP3 NetX (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **grassetto** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
-- nx_pop3_client_create: *creare un'istanza del client POP3*
-- nx_pop3_client_delete: *eliminare un'istanza del client POP3*
-- nx_pop3_client_ mail_item_get: *eliminare un elemento di posta elettronica client dal server alla maildrop.*
-- nx_pop3_client_mail_item_get: *recuperare una dimensione del messaggio di posta elettronica specifica*
-- nx_pop3_client_mail_items_get: *ottenere il numero di elementi di posta elettronica in alla maildrop.*
-- nx_pop3_client_mail_item_message _get: *scaricare un messaggio di posta elettronica specifico*
-- nx_pop3_client_mail_item_size_get: *ottenere le dimensioni di un elemento di posta elettronica specifico*
+- nx_pop3_client_create: Creare *un'istanza del client POP3*
+- nx_pop3_client_delete: *Eliminare un'istanza del client POP3*
+- nx_pop3_client_ mail_item_get: *Eliminare un elemento di posta elettronica client dal server maildrop*
+- nx_pop3_client_mail_item_get: Recuperare *una dimensione specifica del messaggio di posta elettronica*
+- nx_pop3_client_mail_items_get: Ottenere *il numero di elementi di posta elettronica in maildrop*
+- nx_pop3_client_mail_item_message _get: Scaricare *un messaggio di posta elettronica specifico*
+- nx_pop3_client_mail_item_size_get: ottenere *le dimensioni di un elemento di posta elettronica specifico*
 
 ## <a name="nx_pop3_client_create"></a>nx_pop3_client_create
 
@@ -44,25 +44,25 @@ UINT nx_pop3_client_create(NX_POP3_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza del client POP3 e ne configura la configurazione con i parametri di input.
+Questo servizio crea un'istanza del client POP3 e ne imposta la configurazione con i parametri di input.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore al client da creare
-- **APOP_authentication**: abilitare l'autenticazione APOP
-- **ip_ptr**: puntatore a istanza IP
-- **packet_pool_ptr**: puntatore al pool di pacchetti client
-- **server_ip_address**: indirizzo del server POP3
-- **SERVER_PORT**: porta server POP3
-- **client_name**: puntatore al nome client
-- **client_password**: puntatore alla password client
+- **client_ptr:** Puntatore al client da creare
+- **APOP_authentication:** Abilitare l'autenticazione APOP
+- **ip_ptr:** Puntatore all'istanza IP
+- **packet_pool_ptr:** Puntatore al pool di pacchetti client
+- **server_ip_address:** indirizzo del server POP3
+- **server_port:** Porta del server POP3
+- **client_name:** Puntatore al nome del client
+- **client_password:** Puntatore alla password del client
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) client creato correttamente
-- **stato**: completamento dello stato delle chiamate al servizio NETX e threadX
-- NX_PTR_ERROR: (0x07) parametro puntatore di input non valido
-- NX_POP3_PARAM_ERROR: (0xB1) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS:**(0x00) Client successfully created (Client creato correttamente)
+- **status:** completamento dello stato delle chiamate ai servizi NetX e ThreadX
+- NX_PTR_ERROR: (0x07) Parametro puntatore di input non valido
+- NX_POP3_PARAM_ERROR: (0xB1) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -102,16 +102,16 @@ UINT nx_pop3_client_delete(NX_POP3_CLIENT *client_ptr)
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un client POP3 creato in precedenza. Il servizio non elimina il pool di pacchetti client POP3. L'applicazione del dispositivo deve eliminare questa risorsa separatamente se non è più usata per il pool di pacchetti.
+Questo servizio elimina un client POP3 creato in precedenza. Non che questo servizio non elimini il pool di pacchetti del client POP3. L'applicazione del dispositivo deve eliminare questa risorsa separatamente se non è più in uso per il pool di pacchetti.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore al client da eliminare
+- **client_ptr:** Puntatore al client da eliminare
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) client eliminato correttamente
-- NX_PTR_ERROR: (0x07) parametro puntatore di input non valido
+- **NX_SUCCESS:**(0x00) Il client è stato eliminato correttamente
+- NX_PTR_ERROR: (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -128,7 +128,7 @@ status = nx_pop3_client_delete (&demo_client);
 
 ## <a name="nx_pop3_client_mail_item_delete"></a>nx_pop3_client_mail_item_delete
 
-Elimina un elemento di posta specificato dal client alla maildrop.
+Elimina un elemento di posta specificato dal messaggio di posta elettronica client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -139,21 +139,21 @@ UINT nx_pop3_client_mail_items_delete(NX_POP3_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina l'elemento di posta specificato dal client alla maildrop.. È destinato a dopo il download dell'elemento di posta elettronica, anche se alcuni server POP3 possono eliminare automaticamente gli elementi di posta dopo essere stati richiesti dal client.
+Questo servizio elimina l'elemento di posta specificato dal messaggio di posta elettronica client. È destinato a dopo il download dell'elemento di posta elettronica, anche se alcuni server POP3 possono eliminare automaticamente gli elementi di posta dopo essere stati richiesti dal client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore all'istanza del client
-- **mail_index**: indicizzare in alla maildrop. client
+- **client_ptr:** Puntatore all'istanza del client
+- **mail_index:** Inviare un indice alla posta elettronica del client
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) la richiesta di eliminazione è riuscita
-- **NX_POP3_INVALID_MAIL_ITEM**: (0xB2) indice elemento di posta elettronica non valido
-- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD**: (0xB6) il payload del pacchetto client è troppo piccolo per la richiesta POP3.
-- **NX_POP3_SERVER_ERROR_STATUS**: (0xB4) il server risponde con lo stato di errore
-- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) input dell'indice di posta non valido
-- NX_PTR_ERROR: (0x07) parametro puntatore di input non valido
+- **NX_SUCCESS:**(0x00) Eliminazione richiesta riuscita
+- **NX_POP3_INVALID_MAIL_ITEM:**(0xB2) Indice degli elementi di posta non valido
+- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD:** payload del pacchetto client (0xB6) troppo piccolo per la richiesta POP3.
+- **NX_POP3_SERVER_ERROR_STATUS:**(0xB4) Il server risponde con stato di errore
+- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) Input dell'indice di posta elettronica non valido
+- NX_PTR_ERROR: (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -173,7 +173,7 @@ status = nx_pop3_client_mail_item_delete(&demo_client, item_index);
 
 ## <a name="nx_pop3_client_mail_item_get"></a>nx_pop3_client_mail_item_get
 
-Recupera un elemento di posta elettronica specificato
+Recupera un elemento di posta specificato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -184,22 +184,22 @@ UINT nx_pop3_client_mail_item_get(NX_POP3_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una richiesta RETR per recuperare un elemento di posta dal client alla maildrop. specificato dall'indice mail_item. Dopo aver eseguito una richiesta RETR e aver ricevuto una risposta positiva dal server, il client può avviare il download del messaggio di posta elettronica usando il servizio *nx_pop3_client_mail_item_message_get* . Si noti che il servizio fornisce anche la dimensione dell'elemento di posta elettronica richiesto estratto dalla risposta del server.
+Questo servizio effettua una richiesta RETR per recuperare un elemento di posta dal messaggio di posta elettronica client specificato dall'indice mail_item. Dopo aver inviato una richiesta RETR e aver ricevuto una risposta positiva dal server, il client può iniziare a scaricare il messaggio di posta elettronica usando il *nx_pop3_client_mail_item_message_get* servizio. Si noti che il servizio fornisce anche le dimensioni dell'elemento di posta richiesto estratto dalla risposta del server.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore all'istanza del client
-- **mail_item**: indicizzare in alla maildrop. client
-- **item_size**: puntatore alla dimensione del messaggio di posta elettronica
+- **client_ptr:** Puntatore all'istanza del client
+- **mail_item:** Index into Client maildrop
+- **item_size:** Puntatore alle dimensioni del messaggio di posta elettronica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) elemento di posta recuperato correttamente
-- **NX_POP3_INVALID_MAIL_ITEM**: (0xB2) indice elemento di posta elettronica non valido
-- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD**: (0xB6) il payload del pacchetto client è troppo piccolo per la richiesta POP3.
-- **NX_POP3_SERVER_ERROR_STATUS**: (0xB4) il server risponde con lo stato di errore
-- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) input dell'indice di posta non valido
-- NX_PTR_ERROR: (0x07) parametro puntatore di input non valido
+- **NX_SUCCESS:**(0x00) Elemento di posta elettronica recuperato correttamente
+- **NX_POP3_INVALID_MAIL_ITEM:**(0xB2) Indice degli elementi di posta non valido
+- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD:** payload del pacchetto client (0xB6) troppo piccolo per la richiesta POP3.
+- **NX_POP3_SERVER_ERROR_STATUS:**(0xB4) Il server risponde con stato di errore
+- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) Input dell'indice di posta elettronica non valido
+- NX_PTR_ERROR: (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -218,7 +218,7 @@ status = nx_pop3_client_mail_item_get (&demo_client, 1, &item_size);
 
 ## <a name="nx_pop3_client_mail_items_get"></a>nx_pop3_client_mail_items_get
 
-Recuperare il numero di elementi di posta elettronica in alla maildrop.
+Recuperare il numero di elementi di posta elettronica in maildrop
 
 ### <a name="prototype"></a>Prototipo
 
@@ -230,21 +230,21 @@ UINT nx_pop3_client_mail_items_get(NX_POP3_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una richiesta STAT per recuperare il numero di elementi di posta e le dimensioni totali dei dati del messaggio di posta elettronica dal client alla maildrop..
+Questo servizio effettua una richiesta STAT per recuperare il numero di elementi di posta elettronica e le dimensioni totali dei dati dei messaggi di posta elettronica dal messaggio di posta elettronica client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore all'istanza del client
-- **number_mail_item**: numero di messaggi di posta elettronica nel client alla maildrop.
-- **maildrop_total_size**: puntatore alla dimensione di tutti i messaggi di posta elettronica
+- **client_ptr:** Puntatore all'istanza del client
+- **number_mail_item:** Numero di messaggi di posta elettronica nella inviare tramite posta elettronica client
+- **maildrop_total_size:** puntatore alle dimensioni di tutti i messaggi di posta elettronica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) elemento di posta recuperato correttamente
-- **NX_POP3_INVALID_MAIL_ITEM**: (0xB2) indice elemento di posta elettronica non valido
-- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD**: (0xB6) il payload del pacchetto client è troppo piccolo per la richiesta POP3.
-- **NX_POP3_SERVER_ERROR_STATUS**: (0xB4) il server risponde con lo stato di errore 
-- NX_PTR_ERROR: (0x07) parametro puntatore di input non valido
+- **NX_SUCCESS:**(0x00) Elemento di posta elettronica recuperato correttamente
+- **NX_POP3_INVALID_MAIL_ITEM:**(0xB2) Indice degli elementi di posta non valido
+- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD:** payload del pacchetto client (0xB6) troppo piccolo per la richiesta POP3.
+- **NX_POP3_SERVER_ERROR_STATUS:**(0xB4) Il server risponde con stato di errore 
+- NX_PTR_ERROR: (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -265,7 +265,7 @@ status = nx_pop3_client_mail_item_get (&demo_client, 1, &number_mail_items,
 
 ## <a name="nx_pop3_client_mail_item_message_get"></a>nx_pop3_client_mail_item_message_get
 
-Recupera il messaggio di elemento di posta specificato
+Recupera il messaggio dell'elemento di posta specificato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -279,20 +279,20 @@ UINT nx_pop3_client_mail_item_message_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera il messaggio dell'elemento di posta, le dimensioni del messaggio di posta elettronica e se è l'ultimo pacchetto del messaggio di posta elettronica. Se `final_packet` è NX_TRUE il pacchetto a cui punta `recv_packet_ptr` è il pacchetto finale nel messaggio dell'elemento di posta elettronica.
+Questo servizio recupera il messaggio dell'elemento di posta, le dimensioni del messaggio di posta elettronica e se si tratta dell'ultimo pacchetto nel messaggio di posta elettronica. Se `final_packet` è NX_TRUE il pacchetto a cui punta è il pacchetto finale nel messaggio dell'elemento di `recv_packet_ptr` posta.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore all'istanza del client
-- **recv_packet_ptr**: ricevuto pacchetto di dati del messaggio
-- **number_mail_item**: numero di messaggi di posta elettronica nel client alla maildrop.
-- **maildrop_total_size**: puntatore alla dimensione di tutti i messaggi di posta elettronica
+- **client_ptr:** Puntatore all'istanza del client
+- **recv_packet_ptr:** Pacchetto di dati del messaggio ricevuto
+- **number_mail_item:** Numero di messaggi di posta elettronica nella inviare tramite posta elettronica client
+- **maildrop_total_size:** puntatore alle dimensioni di tutti i messaggi di posta elettronica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) elemento di posta recuperato correttamente
-- **NX_POP3_CLIENT_INVALID_STATE**: (0xB7) il payload del pacchetto client è troppo piccolo per la richiesta POP3.
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
+- **NX_SUCCESS:**(0x00) Elemento di posta elettronica recuperato correttamente
+- **NX_POP3_CLIENT_INVALID_STATE:** payload del pacchetto client (0xB7) troppo piccolo per la richiesta POP3.
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -314,7 +314,7 @@ status = nx_pop3_client_mail_item_message_get (&demo_client, &recv_packet_ptr,
 
 ## <a name="nx_pop3_client_mail_item_size_get"></a>nx_pop3_client_mail_item_size_get
 
-Recupera la dimensione dell'elemento di posta elettronica specificato
+Recupera le dimensioni dell'elemento di posta specificato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -326,22 +326,22 @@ UINT nx_pop3_client_mail_item_size_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una richiesta di elenco per ottenere la dimensione dell'elemento di posta elettronica specificato.
+Questo servizio effettua una richiesta LIST per ottenere le dimensioni dell'elemento di posta specificato.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **client_ptr**: puntatore all'istanza del client
-- **mail_item**: indicizzare in alla maildrop. client
-- **dimensioni**: puntatore alla dimensione del messaggio di posta elettronica
+- **client_ptr:** Puntatore all'istanza del client
+- **mail_item:** Index into Client maildrop
+- **size:** puntatore alle dimensioni del messaggio di posta elettronica
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) elemento di posta recuperato correttamente
-- **NX_POP3_INVALID_MAIL_ITEM**: (0xB2) indice elemento di posta elettronica non valido
-- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD**: (0xB6) il payload del pacchetto client è troppo piccolo per la richiesta POP3.
-- **NX_POP3_SERVER_ERROR_STATUS**: (0xB4) il server risponde con lo stato di errore
-- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) input dell'indice di posta non valido
-- NX_PTR_ERROR: (0x07) parametro puntatore di input non valido
+- **NX_SUCCESS:**(0x00) Elemento di posta elettronica recuperato correttamente
+- **NX_POP3_INVALID_MAIL_ITEM:**(0xB2) Indice degli elementi di posta non valido
+- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD:** payload del pacchetto client (0xB6) troppo piccolo per la richiesta POP3.
+- **NX_POP3_SERVER_ERROR_STATUS:**(0xB4) Il server risponde con stato di errore
+- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) Input dell'indice di posta elettronica non valido
+- NX_PTR_ERROR: (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 

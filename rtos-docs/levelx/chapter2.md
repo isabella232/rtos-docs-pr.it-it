@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 34110e74e8ad0a6acd376c00c1284a3ea715c5f5
-ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
+ms.openlocfilehash: cfd2d616896e1797114e55abcaf1a7559685282f29c2d0dee8274d2a26ea8f0e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110223316"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790310"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-levelx"></a>Capitolo 2 - Installazione e uso di Azure RTOS LevelX
 
@@ -74,9 +74,9 @@ LevelX può essere configurato in fase di compilazione tramite le definizione co
 
 - **LX_DIRECT_READ:** definita, questa opzione ignora la routine di lettura del driver flash NOR a favore o legge direttamente la memoria NOR, con un conseguente aumento significativo delle prestazioni.
 - **LX_FREE_SECTOR_DATA_VERIFY:** definito, in questo modo la logica aperta dell'istanza di LevelX NOR verifica che i settori NOR liberi siano tutti quelli.
-- **LX_NAND_SECTOR_MAPPING_CACHE_SIZE:** per impostazione predefinita questo valore è 16 e definisce le dimensioni della cache per il mapping dei settori logici. Valori di grandi dimensioni migliorano le prestazioni, ma costi di memoria. La dimensione minima è 8 e tutti i valori devono essere una potenza di 2.
+- **LX_NAND_SECTOR_MAPPING_CACHE_SIZE:** per impostazione predefinita, questo valore è 16 e definisce le dimensioni della cache per il mapping dei settori logici. Valori di grandi dimensioni migliorano le prestazioni, ma costi di memoria. La dimensione minima è 8 e tutti i valori devono essere una potenza di 2.
 - **LX_NAND_FLASH_DIRECT_MAPPING_CACHE**: definito, viene creata una cache di mapping diretto, in modo che non siano presenti mancati riscontri nella cache. Richiede anche che LX_NAND_SECTOR_MAPPING_CACHE_SIZE rappresenta il numero esatto di pagine totali nel dispositivo flash.
-- **LX_NOR_DISABLE_EXTENDED_CACHE**: definito, la cache NOR estesa è stata disabilitata.
+- **LX_NOR_DISABLE_EXTENDED_CACHE:** definito, la cache NOR estesa è stata disabilitata.
 - **LX_NOR_EXTENDED_CACHE_SIZE:** per impostazione predefinita questo valore è 8, che rappresenta un massimo di 8 settori che possono essere memorizzati nella cache in un'istanza di NOR.
 - **LX_NOR_SECTOR_MAPPING_CACHE_SIZE:** per impostazione predefinita, questo valore è 16 e definisce le dimensioni della cache per il mapping dei settori logici. Valori di grandi dimensioni migliorano le prestazioni, ma costi di memoria. La dimensione minima è 8 e tutti i valori devono essere una potenza di 2.
 - **LX_THREAD_SAFE_ENABLE:** definito, questo rende LevelX thread-safe usando un oggetto mutex ThreadX in tutta l'API.

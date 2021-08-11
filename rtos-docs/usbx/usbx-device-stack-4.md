@@ -1,19 +1,19 @@
 ---
-title: Capitolo 4-Descrizione dei servizi per dispositivi USBX
-description: Informazioni sui servizi del dispositivo USBX.
+title: Capitolo 4 - Descrizione di Servizi dispositivo USBX
+description: Informazioni su USBX Device Services.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: d4aea7470ba2d9075296164b9d1fb61db4f88523
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9d88d9bd177a251a00fec6757fc1f1494b56bab9655a55f973481f273f0683ee
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824041"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797552"
 ---
-# <a name="description-of-usbx-device-services"></a>Descrizione dei servizi per dispositivi USBX
+# <a name="description-of-usbx-device-services"></a>Descrizione di Servizi dispositivo USBX
 
 ### <a name="ux_device_stack_alternate_setting_get"></a>ux_device_stack_alternate_setting_get
 
@@ -27,7 +27,7 @@ UINT ux_device_stack_alternate_setting_get(ULONG interface_value);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene usata dall'host USB per ottenere l'impostazione alternativa corrente per un valore di interfaccia specifico. Viene chiamato dal driver del controller quando viene ricevuta una richiesta **GET_INTERFACE** .
+Questa funzione viene usata dall'host USB per ottenere l'impostazione alternativa corrente per un valore di interfaccia specifico. Viene chiamato dal driver del controller quando viene **ricevuta GET_INTERFACE** richiesta.
 
 ### <a name="input-parameter"></a>Parametro di input
 
@@ -35,8 +35,8 @@ Questa funzione viene usata dall'host USB per ottenere l'impostazione alternativ
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- Valore dell'interfaccia **UX_ERROR** (0Xff) errato.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_ERROR** (0xFF) Valore di interfaccia errato.
 
 ### <a name="example"></a>Esempio
 
@@ -52,7 +52,7 @@ status = ux_device_stack_alternate_setting_get(interface_value);
 
 ### <a name="ux_device_stack_alternate_setting_set"></a>ux_device_stack_alternate_setting_set
 
-Imposta l'impostazione alternativa corrente per un valore di interfaccia
+Impostare l'impostazione alternativa corrente per un valore di interfaccia
 
 ### <a name="prototype"></a>Prototipo
 
@@ -64,21 +64,21 @@ UINT ux_device_stack_alternate_setting_set(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene usata dall'host USB per impostare l'impostazione alternativa corrente per un valore di interfaccia specifico. Viene chiamato dal driver del controller quando viene ricevuta una richiesta **SET_INTERFACE** . Al termine dell' **SET_INTERFACE** , i valori delle impostazioni alternative vengono applicati alla classe.
+Questa funzione viene usata dall'host USB per impostare l'impostazione alternativa corrente per un valore di interfaccia specifico. Viene chiamato dal driver del controller quando viene **ricevuta SET_INTERFACE** richiesta. Quando la **SET_INTERFACE** viene completata, i valori delle impostazioni alternative vengono applicati alla classe .
 
-Lo stack del dispositivo emetterà un **UX_SLAVE_CLASS_COMMAND_CHANGE** alla classe proprietaria di questa interfaccia per riflettere la modifica dell'impostazione alternativa.
+Lo stack di dispositivi emettere **un UX_SLAVE_CLASS_COMMAND_CHANGE** alla classe proprietaria di questa interfaccia per riflettere la modifica dell'impostazione alternativa.
 
 ### <a name="parameters"></a>Parametri
 
-- **interface_value**: valore dell'interfaccia per cui è impostata l'impostazione alternativa corrente.
+- **interface_value:** valore dell'interfaccia per cui è impostata l'impostazione alternativa corrente.
 - **alternate_setting_value**: nuovo valore dell'impostazione alternativa.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- **UX_INTERFACE_HANDLE_UNKNOWN** (0X52) non è collegata alcuna interfaccia.
-- Il dispositivo **UX_FUNCTION_NOT_SUPPORTED** (0x54) non è configurato.
-- Valore dell'interfaccia **UX_ERROR** (0Xff) errato.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) Nessuna interfaccia collegata.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) non è configurato.
+- **UX_ERROR** (0xFF) Valore di interfaccia errato.
 
 ### <a name="example"></a>Esempio
 
@@ -95,7 +95,7 @@ status = ux_device_stack_alternate_setting_set(interface_value, alternate_settin
 
 ### <a name="ux_device_stack_class_register"></a>ux_device_stack_class_register
 
-Registrare una nuova classe dispositivo USB
+Registrare una nuova classe di dispositivi USB
 
 ### <a name="prototype"></a>Prototipo
 
@@ -110,12 +110,12 @@ UINT ux_device_stack_class_register(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene usata dall'applicazione per registrare una nuova classe di dispositivo USB. Questa registrazione avvia un contenitore di classi e non un'istanza della classe. Una classe deve avere un thread attivo ed essere collegata a un'interfaccia specifica.
+Questa funzione viene usata dall'applicazione per registrare una nuova classe di dispositivi USB. Questa registrazione avvia un contenitore di classi e non un'istanza della classe . Una classe deve avere un thread attivo ed essere collegata a un'interfaccia specifica.
 
-Per alcune classi è previsto un elenco di parametri o parametri. Ad esempio, la classe di archiviazione del dispositivo dovrebbe prevedere la geometria del dispositivo di archiviazione che sta provando a emulare. Il campo del parametro dipende pertanto dal requisito della classe e può essere un valore o un puntatore a una struttura compilata con i valori della classe.
+Alcune classi prevedono un elenco di parametri o parametri. Ad esempio, la classe di archiviazione del dispositivo si aspetta la geometria del dispositivo di archiviazione che sta tentando di emulare. Il campo del parametro dipende quindi dal requisito della classe e può essere un valore o un puntatore a una struttura riempita con i valori della classe.
 
 > [!NOTE]
-> La stringa C di class_name deve essere con terminazione NULL e la lunghezza (senza il carattere di terminazione NULL) non deve essere maggiore di **UX_MAX_CLASS_NAME_LENGTH**.
+> La stringa C di class_name deve avere terminazione NULL e la sua lunghezza (senza il carattere di terminazione NULL stesso) non deve essere maggiore **di UX_MAX_CLASS_NAME_LENGTH**.
 
 ### <a name="parameters"></a>Parametri
 
@@ -123,13 +123,13 @@ Per alcune classi è previsto un elenco di parametri o parametri. Ad esempio, la
 - **class_entry_function** Funzione entry della classe.
 - **configuration_number** Numero di configurazione a cui è collegata questa classe.
 - **interface_number** Numero di interfaccia a cui è collegata questa classe.
-- **parametro** di Puntatore a un elenco di parametri specifici della classe.
+- **parametro** Puntatore a un elenco di parametri specifico della classe.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) la classe è stata registrata
-- **UX_MEMORY_INSUFFICIENT** (0X12) nessuna voce lasciata nella tabella della classe.
-- **UX_THREAD_ERROR** (0x16) non è in grado di creare un thread di classe.
+- **UX_SUCCESS** (0x00) La classe è stata registrata
+- **UX_MEMORY_INSUFFICIENT** (0x12) Nella tabella di classi non è stata lasciata alcuna voce.
+- **UX_THREAD_ERROR** (0x16) Impossibile creare un thread di classe.
 
 ### <a name="example"></a>Esempio
 
@@ -145,7 +145,7 @@ status = ux_device_stack_class_register(_ux_system_slave_class_storage_name ux_d
 
 ### <a name="ux_device_stack_class_unregister"></a>ux_device_stack_class_unregister
 
-Annulla la registrazione di una classe dispositivo USB
+Annullare la registrazione di una classe di dispositivi USB
 
 ### <a name="prototype"></a>Prototipo
 
@@ -157,20 +157,20 @@ UINT ux_device_stack_class_unregister(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene usata dall'applicazione per annullare la registrazione di una classe dispositivo USB.
+Questa funzione viene usata dall'applicazione per annullare la registrazione di una classe di dispositivo USB.
 
 > [!NOTE]
-> La stringa C di class_name deve essere con terminazione NULL e la lunghezza (senza il carattere di terminazione NULL) non deve essere maggiore di **UX_MAX_CLASS_NAME_LENGTH**.
+> La stringa C di class_name deve avere terminazione NULL e la sua lunghezza (senza il carattere di terminazione NULL stesso) non deve essere maggiore **di UX_MAX_CLASS_NAME_LENGTH**.
 
 ### <a name="parameters"></a>Parametri
 
-- **class_name**: nome della classe
-- **class_entry_function**: la funzione entry della classe.
+- **class_name**: Nome classe
+- **class_entry_function**: funzione entry della classe .
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) per cui è stata annullata la registrazione della classe.
-- **UX_NO_CLASS_MATCH** (0x57) la classe non è registrata.
+- **UX_SUCCESS** (0x00) La registrazione della classe è stata annullata.
+- **UX_NO_CLASS_MATCH** (0x57) La classe non è registrata.
 
 ### <a name="example"></a>Esempio
 
@@ -199,11 +199,11 @@ Questa funzione viene usata dall'host per ottenere la configurazione corrente in
 
 ### <a name="input-parameter"></a>Parametro di input
 
-nessuno
+Nessuno
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
 
 ### <a name="example"></a>Esempio
 
@@ -218,7 +218,7 @@ status = ux_device_stack_configuration_get();
 
 ### <a name="ux_device_stack_configuration_set"></a>ux_device_stack_configuration_set
 
-Imposta la configurazione corrente
+Impostare la configurazione corrente
 
 ### <a name="prototype"></a>Prototipo
 
@@ -236,7 +236,7 @@ Questa funzione viene usata dall'host per impostare la configurazione corrente i
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) la configurazione è stata impostata correttamente.
+- **UX_SUCCESS** (0x00) La configurazione è stata impostata correttamente.
 
 ### <a name="example"></a>Esempio
 
@@ -252,7 +252,7 @@ status = ux_device_stack_configuration_set(configuration_value);
 
 ### <a name="ux_device_stack_descriptor_send"></a>ux_device_stack_descriptor_send
 
-Invia un descrittore all'host
+Inviare un descrittore all'host
 
 ### <a name="prototype"></a>Prototipo
 
@@ -265,23 +265,23 @@ UINT ux_device_stack_descriptor_send(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata dal lato dispositivo per restituire un descrittore all'host. Questo descrittore può essere un descrittore di dispositivo, un descrittore di configurazione o una stringa.
+Questa funzione viene usata dal lato dispositivo per restituire un descrittore all'host. Questo descrittore può essere un descrittore di dispositivo, un descrittore di configurazione o un descrittore di stringa.
 
 ### <a name="parameters"></a>Parametri
 
-- **descriptor_type**: tipo del descrittore. Deve essere uno dei valori seguenti.
+- **descriptor_type:** tipo del descrittore. Deve essere uno dei valori seguenti.
   - **UX_DEVICE_DESCRIPTOR_ITEM**
   - **UX_CONFIGURATION_DESCRIPTOR_ITEM**
   - **UX_STRING_DESCRIPTOR_ITEM**
   - **UX_DEVICE_QUALIFIER_DESCRIPTOR_ITEM**
   - **UX_OTHER_SPEED_DESCRIPTOR_ITEM**
-- **request_index**: Indice del descrittore.
+- **request_index**: indice del descrittore.
 - **host_length**: lunghezza richiesta dall'host.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- **UX_ERROR** (0Xff) il trasferimento non è stato completato.
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_ERROR** (0xFF) Il trasferimento non è stato completato.
 
 ### <a name="example"></a>Esempio
 
@@ -299,7 +299,7 @@ status = ux_device_stack_descriptor_send(descriptor_type, request_index, host_le
 
 ### <a name="ux_device_stack_disconnect"></a>ux_device_stack_disconnect
 
-Scollega stack di dispositivi
+Disconnettere lo stack di dispositivi
 
 ### <a name="prototype"></a>Prototipo
 
@@ -309,15 +309,15 @@ UINT ux_device_stack_disconnect(VOID);
 
 ### <a name="description"></a>Descrizione
 
-VBUS Manager chiama questa funzione quando è presente una disconnessione del dispositivo. Lo stack del dispositivo informa tutte le classi registrate in questo dispositivo e successivamente rilascerà tutte le risorse del dispositivo.
+Il gestore VBUS chiama questa funzione quando è presente una disconnessione del dispositivo. Lo stack di dispositivi informerà tutte le classi registrate nel dispositivo e successivamente rilascerà tutte le risorse del dispositivo.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-nessuno
+Nessuno
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) il dispositivo è stato disconnesso.
+- **UX_SUCCESS** (0x00) Il dispositivo è stato disconnesso.
 
 ### <a name="example"></a>Esempio
 
@@ -332,7 +332,7 @@ status = ux_device_stack_disconnect();
 
 ### <a name="ux_device_stack_endpoint_stall"></a>ux_device_stack_endpoint_stall
 
-Condizione di blocco endpoint richiesta
+Condizione di stallo dell'endpoint di richiesta
 
 ### <a name="prototype"></a>Prototipo
 
@@ -342,16 +342,16 @@ UINT ux_device_stack_endpoint_stall(UX_SLAVE_ENDPOINT*endpoint);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata dalla classe dispositivo USB quando un endpoint deve restituire una condizione di stallo dell'host.
+Questa funzione viene chiamata dalla classe di dispositivo USB quando un endpoint deve restituire una condizione Stall all'host.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **endpoint** di Endpoint in cui viene richiesta la condizione di blocco.
+- **endpoint** Endpoint in cui è richiesta la condizione Stall.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_ERROR** (0Xff) il dispositivo è in uno stato non valido.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0xFF) Lo stato del dispositivo non è valido.
 
 ### <a name="example"></a>Esempio
 
@@ -376,16 +376,16 @@ UINT ux_device_stack_host_wakeup(VOID);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando il dispositivo desidera riattivare l'host. Questo comando è valido solo quando il dispositivo è in modalità di sospensione. Spetta all'applicazione del dispositivo decidere quando vuole riattivare l'host USB. Ad esempio, un modem USB può riattivare un host quando rileva un segnale ANULARe sulla linea telefonica.
+Questa funzione viene chiamata quando il dispositivo vuole riattivare l'host. Questo comando è valido solo quando il dispositivo è in modalità di sospensione. L'applicazione del dispositivo deve decidere quando riattivare l'host USB. Ad esempio, un modem USB può riattivare un host quando rileva un segnale RING sulla linea telefonica.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-nessuno
+Nessuno
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) la chiamata ha avuto esito positivo.
-- **UX_FUNCTION_NOT_SUPPORTED** (0X54) la chiamata non è riuscita (il dispositivo probabilmente non è in modalità di sospensione).
+- **UX_SUCCESS** (0x00) La chiamata ha avuto esito positivo.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) La chiamata non è riuscita (il dispositivo probabilmente non era in modalità sospesa).
 
 ### <a name="example"></a>Esempio
 
@@ -400,7 +400,7 @@ status = ux_device_stack_host_wakeup();
 
 ### <a name="ux_device_stack_initialize"></a>ux_device_stack_initialize
 
-Inizializza stack dispositivo USB
+Inizializzare lo stack di dispositivi USB
 
 ### <a name="prototype"></a>Prototipo
 
@@ -419,25 +419,25 @@ UINT ux_device_stack_initialize(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata dall'applicazione per inizializzare lo stack del dispositivo USB. Non inizializza alcuna classe né controller. Questa operazione deve essere eseguita con chiamate di funzione separate. Questa chiamata fornisce principalmente lo stack con il Framework del dispositivo per la funzione USB. Supporta la velocità elevata e completa, con la possibilità di avere un Framework del dispositivo completamente separato per ogni velocità. Sono supportati il Framework di stringhe e più lingue.
+Questa funzione viene chiamata dall'applicazione per inizializzare lo stack di dispositivi USB. Non inizializza classi o controller. Questa operazione deve essere eseguita con chiamate di funzione separate. Questa chiamata fornisce principalmente lo stack con il framework del dispositivo per la funzione USB. Supporta velocità sia elevate che complete con la possibilità di avere un framework di dispositivi completamente separato per ogni velocità. Sono supportati il framework di stringhe e più linguaggi.
 
 ### <a name="parameters"></a>Parametri
 
-- **device_framework_high_speed**: puntatore al Framework ad alta velocità.
-- **device_framework_length_high_speed**: lunghezza del Framework ad alta velocità.
-- **device_framework_full_speed**: puntatore al Framework a velocità intera.
-- **device_framework_length_full_speed**: lunghezza del Framework a velocità intera.
-- **string_framework**: puntatore a Framework di stringa.
-- **string_framework_length**: lunghezza del Framework di stringa.
-- **language_id_framework**: puntatore al Framework del linguaggio di stringa.
-- **language_id_framework_length**: lunghezza del Framework del linguaggio di stringa.
-- **ux_system_slave_change_function**: funzione da chiamare quando lo stato del dispositivo cambia.
+- **device_framework_high_speed:** puntatore al framework ad alta velocità.
+- **device_framework_length_high_speed**: lunghezza del framework ad alta velocità.
+- **device_framework_full_speed:** puntatore al framework a velocità completa.
+- **device_framework_length_full_speed:** lunghezza del framework di velocità completa.
+- **string_framework:** puntatore al framework di stringhe.
+- **string_framework_length:** lunghezza del framework di stringhe.
+- **language_id_framework:** puntatore al framework del linguaggio di stringa.
+- **language_id_framework_length**: lunghezza del framework del linguaggio di stringhe.
+- **ux_system_slave_change_function:** funzione da chiamare quando cambia lo stato del dispositivo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_MEMORY_INSUFFICIENT** (0x12) memoria insufficiente per inizializzare lo stack.
-- **UX_DESCRIPTOR_CORRUPTED** (0X42) il descrittore non è valido.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Memoria insufficiente per inizializzare lo stack.
+- **UX_DESCRIPTOR_CORRUPTED** (0x42) Il descrittore non è valido.
 
 ### <a name="example"></a>Esempio
 
@@ -532,7 +532,7 @@ L'applicazione può richiedere una chiamata quando il controller ne modifica lo 
 - **UX_DEVICE_SUSPENDED**
 - **UX_DEVICE_RESUMED**
 
-Se l'applicazione non necessita di segnali Suspend/Resume, fornisce una funzione UX_NULL.
+Se l'applicazione non richiede segnali Sospendi/Riprendi, fornisce una UX_NULL funzione.
 
 ```c
 UINT status;
@@ -560,15 +560,15 @@ UINT ux_device_stack_interface_delete(UX_SLAVE_INTERFACE*interface);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando è necessario rimuovere un'interfaccia. Un'interfaccia viene rimossa quando viene estratto un dispositivo o dopo una reimpostazione del bus o quando è presente una nuova impostazione alternativa.
+Questa funzione viene chiamata quando un'interfaccia deve essere rimossa. Un'interfaccia viene rimossa quando un dispositivo viene estratto o dopo una reimpostazione del bus o quando è presente una nuova impostazione alternativa.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **interfaccia**: puntatore all'interfaccia da rimuovere.
+- **interface:** puntatore all'interfaccia da rimuovere.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
 
 ### <a name="example"></a>Esempio
 
@@ -596,16 +596,16 @@ UINT ux_device_stack_interface_get(UINT interface_value);
 Questa funzione viene chiamata quando l'host esegue una query sull'interfaccia corrente. Il dispositivo restituisce il valore dell'interfaccia corrente.
 
 > [!NOTE]
-> Questa funzione è deprecata. È disponibile per il software legacy, ma il nuovo software deve invece usare la funzione ***ux_device_stack_alternate_setting_get*** .
+> Questa funzione è deprecata. È disponibile per il software legacy, ma il nuovo software deve usare ***ux_device_stack_alternate_setting_get*** funzione.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **interface_value** Valore di interfaccia da restituire.
+- **interface_value** Valore dell'interfaccia da restituire.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_ERROR** (0Xff) non esiste alcuna interfaccia.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0xFF) Non esiste alcuna interfaccia.
 
 ### <a name="example"></a>Esempio
 
@@ -639,14 +639,14 @@ Questa funzione viene chiamata quando l'host richiede una modifica dell'impostaz
 
 ### <a name="parameters"></a>Parametri
 
-- **device_framework**: indirizzo del Framework del dispositivo per questa interfaccia.
-- **device_framework_length**: lunghezza del Framework del dispositivo.
-- **alternate_setting_value**: valore di impostazione alternativo che verrà utilizzato da questa interfaccia.
+- **device_framework**: indirizzo del framework di dispositivi per questa interfaccia.
+- **device_framework_length**: lunghezza del framework di dispositivi.
+- **alternate_setting_value**: valore di impostazione alternativo che deve essere usato da questa interfaccia.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_ERROR** (0Xff) non esiste alcuna interfaccia.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0xFF) Non esiste alcuna interfaccia.
 
 ### <a name="example"></a>Esempio
 
@@ -665,7 +665,7 @@ status = ux_device_stack_interface_set(device_framework,
 
 ### <a name="ux_device_stack_interface_start"></a>ux_device_stack_interface_start
 
-Avvia la ricerca di una classe per il proprietario di un'istanza dell'interfaccia
+Avviare la ricerca di una classe proprietaria di un'istanza di interfaccia
 
 ### <a name="prototype"></a>Prototipo
 
@@ -675,16 +675,16 @@ UINT ux_device_stack_interface_start(UX_SLAVE_INTERFACE*interface);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando un'interfaccia è stata selezionata dall'host e lo stack del dispositivo deve cercare una classe dispositivo per il proprietario di questa istanza dell'interfaccia.
+Questa funzione viene chiamata quando un'interfaccia è stata selezionata dall'host e lo stack di dispositivi deve cercare una classe di dispositivo proprietaria di questa istanza dell'interfaccia.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **interfaccia**: puntatore all'interfaccia creata.
+- **interface:** puntatore all'interfaccia creata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_NO_CLASS_MATCH** (0x57) non esiste alcuna classe per questa interfaccia.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_NO_CLASS_MATCH** (0x57) Non esiste alcuna classe per questa interfaccia.
 
 ### <a name="example"></a>Esempio
 
@@ -712,19 +712,19 @@ UINT ux_device_stack_transfer_request(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando una classe o lo stack desidera trasferire i dati all'host. L'host esegue sempre il polling del dispositivo, ma il dispositivo può preparare i dati in anticipo.
+Questa funzione viene chiamata quando una classe o lo stack vuole trasferire i dati all'host. L'host esegue sempre il polling del dispositivo, ma il dispositivo può preparare i dati in anticipo.
 
 ### <a name="parameters"></a>Parametri
 
 - **transfer_request**: puntatore alla richiesta di trasferimento.
-- **slave_length**: lunghezza del dispositivo che vuole restituire.
-- **host_length**: lunghezza richiesta dall'host.
+- **slave_length:** lunghezza che il dispositivo vuole restituire.
+- **host_length:** lunghezza richiesta dall'host.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_TRANSFER_NOT_READY** (0x25) il dispositivo è in uno stato non valido; deve essere **collegato**, **configurato** o **risolto**.
-- Errore di trasporto **UX_ERROR** (0xFF).
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_TRANSFER_NOT_READY** (0x25) Il dispositivo si trova in uno stato non valido. deve essere **ATTACHED,** **CONFIGURED** o **ADDRESSED.**
+- **UX_ERROR** (0xFF) Transport .
 
 ### <a name="example"></a>Esempio
 
@@ -780,7 +780,7 @@ Questa funzione viene chiamata quando un'applicazione deve annullare una richies
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
 
 ### <a name="example"></a>Esempio
 
@@ -806,7 +806,7 @@ UINT ux_device_stack_uninitialize();
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando un'applicazione deve unitialize lo stack di dispositivi USBX. tutte le risorse dello stack del dispositivo vengono liberate. Questa operazione deve essere chiamata dopo che è stata annullata la registrazione di tutte le classi tramite ux_device_stack_class_unregister.
+Questa funzione viene chiamata quando un'applicazione deve unitàalizzare lo stack di dispositivi USBX: tutte le risorse dello stack di dispositivi vengono liberate. Questa operazione deve essere chiamata dopo l'annullamento della registrazione di tutte le classi tramite ux_device_stack_class_unregister.
 
 ### <a name="parameters"></a>Parametri
 
@@ -814,4 +814,4 @@ nessuno
 
 ### <a name="return-value"></a>Valore restituito
 
-**UX_SUCCESS** (0x00) questa operazione è stata completata.
+**UX_SUCCESS** (0x00) L'operazione è riuscita.

@@ -1,29 +1,29 @@
-- name: Documentazione di Azure RTO LevelX
+- name: Azure RTOS documentazione di LevelX
   href: index.yml
-- name: Guida dell'utente di Azure RTO LevelX
+- name: Azure RTOS utente di LevelX
   expanded: true
   items:
-    - name: Ch. 1-Panoramica di LevelX
+    - name: Ch. 1 - Panoramica di LevelX
       href: chapter1.md
-    - name: Ch. 2-installazione e uso di LevelX
+    - name: Ch. 2 - Installazione e uso di LevelX
       href: chapter2.md
-    - name: Ch. 3-supporto NAND LevelX
+    - name: Ch. 3 - Supporto nand LevelX
       href: chapter3.md
-    - name: Ch. 4-LevelX API NAND
+    - name: Ch. 4 - API NAND LevelX
       href: chapter4.md
-    - name: Ch. 5-LevelX e supporto
+    - name: Ch. 5 - Supporto nor LevelX
       href: chapter5.md
-    - name: Ch. 6-LevelX e API
+    - name: Ch. 6 - API NOR LevelX
       href: chapter6.md
 - name: Repository LevelX
   href: 'https://github.com/azure-rtos/levelx'
 - name: Servizi correlati
   items:
-    - name: Defender per Internet delle cose-RTO (anteprima)
+    - name: Defender per IoT - RTOS (anteprima)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
-- name: Componenti Microsoft Azure RTO
+- name: Microsoft Azure Componenti RTOS
   items:
-    - name: Microsoft Azure RTO
+    - name: Microsoft Azure Rtos
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
@@ -31,7 +31,7 @@
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
-    - name: NetX
+    - name: Netx
       href: ../netx/index.yml
     - name: GUIX
       href: ../guix/index.yml

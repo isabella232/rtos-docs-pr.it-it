@@ -1,82 +1,82 @@
 ---
-title: Capitolo 5-Azure RTO LevelX e supporto
-description: La memoria flash è costituita da blocchi generalmente divisibile in modo uniforme per 512 byte. Azure RTO LevelX divide ogni blocco Flash in settori logici a 512 byte.
+title: Capitolo 5 - Supporto Azure RTOS LevelX NOR
+description: LA memoria flash NOR è costituita da blocchi in genere divisibile uniformemente per 512 byte. Azure RTOS LevelX divide ogni blocco flash NOR in settori logici a 512 byte.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3a0c73c2b45c32bf3f1ef56de684fa83c334b59e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d5d06fa66f0cae29eeb2a89560704b2ef510597e44a565499bf672a75555f208
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822163"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790565"
 ---
-# <a name="chapter-5---azure-rtos-levelx-nor-support"></a>Capitolo 5-Azure RTO LevelX e supporto
+# <a name="chapter-5---azure-rtos-levelx-nor-support"></a>Capitolo 5 - Supporto Azure RTOS LevelX NOR
 
-La memoria flash è costituita da *blocchi* generalmente divisibile in modo uniforme per 512 byte. Non è previsto alcun concetto di *pagina* Flash in memoria o memoria flash. Inoltre, non sono presenti byte di *riserva* nella memoria flash, di conseguenza Azure RTO LevelX deve usare la memoria di memoria flash per tutte le informazioni di gestione. L'accesso in lettura diretto è possibile in o memoria flash. L'accesso in scrittura richiede in genere una sequenza speciale di operazioni. La memoria flash può essere scritta più volte, a condizione che i bit vengano cancellati. I bit in o la memoria flash possono essere impostati solo una volta, tramite l'operazione di cancellazione del blocco.
+LA memoria flash NOR è costituita *da blocchi* in genere divisibile uniformemente per 512 byte. Non esiste alcun concetto di pagina flash *nella* memoria flash NOR. Inoltre, non sono presenti byte *di* riserva nella memoria flash NOR, quindi Azure RTOS LevelX deve usare la memoria flash NOR stessa per tutte le informazioni di gestione. L'accesso in lettura diretto è possibile nella memoria flash NOR. L'accesso in scrittura richiede in genere una sequenza speciale di operazioni. La memoria flash NOR può essere scritta più volte, a meno che i bit vengano cancellati. I bit nella memoria flash NOR possono essere impostati una sola volta, tramite l'operazione di cancellazione del blocco.
 
-LevelX divide ogni blocco Flash in *settori* logici a 512 byte. Inoltre, LevelX usa i primi "n" settori di ogni blocco Flash per archiviare le informazioni di gestione. Il formato di LevelX o le informazioni di gestione della memoria flash sono:
+LevelX divide ogni blocco flash NOR in settori logici *a* 512 byte. LevelX usa inoltre i primi settori "n" di ogni blocco flash NOR per archiviare le informazioni di gestione. Il formato delle informazioni di gestione della memoria flash LevelX NOR è:
 
-**LevelX e formato di blocco**
+**Formato del blocco LevelX NOR**
 
-| Offset byte  | Contenuto                     |
+| Byte Offset  | Contenuto                     |
 | ------------ | ---------------------------- |
-| 0            | [Conteggio blocchi cancellati]          |
+| 0            | [Conteggio cancellazione blocchi]          |
 | 4            | [Settore minimo mappato]      |
-| 8            | [Settore con mapping massimo]      |
-| 12           | [Mappa di bit per settore gratuito]        |
+| 8            | [Maximum Mapped Sector]      |
+| 12           | [Free Sector Bit Map]        |
 | m            | [Voce di mapping settore 0]     |
 |              | …                            |
-| m + 4 * (n-1)    | [Voce di mapping settore "n"]   |
+| m+4*(n-1)    | [Voce di mapping "n" settore]   |
 |              | …                            |
 | s            | [Contenuto settore 0]          |
 |              | …                            |
-| s + 512 * (n-1) | [Contenuto settore "n"]         |
+| s+512*(n-1) | [Settore "n" Contenuto]         |
 
-Il *conteggio di cancellazione dei blocchi* a 32 bit contiene il numero di volte in cui il blocco è stato cancellato. L'obiettivo principale di LevelX consiste nel limitare il numero di cancelli di tutti i blocchi relativamente vicini per evitare che un blocco venga esaurito in modo anomalo. Il *settore con mapping minimo* a 32 bit e i campi di *settore con mapping massimo* vengono scritti solo quando tutti i settori logici del blocco sono stati mappati e scritti in. Questi campi sono utili per l'ottimizzazione dell'operazione di lettura del settore. La voce della *mappa di bit del settore gratuito* è una mappa di bit in cui ogni bit del set corrisponde a un settore non mappato nel blocco. Questo campo viene usato per rendere più efficiente la ricerca nel settore gratuito. Si tratta di un campo a lunghezza variabile che richiede una parola per ogni settore 32 nel blocco. La matrice di *voci di mapping del settore* contiene informazioni di mapping per ogni settore nel blocco. Ogni voce ha il formato seguente:
+Il conteggio delle cancellazioni dei *blocchi a* 32 bit contiene il numero di volte in cui il blocco è stato cancellato. L'obiettivo principale di LevelX è mantenere il conteggio delle cancellazioni di tutti i blocchi relativamente vicino per evitare che un blocco si disassoci prematuramente. I campi Minimum *Mapped Sector* e *Maximum Mapped Sector* a 32 bit vengono scritti solo quando è stato eseguito il mapping e la scrittura di tutti i settori logici nel blocco. Questi campi sono utili per l'ottimizzazione dell'operazione di lettura del settore. La *voce Free Sector Bit Map è* una mappa di bit in cui ogni bit impostato corrisponde a un settore non mappato nel blocco . Questo campo viene usato per rendere più efficiente la ricerca di settori gratuiti. Si tratta di un campo a lunghezza variabile che richiede una parola per ogni 32 settori nel blocco . La *matrice Sector Mapping Entry* contiene informazioni di mapping per ogni settore nel blocco . Ogni voce ha il formato seguente:
 
-**Voce mapping settore**
+**Voce di mapping dei settori**
 
-| Bit/i | Significato  |
+| Bit | Significato  |
 | ------ | -------- |
-| 31     | Flag valido. Quando l'impostazione e il settore logico non sono tutti quelli indicati, il mapping è valido |
-| 30     | Flag obsoleto. Se chiaro, questo mapping è obsoleto o sta per diventare obsoleto. |
+| 31     | Flag valido. Se impostato e settore logico non tutti indicano che il mapping è valido |
+| 30     | Flag obsoleto. Quando è chiaro, questo mapping è obsoleto o sta per diventare obsoleto. |
 | 29     | La scrittura della voce di mapping è completa quando questo bit è 0 |
-| 0-28   | Settore logico mappato a questo settore fisico, quando non tutti gli altri. |
+| 0-28   | Settore logico mappato a questo settore fisico, quando non tutti. |
 
-Il bit superiore del campo a 32 bit (bit 31) viene utilizzato per indicare che il mapping del settore logico è valido. Se il bit è 0, le informazioni in questa voce (e il relativo contenuto del settore) non sono più valide. Il successivo bit bit 30 viene usato per indicare che questo settore è in corso di diventare obsoleto ed è in corso la scrittura di un nuovo settore. Il bit 29 viene utilizzato per indicare il completamento della scrittura della voce di mapping. Se il bit 29 è 0, la scrittura della voce di mapping è stata completata. Se è impostato il bit 29, è in corso la scrittura della voce di mapping. I bit 30 e 29 vengono usati per il ripristino da una potenziale perdita di energia durante l'aggiornamento di un nuovo mapping di settore. Infine, i 29 bit inferiori (28-0) contengono il numero di settore logico per il settore. Se non è stato eseguito il mapping di un settore, verranno impostati tutti i bit, vale a dire il valore 0xFFFFFFFF.
+Il bit superiore del campo a 32 bit (bit 31) viene usato per indicare che il mapping del settore logico è valido. Se questo bit è 0, le informazioni contenute in questa voce (e il contenuto del settore corrispondente) non sono più valide. Il bit successivo, il bit 30, viene usato per indicare che questo settore sta diventando obsoleto e che è in corso la scrittura di un nuovo settore. Il bit 29 viene usato per indicare quando la scrittura della voce di mapping è stata completata. Se il bit 29 è 0, la scrittura della voce di mapping è stata completata. Se è impostato il bit 29, la voce di mapping è in fase di scrittura. I bit 30 e 29 vengono usati per il ripristino da una potenziale interruzione dell'alimentazione durante l'aggiornamento di un nuovo mapping di settore. Infine, i 29 bit inferiori (28-0) contengono il numero di settore logico per il settore. Se non è stato eseguito il mapping di un settore, verranno impostati tutti i bit, ad esempio il valore sarà 0xFFFFFFFF.
 
-## <a name="nor-driver-requirements"></a>E requisiti dei driver
+## <a name="nor-driver-requirements"></a>Requisiti del driver NOR
 
-LevelX richiede un driver sottostante o flash specifico per l'implementazione dell'hardware e della parte Flash sottostante. Il driver viene specificato per LevelX durante l'inizializzazione tramite l'API ***lx_nor_flash_open***. Il prototipo del driver LevelX è:
+LevelX richiede un driver flash NOR sottostante specifico della parte flash sottostante e dell'implementazione hardware. Il driver viene specificato in LevelX durante l'inizializzazione tramite l'API ***lx_nor_flash_open***. Il prototipo del driver LevelX è:
 
 ```c
 INT nor_driver_initialize(LX_NOR_FLASH *instance);
 ```
 
-Il parametro "*instance*" specifica il LevelX e il blocco di controllo. La funzione di inizializzazione driver è responsabile della configurazione di tutti gli altri servizi a livello di driver per l'istanza di LevelX associata. I servizi richiesti per ogni LevelX o istanza sono:
+Il parametro "*instance*" specifica il blocco di controllo LevelX NOR. La funzione di inizializzazione del driver è responsabile della configurazione di tutti gli altri servizi a livello di driver per l'istanza LevelX associata. I servizi necessari per ogni istanza di LevelX NOR sono:
 
-- Leggi settore
+- Settore di lettura
 - Settore di scrittura
-- Cancella blocco
-- Verifica cancellazione blocco
-- Gestore errori di sistema
+- Cancellazione blocchi
+- Block Erased Verify
+- Gestore degli errori di sistema
 
-## <a name="driver-initialization"></a>Inizializzazione driver
+## <a name="driver-initialization"></a>Inizializzazione del driver
 
-Questi servizi vengono impostati tramite l'impostazione di puntatori a funzione nell'istanza **LX_NOR_FLASH** all'interno della funzione di inizializzazione del driver. La funzione di inizializzazione del driver è responsabile anche di:
+Questi servizi vengono configurazione tramite l'impostazione di puntatori a funzione **nell'istanza LX_NOR_FLASH** all'interno della funzione di inizializzazione del driver. La funzione di inizializzazione del driver è anche responsabile di:
 
-1. Specificare l'indirizzo di base del flash.
+1. Specifica dell'indirizzo di base della memoria flash.
 1. Specifica del numero totale di blocchi e del numero di parole per blocco.
-1. Buffer RAM per la lettura di un settore di Flash (512 byte) e allineato per l'accesso ULONG.
+1. Buffer RAM per la lettura di un settore di memoria flash (512 byte) e allineato per l'accesso ULONG.
 
-La funzione di inizializzazione dei driver esegue probabilmente anche ulteriori attività di inizializzazione specifiche del dispositivo e/o dell'implementazione prima di restituire **LX_SUCCESS**.
+È probabile che la funzione di inizializzazione del driver esegua anche ulteriori compiti di inizializzazione specifici del dispositivo e/o **dell'implementazione prima** di restituire LX_SUCCESS .
 
 ## <a name="driver-read-sector"></a>Settore di lettura driver
 
-Il servizio LevelX e il driver "Read Sector" è responsabile della lettura di un settore specifico in un blocco specifico di o Flash. Tutte le verifiche degli errori e la logica di correzione sono responsabilità del servizio driver. In caso di esito positivo, il LevelX o il driver restituisce **LX_SUCCESS**. In caso di esito negativo, il LevelX o il driver restituisce *LX_ERROR*. Il prototipo del servizio LevelX e del driver "Read Sector" è:
+Il servizio "settore di lettura" del driver LevelX NOR è responsabile della lettura di un settore specifico in un blocco specifico della memoria flash NOR. Tutta la logica di controllo e correzione degli errori è responsabilità del servizio driver. Se ha esito positivo, il driver LevelX NOR **restituisce LX_SUCCESS**. In caso contrario, il driver LevelX NOR *restituisce LX_ERROR*. Il prototipo del servizio "settore di lettura" del driver LevelX NOR è:
 
 ```c
 INT nor_driver_read_sector(
@@ -85,11 +85,11 @@ INT nor_driver_read_sector(
     ULONG words);
 ```
 
-Dove "*flash_address*" specifica l'indirizzo di un settore logico all'interno di un blocco di memoria, di memoria e di "*destinazione*" e "*parole*", che specificano la posizione in cui inserire il contenuto del settore e il numero di parole a 32 bit da leggere.
+Dove "*flash_address*" specifica l'indirizzo di un settore logico all'interno di un blocco flash NOR di memoria e "*destinazione*" e *"* parole " specificano dove posizionare il contenuto del settore e il numero di parole a 32 bit da leggere.
 
-## <a name="driver-write-sector"></a>Settore scrittura driver
+## <a name="driver-write-sector"></a>Settore di scrittura driver
 
-Il servizio LevelX e il driver "Write Sector" è responsabile della scrittura di un settore specifico in un blocco di o Flash. Il controllo degli errori è responsabilità del servizio driver. In caso di esito positivo, il LevelX o il driver restituisce **LX_SUCCESS**. In caso di esito negativo, il LevelX o il driver restituisce **LX_ERROR**. Il prototipo del servizio LevelX e del driver "scrittura settore" è:
+Il servizio "settore di scrittura" del driver LevelX NOR è responsabile della scrittura di un settore specifico in un blocco della memoria flash NOR. Tutto il controllo degli errori è responsabilità del servizio driver. Se ha esito positivo, il driver LevelX NOR **restituisce LX_SUCCESS**. In caso contrario, il driver LevelX NOR **restituisce LX_ERROR**. Il prototipo del servizio "settore di scrittura" del driver LevelX NOR è:
 
 ```c
 INT nor_driver_write_sector(
@@ -98,41 +98,41 @@ INT nor_driver_write_sector(
     ULONG words);
 ```
 
-Dove "*flash_address*" specifica l'indirizzo di un settore logico all'interno di un blocco di memoria o di un blocco Flash e "*source*" e "*Words*" specificano l'origine della scrittura e il numero di parole a 32 bit da scrivere.
+Dove "*flash_address*" specifica l'indirizzo di un settore logico all'interno di un blocco flash NOR di memoria e "*source*" e "*words*" specificano l'origine della scrittura e il numero di parole a 32 bit da scrivere.
 
 > [!NOTE]
-> LevelX si basa sul driver per verificare che il settore di scrittura abbia avuto esito positivo. Questa operazione viene in genere eseguita leggendo indietro il valore programmato per assicurarsi che corrisponda al valore richiesto da scrivere.
+> LevelX si basa sul driver per verificare che il settore di scrittura sia riuscito. Questa operazione viene in genere eseguita leggendo il valore programmato per assicurarsi che corrisponda al valore richiesto da scrivere.
 
-## <a name="driver-block-erase"></a>Cancellazione blocco driver
+## <a name="driver-block-erase"></a>Cancellazione del blocco di driver
 
-Il servizio LevelX e il driver "block erase" è responsabile della cancellazione del blocco specificato di o del flash. In caso di esito positivo, il LevelX o il driver restituisce **LX_SUCCESS**. In caso di esito negativo, il LevelX o il driver restituisce **LX_ERROR**. Il prototipo del servizio LevelX e del driver "block erase" è:
+Il servizio di cancellazione dei blocchi del driver LevelX NOR è responsabile della cancellazione del blocco specificato della memoria flash NOR. Se ha esito positivo, il driver LevelX NOR **restituisce LX_SUCCESS**. In caso contrario, il driver LevelX NOR **restituisce LX_ERROR**. Il prototipo del servizio di cancellazione a blocchi del driver LevelX NOR è:
 
 ```c
 INT nor_driver_block_erase(ULONG block,  
     ULONG erase_count);
 ```
 
-Dove "*Block*" identifica i blocchi da cancellare. Il parametro "*erase_count*" viene fornito a scopo diagnostico. Ad esempio, il driver potrebbe voler avvisare un'altra parte del software applicativo quando il numero di cancellazioni supera una soglia specifica.
+Dove "*block*" identifica il blocco NOR da cancellare. Il parametro "*erase_count*" viene fornito a scopo diagnostico. Ad esempio, il driver potrebbe voler avvisare un'altra parte del software dell'applicazione quando il numero di cancellazioni supera una soglia specifica.
 
 > [!NOTE]
-> LevelX si basa sul driver per esaminare tutti i byte del blocco per assicurarsi che vengano cancellati (contenere tutti).
+> LevelX si basa sul driver per esaminare tutti i byte del blocco per assicurarsi che siano cancellati (contengono tutti quelli).
 
-## <a name="driver-block-erased-verify"></a>Verifica cancellazione blocco driver
+## <a name="driver-block-erased-verify"></a>Verifica della cancellazione del blocco di driver
 
-Il servizio LevelX e il driver "Block Cancellated Verify" è responsabile della verifica della cancellazione del blocco specificato di o del flash. Se viene cancellato, il LevelX o il driver restituisce **LX_SUCCESS**. Se il blocco non viene cancellato, il LevelX o il driver restituisce **LX_ERROR**. Il prototipo del servizio LevelX e del driver "blocca la verifica cancellata" è:
+Il servizio "Verifica cancellazione blocchi" del driver LevelX NOR è responsabile della verifica che il blocco specificato della memoria flash NOR sia stato cancellato. Se viene cancellato, il driver LevelX NOR restituisce **LX_SUCCESS**. Se il blocco non viene cancellato, il driver LevelX NOR restituisce **LX_ERROR**. Il prototipo del servizio di verifica della cancellazione dei blocchi del driver LevelX NOR è:
 
 ```c
 INT nor_driver_block_erased_verify(ULONG block);
 ```
 
-Dove "*Block*" specifica quale blocco verificare che venga cancellato.
+Dove "*block*" specifica il blocco per verificare che sia stato cancellato.
 
 > [!NOTE]
-> LevelX si basa sul driver per esaminare tutti i byte dell'oggetto specificato per assicurarsi che vengano cancellati (contenere tutti).
+> LevelX si basa sul driver per esaminare tutti i byte dell'oggetto specificato per assicurarsi che siano cancellati (contengono tutti quelli).
 
 ## <a name="driver-system-error"></a>Errore di sistema del driver
 
-Il servizio "gestore errori di sistema" di LevelX e driver è responsabile dell'impostazione degli errori di sistema di gestione rilevati da LevelX. L'elaborazione in questa routine dipende dall'applicazione. Se l'operazione ha esito positivo, il LevelX o il driver restituisce **LX_SUCCESS**. Se l'operazione ha esito negativo, LevelX e il driver restituiscono **LX_ERROR**. Il prototipo del servizio LevelX o del driver "errore di sistema" è:
+Il servizio "Gestore errori di sistema" del driver LevelX NOR è responsabile dell'impostazione della gestione degli errori di sistema rilevati da LevelX. L'elaborazione in questa routine dipende dall'applicazione. Se ha esito positivo, il driver LevelX NOR restituisce **LX_SUCCESS**. Se l'operazione non riesce, il driver LevelX NOR **restituisce LX_ERROR**. Il prototipo del servizio "errore di sistema" del driver LevelX NOR è:
 
 ```c
 INT nor_driver_system_error(UINT error_code);
@@ -140,21 +140,21 @@ INT nor_driver_system_error(UINT error_code);
 
 Dove "*error_code*" rappresenta l'errore che si è verificato.
 
-## <a name="nor-simulated-driver"></a>O driver simulato
+## <a name="nor-simulated-driver"></a>DRIVER SIMULATO NOR
 
-LevelX fornisce un driver simulato o Flash che usa semplicemente la RAM per simulare il funzionamento di una parte o di una parte Flash. Per impostazione predefinita, il driver non simulato non fornisce 8 né blocchi flash con settori a 16 512 byte per blocco.
+LevelX fornisce un driver flash NOR simulato che usa semplicemente ram per simulare il funzionamento di una parte flash NOR. Per impostazione predefinita, il driver simulato NOR fornisce 8 blocchi flash NOR con settori da 16 512 byte per blocco.
 
-La funzione di inizializzazione del driver simulato e Flash è ***lx_nor_flash_simulator_initialize** _ ed è definita in _ *_lx_nor_flash_simulator. c_* *. Questo driver fornisce anche un modello valido per la scrittura di driver specifici o Flash.
+La funzione di inizializzazione del driver flash NOR simulato è ***lx_nor_flash_simulator_initialize** _ ed è definita in _*_lx_nor_flash_simulator.c_**. Questo driver fornisce anche un buon modello per la scrittura di driver flash NOR specifici.
 
-## <a name="nor-filex-integration"></a>NÉ integrazione con FileX
+## <a name="nor-filex-integration"></a>Integrazione di NOR FileX
 
-Come indicato in precedenza, LevelX non si basa su FileX per Operation. Tutte le API di LevelX possono essere chiamate direttamente dal software dell'applicazione per archiviare o recuperare dati non elaborati nei settori logici forniti da LevelX. Tuttavia, LevelX supporta anche FileX.
+Come accennato in precedenza, LevelX non si basa su FileX per il funzionamento. Tutte le API LevelX possono essere chiamate direttamente dal software dell'applicazione per archiviare/recuperare i dati non elaborati nei settori logici forniti da LevelX. LevelX supporta tuttavia anche FileX.
 
-Il file ***fx_nor_flash_simulated_driver. c*** contiene un driver FILEX di esempio da usare con la simulazione di o Flash. Il driver FileX o Flash per LevelX fornisce un valido punto di partenza per la scrittura di driver FileX personalizzati.
+Il file ***fx_nor_flash_simulated_driver.c*** contiene un driver FileX di esempio da usare con la simulazione flash NOR. Il driver Nor Flash FileX per LevelX rappresenta un buon punto di partenza per la scrittura di driver FileX personalizzati.
 
 > [!NOTE]
-> Il formato FileX o Flash deve essere una dimensione di blocco completo dei settori minori di e non fornisce Flash. Ciò consente di garantire prestazioni ottimali durante l'elaborazione del livello di usura. Altre tecniche per migliorare le prestazioni di scrittura nell'algoritmo di livellamento dell'uso di LevelX includono:
-> 1. Verificare che tutte le Scritture siano esattamente di uno o più cluster e che inizino con i limiti esatti del cluster.
-> 2. Pre-allocare i cluster prima di eseguire operazioni di scrittura di file di grandi dimensioni tramite la classe FileX ***fx_file_allocate*** di API.
-> 3.  Uso periodico di ***lx_nor_flash_defragment*** per liberare il maggior numero possibile di blocchi e, di conseguenza, migliorare le prestazioni di scrittura.
-> 4. Verificare che il driver FileX sia abilitato per ricevere le informazioni sul settore di rilascio e le richieste effettuate al driver per rilasciare i settori vengono gestite nel driver chiamando ***lx_nor_flash_sector_release***.
+> Il formato flash NOR FileX deve avere dimensioni di blocco complete dei settori inferiori a quelle fornite dalla memoria flash NOR. Ciò consente di garantire prestazioni ottimali durante l'elaborazione del livello di usura. Altre tecniche per migliorare le prestazioni di scrittura nell'algoritmo di livellamento dell'usura LevelX includono:
+> 1. Assicurarsi che tutte le operazioni di scrittura siano esattamente di uno o più cluster di dimensioni e che inizino in corrispondenza dei limiti esatti del cluster.
+> 2. Preallocare i cluster prima di eseguire operazioni di scrittura di file di grandi dimensioni tramite fileX ***fx_file_allocate*** di API.
+> 3.  L'uso ***periodico lx_nor_flash_defragment*** per liberare il maggior numero possibile di blocchi NOR e quindi migliorare le prestazioni di scrittura.
+> 4. Verificare che il driver FileX sia abilitato per ricevere informazioni sui settori di rilascio e che le richieste inviate al driver per rilasciare i settori siano gestite nel driver chiamando ***lx_nor_flash_sector_release***.

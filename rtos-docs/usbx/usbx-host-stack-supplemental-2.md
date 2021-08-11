@@ -1,32 +1,32 @@
 ---
-title: API delle classi host USBX
-description: In questo capitolo vengono illustrate tutte le API esposte delle classi host USBX.
+title: API classi host USBX
+description: Questo capitolo illustra tutte le API esposte delle classi host USBX.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 39f3a71c28dd14e0093f72d1a3b1ff6837c6f1f7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 28e733e37b06da7053f238e23e2b8b8046df2dd9940e50cd0321ccf15c27ec47
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824017"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802108"
 ---
-# <a name="chapter-2-usbx-host-classes-api"></a>Capitolo 2: API delle classi host USBX
+# <a name="chapter-2-usbx-host-classes-api"></a>Capitolo 2: API classi host USBX
 
-In questo capitolo vengono illustrate tutte le API esposte delle classi host USBX. Le API seguenti per ogni classe sono descritte in dettaglio.
+Questo capitolo illustra tutte le API esposte delle classi host USBX. Le API seguenti per ogni classe sono descritte in dettaglio.
 
 - Classe Printer
 - Classe audio
-- Classe ASIX
+- Classe Asix
 - Classe Pima/PTP
-- Classe Prolific
-- Classe seriale generica
+- Classe Disasserta
+- Classe Serial generica
 
 ## <a name="ux_host_class_printer_read"></a>ux_host_class_printer_read
 
-Leggere dall'interfaccia stampante.
+Leggere dall'interfaccia della stampante.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -40,20 +40,20 @@ UINT ux_host_class_printer_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione legge dall'interfaccia stampante. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo. Una lettura è consentita solo su stampanti bidirezionali.
+Questa funzione legge dall'interfaccia della stampante. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il trasferimento è completato. Una lettura è consentita solo su stampanti bidirezionali.
 
 ### <a name="parameters"></a>Parametri
 
-- **Printer**: puntatore all'istanza della classe Printer.
-- **data_pointer**: puntatore all'indirizzo del buffer del payload di dati.
-- **requested_length**: lunghezza da ricevere.
-- **actual_length**: lunghezza effettivamente ricevuta.
+- **printer:** puntatore all'istanza della classe printer.
+- **data_pointer:** puntatore all'indirizzo del buffer del payload dei dati.
+- **requested_length:** lunghezza da ricevere.
+- **actual_length:** lunghezza effettivamente ricevuta.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- La funzione **UX_FUNCTION_NOT_SUPPORTED**: (0x54) non è supportata perché la stampante non è bidirezionale.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) timeout di trasferimento, lettura incompleta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_FUNCTION_NOT_SUPPORTED:** funzione (0x54) non supportata perché la stampante non è bidirezionale.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, lettura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -68,7 +68,7 @@ status = ux_host_class_printer_read(printer, data_pointer, requested_length, &ac
 
 ## <a name="ux_host_class_printer_write"></a>ux_host_class_printer_write
 
-Scrivere nell'interfaccia stampante.
+Scrivere nell'interfaccia della stampante.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -82,19 +82,19 @@ UINT ux_host_class_printer_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive nell'interfaccia stampante. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo.
+Questa funzione scrive nell'interfaccia della stampante. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il trasferimento è completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **Printer**: puntatore all'istanza della classe Printer.
-- **data_pointer**: puntatore all'indirizzo del buffer del payload di dati.
-- **requested_length**: lunghezza da inviare.
-- **actual_length**: lunghezza effettivamente inviata.
+- **printer:** puntatore all'istanza della classe printer.
+- **data_pointer:** puntatore all'indirizzo del buffer del payload dei dati.
+- **requested_length:** lunghezza da inviare.
+- **actual_length:** lunghezza effettivamente inviata.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) timeout di trasferimento, scrittura incompleta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout di trasferimento, scrittura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -109,7 +109,7 @@ status = ux_host_class_printer_write(printer, data_pointer, requested_length, &a
 
 ## <a name="ux_host_class_printer_soft_reset"></a>ux_host_class_printer_soft_reset
 
-Eseguire un ripristino soft alla stampante.
+Eseguire un soft reset sulla stampante.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -119,16 +119,16 @@ UINT ux_host_class_printer_soft_reset(UX_HOST_CLASS_PRINTER *printer)
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione esegue un ripristino soft alla stampante.
+Questa funzione esegue un soft reset sulla stampante.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **Printer**: puntatore all'istanza della classe Printer.
+- **printer:** puntatore all'istanza della classe printer.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) la reimpostazione è stata completata.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) timeout di trasferimento, reimpostazione non completata.
+- **UX_SUCCESS**: (0x00)La reimpostazione è stata completata.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, reimpostazione non completata.
 
 ### <a name="example"></a>Esempio
 
@@ -155,18 +155,18 @@ UINT ux_host_class_printer_status_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione ottiene lo stato della stampante. Lo stato della stampante è simile allo stato di LPT (1284 standard).
+Questa funzione ottiene lo stato della stampante. Lo stato della stampante è simile allo stato LPT (standard 1284).
 
 ### <a name="parameters"></a>Parametri
 
-- **Printer**: puntatore all'istanza della classe Printer.
+- **printer:** puntatore all'istanza della classe printer.
 - **printer_status**: indirizzo dello stato da restituire.
 
 ### <a name="return-value"></a>Valore restituito
 
 - **UX_SUCCESS** (0x00): la reimpostazione è stata completata.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per eseguire l'operazione.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) Timeout trasferimento, reimpostazione non completata
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per eseguire l'operazione.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, reimpostazione non completata
 
 ### <a name="example"></a>Esempio
 
@@ -181,7 +181,7 @@ status = ux_host_class_printer_status_get(printer, printer_status);
 
 ## <a name="ux_host_class_printer_device_id_get"></a>ux_host_class_printer_device_id_get
 
-Ottenere l'ID del dispositivo stampante.
+Ottenere l'ID dispositivo della stampante.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -194,24 +194,24 @@ UINT ux_host_class_printer_device_id_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione ottiene la stringa dell'ID dispositivo IEEE 1284 (inclusa la lunghezza nei primi due byte nel formato big endian).
+Questa funzione ottiene la stringa id dispositivo IEEE 1284 della stampante (inclusa la lunghezza nei primi due byte in big endian formato).
 
 ### <a name="parameters"></a>Parametri
 
-- **Printer**: puntatore all'istanza della classe Printer.
-- **descriptor_buffer**: puntatore a un buffer per riempire la stringa dell'ID dispositivo IEEE 1284 (inclusa la lunghezza nei primi due byte nel formato) 
-- **length**: lunghezza del buffer in byte.
+- **printer:** puntatore all'istanza della classe printer.
+- **descriptor_buffer:** puntatore a un buffer per riempire la stringa id dispositivo IEEE 1284 (inclusa la lunghezza nei primi due byte in formato BE) 
+- **length:** lunghezza del buffer in byte.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00): l'operazione è stata completata.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per eseguire l'operazione.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) Timeout trasferimento, richiesta non completata
-- **UX_TRANSFER_NOT_READY**: (0x25) il dispositivo si trova in uno stato non valido. deve essere collegato, risolto o configurato.
-- **UX_TRANSFER_STALL**: (0x21) il trasferimento è bloccato.
-- La sospensione **TX_WAIT_ABORTED** (0x1A) è stata interrotta da un altro thread, timer o ISR.
-- **TX_SEMAPHORE_ERROR** (0x0C) puntatore del semaforo di conteggio non valido.
-- **TX_WAIT_ERROR** (0x04) è stata specificata un'opzione di attesa diversa da TX_NO_WAIT in una chiamata da un non thread.
+- **UX_SUCCESS** (0x00): l'operazione è riuscita.
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per eseguire l'operazione.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, richiesta non completata
+- **UX_TRANSFER_NOT_READY**: (0x25) Lo stato del dispositivo non è valido. Deve essere ATTACHED, ADDRESSED o CONFIGURED.
+- **UX_TRANSFER_STALL**: (0x21) Trasferimento bloccato.
+- **TX_WAIT_ABORTED** sospensione (0x1A) è stata interrotta da un altro thread, timer o ISR.
+- **TX_SEMAPHORE_ERROR** (0x0C) Puntatore al semaforo di conteggio non valido.
+- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa da TX_NO_WAIT in una chiamata da un thread non.
 
 ### <a name="example"></a>Esempio
 
@@ -239,17 +239,17 @@ UINT ux_host_class_audio_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione legge dall'interfaccia audio. La chiamata non è bloccata. L'applicazione deve verificare che sia stata selezionata l'impostazione alternativa appropriata per l'interfaccia di streaming audio.
+Questa funzione legge dall'interfaccia audio. La chiamata non è bloccante. L'applicazione deve assicurarsi che sia stata selezionata l'impostazione alternativa appropriata per l'interfaccia di streaming audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza della classe audio.
-- **audio_transfer_request**: puntatore alla struttura di trasferimento audio.
+- **audio:** puntatore all'istanza della classe audio.
+- **audio_transfer_request:** puntatore alla struttura di trasferimento audio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato
-- Funzione **UX_FUNCTION_NOT_SUPPORTED**"(0x54) non supportata
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato
+- **UX_FUNCTION_NOT_SUPPORTED** funzione " (0x54) non supportata
 
 ### <a name="example"></a>Esempio
 
@@ -282,18 +282,18 @@ UINT ux_host_class_audio_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive nell'interfaccia audio. La chiamata non è bloccata. L'applicazione deve verificare che sia stata selezionata l'impostazione alternativa appropriata per l'interfaccia di streaming audio.
+Questa funzione scrive nell'interfaccia audio. La chiamata non è bloccante. L'applicazione deve assicurarsi che sia stata selezionata l'impostazione alternativa appropriata per l'interfaccia di streaming audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza della classe audio
-- **audio_transfer_request**: puntatore alla struttura di trasferimento audio
+- **audio:** puntatore all'istanza della classe audio
+- **audio_transfer_request:** puntatore alla struttura di trasferimento audio
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- Funzione **UX_FUNCTION_NOT_SUPPORTED**: (0x54) non supportata.
-- Interfaccia **ux_host_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) non corretta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_FUNCTION_NOT_SUPPORTED:** funzione (0x54) non supportata.
+- **ux_host_CLASS_AUDIO_WRONG_INTERFACE:** interfaccia (0x81) non corretta.
 
 ### <a name="example"></a>Esempio
 
@@ -315,7 +315,7 @@ status = ux_host_class_audio_write(audio, audio_transfer_request);
 
 ## <a name="ux_host_class_audio_control_get"></a>ux_host_class_audio_control_get
 
-Ottenere un controllo specifico dall'interfaccia del controllo audio.
+Ottenere un controllo specifico dall'interfaccia di controllo audio.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -331,14 +331,14 @@ Questa funzione legge un controllo specifico dall'interfaccia del controllo audi
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza della classe audio
-- **audio_control**: puntatore alla struttura del controllo audio
+- **audio:** puntatore all'istanza della classe audio
+- **audio_control:** puntatore alla struttura del controllo audio
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato
-- Funzione **UX_FUNCTION_NOT_SUPPORTED**: (0x54) non supportata
-- Interfaccia **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) non corretta
+- **UX_SUCCESS:**(0x00) Il trasferimento dei dati è stato completato
+- **UX_FUNCTION_NOT_SUPPORTED:** funzione (0x54) non supportata
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:** interfaccia (0x81) non corretta
 
 ### <a name="example"></a>Esempio
 
@@ -366,7 +366,7 @@ status = ux_host_class_audio_control_get(audio, &audio_control);
 
 ## <a name="ux_host_class_audio_control_value_set"></a>ux_host_class_audio_control_value_set
 
-Impostare un controllo specifico sull'interfaccia del controllo audio.
+Impostare un controllo specifico sull'interfaccia di controllo audio.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -376,20 +376,20 @@ UINT ux_host_class_audio_control_value_set(
     UX_HOST_CLASS_AUDIO_CONTROL *audio_control)
 ```
 
-* * Descrizione * *
+**Descrizione **
 
 Questa funzione imposta un controllo specifico sull'interfaccia del controllo audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza della classe audio
-- **audio_control**: puntatore alla struttura del controllo audio
+- **audio:** puntatore all'istanza della classe audio
+- **audio_control:** puntatore alla struttura del controllo audio
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato
-- Funzione **UX_FUNCTION_NOT_SUPPORTED**: (0x54) non supportata
-- Interfaccia **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) non corretta
+- **UX_SUCCESS:**(0x00) Il trasferimento dei dati è stato completato
+- **UX_FUNCTION_NOT_SUPPORTED:** funzione (0x54) non supportata
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:** interfaccia (0x81) non corretta
 
 ### <a name="example"></a>Esempio
 
@@ -434,15 +434,15 @@ Questa funzione imposta l'interfaccia di impostazione alternativa appropriata de
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza della classe audio.
-- **audio_sampling**: puntatore alla struttura di campionamento audio.
+- **audio:** puntatore all'istanza della classe audio.
+- **audio_sampling:** puntatore alla struttura di campionamento audio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato
-- Funzione **UX_FUNCTION_NOT_SUPPORTED**: (0x54) non supportata
-- Interfaccia **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) non corretta
-- **UX_NO_ALTERNATE_SETTING**: (0X5e) nessuna impostazione alternativa per i valori di campionamento
+- **UX_SUCCESS:**(0x00) Il trasferimento dei dati è stato completato
+- **UX_FUNCTION_NOT_SUPPORTED:** funzione (0x54) non supportata
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:** interfaccia (0x81) non corretta
+- **UX_NO_ALTERNATE_SETTING:**(0x5e) Nessuna impostazione alternativa per i valori di campionamento
 
 ### <a name="example"></a>Esempio
 
@@ -475,19 +475,19 @@ UINT ux_host_class_audio_streaming_sampling_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione ottiene, una alla volta, tutte le possibili impostazioni di campionamento disponibili in ognuna delle impostazioni alternative dell'interfaccia di streaming audio. La prima volta che si usa la funzione, è necessario reimpostare tutti i campi nel puntatore della struttura chiamante. La funzione restituirà un set specifico di valori di flusso alla restituzione, a meno che non sia stata raggiunta la fine delle impostazioni alternative. Quando questa funzione viene riutilizzata, per individuare i valori di campionamento successivi verranno utilizzati i valori di campionamento precedenti.
+Questa funzione ottiene, una alla volta, tutte le possibili impostazioni di campionamento disponibili in ognuna delle impostazioni alternative dell'interfaccia di streaming audio. La prima volta che viene usata la funzione, tutti i campi nel puntatore della struttura chiamante devono essere reimpostati. La funzione restituirà un set specifico di valori di streaming al momento della restituzione, a meno che non sia stata raggiunta la fine delle impostazioni alternative. Quando questa funzione viene riutilizzata, i valori di campionamento precedenti verranno usati per trovare i valori di campionamento successivi.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza della classe audio.
-- **audio_sampling**: puntatore alla struttura di campionamento audio.
+- **audio:** puntatore all'istanza della classe audio.
+- **audio_sampling:** puntatore alla struttura di campionamento audio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato
-- Funzione **UX_FUNCTION_NOT_SUPPORTED**: (0x54) non supportata
-- Interfaccia **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) non corretta
-- **UX_NO_ALTERNATE_SETTING**: (0X5e) nessuna impostazione alternativa per i valori di campionamento
+- **UX_SUCCESS:**(0x00) Il trasferimento dei dati è stato completato
+- **UX_FUNCTION_NOT_SUPPORTED:** funzione (0x54) non supportata
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:** interfaccia (0x81) non corretta
+- **UX_NO_ALTERNATE_SETTING:**(0x5e) Nessuna impostazione alternativa per i valori di campionamento
 
 ### <a name="example"></a>Esempio
 
@@ -516,7 +516,7 @@ printf("Number of channels %d, Resolution %d bits, frequency range %d-%d\n",
 
 ## <a name="ux_host_class_asix_read"></a>ux_host_class_asix_read
 
-Leggere dall'interfaccia ASIX.
+Leggere dall'interfaccia asix.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -530,19 +530,19 @@ UINT ux_host_class_asix_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione legge dall'interfaccia ASIX. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo.
+Questa funzione legge dall'interfaccia asix. La chiamata è bloccante e viene restituita solo quando si verifica un errore o quando il trasferimento è completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **ASIX**: puntatore all'istanza della classe ASIX.
-- **data_pointer**: puntatore all'indirizzo del buffer del payload di dati.
-- **requested_length**: lunghezza da ricevere.
-- **actual_length**: lunghezza effettivamente ricevuta.
+- **asix:** puntatore all'istanza della classe asix.
+- **data_pointer:** puntatore all'indirizzo del buffer del payload dei dati.
+- **requested_length:** lunghezza da ricevere.
+- **actual_length:** lunghezza effettivamente ricevuta.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) timeout di trasferimento, lettura incompleta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, lettura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -558,7 +558,7 @@ status = ux_host_class_asix_read(asix, data_pointer, requested_length, &actual_l
 
 ## <a name="ux_host_class_asix_write"></a>ux_host_class_asix_write
 
-Scrivere nell'interfaccia ASIX.
+Scrivere nell'interfaccia asix.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -570,17 +570,17 @@ UINT ux_host_class_asix_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive nell'interfaccia ASIX. La chiamata non è bloccata.
+Questa funzione scrive nell'interfaccia asix. La chiamata non è bloccante.
 
 ### <a name="parameters"></a>Parametri
 
-- **ASIX**: puntatore all'istanza della classe ASIX.
-- **pacchetto: pacchetto** di dati NETX
+- **asix:** puntatore all'istanza della classe asix.
+- **packet:** pacchetto di dati Netx
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- Non è stato possibile richiedere il trasferimento **UX_ERROR**: (0xFF).
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_ERROR:** impossibile 0xFF il trasferimento (0xFF).
 
 ### <a name="example"></a>Esempio
 
@@ -596,7 +596,7 @@ status = ux_host_class_asix_write(asix, packet);
 
 ## <a name="ux_host_class_pima_session_open"></a>ux_host_class_pima_session_open
 
-Apre una sessione tra l'iniziatore e il risponditore.
+Aprire una sessione tra Initiator e Responder.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -608,17 +608,17 @@ UINT ux_host_class_pima_session_open(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione apre una sessione tra un iniziatore PIMA e un risponditore PIMA. Una volta aperta correttamente una sessione, è possibile eseguire la maggior parte dei comandi PIMA.
+Questa funzione apre una sessione tra un iniziatore PIMA e un risponditore PIMA. Dopo aver aperto correttamente una sessione, è possibile eseguire la maggior parte dei comandi PIMA.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_sessio**: puntatore alla sessione Pima<
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_sessio:** puntatore alla sessione PIMA<
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** sessione: (0x00) aperta correttamente
-- **UX_HOST_CLASS_PIMA_RC_SESSION_ALREADY_OPENED**: (0X201E) sessione già aperta
+- **UX_SUCCESS:**(0x00) La sessione è stata aperta correttamente
+- **UX_HOST_CLASS_PIMA_RC_SESSION_ALREADY_OPENED**: (0x201E) Sessione già aperta
 
 ### <a name="example"></a>Esempio
 
@@ -633,7 +633,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_session_close"></a>ux_host_class_pima_session_close
 
-Chiude una sessione tra l'iniziatore e il risponditore.
+Chiudere una sessione tra Initiator e Responder.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -649,13 +649,13 @@ Questa funzione chiude una sessione precedentemente aperta tra un iniziatore PIM
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima.
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** puntatore alla sessione PIMA.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) la sessione è stata chiusa.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: la sessione (0x2003) non è aperta.
+- **UX_SUCCESS**: (0x00) La sessione è stata chiusa.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta.
 
 ### <a name="example"></a>Esempio
 
@@ -667,7 +667,7 @@ status = ux_host_class_pima_session_close(pima, pima_session);
 
 ## <a name="ux_host_class_pima_storage_ids_get"></a>ux_host_class_pima_storage_ids_get
 
-Ottenere la matrice di ID di archiviazione dal risponditore.
+Ottenere l'array di ID di archiviazione dal risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -685,16 +685,16 @@ Questa funzione ottiene la matrice di ID di archiviazione dal risponditore.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
-- **storage_ids_array**: matrice in cui verranno restituiti gli ID di archiviazione
-- **storage_id_length**: lunghezza dell'array di archiviazione
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
+- **storage_ids_array:** matrice in cui verranno restituiti gli ID di archiviazione
+- **storage_id_length:** lunghezza dell'array di archiviazione
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) la matrice di ID archiviazione è stata popolata
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS:**(0x00) L'array di ID di archiviazione è stato popolato
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -728,20 +728,20 @@ UINT ux_host_class_pima_storage_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione ottiene le informazioni di archiviazione per un contenitore di archiviazione di valore *storage_id*.
+Questa funzione ottiene le informazioni di archiviazione per un contenitore di archiviazione con valore *storage_id*.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
 - **storage_id**: ID del contenitore di archiviazione
-- **archiviazione**: puntatore al contenitore di informazioni di archiviazione
+- **storage:** puntatore al contenitore delle informazioni di archiviazione
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) sono state recuperate le informazioni di archiviazione
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_MEMORY_INSUFFICIENT** (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) Le informazioni di archiviazione sono stati recuperati
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_MEMORY_INSUFFICIENT** (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -762,7 +762,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_num_objects_get"></a>ux_host_class_pima_num_objects_get
 
-Ottenere il numero di oggetti in un contenitore di archiviazione dal risponditore.
+Ottenere il numero di oggetti in un contenitore di archiviazione da Responder.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -776,57 +776,57 @@ UINT ux_host_class_pima_num_objects_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione ottiene il numero di oggetti archiviati in un contenitore di archiviazione specifico di value storage_id corrispondente a un codice di formato specifico. Il numero di oggetti viene restituito nel campo: ux_host_class_pima_session_nb_objects della struttura di pima_session.
+Questa funzione ottiene il numero di oggetti archiviati in un contenitore di archiviazione specifico di valori storage_id corrispondente a un codice di formato specifico. Il numero di oggetti viene restituito nel campo : ux_host_class_pima_session_nb_objects della pima_session struttura .
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
 - **storage_id**: ID del contenitore di archiviazione
-- **object_format_code**: filtro del codice del formato degli oggetti.
+- **object_format_code:** filtro codice formato oggetti.
 
-I codici di formato dell'oggetto possono avere uno dei valori seguenti.
+I codici di formato oggetto possono avere uno dei valori seguenti.
 
-| Codice del formato dell'oggetto               | Descrizione   |     Codice USBX                          |
+| Codice formato oggetto               | Descrizione   |     Codice USBX                          |
 |----------------------------------|---------------|------------------------------------------|
-| 0x3000                           | Oggetto non definito non definito | UX_HOST_CLASS_PIMA_OFC_UNDEFINED   |
-| 0x3001                           | Associazione di associazione (ad esempio, cartella) | UX_HOST_CLASS_PIMA_OFC_ASSOCIATION |
-| 0x3002                           | Script del dispositivo-script specifico del modello | UX_HOST_CLASS_PIMA_OFC_SCRIPT      |
-| 0x3003                           | Eseguibile binario specifico del modello di dispositivo eseguibile | UX_HOST_CLASS_PIMA_OFC_EXECUTABLE  |
-| 0x3004                           | File di testo di testo  |   UX_HOST_CLASS_PIMA_OFC_TEXT        |
+| 0x3000                           | Oggetto non immagine non definito non definito | UX_HOST_CLASS_PIMA_OFC_UNDEFINED   |
+| 0x3001                           | Associazione (ad esempio cartella) | UX_HOST_CLASS_PIMA_OFC_ASSOCIATION |
+| 0x3002                           | Script script specifico del modello di dispositivo | UX_HOST_CLASS_PIMA_OFC_SCRIPT      |
+| 0x3003                           | Eseguibile eseguibile eseguibile eseguibile binario specifico del modello di dispositivo | UX_HOST_CLASS_PIMA_OFC_EXECUTABLE  |
+| 0x3004                           | File di testo  |   UX_HOST_CLASS_PIMA_OFC_TEXT        |
 | 0x3005                           | File HTML HyperText Markup Language (testo) | UX_HOST_CLASS_PIMA_OFC_HTML        |
-| 0x3006                           | File di formato dell'ordine di stampa digitale DPOF (testo) | UX_HOST_CLASS_PIMA_OFC_DPOF        |
+| 0x3006                           | File DPOF Digital Print Order Format (testo) | UX_HOST_CLASS_PIMA_OFC_DPOF        |
 | 0x3007                           | Clip audio AIFF  |  UX_HOST_CLASS_PIMA_OFC_AIFF        |
 | 0x3008                           | Clip audio WAV   |  UX_HOST_CLASS_PIMA_OFC_WAV         |
 | 0x3009                           | Clip audio MP3   |  UX_HOST_CLASS_PIMA_OFC_MP3         |
 | 0x300A                           | Clip video AVI   |  UX_HOST_CLASS_PIMA_OFC_AVI         |
 | 0x300B                           | Clip video MPEG  |  UX_HOST_CLASS_PIMA_OFC_MPEG        |
-| 0x300C                           | Formato ASF Microsoft Advanced Streaming (video) | UX_HOST_CLASS_PIMA_OFC_ASF         |
+| 0x300C                           | ASF Microsoft Advanced Streaming Format (video) | UX_HOST_CLASS_PIMA_OFC_ASF         |
 | 0x3800                           | Oggetto immagine sconosciuto non definito | UX_HOST_CLASS_PIMA_OFC_QT          |
-| 0x3801                           | Formato di file con scambio di formato EXIF/JPEG, JEIDA standard | UX_HOST_CLASS_PIMA_OFC_EXIF_JPEG   |
-| 0x3802                           | Formato file di immagine Tag TIFF/EP per la fotografia elettronica | UX_HOST_CLASS_PIMA_OFC_TIFF_EP     |
-| 0x3803                           | Formato dell'immagine di archiviazione strutturata FlashPix | UX_HOST_CLASS_PIMA_OFC_FLASHPIX    |
-| 0x3804                           | File bitmap Microsoft Windows BMP | UX_HOST_CLASS_PIMA_OFC_BMP         |
-| 0x3805                           | Formato file di immagine della fotocamera Canon CIFF | UX_HOST_CLASS_PIMA_OFC_CIFF        |
+| 0x3801                           | Formato di file scambiabile EXIF/JPEG, standard JEIDA | UX_HOST_CLASS_PIMA_OFC_EXIF_JPEG   |
+| 0x3802                           | Formato di file di immagine tag TIFF/EP per Electronic Photography | UX_HOST_CLASS_PIMA_OFC_TIFF_EP     |
+| 0x3803                           | FlashPix Structured Archiviazione Image Format | UX_HOST_CLASS_PIMA_OFC_FLASHPIX    |
+| 0x3804                           | File bitmap di Microsoft Windows BMP | UX_HOST_CLASS_PIMA_OFC_BMP         |
+| 0x3805                           | Formato del file di immagine della fotocamera CIFF Canon | UX_HOST_CLASS_PIMA_OFC_CIFF        |
 | 0x3806                           | Riservato non definito |  |
-| 0x3807                           | Graphics Interchange Format GIF | UX_HOST_CLASS_PIMA_OFC_GIF         |
+| 0x3807                           | GIF Graphics Interchange Format | UX_HOST_CLASS_PIMA_OFC_GIF         |
 | 0x3808                           | Formato di interscambio file JPEG JFIF | UX_HOST_CLASS_PIMA_OFC_JFIF        |
-| 0x3809                           | Immagine PAC PhotoCD PCD | UX_HOST_CLASS_PIMA_OFC_PCD         |
-| 0x380A                           | Formato immagine rinvio PICT | UX_HOST_CLASS_PIMA_OFC_PICT        |
-| 0x380B                           | Portable Network Graphics PNG | UX_HOST_CLASS_PIMA_OFC_PNG         |
+| 0x3809                           | PCD PhotoCD Image Pac | UX_HOST_CLASS_PIMA_OFC_PCD         |
+| 0x380A                           | Formato immagine PICT Quickdraw | UX_HOST_CLASS_PIMA_OFC_PICT        |
+| 0x380B                           | PNG Portable Network Graphics | UX_HOST_CLASS_PIMA_OFC_PNG         |
 | 0x380C                           | Riservato non definito |   |
-| 0x380D                           | Formato file immagine Tag TIFF | UX_HOST_CLASS_PIMA_OFC_TIFF        |
-| 0x380E                           | Formato file di immagine Tag TIFF/IT per Information Technology (Graphic Arts) | UX_HOST_CLASS_PIMA_OFC_TIFF_IT     |
-| 0x380F                           | Formato file baseline JPEG2000 JP2 | UX_HOST_CLASS_PIMA_OFC_JP2         |
-| 0x3810                           | Formato file esteso JPX JPEG2000 | UX_HOST_CLASS_PIMA_OFC_JPX         |
-| Tutti gli altri codici con MSN di 0011 | Qualsiasi riservato non definito per usi futuri |                                    |
-| Tutti gli altri codici con MSN di 1011 | Qualsiasi tipo definito dal fornitore definito dal fornitore: immagine |                                    |
+| 0x380D                           | Formato file di immagine tag TIFF | UX_HOST_CLASS_PIMA_OFC_TIFF        |
+| 0x380E                           | TiFF/IT Tag Image File Format for Information Technology (arti grafiche) | UX_HOST_CLASS_PIMA_OFC_TIFF_IT     |
+| 0x380F                           | Formato file di base JP2 JPEG2000 | UX_HOST_CLASS_PIMA_OFC_JP2         |
+| 0x3810                           | Formato di file esteso JPX JPEG2000 | UX_HOST_CLASS_PIMA_OFC_JPX         |
+| Tutti gli altri codici con MSN 0011 | Qualsiasi riservato non definito per un uso futuro |                                    |
+| Tutti gli altri codici con MSN 1011 | Qualsiasi tipo definito dal fornitore: Immagine |                                    |
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -847,7 +847,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_handles_get"></a>ux_host_class_pima_object_handles_get
 
-Ottenere handle di oggetto dal risponditore.
+Ottenere gli handle di oggetto dal risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -864,21 +864,21 @@ UINT ux_host_class_pima_object_handles_get(
 
 ### <a name="description"></a>Descrizione
 
-Restituisce una matrice di handle di oggetto presenti nel contenitore di archiviazione indicato dal parametro storage_id. Se si desidera un elenco aggregato in tutti i punti vendita, questo valore deve essere impostato su 0xFFFFFFFF.
+Restituisce una matrice di handle di oggetto presenti nel contenitore di archiviazione indicato dal parametro storage_id. Se si desidera un elenco aggregato in tutti i negozi, questo valore deve essere impostato su 0xFFFFFFFF.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
-- **object_handes_array**: matrice in cui vengono restituiti gli handle
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
+- **object_handes_array:** matrice in cui vengono restituiti gli handle
 - **object_handles_length**: lunghezza della matrice
 - **storage_id**: ID del contenitore di archiviazione
-- **object_format_code**: formattare il codice per l'oggetto (vedere la tabella per la funzione ux_host_class_pima_num_objects_get)
-- **object_handle_association**: valore facoltativo dell'associazione di oggetti
+- **object_format_code**: Formattare il codice per l'oggetto (vedere la tabella per le funzioni ux_host_class_pima_num_objects_get)
+- **object_handle_association:** valore di associazione di oggetti facoltativo
 
 L'associazione dell'handle di oggetto può essere uno dei valori della tabella seguente:
 
-| AssociationCode                        | AssociationType      | Interpretazione       |
+| AssociationCode                        | Associationtype      | Interpretazione       |
 |----------------------------------------|----------------------|----------------------|
 | 0x0000                                 | Non definito            | Non definito            |
 | 0x0001                                 | GenericFolder        | Non utilizzato               |
@@ -888,14 +888,14 @@ L'associazione dell'handle di oggetto può essere uno dei valori della tabella s
 | 0x0005                                 | VerticalPanoramic    | Non utilizzato               |
 | 0x0006                                 | 2DPanoramic          | ImagesPerRow         |
 | 0x0007                                 | AncillaryData        | Non definito            |
-| Tutti gli altri valori con bit 15 impostati su 0  | Riservato             | Non definito            |
-| Tutti i valori con bit 15 impostati su 1        | Definito dal fornitore       | Definito dal fornitore       |
+| Tutti gli altri valori con bit 15 impostato su 0  | Riservato             | Non definito            |
+| Tutti i valori con bit 15 impostato su 1        | Definito dal fornitore       | Definito dal fornitore       |
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -935,16 +935,16 @@ Questa funzione ottiene le informazioni sull'oggetto per un handle di oggetto.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
-- **object_handle**: handle dell'oggetto
-- **oggetto**: puntatore al contenitore di informazioni sugli oggetti
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
+- **object_handle**: Handle dell'oggetto
+- **object**: puntatore al contenitore di informazioni sull'oggetto
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -971,7 +971,7 @@ while (object_index < pima_session -> ux_host_class_pima_session_nb_objects)
 
 ## <a name="ux_host_class_pima_object_info_send"></a>ux_host_class_pima_object_info_send
 
-Invia le informazioni sull'oggetto al risponditore.
+Inviare le informazioni sull'oggetto al risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -986,21 +986,21 @@ UINT ux_host_class_pima_object_info_send(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione Invia le informazioni di archiviazione per un contenitore di archiviazione di valore storage_id. L'initiator deve usare questo comando prima di inviare un oggetto al risponditore.
+Questa funzione invia le informazioni di archiviazione per un contenitore di archiviazione con valore storage_id. L'iniziatore deve usare questo comando prima di inviare un oggetto al risponditore.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima.
-- **storage_id**: ID archiviazione di destinazione.
-- **parent_object_id**: ObjectHandle padre sul risponditore in cui deve essere inserito l'oggetto.
-- **oggetto**: puntatore al contenitore di informazioni sugli oggetti.
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** puntatore alla sessione PIMA.
+- **storage_id:** ID di archiviazione di destinazione.
+- **parent_object_id:** ObjectHandle padre nel risponditore in cui deve essere inserito l'oggetto.
+- **object**: puntatore al contenitore di informazioni sull'oggetto.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -1020,7 +1020,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_open"></a>ux_host_class_pima_object_open
 
-Apre un oggetto archiviato nel risponditore.
+Aprire un oggetto archiviato nel risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1034,21 +1034,21 @@ UINT ux_host_class_pima_object_open(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione apre un oggetto nel risponditore prima della lettura o della scrittura.
+Questa funzione apre un oggetto nel risponditore prima di leggere o scrivere.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima.
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** puntatore alla sessione PIMA.
 - **object_handle**: handle dell'oggetto.
-- **oggetto**: puntatore al contenitore di informazioni sugli oggetti.
+- **objec:** puntatore al contenitore di informazioni sull'oggetto.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_ALREADY_OPENED**: l'oggetto (0x2021) è già aperto.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_ALREADY_OPENED**: oggetto (0x2021) già aperto.
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -1086,23 +1086,23 @@ Questa funzione ottiene un oggetto nel risponditore.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
 - **object_handle**: handle dell'oggetto
-- **oggetto**: puntatore al contenitore di informazioni sugli oggetti
-- **object_buffer**: indirizzo dei dati oggetto
-- **object_buffer_length**: lunghezza richiesta dell'oggetto
-- **object_actual_length**: lunghezza dell'oggetto restituito
+- **object**: puntatore al contenitore di informazioni sull'oggetto
+- **object_buffer**: Indirizzo dei dati oggetto
+- **object_buffer_length:** lunghezza richiesta dell'oggetto
+- **object_actual_length:** lunghezza dell'oggetto restituito
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) l'oggetto è stato trasferito
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) oggetto non aperto.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0X200f) accesso negato all'oggetto
-- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER**: il trasferimento (0x2007) è incompleto
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
-- **UX_TRANSFER_ERROR**: (0x23) errore di trasferimento durante la lettura dell'oggetto
+- **UX_SUCCESS**: (0x00) L'oggetto è stato trasferito
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) Sessione non aperta
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0x2023) Oggetto non aperto.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0x200f) Accesso all'oggetto negato
+- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER:**(0x2007) Il trasferimento è incompleto
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
+- **UX_TRANSFER_ERROR:**(0x23) Errore di trasferimento durante la lettura dell'oggetto
 
 ### <a name="example"></a>Esempio
 
@@ -1164,7 +1164,7 @@ status = ux_host_class_pima_object_close(pima, pima_session,
 
 ## <a name="ux_host_class_pima_object_send"></a>ux_host_class_pima_object_send
 
-Invia un oggetto archiviato nel risponditore.
+Inviare un oggetto archiviato nel risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1178,26 +1178,26 @@ UINT ux_host_class_pima_object_send(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione Invia un oggetto al risponditore.
+Questa funzione invia un oggetto al risponditore.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_sessio**: puntatore alla sessione Pima
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_sessio:** Puntatore alla sessione PIMA
 - **object_handle**: handle dell'oggetto
-- **oggetto**: puntatore al contenitore di informazioni sugli oggetti
-- **object_buffer**: indirizzo dei dati oggetto
-- **object_buffer_length**: lunghezza richiesta dell'oggetto
+- **object:** puntatore al contenitore di informazioni sull'oggetto
+- **object_buffer**: Indirizzo dei dati oggetto
+- **object_buffer_length:** lunghezza richiesta dell'oggetto
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0X2003) sessione non aperta
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) oggetto non aperto.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0X200f) accesso negato all'oggetto
-- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER**: il trasferimento (0x2007) è incompleto
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
-- **UX_TRANSFER_ERROR**: (0x23) errore di trasferimento durante la scrittura dell'oggetto
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:** sessione (0x2003) non aperta
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:** oggetto (0x2023) non aperto.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED:**(0x200f) Accesso all'oggetto negato
+- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER:** il trasferimento (0x2007) è incompleto
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
+- **UX_TRANSFER_ERROR:**(0x23) Errore di trasferimento durante la scrittura dell'oggetto
 
 ### <a name="example"></a>Esempio
 
@@ -1249,7 +1249,7 @@ status = ux_host_class_pima_object_close(pima, pima_session, object_handle,
 
 ## <a name="ux_host_class_pima_thumb_get"></a>ux_host_class_pima_thumb_get
 
-Ottiene un oggetto Thumb archiviato nel risponditore.
+Ottiene un oggetto thumb archiviato nel risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1265,27 +1265,27 @@ UINT ux_host_class_pima_thumb_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione ottiene un oggetto Thumb sul risponditore.
+Questa funzione ottiene un oggetto thumb sul risponditore.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima.
-- **object_handle**: handle dell'oggetto.
-- **oggetto**: puntatore al contenitore di informazioni sugli oggetti.
-- **thumb_buffer**: indirizzo dei dati dell'oggetto Thumb.
-- **thumb_buffer_length**: lunghezza richiesta dell'oggetto Thumb.
-- **thumb_actual_length**: viene restituita la lunghezza dell'oggetto Thumb.
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** puntatore alla sessione PIMA.
+- **object_handle**: handle dell'oggetto .
+- **object:** puntatore al contenitore di informazioni sull'oggetto.
+- **thumb_buffer**: indirizzo dei dati dell'oggetto thumb.
+- **thumb_buffer_length:** lunghezza richiesta dell'oggetto thumb.
+- **thumb_actual_length:** lunghezza dell'oggetto thumb restituito.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: la sessione (0x2003) non è aperta.
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) oggetto non aperto.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0X200f) accesso negato all'oggetto.
-- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER**: il trasferimento (0x2007) è incompleto.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
-- **UX_TRANSFER_ERROR**: (0x23) errore di trasferimento durante la lettura dell'oggetto.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Sessione non aperta.
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:** oggetto (0x2023) non aperto.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED:**(0x200f) Accesso all'oggetto negato.
+- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER:** il trasferimento (0x2007) è incompleto.
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
+- **UX_TRANSFER_ERROR:**(0x23) Errore di trasferimento durante la lettura dell'oggetto.
 
 ### <a name="example"></a>Esempio
 
@@ -1307,7 +1307,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_delete"></a>ux_host_class_pima_object_delete
 
-Elimina un oggetto archiviato nel risponditore.
+Eliminare un oggetto archiviato nel risponditore.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1320,20 +1320,20 @@ UINT ux_host_class_pima_object_delete(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione Elimina un oggetto nel risponditore
+Questa funzione elimina un oggetto nel risponditore
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** Puntatore alla sessione PIMA
 - **object_handle**: handle dell'oggetto
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) l'oggetto è stato eliminato.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: la sessione (0x2003) non è aperta.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0X200f) non è possibile eliminare l'oggetto.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) L'oggetto è stato eliminato.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Sessione non aperta.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0x200f) Impossibile eliminare l'oggetto.
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -1348,7 +1348,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_close"></a>ux_host_class_pima_object_close
 
-Chiude un oggetto archiviato nel risponditore
+Chiudere un oggetto archiviato nel risponditore
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1365,17 +1365,17 @@ Questa funzione chiude un oggetto nel risponditore.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **pima_session**: puntatore alla sessione Pima.
+- **pima:** puntatore all'istanza della classe pima.
+- **pima_session:** puntatore alla sessione PIMA.
 - **object_handle**: handle dell'oggetto.
-- **oggetto**: puntatore all'oggetto.
+- **object:** puntatore all'oggetto.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) l'oggetto è stato chiuso.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: la sessione (0x2003) non è aperta.
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) oggetto non aperto.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente per creare il comando Pima.
+- **UX_SUCCESS**: (0x00) L'oggetto è stato chiuso.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Sessione non aperta.
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:** oggetto (0x2023) non aperto.
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente per creare il comando PIMA.
 
 ### <a name="example"></a>Esempio
 
@@ -1401,20 +1401,20 @@ UINT ux_host_class_gser_read(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione legge dall'interfaccia seriale generica. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo.
+Questa funzione legge dall'interfaccia seriale generica. La chiamata è bloccante e viene restituita solo quando si verifica un errore o quando il trasferimento è completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **gser**: puntatore all'istanza della classe gser.
-- **interface_index**: Indice dell'interfaccia da cui leggere.
-- **data_pointer**: puntatore all'indirizzo del buffer del payload di dati.
-- **requested_length**: lunghezza da ricevere.
-- **actual_length**: lunghezza effettivamente ricevuta.
+- **gser:** puntatore all'istanza della classe gser.
+- **interface_index:** indice di interfaccia da cui leggere.
+- **data_pointer:** puntatore all'indirizzo del buffer del payload dei dati.
+- **requested_length:** lunghezza da ricevere.
+- **actual_length:** lunghezza effettivamente ricevuta.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) timeout di trasferimento, lettura incompleta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, lettura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -1444,20 +1444,20 @@ UINT ux_host_class_gser_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive nell'interfaccia seriale generica. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il trasferimento è completo.
+Questa funzione scrive nell'interfaccia seriale generica. La chiamata è bloccante e viene restituita solo quando si verifica un errore o quando il trasferimento è completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **gser**: puntatore all'istanza della classe gser.
-- **interface_index**: interfaccia in cui scrivere.
-- **data_pointer**: puntatore all'indirizzo del buffer del payload di dati.
-- **requested_length**: lunghezza da inviare.
-- **actual_length**: lunghezza effettivamente inviata.
+- **gser:** puntatore all'istanza della classe gser.
+- **interface_index:** interfaccia in cui scrivere.
+- **data_pointer:** puntatore all'indirizzo del buffer del payload dei dati.
+- **requested_length:** lunghezza da inviare.
+- **actual_length:** lunghezza effettivamente inviata.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) timeout di trasferimento, scrittura incompleta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Timeout trasferimento, scrittura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -1472,7 +1472,7 @@ status = ux_host_class_cdc_acm_write(gser, data_pointer, requested_length, &actu
 
 ## <a name="ux_host_class_gser_ioctl"></a>ux_host_class_gser_ioctl
 
-Eseguire una funzione IOCTL nell'interfaccia seriale generica.
+Eseguire una funzione IOCTL sull'interfaccia seriale generica.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1485,20 +1485,20 @@ UINT ux_host_class_gser_ioctl(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione esegue una specifica funzione IOCTL per l'interfaccia gser. La chiamata è bloccata e restituisce solo quando si verifica un errore o quando il comando viene completato.
+Questa funzione esegue una funzione ioctl specifica all'interfaccia gser. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il comando viene completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **gser**: puntatore all'istanza della classe gser.
-- **ioctl_function**: funzione IOCTL da eseguire. Vedere la tabella seguente per una delle funzioni IOCTL consentite.
-- **parametro**: Pointerto un parametro specifico per IOCTL
+- **gser:** puntatore all'istanza della classe gser.
+- **ioctl_function:** funzione ioctl da eseguire. Vedere la tabella seguente per una delle funzioni ioctl consentite.
+- **parameter**: puntatore a un parametro specifico di ioctl
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS**: (0x00) il trasferimento dei dati è stato completato.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) memoria insufficiente.
-- **UX_HOST_CLASS_UNKNOWN**: (0x59) istanza di classe errata
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) funzione IOCTL sconosciuta.
+- **UX_SUCCESS**: (0x00) Il trasferimento dei dati è stato completato.
+- **UX_MEMORY_INSUFFICIENT**: (0x12) Memoria insufficiente.
+- **UX_HOST_CLASS_UNKNOWN:**(0x59) Istanza di classe errata
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) Funzione IOCTL sconosciuta.
 
 ### <a name="ioctl-functions"></a>Funzioni IOCTL
 
@@ -1527,7 +1527,7 @@ status = ux_host_class_gser_ioctl(gser,
 
 ## <a name="ux_host_class_gser_reception_start"></a>ux_host_class_gser_reception_start
 
-Avviare la ricezione sull'interfaccia seriale generica
+Avviare la ricezione nell'interfaccia seriale generica
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1539,18 +1539,18 @@ UINT ux_host_class_gser_reception_start(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione avvia la ricezione sull'interfaccia della classe seriale generica. Questa funzione consente la ricezione senza blocco. Quando viene ricevuto un buffer, viene richiamato un callback nell'applicazione.
+Questa funzione avvia la ricezione nell'interfaccia della classe seriale generica. Questa funzione consente la ricezione senza blocchi. Quando viene ricevuto un buffer, viene richiamato un callback in nell'applicazione.
 
 ### <a name="parameters"></a>Parametri
 
 - **gser** Puntatore all'istanza della classe gser.
-- **gser_reception** Struttura che contiene i parametri di ricezione
+- **gser_reception** Struttura contenente i parametri di ricezione
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- Istanza di classe non corretta **UX_HOST_CLASS_UNKNOWN** (0x59)
-- Errore **UX_ERROR** (0x01)
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_UNKNOWN** (0x59) Istanza di classe errata
+- **UX_ERROR** (0x01)
 
 ### <a name="example"></a>Esempio
 
@@ -1572,7 +1572,7 @@ ux_host_class_gser_reception_start(gser, &gser_reception);
 
 ## <a name="ux_host_class_gser_reception_stop"></a>ux_host_class_gser_reception_stop
 
-Arrestare la ricezione sull'interfaccia seriale generica
+Arrestare la ricezione nell'interfaccia seriale generica
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1584,18 +1584,18 @@ UINT ux_host_class_gser_reception_stop(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione arresta la ricezione sull'interfaccia della classe seriale generica.
+Questa funzione arresta la ricezione nell'interfaccia della classe seriale generica.
 
 ### <a name="parameters"></a>Parametri
 
 - **gser** Puntatore all'istanza della classe gser.
-- **gser_reception** Struttura che contiene i parametri di ricezione
+- **gser_reception** Struttura contenente i parametri di ricezione
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) il trasferimento dei dati è stato completato.
-- Istanza di classe non corretta **UX_HOST_CLASS_UNKNOWN** (0x59)
-- Errore **UX_ERROR** (0x01)
+- **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
+- **UX_HOST_CLASS_UNKNOWN** (0x59) Istanza di classe errata
+- **UX_ERROR** (0x01)
 
 ### <a name="example"></a>Esempio
 

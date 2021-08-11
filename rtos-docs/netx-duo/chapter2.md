@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ac41672959c0873d90bdafe0d6b959efdddf8ecc
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 32a9efaac3c85d415316fba2e9536cc40939f1f6debcbe3e2fa588de613a694d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178222"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788831"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Capitolo 2 - Installazione e uso di Azure RTOS NetX Duo
 
@@ -19,11 +19,11 @@ Questo capitolo contiene una descrizione dei vari problemi relativi all'installa
 
 ## <a name="host-considerations"></a>Considerazioni sull'host
 
-Lo sviluppo incorporato viene in genere eseguito in Windows o nei computer host Linux (Unix). Dopo che l'applicazione è stata compilata, collegata e l'eseguibile viene generato nell'host, viene scaricato nell'hardware di destinazione per l'esecuzione.
+Lo sviluppo incorporato viene in genere eseguito in Windows o nei computer host Linux (Unix). Dopo la compilazione, il collegamento e la generazione dell'eseguibile nell'host, l'applicazione viene scaricata nell'hardware di destinazione per l'esecuzione.
 
 In genere il download di destinazione viene eseguito dall'interno del debugger dello strumento di sviluppo. Dopo il download, il debugger è responsabile di fornire il controllo dell'esecuzione di destinazione (go, halt, breakpoint e così via), nonché l'accesso ai registri della memoria e del processore.
 
-La maggior parte dei debugger degli strumenti di sviluppo comunica con l'hardware di destinazione tramite connessioni OCD (On-Chip Debug), ad esempio JTAG (IEEE 1149.1) e BDM (Background Debug Mode). I debugger comunicano anche con l'hardware di destinazione In-Circuit connessioni ICE (In-Circuit Emulation). Le connessioni OCD e ICE offrono soluzioni affidabili con intrusioni minime nel software residente di destinazione.
+La maggior parte dei debugger degli strumenti di sviluppo comunica con l'hardware di destinazione tramite connessioni OCD (On-Chip Debug), ad esempio JTAG (IEEE 1149.1) e BDM (Background Debug Mode). I debugger comunicano anche con l'hardware di destinazione In-Circuit connessioni ICE (In-Circuit Emulation). Entrambe le connessioni OCD e ICE offrono soluzioni affidabili con intrusioni minime nel software residente di destinazione.
 
 Come per le risorse usate nell'host, il codice sorgente per NetX Duo viene fornito in formato ASCII e richiede circa 1 Mbyte di spazio sul disco rigido del computer host.
 
@@ -40,7 +40,7 @@ Azure RTOS NetX Duo può essere ottenuto dal repository di codice sorgente pubbl
 Di seguito è riportato un elenco di diversi file importanti nel repository:
 
 **nx_api.h**  
-File di intestazione C contenente tutti gli equilibrazioni di sistema, le strutture di dati e i prototipi di servizio.
+File di intestazione C contenente tutti gli elementi di sistema, le strutture di dati e i prototipi di servizio.
 
 **nx_port.h** File di intestazione C contenente tutte le strutture e le definizioni di dati specifiche dello strumento di sviluppo e della destinazione. 
 
@@ -91,14 +91,14 @@ Se il sistema dimostrativo non viene eseguito correttamente, eseguire le operazi
 6. Assicurarsi che il driver di rete fornissi pacchetti ARP e IP con le intestazioni su limiti a 4 byte per le applicazioni che richiedono connettività IPv4 o IPv6.
 7. Ignorare temporaneamente eventuali modifiche recenti per verificare se il problema scompare o cambia. Tali informazioni dovrebbero risultare utili ai tecnici del supporto tecnico Microsoft.
 
-Seguire le procedure descritte in "What We Need From You" a pagina 12 per inviare le informazioni raccolte dai passaggi di risoluzione dei problemi.
+Seguire le procedure descritte in "What We Need From You" a pagina 12 per inviare le informazioni raccolte dai passaggi per la risoluzione dei problemi.
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
 Quando si compila la libreria NetX Duo e l'applicazione usando NetX Duo, sono disponibili diverse opzioni di configurazione. Le opzioni di configurazione possono essere definite nell'origine dell'applicazione, nella riga di comando o nel file di inclusione ***nx_user.h,*** se non diversamente specificato.
 
 > [!NOTE]
-> *Le opzioni definite in **nx_user.h** vengono* applicate solo se l'applicazione e la libreria NetX Duo vengono compilate NX_INCLUDE_USER_DEFINE_FILE definite.* 
+> *Le opzioni definite in **nx_user.h*** vengono applicate solo se l'applicazione e la libreria NetX Duo vengono compilate NX_INCLUDE_USER_DEFINE_FILE definite.* 
 
 Le sezioni seguenti elencano le opzioni di configurazione disponibili in NetX Duo. Le opzioni generali applicabili sia a IPv4 che a IPv6 sono elencate per prime, seguite dalle opzioni specifiche di IPv6.
 
@@ -106,37 +106,37 @@ Le sezioni seguenti elencano le opzioni di configurazione disponibili in NetX Du
 
 | Opzione  | Descrizione  |
 |---|---|
-| NX_ASSERT_FAIL    | Simbolo che definisce l'istruzione di debug da utilizzare quando un'asserzione non riesce.                               |
+| NX_ASSERT_FAIL    | Simbolo che definisce l'istruzione di debug da utilizzare quando un'asserzione ha esito negativo.                               |
 | NX_DEBUG           | Definito, abilita le informazioni di debug di stampa facoltative disponibili dal driver di rete RAM Ethernet. |
 | NX_DEBUG_PACKET   | Definito, abilita il dump dei pacchetti di debug facoltativo disponibile nel driver di rete RAM Ethernet.      |
 | NX_DISABLE_ASSERT | Definito, disabilita i controlli ASSERT nel codice sorgente. Per impostazione predefinita, questa opzione non è definita.            |
-|NX_DISABLE_ERROR_CHECKING | Definito, rimuove l'API di controllo degli errori di base di NetX Duo e migliora le prestazioni. I codici restituiti dell'API non interessati dalla disabilitazione del controllo degli errori sono elencati in grassetto nella definizione dell'API. Questa definizione viene in genere usata dopo il debug sufficientemente adeguato dell'applicazione e il relativo utilizzo migliora le prestazioni e riduce le dimensioni del codice.|
+|NX_DISABLE_ERROR_CHECKING | Definito, rimuove l'API di controllo degli errori di base di NetX Duo e migliora le prestazioni. I codici restituiti dell'API non interessati dalla disabilitazione del controllo degli errori sono elencati in grassetto nella definizione dell'API. Questa definizione viene in genere usata dopo che il debug dell'applicazione è stato sufficientemente adeguato e il relativo utilizzo migliora le prestazioni e riduce le dimensioni del codice.|
 |NX_DRIVER_DEFERRED_PROCESSING | Definito, abilita la gestione posticipata dei pacchetti dei driver di rete. In questo modo il driver di rete può inserire un pacchetto nell'istanza IP e fare in modo che la routine di elaborazione reale sia chiamata dal thread helper IP interno di NetX Duo.|
 |NX_DUAL_PACKET_POOL_ENABLE | Rinominato in ***NX_ENABLE_DUAL_PACKET_POOL** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_ENABLE_DUAL_PACKET_POOL_**.|
 |NX_ENABLE_DUAL_PACKET_POOL | Definito, consente all'stack di usare due pool di pacchetti, uno con dimensioni di payload di grandi dimensioni e uno con dimensioni del payload inferiori. Per impostazione predefinita, questa opzione non è abilitata.|
 |NX_ENABLE_EXTENDED_NOTIFY_SUPPORT| Definito, abilita più hook di callback nello stack. Queste funzioni di callback vengono usate dal livello wrapper BSD. Per impostazione predefinita, questa opzione non è definita.|
 |NX_ENABLE_INTERFACE_CAPABILITY| Definito, consente al driver di dispositivo dell'interfaccia di specificare informazioni aggiuntive sulle funzionalità, ad esempio l'off-loading del checksum. Per impostazione predefinita, questa opzione non è definita.|
 |NX_ENABLE_SOURCE_ADDRESS_CHECK| Definito, consente di controllare l'indirizzo di origine del pacchetto in ingresso. Per impostazione predefinita, questa opzione è disabilitata.|
-| NX_IPSEC_ENABLE  | Definito, consente alla libreria NetX Duo di supportare le operazioni IPsec. Questa funzionalità richiede il modulo IPsec di NetX Duo facoltativo. Per impostazione predefinita, questa funzionalità non è abilitata.            |
-| NX_LITTLE_ENDIAN | Definito, esegue lo scambio di byte necessario in little endian per garantire che le intestazioni del protocollo siano nel formato big endian corretto. Si noti che il valore predefinito è in genere ***nx_port.h***.|
+| NX_IPSEC_ENABLE  | Definito, consente alla libreria NetX Duo di supportare le operazioni IPsec. Questa funzionalità richiede il modulo IPsec NetX Duo facoltativo. Per impostazione predefinita, questa funzionalità non è abilitata.            |
+| NX_LITTLE_ENDIAN | Definito, esegue lo scambio di byte necessario negli ambienti little endian per garantire che le intestazioni del protocollo siano nel formato big endian corretto. Si noti che il valore predefinito è in ***genere nx_port.h***.|
 |NX_MAX_PHYSICAL_INTERFACES | Specifica il numero totale di interfacce di rete fisiche nel dispositivo. Il valore predefinito è 1 ed è definito in ***nx_api.h***; un dispositivo deve avere almeno un'interfaccia fisica. Si noti che non include l'interfaccia di loopback.|
 | NX_NAT_ENABLE | Definito, NetX Duo è compilato con il processo NAT. Per impostazione predefinita, questa opzione non è definita.|
-| NX_PHYSICAL_HEADER  | Specifica le dimensioni in byte dell'intestazione fisica del frame. Il valore predefinito è 16 (in base a un frame Ethernet tipico a 14 byte allineato al limite a 32 bit) ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il _*_valore prima che nx_api.h_*_ venga incluso, ad esempio in _ *_nx_user.h_*.* |
-| NX_PHYSICAL_TRAILER | Specifica le dimensioni in byte del trailer fisico dei pacchetti e viene in genere usato per riservare spazio di archiviazione per elementi come CRC Ethernet e così via. Il valore predefinito è 4 ed è definito in ***nx_api.h.***|
+| NX_PHYSICAL_HEADER  | Specifica le dimensioni in byte dell'intestazione fisica del frame. Il valore predefinito è 16 (basato su un frame Ethernet tipico a 14 byte allineato al limite a 32 bit) ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima che _*_nx_api.h_*_ sia incluso, ad esempio in _ *_nx_user.h_*.* |
+| NX_PHYSICAL_TRAILER | Specifica le dimensioni in byte del trailer di pacchetti fisici e viene in genere usato per riservare spazio di archiviazione per elementi come CRC Ethernet e così via. Il valore predefinito è 4 ed è definito in ***nx_api.h.***|
 
 ### <a name="arp-configuration-options"></a>Opzioni di configurazione ARP
 
 | Opzione  | Descrizione  |
 |---|---|
 |NX_ARP_DEFEND_BY_REPLY | Definito, consente a NetX Duo di proteggere il proprio indirizzo IP inviando una risposta ARP.|
-|NX_ARP_DEFEND_INTERVAL| Definisce l'intervallo, in secondi, in cui il modulo ARP invia il pacchetto di difesa successivo in risposta a un messaggio ARP in ingresso che indica un indirizzo in conflitto.|
+|NX_ARP_DEFEND_INTERVAL| Definisce l'intervallo, espresso in secondi, il modulo ARP invia il pacchetto di difesa successivo in risposta a un messaggio ARP in ingresso che indica un indirizzo in conflitto.|
 |NX_ARP_DISABLE_AUTO_ARP_ENTRY|  Rinominato in ***NX_DISABLE_ARP_AUTO_ENTRY** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_DISABLE_ARP_AUTO_ENTRY_**.|
-|NX_ARP_EXPIRATION_RATE| Specifica il numero di secondi per cui le voci ARP rimangono valide. Il valore predefinito zero disabilita la scadenza o la scadenza delle voci ARP ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
+|NX_ARP_EXPIRATION_RATE| Specifica il numero di secondi di validità delle voci ARP. Il valore predefinito zero disabilita la scadenza o l'aging delle voci ARP ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
 |NX_ARP_MAC_CHANGE_NOTIFICATION_ENABLE | Rinominato in ***NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION_**.|
 |NX_ARP_MAX_QUEUE_DEPTH | Specifica il numero massimo di pacchetti che possono essere accodati durante l'attesa di una risposta ARP. Il valore predefinito è 4 ed è definito in ***nx_api.h.***|
-|NX_ARP_MAXIMUM_RETRIES | Specifica il numero massimo di tentativi ARP esecuti senza una risposta ARP. Il valore predefinito è 18 ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
+|NX_ARP_MAXIMUM_RETRIES | Specifica il numero massimo di tentativi ARP evasi senza una risposta ARP. Il valore predefinito è 18 ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
 |NX_ARP_UPDATE_RATE | Specifica il numero di secondi tra i tentativi ARP. Il valore predefinito è 10, che rappresenta 10 secondi ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
-|NX_DISABLE_ARP_AUTO_ENTRY | Definito, disabilita l'immissione delle informazioni sulla richiesta ARP nella cache ARP.|
+|NX_DISABLE_ARP_AUTO_ENTRY | Definito, disabilita l'immissione di informazioni sulla richiesta ARP nella cache ARP.|
 |NX_DISABLE_ARP_INFO | Definito, disabilita la raccolta di informazioni ARP.|
 |NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION| Definito, consente a ARP di richiamare una funzione di notifica di callback al rilevamento dell'aggiornamento dell'indirizzo MAC.|
 
@@ -145,15 +145,15 @@ Le sezioni seguenti elencano le opzioni di configurazione disponibili in NetX Du
 | Opzione  | Descrizione  |
 |---|---|
 |NX_DISABLE_ICMP_INFO| Definito, disabilita la raccolta di informazioni ICMP.|
-|NX_DISABLE_ICMP_RX_CHECKSUM| Definito, disabilita il calcolo del checksum ICMPv4 e ICMPv6 sui pacchetti ICMP ricevuti. Questa opzione è utile quando il driver dell'interfaccia di rete è in grado di verificare il checksum ICMPv4 e ICMPv6 e l'applicazione non usa la funzionalità frammentazione IP o IPsec. Per impostazione predefinita, questa opzione non è definita.|
+|NX_DISABLE_ICMP_RX_CHECKSUM| Definito, disabilita il calcolo del checksum ICMPv4 e ICMPv6 sui pacchetti ICMP ricevuti. Questa opzione è utile quando il driver dell'interfaccia di rete è in grado di verificare il checksum ICMPv4 e ICMPv6 e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impostazione predefinita, questa opzione non è definita.|
 |NX_DISABLE_ICMP_TX_CHECKSUM | Definito, disabilita il calcolo del checksum ICMPv4 e ICMPv6 sui pacchetti ICMP trasmessi. Questa opzione è utile quando il driver dell'interfaccia di rete è in grado di calcolare il checksum ICMPv4 e ICMPv6,
 e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impostazione predefinita, questa opzione non è definita.|
 |NX_DISABLE_ICMPV4_ERROR_MESSAGE | Definito, NetX Duo non invia messaggi di errore ICMPv4 in risposta a condizioni di errore, ad esempio un'intestazione IPv4 formattata in modo non corretto. Per impostazione predefinita, questa opzione non è definita.|
-|NX_DISABLE_ICMPV4_RX_CHECKSUM | Definito, disabilita il calcolo del checksum ICMPv4 sui pacchetti ICMP ricevuti. Questa opzione viene definita automaticamente se ***NX_DISABLE_ICMP_RX_CHECKSUM*** è definito . Per impostazione predefinita, questa opzione non è definita.|
+|NX_DISABLE_ICMPV4_RX_CHECKSUM | Definito, disabilita il calcolo del checksum ICMPv4 sui pacchetti ICMP ricevuti. Questa opzione viene definita automaticamente se ***NX_DISABLE_ICMP_RX_CHECKSUM*** definita. Per impostazione predefinita, questa opzione non è definita.|
 |NX_DISABLE_ICMPv4_RX_CHECKSUM | Rinominato in ***NX_DISABLE_ICMPV4_RX_CHECKSUM** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_DISABLE_ICMPV4_RX_CHECKSUM_**.|
-|NX_DISABLE_ICMPV4_TX_CHECKSUM | Definito, disabilita il calcolo del checksum ICMPv4 sui pacchetti ICMP trasmessi. Questa opzione viene definita automaticamente se ***NX_DISABLE_ICMP_TX_CHECKSUM*** è definito . Per impostazione predefinita, questa opzione non è definita.|
+|NX_DISABLE_ICMPV4_TX_CHECKSUM | Definito, disabilita il calcolo del checksum ICMPv4 sui pacchetti ICMP trasmessi. Questa opzione viene definita automaticamente se ***NX_DISABLE_ICMP_TX_CHECKSUM*** definita. Per impostazione predefinita, questa opzione non è definita.|
 |NX_DISABLE_ICMPv4_TX_CHECKSUM | Rinominato in ***NX_DISABLE_ICMPV4_TX_CHECKSUM** _.</br>Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_DISABLE_ICMPV4_TX_CHECKSUM_**.|
-|NX_ENABLE_ICMP_ADDRESS_CHECK | Definito, viene controllato l'indirizzo di destinazione del pacchetto ICMP. L'impostazione predefinita è disabilitata. Una richiesta echo ICMP destinata a una trasmissione IP o a un indirizzo ip multicast verrà automaticamente eliminata.|
+|NX_ENABLE_ICMP_ADDRESS_CHECK | Definito, viene controllato l'indirizzo di destinazione del pacchetto ICMP. L'impostazione predefinita è disabilitata. Una richiesta Echo ICMP destinata a una trasmissione IP o a un indirizzo multicast IP verrà ignorata automaticamente.|
 
 ### <a name="igmp-configuration-options"></a>Opzioni di configurazione IGMP
 
@@ -161,7 +161,7 @@ e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impo
 |---|---|
 |NX_DISABLE_IGMP_INFO | Definito, disabilita la raccolta di informazioni IGMP.|
 |NX_DISABLE_IGMPV2 | Definito, disabilita il supporto IGMPv2 e NetX Duo supporta solo IGMPv1. Per impostazione predefinita, questa opzione non è impostata ed è definita in ***nx_api.h***.|
-|NX_MAX_MULTICAST_GROUPS | Specifica il numero massimo di gruppi multicast che possono essere uniti. Il valore predefinito è 7 ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
+|NX_MAX_MULTICAST_GROUPS | Specifica il numero massimo di gruppi multicast che possono essere aggiunti. Il valore predefinito è 7 ed è definito in ***nx_api.h** _. L'applicazione può eseguire l'override del valore predefinito definendo il valore prima *_dell'nx_api.h_**.|
 
 ### <a name="ip-configuration-options"></a>Opzioni di configurazione IP
 
@@ -171,16 +171,16 @@ e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impo
 | NX_DISABLE_IPV4     | Definito, disabilita la funzionalità IPv4. Questa opzione può essere usata per compilare NetX Duo per il supporto solo di IPv6. Per impostazione predefinita, questa opzione non è definita. |
 | NX_DISABLE_IP_INFO | Definito, disabilita la raccolta di informazioni IP.|
 |NX_DISABLE_IP_RX_CHECKSUM | Definito, disabilita la logica di checksum sui pacchetti IPv4 ricevuti. Ciò è utile se il dispositivo di rete è in grado di verificare il checksum IPv4 e l'applicazione non prevede di usare la frammentazione IP o IPsec.|
-|NX_DISABLE_IP_TX_CHECKSUM | Definito, disabilita la logica di checksum nei pacchetti IPv4 inviati. Ciò è utile nelle situazioni in cui il dispositivo di rete sottostante è in grado di generare il checksum dell'intestazione IPv4 e l'applicazione non prevede di usare la frammentazione IP o IPsec.|
+|NX_DISABLE_IP_TX_CHECKSUM | Definito, disabilita la logica di checksum nei pacchetti IPv4 inviati. Ciò è utile in situazioni in cui il dispositivo di rete sottostante è in grado di generare il checksum dell'intestazione IPv4 e l'applicazione non prevede di usare la frammentazione IP o IPsec.|
 |NX_DISABLE_LOOPBACK_INTERFACE | Definito, disabilita il supporto di NetX Duo per l'interfaccia di loopback.|
 |NX_DISABLE_RX_SIZE_CHECKING | Definito, disabilita il controllo delle dimensioni sui pacchetti ricevuti.|
-|NX_ENABLE_IP_RAW_PACKET_FILTER | Definito, abilita la funzionalità del filtro di ricezione di pacchetti non elaborati IP. Le applicazioni che richiedono un maggiore controllo sul tipo di pacchetti IP non elaborati da ricevere possono usare questa funzionalità. La funzionalità di filtro di pacchetti non elaborati IP supporta anche l'operazione socket non elaborata nel livello di compatibilità BSD. Per impostazione predefinita, questa opzione non è definita.|
+|NX_ENABLE_IP_RAW_PACKET_FILTER | Definito, abilita la funzionalità del filtro di ricezione pacchetti non elaborati IP. Le applicazioni che richiedono un maggiore controllo sul tipo di pacchetti IP non elaborati da ricevere possono usare questa funzionalità. La funzionalità filtro pacchetti non elaborati IP supporta anche l'operazione socket non elaborata nel livello di compatibilità BSD. Per impostazione predefinita, questa opzione non è definita.|
 |NX_ENABLE_IP_STATIC_ROUTING | Definito, abilita il routing statico IPv4 in cui a un indirizzo di destinazione può essere assegnato un indirizzo hop successivo specifico. Per impostazione predefinita, il routing statico IPv4 è disabilitato.|
-|NX_FRAGMENT_IMMEDIATE_ASSEMBLY | Definito, consente l'esecuzione della logica di riassemblaggio IPv4 e IPv6 immediatamente dopo la ricezione di un frammento IP. Per impostazione predefinita, questa opzione non è definita.|
-|NX_IP_MAX_REASSEMBLY_TIME | Simbolo che controlla il tempo massimo consentito per riassemblare il frammento IPv4 e il frammento IPv6. Si noti che il valore definito qui sovrascrive sia ***NX_IPV4_MAX_REASSEMBLY_TIME** _ che _*_NX_IPV6_MAX_REASSEMBLY_TIME_**.|
-|NX_IP_PERIODIC_RATE | Definito, specifica il numero di tick del timer ThreadX in un secondo. Il valore predefinito deriva dal simbolo ThreadX ***TX_TIMER_TICKS_PER_SECOND,** _ che per impostazione predefinita è impostato su 100 (timer di 10 ms). Le applicazioni devono prestare attenzione quando modificano questo valore, poiché gli altri moduli di NetX Duo derivano le informazioni di intervallo da _ *_NX_IP_PERIODIC_RATE_.**|
+|NX_FRAGMENT_IMMEDIATE_ASSEMBLY | Definito, consente l'esecuzione della logica di riassemblaggio IPv4 e IPv6 subito dopo la ricezione di un frammento IP. Per impostazione predefinita, questa opzione non è definita.|
+|NX_IP_MAX_REASSEMBLY_TIME | Simbolo che controlla il tempo massimo consentito per riassemblare il frammento IPv4 e il frammento IPv6. Si noti che il valore qui definito sovrascrive sia ***NX_IPV4_MAX_REASSEMBLY_TIME** _ che _*_NX_IPV6_MAX_REASSEMBLY_TIME_**.|
+|NX_IP_PERIODIC_RATE | Definito, specifica il numero di tick del timer ThreadX in un secondo. Il valore predefinito deriva dal simbolo ThreadX ***TX_TIMER_TICKS_PER_SECOND,** _ che per impostazione predefinita è impostato su 100 (timer di 10 ms). Le applicazioni devono prestare attenzione quando modificano questo valore, poiché gli altri moduli NetX Duo derivano le informazioni di temporizzazione da _ *_NX_IP_PERIODIC_RATE_.**|
 |NX_IP_RAW_MAX_QUEUE_DEPTH | Simbolo che controlla il numero di pacchetti IP non elaborati che possono essere accodati nella coda di ricezione di pacchetti non elaborati. Per impostazione predefinita, il valore è impostato su 20.| 
-|NX_IP_ROUTING_TABLE_SIZE | Definito, imposta il numero massimo di voci nella tabella di routing statico IPv4, ovvero un elenco di un'interfaccia in uscita e gli indirizzi hop successivi per un determinato indirizzo di destinazione. Il valore predefinito è 8 ed è definito in ***nx_api.h.** _ Questo simbolo viene usato solo se _ *_NX_ENABLE_IP_STATIC_ROUTING_** è definito.|
+|NX_IP_ROUTING_TABLE_SIZE | Definito, imposta il numero massimo di voci nella tabella di routing statico IPv4, ovvero un elenco di un'interfaccia in uscita e degli indirizzi hop successivi per un determinato indirizzo di destinazione. Il valore predefinito è 8 ed è definito in ***nx_api.h.** _ Questo simbolo viene usato solo se è definito _ *_NX_ENABLE_IP_STATIC_ROUTING_** .|
 |NX_IPV4_MAX_REASSEMBLY_TIME | Simbolo che controlla il tempo massimo consentito per riassemblare il frammento IPv4. Si noti che il valore definito in NX_IP_MAX_REASSEMBLY_TIME sovrascrive questo valore.|
 
 ### <a name="packet-configuration-options"></a>Opzioni di configurazione dei pacchetti
@@ -189,11 +189,11 @@ e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impo
 |---|---|
 |NX_DISABLE_PACKET_CHAIN | Definito, disabilita la logica della catena di pacchetti. Per impostazione predefinita, questa opzione non è definita.|
 |NX_DISABLE_PACKET_INFO | Definito, disabilita la raccolta di informazioni sul pool di pacchetti.|
-|NX_ENABLE_LOW_WATERMARK | Definito, abilita la funzionalità limite minimo del pool di pacchetti di NetX Duo. L'applicazione imposta un valore limite minimo. Alla ricezione di pacchetti TCP, se viene raggiunto il limite minimo del pool di pacchetti, NetX Duo rimuove automaticamente il pacchetto rilasciandolo, impedendo l'affamazione del pool di pacchetti. Per impostazione predefinita, questa funzionalità non è abilitata.|
+|NX_ENABLE_LOW_WATERMARK | Definito, abilita la funzionalità limite basso del pool di pacchetti NetX Duo. L'applicazione imposta un valore limite basso. Quando si ricevono pacchetti TCP, se viene raggiunto il limite minimo del pool di pacchetti, NetX Duo rimuove automaticamente il pacchetto rilasciandolo, impedendo la carestia del pool di pacchetti. Per impostazione predefinita, questa funzionalità non è abilitata.|
 |NX_ENABLE_PACKET_DEBUG_INFO | Definito, registra le informazioni di debug dei pacchetti.|
-|NX_PACKET_ALIGNMENT | Definito, specifica il requisito di allineamento, in byte, per l'indirizzo iniziale dell'area del payload del pacchetto. Questa opzione deprecata ***NX_PACKET_HEADER_PAD** _ e _*_NX_PACKET_HEADER_PAD_SIZE_**. Per impostazione predefinita, questa opzione è definita come 4, rendendo l'indirizzo iniziale dell'area di payload allineato a 4 byte.|
-|NX_PACKET_HEADER_PAD | Definito, abilita la spaziatura interna verso la fine del blocco NX_PACKET controllo. Il numero di parole ULONG da riempire è definito da ***NX_PACKET_HEADER_PAD_SIZE** _. Si noti che questa opzione viene _deprecata_ da _* NX_PACKET_ALIGNMENT **.|
-|NX_PACKET_HEADER_PAD_SIZE | Imposta il numero di parole ULONG da aggiungere alla struttura NX_PACKET, consentendo all'area del payload del pacchetto di iniziare in corrispondenza dell'allineamento desiderato. Questa funzionalità è utile quando i descrittori del buffer di ricezione puntano direttamente NX_PACKET un'area di payload e la logica di ricezione dell'interfaccia di rete o la logica di operazione della cache prevede che l'indirizzo iniziale del buffer soddisfi determinati requisiti di allineamento. Questo valore diventa valido solo quando **viene NX_PACKET_HEADER_PAD** _ * . Si noti che questa opzione è deprecata da _*_NX_PACKET_ALIGNMENT_**.|
+|NX_PACKET_ALIGNMENT | Definito, specifica il requisito di allineamento, in byte, per l'indirizzo iniziale dell'area del payload del pacchetto. Questa opzione deprecazione *** NX_PACKET_HEADER_PAD** _ e __*_ NX_PACKET_HEADER_PAD_SIZE **. Per impostazione predefinita, questa opzione è definita come 4, rendendo l'indirizzo iniziale dell'area del payload allineato a 4 byte.|
+|NX_PACKET_HEADER_PAD | Definito, abilita la spaziatura interna verso la fine del blocco NX_PACKET di controllo. Il numero di parole ULONG da riempire è definito da ***NX_PACKET_HEADER_PAD_SIZE** _. Si noti che questa opzione viene ammortizzata da _*_NX_PACKET_ALIGNMENT_**.|
+|NX_PACKET_HEADER_PAD_SIZE | Imposta il numero di parole ULONG da aggiungere alla struttura NX_PACKET, consentendo all'area del payload del pacchetto di iniziare in corrispondenza dell'allineamento desiderato. Questa funzionalità è utile quando i descrittori del buffer di ricezione puntano direttamente NX_PACKET un'area payload e l'interfaccia di rete riceve la logica o la logica di operazione della cache prevede che l'indirizzo iniziale del buffer soddisfi determinati requisiti di allineamento. Questo valore diventa valido solo quando è **definito * NX_PACKET_HEADER_PAD** _ . Si noti che questa opzione è deprecata da _*_NX_PACKET_ALIGNMENT_**.|
 
 ### <a name="rarp-configuration-options"></a>Opzioni di configurazione RARP
 
@@ -207,8 +207,8 @@ e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impo
 |---|---|
 |NX_DISABLE_RESET_DISCONNECT | Definito, disabilita l'elaborazione della reimpostazione durante la disconnessione quando il valore di timeout specificato viene specificato ***come NX_NO_WAIT***.|
 |NX_DISABLE_TCP_INFO | Definito, disabilita la raccolta di informazioni TCP.|
-|NX_DISABLE_TCP_RX_CHECKSUM | Definito, disabilita la logica di checksum sui pacchetti TCP ricevuti. Ciò è utile solo nelle situazioni in cui il livello di collegamento dispone di checksum affidabile o elaborazione CRC o il driver di interfaccia è in grado di verificare il checksum TCP nell'hardware e l'applicazione non utilizza IPsec.|
-|NX_DISABLE_TCP_TX_CHECKSUM | Definito, disabilita la logica di checksum per l'invio di pacchetti TCP. Ciò è utile solo nelle situazioni in cui il nodo di rete ricevente ha ricevuto la logica di checksum TCP disabilitata o il driver di rete sottostante è in grado di generare il checksum TCP e l'applicazione non utilizza IPsec.|
+|NX_DISABLE_TCP_RX_CHECKSUM | Definito, disabilita la logica di checksum nei pacchetti TCP ricevuti. Ciò è utile solo in situazioni in cui il livello di collegamento dispone di un checksum affidabile o di elaborazione CRC oppure il driver di interfaccia è in grado di verificare il checksum TCP nell'hardware e l'applicazione non usa IPsec.|
+|NX_DISABLE_TCP_TX_CHECKSUM | Definito, disabilita la logica di checksum per l'invio di pacchetti TCP. Ciò è utile solo in situazioni in cui il nodo di rete ricevente ha ricevuto la logica di checksum TCP disabilitata o il driver di rete sottostante è in grado di generare il checksum TCP e l'applicazione non usa IPsec.|
 |NX_ENABLE_TCP_KEEPALIVE | Definito, abilita il timer keepalive TCP facoltativo. Le impostazioni predefinite non sono abilitate.|
 |NX_ENABLE_TCP_MSS_CHECK | Definito, abilita la verifica del numero minimo di mss peer prima di accettare una connessione TCP. Per usare questa funzionalità, è necessario ***NX_ENABLE_TCP_MSS_MINIMUM*** il simbolo. Per impostazione predefinita, questa opzione non è abilitata.|
 |NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY| Definito, consente all'applicazione di installare una funzione di callback che viene richiamata quando la profondità della coda di trasmissione TCP non è più al valore massimo. Questo callback funge da indicazione che il socket TCP è pronto per trasmettere più dati. Per impostazione predefinita, questa opzione non è abilitata.|
@@ -245,41 +245,41 @@ e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impo
 
 | Opzione  | Descrizione  |
 |---|---|
-| NX_DISABLE_IPV6 | Disabilita la funzionalità IPv6 quando viene compilata la libreria NetX Duo. Per le applicazioni che non necessitano di IPv6, questo evita il pull del codice e dello spazio di archiviazione aggiuntivo necessario per supportare IPv6.|
-|NX_DISABLE_IPV6_PATH_MTU_DISCOVERY | Definito, disabilita l'individuazione MTU del percorso, usata per determinare il valore MTU massimo nel percorso di una destinazione nella tabella di destinazione host NetX Duo. Ciò consente all'host NetX Duo di inviare il pacchetto più grande possibile che non richiede la frammentazione. Per impostazione predefinita, questa opzione è definita (la MTU del percorso è disabilitata).|
+| NX_DISABLE_IPV6 | Disabilita la funzionalità IPv6 quando viene compilata la libreria NetX Duo. Per le applicazioni che non necessitano di IPv6, si evita di eseguire il pull del codice e dello spazio di archiviazione aggiuntivo necessario per supportare IPv6.|
+|NX_DISABLE_IPV6_PATH_MTU_DISCOVERY | Definito, disabilita l'individuazione MTU del percorso, che viene usata per determinare il numero massimo di MTU nel percorso di una destinazione nella tabella di destinazione dell'host NetX Duo. In questo modo l'host di NetX Duo può inviare il pacchetto più grande possibile che non richiederà la frammentazione. Per impostazione predefinita, questa opzione è definita (il percorso MTU è disabilitato).|
 |NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY | Definito, consente di richiamare una funzione di callback quando viene modificato l'indirizzo IPv6. Per impostazione predefinita, questa opzione non è abilitata.|
 |NX_ENABLE_IPV6_MULTICAST | Definito, abilita la funzione di join/leave multicast IPv6. Per impostazione predefinita, questa opzione non è abilitata.|
-|NX_ENABLE_IPV6_PATH_MTU_DISCOVERY | Definito, abilita la funzionalità di individuazione MTU percorso IPv6. Per impostazione predefinita, questa opzione non è abilitata.|
+|NX_ENABLE_IPV6_PATH_MTU_DISCOVERY | Definito, abilita la funzionalità di individuazione MTU del percorso IPv6. Per impostazione predefinita, questa opzione non è abilitata.|
 |NX_IPV6_ADDRESS_CHANGE_NOTIFY_ENABLE | Rinominato in ***NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY_**.|
-|NX_IPV6_DEFAULT_ROUTER_TABLE_SIZE | Specifica il numero di voci nella tabella di routing IPv6. Almeno la voce onS è necessaria per il router predefinito. Definito in ***nx_api.h,*** il valore predefinito è 8.|
-|NX_IPV6_DESTINATION_TABLE_SIZE | Specifica il numero di voci nella tabella di destinazione IPv6. In questo modo vengono archiviate informazioni sugli indirizzi hop successivi per gli indirizzi IPv6. Definito in ***nx_api.h,*** il valore predefinito è 8.|
+|NX_IPV6_DEFAULT_ROUTER_TABLE_SIZE | Specifica il numero di voci nella tabella di routing IPv6. Almeno la voce OnS è necessaria per il router predefinito. Definito in ***nx_api.h***, il valore predefinito è 8.|
+|NX_IPV6_DESTINATION_TABLE_SIZE | Specifica il numero di voci nella tabella di destinazione IPv6. In questo modo vengono archiviate le informazioni sugli indirizzi hop successivi per gli indirizzi IPv6. Definito in ***nx_api.h***, il valore predefinito è 8.|
 |NX_IPV6_MAX_REASSEMBLY_TIME | Simbolo che controlla il tempo massimo consentito per riassemblare il frammento IPv6.|
 |NX_IPV6_MULTICAST_ENABLE | Rinominato in ***NX_ENABLE_IPV6_MULTICAST** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_ENABLE_IPV6_MULTICAST_**.|
-|NX_IPV6_PREFIX_LIST_TABLE_SIZE | Specifica le dimensioni della tabella dei prefissi. Le informazioni sul prefisso vengono ottenute dagli annunci del router e fanno parte della configurazione dell'indirizzo IPv6. Definito in ***nx_api.h,*** il valore predefinito è 8.|
+|NX_IPV6_PREFIX_LIST_TABLE_SIZE | Specifica le dimensioni della tabella dei prefissi. Le informazioni sul prefisso vengono ottenute dagli annunci router e fanno parte della configurazione degli indirizzi IPv6. Definito in ***nx_api.h***, il valore predefinito è 8.|
 |NX_IPV6_STATELESS_AUTOCONFIG_CONTROL | Definito, consente a NetX Duo di disabilitare la funzionalità di configurazione automatica degli indirizzi senza stato. Per impostazione predefinita, questa opzione non è abilitata.|
-|NX_MAX_IPV6_ADDRESSES | Specifica il numero di voci nel pool di indirizzi IPv6. Durante la configurazione dell'interfaccia, NetX Duo usa le voci IPv6 del pool. L'impostazione predefinita è (NX_MAX_PHYSICAL_INTERFACES 3) per consentire a ogni interfaccia di avere almeno un indirizzo locale di collegamento \* e due indirizzi globali. Si noti che tutte le interfacce condividono il pool di indirizzi IPv6.|
-|NX_PATH_MTU_INCREASE_WAIT_INTERVAL | Specifica l'intervallo di attesa nei tick timer per reimpostare il percorso MTU per una destinazione specifica nella tabella di destinazione. Se ***NX_DISABLE_IPV6_PATH_MTU_DISCOVERY*** definito, la definizione di questo simbolo non ha alcun effetto.|
-|NX_PATH_MTU_INCREASE_WAIT_INTERVAL | Simbolo che specifica l'intervallo di attesa (in secondi) per reimpostare il valore MTU del percorso per una voce della tabella di destinazione. È valido solo se ***NX_ENABLE_IPV6_PATH_MTU_DISCOVERY*** definito. Per impostazione predefinita, questo valore è impostato su 600 (secondi).|
+|NX_MAX_IPV6_ADDRESSES | Specifica il numero di voci nel pool di indirizzi IPv6. Durante la configurazione dell'interfaccia, NetX Duo usa le voci IPv6 del pool. Il valore predefinito è (NX_MAX_PHYSICAL_INTERFACES 3) per consentire a ogni interfaccia di avere almeno un indirizzo locale del collegamento e \* due indirizzi globali. Si noti che tutte le interfacce condividono il pool di indirizzi IPv6.|
+|NX_PATH_MTU_INCREASE_WAIT_INTERVAL | Specifica l'intervallo di attesa in tick del timer per reimpostare il percorso MTU per una destinazione specifica nella tabella di destinazione. Se ***NX_DISABLE_IPV6_PATH_MTU_DISCOVERY*** definito, la definizione di questo simbolo non ha alcun effetto.|
+|NX_PATH_MTU_INCREASE_WAIT_INTERVAL | Simbolo che specifica l'intervallo di attesa (in secondi) per reimpostare il valore MTU del percorso per una voce della tabella di destinazione. È valido solo se ***NX_ENABLE_IPV6_PATH_MTU_DISCOVERY*** è definito . Per impostazione predefinita, questo valore è impostato su 600 (secondi).|
 
 ### <a name="neighbor-cache-configuration-options"></a>Opzioni di configurazione della cache adiacente
 
 | Opzione  | Descrizione  |
 |---|---|
-|NX_DELAY_FIRST_PROBE_TIME | Specifica il ritardo in secondi prima che venga inviata la prima richiesta per una voce della cache nello stato STALE. Definito in ***nx_nd_cache.h,*** il valore predefinito è 5.|
-|NX_DISABLE_IPV6_DAD | Definita, questa opzione disabilita il rilevamento degli indirizzi duplicati (DAD) durante l'assegnazione di indirizzi IPv6. Gli indirizzi vengono impostati tramite la configurazione manuale o la configurazione automatica degli indirizzi senza stato.|
-|NX_DISABLE_IPV6_PURGE_UNUSED_CACHE_ENTRIES | Definita, questa opzione impedisce a NetX Duo di rimuovere le voci precedenti della tabella della cache prima della scadenza del timeout per fare spazio alle nuove voci quando la tabella è piena. Le voci statiche e del router non vengono mai eliminate.|
-|NX_IPV6_DAD_TRANSMITS | Specifica il numero di messaggi Neighbor Solicitation da inviare prima che NetX Duo contrassegni un indirizzo di interfaccia come valido. Se ***NX_DISABLE_IPV6_DAD** _ è definito (DISABILITATO), l'impostazione di questa opzione non ha alcun effetto. In alternativa, un valore pari a zero (0) disattiva LA FUNZIONE PADRE, ma lascia la funzionalità DAD in NetX Duo. Definito in _*_nx_api.h_**, il valore predefinito è 3.|
-|NX_IPV6_DISABLE_PURGE_UNUSED_CACHE_ENTRIES | Rinominato in ***NX_DISABLE_IPV6_PURGE_UNUSED_CACHE_ENTRIES** _. Anche se è ancora supportato, le nuove progettazioni sono invitate a usare _*_NX_DISABLE_IPV6_PURGE_UNUSED_CACHE_ENTRIES_**.|
-|NX_IPV6_NEIGHBOR_CACHE_SIZE | Specifica il numero di voci nella tabella cache adiacente IPv6. Definito in ***nx_nd_cache.h,*** il valore predefinito è 16.|
-|NX_MAX_MULTICAST_SOLICIT | Specifica il numero di messaggi Neighbor Solicitation trasmessi da NetX Duo come parte del protocollo IPv6 Neighbor Discovery quando è necessario il mapping tra l'indirizzo IPv6 e l'indirizzo MAC. Definito in ***nx_nd_cache.h,*** il valore predefinito è 3.|
-|NX_MAX_UNICAST_SOLICIT | Specifica il numero di messaggi Neighbor Solicitation trasmessi da NetX Duo per determinare la raggiungibilità di un vicino specifico. Definito in ***nx_nd_cache.h,*** il valore predefinito è 3.|
-|NX_ND_MAX_QUEUE_DEPTH | Simbolo che definisce il numero massimo di pacchetti accodati per la risoluzione della cache ND. Per impostazione predefinita, questo simbolo è impostato su 4.|
-|NX_REACHABLE_TIME | Specifica il timeout in secondi per l'esistenza di una voce della cache nello stato REACHABLE senza pacchetti ricevuti dall'indirizzo IPv6 di destinazione della cache. Definito in ***nx_nd_cache.h,*** il valore predefinito è 30.|
-|NX_RETRANS_TIMER  | Specifica in millisecondi la lunghezza del ritardo tra i pacchetti di richiesta inviati da NetX Duo. Definito in ***nx_nd_cache.h,*** il valore predefinito è 1000.|
+|NX_DELAY_FIRST_PROBE_TIME | Specifica il ritardo in secondi prima che venga inviata la prima richiesta per una voce della cache nello stato NON DISPONIBILE. Definito in ***nx_nd_cache.h***, il valore predefinito è 5.|
+|NX_DISABLE_IPV6_DAD | Definita, questa opzione disabilita il rilevamento degli indirizzi duplicati (DUPLICATE Address Detection) durante l'assegnazione di indirizzi IPv6. Gli indirizzi vengono impostati tramite la configurazione manuale o la configurazione automatica degli indirizzi senza stato.|
+|NX_DISABLE_IPV6_PURGE_UNUSED_CACHE_ENTRIES | Definita, questa opzione impedisce a NetX Duo di rimuovere le voci precedenti della tabella della cache prima della scadenza del timeout per fare spazio alle nuove voci quando la tabella è piena. Le voci statiche e router non vengono mai eliminate.|
+|NX_IPV6_DAD_TRANSMITS | Specifica il numero di messaggi Neighbor Solicitation da inviare prima che NetX Duo contrassegni un indirizzo di interfaccia come valido. Se ***NX_DISABLE_IPV6_DAD** _ è definito (LA FUNZIONE È disabilitata), l'impostazione di questa opzione non ha alcun effetto. In alternativa, un valore pari a zero (0) disattiva l'opzione DUO, ma lascia la funzionalità DISA in NetX Duo. Definito in _*_nx_api.h_**, il valore predefinito è 3.|
+|NX_IPV6_DISABLE_PURGE_UNUSED_CACHE_ENTRIES | Rinominato in ***NX_DISABLE_IPV6_PURGE_UNUSED_CACHE_ENTRIES** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_DISABLE_IPV6_PURGE_UNUSED_CACHE_ENTRIES_**.|
+|NX_IPV6_NEIGHBOR_CACHE_SIZE | Specifica il numero di voci nella tabella IPv6 Neighbor Cache. Definito in ***nx_nd_cache.h***, il valore predefinito è 16.|
+|NX_MAX_MULTICAST_SOLICIT | Specifica il numero di messaggi Neighbor Solicitation trasmessi da NetX Duo come parte del protocollo di individuazione router adiacenti IPv6 quando è necessario eseguire il mapping tra l'indirizzo IPv6 e l'indirizzo MAC. Definito in ***nx_nd_cache.h***, il valore predefinito è 3.|
+|NX_MAX_UNICAST_SOLICIT | Specifica il numero di messaggi Neighbor Solicitation trasmessi da NetX Duo per determinare la raggiungibilità di un vicino specifico. Definito in ***nx_nd_cache.h***, il valore predefinito è 3.|
+|NX_ND_MAX_QUEUE_DEPTH | Simbolo che definisce il numero massimo di pacchetti in coda per la risoluzione della cache ND. Per impostazione predefinita, questo simbolo è impostato su 4.|
+|NX_REACHABLE_TIME | Specifica il timeout in secondi per la esistenza di una voce della cache nello stato REACHABLE senza pacchetti ricevuti dall'indirizzo IPv6 di destinazione della cache. Definito in ***nx_nd_cache.h,*** il valore predefinito è 30.|
+|NX_RETRANS_TIMER  | Specifica in millisecondi la durata del ritardo tra i pacchetti di richiesta inviati da NetX Duo. Definito in ***nx_nd_cache.h***, il valore predefinito è 1000.|
 | NXDUO_DISABLE_DAD | Rinominato in ***NX_DISABLE_IPV6_DAD** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_DISABLE_IPV6_DAD_**.|
 |NXDUO_DUP_ADDR_DETECT_TRANSMITS | Rinominato in ***NX_IPV6_DAD_TRANSMITS** _. Anche se è ancora supportata, le nuove progettazioni sono invitate a usare _*_NX_IPV6_DAD_TRANSMITS_**.|
 
-### <a name="miscellaneous-icmpv6-configuration-options"></a>Opzioni di configurazione ICMPv6 varie
+### <a name="miscellaneous-icmpv6-configuration-options"></a>Varie opzioni di configurazione di ICMPv6
 
 | Opzione  | Descrizione  |
 |---|---|
@@ -306,7 +306,7 @@ e l'applicazione non usa la funzionalità di frammentazione IP o IPsec. Per impo
 
 La versione corrente di NetX Duo è disponibile sia per l'utente che per il software dell'applicazione in fase di esecuzione. È possibile ottenere la versione di NetX Duo dall'esame del file **nx_port.h.** Inoltre, questo file contiene anche una cronologia delle versioni della porta corrispondente. Il software applicativo può ottenere la versione di NetX Duo esaminando la stringa _* *_globale_*_ nx_version_id in _*_nx_port.h_**.
 
-Il software applicativo può anche ottenere informazioni sulla versione dalle costanti illustrate di seguito definite in ***nx_api.h.***
+Il software applicativo può anche ottenere informazioni sulla versione dalle costanti indicate di seguito definite in ***nx_api.h.***
 
 Queste costanti identificano la versione corrente del prodotto in base al nome e alla versione principale e secondaria del prodotto.
 

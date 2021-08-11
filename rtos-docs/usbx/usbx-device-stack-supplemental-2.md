@@ -1,25 +1,25 @@
 ---
-title: Capitolo 2-Considerazioni sulle classi di dispositivi USBX
-description: La classe RNDIS del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo Ethernet. Questa classe è basata sull'implementazione proprietaria di Microsoft ed è specifica per le piattaforme Windows.
+title: Capitolo 2 - Considerazioni sulla classe di dispositivi USBX
+description: La classe RNDIS del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo ethernet. Questa classe è basata sull'implementazione proprietaria di Microsoft ed è specifica per Windows piattaforme.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 035492644a911eba3b1c62a79572bc7d4c55f6dd
-ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
+ms.openlocfilehash: 2a28196c8f0e29ad94ef9f2d65b143459bf0214f48c345e6bb0d4ea71d520dfd
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106082218"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802625"
 ---
-# <a name="chapter-2---usbx-device-class-considerations"></a>Capitolo 2-Considerazioni sulle classi di dispositivi USBX
+# <a name="chapter-2---usbx-device-class-considerations"></a>Capitolo 2 - Considerazioni sulla classe di dispositivi USBX
 
 ## <a name="usb-device-rndis-class"></a>Classe RNDIS del dispositivo USB
 
-La classe RNDIS del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo Ethernet. Questa classe è basata sull'implementazione proprietaria di Microsoft ed è specifica per le piattaforme Windows.
+La classe RNDIS del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo ethernet. Questa classe è basata sull'implementazione proprietaria di Microsoft ed è specifica per Windows piattaforme.
 
-Un Framework di dispositivi conforme a RNDIS deve essere dichiarato dallo stack del dispositivo. Di seguito è riportato un esempio.
+Un framework di dispositivo conforme a RNDIS deve essere dichiarato dallo stack di dispositivi. Di seguito è riportato un esempio.
 
 ```C
 unsigned char device_framework_full_speed[] = {
@@ -111,7 +111,7 @@ unsigned char device_framework_full_speed[] = {
 };
 ```
 
-La classe RNDIS usa un approccio del descrittore di dispositivo molto simile a CDC-ACM e CDC-ECM e richiede anche un descrittore IAD. Vedere la classe CDC-ACM per la definizione e i requisiti per il descrittore del dispositivo.
+La classe RNDIS usa un approccio descrittore di dispositivo molto simile a CDC-ACM e CDC-ECM e richiede anche un descrittore IAD. Vedere la classe CDC-ACM per la definizione e i requisiti per il descrittore del dispositivo.
 
 L'attivazione della classe RNDIS è la seguente.
 
@@ -151,13 +151,13 @@ status = ux_device_stack_class_register(_ux_system_slave_class_rndis_name,
     ux_device_class_rndis_entry, 1,0, &parameter);
 ```
 
-Per quanto riguarda CDC-ECM, la classe RNDIS richiede 2 nodi, uno locale e uno remoto, ma non è necessario disporre di un descrittore di stringa che descrive il nodo remoto.
+Come per CDC-ECM, la classe RNDIS richiede 2 nodi, uno locale e uno remoto, ma non è necessario disporre di un descrittore di stringa che descrive il nodo remoto.
 
-Tuttavia, a causa del meccanismo di messaggistica proprietaria di Microsoft, sono necessari alcuni parametri aggiuntivi. Prima di tutto è necessario passare l'ID fornitore. Analogamente, la versione del driver di RNDIS. È necessario assegnare anche una stringa del fornitore.
+Tuttavia, a causa del meccanismo di messaggistica proprietario di Microsoft, sono necessari alcuni parametri aggiuntivi. Prima di tutto è necessario passare l'ID fornitore. Analogamente, la versione del driver di RNDIS. È necessario specificare anche una stringa del fornitore.
 
-La classe RNDIS dispone di API predefinite per il trasferimento dei dati in entrambe le direzioni, ma sono nascoste all'applicazione perché l'applicazione utente comunicherà con il dispositivo Ethernet USB tramite NetX.
+La classe RNDIS dispone di API incorporate per il trasferimento dei dati in entrambi i modi, ma sono nascoste all'applicazione perché l'applicazione utente comunicherà con il dispositivo USB Ethernet tramite NetX.
 
-La classe USBX RNDIS è strettamente legata allo stack di rete NetX di Azure RTO. Un'applicazione che usa sia NetX che la classe RNDIS di USBX attiverà lo stack di rete NetX nel modo consueto, ma in aggiunta deve attivare lo stack di rete USB come indicato di seguito.
+La classe USBX RNDIS è strettamente associata Azure RTOS stack di rete NetX. Un'applicazione che usa la classe RNDIS NetX e USBX attiverà lo stack di rete NetX nel modo consueto, ma deve anche attivare lo stack di rete USB come indicato di seguito.
 
 ```C
 /* Initialize the NetX system. */
@@ -168,9 +168,9 @@ nx_system_initialize();
 ux_network_driver_init();
 ```
 
-Lo stack di rete USB deve essere attivato solo una volta e non è specifico di RNDIS, ma è richiesto da qualsiasi classe USB che richiede i servizi di NetX.
+Lo stack di rete USB deve essere attivato una sola volta e non è specifico di RNDIS, ma è richiesto da qualsiasi classe USB che richiede servizi NetX.
 
-La classe RNDIS non verrà riconosciuta dagli host MAC OS e Linux perché è specifica dei sistemi operativi Microsoft. Nelle piattaforme Windows un file con estensione inf deve essere presente nell'host che corrisponde al descrittore del dispositivo. Microsoft fornisce un modello per la classe RNDIS ed è disponibile nella directory usbx_windows_host_files. Per la versione più recente di Windows, è necessario usare il file RNDIS_Template. inf. Questo file deve essere modificato in modo da riflettere il PID/VID usato dal dispositivo. Il PID/VID sarà specifico per il cliente finale quando la società e il prodotto vengono registrati con il dispositivo USB-IF. Nel file inf i campi da modificare si trovano qui.
+La classe RNDIS non verrà riconosciuta dagli host MAC OS e Linux perché è specifica per i sistemi operativi Microsoft. Nelle piattaforme Windows un file inf deve essere presente nell'host che corrisponde al descrittore del dispositivo. Microsoft fornisce un modello per la classe RNDIS ed è disponibile nella directory usbx_windows_host_files. Per una versione più recente Windows usare il file RNDIS_Template.inf. Questo file deve essere modificato per riflettere il PID/VID usato dal dispositivo. Il PID/VID sarà specifico per il cliente finale quando l'azienda e il prodotto vengono registrati con USB-IF. Nel file inf i campi da modificare si trovano qui.
 
 ```Inf
 [DeviceList]
@@ -180,19 +180,19 @@ La classe RNDIS non verrà riconosciuta dagli host MAC OS e Linux perché è spe
 %DeviceName%=DriverInstall, USB\\VID_xxxx&PID_yyyy&MI_00
 ```
 
-Nel Framework del dispositivo RNDIS il PID/VID viene archiviato nel descrittore del dispositivo. vedere il descrittore del dispositivo dichiarato in precedenza.
+Nel framework di dispositivo del dispositivo RNDIS, il PID/VID viene archiviato nel descrittore del dispositivo (vedere il descrittore del dispositivo dichiarato in precedenza)
 
-Quando un sistema host USB individua il dispositivo RNDIS USB, viene montata un'interfaccia di rete e il dispositivo può essere usato con lo stack del protocollo di rete. Per informazioni di riferimento, vedere il sistema operativo host.
+Quando un sistema host USB individua il dispositivo RNDIS USB, monta un'interfaccia di rete e il dispositivo può essere usato con lo stack di protocolli di rete. Per informazioni di riferimento, vedere il sistema operativo host.
 
-## <a name="usb-device-dfu-class"></a>Classe dispositivo USB DFU
+## <a name="usb-device-dfu-class"></a>Classe DFU del dispositivo USB
 
-La classe dispositivo USB DFU consente a un sistema host USB di aggiornare il firmware del dispositivo in base a un'applicazione host. La classe DFU è una classe standard USB-IF.
+La classe DFU del dispositivo USB consente a un sistema host USB di aggiornare il firmware del dispositivo in base a un'applicazione host. La classe DFU è una classe standard USB-IF.
 
-La classe USBX DFU è relativamente semplice. Il descrittore del dispositivo it non richiede alcun endpoint di controllo. Nella maggior parte dei casi, questa classe verrà incorporata in un dispositivo composito USB. Il dispositivo può essere qualsiasi, ad esempio un dispositivo di archiviazione o un dispositivo di comunicazione, e l'interfaccia DFU aggiunta può informare l'host che il firmware del dispositivo può essere aggiornato in tempo reale.
+La classe USBX DFU è relativamente semplice. Il descrittore del dispositivo non richiede altro che un endpoint di controllo. Nella maggior parte dei casi, questa classe verrà incorporata in un dispositivo usb composito. Il dispositivo può essere qualsiasi elemento, ad esempio un dispositivo di archiviazione o un dispositivo comm e l'interfaccia DFU aggiunta può informare l'host che il dispositivo può avere il firmware aggiornato in tempo reale.
 
-La classe DFU funziona in 3 passaggi. Prima di tutto il dispositivo viene montato normalmente usando la classe esportata. Un'applicazione nell'host (Windows o Linux) eserciterà la classe DFU e invierà una richiesta per ripristinare la modalità DFU del dispositivo. Il dispositivo scomparirà dal bus per un breve periodo di tempo (sufficiente per l'host e il dispositivo per rilevare una sequenza di reimpostazione) e al riavvio, il dispositivo sarà esclusivamente in modalità DFU, in attesa che l'applicazione host invii un aggiornamento del firmware. Al termine dell'aggiornamento del firmware, l'applicazione host Reimposta il dispositivo e, al momento della rienumerazione, il dispositivo tornerà al normale funzionamento con il nuovo firmware.
+La classe DFU funziona in 3 passaggi. Prima il dispositivo viene montato normalmente usando la classe esportata. Un'applicazione nell'host (Windows o Linux) eserciterà la classe DFU e invierà una richiesta per reimpostare il dispositivo in modalità DFU. Il dispositivo scompare dal bus per un breve periodo di tempo (sufficiente perché l'host e il dispositivo rilevino una sequenza RESET) e al riavvio il dispositivo sarà esclusivamente in modalità DFU, in attesa che l'applicazione host invii un aggiornamento del firmware. Al termine dell'aggiornamento del firmware, l'applicazione host reimposta il dispositivo e al momento della nuova enumerazione il dispositivo ripristina il normale funzionamento con il nuovo firmware.
 
-Un Framework del dispositivo DFU sarà simile al seguente.
+Un framework di dispositivi DFU sarà simile al seguente.
 
 ```C
 UCHAR device_framework_full_speed[] = {
@@ -216,15 +216,15 @@ UCHAR device_framework_full_speed[] = {
 };
 ```
 
-In questo esempio, il descrittore DFU non è associato ad altre classi. Dispone di un descrittore di interfaccia semplice e nessun altro endpoint collegato. È disponibile un descrittore funzionale che descrive le specifiche delle funzionalità di DFU del dispositivo.
+In questo esempio il descrittore DFU non è associato ad altre classi. Ha un descrittore di interfaccia semplice e nessun altro endpoint collegato. È disponibile un descrittore funzionale che descrive le specifiche delle funzionalità DFU del dispositivo.
 
-La descrizione delle funzionalità di DFU è la seguente:
+La descrizione delle funzionalità DFU è la seguente.
 
 | Nome             | Offset  | Dimensione | tipo      | Descrizione |
 |------------------|----------|------|-----------|------------|
-| bmAttributes  | 2     | 1   | Campo di bit | Bit 3: il dispositivo eseguirà una sequenza di scollegamento e collegamento del bus quando riceve una richiesta DFU_DETACH. L'host non deve emettere una reimpostazione USB. (bitWillDetach) 0 = No 1 = sì bit 2: il dispositivo è in grado di comunicare tramite USB dopo la fase di manifesto. (bitManifestationTolerant) 0 = No, deve vedere il ripristino del bus 1 = sì bit 1: upload capable (bitCanUpload) 0 = No 1 = sì bit 0: download capable (bitCanDnload) 0 = No 1 = Yes  |
-| wDetachTimeOut  | 3      | 2  | d'acquisto    | Tempo, in millisecondi, durante il quale il dispositivo resterà in attesa dopo la ricezione della richiesta DFU_DETACH. Se questo tempo scade senza una reimpostazione USB, il dispositivo interromperà la fase di riconfigurazione e tornerà al normale funzionamento. Rappresenta il tempo massimo di attesa del dispositivo, a seconda dei timer e così via. USBX imposta questo valore su 1000 ms.  |
-| wTransferSize  | 5      | 2  | d'acquisto    | Numero massimo di byte che il dispositivo può accettare per ogni \- operazione di scrittura del controllo. USBX imposta questo valore su 64 byte. |
+| bmAttributes  | 2     | 1   | Campo di bit | Bit 3: il dispositivo eseguirà una sequenza di collegamento del bus quando riceve una DFU_DETACH richiesta. L'host non deve emettere una reimpostazione USB. (bitWillDetach) 0 = no 1 = sì Bit 2: il dispositivo è in grado di comunicare tramite USB dopo la fase di manifestazione. (bitManifestationTolerant) 0 = no, deve vedere bus reset 1 = yes Bit 1: upload capable (bitCanUpload) 0 = no 1 = yes Bit 0: download capable (bitCanDnload) 0 = no 1 = yes  |
+| wDetachTimeOut  | 3      | 2  | d'acquisto    | Tempo, in millisecondi, che il dispositivo attenderà dopo la ricezione della DFU_DETACH richiesta. Se questo tempo è trascorso senza una reimpostazione USB, il dispositivo terminerà la fase di riconfigurazione e tornerà al normale funzionamento. Rappresenta il tempo massimo di attesa del dispositivo (a seconda dei timer e così via). USBX imposta questo valore su 1000 ms.  |
+| wTransferSize  | 5      | 2  | d'acquisto    | Numero massimo di byte che il dispositivo può accettare per ogni operazione di \- scrittura del controllo. USBX imposta questo valore su 64 byte. |
 
 La dichiarazione della classe DFU è la seguente:
 
@@ -264,29 +264,29 @@ status = ux_device_stack_class_register(_ux_system_slave_class_dfu_name,
 if (status!=UX_SUCCESS) return;
 ```
 
-La classe DFU deve funzionare con un'applicazione firmware del dispositivo specifica per la destinazione. Quindi definisce diverse chiamate a blocchi di lettura e scrittura di firmware e per ottenere lo stato dall'applicazione di aggiornamento del firmware. La classe DFU dispone inoltre di una funzione Notify callback per informare l'applicazione quando si verifica un inizio e una fine del trasferimento del firmware.
+La classe DFU deve funzionare con un'applicazione firmware del dispositivo specifica per la destinazione. Definisce quindi diversi blocchi di lettura e scrittura del firmware e per ottenere lo stato dall'applicazione di aggiornamento del firmware. La classe DFU include anche una funzione di callback notify per informare l'applicazione quando si verifica un inizio e una fine del trasferimento del firmware.
 
-Di seguito è riportata la descrizione di un flusso di applicazione DFU tipico.
+Di seguito è riportata la descrizione di un tipico flusso di applicazioni DFU.
 
 ![Flusso dell'applicazione DFU](./media/usbx-device-stack-supplemental/dfu-application-flow.png)
 
-Il problema principale della classe DFU è ottenere l'applicazione corretta nell'host per eseguire il download del firmware. Non sono presenti applicazioni fornite da Microsoft o da USB-IF. Alcune Shareware sono disponibili e funzionano ragionevolmente bene in Linux e in una minore quantità di Windows.
+La sfida principale della classe DFU è ottenere l'applicazione giusta nell'host per eseguire il download del firmware. Non è disponibile alcuna applicazione fornita da Microsoft o USB-IF. Alcuni shareware esistono e funzionano ragionevolmente bene in Linux e in misura minore Windows.
 
-In Linux è possibile usare dfu-utils qui: sono [https://wiki.openmoko.org/wiki/Dfu-util](https://wiki.openmoko.org/wiki/Dfu-util) disponibili numerose informazioni su dfu utils in questo collegamento: [https://www.libusb.org/wiki/windows_backend](https://www.libusb.org/wiki/windows_backend)
+In Linux è possibile usare dfu-utils per trovare qui: Molte informazioni sulle dfu utils sono disponibili anche [https://wiki.openmoko.org/wiki/Dfu-util](https://wiki.openmoko.org/wiki/Dfu-util) in questo collegamento: [https://www.libusb.org/wiki/windows_backend](https://www.libusb.org/wiki/windows_backend)
 
-L'implementazione Linux di DFU esegue correttamente la sequenza di reimpostazione tra l'host e il dispositivo e pertanto non è necessario che il dispositivo esegua questa operazione. Linux può accettare affinché il *BitWillDetach* bmAttributes sia 0. Windows sull'altro lato richiede che il dispositivo esegua la reimpostazione.
+L'implementazione Linux di DFU esegue correttamente la sequenza di reimpostazione tra l'host e il dispositivo e pertanto il dispositivo non deve eseguire questa operazione. Linux può accettare che *bitWillDetach* di bmAttributes sia 0. Windows sul lato opposto è necessario che il dispositivo eseere la reimpostazione.
 
-In Windows, il registro USB deve essere in grado di associare il dispositivo USB con i relativi PID/VID e la libreria USB, che a sua volta verrà usata dall'applicazione DFU. Questa operazione può essere eseguita facilmente con l'utilità gratuita Zadig disponibile qui: [https://sourceforge.net/projects/libwdi/files/zadig/](https://sourceforge.net/projects/libwdi/files/zadig/) .
+In Windows, il registro USB deve essere in grado di associare il dispositivo USB al relativo PID/VID e alla libreria USB che verrà a sua volta usata dall'applicazione DFU. Questa operazione può essere eseguita facilmente con l'utilità gratuita Zadig, disponibile qui: [https://sourceforge.net/projects/libwdi/files/zadig/](https://sourceforge.net/projects/libwdi/files/zadig/) .
 
-Se si esegue Zadig per la prima volta, verrà visualizzata la schermata seguente:
+Eseguendo Zadig per la prima volta verrà visualizzata questa schermata:
 
 ![Esecuzione di Zadig per la prima volta](./media/usbx-device-stack-supplemental/zadig.png)
 
-Dall'elenco dei dispositivi, trovare il dispositivo e associarlo al driver libusb Windows. Questa operazione consente di associare il PID/VID del dispositivo alla libreria USB di Windows usata dalle utilità di DFU.
+Nell'elenco dei dispositivi individuare il dispositivo e associarlo al driver libusb windows. In questo modo il PID/VID del dispositivo verrà associato alla Windows USB usata dalle utilità DFU.
 
-Per utilizzare il comando DFU, è sufficiente decomprimere le utilità di dfu compresse in una directory, assicurandosi che la dll libusb sia presente anche nella stessa directory. Le utilità di DFU devono essere eseguite da una casella DOS dalla riga di comando.
+Per usare il comando DFU, è sufficiente decomprimere le utilità dfu compresse in una directory, verificando che anche la dll libusb sia presente nella stessa directory. Le utilità DFU devono essere eseguite da una casella DOS nella riga di comando.
 
-Digitare prima di tutto il comando **dfu-util – l** per determinare se il dispositivo è elencato. In caso contrario, eseguire Zadig per verificare che il dispositivo sia elencato e associato alla libreria USB. Verrà visualizzata una schermata come segue:
+Per prima cosa, digitare **il comando dfu-util –l** per determinare se il dispositivo è elencato. In caso contrario, eseguire Zadig per assicurarsi che il dispositivo sia elencato e associato alla libreria USB. Verrà visualizzata una schermata come segue:
 
 ```Command-line
 C:\usb specs\DFU\dfu-util-0.6&gt;dfu-util -l dfu-util 0.6
@@ -297,77 +297,77 @@ This program is Free Software and has ABSOLUTELY NO WARRANTY
 Found Runtime: [0a5c:21bc] devnum=0, cfg=1, intf=3, alt=0, name="UNDEFINED"
 ```
 
-Il passaggio successivo consiste nel preparare il file da scaricare. La classe USBX DFU non esegue alcuna verifica su questo file ed è indipendente dal formato interno. Questo file del firmware è molto specifico per la destinazione ma non per DFU né per USBX.
+Il passaggio successivo consiste nel preparare il file da scaricare. La classe USBX DFU non esegue alcuna verifica su questo file ed è indipendente dal formato interno. Questo file del firmware è molto specifico per la destinazione, ma non per DFU né per USBX.
 
-A questo punto, è possibile indicare a dfu-util di inviare il file digitando il comando seguente:
+È quindi possibile indicare a dfu-util di inviare il file digitando il comando seguente:
 
 ```Command-line
 dfu-util –R –t 64 -D file_to_download.hex
 ```
 
-In dfu-util dovrebbe essere visualizzato il processo di download del file fino a quando il firmware non è stato completamente scaricato.
+Dfu-util dovrebbe visualizzare il processo di download dei file fino a quando il firmware non è stato scaricato completamente.
 
-## <a name="usb-device-pima-class-ptp-responder"></a>Classe PIMA del dispositivo USB (risponditore PTP)
+## <a name="usb-device-pima-class-ptp-responder"></a>Classe USB Device PIMA (PTP Responder)
 
-La classe PIMA del dispositivo USB consente a un sistema host USB (initiator) di connettersi a un
+La classe PIMA del dispositivo USB consente a un sistema host USB (Iniziatore) di connettersi a un
 
-Dispositivo PIMA (resonder) per trasferire i file multimediali. La classe Pima USBX è conforme alla classe USB-IF PIMA 15740, nota anche come classe PTP (per il protocollo di trasferimento immagini).
+Dispositivo PIMA (Resonder) per trasferire file multimediali. La classe USBX Pima è conforme alla classe USB-IF PIMA 15740 nota anche come classe PTP (per Picture Transfer Protocol).
 
-La classe PIMA del lato dispositivo USBX supporta le operazioni seguenti.
+La classe PIMA sul lato dispositivo USBX supporta le operazioni seguenti.
 
-| Codice operativo                                    | Valore | Descrizione                       |
+| Codice dell'operazione                                    | Valore | Descrizione                       |
 |---------------------------------------------------|---------|-----------------------------------------------------|
 | UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO    | 0x1001  | Ottenere le operazioni e gli eventi supportati dal dispositivo                                                         |
 | UX_DEVICE_CLASS_PIMA_OC_OPEN_SESSION        | 0x1002  | Aprire una sessione tra l'host e il dispositivo                                                            |
 | UX_DEVICE_CLASS_PIMA_OC_CLOSE_SESSION       | 0x1003  | Chiudere una sessione tra l'host e il dispositivo                                                           |
-| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_IDS    | 0x1004  | Restituisce l'ID di archiviazione per il dispositivo. USBX PIMA usa solo un ID archiviazione |
-| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_INFO   | 0x1005  | Restituisce informazioni sull'oggetto di archiviazione, ad esempio la capacità massima e lo spazio libero                           |
+| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_IDS    | 0x1004  | Restituisce l'ID di archiviazione per il dispositivo. USBX PIMA usa un solo ID di archiviazione |
+| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_INFO   | 0x1005  | Restituire informazioni sull'oggetto di archiviazione, ad esempio capacità massima e spazio disponibile                           |
 | UX_DEVICE_CLASS_PIMA_OC_GET_NUM_OBJECTS    | 0x1006  | Restituisce il numero di oggetti contenuti nel dispositivo di archiviazione                                              |
 | UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT_HANDLES | 0x1007  | Restituisce una matrice di handle degli oggetti nel dispositivo di archiviazione                                           |
 | UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT_INFO    | 0x1008  | Restituisce informazioni su un oggetto, ad esempio il nome dell'oggetto, la data di creazione, la data di modifica |
-| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT          | 0x1009  | Restituisce i dati relativi a un oggetto specifico                                                         |
-| UX_DEVICE_CLASS_PIMA_OC_GET_THUMB           | 0x100A  | Invia l'anteprima se disponibile per un oggetto                                                           |
+| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT          | 0x1009  | Restituire i dati relativi a un oggetto specifico                                                         |
+| UX_DEVICE_CLASS_PIMA_OC_GET_THUMB           | 0x100A  | Inviare l'anteprima, se disponibile, su un oggetto                                                           |
 | UX_DEVICE_CLASS_PIMA_OC_DELETE_OBJECT       | 0x100B  | Eliminare un oggetto nel supporto                                                                             |
-| UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT_INFO   | 0x100C  | Invia alle informazioni sul dispositivo relative a un oggetto per la creazione sul supporto                              |
+| UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT_INFO   | 0x100C  | Inviare al dispositivo informazioni su un oggetto per la creazione nel supporto                              |
 | UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT         | 0x100D  | Inviare i dati per un oggetto al dispositivo                                                                     |
-| UX_DEVICE_CLASS_PIMA_OC_FORMAT_STORE        | 0x100F  | Pulire i supporti del dispositivo                                                                                    |
+| UX_DEVICE_CLASS_PIMA_OC_FORMAT_STORE        | 0x100F  | Pulire il supporto del dispositivo                                                                                    |
 | UX_DEVICE_CLASS_PIMA_OC_RESET_DEVICE        | 0x0110  | Reimpostare il dispositivo di destinazione                                                                                   |
 
-| Codice operativo                                         | Valore | Descrizione |
+| Codice operazione                                         | Valore | Descrizione |
 |--------------------------------------------------------|-------|-----------------------------------------|
 | UX_DEVICE_CLASS_PIMA_EC_CANCEL_TRANSACTION       | 0x4001  | Annulla la transazione corrente                                                 |
-| UX_DEVICE_CLASS_PIMA_EC_OBJECT_ADDED             | 0x4002  | Un oggetto è stato aggiunto al supporto del dispositivo e può essere recuperato da host\. |
+| UX_DEVICE_CLASS_PIMA_EC_OBJECT_ADDED             | 0x4002  | Un oggetto è stato aggiunto al supporto del dispositivo e può essere recuperato dall'host. |
 | UX_DEVICE_CLASS_PIMA_EC_OBJECT_REMOVED           | 0x4003  | Un oggetto è stato eliminato dal supporto del dispositivo                                |
 | UX_DEVICE_CLASS_PIMA_EC_STORE_ADDED              | 0x4004  | È stato aggiunto un supporto al dispositivo                                            |
 | UX_DEVICE_CLASS_PIMA_EC_STORE_REMOVED            | 0x4005  | Un supporto è stato eliminato dal dispositivo                                        |
 | UX_DEVICE_CLASS_PIMA_EC_DEVICE_PROP_CHANGED     | 0x4006  | Le proprietà del dispositivo sono state modificate                                                  |
-| UX_DEVICE_CLASS_PIMA_EC_OBJECT_INFO_CHANGED     | 0x4007  | Sono state modificate informazioni sugli oggetti                                               |
+| UX_DEVICE_CLASS_PIMA_EC_OBJECT_INFO_CHANGED     | 0x4007  | Le informazioni sull'oggetto sono state modificate                                               |
 | UX_DEVICE_CLASS_PIMA_EC_DEVICE_INFO_CHANGE      | 0x4008  | Un dispositivo è stato modificato                                                            |
 | UX_DEVICE_CLASS_PIMA_EC_REQUEST_OBJECT_TRANSFER | 0x4009  | Il dispositivo richiede il trasferimento di un oggetto dall'host                     |
-| UX_DEVICE_CLASS_PIMA_EC_STORE_FULL               | 0x400A  | Il dispositivo segnala il supporto completo                                                |
-| UX_DEVICE_CLASS_PIMA_EC_DEVICE_RESET             | 0x400B  | Report del dispositivo reimpostato                                                     |
-| UX_DEVICE_CLASS_PIMA_EC_STORAGE_INFO_CHANGED    | 0x400C  | Le informazioni di archiviazione sono state modificate nel dispositivo                                   |
+| UX_DEVICE_CLASS_PIMA_EC_STORE_FULL               | 0x400A  | Il dispositivo segnala che il supporto è pieno                                                |
+| UX_DEVICE_CLASS_PIMA_EC_DEVICE_RESET             | 0x400B  | Il dispositivo segnala che è stato reimpostato                                                     |
+| UX_DEVICE_CLASS_PIMA_EC_STORAGE_INFO_CHANGED    | 0x400C  | Archiviazione le informazioni sul dispositivo sono state modificate                                   |
 | UX_DEVICE_CLASS_PIMA_EC_CAPTURE_COMPLETE         | 0x400D  | Acquisizione completata                                                            |
 
-La classe di dispositivi USBX PIMA usa un thread TX per ascoltare i comandi PIMA dall'host.
+La classe di dispositivo USBX PIMA usa un thread TX per restare in ascolto dei comandi PIMA dall'host.
 
-Un comando PIMA è costituito da un blocco di comandi, da un blocco di dati e da una fase di stato.
+Un comando PIMA è costituito da un blocco di comandi, un blocco di dati e una fase di stato.
 
-La funzione ux_device_class_pima_thread invia una richiesta allo stack per ricevere un comando PIMA dal lato host. Il comando PIMA viene decodificato e verificato per il contenuto. Se il blocco di comandi è valido, viene diramato al gestore del comando appropriato.
+La funzione ux_device_class_pima_thread invia una richiesta nello stack per ricevere un comando PIMA dal lato host. Il comando PIMA viene decodificato e verificato per il contenuto. Se il blocco di comandi è valido, viene diramato al gestore comandi appropriato.
 
-La maggior parte dei comandi PIMA può essere eseguita solo quando una sessione è stata aperta dall'host. L'unica eccezione è rappresentata dal comando **UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO**. Con l'implementazione di USBX PIMA, è possibile aprire una sola sessione tra un iniziatore e un risponditore in qualsiasi momento. Tutte le transazioni all'interno della singola sessione sono bloccate e non è possibile avviare alcuna nuova transazione prima del completamento di quella precedente.
+La maggior parte dei comandi PIMA può essere eseguita solo quando una sessione è stata aperta dall'host. L'unica eccezione è il comando **UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO**. Con l'implementazione di USBX PIMA, è possibile aprire una sola sessione tra un iniziatore e un risponditore in qualsiasi momento. Tutte le transazioni all'interno della singola sessione sono bloccanti e nessuna nuova transazione può iniziare prima del completamento della precedente.
 
-Le transazioni PIMA sono costituite da 3 fasi, una fase di comando, una fase di dati facoltativa e una fase di risposta. Se è presente una fase di dati, può essere presente solo in una direzione.
+Le transazioni PIMA sono costituite da 3 fasi, una fase di comando, una fase dati facoltativa e una fase di risposta. Se è presente una fase dati, può essere solo in una direzione.
 
-L'iniziatore determina sempre il flusso delle operazioni PIMA, ma il risponditore può avviare gli eventi all'initiator per informare le modifiche di stato che si sono verificate durante una sessione.
+L'iniziatore determina sempre il flusso delle operazioni PIMA, ma il risponditore può avviare di nuovo gli eventi all'iniziatore per informare le modifiche dello stato che si sono verificate durante una sessione.
 
-Il diagramma seguente illustra il trasferimento di un oggetto dati tra l'host e la classe di dispositivi PIMA.
+Il diagramma seguente illustra il trasferimento di un oggetto dati tra l'host e la classe di dispositivo PIMA.
 
 ![Transazioni PIMA](./media/usbx-device-stack-supplemental/pima-transactions.png)
 
-## <a name="initialization-of-the-pima-device-class"></a>Inizializzazione della classe di dispositivi PIMA
+## <a name="initialization-of-the-pima-device-class"></a>Inizializzazione della classe di dispositivo PIMA
 
-Per la classe di dispositivi PIMA sono necessari alcuni parametri forniti dall'applicazione durante l'inizializzazione.
+La classe di dispositivo PIMA richiede alcuni parametri forniti dall'applicazione durante l'inizializzazione.
 
 I parametri seguenti descrivono le informazioni sul dispositivo e sull'archiviazione.
 
@@ -387,7 +387,7 @@ I parametri seguenti descrivono le informazioni sul dispositivo e sull'archiviaz
 - `ux_device_class_pima_storage_description`
 - `ux_device_class_pima_storage_volume_label`
 
-La classe PIMA richiede anche la registrazione del callback nell'applicazione per informare l'applicazione di determinati eventi oppure recuperare/archiviare i dati da e verso i supporti locali. I callback sono i seguenti.
+La classe PIMA richiede anche la registrazione del callback nell'applicazione per informare l'applicazione di determinati eventi o recuperare/archiviare dati da/verso i supporti locali. I callback sono i seguenti.
 
 - `ux_device_class_pima_object_number_get`
 - `ux_device_class_pima_object_handles_get`
@@ -397,7 +397,7 @@ La classe PIMA richiede anche la registrazione del callback nell'applicazione pe
 - `ux_device_class_pima_object_data_send`
 - `ux_device_class_pima_object_delete`
 
-Nell'esempio seguente viene illustrato come inizializzare il lato client di PIMA. Questo esempio USA PictBridge come client per PIMA.
+Nell'esempio seguente viene illustrato come inizializzare il lato client di PIMA. Questo esempio usa Pictbridge come client per PIMA.
 
 ```C
 /* Initialize the first XML object valid in the pictbridge instance.
@@ -520,7 +520,7 @@ Questa funzione viene chiamata quando la classe PIMA deve aggiungere un oggetto 
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima
+- **pima:** puntatore all'istanza della classe pima
 - **object_handle**: handle dell'oggetto.
 
 ### <a name="example"></a>Esempio
@@ -545,11 +545,11 @@ UINT ux_device_class_pima_object_number_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando la classe PIMA deve recuperare il numero di oggetti nel sistema locale e inviarlo di nuovo all'host.
+Questa funzione viene chiamata quando la classe PIMA deve recuperare il numero di oggetti nel sistema locale e inviarlo all'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima
+- **pima:** puntatore all'istanza della classe pima
 - **object_number**: indirizzo del numero di oggetti da restituire
 
 ### <a name="example"></a>Esempio
@@ -565,7 +565,7 @@ UINT ux_pictbridge_dpsclient_object_number_get(UX_SLAVE_CLASS_PIMA *pima, ULONG 
 
 ## <a name="ux_device_class_pima_object_handles_get"></a>ux_device_class_pima_object_handles_get
 
-Restituisce la matrice dell'handle di oggetto
+Restituire la matrice di handle di oggetto
 
 ### <a name="prototype"></a>Prototipo
 
@@ -580,15 +580,15 @@ UINT **ux_device_class_pima_object_handles_get**(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando la classe PIMA deve recuperare l'oggetto che gestisce la matrice nel sistema locale e lo invia nuovamente all'host.
+Questa funzione viene chiamata quando la classe PIMA deve recuperare la matrice di handle di oggetto nel sistema locale e inviarla nuovamente all'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **object_handles_format_code**: formattare il codice per gli handle
-- **object_handles_association**: codice di associazione di oggetti
-- **object_handle_array**: indirizzo in cui archiviare gli handle
-- **object_handles_max_number**: numero massimo di handle nella matrice
+- **pima:** puntatore all'istanza della classe pima.
+- **object_handles_format_code:** formattare il codice per gli handle
+- **object_handles_association:** codice di associazione di oggetti
+- **object_handle_array**: Indirizzo in cui archiviare gli handle
+- **object_handles_max_number:** numero massimo di handle nella matrice
 
 ### <a name="example"></a>Esempio
 
@@ -638,7 +638,7 @@ UINT ux_pictbridge_dpsclient_object_handles_get(UX_SLAVE_CLASS_PIMA *pima,
 
 ## <a name="ux_device_class_pima_object_info_get"></a>ux_device_class_pima_object_info_get
 
-Restituisce le informazioni sull'oggetto
+Restituire le informazioni sull'oggetto
 
 ### <a name="prototype"></a>Prototipo
 
@@ -651,13 +651,13 @@ UINT ux_device_class_pima_object_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando la classe PIMA deve recuperare l'oggetto che gestisce la matrice nel sistema locale e lo invia nuovamente all'host.
+Questa funzione viene chiamata quando la classe PIMA deve recuperare la matrice di handle di oggetto nel sistema locale e inviarla nuovamente all'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **object_handles**: handle dell'oggetto
-- **oggetto**: Indirizzo puntatore oggetto
+- **pima:** puntatore all'istanza della classe pima.
+- **object_handles**: Handle dell'oggetto
+- **object**: indirizzo del puntatore all'oggetto
 
 ### <a name="example"></a>Esempio
 
@@ -695,7 +695,7 @@ UINT ux_pictbridge_dpsclient_object_info_get(UX_SLAVE_CLASS_PIMA *pima,
 
 ## <a name="ux_device_class_pima_object_data_get"></a>ux_device_class_pima_object_data_get
 
-Restituisce i dati dell'oggetto
+Restituire i dati dell'oggetto
 
 ### <a name="prototype"></a>Prototipo
 
@@ -711,15 +711,15 @@ UINT ux_device_class_pima_object_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando la classe PIMA deve recuperare i dati dell'oggetto nel sistema locale e inviarli nuovamente all'host.
+Questa funzione viene chiamata quando la classe PIMA deve recuperare i dati dell'oggetto nel sistema locale e inviarli all'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima.
-- **object_handle**: handle dell'oggetto
-- **object_buffer**: Indirizzo buffer oggetto
-- **object_length_requested**: lunghezza dei dati dell'oggetto richiesta dal client all'applicazione
-- **object_actual_length**: lunghezza dei dati dell'oggetto restituita dall'applicazione
+- **pima:** puntatore all'istanza della classe pima.
+- **object_handle**: Handle dell'oggetto
+- **object_buffer:** indirizzo del buffer di oggetti
+- **object_length_requested:** lunghezza dei dati dell'oggetto richiesta dal client all'applicazione
+- **object_actual_length:** lunghezza dei dati dell'oggetto restituita dall'applicazione
 
 ### <a name="example"></a>Esempio
 
@@ -833,9 +833,9 @@ Questa funzione viene chiamata quando la classe PIMA deve ricevere le informazio
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima
-- **oggetto**: puntatore all'oggetto
-- **object_handle**: handle dell'oggetto
+- **pima:** puntatore all'istanza della classe pima
+- **object**: puntatore all'oggetto
+- **object_handle**: Handle dell'oggetto
 
 ### <a name="example"></a>Esempio
 
@@ -939,12 +939,12 @@ Questa funzione viene chiamata quando la classe PIMA deve ricevere i dati dell'o
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima
-- **object_handle**: handle dell'oggetto
-- **fase**: fase del trasferimento (attiva o completa)
-- **object_buffer**: Indirizzo buffer oggetto
-- **object_offset**: indirizzo dei dati
-- **object_length**: lunghezza dei dati dell'oggetto inviata dall'applicazione
+- **pima:** puntatore all'istanza della classe pima
+- **object_handle**: Handle dell'oggetto
+- **fase:** fase del trasferimento (attiva o completa)
+- **object_buffer:** indirizzo del buffer di oggetti
+- **object_offset**: Indirizzo dei dati
+- **object_length:** lunghezza dei dati degli oggetti inviati dall'applicazione
 
 ### <a name="example"></a>Esempio
 
@@ -1012,12 +1012,12 @@ UINT ux_device_class_pima_object_delete(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene chiamata quando la classe PIMA deve eliminare un oggetto nella risorsa di archiviazione locale.
+Questa funzione viene chiamata quando la classe PIMA deve eliminare un oggetto nell'archiviazione locale.
 
 ### <a name="parameters"></a>Parametri
 
-- **Pima**: puntatore all'istanza della classe Pima
-- **object_handle**: handle dell'oggetto
+- **pima:** puntatore all'istanza della classe pima
+- **object_handle**: Handle dell'oggetto
 
 ### <a name="example"></a>Esempio
 
@@ -1030,11 +1030,11 @@ UINT ux_pictbridge_dpsclient_object_delete(UX_SLAVE_CLASS_PIMA *pima,
 }
 ```
 
-## <a name="usb-device-audio-class"></a>Classe audio dispositivo USB
+## <a name="usb-device-audio-class"></a>Classe audio del dispositivo USB
 
-La classe audio del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo audio. Questa classe è basata sulla classe USB standard e sull'audio USB standard 1,0 o 2,0.
+La classe Audio del dispositivo USB consente a un sistema host USB di comunicare con il dispositivo come dispositivo audio. Questa classe è basata sullo standard USB e sullo standard USB Audio Class 1.0 o 2.0.
 
-Un Framework di dispositivi conformi all'audio USB deve essere dichiarato dallo stack del dispositivo. Di seguito è riportato un esempio di un altoparlante audio 2,0:
+Un framework di dispositivo conforme all'audio USB deve essere dichiarato dallo stack di dispositivi. Di seguito è riportato un esempio di altoparlante Audio 2.0:
 
 ```C
 unsigned char device_framework_high_speed[] = {
@@ -1165,13 +1165,13 @@ unsigned char device_framework_high_speed[] = {
 };
 ```
 
-La classe audio usa un Framework per dispositivi composito per raggruppare le interfacce (controllo e flusso). È necessario prestare attenzione quando si definisce il descrittore del dispositivo. USBX si basa sul descrittore IAD per comprendere internamente come associare le interfacce. Il descrittore IAD deve essere dichiarato prima delle interfacce (un'interfaccia AudioControl seguita da una o più interfacce AudioStreaming) e contenere la prima interfaccia della classe audio (l'interfaccia AudioControl) e il numero di interfacce associate.
+La classe Audio usa un framework di dispositivo composito per raggruppare le interfacce (controllo e streaming). Di conseguenza, è necessario fare attenzione quando si definisce il descrittore del dispositivo. USBX si basa sul descrittore IAD per sapere internamente come associare le interfacce. Il descrittore IAD deve essere dichiarato prima delle interfacce (un'interfaccia AudioControl seguita da una o più interfacce AudioStreaming) e contenere la prima interfaccia della classe Audio (l'interfaccia AudioControl) e il numero di interfacce collegate.
 
-Il funzionamento della classe audio varia a seconda che il dispositivo invii o riceva audio, ma in entrambi i casi viene usato un FIFO per l'archiviazione dei buffer del frame audio: se il dispositivo invia audio all'host, l'applicazione aggiunge i buffer del frame audio al FIFO che vengono successivamente inviati all'host da USBX; Se il dispositivo riceve audio dall'host, USBX aggiunge i buffer del frame audio ricevuti dall'host al FIFO, che vengono letti successivamente dall'applicazione. Ogni flusso audio ha una propria FIFO e ogni buffer di frame audio è costituito da più esempi.
+Il funzionamento della classe audio dipende dal fatto che il dispositivo invii o riceva audio, ma entrambi i casi usano un FIFO per l'archiviazione dei buffer dei frame audio: se il dispositivo invia audio all'host, l'applicazione aggiunge buffer di frame audio al FIFO che vengono successivamente inviati all'host da USBX. se il dispositivo riceve l'audio dall'host, USBX aggiunge i buffer dei frame audio ricevuti dall'host al FIFO che vengono letti successivamente dall'applicazione. Ogni flusso audio ha un proprio FIFO e ogni buffer di frame audio è costituito da più campioni.
 
-L'inizializzazione della classe audio prevede le parti seguenti.
+L'inizializzazione della classe Audio prevede le parti seguenti.
 
-1. La classe audio prevede i parametri di flusso seguenti:
+1. La classe audio prevede i parametri di streaming seguenti:
 
    ```C
    /* Set the parameters for Audio streams. */
@@ -1234,21 +1234,21 @@ L'inizializzazione della classe audio prevede le parti seguenti.
        return;
    ```
 
-   Il callback della richiesta di controllo definito dall'applicazione (***ux_device_class_audio_control_process***; impostato nell'esempio precedente) viene richiamato quando lo stack riceve una richiesta di controllo dall'host. Se la richiesta viene accettata e gestita (riconosciuta o bloccata), il callback deve restituire l'esito positivo; in caso contrario, deve essere restituito Error.
+   Il callback della richiesta di controllo definito dall'applicazione (***ux_device_class_audio_control_process***; impostato nell'esempio precedente) viene richiamato quando lo stack riceve una richiesta di controllo dall'host. Se la richiesta viene accettata e gestita (confermata o bloccata), il callback deve restituire l'esito positivo, in caso contrario dovrebbe essere restituito un errore.
 
-   Il processo di richiesta di controllo specifico della classe è definito come callback definito dall'applicazione, perché le richieste di controllo sono molto diverse tra le versioni audio USB e una parte grande del processo di richiesta si riferisce al Framework del dispositivo. L'applicazione deve gestire correttamente le richieste per rendere il dispositivo funzionante.
+   Il processo di richiesta di controllo specifico della classe è definito come callback definito dall'applicazione perché le richieste di controllo sono molto diverse tra le versioni audio USB e gran parte del processo di richiesta è correlata al framework del dispositivo. L'applicazione deve gestire correttamente le richieste per rendere il dispositivo funzionante.
 
-   Poiché per un dispositivo audio, il volume, il mute e la frequenza di campionamento sono richieste di controllo comuni, i callback semplici e definiti internamente per diverse versioni audio USB sono introdotti nelle sezioni successive per l'uso da parte delle applicazioni. Per altri dettagli, vedere ***ux_device_class_audio10_control_process** _ e _ *_ux_device_class_audio_control_request_**.
+   Poiché per un dispositivo audio, il volume, l'audio e la frequenza di campionamento sono richieste di controllo comuni, nelle sezioni successive vengono introdotti callback semplici e definiti internamente per versioni audio USB diverse per l'uso da parte delle applicazioni. Per altri **dettagli, vedere*** ux_device_class_audio10_control_process _ e _ *_ux_device_class_audio_control_request_** .
 
-Nel Framework del dispositivo audio il PID/VID viene archiviato nel descrittore del dispositivo (vedere il descrittore del dispositivo dichiarato in precedenza).
+Nel framework del dispositivo audio, il PID/VID viene archiviato nel descrittore del dispositivo (vedere il descrittore del dispositivo dichiarato in precedenza).
 
-Quando un sistema host USB individua il dispositivo audio USB e monta la classe audio, il dispositivo può essere usato con qualsiasi lettore audio o registratore (a seconda del Framework). Per informazioni di riferimento, vedere il sistema operativo host.
+Quando un sistema host USB individua il dispositivo audio USB e monta la classe audio, il dispositivo può essere usato con qualsiasi lettore audio o registratore (a seconda del framework). Per informazioni di riferimento, vedere il sistema operativo host.
 
-Le API della classe audio sono definite di seguito.
+Le API della classe Audio sono definite di seguito.
 
 ## <a name="ux_device_class_audio_read_thread_entry"></a>ux_device_class_audio_read_thread_entry
 
-Voce di thread per la lettura dei dati per la funzione audio.
+Voce di thread per la lettura dei dati per la funzione Audio.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1258,11 +1258,11 @@ VOID ux_device_class_audio_read_thread_entry(ULONG audio_stream);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene passata al parametro di inizializzazione del flusso audio se si desidera leggere l'audio dall'host. Internamente, viene creato un thread con questa funzione come funzione di immissione. il thread stesso legge i dati audio tramite l'endpoint di uscita isocrono nella funzione audio.
+Questa funzione viene passata al parametro di inizializzazione del flusso audio se si desidera leggere l'audio dall'host. Internamente, viene creato un thread con questa funzione come funzione di ingresso. il thread stesso legge i dati audio tramite l'endpoint OUT isochronous nella funzione Audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio_stream**: puntatore all'istanza del flusso audio.
+- **audio_stream:** puntatore all'istanza del flusso audio.
 
 ### <a name="example"></a>Esempio
 
@@ -1274,7 +1274,7 @@ audio_stream_parameter[0].ux_device_class_audio_stream_parameter_thread_entry
 
 ## <a name="ux_device_class_audio_write_thread_entry"></a>ux_device_class_audio_write_thread_entry
 
-Voce di thread per la scrittura dei dati per la funzione audio
+Immissione di thread per la scrittura di dati per la funzione Audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1284,11 +1284,11 @@ VOID ux_device_class_audio_write_thread_entry(ULONG audio_stream);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene passata al parametro di inizializzazione del flusso audio se si desidera scrivere l'audio nell'host. Internamente, viene creato un thread con questa funzione come funzione di immissione. il thread scrive i dati audio tramite l'endpoint isocrono nella funzione audio.
+Questa funzione viene passata al parametro di inizializzazione del flusso audio se si desidera scrivere audio nell'host. Internamente, viene creato un thread con questa funzione come funzione di ingresso. il thread stesso scrive dati audio tramite l'endpoint ISOchronous IN nella funzione Audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio_stream**: puntatore all'istanza del flusso audio.
+- **audio_stream:** puntatore all'istanza del flusso audio.
 
 ### <a name="example"></a>Esempio
 
@@ -1300,7 +1300,7 @@ audio_stream_parameter[0].ux_device_class_audio_stream_parameter_thread_en
 
 ## <a name="ux_device_class_audio_stream_get"></a>ux_device_class_audio_stream_get
 
-Ottenere un'istanza del flusso specifica per la funzione audio
+Ottenere un'istanza di flusso specifica per la funzione Audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1313,18 +1313,18 @@ UINT ux_device_class_audio_stream_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene utilizzata per ottenere un'istanza del flusso della classe audio.
+Questa funzione viene usata per ottenere un'istanza di flusso della classe audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza audio
-- **stream_index**: Indice dell'istanza del flusso basato su 0
-- **Stream**: puntatore al buffer per archiviare il puntatore dell'istanza del flusso audio
+- **audio:** puntatore all'istanza audio
+- **stream_index:** Indice dell'istanza di flusso in base a 0
+- **stream:** puntatore al buffer per archiviare il puntatore dell'istanza del flusso audio
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è riuscita
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1338,7 +1338,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_reception_start"></a>ux_device_class_audio_reception_start
 
-Avviare la ricezione di dati audio per il flusso audio
+Avviare la ricezione dei dati audio per il flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1352,14 +1352,14 @@ Questa funzione viene usata per avviare la lettura dei dati audio nei flussi aud
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è pieno.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è pieno.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1373,7 +1373,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_sample_read8"></a>ux_device_class_audio_sample_read8
 
-Leggere l'esempio a 8 bit dal flusso audio
+Leggere un esempio a 8 bit dal flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1387,19 +1387,19 @@ UINT ux_device_class_audio_sample_read8(
 
 Questa funzione legge i dati di esempio audio a 8 bit dal flusso specificato.
 
-In particolare, legge i dati di esempio dal buffer del frame audio corrente nella FIFO. Dopo aver letto l'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo da poter essere usato per accettare più dati dall'host.
+In particolare, legge i dati di esempio dal buffer dei frame audio corrente nel FILE FIFO. Durante la lettura dell'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo che possa essere usato per accettare più dati dall'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 - **buffer**: puntatore al buffer per salvare il byte di esempio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1414,7 +1414,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_sample_read16"></a>ux_device_class_audio_sample_read16
 
-Leggere l'esempio a 16 bit dal flusso audio
+Leggere un esempio a 16 bit dal flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1428,19 +1428,19 @@ UINT ux_device_class_audio_sample_read16(
 
 Questa funzione legge i dati di esempio audio a 16 bit dal flusso specificato.
 
-In particolare, legge i dati di esempio dal buffer del frame audio corrente nella FIFO. Dopo aver letto l'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo da poter essere usato per accettare più dati dall'host.
+In particolare, legge i dati di esempio dal buffer dei frame audio corrente nel FILE FIFO. Durante la lettura dell'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo che possa essere usato per accettare più dati dall'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 - **buffer**: puntatore al buffer per salvare l'esempio a 16 bit.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1455,7 +1455,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_sample_read24"></a>ux_device_class_audio_sample_read24
 
-Leggere l'esempio a 24 bit dal flusso audio
+Leggere un esempio a 24 bit dal flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1469,19 +1469,19 @@ UINT ux_device_class_audio_sample_read24(
 
 Questa funzione legge i dati di esempio audio a 24 bit dal flusso specificato.
 
-In particolare, legge i dati di esempio dal buffer del frame audio corrente nella FIFO. Dopo aver letto l'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo da poter essere usato per accettare più dati dall'host.
+In particolare, legge i dati di esempio dal buffer dei frame audio corrente nel FILE FIFO. Durante la lettura dell'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo che possa essere usato per accettare più dati dall'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 - **buffer**: puntatore al buffer per salvare l'esempio a 3 byte.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1496,7 +1496,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_sample_read32"></a>ux_device_class_audio_sample_read32
 
-Leggere l'esempio a 32 bit dal flusso audio
+Leggere un esempio a 32 bit dal flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1510,19 +1510,19 @@ UINT ux_device_class_audio_sample_read32(
 
 Questa funzione legge i dati di esempio audio a 32 bit dal flusso specificato.
 
-In particolare, legge i dati di esempio dal buffer del frame audio corrente nella FIFO. Dopo aver letto l'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo da poter essere usato per accettare più dati dall'host.
+In particolare, legge i dati di esempio dal buffer dei frame audio corrente nel FILE FIFO. Durante la lettura dell'ultimo esempio in un frame audio, il frame verrà liberato automaticamente in modo che possa essere usato per accettare più dati dall'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 - **buffer**: puntatore al buffer per salvare i dati a 4 byte.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1550,20 +1550,20 @@ UINT ux_device_class_audio_read_frame_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione restituisce il primo buffer del frame audio e la relativa lunghezza nel FIFO del flusso specificato. Al termine dell'elaborazione dei dati da parte dell'applicazione, è necessario utilizzare ux_device_class_audio_read_frame_free per liberare il buffer del frame nel FIFO.
+Questa funzione restituisce il primo buffer di frame audio e la relativa lunghezza nel FIFO del flusso specificato. Al termine dell'elaborazione dei dati da parte dell'applicazione, ux_device_class_audio_read_frame_free usare per liberare il buffer dei frame nel FILE FIFO.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
-- **frame_data**: puntatore al puntatore dati in cui restituire il puntatore dati.
-- **frame_length**: puntatore al buffer per salvare la lunghezza del frame in numero di byte.
+- **stream:** puntatore all'istanza del flusso audio.
+- **frame_data:** puntatore al puntatore ai dati in cui restituire il puntatore ai dati.
+- **frame_length:** puntatore al buffer per salvare la lunghezza del frame in numero di byte.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1578,7 +1578,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_read_frame_free"></a>ux_device_class_audio_read_frame_free
 
-Liberare un buffer del frame audio nel flusso audio
+Liberare un buffer di frame audio nel flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1588,18 +1588,18 @@ UINT ux_device_class_audio_read_frame_free(UX_DEVICE_CLASS_AUDIO_STREAM *stream)
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione libera il buffer del frame audio all'inizio della FIFO del flusso specificato, in modo che possa ricevere dati dall'host.
+Questa funzione libera il buffer dei frame audio nella parte anteriore del FIFO del flusso specificato in modo che possa ricevere dati dall'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1624,18 +1624,18 @@ UINT ux_device_class_audio_transmission_start(UX_DEVICE_CLASS_AUDIO_STREAM *stre
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione viene usata per iniziare a inviare i dati audio scritti nel FIFO nella classe audio.
+Questa funzione viene usata per iniziare a inviare dati audio scritti al FIFO nella classe audio.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
+- **stream:** puntatore all'istanza del flusso audio.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è null.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è Null.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1650,7 +1650,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_frame_write"></a>ux_device_class_audio_frame_write
 
-Scrivere un frame audio nel flusso audio
+Scrivere un fotogramma audio nel flusso audio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1663,20 +1663,20 @@ UINT ux_device_class_audio_frame_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive un frame nel FIFO del flusso audio. I dati del frame vengono copiati nel buffer disponibile nella FIFO in modo che possano essere inviati all'host.
+Questa funzione scrive un frame nel FIFO del flusso audio. I dati del frame vengono copiati nel buffer disponibile in FIFO in modo che possano essere inviati all'host.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
-- **frame**: puntatore ai dati del frame.
+- **stream:** puntatore all'istanza del flusso audio.
+- **frame:** puntatore ai dati del frame.
 - **frame_length** Lunghezza del frame in numero di byte.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è pieno.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** (0x5d) il buffer FIFO è pieno.
+- **UX_ERROR** (0xFF) Errore dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1704,20 +1704,20 @@ UINT ux_device_class_audio_write_frame_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione recupera l'indirizzo dell'ultimo buffer del frame audio della FIFO; Recupera anche la lunghezza del buffer del frame audio. Dopo che l'applicazione riempie il buffer del frame audio con i dati desiderati, è necessario usare ***ux_device_class_audio_write_frame_commit*** per aggiungere o eseguire il commit del buffer del frame nel FIFO.
+Questa funzione recupera l'indirizzo dell'ultimo buffer di frame audio del FILE FIFO. recupera anche la lunghezza del buffer dei fotogrammi audio. Dopo che l'applicazione ha riempito il buffer dei frame audio con i dati ***desiderati,*** è necessario ux_device_class_audio_write_frame_commit per aggiungere o eseguire il commit del buffer dei frame nel file FIFO.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
-- **frame_data**: puntatore al puntatore ai dati del frame per restituire il puntatore ai dati del frame.
-- **frame_length** Puntatore al buffer per salvare la lunghezza del frame in numero di byte.
+- **stream:** puntatore all'istanza del flusso audio.
+- **frame_data:** puntatore al puntatore ai dati del frame in cui restituire il puntatore ai dati del frame.
+- **frame_length** Puntatore al buffer per salvare la lunghezza del frame in numero di byte .
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è pieno.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** buffer FIFO (0x5d) è pieno.
+- **UX_ERROR** (0xFF) dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1732,7 +1732,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_write_frame_commit"></a>ux_device_class_audio_write_frame_commit
 
-Eseguire il commit di un buffer del frame audio nel flusso audio.
+Eseguire il commit di un buffer di frame audio nel flusso audio.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1744,19 +1744,19 @@ UINT ux_device_class_audio_write_frame_commit(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione aggiunge/conferma l'ultimo buffer del frame audio alla FIFO, in modo che il buffer sia pronto per essere trasferito nell'host. Si noti che l'ultimo buffer del frame audio deve essere stato compilato tramite ux_device_class_write_frame_get.
+Questa funzione aggiunge/esegue il commit dell'ultimo buffer di frame audio nel file FIFO in modo che il buffer sia pronto per essere trasferito all'host. Si noti che l'ultimo buffer dei fotogrammi audio deve essere stato compilato tramite ux_device_class_write_frame_get.
 
 ### <a name="parameters"></a>Parametri
 
-- **Stream**: puntatore all'istanza del flusso audio.
-- **lunghezza**: numero di byte pronti nel buffer.
+- **stream:** puntatore all'istanza del flusso audio.
+- **length:** numero di byte pronti nel buffer.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'interfaccia è inattiva.
-- Il buffer FIFO **UX_BUFFER_OVERFLOW** (0x5D) è fssull.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'interfaccia non è disponibile.
+- **UX_BUFFER_OVERFLOW** buffer FIFO (0x5d) è fssull.
+- **UX_ERROR** (0xFF) dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1771,7 +1771,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio10_control_process"></a>ux_device_class_audio10_control_process
 
-Elabora richieste di controllo audio 1,0 USB
+Elaborare le richieste di controllo usb audio 1.0
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1784,20 +1784,20 @@ UINT ux_device_class_audio10_control_process(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione gestisce le richieste di base inviate dall'host nell'endpoint di controllo con un tipo specifico audio 1,0 USB.
+Questa funzione gestisce le richieste di base inviate dall'host nell'endpoint di controllo con un tipo specifico di audio USB 1.0.
 
-Le funzionalità audio 1,0 delle richieste volume e mute vengono elaborate nella funzione. Quando si elaborano le richieste, i dati predefiniti passati dall'ultimo parametro (gruppo) vengono usati per rispondere alle richieste e archiviare le modifiche del controllo.
+Le funzionalità audio 1.0 delle richieste di volume e disattivazione audio vengono elaborate nella funzione . Durante l'elaborazione delle richieste, i dati predefiniti passati dall'ultimo parametro (gruppo) vengono usati per rispondere alle richieste e archiviare le modifiche del controllo.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza audio.
-- **Transfer**: puntatore all'istanza della richiesta di trasferimento.
-- **gruppo**: gruppo di dati per il processo di richiesta.
+- **audio:** puntatore all'istanza audio.
+- **transfer:** puntatore all'istanza della richiesta di trasferimento.
+- **group:** gruppo di dati per il processo di richiesta.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0xFF) dalla funzione
 
 ### <a name="example"></a>Esempio
 
@@ -1830,7 +1830,7 @@ if (status == UX_SUCCESS)
 
 ## <a name="ux_device_class_audio20_control_process"></a>ux_device_class_audio20_control_process
 
-Elabora richieste di controllo audio 1,0 USB
+Elaborare le richieste di controllo usb audio 1.0
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1842,20 +1842,20 @@ UINT ux_device_class_audio20_control_process(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione gestisce le richieste di base inviate dall'host nell'endpoint di controllo con un tipo specifico audio 2,0 USB.
+Questa funzione gestisce le richieste di base inviate dall'host nell'endpoint di controllo con un tipo specifico di audio USB 2.0.
 
-Frequenza di campionamento audio 2,0 (presunta singola frequenza fissa), le funzionalità delle richieste di volume e di silenziamento vengono elaborate nella funzione. Quando si elaborano le richieste, i dati predefiniti passati dall'ultimo parametro (gruppo) vengono usati per rispondere alle richieste e archiviare le modifiche del controllo.
+Frequenza di campionamento audio 2.0 (si presuppone una singola frequenza fissa), le funzionalità delle richieste di volume e disattivazione audio vengono elaborate nella funzione . Durante l'elaborazione delle richieste, i dati predefiniti passati dall'ultimo parametro (gruppo) vengono usati per rispondere alle richieste e archiviare le modifiche del controllo.
 
 ### <a name="parameters"></a>Parametri
 
-- **audio**: puntatore all'istanza audio.
-- **Transfer**: puntatore all'istanza della richiesta di trasferimento.
-- **gruppo**: gruppo di dati per il processo di richiesta.
+- **audio:** puntatore all'istanza audio.
+- **transfer:** puntatore all'istanza della richiesta di trasferimento.
+- **group:** gruppo di dati per il processo di richiesta.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) questa operazione è stata completata.
-- Errore di **UX_ERROR** (0xFF) dalla funzione
+- **UX_SUCCESS** (0x00) L'operazione è riuscita.
+- **UX_ERROR** (0xFF) dalla funzione
 
 ### <a name="example"></a>Esempio
 

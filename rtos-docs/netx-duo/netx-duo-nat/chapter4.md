@@ -1,24 +1,24 @@
 ---
-title: Capitolo 4-Descrizione dei servizi NAT
-description: Questo capitolo contiene una descrizione di tutti i servizi API NAT NetX Duo in ordine alfabetico.
+title: Capitolo 4 - Descrizione dei servizi NAT
+description: Questo capitolo contiene una descrizione di tutti i servizi API NAT di NetX Duo in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8bdbdfcb2da6425fb99cadc7b2f6815dedc12953
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: dbe2cb25607162b62b048251927bdc7671c5884d2a3b45b6b24bae539e08d24a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821755"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797296"
 ---
-# <a name="chapter-4---description-of-nat-services"></a>Capitolo 4-Descrizione dei servizi NAT
+# <a name="chapter-4---description-of-nat-services"></a>Capitolo 4 - Descrizione dei servizi NAT
 
-Questo capitolo contiene una descrizione di tutti i servizi API NAT NetX Duo (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i servizi API NAT di NetX Duo (elencati di seguito) in ordine alfabetico.
 
 > [!NOTE]
-> Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+> Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 ## <a name="nx_nat_create"></a>nx_nat_create
 
@@ -40,17 +40,17 @@ Questo servizio crea un'istanza del server NAT.
 ### <a name="input-parameters"></a>Parametri di input
 
 - **nat_ptr** Puntatore all'istanza NAT da creare
-- **puntatore ip_ptr** all'istanza IP
+- **ip_ptr puntatore all'istanza** IP
 - **global_interface_index** Indicizzare l'interfaccia di rete globale
-- **dynamic_cache_memory** Area memoria puntatore alla tabella NAT
+- **dynamic_cache_memory** Area di memoria del puntatore alla tabella NAT
 - **dynamic_cache_size** Dimensioni dell'area di memoria per la tabella NAT
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Server NAT **NX_SUCCESS** (0x00) creato correttamente
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
-- NX_NAT_PARAM_ERROR (0xD01) non è stato inserito alcun puntatore non valido
-- Input del puntatore della cache NX_NAT_CACHE_ERROR (0xD02) non valido
+- **NX_SUCCESS** server NAT (0x00) creato correttamente
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
+- NX_NAT_PARAM_ERROR (0xD01) Input non puntatore non valido
+- NX_NAT_CACHE_ERROR (0xD02) Input puntatore cache non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -84,7 +84,7 @@ UINT nx_nat_delete(NX_NAT_DEVICE *nat_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un server NAT creato in precedenza.
+Questo servizio elimina un server NAT creato in precedenza.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -93,7 +93,7 @@ Questo servizio Elimina un server NAT creato in precedenza.
 ### <a name="return-values"></a>Valori restituiti
 
 - **NX_SUCCESS** (0x00) NAT eliminato correttamente
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -120,7 +120,7 @@ UINT nx_nat_enable(NX_NAT_DEVICE *nat_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Abilita l'istanza IP per NAT (ad esempio, inoltra i pacchetti ricevuti al server NAT).
+Questo servizio abilita l'istanza IP per NAT ,ad esempio inoltrando i pacchetti ricevuti al server NAT.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -128,8 +128,8 @@ Questo servizio Abilita l'istanza IP per NAT (ad esempio, inoltra i pacchetti ri
 
 ### <a name="return-values"></a>Valori restituiti
 
-- NAT **NX_SUCCESS** (0x00) correttamente abilitato
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
+- **NX_SUCCESS** (0x00) NAT abilitato correttamente
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -156,7 +156,7 @@ UINT nx_nat_disable(NX_NAT_DEVICE *nat_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita NAT nell'istanza IP.
+Questo servizio disabilita NAT nell'istanza IP.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -164,8 +164,8 @@ Questo servizio Disabilita NAT nell'istanza IP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- NAT **NX_SUCCESS** (0x00) disabilitato
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
+- **NX_SUCCESS** (0x00) NAT disabilitato correttamente
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -182,7 +182,7 @@ status = nx_nat_disable (nat_ptr);
 
 ## <a name="nx_nat_cache_notify_set"></a>nx_nat_cache_notify_set
 
-Impostare una funzione di callback notifica completa della cache
+Impostare una funzione di callback di notifica completa della cache
 
 ### <a name="prototype"></a>Prototipo
 
@@ -194,7 +194,7 @@ UINT nx_nat_cache_notify_set(NX_NAT_DEVICE *nat_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio registra il callback completo della cache con il puntatore alla funzione di input cache_full_notify_cb che punta a una funzione di notifica completa della cache definita dall'utente.
+Questo servizio registra il callback completo della cache con il puntatore a funzione di input cache_full_notify_cb che punta a una funzione di notifica completa della cache definita dall'utente.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -203,9 +203,9 @@ Questo servizio registra il callback completo della cache con il puntatore alla 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Funzione di notifica completa della cache **NX_SUCCESS** (0x00) impostata correttamente
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
-- NX_NAT_PARAM_ERROR (0xD01) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) La funzione di notifica completa della cache è stata impostata correttamente
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
+- NX_NAT_PARAM_ERROR (0xD01) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -222,7 +222,7 @@ status = nx_nat_cache_notify_set(nat_ptr, cache_full_notify_cb);
 
 ## <a name="nx_nat_inbound_entry_create"></a>nx_nat_inbound_entry_create
 
-Creare una voce in ingresso nella tabella NAT Translation
+Creare una voce in ingresso nella tabella di conversione NAT
 
 ### <a name="prototype"></a>Prototipo
 
@@ -236,23 +236,23 @@ UINT nx_nat_inbound_entry_create(NX_NAT_DEVICE *nat_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una voce in ingresso come statica (voce permanente senza scadenza) e la aggiunge alla tabella di traduzione NAT. Queste voci vengono in genere create per i server host locali in cui viene avviata una connessione da un host nella rete esterna. Il server NAT verifica che la porta esterna non sia già in uso nella tabella di traduzione o che sia associata a un socket NetX duo già esistente dello stesso protocollo.
+Questo servizio crea una voce in ingresso come statica (voce permanente, non scade mai) e la aggiunge alla tabella di conversione NAT. Queste voci vengono in genere create per i server host locali in cui viene avviata una connessione da un host nella rete esterna. Il server NAT verifica che la porta esterna non sia già in uso nella tabella di conversione o sia associata da un socket NetX Duo esistente dello stesso protocollo.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **nat_ptr** Puntatore all'istanza NAT
-- **entry_ptr** Puntatore alla voce di traslazione
+- **entry_ptr** Puntatore alla voce di traduzione
 - **local_ip_address** Indirizzo IP host locale
 - **external_port** Porta di destinazione nella rete esterna
 - **local_port** Porta di origine (host locale)
-- **protocollo** di Protocollo Packet (ad esempio, TCP)
+- **protocollo** Protocollo di pacchetti (ad esempio TCP)
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione della voce **NX_SUCCESS** (0x00) completata
-- **NX_NAT_PORT_UNAVAILABLE** (0xD0D) porta esterna non valida
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
-- NX_NAT_PARAM_ERROR (0xD01) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) Voce creata correttamente
+- **NX_NAT_PORT_UNAVAILABLE** (0xD0D) Porta esterna non valida
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
+- NX_NAT_PARAM_ERROR (0xD01) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -271,7 +271,7 @@ status = nx_nat_inbound_entry_create(nat_ptr, entry_ptr,
 
 ## <a name="nx_nat_inbound_entry_delete"></a>nx_nat_inbound_entry_delete
 
-Eliminare una voce in ingresso nella tabella NAT Translation
+Eliminare una voce in ingresso nella tabella di conversione NAT
 
 ### <a name="prototype"></a>Prototipo
 
@@ -282,19 +282,19 @@ UINT nx_nat_inbound_entry_delete(NX_NAT_DEVICE *nat_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina la voce in ingresso specificata dalla tabella di conversione.
+Questo servizio elimina la voce in ingresso specificata dalla tabella di conversione.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **nat_ptr** Puntatore all'istanza NAT
-- **delete_entry_ptr** Puntatore alla voce di traduzione NAT
+- **delete_entry_ptr** Puntatore alla voce di conversione NAT
 
 ### <a name="return-values"></a>Valori restituiti
 
-- La voce **NX_SUCCESS** (0x00) è stata eliminata
-- La voce **NX_NAT_ENTRY_NOT_FOUND** (0xD04) non è stata trovata
-- Parametro puntatore di input NX_PTR_ERROR (0x07) non valido
-- Tipo di traduzione NX_NAT_ENTRY_TYPE_ERROR (0xD0C) non valido
+- **NX_SUCCESS** (0x00) Voce eliminata correttamente
+- **NX_NAT_ENTRY_NOT_FOUND** (0xD04) Voce non trovata
+- NX_PTR_ERROR (0x07) Parametro puntatore di input non valido
+- NX_NAT_ENTRY_TYPE_ERROR (0xD0C) Tipo di traduzione non valido
 
 ### <a name="allowed-from"></a>Consentito da
 

@@ -1,29 +1,29 @@
 ---
-title: Capitolo 3-Descrizione dei servizi client DNS di Azure RTO NetX Duo
-description: Questo capitolo contiene una descrizione di tutti i servizi DNS di Azure RTO NetX Duo (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS client DNS di NetX Duo
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS DNS di NetX Duo (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9634adab3944c29f64d26dd688b5053dc1bd9bcb
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 10368edf3cdf15d32bddbd5bd943681b3ff3dd1aa1a7042d1b9bb2bf0e71699f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821920"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791865"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-dns-client-services"></a>Capitolo 3-Descrizione dei servizi client DNS di Azure RTO NetX Duo
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-dns-client-services"></a>Capitolo 3 - Descrizione dei Azure RTOS client DNS di NetX Duo
 
-Questo capitolo contiene una descrizione di tutti i servizi DNS di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i Azure RTOS DNS NetX (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **grassetto** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
-- **nx_dns_authority_zone_start_get** *ricercare l'inizio di una zona di autorità associata al nome host specificato*
+- **nx_dns_authority_zone_start_get** *cercare l'inizio di una zona di autorità associata al nome host specificato*
 
 - **nx_dns_cache_initialize** *inizializzare una cache DNS.*
 
-- **nx_dns_cache_notify_clear** *cancellare la funzione di notifica completa della cache.*
+- **nx_dns_cache_notify_clear** *cancella la funzione di notifica completa della cache.*
 
 - **nx_dns_cache_notify_set** *impostare la funzione di notifica completa della cache.*
 
@@ -37,39 +37,39 @@ Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori 
 
 - **nx_dns_domain_mail_exchange_get** *cercare lo scambio di posta associato al nome host specificato.*
 
-- **nx_dns_domain_service_get** *cercare i servizi associati al nome host specificato*
+- **nx_dns_domain_service_get** cercare i servizi associati *al nome host specificato*
 
-- **nx_dns_get_serverlist_size** *restituiscono le dimensioni dell'elenco di server client DNS*
+- **nx_dns_get_serverlist_size** *restituire le dimensioni dell'elenco di server client DNS*
 
-- **nx_dns_info_by_name_get** l' *indirizzo IP restituito, le query sulle porte sul nome host di input*
+- **nx_dns_info_by_name_get** *indirizzo IP mittente, esecuzione di query sulle porte sul nome host di input*
 
 - **nx_dns_ipv4_address_by_name_get** *cercare l'indirizzo IPv4 dal nome host specificato*
 
 - **nxd_dns_ipv6_address_by_name_get** *cercare l'indirizzo IPv6 dal nome host specificato*
 
-- **nx_dns_host_by_address_get** *funzione wrapper per nxd_dns_host_by_address_get per cercare un nome host da un indirizzo IP specificato (supporta solo indirizzi IPv4)*
+- **nx_dns_host_by_address_get** wrapper per nxd_dns_host_by_address_get cercare un nome host da un indirizzo IP specificato *(supporta solo indirizzi IPv4)*
 
 - **nxd_dns_host_by_address_get** *cercare un indirizzo IP dal nome host di input (supporta indirizzi IPv4 e IPv6)*
 
-- **nx_dns_host_by_name_get** *funzione wrapper per nxd_dns_host_by_address_get per cercare un nome host dall'indirizzo specificato (supporta solo indirizzi IPv4)*
+- **nx_dns_host_by_name_get** wrapper per nxd_dns_host_by_address_get cercare un nome host dall'indirizzo specificato *(supporta solo indirizzi IPv4)*
 
-- **nxd_dns_host_by_name_get** *cercare un indirizzo IP dal nome host di input (supporta indirizzi IPv4 e IPv6)*
+- **nxd_dns_host_by_name_get** *cercare un indirizzo IP dal nome host di input (supporta sia gli indirizzi IPv4 che IPv6)*
 
 - **nx_dns_host_text_get** *cercare i dati di testo per il nome di dominio di input*
 
-- **nx_dns_packet_pool_set** *impostare il pool di pacchetti client DNS*
+- **nx_dns_packet_pool_set** *impostare il pool di pacchetti del client DNS*
 
-- **nx_dns_server_add** *funzione wrapper per* NXD_DNS_SERVER_ADD *aggiungere un server DNS all'indirizzo specificato all'elenco client (supporta solo IPv4)*
+- **nx_dns_server_add** *wrapper per nxd_dns_server_add* aggiungere un server DNS all'indirizzo specificato all'elenco client *(supporta solo IPv4)*
 
-- **nxd_dns_server_add** *aggiungere un server DNS dell'indirizzo IP specificato all'elenco dei server client (supporta indirizzi sia IPv4 che IPv6)*
+- **nxd_dns_server_add** aggiungere un server DNS dell'indirizzo IP specificato all'elenco *di server client (supporta indirizzi IPv4 o IPv6)*
 
-- **nx_dns_server_get** *restituire il server DNS nell'elenco client (supporta solo indirizzi IPv4)*
+- **nx_dns_server_get** *restituisce il server DNS nell'elenco Client (supporta solo indirizzi IPv4)*
 
-- **nxd_dns_server_get** *restituire il server DNS nell'elenco client (supporta gli indirizzi IPv4 e IPv6)*
+- **nxd_dns_server_get** *restituisce il server DNS nell'elenco Client (supporta sia gli indirizzi IPv4 che IPv6)*
 
-- **nx_dns_server_remove** *funzione wrapper per nxd_dns_server_remove per rimuovere un server DNS dall'elenco client*
+- **nx_dns_server_remove** *wrapper per nxd_dns_server_remove rimuovere un server DNS dall'elenco client*
 
-- **nxd_dns_server_remove** *rimuovere un server DNS dell'indirizzo IP specificato dall'elenco client (supporta gli indirizzi IPv4 e IPv6)*
+- **nxd_dns_server_remove** rimuovere un server DNS dell'indirizzo IP specificato dall'elenco Client (supporta sia *gli indirizzi IPv4 che IPv6)*
 
 - **nx_dns_server_remove_all** *rimuovere tutti i server DNS dall'elenco client*
 
@@ -87,46 +87,46 @@ UINT nx_dns_authority_zone_start_get (NX_DNS *dns_ptr, UCHAR *host_name,
 ```
 ### <a name="description"></a>Descrizione
 
-Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito, il servizio invia una query di tipo SOA con il nome di dominio specificato per ottenere l'inizio della zona di autorità per il nome di dominio di input. Il client DNS copia i record SOA restituiti nella risposta del server DNS nel percorso di memoria *record_buffer* .
+Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito, questo servizio invia una query di tipo SOA con il nome di dominio specificato per ottenere l'inizio della zona di autorità per il nome di dominio di input. Il client DNS copia i record SOA restituiti nella risposta del server DNS nel percorso *record_buffer* memoria.
 
 > [!NOTE]
 > Il *record_buffer* deve essere allineato a 4 byte per ricevere i dati.
 
-Nel client DNS di NetX Duo, il tipo di record SOA, NX_DNS_SOA_ENTRY, viene salvato come parametri di 7 4 byte, totale di 28 byte:
+In NetX Duo DNS Client il tipo di record SOA, NX_DNS_SOA_ENTRY, viene salvato come sette parametri di 4 byte, per un totale di 28 byte:
 
 - **nx_dns_soa_host_mname_ptr** Puntatore all'origine dati primaria per questa zona.
 - **nx_dns_soa_host_rname_ptr** Puntatore alla cassetta postale responsabile di questa zona
-- **nx_dns_soa_serial** Numero di versione zona
+- **nx_dns_soa_serial** Numero di versione della zona
 - **nx_dns_soa_refresh** Intervallo di aggiornamento
 - **nx_dns_soa_retry** Intervallo tra i tentativi di query SOA
-- **nx_dns_soa_expire** Durata dell'ora di scadenza di SOA
+- **nx_dns_soa_expire** Durata dell'intervallo di tempo in cui SCADE SOA
 - **nx_dns_soa_minmum** Campo TTL minimo nei messaggi di risposta DNS del nome host SOA
 
-L'archiviazione di due record SOA è illustrata di seguito. I record SOA contenenti dati a lunghezza fissa vengono immessi a partire dall'inizio del buffer. I puntatori MNAME e RNAME puntano ai dati a lunghezza variabile (nomi host) archiviati nella parte inferiore del buffer. Vengono immessi record SOA aggiuntivi dopo il primo record ("record SOA aggiuntivi...") e i dati a lunghezza variabile vengono archiviati sopra i dati a lunghezza variabile dell'ultima voce ("dati di lunghezza variabile SOA aggiuntivi"):
+L'archiviazione di due record SOA è illustrata di seguito. I record SOA contenenti dati a lunghezza fissa vengono immessi a partire dall'inizio del buffer. I puntatori MNAME e RNAME puntano ai dati a lunghezza variabile (nomi host) archiviati nella parte inferiore del buffer. I record SOA aggiuntivi vengono immessi dopo il primo record ("record SOA aggiuntivi...") e i relativi dati di lunghezza variabile vengono archiviati sopra i dati di lunghezza variabile dell'ultima voce ("dati aggiuntivi di lunghezza variabile SOA"):
 
 ![Archiviazione di due record SOA](media/image4.png)
 
-Se l'input *record_buffer* non può contenere tutti i dati SOA nella risposta del server, il *record_buffer* include il numero di record che si adattano e restituisce il numero di record nel buffer.
+Se il *record_buffer* di input non può contenere tutti i dati SOA nella risposta del server, il *record_buffer* contiene il numero di record che rientra e restituisce il numero di record nel buffer.
 
 Con il numero di record SOA restituiti in **record_count,* l'applicazione può analizzare i dati da *record_buffer* ed estrarre l'inizio delle stringhe del nome host dell'autorità di zona.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **HOST_NAME** Puntatore al nome host per cui ottenere i dati SOA
+- **host_name** Puntatore al nome host per cui ottenere i dati SOA
 - **record_buffer** Puntatore alla posizione in cui estrarre i dati SOA
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati SOA
+- **buffer_size** Dimensioni del buffer per contenere i dati SOA
 - **record_count** Puntatore al numero di record SOA recuperati
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **wait_option** Opzione Wait per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto i dati SOA
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- NX_DNS_PARAM_ERROR (0xA8) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) I dati SOA sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** server client (0xA1) è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_PTR_ERROR (0x07) Puntatore DNS o IP non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -210,7 +210,7 @@ UINT nx_dns_cache_initialize(NX_DNS *dns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea e Inizializza una cache DNS.
+Questo servizio crea e inizializza una cache DNS.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -220,11 +220,11 @@ Questo servizio crea e Inizializza una cache DNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Cache DNS **NX_SUCCESS** (0x00) inizializzata correttamente
-- NX_DNS_PARAM_ERROR (0xA8) non è stato inserito alcun puntatore non valido
-- Il puntatore della cache NX_DNS_CACHE_ERROR (0xB7) non è valido.
-- NX_PTR_ERROR (0x07) puntatore DNS non valido. 
-- La cache NX_DNS_ERROR (messaggi 0XA0) non è allineata a 4 byte.
+- **NX_SUCCESS** (0x00) DNS cache successfully initialized (Cache DNS di NX_SUCCESS (0x00) inizializzata correttamente
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
+- NX_DNS_CACHE_ERROR (0xB7) Puntatore cache non valido.
+- NX_PTR_ERROR (0x07) Puntatore DNS non valido. 
+- NX_DNS_ERROR cache (0xA0) non è allineata a 4 byte.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -240,7 +240,7 @@ status =  nx_dns_cache_initialize(&my_dns, &dns_cache, 2048);
 
 ## <a name="nx_dns_cache_notify_clear"></a>nx_dns_cache_notify_clear
 
-Cancella la funzione di notifica completa della cache DNS
+Cancellare la funzione di notifica completa della cache DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -249,7 +249,7 @@ UINT nx_dns_cache_notify_clear(NX_DNS *dns_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cancella la funzione di notifica completa della cache.
+Questo servizio cancella la funzione di notifica completa della cache.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -257,9 +257,9 @@ Questo servizio Cancella la funzione di notifica completa della cache.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Notifica della cache DNS **NX_SUCCESS** (0x00) impostata correttamente
-- NX_DNS_PARAM_ERROR (0xA8) non è un input non puntatore valido
-- NX_PTR_ERROR (0x07) puntatore DNS non valido.
+- **NX_SUCCESS** cache DNS (0x00) impostata correttamente
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Puntatore DNS non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -294,9 +294,9 @@ Questo servizio imposta la funzione di notifica completa della cache.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Notifica della cache DNS **NX_SUCCESS** (0x00) impostata correttamente
-- NX_DNS_PARAM_ERROR (0xA8) non è un input non puntatore valido
-- NX_PTR_ERROR (0x07) puntatore DNS non valido.
+- **NX_SUCCESS** cache DNS (0x00) impostata correttamente
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Puntatore DNS non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -323,24 +323,24 @@ UINT nx_dns_cname_get(NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Se NX_DNS_ENABLE_EXTENDED_RR_TYPES viene definito in *nxd_dns. h*, questo servizio invia una query di tipo CNAME con il nome di dominio specificato per ottenere il nome di dominio canonico. Il client DNS copia la stringa CNAME restituita nella risposta del server DNS nel percorso di memoria *record_buffer* .
+Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito in *nxd_dns.h,* questo servizio invia una query di tipo CNAME con il nome di dominio specificato per ottenere il nome di dominio canonico. Il client DNS copia la stringa CNAME restituita nella risposta del server DNS nel percorso *record_buffer* memoria.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **HOST_NAME** Puntatore al nome host per cui ottenere i dati CNAME
+- **host_name** Puntatore al nome host per cui ottenere i dati CNAME
 - **record_buffer** Puntatore alla posizione in cui estrarre i dati CNAME
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati CNAME
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **buffer_size** Dimensioni del buffer per contenere i dati CNAME
+- **wait_option** Opzione Wait per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto i dati CNAME
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- NX_DNS_PARAM_ERROR (0xA8) non è un input non puntatore valido
+- **NX_SUCCESS** (0x00) I dati CNAME sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** server client (0xA1) è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_PTR_ERROR (0x07) Puntatore DNS o IP non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -386,22 +386,22 @@ UINT nx_dns_create(NX_DNS *dns_ptr, NX_IP *ip_ptr, CHAR *domain_name);
 Questo servizio crea un'istanza del client DNS per l'istanza IP creata in precedenza.
 
 > [!IMPORTANT]
-> L'applicazione deve garantire che il payload dei pacchetti del pool di pacchetti utilizzato dal client DNS sia sufficientemente grande per il numero massimo di messaggi DNS a 512 byte, più le intestazioni UDP, IP e Ethernet. Se il client DNS crea il proprio pool di pacchetti, viene definito da NX_DNS_PACKET_PAYLOAD e NX_DNS_PACKET_POOL_SIZE.
+> L'applicazione deve garantire che il payload dei pacchetti del pool di pacchetti usato dal client DNS sia sufficientemente grande per il messaggio DNS di 512 byte massimo, oltre alle intestazioni UDP, IP ed Ethernet. Se il client DNS crea un proprio pool di pacchetti, questo viene definito da NX_DNS_PACKET_PAYLOAD e NX_DNS_PACKET_POOL_SIZE.
 
-Se l'applicazione client DNS preferisce fornire un pool di pacchetti creato in precedenza, il payload per il client DNS IPv4 deve essere di 512 byte per il DNS massimo più 20 byte per l'intestazione IP, 8 byte per l'intestazione UDP e 14 byte per l'intestazione Ethernet. Per IPv6, l'unica differenza è che l'intestazione IP è 40 byte, pertanto il pacchetto deve contenere l'intestazione IPv6 di 40 byte.
+Se l'applicazione client DNS preferisce fornire un pool di pacchetti creato in precedenza, il payload per il client DNS IPv4 deve essere di 512 byte per il DNS massimo più 20 byte per l'intestazione IP, 8 byte per l'intestazione UDP e 14 byte per l'intestazione Ethernet. Per IPv6 l'unica differenza è che l'intestazione IP è di 40 byte, pertanto il pacchetto deve contenere l'intestazione IPv6 di 40 byte.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **ip_ptr** Puntatore a un'istanza IP creata in precedenza.  
-- **Domain_name** Puntatore al nome di dominio per l'istanza DNS.
+- **ip_ptr** Puntatore all'istanza IP creata in precedenza.  
+- **domain_name** Puntatore al nome di dominio per l'istanza DNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Creazione DNS riuscita **NX_SUCCESS** (0x00)
-- Errore di creazione DNS **NX_DNS_ERROR** (messaggi 0XA0)
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Creazione DNS riuscita
+- **NX_DNS_ERROR** errore di creazione DNS 0xA0 (0xA0)
+- NX_PTR_ERROR (0x07) Puntatore DNS o IP non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -426,20 +426,20 @@ UINT nx_dns_delete(NX_DNS *dns_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza del client DNS creata in precedenza e libera le risorse. 
+Questo servizio elimina un'istanza del client DNS creata in precedenza e libera le relative risorse. 
 
 > [!NOTE]
-> Se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definito e al client DNS è stato assegnato un pool di pacchetti definito dall'utente, spetta all'applicazione eliminare il pool di pacchetti client DNS se non è più necessario.
+> Se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definito e al client DNS è stato assegnato un pool di pacchetti definito dall'utente, è responsabilità dell'applicazione eliminare il pool di pacchetti del client DNS se non è più necessario.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dns_ptr** Puntatore a un'istanza del client DNS creata in precedenza.
+- **dns_ptr** Puntatore all'istanza del client DNS creata in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Eliminazione del client DNS riuscita **NX_SUCCESS** (0x00).
-- NX_PTR_ERROR (0x07) un puntatore client IP o DNS non valido.
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Eliminazione del client DNS riuscita.
+- NX_PTR_ERROR (0x07) Puntatore ip o client DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -467,41 +467,41 @@ UINT nx_dns_domain_name_server_get(NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito, il servizio invia una query di tipo NS con il nome di dominio specificato per ottenere i server dei nomi per il nome di dominio di input. Il client DNS copia i record NS restituiti nella risposta del server DNS nel percorso di memoria *record_buffer* .
+Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito, questo servizio invia una query di tipo NS con il nome di dominio specificato per ottenere i server dei nomi per il nome di dominio di input. Il client DNS copia i record NS restituiti nella risposta del server DNS nel percorso *record_buffer* memoria.
 
 > [!NOTE]
 > Il *record_buffer* deve essere allineato a 4 byte per ricevere i dati.
 
-Nel client DNS di NetX Duo il tipo di dati NS, NX_DNS_NS_ENTRY, viene salvato come parametri a 2 4 byte:
+In NetX Duo DNS Client il tipo di dati NS, NX_DNS_NS_ENTRY, viene salvato come due parametri a 4 byte:
 
 - **nx_dns_ns_ipv4_address** Indirizzo IPv4 del server dei nomi
 - **nx_dns_ns_hostname_ptr** Puntatore al nome host del server dei nomi
 
-Il buffer riportato di seguito contiene quattro record NX_DNS_NS_ENTRY. Il puntatore alla stringa del nome host in ogni voce punta alla stringa del nome host corrispondente nella metà inferiore del buffer:
+Il buffer illustrato di seguito contiene quattro NX_DNS_NS_ENTRY record. Il puntatore alla stringa del nome host in ogni voce punta alla stringa del nome host corrispondente nella metà inferiore del buffer:
 
-![Contiene quattro record NX_DNS_NS_ENTRY](media/image5.png)
+![Contiene quattro NX_DNS_NS_ENTRY record](media/image5.png)
 
-Se il *record_buffer* di input non può contenere tutti i dati NS nella risposta del server, il *record_buffer* include il numero di record che si adattano e restituisce il numero di record nel buffer.
+Se il *record_buffer* di input non può contenere tutti i dati NS nella risposta del server, il *record_buffer* contiene tutti i record che saranno adatti e restituisce il numero di record nel buffer.
 
-Con il numero di record NS restituiti in **record_count,* l'applicazione può analizzare l'indirizzo IP e il nome host di ogni record nel *record_buffer*.
+Con il numero di record NS restituiti in **record_count,* l'applicazione può analizzare l'indirizzo IP e il nome host di ogni record *nel record_buffer*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **HOST_NAME** Puntatore al nome host per cui ottenere i dati NS
+- **host_name** Puntatore al nome host per cui ottenere i dati NS
 - **record_buffer** Puntatore alla posizione in cui estrarre i dati NS
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati NS
+- **buffer_size** Dimensioni del buffer per contenere i dati NS
 - **record_count** Puntatore al numero di record NS recuperati
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **wait_option** Opzione Wait per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto i dati NS
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_DNS_PARAM_ERROR (0xA8) non è un input non puntatore valido
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) I dati NS sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** (0xA1) L'elenco del server client è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -571,7 +571,7 @@ hostname = ns4.www.my_example.com
 
 ## <a name="nx_dns_domain_mail_exchange_get"></a>nx_dns_domain_mail_exchange_get
 
-Cerca lo scambio di posta/i per il nome host di input
+Cercare gli scambi di posta per il nome host di input
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -584,43 +584,43 @@ UINT nx_dns_domain_mail_exchange_get(NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito, il servizio invia una query di tipo MX con il nome di dominio specificato per ottenere lo scambio di posta elettronica per il nome di dominio di input. Il client DNS copia i record MX restituiti nella risposta del server DNS nel percorso di memoria *record_buffer* . 
+Se NX_DNS_ENABLE_EXTENDED_RR_TYPES definito, questo servizio invia una query di tipo MX con il nome di dominio specificato per ottenere lo scambio di posta per il nome di dominio di input. Il client DNS copia i record MX restituiti nella risposta del server DNS nel percorso record_buffer *memoria.* 
 
 > [!NOTE]
 > Il *record_buffer* deve essere allineato a 4 byte per ricevere i dati.
 
-Nel client DNS di NetX Duo, il tipo di record di scambio di posta, NX_DNS_MAIL_EXCHANGE_ENTRY, viene salvato come quattro parametri, per un totale di 12 byte:
+In NetX Duo DNS Client il tipo di record di scambio di posta elettronica, NX_DNS_MAIL_EXCHANGE_ENTRY, viene salvato come quattro parametri, per un totale di 12 byte:
 
-- **nx_dns_mx_ipv4_address** Indirizzo IPv4 di Exchange per posta elettronica 4 byte
+- **nx_dns_mx_ipv4_address** Indirizzo IPv4 di scambio di posta elettronica 4 byte
 - **nx_dns_mx_preference** Preferenza 2 byte
-- **nx_dns_mx_reserved0** 2 byte riservati
-- **nx_dns_mx_hostname_ptr** Puntatore al nome host del server di posta elettronica di Exchange Server 4 byte
+- **nx_dns_mx_reserved0** Riservato 2 byte
+- **nx_dns_mx_hostname_ptr** Puntatore al nome host del server di scambio di posta elettronica 4 byte
 
-Di seguito è riportato un buffer contenente quattro record MX. Ogni record contiene i dati a lunghezza fissa dall'elenco precedente. Il puntatore al nome host di Exchange Server di posta elettronica punta al nome host corrispondente nella parte inferiore del buffer.
+Di seguito è riportato un buffer contenente quattro record MX. Ogni record contiene i dati a lunghezza fissa dell'elenco precedente. Il puntatore al nome host del server di scambio di posta punta al nome host corrispondente nella parte inferiore del buffer.
 
 ![Buffer contenente quattro record MX](media/image6.png)
 
-Se l'input *record_buffer* non può contenere tutti i dati MX nella risposta del server, il *record_buffer* include il numero di record che si adattano e restituisce il numero di record nel buffer.
+Se il *record_buffer* di input non può contenere tutti i dati MX nella risposta del server, il *record_buffer* contiene il numero di record che si adatterà e restituisce il numero di record nel buffer.
 
-Con il numero di record MX restituiti in **record_count,* l'applicazione può analizzare i parametri MX, incluso il nome host della posta elettronica di ogni record nel *record_buffer*.
+Con il numero di record MX restituiti in **record_count,* l'applicazione può analizzare i parametri MX, incluso il nome host di posta elettronica di ogni record nel *record_buffer*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **HOST_NAME** Puntatore al nome host per cui ottenere i dati MX
+- **host_name** Puntatore al nome host per cui ottenere i dati MX
 - **record_buffer** Puntatore alla posizione in cui estrarre i dati MX
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati MX
+- **buffer_size** Dimensioni del buffer per contenere i dati MX
 - **record_count** Puntatore al numero di record MX recuperati
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **wait_option** Opzione di attesa per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto i dati MX
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_DNS_PARAM_ERROR (0xA8) non è un input non puntatore valido
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) I dati MX sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** (0xA1) L'elenco del server client è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -701,7 +701,7 @@ hostname = alt2.aspmx.l.www.my_example.com
 
 ## <a name="nx_dns_domain_service_get"></a>nx_dns_domain_service_get
 
-Cerca i servizi forniti dal nome host di input
+Cercare i servizi forniti dal nome host di input
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -712,45 +712,45 @@ UINT nx_dns_domain_service_get (NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Se NX_DNS_ENABLE_EXTENDED_RR_TYPES è definito, il servizio invia una query di tipo SRV con il nome di dominio specificato per cercare i servizi e il relativo numero di porta associato al dominio specificato. Il client DNS copia i record SRV restituiti nella risposta del server DNS nel percorso di memoria *record_buffer* . 
+Se NX_DNS_ENABLE_EXTENDED_RR_TYPES definito, questo servizio invia una query di tipo SRV con il nome di dominio specificato per cercare i servizi e il relativo numero di porta associato al dominio specificato. Il client DNS copia i record SRV restituiti nella risposta del server DNS nel percorso record_buffer *memoria.* 
 
 > [!NOTE]
 > Il *record_buffer* deve essere allineato a 4 byte per ricevere i dati.
 
-Nel client DNS di NetX Duo, il tipo di record del servizio, NX_DNS_SRV_ voce, viene salvato come sei parametri, per un totale di 16 byte. Ciò consente di archiviare i dati SRV a lunghezza variabile in modo efficiente in termini di memoria:
+In NetX Duo DNS Client il tipo di record del servizio, NX_DNS_SRV_ ENTRY, viene salvato come sei parametri, per un totale di 16 byte. In questo modo i dati SRV a lunghezza variabile possono essere archiviati in modo efficiente in memoria:
 
-- **Indirizzo IPv4 del Server** nx_dns_srv_ipv4_address 4 byte
-- **Priorità Server** nx_dns_srv_priority 2 byte
-- **Peso Server** nx_dns_srv_weight 2 byte
-- **Numero di porta del servizio** nx_dns_srv_port_number 2 byte
+- **Indirizzo IPv4 del** server nx_dns_srv_ipv4_address 4 byte
+- **Priorità server** nx_dns_srv_priority 2 byte
+- **Peso del** server nx_dns_srv_weight 2 byte
+- **Numero di porta del** servizio nx_dns_srv_port_number 2 byte
 - **Riservato per l'allineamento a 4 byte** nx_dns_srv_reserved0 2 byte
-- **Puntatore al nome host del server** * nx_dns_srv_hostname_ptr 4 byte
+- **Puntatore al nome host del server** *nx_dns_srv_hostname_ptr 4 byte
 
-Nel buffer fornito sono archiviati quattro record SRV. Ogni record di NX_DNS_SRV_ENTRY contiene un puntatore, *nx_dns_srv_hostname_ptr*, che punta alla stringa del nome host corrispondente nella parte inferiore del buffer di record:
+Quattro record SRV vengono archiviati nel buffer fornito. Ogni NX_DNS_SRV_ENTRY record contiene un puntatore, *nx_dns_srv_hostname_ptr*, che punta alla stringa del nome host corrispondente nella parte inferiore del buffer dei record:
 
 ![Quattro record SRV](media/image7.png)
 
-Se l'input *record_buffer* non è in grado di contenere tutti i dati SRV nella risposta del server, il *record_buffer* include tutti i record che si adattano e restituisce il numero di record nel buffer.
+Se il *record_buffer* di input non può contenere tutti i dati SRV nella risposta del server, il *record_buffer* contiene il numero di record che si adatterà e restituisce il numero di record nel buffer.
 
-Con il numero di record SRV restituiti in **record_count,* l'applicazione può analizzare i parametri SRV, incluso il nome host del server di ogni record nel *record_buffer*.
+Con il numero di record SRV restituiti in **record_count,* l'applicazione può analizzare i parametri SRV, incluso il nome host del server di ogni record *nel record_buffer*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **HOST_NAME** Puntatore al nome host per il quale ottenere i dati SRV
+- **host_name** Puntatore al nome host per ottenere i dati SRV per
 - **record_buffer** Puntatore alla posizione in cui estrarre i dati SRV
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati SRV
+- **buffer_size** Dimensioni del buffer per contenere i dati SRV
 - **record_count** Puntatore al numero di record SRV recuperati
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **wait_option** Opzione di attesa per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto i dati SRV
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- Il parametro NX_DNS_PARAM_ERROR (0xA8) non è valido per il puntatore.
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) I dati SRV sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** (0xA1) L'elenco del server client è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_DNS_PARAM_ERROR (0xA8) Parametro non puntatore non valido.
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -834,7 +834,7 @@ hostname = alt1.xmpp.l.www.my_example.com
 
 ## <a name="nx_dns_get_serverlist_size"></a>nx_dns_get_serverlist_size
 
-Restituisce le dimensioni dell'elenco di server del client DNS
+Restituire le dimensioni dell'elenco di server del client DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -842,18 +842,18 @@ UINT nx_dns_get_serverlist_size (NX_DNS *dns_ptr, UINT *size);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce il numero di server DNS validi (sia IPv4 che IPv6) nell'elenco client.
+Questo servizio restituisce il numero di server DNS validi (sia IPv4 che IPv6) nell'elenco Client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al blocco di controllo DNS  
-- **dimensioni** Restituisce il numero di server nell'elenco.
+- **size** Restituisce il numero di server nell'elenco
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Dimensioni elenco server DNS **NX_SUCCESS** (0x00) restituite correttamente
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido.
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Le dimensioni dell'elenco di server DNS sono state restituite correttamente
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -883,23 +883,23 @@ UINT nx_dns_info_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce l'indirizzo IP e la porta del server (record di servizio) in base al nome host di input da parte della query DNS. Se non viene trovato un record del servizio, questa routine restituisce un indirizzo IP zero nel puntatore dell'indirizzo di input e un ritorno di stato di errore diverso da zero per segnalare un errore.
+Questo servizio restituisce l'INDIRIZZO IP del server e la porta (record del servizio) in base al nome host di input in base alla query DNS. Se non viene trovato un record del servizio, questa routine restituisce un indirizzo IP zero nel puntatore all'indirizzo di input e uno stato di errore diverso da zero restituisce per segnalare un errore.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al blocco di controllo DNS  
-- **HOST_NAME** Puntatore al buffer dei nomi host
+- **host_name** Puntatore al buffer dei nomi host
 - **host_address_ptr** Puntatore all'indirizzo da restituire
 - **host_port_ptr** Puntatore alla porta da restituire
-- **WAIT_OPTION** Opzione wait per la risposta DNS
+- **wait_option** Opzione di attesa per la risposta DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Record del server DNS **NX_SUCCESS** (0x00) restituito correttamente
-- **NX_DNS_NO_SERVER** (0XA1) nessun server DNS registrato con il client per l'invio di query sul nome host
-- La query DNS di **NX_DNS_QUERY_FAILED** (0xA3) non è riuscita. Nessuna risposta da alcun server DNS nell'elenco client o nessun record del servizio disponibile per il nome host di input.
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido
+- **NX_SUCCESS** (0x00) record del server DNS restituito correttamente
+- **NX_DNS_NO_SERVER** (0xA1) Nessun server DNS registrato con il client per inviare query sul nome host
+- **NX_DNS_QUERY_FAILED** query DNS (0xA3) non riuscita. Nessuna risposta da alcun server DNS nell'elenco client o nessun record del servizio è disponibile per il nome host di input.
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -932,35 +932,35 @@ UINT nx_ dns_ipv4_address_by_name_get (NX_DNS *dns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia una query di tipo A con il nome host specificato per ottenere gli indirizzi IP per il nome host di input. Il client DNS copia l'indirizzo IPv4 dai record A restituiti nella risposta del server DNS nel percorso di memoria *record_buffer* .
+Questo servizio invia una query di tipo A con il nome host specificato per ottenere gli indirizzi IP per il nome host di input. Il client DNS copia l'indirizzo IPv4 dai record A restituiti nella risposta del server DNS nel percorso record_buffer *memoria.*
 
 > [!NOTE]
 > Il *record_buffer* deve essere allineato a 4 byte per ricevere i dati.
 
 Più indirizzi IPv4 vengono archiviati nel buffer allineato a 4 byte, come illustrato di seguito:
 
-![buffer allineato a 4 byte a più indirizzi](media/image8.png)
+![buffer con più indirizzi allineati a 4 byte](media/image8.png)
 
-Se il buffer fornito non è in grado di memorizzare tutti i dati degli indirizzi IP, i record A rimanenti non vengono archiviati in *record_buffer*. Ciò consente all'applicazione di recuperare uno, alcuni o tutti i dati degli indirizzi IP disponibili nella risposta del server.
+Se il buffer fornito non può contenere tutti i dati dell'indirizzo IP, i record A rimanenti non vengono archiviati in *record_buffer*. In questo modo l'applicazione può recuperare uno, alcuni o tutti i dati degli indirizzi IP disponibili nella risposta del server.
 
-Con il numero di record restituiti in **record_count* l'applicazione può analizzare i dati dell'indirizzo IPv4 dall' *record_buffer*.
+Con il numero di record A restituiti in **record_count'applicazione* può analizzare i dati dell'indirizzo IPv4 *dal* record_buffer .
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
 - **host_name_ptr** Puntatore al nome host per ottenere l'indirizzo IPv4
 - **buffer** Puntatore alla posizione in cui estrarre i dati IPv4
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati IPv4
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **buffer_size** Dimensioni del buffer per contenere i dati IPv4
+- **wait_option** Opzione di attesa per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto i dati IPv4
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- Il parametro NX_DNS_PARAM_ERROR (0xA8) non è valido per il puntatore.
+- **NX_SUCCESS** (0x00) I dati IPv4 sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** (0xA1) L'elenco del server client è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Parametro non puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1036,7 +1036,7 @@ UINT nxd_ dns_ipv6_address_by_name_get(NX_DNS *dns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia una query di tipo AAAA con il nome di dominio specificato per ottenere gli indirizzi IP per il nome di dominio di input. Il client DNS copia l'indirizzo IPv6 dai record AAAA restituiti nella risposta del server DNS nel percorso di memoria *record_buffer* . 
+Questo servizio invia una query di tipo AAAA con il nome di dominio specificato per ottenere gli indirizzi IP per il nome di dominio di input. Il client DNS copia l'indirizzo IPv6 dai record AAAA restituiti nella risposta del server DNS nel percorso record_buffer *memoria.* 
 
 > [!NOTE]
 > Il *record_buffer* deve essere allineato a 4 byte per ricevere i dati.
@@ -1045,7 +1045,7 @@ Il formato degli indirizzi IPv6 archiviati nel buffer allineato a 4 byte è illu
 
 ![Buffer allineato a 4 byte in formato IPv6](media/image9.png)
 
-Se l'input *record_buffer* non può contenere tutti i dati aaaa nella risposta del server, il *record_buffer* include il numero di record che si adattano e restituisce il numero di record nel buffer.
+Se il record_buffer di *input* non può contenere tutti i dati AAAA nella risposta del server, il *record_buffer* contiene tutti i record che saranno adatti e restituisce il numero di record nel buffer.
 
 Con il numero di record AAAA restituiti in **record_count,* l'applicazione può analizzare gli indirizzi IPv6 da ogni record nel *record_buffer*.
 
@@ -1054,17 +1054,17 @@ Con il numero di record AAAA restituiti in **record_count,* l'applicazione può 
 - **dns_ptr** Puntatore al client DNS.  
 - **host_name_ptr** Puntatore al nome host per ottenere l'indirizzo IPv6
 - **buffer** Puntatore alla posizione in cui estrarre i dati IPv6
-- **BUFFER_SIZE** Dimensioni del buffer per il mantenimento dei dati IPv6
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **buffer_size** Dimensioni del buffer per contenere i dati IPv6
+- **wait_option** Opzione di attesa per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto correttamente i dati IPv6
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- Il parametro NX_DNS_PARAM_ERROR (0xA8) non è valido per il puntatore.
+- **NX_SUCCESS** (0x00) I dati IPv6 sono stati ottenuti correttamente
+- **NX_DNS_NO_SERVER** (0xA1) L'elenco del server client è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_PTR_ERROR (0x07) Puntatore IP o DNS non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Parametro non puntatore non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1127,7 +1127,7 @@ record 0: IP address: 2001:0db8:0000:f101: 0000: 0000: 0000:01003
 
 ## <a name="nx_dns_host_by_address_get"></a>nx_dns_host_by_address_get
 
-Cerca un nome host da un indirizzo IP
+Cercare un nome host da un indirizzo IP
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1139,34 +1139,34 @@ UINT nx_dns_host_by_address_get(NX_DNS *dns_ptr, ULONG ip_address,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio richiede la risoluzione dei nomi dell'indirizzo IP fornito da uno o più server DNS precedentemente specificati dall'applicazione. In caso di esito positivo, il nome host con terminazione NULL viene restituito nella stringa specificata da *host_name_ptr*. Si tratta di una funzione wrapper per il servizio *nxd_dns_host_by_address_get* e non accetta indirizzi IPv6.
+Questo servizio richiede la risoluzione dei nomi dell'indirizzo IP fornito da uno o più server DNS specificati in precedenza dall'applicazione. In caso di esito positivo, il nome host con terminazione NULL viene restituito nella stringa specificata da *host_name_ptr*. Si tratta di una funzione wrapper *per nxd_dns_host_by_address_get* e non accetta indirizzi IPv6.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dns_ptr** Puntatore a un'istanza DNS creata in precedenza.
+- **dns_ptr** Puntatore all'istanza DNS creata in precedenza.
 - **ip_address** Indirizzo IP da risolvere in un nome
 - **host_name_ptr** Puntatore all'area di destinazione per il nome host
 - **max_host_name_size** Dimensioni dell'area di destinazione per il nome host
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa nei cicli del timer per una risposta del server DNS dopo ogni tentativo di query e query DNS. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà nei tick timer una risposta del server DNS dopo ogni query DNS e ogni nuovo tentativo di query. Le opzioni di attesa sono definite nel modo seguente:
 
   valore di timeout (0x00000001-0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)
 
-  Selezionando TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino a quando un server DNS non risponde alla richiesta.
+  Selezionando TX_WAIT_FOREVER il thread chiamante viene sospeso a tempo indeterminato fino a quando un server DNS non risponde alla richiesta.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risoluzione DNS.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della risoluzione DNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) risoluzione DNS riuscita  
-- Timeout di **NX_DNS_TIMEOUT** (0xA2) durante il recupero del mutex DNS
-- **NX_DNS_NO_SERVER** (0XA1) non è stato specificato alcun indirizzo del server DNS
-- **NX_DNS_QUERY_FAILED** (0xA3) non ha ricevuto risposta alla query
-- Indirizzo di input null **NX_DNS_BAD_ADDRESS_ERROR** (0xa4)
-- L'indice **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) fa riferimento a un tipo di indirizzo non valido (ad esempio IPv6)
-- **NX_DNS_PARAM_ERROR** (0xA8) non è stato inserito alcun puntatore non valido
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Risoluzione DNS riuscita  
+- **NX_DNS_TIMEOUT** timeout (0xA2) per ottenere il mutex DNS
+- **NX_DNS_NO_SERVER** (0xA1) Nessun indirizzo del server DNS specificato
+- **NX_DNS_QUERY_FAILED** (0xA3) Non ha ricevuto alcuna risposta alla query
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Indirizzo di input Null
+- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) L'indice punta a un tipo di indirizzo non valido ,ad esempio IPv6
+- **NX_DNS_PARAM_ERROR** (0xA8) Input non puntatore non valido
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- NX_PTR_ERROR (0x07) Input puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1201,7 +1201,7 @@ UINT nxd_dns_host_by_address_get(NX_DNS *dns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio richiede la risoluzione dei nomi dell'indirizzo IPv6 o IPv4 nell'argomento *ip_address* input da uno o più server DNS precedentemente specificati dall'applicazione. In caso di esito positivo, il nome host con terminazione NULL viene restituito nella stringa specificata da *host_name_ptr*.
+Questo servizio richiede la risoluzione dei nomi dell'indirizzo IPv6 o IPv4 nell'argomento di input *ip_address* da uno o più server DNS specificati in precedenza dall'applicazione. Se ha esito positivo, il nome host con terminazione NULL viene restituito nella stringa specificata da *host_name_ptr*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -1209,25 +1209,25 @@ Questo servizio richiede la risoluzione dei nomi dell'indirizzo IPv6 o IPv4 nell
 - **ip_address** Indirizzo IP da risolvere in un nome
 - **host_name_ptr** Puntatore all'area di destinazione per il nome host
 - **max_host_name_size** Dimensioni dell'area di destinazione per il nome host
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa nei cicli del timer per una risposta del server DNS dopo ogni tentativo di query e query DNS. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce il tempo di attesa del servizio in tick timer per una risposta del server DNS dopo ogni query DNS e ogni nuovo tentativo di query. Le opzioni di attesa sono definite come segue:
 
-  valore di timeout (0x00000001 tramite 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
+  valore di timeout (da 0x00000001 a 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
 
-  Selezionando TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino a quando un server DNS non risponde alla richiesta.
+  Selezionando TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server DNS non risponde alla richiesta.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risoluzione DNS.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risoluzione DNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) risoluzione DNS riuscita  
-- Timeout di **NX_DNS_TIMEOUT** (0xA2) durante il recupero del mutex DNS
-- **NX_DNS_NO_SERVER** (0XA1) non è stato specificato alcun indirizzo del server DNS
-- **NX_DNS_QUERY_FAILED** (0xA3) non ha ricevuto risposta alla query
-- Indirizzo di input null **NX_DNS_BAD_ADDRESS_ERROR** (0xa4)
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- NX_DNS_PARAM_ERROR (0xA8) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) Risoluzione DNS riuscita  
+- **NX_DNS_TIMEOUT** (0xA2) timeout durante il recupero del mutex DNS
+- **NX_DNS_NO_SERVER** (0xA1) Nessun indirizzo server DNS specificato
+- **NX_DNS_QUERY_FAILED** (0xA3) Non è stata ricevuta alcuna risposta alla query
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Di input Null
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- NX_PTR_ERROR (0x07) Puntatore DNS o IP non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1281,29 +1281,29 @@ UINT nx_dns_host_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio richiede la risoluzione dei nomi del nome fornito da uno o più server DNS precedentemente specificati dall'applicazione. In caso di esito positivo, l'indirizzo IP associato viene restituito nella destinazione a cui punta host_address_ptr. Si tratta di una funzione wrapper per il servizio *nxd_dns_host_by_name_get* ed è limitata all'input dell'indirizzo IPv4.
+Questo servizio richiede la risoluzione dei nomi del nome fornito da uno o più server DNS specificati in precedenza dall'applicazione. Se ha esito positivo, l'indirizzo IP associato viene restituito nella destinazione a cui punta host_address_ptr. Si tratta di una funzione wrapper per *il nxd_dns_host_by_name_get* ed è limitata all'input di indirizzi IPv4.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore a un'istanza DNS creata in precedenza.
-- **HOST_NAME** Puntatore al nome host
+- **host_name** Puntatore al nome host
 - **host_address_ptr** Indirizzo IP del server DNS restituito
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa della risoluzione DNS. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce per quanto tempo il servizio attenderà la risoluzione DNS. Le opzioni di attesa sono definite come segue:
 
-  valore di timeout (0x00000001 tramite 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)
+  valore di timeout (da 0x00000001 a 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)
 
-  Selezionando TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino a quando un server DNS non risponde alla richiesta.
+  Selezionando TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server DNS non risponde alla richiesta.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risoluzione DNS.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risoluzione DNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la risoluzione DNS è riuscita.
-- **NX_DNS_NO_SERVER** (0XA1) non è stato specificato alcun indirizzo del server DNS
-- **NX_DNS_QUERY_FAILED** (0xA3) non ha ricevuto risposta alla query
-- NX_DNS_PARAM_ERROR (0xA8) non è stato inserito alcun puntatore non valido
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Risoluzione DNS riuscita.
+- **NX_DNS_NO_SERVER** (0xA1) Nessun indirizzo server DNS specificato
+- **NX_DNS_QUERY_FAILED** (0xA3) Non è stata ricevuta alcuna risposta alla query
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Input del puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1345,7 +1345,7 @@ IP address: 192.2.2.10
 
 ## <a name="nxd_dns_host_by_name_get"></a>nxd_dns_host_by_name_get
 
-Ricerca di un indirizzo IP dal nome host
+Cercare un indirizzo IP dal nome host
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1356,33 +1356,33 @@ UINT nxd_dns_host_by_name_get(NX_DNS *dns_ptr, ULONG *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio richiede la risoluzione dei nomi dell'indirizzo IP fornito da uno o più server DNS precedentemente specificati dall'applicazione. In caso di esito positivo, l'indirizzo IP associato viene restituito in un NXD_ADDRESS a cui punta *host_address_ptr*. Se il chiamante imposta in modo specifico l'input lookup_type per NX_IP_VERSION_V6, il servizio invierà una query per un indirizzo IPv6 host (record AAAA). Se il chiamante imposta in modo specifico l'input lookup_type per NX_IP_VERSION_V4, il servizio invierà una query per un indirizzo IPv4 host (record A).
+Questo servizio richiede la risoluzione dei nomi dell'indirizzo IP fornito da uno o più server DNS specificati in precedenza dall'applicazione. Se ha esito positivo, l'indirizzo IP associato viene restituito in un NXD_ADDRESS a cui punta *host_address_ptr*. Se il chiamante imposta specificamente l'input lookup_type su NX_IP_VERSION_V6, questo servizio invierà una query per un indirizzo IPv6 host (record AAAA). Se il chiamante imposta in modo specifico lookup_type'input NX_IP_VERSION_V4, questo servizio invierà una query per un indirizzo IPv4 host (record A).
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dns_ptr** Puntatore a un'istanza del client DNS creata in precedenza.
-- **HOST_NAME** Puntatore al nome host per trovare un indirizzo IP
+- **dns_ptr** Puntatore all'istanza del client DNS creata in precedenza.
+- **host_name** Puntatore al nome host di cui trovare l'indirizzo IP
 - **host_address_ptr** Puntatore alla destinazione per NXD_ADDRESS contenente l'indirizzo IP
-- **WAIT_OPTION** Definisce per quanto tempo il servizio resterà in attesa nei cicli del timer per la risposta del server DNS per ogni trasmissione e ritrasmissione della query. Le opzioni di attesa sono definite come segue:
+- **wait_option** Definisce il tempo di attesa del servizio in tick timer per la risposta del server DNS per ogni trasmissione e ritrasmissione delle query. Le opzioni di attesa sono definite come segue:
 
-  valore di timeout (0x00000001 tramite 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
+  valore di timeout (da 0x00000001 a 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
 
-  Selezionando TX_WAIT_FOREVER il thread chiamante verrà sospeso per un tempo illimitato fino a quando un server DNS non risponde alla richiesta.
+  Selezionando TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando un server DNS non risponde alla richiesta.
 
-  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di segni di spunta del timer per rimanere sospesi durante l'attesa della risoluzione DNS.
+  La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick del timer che rimangono sospesi durante l'attesa della risoluzione DNS.
 
-- **lookup_type** Indica il tipo di ricerca (A vs AAAA).
+- **lookup_type** Indicare il tipo di ricerca (A e AAAA).
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la risoluzione DNS è riuscita.
-- **NX_DNS_NO_SERVER** (0XA1) non è stato specificato alcun indirizzo del server DNS
-- **NX_DNS_QUERY_FAILED** (0xA3) non ha ricevuto risposta alla query
-- Indirizzo di input null **NX_DNS_BAD_ADDRESS_ERROR** (0xa4)
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- NX_DNS_PARAM_ERROR (0xA8) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) Risoluzione DNS riuscita.
+- **NX_DNS_NO_SERVER** (0xA1) Nessun indirizzo server DNS specificato
+- **NX_DNS_QUERY_FAILED** (0xA3) Non è stata ricevuta alcuna risposta alla query
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Di input Null
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- NX_PTR_ERROR (0x07) Input del puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1427,7 +1427,7 @@ Test AAAA:
 IP address: 2607:f8b0:4007:800:0:0:0:1008
 ```
 
-Un altro esempio di utilizzo di questo servizio ora, questa volta usando gli indirizzi IPv4 e i tipi di record, è illustrato di seguito:
+Di seguito è riportato un altro esempio di uso di questo servizio ora, questa volta con indirizzi IPv4 e tipi di record A:
 ```C
 /* Create a query to obtain the IPv4 address for the host “www.my_example.com”. */
 status =  nxd_dns_host_by_name_get(&my_dns, “www.my_example.com”, &ip_address, 4000, 
@@ -1461,7 +1461,7 @@ IP address: 192.2.2.10
 
 ## <a name="nx_dns_host_text_get"></a>nx_dns_host_text_get
 
-Cerca la stringa di testo per il nome di dominio di input
+Cercare la stringa di testo per il nome di dominio di input
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1472,29 +1472,29 @@ UINT nx_dns_host_text_get(NX_DNS *dns_ptr, UCHAR *host_name,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia una query di tipo TXT con il nome di dominio e il buffer specificati per ottenere i dati stringa arbitrari.
+Questo servizio invia una query di tipo TXT con il nome di dominio e il buffer specificati per ottenere i dati di stringa arbitrari.
 
-Il client DNS copia la stringa di testo nel record TXT nella risposta del server DNS nel percorso di memoria *record_buffer* . 
+Il client DNS copia la stringa di testo nel record TXT nella risposta del server DNS nel percorso *record_buffer* memoria. 
 
 > [!NOTE]
-> Non è necessario che la record_buffer sia allineata a 4 byte per ricevere i dati.
+> Il record_buffer deve essere allineato a 4 byte per ricevere i dati.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al client DNS.  
-- **HOST_NAME** Puntatore al nome dell'host in cui eseguire la ricerca
+- **host_name** Puntatore al nome dell'host in cui eseguire la ricerca
 - **record_buffer** Puntatore alla posizione in cui estrarre i dati TXT
-- **BUFFER_SIZE** Dimensioni del buffer per memorizzare i dati TXT
-- **WAIT_OPTION** Opzione wait per la ricezione della risposta del server DNS
+- **buffer_size** Dimensioni del buffer per contenere i dati TXT
+- **wait_option** Opzione Wait per ricevere la risposta del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Stringa TXT ottenuta **NX_SUCCESS** (0x00) riuscita
-- L'elenco dei server client **NX_DNS_NO_SERVER** (0xA1) è vuoto
-- **NX_DNS_QUERY_FAILED** (0XA3) non è stata ricevuta alcuna risposta DNS valida
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- NX_DNS_PARAM_ERROR (0xA8) non è stato inserito alcun puntatore non valido
+- **NX_SUCCESS** (0x00) Stringa TXT ottenuta correttamente
+- **NX_DNS_NO_SERVER** server client (0xA1) è vuoto
+- **NX_DNS_QUERY_FAILED** (0xA3) Nessuna risposta DNS valida ricevuta
+- NX_PTR_ERROR (0x07) Input del puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_PARAM_ERROR (0xA8) Input non puntatore non valido
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1535,7 +1535,7 @@ v=spf1 include:_www.my_example.com ip4:192.2.2.10/31 ip4:192.2.2.11/31 ~all
 
 ## <a name="nx_dns_packet_pool_set"></a>nx_dns_packet_pool_set
 
-Impostare il pool di pacchetti client DNS
+Impostare il pool di pacchetti del client DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1543,24 +1543,24 @@ UINT nx_dns_packet_pool_set(NX_DNS *dns_ptr, NX_PACKET_POOL *pool_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta un pool di pacchetti creato in precedenza come pool di pacchetti client DNS. Il client DNS userà questo pool di pacchetti per inviare query DNS, quindi il payload del pacchetto non deve essere inferiore a NX_DNS_PACKET_PAYLOAD che include le intestazioni Ethernet, IP e UDP ed è definito in *nxd_dns. h.* 
+Questo servizio imposta un pool di pacchetti creato in precedenza come pool di pacchetti del client DNS. Il client DNS userà questo pool di pacchetti per inviare query DNS, quindi il payload del pacchetto non deve essere minore di NX_DNS_PACKET_PAYLOAD che include le intestazioni Ethernet, IP e UDP ed è definito in *nxd_dns.h.* 
 
 > [!NOTE]
-> *W* Hen il client DNS viene eliminato, il pool di pacchetti non viene eliminato con esso ed è responsabilità dell'applicazione eliminare il pool di pacchetti quando non è più necessario.
+> *Se* il client DNS viene eliminato, il pool di pacchetti non viene eliminato con esso ed è responsabilità dell'applicazione eliminare il pool di pacchetti quando non è più necessario.
 >
-> Questo servizio è disponibile solo se l'opzione di configurazione NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definita in *nxd_dns. h*
+> Questo servizio è disponibile solo se l'opzione di NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definita in *nxd_dns.h*
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **dns_ptr** Puntatore a un'istanza del client DNS creata in precedenza.
+- **dns_ptr** Puntatore all'istanza del client DNS creata in precedenza.
 - **pool_ptr** Puntatore al pool di pacchetti creato in precedenza
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) completato correttamente.
-- Client di **NX_NOT_ENABLED** (0x14) non configurato per questa opzione
-- NX_PTR_ERROR (0x07) un puntatore client IP o DNS non valido.
-- Il chiamante NX_CALLER_ERROR (0x11) non è valido per il servizio.
+- **NX_SUCCESS** (0x00) Completamento riuscito.
+- **NX_NOT_ENABLED** client (0x14) non configurato per questa opzione
+- NX_PTR_ERROR (0x07) Puntatore ip o client DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1589,7 +1589,7 @@ status =  nx_dns_packet_pool_set(&my_dns, &client_pool);
 
 ## <a name="nx_dns_server_add"></a>nx_dns_server_add
 
-Aggiungi indirizzo IP del server DNS
+Aggiungere l'indirizzo IP del server DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1597,7 +1597,7 @@ UINT nx_dns_server_add(NX_DNS *dns_ptr, ULONG server_address);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un server DNS IPv4 all'elenco dei server.
+Questo servizio aggiunge un server DNS IPv4 all'elenco di server.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -1606,14 +1606,14 @@ Questo servizio aggiunge un server DNS IPv4 all'elenco dei server.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Aggiunta del server **NX_SUCCESS** (0x00) completata
+- **NX_SUCCESS** server (0x00) aggiunto correttamente
 - **NX_DNS_DUPLICATE_ENTRY**  
-**NX_NO_MORE_ENTRIES** (0x17) non sono più consentiti server DNS (elenco completo)
-- **NX_DNS_PARAM_ERROR** (0xA8) non è stato inserito alcun puntatore non valido
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- Input dell'indirizzo del server NX_DNS_BAD_ADDRESS_ERROR (0xA4) null
+**NX_NO_MORE_ENTRIES** (0x17) Nessun altro server DNS consentito (l'elenco è pieno)
+- **NX_DNS_PARAM_ERROR** (0xA8) Input non puntatore non valido
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- NX_PTR_ERROR (0x07) Input del puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_BAD_ADDRESS_ERROR (0xA4) Input dell'indirizzo del server Null
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1637,7 +1637,7 @@ UINT nxd_dns_server_add(NX_DNS *dns_ptr, NXD_ADDRESS *server_address);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge l'indirizzo IP di un server DNS all'elenco dei server client DNS. È possibile che il server_address sia un indirizzo IPv4 o IPv6. Se il client desidera essere in grado di accedere allo stesso server tramite l'indirizzo IPv4 o IPv6, deve aggiungere entrambi gli indirizzi IP come voci all'elenco dei server.
+Questo servizio aggiunge l'indirizzo IP di un server DNS all'elenco di server client DNS. Il server_address può essere un indirizzo IPv4 o IPv6. Se il client vuole poter accedere allo stesso server tramite il relativo indirizzo IPv4 o IPv6, deve aggiungere entrambi gli indirizzi IP come voci all'elenco dei server.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -1646,15 +1646,15 @@ Questo servizio aggiunge l'indirizzo IP di un server DNS all'elenco dei server c
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Aggiunta del server **NX_SUCCESS** (0x00) completata
+- **NX_SUCCESS** server (0x00) aggiunto correttamente
 - **NX_DNS_DUPLICATE_ENTRY**  
-**NX_NO_MORE_ENTRIES** (0x17) non sono più consentiti server DNS (elenco completo) 
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- **NX_DNS_PARAM_ERROR** (0xA8) non è stato inserito alcun puntatore non valido
-- NX_PTR_ERROR (0x07) input puntatore non valido
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- Input dell'indirizzo del server NX_DNS_BAD_ADDRESS_ERROR (0xA4) null
-- L'indice NX_DNS_INVALID_ADDRESS_TYPE (0xB2) fa riferimento a un tipo di indirizzo non valido (ad esempio IPv6)
+**NX_NO_MORE_ENTRIES** (0x17) Nessun altro server DNS consentito (l'elenco è pieno) 
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- **NX_DNS_PARAM_ERROR** (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Input del puntatore non valido
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_BAD_ADDRESS_ERROR (0xA4) Input dell'indirizzo del server Null
+- NX_DNS_INVALID_ADDRESS_TYPE (0xB2) l'indice punta a un tipo di indirizzo non valido,ad esempio IPv6
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1689,28 +1689,28 @@ UINT nx_dns_server_get(NX_DNS *dns_ptr, UINT index,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce l'indirizzo del server DNS IPv4 dall'elenco dei server in corrispondenza dell'indice specificato. 
+Questo servizio restituisce l'indirizzo del server DNS IPv4 dall'elenco di server in corrispondenza dell'indice specificato. 
 
 > [!NOTE]
-> L'indice è in base zero. Se l'indice di input supera le dimensioni dell'elenco dei client DNS, viene trovato un indirizzo IPv6 in corrispondenza dell'indice o viene trovato un indirizzo null in corrispondenza dell'indice specificato. viene restituito un errore. È possibile chiamare il servizio *nx_dns_get_serverlist_size* prima di ottenere il numero di server DNS nell'elenco client.
+> L'indice è in base zero. Se l'indice di input supera le dimensioni dell'elenco client DNS, viene trovato un indirizzo IPv6 in tale indice o viene trovato un indirizzo Null in corrispondenza dell'indice specificato, viene restituito un errore. Il *nx_dns_get_serverlist_size* può essere chiamato prima ottenere il numero di server DNS nell'elenco Client.
 
-Questo servizio supporta solo indirizzi IPv4. Chiama il servizio *nxd_dns_server_get* che supporta gli indirizzi sia IPv4 che IPv6.
+Questo servizio supporta solo indirizzi IPv4. Chiama il servizio *nxd_dns_server_get* che supporta indirizzi IPv4 e IPv6.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al blocco di controllo DNS  
-- **Indice** di Indicizzare nell'elenco dei server del client DNS
+- **index** Indicizzare l'elenco di server del client DNS
 - **dns_server_address** Puntatore all'indirizzo IP del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il server **NX_SUCCESS** (0x00) ha restituito un esito positivo
-- **NX_DNS_SERVER_NOT_FOUND** (0xA9) punta a uno slot vuoto
-- L'indice **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) fa riferimento a un indirizzo null
-- L'indice **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) fa riferimento a un tipo di indirizzo non valido (ad esempio IPv6)
-- **NX_DNS_PARAM_ERROR** (0xA8) non è un input non puntatore valido
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido.
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Server riuscito restituito
+- **NX_DNS_SERVER_NOT_FOUND** (0xA9) l'indice punta a uno slot vuoto
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) L'indice punta all'indirizzo Null
+- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) l'indice punta a un tipo di indirizzo non valido ,ad esempio IPv6
+- **NX_DNS_PARAM_ERROR** (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Ip o puntatore DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1739,28 +1739,28 @@ UINT nxd_dns_server_get(NX_DNS *dns_ptr, UINT index,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce l'indirizzo IP del server DNS dall'elenco dei server in corrispondenza dell'indice specificato. 
+Questo servizio restituisce l'indirizzo IP del server DNS dall'elenco di server in corrispondenza dell'indice specificato. 
 
 > [!NOTE]
-> L'indice è in base zero. Se l'indice di input supera la dimensione dell'elenco dei client DNS oppure viene trovato un indirizzo null in corrispondenza dell'indice specificato, viene restituito un errore. Il servizio *nx_dns_get_serverlist_size* può essere chiamato per primo per ottenere il numero di server DNS nell'elenco dei server.
+> L'indice è in base zero. Se l'indice di input supera le dimensioni dell'elenco client DNS o viene trovato un indirizzo Null in corrispondenza dell'indice specificato, viene restituito un errore. Il *nx_dns_get_serverlist_size* può essere chiamato per primo per ottenere il numero di server DNS nell'elenco dei server.
 
 Questo servizio supporta gli indirizzi IPv4 e IPv6.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al blocco di controllo DNS  
-- **Indice** di Indicizzare nell'elenco dei server del client DNS
+- **index** Indicizzare l'elenco di server del client DNS
 - **dns_server_address** Puntatore all'indirizzo IP del server DNS
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha restituito l'indirizzo IP del server
-- **NX_DNS_SERVER_NOT_FOUND** (0xA9) punta a uno slot vuoto
-- L'indice **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) punta all'indirizzo del server null
-- L'indice **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) fa riferimento a un tipo di indirizzo non valido (ad esempio IPv6)
-- **NX_DNS_PARAM_ERROR** (0xA8) non è stato inserito alcun puntatore non valido
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido.
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) Ha restituito correttamente l'indirizzo IP del server
+- **NX_DNS_SERVER_NOT_FOUND** (0xA9) l'indice punta a uno slot vuoto
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) L'indice punta all'indirizzo del server Null
+- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) l'indice punta a un tipo di indirizzo non valido ,ad esempio IPv6
+- **NX_DNS_PARAM_ERROR** (0xA8) Input non puntatore non valido
+- NX_PTR_ERROR (0x07) Ip o puntatore DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1787,7 +1787,7 @@ UINT nx_dns_server_remove(NX_DNS *dns_ptr, ULONG server_address);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove un server DNS IPv4 dall'elenco client. Si tratta di una funzione wrapper per *nxd_dns_server_remove*.
+Questo servizio rimuove un server DNS IPv4 dall'elenco Client. Si tratta di una funzione wrapper per *nxd_dns_server_remove*.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -1796,12 +1796,12 @@ Questo servizio rimuove un server DNS IPv4 dall'elenco client. Si tratta di una 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il server DNS **NX_SUCCESS** (0x00) è stato rimosso
-- Server **NX_DNS_SERVER_NOT_FOUND** (0xA9) non presente nell'elenco client
-- Input dell'indirizzo del server **NX_DNS_BAD_ADDRESS_ERROR** (0XA4) null
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido.
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** server DNS (0x00) rimosso correttamente
+- **NX_DNS_SERVER_NOT_FOUND** server (0xA9) non in elenco client
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Input dell'indirizzo del server Null
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- NX_PTR_ERROR (0x07) Ip o puntatore DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1826,22 +1826,22 @@ UINT nxd_dns_server_remove(NX_DNS *dns_ptr, NXD_ADDRESS *server_address);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove dall'elenco client un server DNS dell'indirizzo IP specificato. L'indirizzo IP di input accetta indirizzi IPv4 e IPv6. Dopo la rimozione del server, i server rimanenti spostano verso il basso di un indice nell'elenco per riempire lo slot sgomberato.
+Questo servizio rimuove un server DNS dell'indirizzo IP specificato dall'elenco Client. L'indirizzo IP di input accetta sia indirizzi IPv4 che indirizzi IPv6. Dopo la rimozione del server, i server rimanenti si spostano di un indice verso il basso nell'elenco per riempire lo slot vuoto.
 
 ### <a name="input-parameters"></a>Parametri di input
 
 - **dns_ptr** Puntatore al blocco di controllo DNS.
-- **server_address** Puntatore al server DNS NXD_ADDRESS dati che contengono l'indirizzo IP del server.
+- **server_address** Puntatore al server DNS che NXD_ADDRESS dati contenenti l'indirizzo IP del server.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il server DNS **NX_SUCCESS** (0x00) è stato rimosso
-- Server **NX_DNS_SERVER_NOT_FOUND** (0xA9) non presente nell'elenco client
-- Input dell'indirizzo del server **NX_DNS_BAD_ADDRESS_ERROR** (0XA4) null
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3) non è in grado di elaborare il record con IPv6 disabilitato
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido.
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
-- L'indice NX_DNS_INVALID_ADDRESS_TYPE (0xB2) fa riferimento a un tipo di indirizzo non valido (ad esempio IPv6)
+- **NX_SUCCESS** server DNS (0x00) rimosso correttamente
+- **NX_DNS_SERVER_NOT_FOUND** server (0xA9) non in elenco client
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Input dell'indirizzo del server Null
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) Impossibile elaborare il record con IPv6 disabilitato
+- NX_PTR_ERROR (0x07) Ip o puntatore DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
+- NX_DNS_INVALID_ADDRESS_TYPE (0xB2) l'indice punta a un tipo di indirizzo non valido,ad esempio IPv6
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1874,7 +1874,7 @@ UINT nx_dns_server_remove_all(NX_DNS *dns_ptr);
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove tutti i server DNS dall'elenco client.
+Questo servizio rimuove tutti i server DNS dall'elenco Client.
 
 ### <a name="input-parameters"></a>Parametri di input
 
@@ -1882,10 +1882,10 @@ Questo servizio rimuove tutti i server DNS dall'elenco client.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Server DNS **NX_SUCCESS** (0x00) rimossi correttamente
-- **NX_DNS_ERROR** (messaggi 0XA0) non è in grado di ottenere il mutex di protezione
-- NX_PTR_ERROR (0x07) un puntatore IP o DNS non valido.
-- NX_CALLER_ERROR (0x11) chiamante non valido di questo servizio
+- **NX_SUCCESS** (0x00) SERVER DNS rimossi correttamente
+- **NX_DNS_ERROR** (0xA0) Impossibile ottenere il mutex di protezione
+- NX_PTR_ERROR (0x07) Ip o puntatore DNS non valido.
+- NX_CALLER_ERROR (0x11) Chiamante non valido di questo servizio
 
 ### <a name="allowed-from"></a>Consentito da
 

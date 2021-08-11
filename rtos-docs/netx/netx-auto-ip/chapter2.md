@@ -1,50 +1,50 @@
 ---
-title: Capitolo 2-installazione e uso di Azure RTO NetX AutoIP
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente AutoIP NetX di Azure RTO.
+title: Capitolo 2 - Installazione e uso di Azure RTOS NetX AutoIP
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX AutoIP.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 269a3b4e9754fdc19e2cf1482d483fad2b841de9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9bc5ce189980dbceaf12a2f2e8429d9267e7d37f559c88d10c54e399d01ec259
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821515"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796889"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-autoip"></a>Capitolo 2-installazione e uso di Azure RTO NetX AutoIP
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-autoip"></a>Capitolo 2 - Installazione e uso di Azure RTOS NetX AutoIP
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente AutoIP NetX di Azure RTO.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX AutoIP.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
 AutoIP per NetX è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include tre file di origine, uno di inclusione e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nx_auto_ip. h**: file di intestazione per NETX AutoIP
-- **nx_auto_ip. c**: file di origine c per NETX AutoIP
-- **demo_netx_auto_ip. c**: file di origine c per NETX demo AutoIP
-- **nx_auto_ip.pdf**: Descrizione PDF di NETX AutoIP
+- **nx_auto_ip.h:** file di intestazione per NetX AutoIP
+- **nx_auto_ip.c**: file di origine C per NetX AutoIP
+- **demo_netx_auto_ip.c**: File di origine C per netx AutoIP Demo
+- **nx_auto_ip.pdf**: Descrizione PDF di NetX AutoIP
 
 ## <a name="autoip-installation"></a>Installazione di AutoIP
 
-Per poter usare NetX AutoIP, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Se, ad esempio, NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_auto_ip. h*, *nx_auto_ip. c* e *demo_netx_auto_ip. c* devono essere copiati in questa directory.
+Per usare NetX AutoIP, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_auto_ip.h*, *nx_auto_ip.c* e *demo_netx_auto_ip.c* devono essere copiati in questa directory.
 
 ## <a name="using-autoip"></a>Uso di AutoIP
 
-L'uso di NetX AutoIP è facile. In pratica, il codice dell'applicazione deve includere *nx_auto_ip. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter usare threadX e NETX. Una volta incluso *nx_auto_ip. h* , il codice dell'applicazione è in grado di eseguire le chiamate di funzione AutoIP specificate più avanti in questa guida. Nell'applicazione deve inoltre essere incluso *nx_auto_ip. c* nel processo di compilazione. Questi file devono essere compilati allo stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX AutoIP.
+L'uso di NetX AutoIP è semplice. In pratica, il codice dell'applicazione deve includere *nx_auto_ip.h* dopo aver incluso *tx_api.h* *e nx_api.h*, per poter usare ThreadX e NetX. Dopo *nx_auto_ip.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione AutoIP specificate più avanti in questa guida. L'applicazione deve includere *anche nx_auto_ip.c* nel processo di compilazione. Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX AutoIP.
 
 > [!NOTE]
-> Poiché AutoIP usa i servizi ARP NetX, è necessario abilitare ARP con la chiamata *nx_arp_enable* prima di usare AutoIP.
+> Poiché AutoIP usa i servizi NetX ARP, ARP deve *essere* abilitato con la chiamata nx_arp_enable prima di usare AutoIP.
 
 ## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
 
-Un esempio di come è facile usare NetX AutoIP è descritto nella figura 1,1, riportata di seguito. In questo esempio, il file di inclusione AutoIP *nx_auto_ip. h* viene portato alla riga 002. Successivamente, viene creata l'istanza di NetX AutoIP in "*tx_application_define*" alla riga 090. Si noti che il blocco di controllo NetX AutoIP "auto_ip_0" è stato definito in precedenza come variabile globale alla riga 015. Una volta completata la creazione, viene avviato un AutoIP NetX alla riga 098. L'elaborazione della funzione di callback per la modifica dell'indirizzo IP inizia alla riga 105, che viene usata per gestire i conflitti successivi o la possibile risoluzione degli indirizzi DHCP.
+Un esempio di quanto sia semplice usare NetX AutoIP è descritto nella figura 1.1, che viene visualizzata di seguito. In questo esempio il file di inclusione AutoIP *nx_auto_ip.h* viene portato alla riga 002. Successivamente, l'istanza di NetX AutoIP viene creata in "*tx_application_define*" alla riga 090. Si noti che il blocco di controllo AutoIP NetX "auto_ip_0" è stato definito in precedenza come variabile globale alla riga 015. Al termine della creazione, netx AutoIP viene avviato alla riga 098. L'elaborazione della funzione di callback di modifica dell'indirizzo IP inizia dalla riga 105, usata per gestire i conflitti successivi o la possibile risoluzione degli indirizzi DHCP.
 
 > [!NOTE]
-> Nell'esempio seguente si presuppone che il dispositivo host sia un dispositivo a Home singolo. Per un dispositivo multihomed, l'applicazione host può usare il servizio AutoIP NetX *nx_auto_ip_interface_* impostato per specificare un'interfaccia di rete secondaria per verificare la presenza di un indirizzo IP. Per ulteriori informazioni sulla configurazione di applicazioni multihomed, vedere la **Guida dell'utente di NETX** . Si noti inoltre che l'applicazione host deve usare l'API NetX *nx_status_ip_interface_check* per verificare che AutoIP abbia ottenuto un indirizzo IP.
+> L'esempio seguente presuppone che il dispositivo host sia un dispositivo single-homed. Per un dispositivo multihomed, l'applicazione host può usare il servizio NetX AutoIP *nx_auto_ip_interface_* impostato per specificare un'interfaccia di rete secondaria di cui eseguire il probe per un indirizzo IP. Per altre informazioni sulla configurazione di applicazioni multihomed, vedere la Guida dell'utente di **NetX.** Si noti inoltre che l'applicazione host deve usare l'API NetX *nx_status_ip_interface_check* verificare che AutoIP abbia ottenuto un indirizzo IP.
 
-## <a name="example-of-autoip-use-with-netx"></a>Esempio di utilizzo di AutoIP con NetX
+## <a name="example-of-autoip-use-with-netx"></a>Esempio di uso di AutoIP con NetX
 
 ```c
 000 #include "tx_api.h"
@@ -238,16 +238,16 @@ Un esempio di come è facile usare NetX AutoIP è descritto nella figura 1,1, ri
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Sono disponibili diverse opzioni di configurazione per la compilazione di NetX AutoIP. Di seguito è riportato un elenco di tutte le opzioni, in cui ciascuna è descritta in dettaglio:
+Esistono diverse opzioni di configurazione per la compilazione di NetX AutoIP. Di seguito è riportato un elenco di tutte le opzioni, in cui ognuna è descritta in dettaglio:
 
-- **NX_DISABLE_ERROR_CHECKING**: definito, questa opzione rimuove il controllo degli errori di AutoIP di base. Viene in genere usato dopo il debug dell'applicazione.
-- **NX_AUTO_IP_PROBE_WAIT**: numero di secondi di attesa prima dell'invio del primo Probe. Per impostazione predefinita, questo valore è definito come 1.
-- **NX_AUTO_IP_PROBE_NUM**: numero di probe ARP da inviare. Per impostazione predefinita, questo valore è definito come 3.
-- **NX_AUTO_IP_PROBE_MIN**: numero minimo di secondi di attesa tra l'invio di probe. Per impostazione predefinita, questo valore è definito come 1.
-- **NX_AUTO_IP_PROBE_MAX**: numero massimo di secondi di attesa tra l'invio di probe. Per impostazione predefinita, questo valore è definito come 2.
-- **NX_AUTO_IP_MAX_CONFLICTS**: numero di conflitti di AutoIP prima di aumentare i ritardi di elaborazione. Per impostazione predefinita, questo valore è definito come 10.
-- **NX_AUTO_IP_RATE_LIMIT_INTERVAL**: numero di secondi per l'estensione del periodo di attesa quando viene superato il numero totale di conflitti. Per impostazione predefinita, questo valore è definito come 60.
-- **NX_AUTO_IP_ANNOUNCE_WAIT**: numero di secondi di attesa prima dell'invio dell'annuncio. Per impostazione predefinita, questo valore è definito come 2.
-- **NX_AUTO_IP_ANNOUNCE_NUM**: numero di annunci ARP da inviare. Per impostazione predefinita, questo valore è definito come 2.
-- **NX_AUTO_IP_ANNOUNCE_INTERVAL**: numero di secondi di attesa tra le annunci di invio. Per impostazione predefinita, questo valore è definito come 2.
-- **NX_AUTO_IP_DEFEND_INTERVAL**: numero di secondi di attesa tra le annunci di difesa. Per impostazione predefinita, questo valore è definito come 10.
+- **NX_DISABLE_ERROR_CHECKING**: definita, questa opzione rimuove il controllo degli errori AutoIP di base. Viene in genere usato dopo il debug dell'applicazione.
+- **NX_AUTO_IP_PROBE_WAIT:** numero di secondi di attesa prima dell'invio del primo probe. Per impostazione predefinita, questo valore è definito come 1.
+- **NX_AUTO_IP_PROBE_NUM:** numero di probe ARP da inviare. Per impostazione predefinita, questo valore è definito come 3.
+- **NX_AUTO_IP_PROBE_MIN:** numero minimo di secondi di attesa tra l'invio dei probe. Per impostazione predefinita, questo valore è definito come 1.
+- **NX_AUTO_IP_PROBE_MAX:** numero massimo di secondi di attesa tra l'invio dei probe. Per impostazione predefinita, questo valore è definito come 2.
+- **NX_AUTO_IP_MAX_CONFLICTS:** numero di conflitti AutoIP prima di aumentare i ritardi di elaborazione. Per impostazione predefinita, questo valore è definito come 10.
+- **NX_AUTO_IP_RATE_LIMIT_INTERVAL:** numero di secondi per estendere il periodo di attesa quando viene superato il numero totale di conflitti. Per impostazione predefinita, questo valore è definito come 60.
+- **NX_AUTO_IP_ANNOUNCE_WAIT:** numero di secondi di attesa prima dell'invio dell'annuncio. Per impostazione predefinita, questo valore è definito come 2.
+- **NX_AUTO_IP_ANNOUNCE_NUM:** numero di annunci ARP da inviare. Per impostazione predefinita, questo valore è definito come 2.
+- **NX_AUTO_IP_ANNOUNCE_INTERVAL:** numero di secondi di attesa tra l'invio delle notifiche. Per impostazione predefinita, questo valore è definito come 2.
+- **NX_AUTO_IP_DEFEND_INTERVAL:** numero di secondi di attesa tra le annunciazioni della difesa. Per impostazione predefinita, questo valore è definito come 10.

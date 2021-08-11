@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: a6f9cfd772c81340a90b7dc217c0ccc160c7f957
-ms.sourcegitcommit: 7993d2c3b0711ae2c246561a0c8bf963d8e0324a
+ms.openlocfilehash: d9bd7cfda454e73e9bd270b86616780ab7ceab1a76160a66cf49a9ef82efae05
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114661199"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792401"
 ---
 # <a name="what-is-microsoft-azure-rtos"></a>Che cos'Microsoft Azure RTOS?
 
@@ -128,37 +128,37 @@ Il lab di valutazione di Information Security usato per Azure RTOS crypto era at
 
 ### <a name="supports-most-popular-architectures"></a>Supporta le architetture più comuni
 
-Azure RTOS sui microprocessori a 32/64 bit più diffusi, pre-testati e completamente supportati, incluse le architetture avanzate seguenti.
+Azure RTOS sui microprocessori a 32/64 bit più diffusi, out-of-the-box, completamente testati e completamente supportati, incluse le architetture avanzate seguenti.
 
-- **Dispositivi analoghi:** SHARC, Blackfin, CM4xx
+- **Dispositivi analogici:** SHARC, Blackfin, CM4xx
 
-- **Andes Core:** RISC-V
+- **Andes Core**: RISC-V
 
-- **Ambiqmicro:** Cpu avi
+- **Ambiqmicro:** MKU Apollo
 
-- **ARM:** ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x a 64 bit/R4/R5, TrustZone ARMv8-M
+- **ARM:** ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64 bit/R4/R5, TrustZone ARMv8-M
 
 - **Cadenza:** Xtensa, Diamond
 
 - **CEVA:** PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
 
-- **Cypress:** RISC-V
+- **Cypress**: RISC-V
 
 - **EnSilica:** eSi-RISC
 
 - **Infineon:** XMC1000, XMC4000, TriCore
 
-- **Intel; Intel FPGA:** x36/Pentium, XScale, NIOS II, Kpine, Arria 10
+- **Intel; Intel FPGA:** x36/Pentium, XScale, NIOS II, Ciclone, Arria 10
 
 - **Microchip:** AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
 
-- **Microsemi:** RISC-V
+- **Microsemi**: RISC-V
 
 - **NXP:** LPC, ARM7, ARM9, PowerPC, 68 K, i.MX, ColdFire, Kinetis Cortex-M3/M4
 
 - **Renesas:** SH, HS, V850, RX, RZ, Synergy
 
-- **Silicon Labs:** EFM32
+- **Silicon Labs**: EFM32
 
 - **Synopsys:** ARC 600, 700, ARC EM, ARC HS
 
@@ -174,4 +174,4 @@ Azure RTOS sui microprocessori a 32/64 bit più diffusi, pre-testati e completam
 
 ## <a name="in-the-context-of-azure-iot"></a>Nel contesto di Azure IoT
 
-Oltre a connettersi direttamente a Azure IoT o connettersi indirettamente tramite Azure IoT Edge, Azure RTOS è disponibile anche nei Azure Sphere dispositivi. La combinazione di Azure RTOS e Azure Sphere l'elaborazione in tempo reale e la sicurezza migliori in un unico dispositivo.
+Oltre a connettersi direttamente a Azure IoT o connettersi indirettamente tramite Azure IoT Edge, Azure RTOS è disponibile anche Azure Sphere dispositivi. La combinazione di Azure RTOS e Azure Sphere l'elaborazione in tempo reale e la sicurezza migliori in un unico dispositivo.

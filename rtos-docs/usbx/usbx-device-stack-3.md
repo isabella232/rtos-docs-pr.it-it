@@ -1,30 +1,30 @@
 ---
-title: Capitolo 3-componenti funzionali dello stack di dispositivi USBX
-description: Questo capitolo contiene una descrizione dello stack di dispositivi USB embedded a prestazioni elevate di USBX da una prospettiva funzionale.
+title: Capitolo 3 - Componenti funzionali dello stack di dispositivi USBX
+description: Questo capitolo contiene una descrizione dello stack di dispositivi USB incorporato USBX ad alte prestazioni dal punto di vista funzionale.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: dc57f3e0f6aa6731f4aaedee8169313ca7276cff
-ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
+ms.openlocfilehash: 104badcbf1ec682cd8b09008578ba91768834d694473ecccf59e35637dfd9f3c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106082201"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791355"
 ---
-# <a name="chapter-3---functional-components-of-usbx-device-stack"></a>Capitolo 3-componenti funzionali dello stack di dispositivi USBX
+# <a name="chapter-3---functional-components-of-usbx-device-stack"></a>Capitolo 3 - Componenti funzionali dello stack di dispositivi USBX
 
-Questo capitolo contiene una descrizione dello stack di dispositivi USB embedded a prestazioni elevate di USBX da una prospettiva funzionale.
+Questo capitolo contiene una descrizione dello stack di dispositivi USB incorporato USBX ad alte prestazioni dal punto di vista funzionale.
 
 ## <a name="execution-overview"></a>Panoramica dell'esecuzione
 
 USBX per il dispositivo è costituito da diversi componenti.
 
 - Inizializzazione
-- Chiamate dell'interfaccia dell'applicazione
+- Chiamate all'interfaccia dell'applicazione
 - Classi di dispositivi
-- Stack dispositivo USB
+- Stack di dispositivi USB
 - Controller del dispositivo
 - Gestione VBUS
 
@@ -34,47 +34,47 @@ Il diagramma seguente illustra lo stack di dispositivi USBX.
 
 ### <a name="initialization"></a>Inizializzazione
 
-Per attivare USBX, è necessario chiamare la funzione ***ux_system_initialize*** . Questa funzione Inizializza le risorse di memoria di USBX.
+Per attivare USBX, è necessario ***chiamare*** ux_system_initialize funzione. Questa funzione inizializza le risorse di memoria di USBX.
 
-Per attivare le funzionalità del dispositivo USBX, è necessario chiamare la funzione ***ux_device_stack_initialize*** . Questa funzione inizializza a sua volta tutte le risorse usate dallo stack di dispositivi USBX, ad esempio thread ThreadX, mutex e semafori.
+Per attivare le funzionalità dei dispositivi USBX, è necessario ***chiamare ux_device_stack_initialize*** funzione. Questa funzione a sua volta inizializza tutte le risorse usate dallo stack di dispositivi USBX, ad esempio thread ThreadX, mutex e semafori.
 
-L'inizializzazione dell'applicazione consente di attivare il controller del dispositivo USB e una o più classi USB. Contrariamente al lato host USB, il lato dispositivo può avere un solo driver del controller USB in esecuzione in qualsiasi momento. Quando le classi sono state registrate nello stack e la funzione di inizializzazione dei controller del dispositivo è stata chiamata, il bus è attivo e lo stack risponderà ai comandi di reimpostazione del bus e enumerazione host.
+È l'inizializzazione dell'applicazione ad attivare il controller del dispositivo USB e una o più classi USB. Diversamente dal lato host USB, sul lato dispositivo può essere in esecuzione un solo driver controller USB in qualsiasi momento. Quando le classi sono state registrate nello stack e la funzione di inizializzazione del controller del dispositivo è stata chiamata, il bus è attivo e lo stack risponderà ai comandi di enumerazione host e reimpostazione del bus.
 
-### <a name="application-interface-calls"></a>Chiamate dell'interfaccia dell'applicazione
+### <a name="application-interface-calls"></a>Chiamate all'interfaccia dell'applicazione
 
-In USBX sono disponibili due livelli di API.
+Esistono due livelli di API in USBX.
 
 - API dello stack di dispositivi USB
-- API della classe dispositivo USB
+- API della classe di dispositivi USB
 
-In genere, un'applicazione USBX non deve chiamare alcuna API dello stack di dispositivi USB. La maggior parte delle applicazioni accederà solo alle API della classe USB.
+In genere, un'applicazione USBX non deve chiamare alcuna API dello stack di dispositivi USB. La maggior parte delle applicazioni accederà solo alle API di classe USB.
 
 ### <a name="usb-device-stack-apis"></a>API dello stack di dispositivi USB
 
-Le API dello stack di dispositivi sono responsabili della registrazione dei componenti del dispositivo USBX, ad esempio le classi e il Framework del dispositivo.
+Le API dello stack di dispositivi sono responsabili della registrazione dei componenti del dispositivo USBX, ad esempio le classi e il framework di dispositivi.
 
-### <a name="usb-device-class-apis"></a>API della classe dispositivo USB
+### <a name="usb-device-class-apis"></a>API della classe di dispositivi USB
 
-Le API della classe sono molto specifiche per ogni classe USB. La maggior parte delle API comuni per le classi USB fornisce servizi quali l'apertura e la chiusura di un dispositivo, la lettura e la scrittura in un dispositivo. Le API sono simili per natura al lato host.
+Le API di classe sono molto specifiche per ogni classe USB. La maggior parte delle API comuni per le classi USB fornisce servizi come l'apertura/chiusura di un dispositivo e la lettura e la scrittura in un dispositivo. Le API sono di natura simile al lato host.
 
-## <a name="device-framework"></a>Framework del dispositivo
+## <a name="device-framework"></a>Framework di dispositivi
 
-Il lato dispositivo USB è responsabile della definizione del Framework del dispositivo. Il Framework del dispositivo è suddiviso in tre categorie, come descritto nelle sezioni seguenti.
+Il lato dispositivo USB è responsabile della definizione del framework di dispositivi. Il framework di dispositivi è suddiviso in tre categorie, come descritto nelle sezioni seguenti.
 
-### <a name="definition-of-the-components-of-the-device-framework"></a>Definizione dei componenti del Framework del dispositivo
+### <a name="definition-of-the-components-of-the-device-framework"></a>Definizione dei componenti di Device Framework
 
-La definizione di ogni componente del Framework del dispositivo è correlata alla natura del dispositivo e alle risorse usate dal dispositivo. Di seguito sono riportate le categorie principali.
+La definizione di ogni componente del framework di dispositivi è correlata alla natura del dispositivo e alle risorse utilizzate dal dispositivo. Di seguito sono riportate le categorie principali.
 
-- Descrittore dispositivo
+- Descrittore del dispositivo
 - Descrittore di configurazione
 - Descrittore di interfaccia
 - Descrittore dell'endpoint
 
-USBX supporta la definizione dei componenti del dispositivo sia per la velocità elevata che per quella completa (la velocità ridotta viene gestita allo stesso modo della velocità massima). Ciò consente al dispositivo di funzionare in modo diverso quando si è connessi a un host ad alta velocità o a velocità intera. Le differenze tipiche sono le dimensioni di ogni endpoint e la potenza usata dal dispositivo.
+USBX supporta la definizione dei componenti del dispositivo sia per la velocità elevata che per la velocità completa (la velocità bassa viene considerata come la velocità completa). Ciò consente al dispositivo di operare in modo diverso quando è connesso a un host ad alta velocità o a velocità completa. Le differenze tipiche sono le dimensioni di ogni endpoint e la potenza utilizzata dal dispositivo.
 
-La definizione del componente del dispositivo assume il formato di una stringa di byte che segue la specifica USB. La definizione è contigua e l'ordine in cui il Framework è rappresentato in memoria sarà uguale a quello restituito all'host durante l'enumerazione.
+La definizione del componente del dispositivo assume la forma di una stringa di byte che segue la specifica USB. La definizione è contigua e l'ordine in cui il framework è rappresentato in memoria sarà uguale a quello restituito all'host durante l'enumerazione.
 
-Di seguito è riportato un esempio di un Framework di dispositivi per un disco flash USB ad alta velocità.
+Di seguito è riportato un esempio di framework di dispositivo per un disco flash USB ad alta velocità.
 
 ```c
 #define DEVICE_FRAMEWORK_LENGTH_HIGH_SPEED 60
@@ -99,13 +99,13 @@ UCHAR device_framework_high_speed[] = {
 };
 ```
 
-### <a name="definition-of-the-strings-of-the-device-framework"></a>Definizione delle stringhe del Framework del dispositivo
+### <a name="definition-of-the-strings-of-the-device-framework"></a>Definizione delle stringhe del framework di dispositivi
 
-Le stringhe sono facoltative in un dispositivo. Il loro scopo è consentire all'host USB di conoscere il produttore del dispositivo, il nome del prodotto e il numero di revisione tramite stringhe Unicode.
+Le stringhe sono facoltative in un dispositivo. Il loro scopo è quello di inserire l'host USB in informazioni sul produttore del dispositivo, sul nome del prodotto e sul numero di revisione tramite stringhe Unicode.
 
-Le stringhe principali sono indici incorporati nei descrittori di dispositivo. Gli indici di stringhe aggiuntive possono essere incorporati in interfacce singole.
+Le stringhe principali sono indici incorporati nei descrittori di dispositivo. È possibile incorporare indici di stringhe aggiuntivi in singole interfacce.
 
-Supponendo che il Framework del dispositivo precedente includa tre indici stringa incorporati nel descrittore del dispositivo, la definizione di Framework di stringa potrebbe essere simile a questo codice di esempio
+Supponendo che il framework di dispositivi precedente abbia tre indici di stringa incorporati nel descrittore di dispositivo, la definizione del framework di stringhe potrebbe essere simile a questo codice di esempio.
 
 ```c
 /* String Device Framework:
@@ -132,15 +132,15 @@ UCHAR string_framework[] = {
 };
 ```
 
-Se per ogni velocità è necessario usare stringhe diverse, è necessario usare indici diversi perché gli indici sono indipendenti dalla velocità.
+Se è necessario usare stringhe diverse per ogni velocità, è necessario usare indici diversi perché gli indici sono indipendenti dalla velocità.
 
-La codifica della stringa è basata su UNICODE. Per ulteriori informazioni sullo standard di codifica UNICODE, fare riferimento alla pubblicazione seguente:
+La codifica della stringa è basata su UNICODE. Per altre informazioni sullo standard di codifica UNICODE, vedere la pubblicazione seguente:
 
-*Lo standard Unicode, la codifica dei caratteri in tutto il mondo, la versione 1., i volumi 1 e 2, Unicode Consortium, Addison-Wesley Publishing Company, Reading MA.*
+*Standard Unicode, codifica dei caratteri a livello mondiale, versione 1., volumi 1 e 2, The Unicode Consortium, Addison-Wesley Publishing Company, Reading MA.*
 
 ### <a name="definition-of-the-languages-supported-by-the-device-for-each-string"></a>Definizione delle lingue supportate dal dispositivo per ogni stringa
 
-USBX è in grado di supportare più lingue, anche se la lingua inglese è quella predefinita. La definizione di ogni lingua per i descrittori di stringa è sotto forma di una matrice di definizioni di linguaggi definita come indicato di seguito.
+USBX è in grado di supportare più lingue anche se l'inglese è l'impostazione predefinita. La definizione di ogni linguaggio per i descrittori di stringa è sotto forma di una matrice di definizioni di linguaggi definiti come segue.
 
 ```c
 #define LANGUAGE_ID_FRAMEWORK_LENGTH 2
@@ -150,18 +150,18 @@ UCHAR language_id_framework[] = {
 };
 ```
 
-Per supportare altre lingue, è sufficiente aggiungere la definizione a doppio byte del codice della lingua dopo il codice inglese predefinito. Il codice della lingua è stato definito da Microsoft nel documento.
+Per supportare altre lingue, è sufficiente aggiungere la definizione a byte doppio del codice della lingua dopo il codice inglese predefinito. Il codice della lingua è stato definito da Microsoft nel documento.
 
-*Sviluppo di software internazionale per Windows 95 e Windows NT, Nadine Kano, Microsoft Press, Redmond WA*
+*Developing International Software for Windows 95 and Windows NT, Nadine Kano, Microsoft Press, Redmond WA*
 
-## <a name="vbus-manager"></a>Gestione VBUS
+## <a name="vbus-manager"></a>VBUS Manager
 
-Nella maggior parte delle progettazioni di dispositivi USB, VBUS non fa parte del dispositivo USB core, ma piuttosto connesso a un GPIO esterno, che monitora il segnale di linea.
+Nella maggior parte dei progetti di dispositivi USB, VBUS non fa parte del core del dispositivo USB, ma è connesso a un GPIO esterno, che monitora il segnale di linea.
 
-Di conseguenza, VBUS deve essere gestito separatamente dal driver del controller del dispositivo.
+Di conseguenza, le vbus devono essere gestite separatamente dal driver del controller di dispositivo.
 
-Spetta all'applicazione fornire il controller del dispositivo con l'indirizzo del VBUS IO. VBUS deve essere inizializzato prima dell'inizializzazione del controller del dispositivo.
+È l'applicazione a fornire al controller del dispositivo l'indirizzo dell'I/O VBUS. Le VBUS devono essere inizializzate prima dell'inizializzazione del controller del dispositivo.
 
-A seconda della specifica della piattaforma per il monitoraggio di VBUS, è possibile consentire al driver del controller di gestire i segnali VBUS dopo che l'i/o VBUS è stato inizializzato o, se ciò non è possibile, l'applicazione deve fornire il codice per la gestione di VBUS.
+A seconda della specifica della piattaforma per il monitoraggio vbus, è possibile consentire al driver del controller di gestire i segnali VBUS dopo l'inizializzazione dell'I/O vbus o, se non è possibile, l'applicazione deve fornire il codice per la gestione delle VBUS.
 
-Se l'applicazione desidera gestire VBUS autonomamente, l'unico requisito consiste nel chiamare la funzione ***ux_device_stack_disconnect*** quando viene rilevato che un dispositivo è stato estratto. Non è necessario informare il controller quando viene inserito un dispositivo perché il controller verrà riattivato quando viene rilevato il segnale di reimpostazione del BUS di asserzione/deasserzione.
+Se l'applicazione vuole gestire la vbus da sola, l'unico requisito è chiamare la funzione ***ux_device_stack_disconnect*** quando rileva che un dispositivo è stato estratto. Non è necessario informare il controller quando viene inserito un dispositivo perché il controller si riattiva quando viene rilevato il segnale di asserzione/deassert BUS RESET.

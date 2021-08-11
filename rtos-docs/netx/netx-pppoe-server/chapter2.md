@@ -1,60 +1,60 @@
 ---
-title: Capitolo 2-installazione e uso del server PPPoE NetX di Azure RTO
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente server PPPoE di Azure RTO NetX.
+title: Capitolo 2 - Installazione e uso di Azure RTOS NetX PPPoE Server
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX PPPoE Server.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 5b52164911676b68c67da01d698e41c02730e45a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5e93d783299448301c4e79a324ccec01473dbcce3fb96d25d7be352384d4fa53
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821491"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796328"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pppoe-server"></a>Capitolo 2-installazione e uso del server PPPoE NetX di Azure RTO
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pppoe-server"></a>Capitolo 2 - Installazione e uso di Azure RTOS NetX PPPoE Server
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del componente server PPPoE di Azure RTO NetX.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del Azure RTOS NetX PPPoE Server.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
-Il server PPPoE per NetX è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include due file di origine e un file PDF che contiene questo documento, come indicato di seguito:
+PPPoE Server per NetX è disponibile all'indirizzo [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Il pacchetto include due file di origine e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nx_pppoe_server. h**: file di intestazione per il server PPPoE per NETX
-- **nx_pppoe_server. c**: file di origine c per il server PPPoE per NETX
-- **nx_pppoe_server.pdf**: Descrizione PDF del server PPPoE per NETX
-- **demo_netx_pppoe_server. c**: NETX pppoe server demo
+- **nx_pppoe_server.h:** file di intestazione per PPPoE Server per NetX
+- **nx_pppoe_server.c:** file di origine C per PPPoE Server per NetX
+- **nx_pppoe_server.pdf:** descrizione PDF di PPPoE Server per NetX
+- **demo_netx_pppoe_server.c:** Dimostrazione di NetX PPPoE Server
 
 ## <a name="pppoe-server-installation"></a>Installazione del server PPPoE
 
-Per poter usare il server PPPoE per NetX, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Se, ad esempio, NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_pppoe_server. h* e *nx_pppoe_server. c* devono essere copiati in questa directory.
+Per usare PPPoE Server per NetX, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX. Ad esempio, se NetX è installato nella directory "*\threadx\arm7\green*", i file *nx_pppoe_server.h* e *nx_pppoe_server.c* devono essere copiati in questa directory.
 
 ## <a name="using-pppoe-server"></a>Uso del server PPPoE
 
-L'uso del server PPPoE per NetX è facile. In pratica, il codice dell'applicazione deve includere *nx_pppoe_server. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX. Una volta incluso *nx_pppoe_server. h* , il codice dell'applicazione è quindi in grado di effettuare le chiamate di funzione del server PPPoE specificate più avanti in questa guida. Nell'applicazione deve inoltre essere incluso *nx_pppoe_server. c* nel processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il server PPPoE di NetX.
+L'uso di PPPoE Server per NetX è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nx_pppoe_server.h* dopo aver incluso *tx_api.h* e *nx_api.h*, per poter usare rispettivamente ThreadX e NetX. Dopo *nx_pppoe_server.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione PPPoE Server specificate più avanti in questa guida. L'applicazione deve anche *includere nx_pppoe_server.c* nel processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare NetX PPPoE Server.
 
-## <a name="small-example-system"></a>Sistema di esempio di piccole dimensioni
+## <a name="small-example-system"></a>Small Example System
 
-Di seguito è riportato un esempio che illustra come usare NetX PPPoE server è descritto nella figura 1,1. In questo esempio il file di inclusione del server PPPoE *nx_pppoe_server. h* viene portato alla riga 50. Successivamente, il server PPPoE viene creato in *"thread_0_entry*" alla riga 248. Si noti che il server PPPoE deve essere creato dopo avere creato l'istanza IP. L'istanza IP viene creata e inizializzata line165. Il blocco di controllo server PPPoE "*pppoe_server*" è stato definito come variabile globale alla riga 79 in precedenza. Le funzioni Notify sono impostate alla riga 257. Si noti che è necessario impostare pppoe_session_data_receive funzione Notify. Al termine della creazione del server IP e del server PPPoE, il processo server PPPoE per stabilire una sessione PPPoE alla chiamata a nx_pppoe_server_enable alla riga 272.
+Di seguito è riportato un esempio che illustra come usare NetX PPPoE Server è descritto nella figura 1.1. In questo esempio il file di inclusione PPPoE Server *nx_pppoe_server.h* viene portato alla riga 50. Il server PPPoE viene quindi creato in *"thread_0_entry*" alla riga 248. Si noti che il server PPPoE deve essere creato dopo la creazione dell'istanza IP. L'istanza IP viene creata e inizializzata nella riga 165. Il blocco di controllo del server PPPoE "*pppoe_server*" è stato definito in precedenza come variabile globale alla riga 79. Le funzioni di notifica vengono impostate alla riga 257. Si noti pppoe_session_data_receive la funzione notify deve essere impostata. Dopo la creazione di IP e PPPoE Server, il processo PPPoE Server di stabilire una sessione PPPoE alla chiamata a nx_pppoe_server_enable alla riga 272.
 
-In generale, è consigliabile usare il modulo PPPoE con il modulo PPP. In questo esempio, il server PPP include il file *nx_ppp. h* viene portato alla riga 49. Successivamente, il server PPP viene creato alla riga 174. Riga 182 impostare la funzione per l'invio del pacchetto PPP. Riga 188-200 installazione degli indirizzi IP e definizione del protocollo PAP. Riga 115-139 impostare il nome utente e la password per il protocollo PAP.
+In generale, il modulo PPPoE deve essere usato con il modulo PPP. In questo esempio, il file di inclusione del server PPP *nx_ppp.h* viene portato alla riga 49. Successivamente, il server PPP viene creato alla riga 174. La riga 182 configura la funzione per l'invio di pacchetti PPP. La riga 188-200 configura gli indirizzi IP e definisce il protocollo pap. La riga 115-139 imposta il nome utente e la password per il protocollo pap.
 
-Dopo la sessione PPPoE stabilita. L'applicazione può chiamare nx_pppoe_server_session_get per ottenere le informazioni sulla sessione (indirizzo MAC client e ID sessione) alla riga 281.
+Dopo aver stabilito la sessione PPPoE. L'applicazione può chiamare nx_pppoe_server_session_get per ottenere le informazioni sulla sessione (indirizzo MAC client e ID sessione) alla riga 281.
 
-Quando l'applicazione non elabora più il traffico PPP, l'applicazione PppCloseInd o nx_pppoe_server_session_terminate per terminare la sessione PPPoE.
-
-> [!NOTE]
-> In questo esempio, il server PPPoE funziona con lo stack IP normale e condivide un driver Ethernet. Passare lo stesso driver Ethernet per l'istanza IP normale alla riga 165 e l'istanza del server PPPoE alla riga 248.
+Quando l'applicazione non elabora più il traffico PPP, l'applicazione PppCloseInd o nx_pppoe_server_session_terminate terminare la sessione PPPoE.
 
 > [!NOTE]
-> Le funzioni vengono fornite dall'implementazione PPPoE per la chiamata da parte del software in NX_PPPoE_SERVER_SESSION_CONTROL_ENABELE definito.
+> In questo esempio il server PPPoE funziona contemporaneamente con lo stack IP normale e condivide un driver Ethernet. Passare lo stesso driver Ethernet per l'istanza IP normale alla riga 165 e l'istanza del server PPPoE alla riga 248.
 
-Se definito, Abilita la funzionalità che controlla la sessione PPPoE.
+> [!NOTE]
+> Le funzioni vengono fornite dall'implementazione PPPoE per la chiamata da parte del software in base a NX_PPPoE_SERVER_SESSION_CONTROL_ENABELE.
 
-Il server PPPoE non risponde automaticamente alla richiesta fino a quando l'applicazione specifica un'API specifica, se non è definita, il server PPPoE risponde automaticamente alla richiesta. Abilitata per impostazione predefinita in nx_pppoe_server. h.
+Se definito, abilita la funzionalità che controlla la sessione PPPoE.
 
-Si noti che ridefinire **NX_PHYSICAL_HEADER** a 24 per garantire spazio sufficiente per la compilazione dell'intestazione fisica. Intestazione fisica: 14 (intestazione Ethernet) + 6 (intestazione PPPoE) + 2 (intestazione PPP) + 2 (allineamento a quattro byte).
+Il server PPPoE non risponde automaticamente alla richiesta fino a quando l'applicazione non chiama un'API specifica, se non è definita, il server PPPoE risponde automaticamente alla richiesta. Abilita per impostazione predefinita in nx_pppoe_server.h.
+
+Si noti che ridefinire **NX_PHYSICAL_HEADER** 24 per garantire spazio sufficiente per il riempimento dell'intestazione fisica. Intestazione fisica:14(intestazione Ethernet) + 6 (intestazione PPPoE) + 2 (intestazione PPP) + 2 (aligment a quattro byte).
 
 ```c
 /**************************************************************************/
@@ -455,28 +455,28 @@ void     ppp_server_packet_send(NX_PACKET *packet_ptr)
 #endif /* NX_PPP_PPPOE_ENABLE */
 ```
 
-Figura 1,1 esempio di utilizzo del server PPPoE con NetX
+Figura 1.1 Esempio di utilizzo del server PPPoE con NetX
 
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Sono disponibili diverse opzioni di configurazione per la compilazione del server PPPoE per NetX. L'elenco seguente descrive tutti i dettagli:
+Sono disponibili diverse opzioni di configurazione per la compilazione di PPPoE Server per NetX. L'elenco seguente descrive ogni elemento in dettaglio:
 
-- **NX_DISABLE_ERROR_CHECKING**: definito, questa opzione rimuove il controllo degli errori del server PPPoE di base. Viene in genere usato dopo il debug dell'applicazione.
+- **NX_DISABLE_ERROR_CHECKING:** definita, questa opzione rimuove il controllo degli errori di base del server PPPoE. Viene in genere usato dopo il debug dell'applicazione.
 
-- **NX_PPPOE_SERVER_SESSION_CONTROL_ENABLE**: se definito, Abilita la funzionalità che controlla la sessione PPPoE. Il server PPPoE non risponde automaticamente alla richiesta fino a quando non viene chiamata un'API specifica.
+- **NX_PPPOE_SERVER_SESSION_CONTROL_ENABLE:** se definito, abilita la funzionalità che controlla la sessione PPPoE. Il server PPPoE non risponde automaticamente alla richiesta fino a quando l'applicazione non chiama un'API specifica.
 
-- **NX_PPPOE_SERVER_INITIALIZE_DRIVER_ENABLE**: se definito, Abilita la funzionalità per inizializzare il driver Ethernet nel modulo PPPoE. Viene disabilitato per impostazione predefinita.
+- **NX_PPPOE_SERVER_INITIALIZE_DRIVER_ENABLE:** se definito, consente alla funzionalità di inizializzare il driver Ethernet nel modulo PPPoE. Disabilita per impostazione predefinita.
 
-- **NX_PPPOE_SERVER_THREAD_TIME_SLICE**: opzione di intervallo di tempo per il thread del server PPPoE. Per impostazione predefinita, questo valore è TX_NO_TIME_SLICE.
+- **NX_PPPOE_SERVER_THREAD_TIME_SLICE:** opzione Intervallo di tempo per il thread del server PPPoE. Per impostazione predefinita, questo valore è TX_NO_TIME_SLICE.
 
-- **NX_PPPOE_SERVER_MAX_CLIENT_SESSION_NUMBER**: definisce il numero massimo di sessioni client simultanee. Per impostazione predefinita, questo valore è 10.
+- **NX_PPPOE_SERVER_MAX_CLIENT_SESSION_NUMBER:** definisce il numero massimo di sessioni client simultanee. Per impostazione predefinita, questo valore è 10.
 
-- **NX_PPPOE_SERVER_MAX_HOST_UNIQ_SIZE**: definisce la dimensione massima di host-ingrandimento. Per impostazione predefinita, questo valore è 32.
+- **NX_PPPOE_SERVER_MAX_HOST_UNIQ_SIZE:** definisce le dimensioni massime di Host-Uniq. Per impostazione predefinita, questo valore è 32.
 
-- **NX_PPPOE_SERVER_MAX_RELAY_SESSION_ID_SIZE**: definisce la dimensione massima di relay-Session-ID. Per impostazione predefinita, questo valore è 12.
+- **NX_PPPOE_SERVER_MAX_RELAY_SESSION_ID_SIZE:** definisce le dimensioni massime di Relay-Session-Id. Per impostazione predefinita, questo valore è 12.
 
-- **NX_PPPOE_SERVER_MIN_PACKET_PAYLOAD_SIZE**: specifica le dimensioni minime del payload del pacchetto per il server PPPoE. Se le dimensioni del payload del pacchetto sono maggiori di questo valore, può evitare di concatenare i pacchetti. Per impostazione predefinita, questo valore è 1520 (la dimensione massima del payload è Ethernet 1500, l'intestazione Ethernet 14, l'allineamento CRC 2 e 4 byte).
+- **NX_PPPOE_SERVER_MIN_PACKET_PAYLOAD_SIZE**: specifica le dimensioni minime del payload dei pacchetti per il server PPPoE. Se le dimensioni del payload del pacchetto sono maggiori di questo valore, è possibile evitare il concatenamento dei pacchetti. Per impostazione predefinita, questo valore è 1520 (dimensioni massime del payload di Ethernet 1500, intestazione Ethernet 14, CRC 2 e allineamento a quattro byte 4).
 
-- **NX_PPPOE_SERVER_PACKET_TIMEOUT**: definisce la pozione di attesa (nei cicli del timer) per l'allocazione di pacchetti o l'aggiunta di dati ai pacchetti. Per impostazione predefinita, questo valore è **NX_IP_PERIODIC_RATE** (100 cicli).
+- **NX_PPPOE_SERVER_PACKET_TIMEOUT:** definisce la pozione di attesa (in tick del timer) per l'allocazione di pacchetti o l'aggiunta di dati in pacchetti. Per impostazione predefinita, questo valore **è NX_IP_PERIODIC_RATE** (100 tick).
 
-- **NX_PPPOE_SERVER_START_SESSION_ID**: definisce l'ID della sessione di avvio per l'assegnazione alla sessione PPPoE. Per impostazione predefinita, questo valore è 0X4944 (valore ASCII per ID).
+- **NX_PPPOE_SERVER_START_SESSION_ID:** definisce l'ID sessione di avvio per l'assegnazione alla sessione PPPoE. Per impostazione predefinita, questo valore è 0X4944(valore ASCII per ID).

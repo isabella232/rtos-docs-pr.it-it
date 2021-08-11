@@ -1,21 +1,21 @@
 ---
-title: Appendice A-Sample tx_port. h
-description: In questo capitolo viene visualizzato un file tx_port. h di esempio.
+title: Appendice A - Esempio di tx_port.h
+description: Questo capitolo visualizza un file tx_port.h di esempio.
 author: philmea
 ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 65512850412b2eb8dc3c5c295e6a9c933abc7d44
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6aee59618e4c93018a05f991aba187ce30cf0494d1423217d675fb197dc257de
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823753"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796192"
 ---
-# <a name="appendix-a---sample-tx_porth"></a>Appendice A-Sample tx_port. h
+# <a name="appendix-a---sample-tx_porth"></a>Appendice A - Esempio di tx_port.h
 
-In questo capitolo viene visualizzato un file **tx_port. h** di esempio.
+Questo capitolo visualizza un file **tx_port.h di esempio.**
 
 ```c
 /**************************************************************************/

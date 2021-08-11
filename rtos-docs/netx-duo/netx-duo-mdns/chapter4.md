@@ -1,28 +1,28 @@
 ---
-title: Capitolo 4-Descrizione dei servizi MDN
-description: Questo capitolo contiene una descrizione di tutti i servizi MDN NetX
+title: Capitolo 4 - Descrizione dei servizi mDNS
+description: Questo capitolo contiene una descrizione di tutti i servizi MDNS NetX
 author: philmea
 ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 89df0ab5f09be8ad50a27d23bae8b20d71caa0b4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6e37698ac6023b4cff6cb4fc05330a73b678ef3d2a813a706c9b821381e123db
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821821"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797569"
 ---
-# <a name="chapter-4---description-of-mdns-services"></a>Capitolo 4-Descrizione dei servizi MDN
+# <a name="chapter-4---description-of-mdns-services"></a>Capitolo 4 - Descrizione dei servizi mDNS
 
-Questo capitolo contiene una descrizione di tutti i servizi MDN NetX (elencati di seguito).
+Questo capitolo contiene una descrizione di tutti i servizi mDNS NetX (elencati di seguito).
 
 > [!NOTE]
-> Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+> Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 ## <a name="nx_mdns_create"></a>nx_mdns_create
 
-Creare un'istanza di MDN
+Creare un'istanza mDNS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -41,26 +41,26 @@ UINT nx_mdns_create(NX_MDNS *mdns_ptr, NX_IP *ip_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza MDN sull'istanza IP specifica e sulle risorse associate. Viene inoltre creato un thread per gestire i messaggi MDN in ingresso, rispondere alle query e trasmettere periodicamente messaggi di query.
+Questo servizio crea un'istanza mDNS nell'istanza IP specifica e nelle risorse associate. Viene creato anche un thread per gestire i messaggi mDNS in ingresso, rispondere alle query e trasmettere periodicamente i messaggi di query.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 - **ip_ptr** Puntatore all'istanza IP associata.
 - **packet_pool** Puntatore a un pool di pacchetti valido.
-- **priorità** di Priorità del thread MDN.
-- **stack_ptr** Puntatore all'area dello stack per il thread MDN
+- **priorità** Priorità del thread mDNS.
+- **stack_ptr** Puntatore all'area dello stack per il thread mDNS
 - **stack_size** Dimensioni dell'area dello stack.
-- **HOST_NAME** Nome host assegnato a questo nodo.
-- **local_service_cache** Spazio di archiviazione per servizi registrati locali.
-- **local_service_cache_size** Dimensione della cache del servizio locale.
-- **peer_service_cache** Spazio di archiviazione per le informazioni sul servizio ricevute
-- **peer_service_cache_size** Dimensione della cache del servizio peer
-- **probing_notify** Funzione di callback facoltativa richiamata alla fine dell'operazione di sondaggio. Invia una notifica all'applicazione indipendentemente dal fatto che il nome host (in caso di abilitazione di MDN in un'interfaccia locale) o il nome del servizio (dopo la registrazione di un servizio) sia univoco.
+- **host_name** Nome host assegnato a questo nodo.
+- **local_service_cache** Archiviazione spazio per i servizi registrati locali.
+- **local_service_cache_size** Dimensioni della cache del servizio locale.
+- **peer_service_cache** Archiviazione spazio per le informazioni sul servizio ricevute
+- **peer_service_cache_size** Dimensioni della cache del servizio peer
+- **probing_notify** Funzione di callback facoltativa richiamata alla fine dell'operazione di probe. Notifica all'applicazione se il nome host (quando si abilita mDNS in un'interfaccia locale) o il nome del servizio (dopo la registrazione di un servizio) è univoco.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'istanza MDN è stata creata **NX_SUCCESS** (0x00).
+- **NX_SUCCESS** (0x00) Istanza mDNS creata correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -86,7 +86,7 @@ status = nx_mdns_create(&my_mdns, &ip_0, &pool_0,
 
 ## <a name="nx_mdns_delete"></a>nx_mdns_delete
 
-Eliminare un'istanza MDN
+Eliminare un'istanza mDNS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -96,15 +96,15 @@ UINT nx_mdns_delete(NX_MDNS *mdns_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina l'istanza MDN e libera le risorse.
+Questo servizio elimina l'istanza mDNS e libera le relative risorse.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha eliminato correttamente l'istanza MDN.
+- **NX_SUCCESS** (0x00) L'istanza mDNS è stata eliminata correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -122,7 +122,7 @@ status = nx_mdns_delete(&my_mdns);
 
 ## <a name="nx_mdns_enable"></a>nx_mdns_enable
 
-Avviare il servizio MDN
+Avviare il servizio mDNS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -132,16 +132,16 @@ UINT nx_mdns_enable(NX_MDNS *mdns_ptr, UINT interface_index);
 
 ### <a name="description"></a>Descrizione
 
-Questa API Abilita il servizio MDN in un'interfaccia fisica specifica. Quando il servizio è abilitato, il modulo MDN verifica innanzitutto tutti i nomi di servizio univoci sulla rete prima di rispondere alle query ricevute sull'interfaccia.
+Questa API abilita il servizio mDNS su un'interfaccia fisica specifica. Dopo aver abilitato il servizio, il modulo mDNS esegue innanzitutto il probe di tutti i relativi nomi di servizio univoci nella rete prima di rispondere alle query ricevute sull'interfaccia.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo dell'istanza MDN.
+- **mdns_ptr** Puntatore al blocco di controllo dell'istanza mDNS.
 - **interface_index** Indice dell'interfaccia in cui deve essere abilitato il servizio
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha abilitato correttamente il servizio.
+- **NX_SUCCESS** (0x00) Il servizio è stato abilitato correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -159,7 +159,7 @@ status = nx_mdns_enable(&my_mdns, 0);
 
 ## <a name="nx_mdns_disable"></a>nx_mdns_disable
 
-Disabilitare il servizio MDN
+Disabilitare il servizio mDNS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -169,16 +169,16 @@ UINT nx_mdns_disable(NX_MDNS *mdns_ptr, UINT interface_index);
 
 ### <a name="description"></a>Descrizione
 
-Questa API Disabilita il servizio MDN sull'interfaccia fisica specifica. Quando il servizio è disabilitato, MDN invia messaggi "Goodbye" per ogni servizio locale alla rete collegata all'interfaccia, in modo che i nodi adiacenti ricevano una notifica.
+Questa API disabilita il servizio mDNS nell'interfaccia fisica specifica. Dopo aver disabilitato il servizio, il servizio mDNS invia messaggi di "arrivederci" per ogni servizio locale alla rete collegata all'interfaccia, in modo che i nodi adiacenti siano informati.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 - **interface_index** Indice dell'interfaccia in cui deve essere disabilitato il servizio
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il servizio è stato disabilitato **NX_SUCCESS** (0x00).
+- **NX_SUCCESS** (0x00) Il servizio è stato disabilitato correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -196,7 +196,7 @@ status = nx_mdns_disable(&my_mdns, 0);
 
 ## <a name="nx_mdns_cache_notify_set"></a>nx_mdns_cache_notify_set
 
-Installa la funzione di notifica completa della cache MDN
+Installa la funzione di notifica completa della cache mDNS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -208,15 +208,15 @@ UINT nx_mdns_cache_notify_set(NX_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio installa una funzione di callback fornita dall'utente, che viene richiamata quando la cache del servizio locale o la cache del servizio peer diventa piena. Quando la cache del servizio è completa, non è possibile aggiungere altri record di risorse MDN. Si noti che la cache del servizio può diventare piena a causa della frammentazione interna, quando vengono aggiunti e rimossi servizi con diverse lunghezze di stringa. Quando viene ricevuta una notifica completa della cache nella cache del servizio peer, l'applicazione può usare il servizio "*nx_mdns_service_cache_clear"* per cancellare tutte le voci nella cache del servizio peer.
+Questo servizio installa una funzione di callback fornita dall'utente, che viene richiamata quando la cache del servizio locale o la peer service cache diventa piena. Quando la cache del servizio è piena, non è possibile aggiungere più record di risorse mDNS. Si noti che la cache del servizio può diventare piena a causa della frammentazione interna, quando i servizi con lunghezze di stringa diverse vengono aggiunti e rimossi. Alla ricezione di una notifica completa della cache nella cache del servizio peer, l'applicazione può usare il servizio *"nx_mdns_service_cache_clear"* per cancellare tutte le voci nella cache del servizio peer.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha installato correttamente la funzione di callback Notify cache MDN.
+- **NX_SUCCESS** (0x00) È stata installata correttamente la funzione di callback di notifica della cache mDNS.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -234,7 +234,7 @@ status = nx_mdns_cache_notify_set(&my_mdns, cache_full_nofiy_cb);
 
 ## <a name="nx_mdns_cache_notify_clear"></a>nx_mdns_cache_notify_clear
 
-Cancella la funzione di notifica completa della cache del servizio MDN
+Cancellare la funzione di notifica completa della cache del servizio mDNS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -244,15 +244,15 @@ UINT nx_mdns_cache_notify_clear(NX_MDNS *mdns_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cancella una funzione di callback di notifica della cache del servizio fornita dall'utente.
+Questo servizio cancella una funzione di callback di notifica della cache del servizio fornita dall'utente.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha cancellato correttamente la funzione di callback Notify della cache del servizio MDN.
+- **NX_SUCCESS** (0x00) La funzione di callback di notifica della cache del servizio mDNS è stata cancellata.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -280,16 +280,16 @@ UINT nx_mdns_domain_name_set(NX_MDNS *mdns_ptr, CHAR *domain_name);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura il nome di dominio locale predefinito. Quando viene creata l'istanza di MDN, il nome di dominio locale predefinito viene impostato su ". local". Questa API consente a un'applicazione di sovrascrivere il nome di dominio locale predefinito.
+Questo servizio configura il nome di dominio locale predefinito. Quando viene creata l'istanza di mDNS, il nome di dominio locale predefinito viene impostato su ".local". Questa API consente a un'applicazione di sovrascrivere il nome di dominio locale predefinito.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **Domain_name** Nome di dominio da utilizzare.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **domain_name** Nome di dominio da utilizzare.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il dominio locale è stato configurato con **NX_SUCCESS** (0x00).
+- **NX_SUCCESS** (0x00) Correttamente configurato il dominio locale.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -319,21 +319,21 @@ UINT nx_mdns_service_announcement_timing_set(NX_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio riconfigura i parametri di intervallo utilizzati da MDN durante l'invio degli annunci di servizio. Il periodo di pubblicazione *inizia da un segno di* graduazione e può essere espanso in modo telescopico con 2 alla potenza di *k* Factor. Il numero di ripetizioni per annuncio è *p*, l'intervallo tra ogni annuncio ripetuto è il ciclo di *intervallo* e il numero di periodi di annuncio max_time. Per impostazione predefinita, il periodo iniziale è impostato su 1 secondo, con k = 1 (il periodo raddoppia ogni volta), *p = 1* (nessuna ripetizione), retrans_interval = 0 (nessun intervallo di tempo), Period_interval = 0xFFFFFFFF (intervallo massimo periodo) e max_time = 3 (numero di annunci).
+Questo servizio riconfigura i parametri di intervallo utilizzati da mDNS durante l'invio degli annunci del servizio. Il periodo di pubblicazione inizia *dai segni* di graduazione t e può essere espanso con 2 alla potenza del *fattore k.* Il numero di ripetizioni per annuncio è *p*  , l'intervallo tra ogni annuncio ripetuto è intervalli e il numero di periodi di annuncio è max_time. Per impostazione predefinita, il periodo iniziale è impostato su 1 secondo, con k = 1 (il periodo raddoppia ogni volta), *p = 1* (nessuna ripetizione), retrans_interval = 0 (nessun intervallo di tempo), period_interval = 0xFFFFFFFF (intervallo massimo periodo) e max_time = 3(numero di annunci).
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **t** numero di cicli per il periodo iniziale. Il valore predefinito è 100 cicli per 1 secondo.
-- numero **p** di ripetizioni. Il valore predefinito è 1.
-- fattore telescopico **k** . Il valore predefinito è 1.
-- **retrans_interval** Numero di cicli di attesa prima dell'invio di messaggi di annuncio ripetuti. Il valore predefinito è 0.
-- **period_interval** Numero di cicli tra due periodi di annuncio. Il valore predefinito è 0xFFFFFFFF.
-- **max_time** Numero di periodi di annuncio da utilizzare per l'annuncio. Dopo i periodi di annuncio *max_time* , non vengono inviati altri messaggi di annuncio. Il valore predefinito è 3.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **t** Numero di tick per il periodo iniziale. Il valore predefinito è 100 tick per 1 secondo.
+- **p** Numero di ripetizioni. Il valore predefinito è 1.
+- **k** Fattore di disaffezione. Il valore predefinito è 1.
+- **retrans_interval** Numero di tick da attendere prima di inviare messaggi di annuncio ripetuti. Il valore predefinito è 0.
+- **period_interval** Numero di tick tra due periodi di annuncio. Il valore predefinito è 0xFFFFFFFF.
+- **max_time** Numero di periodi di annuncio da usare per l'annuncio. Dopo i *max_time* di annuncio, non vengono inviati altri messaggi di annuncio. Il valore predefinito è 3.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) imposta correttamente i valori di intervallo.
+- **NX_SUCCESS** (0x00) Imposta correttamente i valori di intervallo.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -365,24 +365,24 @@ UINT nx_mdns_service_add(NX_MDNS *mdns_ptr, CHAR *instance,
 
 ### <a name="description"></a>Descrizione
 
-Questa API registra un servizio offerto dall'applicazione. Se viene impostato il flag *is_unique* , MDN verifica il nome del servizio per assicurarsi che sia univoco nella rete locale prima di iniziare ad annunciare il servizio sulla rete. *Instance* è la parte dell'istanza del nome del servizio. Il *servizio* è la parte del servizio del nome del servizio. Ad esempio, "_http. _tcp" è un servizio. Per descrivere un servizio con sottotipo, il chiamante deve utilizzare il parametro del *sottotipo* . Ad esempio, se il servizio desiderato è "_printer. _sub. _http. _tcp", il campo del servizio è "_http. _tcp: e il campo del sottotipo è" _printer ".
+Questa API registra un servizio offerto dall'applicazione. Se il flag *is_unique* impostato, mDNS effettua il probe del nome del servizio per assicurarsi che sia univoco nella rete locale prima di iniziare ad annunciare il servizio nella rete. *Istanza* è la parte dell'istanza del nome del servizio. Il *servizio* è la parte del servizio del nome del servizio. Ad esempio, "_http._tcp" è un servizio. Per descrivere un servizio con sottotipo, il chiamante deve usare il *parametro del sottotipo.* Ad esempio, se il servizio desiderato è "_printer._sub._http._tcp", il campo del servizio è "_http._tcp:, e il campo del sottotipo è "_printer".
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **istanza** di Puntatore al nome dell'istanza del servizio.
-- **servizio** di Puntatore al tipo di servizio MDN, escluse le informazioni sul sottotipo.
-- **sottotipo** Puntatore alla parte del sottotipo del servizio MDN, se applicabile.
-- **priorità** di Priorità del servizio
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **istanza di** Puntatore al nome dell'istanza del servizio.
+- **servizio** Puntatore al tipo di servizio mDNS, escluse le informazioni sul sottotipo.
+- **sottotipo** Puntatore alla parte del sottotipo del servizio mDNS, se applicabile.
+- **priorità** Priorità del servizio
 - **peso** Peso del servizio
 - **porta** Numero di porta TCP o UDP utilizzato dal servizio
-- **testo** Informazioni aggiuntive sul testo
-- **is_unique** Flag booleano che indica se il servizio è condiviso o univoco. Per i servizi registrati come univoci, gli MDN devono verificare il servizio sulla rete prima di iniziare a offrirlo.
-- **Interface_index** Interfaccia fisica a cui viene offerto il servizio. Per un servizio offerto tramite uno dei servizi collegati, viene usato il valore *NX_MDNS_ALL_INTERFACES* .
+- **text** Informazioni aggiuntive sul testo
+- **is_unique** Flag booleano che indica se il servizio è condiviso o univoco. Per i servizi registrati come univoci, mDNS deve eseguire il probe del servizio in rete prima di iniziare a offrirlo.
+- **Interface_index** Interfaccia fisica tramite cui viene offerto il servizio. Per un servizio offerto tramite uno dei servizi collegati, viene usato il valore *NX_MDNS_ALL_INTERFACES.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha registrato correttamente il servizio.
+- **NX_SUCCESS** (0x00) Il servizio è stato registrato correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -414,18 +414,18 @@ UINT nx_mdns_service_delete(NX_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questa API Elimina un servizio registrato precedente. Quando il servizio viene eliminato, i messaggi "Goodbye" vengono inviati alla rete locale, in modo che i nodi adiacenti ricevano una notifica.
+Questa API elimina un servizio registrato precedente. Quando il servizio viene eliminato, i messaggi "goodbye" vengono inviati alla rete locale in modo che i nodi adiacenti siano informati.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **istanza** di Puntatore al nome dell'istanza del servizio.
-- **servizio** di Puntatore al tipo di servizio MDN, escluse le informazioni sul sottotipo.
-- **sottotipo** Puntatore alla parte del sottotipo del servizio MDN, se applicabile.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **istanza di** Puntatore al nome dell'istanza del servizio.
+- **servizio** Puntatore al tipo di servizio mDNS, escluse le informazioni sul sottotipo.
+- **sottotipo** Puntatore alla parte del sottotipo del servizio mDNS, se applicabile.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha eliminato correttamente il servizio.
+- **NX_SUCCESS** (0x00) Il servizio è stato eliminato correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -443,7 +443,7 @@ status = nx_mdns_service_delete(&my_mdns, “NETX-SERVICE”, “_http._tcp”, 
 
 ## <a name="nx_mdns_service_one_shot_query"></a>nx_mdns_service_one_shot_query
 
-Avviare l'individuazione del servizio One-Shot
+Avviare l'individuazione del servizio con un'unica operazione
 
 ### <a name="prototype"></a>Prototipo
 
@@ -457,20 +457,20 @@ UINT nx_mdns_service_one_shot_query(NX_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una query MDN monouso. Se il servizio specificato viene trovato nella cache del servizio peer, viene restituita la prima istanza. Se non vengono trovati servizi nella cache del servizio peer locale, il modulo MDN emette un comando di query e attende la risposta. Il servizio è bloccato fino a quando non viene ricevuta la prima risposta o si verifica il timeout della query.
+Questo servizio esegue una query mDNS one-shot. Se il servizio specificato viene trovato nella peer service cache, viene restituita la prima istanza. Se non viene trovato alcun servizio nella cache del servizio peer locale, il modulo mDNS esegue un comando di query e attende la risposta. Il servizio viene bloccato fino alla ricezione della prima risposta o al timeout della query.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **istanza** di Puntatore al nome dell'istanza del servizio, se applicabile.
-- **servizio** di Puntatore al tipo di servizio MDN, escluse le informazioni sul sottotipo. l'applicazione deve specificare il tipo di servizio.
-- **sottotipo** Puntatore alla parte del sottotipo del servizio MDN, se applicabile.
-- **service_ptr** Puntatore fornito dall'utente alla struttura NX_MDNS_SERVICE che archivia i risultati della query.
-- **WAIT_OPTION** Quantità di tempo, espressa in cicli, per l'attesa di una risposta.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **istanza di** Puntatore al nome dell'istanza del servizio, se applicabile.
+- **servizio** Puntatore al tipo di servizio mDNS, escluse le informazioni sul sottotipo. l'applicazione deve specificare il tipo di servizio.
+- **sottotipo** Puntatore alla parte del sottotipo del servizio mDNS, se applicabile.
+- **service_ptr** Puntatore fornito dall'utente NX_MDNS_SERVICE struttura che archivia i risultati della query.
+- **wait_option** Intervallo di tempo, in tick, per l'attesa di una risposta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto correttamente le informazioni sul servizio.
+- **NX_SUCCESS** (0x00) Le informazioni sul servizio sono state ottenute correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -492,7 +492,7 @@ status = nx_mdns_service_one_shot_query(&my_mdns, “NETX-SERVICE”, “_http._
 
 ## <a name="nx_mdns_service_continuous_query"></a>nx_mdns_service_continuous_query
 
-Avviare l'individuazione continua del servizio
+Avviare l'individuazione continua dei servizi
 
 ### <a name="prototype"></a>Prototipo
 
@@ -503,18 +503,18 @@ UINT nx_mdns_service_continous_query(NX_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia una query continua. Si noti che il servizio viene restituito immediatamente. Dopo aver emesso una query continua, l'applicazione può recuperare il record di servizio usando l'API *nx_mdns_service_lookup*. Per arrestare la query continua, l'applicazione può usare l'API *nx_mdns_service_query_stop*
+Questo servizio avvia una query continua. Si noti che il servizio restituisce immediatamente . Dopo l'emissione di una query continua, l'applicazione può recuperare il record del servizio usando l'API *nx_mdns_service_lookup*. Per arrestare la query continua, l'applicazione può usare l'API *nx_mdns_service_query_stop*
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **istanza** di Puntatore al nome dell'istanza del servizio, se applicabile.
-- **servizio** di Puntatore al tipo di servizio MDN, escluse le informazioni sul sottotipo, se applicabile.
-- **sottotipo** Puntatore alla parte del sottotipo del servizio MDN, se applicabile.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **istanza di** Puntatore al nome dell'istanza del servizio, se applicabile.
+- **servizio** Puntatore al tipo di servizio mDNS, escluse le informazioni sul sottotipo, se applicabile.
+- **sottotipo** Puntatore alla parte del sottotipo del servizio mDNS, se applicabile.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- La query continua è stata avviata **NX_SUCCESS** (0x00).
+- **NX_SUCCESS** (0x00) La query viene avviata correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -536,7 +536,7 @@ status = nx_mdns_service_continuous_query(&my_mdns,
 
 ## <a name="nx_mdns_service_query_stop"></a>nx_mdns_service_query_stop
 
-Interrompere l'individuazione di un servizio continuo emesso in precedenza
+Cessare un'individuazione continua del servizio rilasciata in precedenza
 
 ### <a name="prototype"></a>Prototipo
 
@@ -551,14 +551,14 @@ Questa API termina un'individuazione del servizio continua rilasciata in precede
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **istanza** di Puntatore al nome dell'istanza del servizio.
-- **servizio** di Puntatore al tipo di servizio MDN, informazioni sul sottotipo.
-- **sottotipo** Puntatore alla parte del sottotipo del servizio MDN, se applicabile.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **istanza di** Puntatore al nome dell'istanza del servizio.
+- **servizio** Puntatore al tipo di servizio mDNS, informazioni sul sottotipo.
+- **sottotipo** Puntatore alla parte del sottotipo del servizio mDNS, se applicabile.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha arrestato correttamente la query continua.
+- **NX_SUCCESS** (0x00) Arresto riuscito continua la query.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -591,21 +591,21 @@ UINT nx_mdns_service_lookup(NXD_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cerca i servizi che corrispondono al nome dell'istanza (se specificati) e il tipo di servizio nella cache del servizio peer locale. L'applicazione deve avviare la ricerca del servizio con *instance_index* impostato su zero per il primo servizio nella cache che corrisponde alla descrizione. L'applicazione continuerà a usare questo servizio aumentando *instance_index* valore per i servizi aggiuntivi presenti nella cache, fino a quando il servizio non restituisce *NX_NO_MORE_ENTRIES*, che indica la fine della cache.
+Questo servizio cerca i servizi corrispondenti al nome dell'istanza (se specificato) e al tipo di servizio nella cache del servizio peer locale. L'applicazione avvia la ricerca *del servizio instance_index* impostata su zero per il primo servizio nella cache che corrisponde alla descrizione. L'applicazione continuerà *instance_index* usare questo servizio con un valore crescente per i servizi aggiuntivi trovati nella cache, finché il servizio non restituisce *NX_NO_MORE_ENTRIES*, che indica la fine della cache.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **istanza** di Puntatore al nome dell'istanza del servizio, se applicabile.
-- **servizio** di Puntatore al tipo di servizio MDN, escluse le informazioni sul sottotipo, se applicabile.
-- **sottotipo** Puntatore alla parte del sottotipo del servizio MDN, se applicabile.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **istanza di** Puntatore al nome dell'istanza del servizio, se applicabile.
+- **servizio** Puntatore al tipo di servizio mDNS, escluse le informazioni sul sottotipo, se applicabile.
+- **sottotipo** Puntatore alla parte del sottotipo del servizio mDNS, se applicabile.
 - **Instance_index** Numero di indice dell'istanza da restituire.
-- **service_ptr** Puntatore fornito dall'utente alla struttura NX_MDNS_SERVICE che archivia i risultati della ricerca.
+- **service_ptr** Puntatore fornito dall'utente NX_MDNS_SERVICE struttura che archivia i risultati della ricerca.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il servizio è stato recuperato da **NX_SUCCESS** (0x00)
-- **NX_NO_MORE_ENTRIES** (0x17) non viene trovata alcuna voce di servizio in corrispondenza del numero di indice specificato. Questo codice di errore indica la fine della ricerca.
+- **NX_SUCCESS** (0x00) Il servizio è stato recuperato correttamente
+- **NX_NO_MORE_ENTRIES** (0x17) Non è stata trovata alcuna voce del servizio in corrispondenza del numero di indice specificato. Questo codice di errore indica la fine della ricerca.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -625,7 +625,7 @@ status = nx_mdns_service_lookup(&my_mdns, “NETX-SERVICE”, “_http._tcp”, 
 
 ## <a name="nx_mdns_service_ignore_set"></a>nx_mdns_service_ignore_set
 
-Configura un set di ignoramenti del servizio
+Configura un set di ignorazioni del servizio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -635,16 +635,16 @@ UINT nx_mdns_service_ignore_set(NX_MDNS *mdns_ptr, ULONG service_mask);
 
 ### <a name="description"></a>Descrizione
 
-Questa API configura una maschera per ignorare i servizi specificati dalla maschera di maschera *service_mask* . L'utente può facoltativamente utilizzare il service_mask per selezionare i tipi di servizio che non si desidera memorizzare nella cache. Nella tabella *nx_mdns_service_types* in *nxd_mdns. c* viene definito un elenco di servizi. La maschera corrispondente del primo tipo di servizio in nx_mdns_service_types [] è 0x00000001, la maschera del secondo tipo di servizio è 0x00000002 e così via.
+Questa API configura una maschera per ignorare i servizi specificati dalla maschera service_mask *bit.* L'utente può usare facoltativamente service_mask per selezionare i tipi di servizio che non vuole memorizzare nella cache. Un elenco di servizi è definito nella tabella *nx_mdns_service_types* in *nxd_mdns.c.* La maschera corrispondente del primo tipo di servizio in nx_mdns_service_types[] è 0x00000001, la maschera del secondo tipo di servizio è 0x00000002 e così via.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **service_mask** Tipi di servizio definiti dall'utente da ignorare. La maschera è un tipo ULONG a 32 bit. Ogni bit rappresenta una voce nella matrice *nx_mdns_service_types* definita dall'utente. Se viene impostato un bit, il tipo di servizio corrispondente specificato nella *nx_mdns_service_type* matrice non verrà archiviato nella cache del servizio peer.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **service_mask** Tipi di servizio definiti dall'utente da ignorare. La maschera è un tipo ULONG a 32 bit. Ogni bit rappresenta una voce nella matrice di nx_mdns_service_types definita *dall'utente.* Se è impostato un bit, il tipo di servizio corrispondente specificato nella matrice *nx_mdns_service_type* non verrà memorizzato nella peer service cache.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) imposta correttamente il servizio ignora maschera.
+- **NX_SUCCESS** (0x00) Imposta correttamente la maschera di ignorare il servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -663,7 +663,7 @@ status = nx_mdns_service_ignore_set(&my_mdns, 0x00000003);
 
 ## <a name="nx_mdns_service_notify_set"></a>nx_mdns_service_notify_set
 
-Configura una funzione di callback per la notifica della modifica del servizio
+Configura una funzione di callback di notifica delle modifiche del servizio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -675,19 +675,19 @@ UINT nx_mdns_service_notify_set(NX_MDNS *mdns_ptr, ULONG service_mask,
 
 ### <a name="description"></a>Descrizione
 
-Questa API configura una funzione di callback di notifica della modifica del servizio. Questa funzione di callback viene richiamata quando un servizio offerto da altri nodi sulla rete viene aggiunto, modificato o non più disponibile. L'utente può facoltativamente utilizzare il service_mask per selezionare i tipi di servizio che si desidera monitorare. Un elenco di servizi monitorati è hardcoded nella tabella *nx_mdns_service_types* in *nxd_mdns. c.*
+Questa API configura una funzione di callback di notifica delle modifiche del servizio. Questa funzione di callback viene richiamata quando un servizio offerto da altri nodi nella rete viene aggiunto, modificato o non è più disponibile. L'utente può usare facoltativamente service_mask per selezionare i tipi di servizio da monitorare. Un elenco di servizi monitorati è hard-coded nella tabella nx_mdns_service_types *in* *nxd_mdns.c.*
 
-La maschera corrispondente del primo tipo di servizio in nx_mdns_service_types [] è 0x00000001, la maschera del secondo tipo di servizio è 0x00000002 e così via.
+La maschera corrispondente del primo tipo di servizio in nx_mdns_service_types[] è 0x00000001, la maschera del secondo tipo di servizio è 0x00000002 e così via.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **service_mask** Tipi di servizio definiti dall'utente da monitorare. La maschera è un tipo ULONG a 32 bit. Ogni bit rappresenta una voce nella matrice *nx_mdns_service_types* .
-- **service_change_notify** Funzione di callback da richiamare quando viene modificato il servizio specificato. Le informazioni dettagliate sul servizio vengono restituite nella memoria a cui punta *service_ptr.* Si noti che il contenuto nella memoria non è valido dopo la restituzione dalla funzione Notify callback.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **service_mask** Tipi di servizio definiti dall'utente da monitorare. La maschera è un tipo ULONG a 32 bit. Ogni bit rappresenta una voce nella *matrice nx_mdns_service_types.*
+- **service_change_notify** Funzione di callback da richiamare quando viene modificato il servizio specificato. Le informazioni dettagliate sul servizio vengono restituite nella memoria a cui punta *service_ptr.* Si noti che il contenuto nella memoria non è valido dopo la restituzione dalla funzione di callback notify.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha installato correttamente la funzione di callback.
+- **NX_SUCCESS** (0x00) La funzione di callback è stata installata correttamente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -706,7 +706,7 @@ status = nx_mdns_service_notify_set(&my_mdns, 0x00000002, service_change_notify)
 
 ## <a name="nx_mdns_service_notify_clear"></a>nx_mdns_service_notify_clear
 
-Cancellare la funzione di callback notifica modifica servizio
+Cancellare la funzione di callback di notifica della modifica del servizio
 
 ### <a name="prototype"></a>Prototipo
 
@@ -716,15 +716,15 @@ UINT nx_mdns_service_notify_clear(NX_MDNS *mdns_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questa API Cancella la funzione di callback notifica di modifica del servizio e.
+Questa API cancella la funzione di callback di notifica delle modifiche del servizio e .
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN..
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha cancellato correttamente la funzione di callback.
+- **NX_SUCCESS** (0x00) La funzione di callback è stata cancellata.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -754,19 +754,19 @@ UINT nx_mdns_host_address_get(NX_MDNS *mdns_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio esegue una query MDN sugli indirizzi IPv4 e IPv6 host. Se l'indirizzo del nome host specificato si trova nella cache del servizio peer, viene restituito l'indirizzo. Se non viene trovato alcun indirizzo nella cache dei servizi peer, il modulo MDN rilascia una query di tipo e AAAA e attende la risposta. Questa API si blocca fino a quando non viene ricevuta una risposta o si verifica il timeout della query.
+Questo servizio esegue una query mDNS sugli indirizzi IPv4 e IPv6 dell'host. Se l'indirizzo del nome host specificato viene trovato nella cache del servizio peer, viene restituito l'indirizzo. Se nella cache del servizio peer non viene trovato alcun indirizzo, il modulo mDNS esegue query di tipo A e AAAA e attende la risposta. Questa API si blocca fino a quando non viene ricevuta una risposta o non si verifica il timeout della query.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
-- **HOST_NAME** Puntatore al nome host.
-- **Ipv4_address** Puntatore a un indirizzo allineato a 4 byte per lo spazio di archiviazione degli indirizzi IPv4. L'utente deve allocare 4 byte di spazio per l'indirizzo IPv4. NX_NULL indirizzo può essere passato all'API se non è necessario che l'applicazione recuperi l'indirizzo IPv4.
-- **Ipv6_address** Puntatore all'indirizzo allineato a 4 byte per lo spazio di archiviazione degli indirizzi IPv6. L'utente deve allocare 16 byte di spazio per l'indirizzo IPv6. NX_NULL indirizzo può essere passato all'API se non è necessario che l'applicazione recuperi l'indirizzo IPv6.
-- **WAIT_OPTION** Quantità di tempo, espressa in cicli, per l'attesa di una risposta.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
+- **host_name** Puntatore al nome host.
+- **ipv4_address** Puntatore a un indirizzo allineato a 4 byte per lo spazio di archiviazione degli indirizzi IPv4. L'utente deve allocare 4 byte di spazio per l'indirizzo IPv4 - . NX_NULL'indirizzo può essere passato a questa API se l'applicazione non deve recuperare l'indirizzo IPv4.
+- **ipv6_address** Puntatore all'indirizzo allineato a 4 byte per lo spazio di archiviazione degli indirizzi IPv6. L'utente deve allocare 16 byte di spazio per l'indirizzo IPv6. NX_NULL'indirizzo può essere passato a questa API se l'applicazione non deve recuperare l'indirizzo IPv6.
+- **wait_option** Tempo di attesa, in tick, di una risposta.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha ottenuto correttamente l'indirizzo host.
+- **NX_SUCCESS** (0x00) È stato ottenuto l'indirizzo host.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -786,7 +786,7 @@ status = nx_mdns_host_address_get(&my_mdns, “MDNS-Host”, &ipv4_address, ipv6
 
 ## <a name="nx_mdns_local_cache_clear"></a>nx_mdns_local_cache_clear
 
-Cancella tutti i servizi locali
+Cancellare tutti i servizi locali
 
 ### <a name="prototype"></a>Prototipo
 
@@ -796,15 +796,15 @@ UINT nx_mdns_local_cache_clear(NX_MDNS *mdns_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cancella tutte le voci nella cache del servizio locale dopo aver inviato il messaggio di addio.
+Questo servizio cancella tutte le voci nella cache del servizio locale dopo l'invio del messaggio Goodbye.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha cancellato correttamente tutte le voci nella cache.
+- **NX_SUCCESS** (0x00) Sono state cancellate tutte le voci nella cache.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -822,7 +822,7 @@ status = nx_mdns_local_cache_clear(&my_mdns);
 
 ## <a name="nx_mdns_peer_cache_clear"></a>nx_mdns_peer_cache_clear
 
-Cancella tutti i servizi individuati
+Cancellare tutti i servizi individuati
 
 ### <a name="prototype"></a>Prototipo
 
@@ -832,15 +832,15 @@ UINT nx_mdns_peer_cache_clear(NX_MDNS *mdns_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Cancella tutte le voci della cache dei servizi peer.
+Questo servizio cancella tutte le voci nella cache del servizio peer.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **mdns_ptr** Puntatore al blocco di controllo MDN.
+- **mdns_ptr** Puntatore al blocco di controllo mDNS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ha cancellato correttamente tutte le voci nella cache.
+- **NX_SUCCESS** (0x00) Sono state cancellate tutte le voci nella cache.
 
 ### <a name="allowed-from"></a>Consentito da
 

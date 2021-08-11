@@ -1,73 +1,73 @@
-- name: Documentazione di Azure RTO ThreadX
+- name: Azure RTOS di ThreadX
   href: index.yml
 - name: Panoramica di ThreadX
   href: overview-threadx.md
-- name: Guida dell'utente di ThreadX
+- name: Manuale dell'utente di ThreadX
   expanded: true
   items:
     - name: Informazioni sulla guida
       href: about-this-guide.md
-    - name: Ch. 1-Introduzione a ThreadX
+    - name: Ch. 1 - Introduzione a ThreadX
       href: chapter1.md
-    - name: Ch. 2-installazione e uso di ThreadX
+    - name: Ch. 2 - Installazione e uso di ThreadX
       href: chapter2.md
-    - name: Ch. 3-componenti funzionali di ThreadX
+    - name: Ch. 3 - Componenti funzionali di ThreadX
       href: chapter3.md
-    - name: Ch. 4-Descrizione dei servizi ThreadX
+    - name: Ch. 4 - Descrizione dei servizi ThreadX
       href: chapter4.md
-    - name: Ch. 5-driver di dispositivo per ThreadX
+    - name: Ch. 5 - Driver di dispositivo per ThreadX
       href: chapter5.md
-    - name: Ch. 6-sistema dimostrativo per ThreadX
+    - name: Ch. 6 - Sistema dimostrativo per ThreadX
       href: chapter6.md
-    - name: App. Servizi API A-ThreadX
+    - name: App. A - Servizi API ThreadX
       href: appendix-a.md
-    - name: App. Costanti B-ThreadX
+    - name: App. B - Costanti ThreadX
       href: appendix-b.md
-    - name: App. Tipi di dati C-ThreadX
+    - name: App. C - Tipi di dati ThreadX
       href: appendix-c.md
-    - name: App. Codici di caratteri D-ASCII
+    - name: App. D - Codici carattere ASCII
       href: appendix-d.md
-- name: Supplemento manuale dell'utente di ThreadX per ARMv8-M
+- name: Addendum del Manuale dell'utente di ThreadX per ARMv8-M
   items:
-    - name: Ch. 1-Introduzione ad Azure RTO ThreadX per ARMv8-M
+    - name: Ch. 1 - Introduzione a Azure RTOS ThreadX per ARMv8-M
       href: ./user-guide-armv8m/chapter1.md
-    - name: Ch. 2-installazione del supporto di ThreadX per ARMv8-M
+    - name: Ch. 2 - Installazione del supporto ThreadX per ARMv8-M
       href: ./user-guide-armv8m/chapter2.md
-    - name: Ch. 3-API ThreadX per ARMv8-M
+    - name: Ch. 3 - API ThreadX per ARMv8-M
       href: ./user-guide-armv8m/chapter3.md
 - name: Manuale dell'utente di ThreadX SMP
   items:
     - name: Informazioni sulla guida
       href: ./threadx-smp/about-this-guide.md
-    - name: Ch. 1-Introduzione a ThreadX SMP
+    - name: Ch. 1 - Introduzione a ThreadX SMP
       href: ./threadx-smp/chapter1.md
-    - name: Ch. 2-installazione & l'uso di ThreadX SMP
+    - name: Ch. 2 - Installazione &'uso di ThreadX SMP
       href: ./threadx-smp/chapter2.md
-    - name: Ch. 3-componenti funzionali di ThreadX SMP
+    - name: Ch. 3 - Componenti funzionali di ThreadX SMP
       href: ./threadx-smp/chapter3.md
-    - name: Ch. 4-Descrizione dei servizi SMP di ThreadX
+    - name: Ch. 4 - Descrizione dei servizi SMP ThreadX
       href: ./threadx-smp/chapter4.md
-    - name: Ch. 5-driver di dispositivo per SMP ThreadX
+    - name: Ch. 5 - Driver di dispositivo per ThreadX SMP
       href: ./threadx-smp/chapter5.md
-    - name: Ch. 6-sistema dimostrativo per ThreadX SMP
+    - name: Ch. 6 - Sistema dimostrativo per ThreadX SMP
       href: ./threadx-smp/chapter6.md
-    - name: App. A-ThreadX SMP API Services
+    - name: App. A - Servizi API SMP ThreadX
       href: ./threadx-smp/appendix-a.md
-    - name: App. Costanti SMP B-ThreadX
+    - name: App. B - Costanti SMP ThreadX
       href: ./threadx-smp/appendix-b.md
-    - name: App. Tipi di dati SMP C-ThreadX
+    - name: App. C - Tipi di dati SMP ThreadX
       href: ./threadx-smp/appendix-c.md
-    - name: App. Codici di caratteri D-ASCII
+    - name: App. D - Codici carattere ASCII
       href: ./threadx-smp/appendix-d.md
 - name: Repository ThreadX
   href: 'https://github.com/azure-rtos/threadx'
 - name: Servizi correlati
   items:
-    - name: Defender per Internet delle cose-RTO (anteprima)
+    - name: Defender per IoT - RTOS (anteprima)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
-- name: Componenti Microsoft Azure RTO
+- name: Microsoft Azure Componenti RTOS
   items:
-    - name: Microsoft Azure RTO
+    - name: Microsoft Azure Rtos
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
@@ -75,7 +75,7 @@
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
-    - name: NetX
+    - name: Netx
       href: ../netx/index.yml
     - name: GUIX
       href: ../guix/index.yml

@@ -1,21 +1,21 @@
 ---
-title: Appendice B-costanti di Azure RTO NetX Duo
-description: Esplorare le costanti di Azure RTO NetX Duo.
+title: Appendice B - Azure RTOS costanti NetX Duo
+description: Esplorare le Azure RTOS costanti NetX Duo.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 04207c5183d732ccb49200c117d7e85a4ff80e33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d9063de460a09977ed4ee7a0a02ca578bdd116e9935394e600af75a74e8f34e1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822139"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789817"
 ---
-# <a name="appendix-b---azure-rtos-netx-duo-constants"></a>Appendice B-costanti di Azure RTO NetX Duo
+# <a name="appendix-b---azure-rtos-netx-duo-constants"></a>Appendice B - Azure RTOS costanti NetX Duo
 
-## <a name="alphabetic-listing"></a>Listato alfabetico
+## <a name="alphabetic-listing"></a>Elenco alfabetico
 
 <table>
 <thead>
@@ -224,11 +224,11 @@ ms.locfileid: "104822139"
 <td>0</td>
 </tr>
 <tr class="even">
-<td>NX_ICMP_PACKET (IPv6 abilitato</td>
+<td>NX_ICMP_PACKET (IPv6 abilitato)</td>
 <td>56</td>
 </tr>
 <tr class="odd">
-<td>NX_ICMP_PACKET (IPv6 disabilitato</td>
+<td>NX_ICMP_PACKET (IPv6 disabilitato)</td>
 <td>36</td>
 </tr>
 <tr class="even">
@@ -353,7 +353,7 @@ ms.locfileid: "104822139"
 </tr>
 <tr class="even">
 <td>NX_ICMPV6_PATH_MTU_INFINITE_TIMEOUT</td>
-<td>0xFFFFFFFF</td>
+<td>0xffffffff</td>
 </tr>
 <tr class="odd">
 <td>NX_ICMPV6_REDIRECT_MESSAGE_TYPE</td>
@@ -503,7 +503,7 @@ ms.locfileid: "104822139"
 </tr>
 <tr class="odd">
 <td>NX_IP_ALL_EVENTS</td>
-<td>0xFFFFFFFF</td>
+<td>0xffffffff</td>
 </tr>
 <tr class="even">
 <td>NX_IP_ARP_ENABLED</td>
@@ -697,7 +697,7 @@ ms.locfileid: "104822139"
 </tr>
 <tr class="even">
 <td>NX_IP_LIMITIED_BROADCAST</td>
-<td>0xFFFFFFFF</td>
+<td>0xffffffff</td>
 </tr>
 <tr class="odd">
 <td>NX_IP_LINK_ENABLED</td>
@@ -780,11 +780,11 @@ ms.locfileid: "104822139"
 </td>
 </tr>
 <tr class="odd">
-<td>NX_IP_PACKET (IPv6 abilitato</td>
+<td>NX_IP_PACKET (IPv6 abilitato)</td>
 <td>56</td>
 </tr>
 <tr class="even">
-<td>NX_IP_PACKET (IPv6 disabilitato</td>
+<td>NX_IP_PACKET (IPv6 disabilitato)</td>
 <td>36</td>
 </tr>
 <tr class="odd">
@@ -1285,7 +1285,7 @@ ms.locfileid: "104822139"
 </tr>
 <tr class="even">
 <td>NX_OPTION_ERROR</td>
-<td>0x0A</td>
+<td>0x0a</td>
 </tr>
 <tr class="odd">
 <td>NX_OVERFLOW</td>
@@ -1308,7 +1308,7 @@ ms.locfileid: "104822139"
 <tr class="odd">
 <td>NX_PACKET_FREE</td>
 <td>
-<p>0xFFFFFFFF</p>
+<p>0xffffffff</p>
 </td>
 </tr>
 <tr class="even">
@@ -1673,7 +1673,7 @@ ms.locfileid: "104822139"
 </tr>
 <tr class="even">
 <td>NX_WAIT_FOREVER</td>
-<td>0xFFFFFFFF</td>
+<td>0xffffffff</td>
 </tr>
 <tr class="odd">
 <td>NX_WINDOW_OVERFLOW</td>
@@ -3107,22 +3107,22 @@ ms.locfileid: "104822139"
 </tr>
 <tr>
 <td class="tg-0lax">NX_ICMPV6_PATH_MTU_INFINITE_TIMEOUT</td>
-<td class="tg-0lax">0xFFFFFFFF</td>
+<td class="tg-0lax">0xffffffff</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_IP_ALL_EVENTS</td>
-<td class="tg-0lax">0xFFFFFFFF</td>
+<td class="tg-0lax">0xffffffff</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_IP_LIMITIED_BROADCAST</td>
-<td class="tg-0lax">0xFFFFFFFF</td>
+<td class="tg-0lax">0xffffffff</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_PACKET_FREE</td>
-<td class="tg-0lax">0xFFFFFFFF</td>
+<td class="tg-0lax">0xffffffff</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_WAIT_FOREVER</td>
-<td class="tg-0lax">0xFFFFFFFF</td>
+<td class="tg-0lax">0xffffffff</td>
 </tr>
 </table>

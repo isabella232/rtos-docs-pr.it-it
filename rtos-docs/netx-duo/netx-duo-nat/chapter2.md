@@ -1,49 +1,49 @@
 ---
-title: Capitolo 2-installazione e uso di NAT
-description: Questo capitolo contiene una descrizione di come installare, configurare e usare i servizi NAT NetX Duo.
+title: Capitolo 2 - Installazione e uso di NAT
+description: Questo capitolo contiene una descrizione di come installare, configurare e usare i servizi NAT di NetX Duo.
 author: philmea
 ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 47816c8a62aed9e2b096b121d1676c66178ad825
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e1eb96e53f600eac56f8a82f3ca02ccfdaabf5cc12d95989e1e38e87775ff24f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821767"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797382"
 ---
-# <a name="chapter-2---installation-and-use-of-nat"></a>Capitolo 2-installazione e uso di NAT
+# <a name="chapter-2---installation-and-use-of-nat"></a>Capitolo 2 - Installazione e uso di NAT
 
-Questo capitolo contiene una descrizione di come installare, configurare e usare i servizi NAT NetX Duo.
+Questo capitolo contiene una descrizione di come installare, configurare e usare i servizi NAT di NetX Duo.
 
-## <a name="netx-duo-nat-installation"></a>Installazione NAT NetX Duo
+## <a name="netx-duo-nat-installation"></a>Installazione nat di NetX Duo
 
-NetX Duo NAT è disponibile all'indirizzo [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Il pacchetto NAT NetX Duo include un file di origine e un file di intestazione, un file di applicazione dimostrativo e un file PDF per questo documento, come indicato di seguito:
+NetX Duo NAT è disponibile all'indirizzo [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Il pacchetto NAT di NetX Duo include un file di origine e un file di intestazione, un file dell'applicazione dimostrativa e un file PDF per questo documento, come indicato di seguito:
 
-- **nx_nat. c** File di origine C per NetX Duo NAT
-- **nx_nat. h** File di intestazione C per NetX Duo NAT
-- **demo_netx_nat. c** File di origine NetX Duo C di esempio
-- **nx_nat.docx** Descrizione del manuale dell'utente NAT di NetX Duo (questo documento)
+- **nx_nat.c** File di origine C per NetX Duo NAT
+- **nx_nat.h** File di intestazione C per NetX Duo NAT
+- **demo_netx_nat.c** File di origine NetX Duo C dell'host di esempio
+- **nx_nat.docx** Descrizione del Manuale dell'utente di NetX Duo NAT (questo documento)
 
-Copiare i file di codice sorgente NAT NetX Duo nella stessa directory in cui sono installati NetX Duo e ThreadX. Ad esempio, se NetX Duo e ThreadX sono installati nella directory "*\threadx\mcf5485\green*", quindi *nx_nat. c*, *nx_nat. h e i file NETX Duo modificati* devono essere copiati in questa directory. Copiare i file NetX Duo modificati sui file NetX Duo esistenti. Copiare anche i file del driver del controller Ethernet in questa directory.
+Copiare i file di codice sorgente nat di NetX Duo nella stessa directory in cui sono installati NetX Duo e ThreadX. Ad esempio, se NetX Duo e ThreadX sono installati nella directory "*\threadx\mcf5485\green*", *nx_nat.c*, *nx_nat.h* e i file di NetX Duo modificati devono essere copiati in questa directory. Copiare i file di NetX Duo modificati sui file di NetX Duo esistenti. Copiare anche i file del driver del controller Ethernet in questa directory.
 
 Per compilare un'applicazione NAT NetX Duo:
 
-- La libreria NetX Duo *nxduo. a* deve essere compilata con NX_NAT_ENABLED definito. Questa operazione può essere eseguita in *nx_user. h*, assicurandosi che NX_INCLUDE_USER_DEFINE_FILE sia definito anche per assicurarsi che le opzioni di configurazione in *nx_user. h* siano incluse nella compilazione.
-- Il progetto dell'applicazione deve includere *nx_nat. h* dopo *tx_api. h* e *nx_api. h. Gli ultimi due file di intestazione sono necessari* per usare i servizi threadX e NETX Duo.
-- L'applicazione Abilita quindi NAT in un'istanza IP creata in precedenza usando il servizio *nx_nat_enable* .
-- Il codice dell'applicazione può abilitare/disabilitare in modo dinamico la NAT chiamando il servizio *nx_nat_enable* e *nx_nat_disable* .
-- Il codice del progetto dell'applicazione viene compilato e collegato con la libreria NetX Duo abilitata per la NAT per creare il file eseguibile.
-- Per supportare le connessioni NAT tramite protocolli TCP, UDP o ICMP, è necessario abilitare NetX Duo per supportare tale protocollo. Questa operazione viene eseguita chiamando rispettivamente *nx_tcp_enable, nx_udp_enable* e *nx_icmp_enable* per l'istanza IP creata in precedenza.
+- La libreria NetX Duo *nxduo.a* deve essere compilata NX_NAT_ENABLED definita. Questa operazione può essere eseguita *in nx_user.h*( assicurarsi che NX_INCLUDE_USER_DEFINE_FILE sia definito anche per garantire che le opzioni di configurazione in *nx_user.h* siano incluse nella compilazione.
+- Il progetto dell'applicazione *deve includere nx_nat.h* *dopo tx_api.h* *e nx_api.h. Gli ultimi due file di intestazione sono necessari* per usare i servizi ThreadX e NetX Duo.
+- L'applicazione abilita quindi NAT in un'istanza IP creata in precedenza *usando nx_nat_enable* servizio.
+- Il codice dell'applicazione può abilitare/disabilitare nat in modo dinamico chiamando il *nx_nat_enable* e *nx_nat_disable* servizio.
+- Il codice del progetto dell'applicazione viene compilato e collegato alla libreria NetX Duo abilitata per NAT per creare l'eseguibile.
+- Per supportare le connessioni NAT che usano protocolli TCP, UDP o ICMP, è necessario che NetX Duo sia abilitato per supportare tale protocollo. Questa operazione viene eseguita chiamando *nx_tcp_enable, nx_udp_enable* e *nx_icmp_enable* rispettivamente per l'istanza IP creata in precedenza.
 
-## <a name="small-example-demo-nat-setup"></a>Configurazione della demo di esempio di piccole dimensioni
+## <a name="small-example-demo-nat-setup"></a>Small Example Demo NAT Setup
 
-Un esempio di come un'applicazione Configura NAT NetX Duo è illustrato nella funzione *tx_application_define* nella figura 4 riportata di seguito. Diversamente dalla maggior parte dei file demo di NetX Duo distribuiti nel CD di installazione, questa demo viene eseguita in una bacheca del processore effettiva con due controller Ethernet, anziché un PC Windows che usa il driver di rete virtuale *_nx_ram_network_driver*(). Il dispositivo NAT è connesso al dominio locale tramite un switch locale nell'interfaccia locale e alla rete esterna tramite il secondo switch sulla relativa interfaccia esterna.
+Un esempio di come un'applicazione configura NetX Duo NAT è illustrato nella tx_application_define *nella* figura 4 riportata di seguito. A differenza della maggior parte dei file demo di NetX Duo distribuiti nel CD di installazione, questa demo viene eseguita in una scheda processore effettiva con due controller Ethernet, anziché in un PC Windows che usa il driver di rete *virtuale _nx_ram_network_driver*(). Il dispositivo NAT è connesso al dominio locale tramite un commutatore locale sulla relativa interfaccia locale e alla rete esterna tramite il secondo commutatore sulla relativa interfaccia esterna.
 
-La configurazione di base di NetXDuo è illustrata in demo_netx_nat. c. La rete privata è definita come 192.168.2. XX e ha due nodi host locali. La rete globale è definita come 192.168.0. XX e definisce il gateway per i pacchetti di rete fuori rete come 192.168.0.1. Le istanze IP di NetX Duo vengono create nella riga 118-171 e richiamano il driver ' RAM '; nat_ip istanza collegata due interfacce fungono da router NAT, local_ip istanza collegata nell'interfaccia funge da host locale; external_ip istanza collegata un'interfaccia funge da host esterno.
+La configurazione di base di NetXDuo è illustrata in demo_netx_nat.c. La rete privata è definita come 192.168.2.xx e ha due nodi host locali. La rete globale è definita come 192.168.0.xx e definisce il gateway per i pacchetti fuori rete come 192.168.0.1. Le istanze IP di NetX Duo vengono create alle righe 118-171 e richiamano il driver "ram". nat_ip'istanza collegata due interfacce fungono da router NAT, local_ip'istanza collegata sull'interfaccia funge da host locale; external_ip'istanza collegata a un'interfaccia funge da host esterno.
 
-Il NAT viene creato nella riga 252 e richiama la cache per archiviare le voci di conversione dinamiche. Abilitare la funzionalità NAT in line319, la conversione statica (voce in ingresso) viene creata nella riga 362 per consentire all'host esterno di accedere all'host locale.
+Il processo NAT viene creato nella riga 252 e richiama la cache per archiviare le voci di conversione dinamiche. Abilitare la funzionalità NAT nella riga 319. La conversione statica (voce in ingresso) viene creata nella riga 362 per consentire all'host esterno di accedere all'host locale.
 
 ```C
 /*
@@ -456,4 +456,4 @@ NX_PACKET   *my_packet;
 #endif
 ```
 
-**Figura 5-configurazione di NetX Duo NAT**
+**Figura 5 - Configurazione di NetX Duo NAT**

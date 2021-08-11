@@ -1,46 +1,46 @@
 ---
-title: Capitolo 2-installazione e utilizzo del client POP3 NetX Duo
-description: Il client POP3 NetX Duo include un file di origine, un file di intestazione e un file dimostrativo.
+title: Capitolo 2 - Installazione e uso del client POP3 NetX Duo
+description: NetX Duo POP3 Client include un file di origine, un file di intestazione e un file demo.
 author: philmea
 ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6ef4b6ba7aadf77ab95a4a12235eda847f32f3d5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5a3cbded6224617571941f58ffb6a08bde9575eba8791544182fb8499c14bf43
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821749"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797195"
 ---
-# <a name="chapter-2---installation-and-use-of-netx-duo-pop3-client"></a>Capitolo 2-installazione e utilizzo del client POP3 NetX Duo
+# <a name="chapter-2---installation-and-use-of-netx-duo-pop3-client"></a>Capitolo 2 - Installazione e uso del client POP3 NetX Duo
 
-Il client POP3 NetX include un file di origine, un file di intestazione e un file dimostrativo. Per i servizi digest MD5 sono disponibili due file aggiuntivi. È disponibile anche un file PDF della Guida per l'utente (questo documento).
+NetX POP3 Client include un file di origine, un file di intestazione e un file demo. Sono disponibili due file aggiuntivi per i servizi digest MD5. È anche disponibile un file PDF della Guida dell'utente (questo documento).
 
-- **nxd_pop3_client. c** File di origine C per l'API client POP3 NetX Duo
-- **nxd_pop3_client. h** File di intestazione C per l'API client POP3 NetX Duo
-- **demo_netxduo_pop3_client. c** File demo per la creazione e l'avvio di sessioni di client POP3
-- **nx_md5. c** File di origine C che definisce i servizi digest MD5
-- **nx_md5. h** File di intestazione C che definisce i servizi digest MD5
-- **nxd_pop3_client.pdf** Manuale dell'utente del client POP3 di NetX Duo
+- **nxd_pop3_client.c** File di origine C per l'API client POP3 di NetX Duo
+- **nxd_pop3_client.h** File di intestazione C per l'API client POP3 di NetX Duo
+- **demo_netxduo_pop3_client.c** File demo per la creazione del client POP3 e l'avvio della sessione
+- **nx_md5.c** File di origine C che definisce i servizi digest MD5
+- **nx_md5.h** File di intestazione C che definisce i servizi digest MD5
+- **nxd_pop3_client.pdf** Guida dell'utente del client POP3 di NetX Duo
 
-Per usare il client POP3 NetX Duo, l'intera distribuzione indicata in precedenza può essere copiata nella stessa directory in cui è installato NetX Duo. Se, ad esempio, NetX Duo è installato nella directory "*\threadx\mcf5272\green*", i file *nx_md5. h*, *nx_md5. c,* *nxd_pop3_client. h e nxd_pop3_client. c* devono essere copiati in questa directory.
+Per usare netx Duo POP3 Client, l'intera distribuzione indicata in precedenza può essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\mcf5272\green*", i file *nx_md5.h*, *nx_md5.c,* *nxd_pop3_client.h e nxd_pop3_client.c* devono essere copiati in questa directory.
 
-## <a name="using-netx-duo-pop3-client"></a>Uso di NetX Duo POP3 client
+## <a name="using-netx-duo-pop3-client"></a>Uso del client POP3 NetX Duo
 
-Per usare il servizio client POP3 NetX Duo, l'applicazione deve aggiungere *nxd_pop3_client. c* al relativo progetto di compilazione. Il codice dell'applicazione deve includere *nx_md5. h e nxd_pop3_client. h* dopo *tx_api. h* e *nx_api. h*, per usare threadX e NETX Duo.
+Per usare il servizio client POP3 NetX Duo, l'applicazione deve aggiungere *nxd_pop3_client.c* al progetto di compilazione. Il codice dell'applicazione deve includere *nx_md5.h e nxd_pop3_client.h* dopo *tx_api.h* e *nx_api.h*, per poter usare ThreadX e NetX Duo.
 
-Questi file devono essere compilati in modo analogo agli altri file dell'applicazione e il codice oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client POP3 NetX Duo.
+Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il codice oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client POP3 NetX Duo.
 
 ## <a name="small-example-of-the-netx-duo-pop3-client"></a>Piccolo esempio del client POP3 NetX Duo
 
-Un esempio di come usare i servizi client POP3 di NetX Duo è descritto nella figura 1 riportata di seguito. Questa demo imposta le due richiamate per la notifica del download della posta e il completamento della sessione sulle righe 37 e 38. Il pool di pacchetti client POP3 viene creato alla riga 76. L'attività thread IP viene creata alla riga 88. Si noti che questo pool di pacchetti viene utilizzato anche per il pool di pacchetti client POP3. TCP è abilitato nell'attività IP alla riga 107.
+Un esempio di come usare i servizi client POP3 di NetX Duo è descritto nella figura 1 riportata di seguito. Questa demo configura i due callback per la notifica del download della posta e del completamento della sessione nelle righe 37 e 38. Il pool di pacchetti client POP3 viene creato alla riga 76. L'attività thread IP viene creata alla riga 88. Si noti che questo pool di pacchetti viene usato anche per il pool di pacchetti client POP3. TCP è abilitato nell'attività IP nella riga 107.
 
-Il client POP3 viene creato alla riga 133 all'interno della funzione entry thread dell'applicazione *demo_thread_entry*. Questo perché il servizio *nx_pop3_client_create* tenta anche di effettuare una connessione TCP con il server POP3. Se l'operazione ha esito positivo, l'applicazione esegue una query sul server POP3 per il numero di elementi nella relativa alla maildrop. alla riga 149 usando il servizio *nx_pop3_client_mail_items_get* .
+Il client POP3 viene creato alla riga 133 all'interno della funzione di immissione del thread *dell'applicazione, demo_thread_entry*. Questo perché il *nx_pop3_client_create* tenta anche di stabilire una connessione TCP con il server POP3. In caso di esito positivo, l'applicazione esegue una query sul server POP3 per il numero di elementi nel relativo maildrop alla riga 149 usando il *nx_pop3_client_mail_items_get* servizio.
 
-Se sono presenti uno o più elementi, l'applicazione scorre il ciclo while per ogni elemento di posta elettronica per scaricare il messaggio di posta elettronica. La richiesta RETR viene effettuata alla riga 149 nella chiamata *nx_pop3_client_mail_item_get* . Se l'operazione ha esito positivo, l'applicazione Scarica i pacchetti usando il servizio *nx_pop3_client_mail_item_message_get* alla riga 177 fino a quando non rileva l'ultimo pacchetto nel messaggio ricevuto alla riga 196. Infine, l'applicazione elimina l'elemento di posta elettronica, supponendo che si sia verificato un download corretto alla riga 199 della chiamata *nx_pop3_client_mail_item_delete* . La RFC 1939 consiglia ai client POP3 di indicare al server di eliminare gli elementi di posta scaricati per evitare che la posta si accumuli nell'alla maildrop. del client. Il server può comunque eseguire questa operazione in modo automatico.
+Se sono presenti uno o più elementi, l'applicazione scorre il ciclo while per ogni elemento di posta per scaricare il messaggio di posta elettronica. La richiesta RETR viene effettuata alla riga 149 *nella nx_pop3_client_mail_item_get* chiamata. In caso di esito positivo, l'applicazione scarica i pacchetti usando il servizio *nx_pop3_client_mail_item_message_get* alla riga 177 finché non rileva che l'ultimo pacchetto nel messaggio è stato ricevuto alla riga 196. Infine, l'applicazione elimina l'elemento di posta, presupponendo che si sia verificato un download riuscito alla riga 199 *della* nx_pop3_client_mail_item_delete chiamata. Rfc 1939 consiglia ai client POP3 di indicare al server di eliminare gli elementi di posta scaricati per impedire l'accumulo di posta elettronica nel maildrop del client. Il server può eseguire automaticamente questa operazione in ogni caso.
 
-Una volta scaricati tutti gli elementi di posta o se una chiamata al servizio client POP3 non riesce, l'applicazione termina il ciclo ed Elimina il client POP3 alla riga 217 usando il servizio *nx_pop3_client_delete* .
+Dopo aver scaricato tutti gli elementi di posta elettronica o se una chiamata al servizio client POP3 ha esito negativo, l'applicazione esce dal ciclo ed elimina il client POP3 alla riga 217 usando il servizio *nx_pop3_client_delete.*
 
 ```C
 /*
@@ -265,17 +265,17 @@ void    demo_thread_entry(ULONG info)
 }
 ```
 
-**Figura 1. Esempio di applicazione client POP3 NetX Duo**
+**Figura 1. Esempio di un'applicazione client POP3 NetX Duo**
 
 ## <a name="pop3-client-configuration-options"></a>Opzioni di configurazione del client POP3
 
-Sono disponibili diverse opzioni di configurazione con il client POP3 NetX Duo. Di seguito è riportato un elenco di tutte le opzioni descritte in dettaglio:
+Sono disponibili diverse opzioni di configurazione con il client POP3 di NetX Duo. Di seguito è riportato un elenco di tutte le opzioni descritte in dettaglio:
 
-- **NX_POP3_CLIENT_PACKET_TIMEOUT** Definisce l'opzione wait in secondi per l'allocazione di un pacchetto da parte del client POP3. Il valore predefinito è 1 secondo.
-- **NX_POP3_CLIENT_CONNECTION_TIMEOUT** Definisce l'opzione wait in secondi per la connessione del client POP3 al server POP3. Il valore predefinito è 30 secondi.
-- **NX_POP3_CLIENT_DISCONNECT_TIMEOUT** Definisce l'opzione wait in secondi per la disconnessione del client POP3 dal server POP3. Il valore predefinito è 2 secondi.
-- **NX_POP3_TCP_SOCKET_SEND_WAIT** Questa opzione imposta l'opzione wait in secondi nelle chiamate al servizio *nx_tcp_socket_send* . Il valore predefinito è 2 secondi.
-- **NX_POP3_SERVER_REPLY_TIMEOUT** Questa opzione consente di impostare l'opzione wait in *nx_tcp_socket_receive* servizio per la risposta del server a una richiesta client. Il valore predefinito è 10 secondi.
-- **NX_POP3_CLIENT_TCP_WINDOW_SIZE** Questa opzione consente di impostare le dimensioni della finestra di ricezione TCP del client. Questa impostazione deve essere impostata sulla dimensione MTU dell'istanza IP meno l'intestazione IP e TCP. Il valore predefinito è 1460. Questa operazione dovrebbe essere inferiore se l'applicazione invia pacchetti POP3 su IPv6 (1440 byte) per tenere conto dell'intestazione IPv6 più grande.
-- **NX_POP3_MAX_USERNAME** Questa opzione consente di impostare le dimensioni del buffer del nome utente del client POP3. Il valore predefinito è 40 byte.
-- **NX_POP3_MAX_PASSWORD** Questa opzione consente di impostare le dimensioni del buffer della password del client POP3. Il valore predefinito è 20 byte.
+- **NX_POP3_CLIENT_PACKET_TIMEOUT** Definisce l'opzione di attesa in secondi per l'allocazione di un pacchetto da parte del client POP3. Il valore predefinito è 1 secondo.
+- **NX_POP3_CLIENT_CONNECTION_TIMEOUT** Definisce l'opzione di attesa in secondi per la connessione del client POP3 al server POP3. Il valore predefinito è 30 secondi.
+- **NX_POP3_CLIENT_DISCONNECT_TIMEOUT** Definisce l'opzione di attesa in secondi per la disconnessione del client POP3 dal server POP3. Il valore predefinito è 2 secondi.
+- **NX_POP3_TCP_SOCKET_SEND_WAIT** Questa opzione imposta l'opzione di attesa in secondi nelle chiamate *nx_tcp_socket_send* servizio. Il valore predefinito è 2 secondi.
+- **NX_POP3_SERVER_REPLY_TIMEOUT** Questa opzione imposta l'opzione wait *nx_tcp_socket_receive* chiamate del servizio per la risposta del server a una richiesta client. Il valore predefinito è 10 secondi.
+- **NX_POP3_CLIENT_TCP_WINDOW_SIZE** Questa opzione imposta le dimensioni della finestra di ricezione TCP client. Deve essere impostata sulla dimensione MTU dell'istanza IP meno l'intestazione IP e TCP. Il valore predefinito è 1460. Dovrebbe essere inferiore se l'applicazione invia pacchetti POP3 tramite IPv6 (1440 byte) per prendere in considerazione l'intestazione IPv6 più grande.
+- **NX_POP3_MAX_USERNAME** Questa opzione imposta le dimensioni del buffer del nome utente del client POP3. Il valore predefinito è 40 byte.
+- **NX_POP3_MAX_PASSWORD** Questa opzione imposta le dimensioni del buffer della password del client POP3. Il valore predefinito è 20 byte.

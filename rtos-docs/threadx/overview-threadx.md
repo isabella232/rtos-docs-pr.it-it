@@ -1,59 +1,59 @@
 ---
 title: Informazioni Azure RTOS ThreadX
-description: Altre informazioni su Azure ThreadX, un sistema operativo avanzato in tempo reale (RTOS) progettato specificamente per applicazioni con deep embedded.
+description: Altre informazioni su Azure ThreadX, un sistema operativo avanzato in tempo reale (RTOS) progettato specificamente per applicazioni con integrazione avanzata.
 author: philmea
 ms.author: philmea
 ms.date: 6/9/2021
 ms.service: rtos
 ms.topic: overview
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 4b6c8df5133f16cf3ed4006c12433ac426453cb5
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 300307a82cfde9c74ec0a2499528898b384076676f75bd592fa2840bc5ac53a8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178205"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796302"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Panoramica di Azure RTOS ThreadX
 
-Azure RTOS ThreadX è il sistema operativo Real-Time (RTOS) avanzato di Microsoft. È progettato specificamente per applicazioni IoT, in tempo reale e con deep embedded. Azure RTOS ThreadX offre funzionalità avanzate di pianificazione, comunicazione, sincronizzazione, timer, gestione della memoria e gestione degli interrupt. Inoltre, Azure RTOS ThreadX offre molte funzionalità avanzate, tra cui il relativo grafico™ l'architettura, la soglia di preemption™ la pianificazione, il concatenamento degli eventi, la profilatura dell'esecuzione del ™, le metriche delle prestazioni e la traccia degli eventi di sistema. In combinazione con la sua maggiore facilità d'uso, Azure RTOS ThreadX è la scelta ideale per le applicazioni incorporate più complesse. Azure RTOS ThreadX ha miliardi di distribuzioni in un'ampia gamma di prodotti, tra cui dispositivi consumer, elettronica medicale e apparecchiature di controllo industriale.
+Azure RTOS ThreadX è il sistema operativo RTOS (Advanced Industrial Grade Real-Time Operating System) di Microsoft. È progettato specificamente per applicazioni IoT, in tempo reale e con un'incorporata profonda. Azure RTOS ThreadX offre funzionalità avanzate di pianificazione, comunicazione, sincronizzazione, timer, gestione della memoria e gestione degli interrupt. Inoltre, Azure RTOS ThreadX ha molte funzionalità avanzate: tra cui il picokernel™ l'architettura, la soglia di preemption™ la pianificazione, il concatenamento di eventi, la profilatura dell'esecuzione ™, le metriche delle prestazioni e la traccia degli eventi di sistema. Insieme alla semplicità d'uso superiore, Azure RTOS ThreadX è la scelta ideale per le applicazioni incorporate più complesse. Azure RTOS ThreadX ha miliardi di distribuzioni in un'ampia gamma di prodotti, tra cui dispositivi consumer, elettronica medicale e apparecchiature di controllo industriale.
 
 ## <a name="threadx-footprint"></a>Footprint ThreadX
 
-Azure RTOS ThreadX ha un'area di istruzioni di 2 KB notevolmente ridotta e un footprint minimo di 1 KB di RAM. Queste dimensioni ridotte sono in gran parte dovute all'architettura a piakernel non a più livelli e alla scalabilità automatica. Il ridimensionamento automatico significa che solo i servizi (e l'infrastruttura di supporto) usati dall'applicazione vengono inclusi nell'immagine finale in fase di collegamento.
+Azure RTOS ThreadX ha un'area di istruzioni di 2 KB notevolmente ridotta e un footprint minimo di 1 KB di RAM. Queste dimensioni ridotte sono in gran parte dovute all'architettura a picokernel non a più livelli e al ridimensionamento automatico. Il ridimensionamento automatico significa che solo i servizi (e l'infrastruttura di supporto) usati dall'applicazione vengono inclusi nell'immagine finale in fase di collegamento.
 
 Ecco alcune caratteristiche tipiche delle Azure RTOS ThreadX.
 
-|Azure RTOS ThreadX Service  |Dimensioni tipiche in byte  |
+|Azure RTOS servizio ThreadX  |Dimensioni tipiche in byte  |
 |---------|---------|
 |Servizi di base (richiesta) |2.000  |
-|Servizi di accodamento  |900  |
-|Servizi flag di evento  |900  |
-|Servizi semafori  |450  |
-|Servizi mutex  |1.200  |
-|Servizi di memoria a blocchi  |550  |
-|Servizi byte memory  |900  |
+|Servizi code  |900  |
+|Servizi flag di eventi  |900  |
+|Servizi di semaforo  |450  |
+|Servizi Mutex  |1.200  |
+|Bloccare i servizi di memoria  |550  |
+|Servizi di memoria byte  |900  |
 
-## <a name="threadx-execution-speed"></a>Velocità di esecuzione di ThreadX
+## <a name="threadx-execution-speed"></a>Velocità di esecuzione ThreadX
 
-Azure RTOS ThreadX ottiene un cambio di contesto di sottosecondo nei processori più diffusi ed è complessivamente più veloce rispetto ad altri RTOS commerciali. Oltre a essere veloce, Azure RTOS ThreadX è altamente deterministico. Consente di ottenere le stesse prestazioni rapide, sia che siano disponibili 200 thread o solo uno.
+Azure RTOS ThreadX ottiene un commutatore di contesto di sottosecondi nei processori più diffusi ed è più veloce complessivamente rispetto ad altri RTOS commerciali. Oltre a essere veloce, Azure RTOS ThreadX è altamente deterministico. Ottiene le stesse prestazioni veloci indipendentemente dal fatto che siano pronti 200 thread o solo uno.
 
-Ecco alcune caratteristiche tipiche delle prestazioni di Azure RTOS ThreadX:
+Ecco alcune caratteristiche di prestazioni tipiche di Azure RTOS ThreadX:
 
 * Avvio rapido: Azure RTOS ThreadX viene avviato in meno di 120 cicli.
-* Rimozione facoltativa del controllo degli errori di base: è Azure RTOS controllo degli errori ThreadX di base può essere ignorato in fase di compilazione. Ciò può essere utile quando il codice dell'applicazione viene verificato e non richiede più il controllo degli errori per ogni parametro. Il controllo degli errori può essere ignorato in un'unità di compilazione, anziché a livello di sistema.
-* Progettazione di immagini: i servizi non sono a livelli l'uno sull'altro, eliminando il sovraccarico delle chiamate di funzione non necessarie.
-* Elaborazione ottimizzata degli interrupt: solo i registri scratch vengono salvati/ripristinati all'ingresso/uscita da ISR, a meno che non sia necessaria la precedenza.
-* Elaborazione API ottimizzata:
+* Rimozione facoltativa del controllo degli errori di base: è Azure RTOS controllo degli errori ThreadX di base può essere ignorato in fase di compilazione. Ciò può essere utile quando il codice dell'applicazione viene verificato e non richiede più il controllo degli errori per ogni parametro. Il controllo degli errori può essere eseguito su un'unità di compilazione, anziché a livello di sistema.
+* Progettazione di picokernel: i servizi non sono a livelli l'uno sull'altro, eliminando l'overhead delle chiamate di funzione non necessarie.
+* Elaborazione di interrupt ottimizzata: solo i registri scratch vengono salvati/ripristinati al momento dell'ingresso/uscita di ISR, a meno che non sia necessaria la precedenza.
+* Elaborazione api ottimizzata:
 
-    |Azure RTOS ThreadX Service  |Tempo del servizio in microsecondi*  |
+    |Azure RTOS servizio ThreadX  |Tempo di servizio in microsecondi*  |
     |---------|---------|
-    |Thread Suspend  |0,6  |
-    |Thread Resume  |0,6  |
+    |Sospensione dei thread  |0,6  |
+    |Ripresa di thread  |0,6  |
     |Invio in coda  |0,3  |
     |Ricezione coda  |0,3  |
     |Ottenere un semaforo  |0,2  |
-    |Put Semaphore  |0,2  |
+    |Inserire un semaforo  |0,2  |
     |Cambio di contesto  |0,4  |
     |Risposta di interrupt  |0.0 – 0.6  |
 
@@ -61,38 +61,38 @@ Ecco alcune caratteristiche tipiche delle prestazioni di Azure RTOS ThreadX:
 
 ## <a name="advanced-technology"></a>Tecnologia avanzata
 
-Azure RTOS ThreadX è importante per la pianificazione della soglia di preemption. Questa funzionalità è univoca per Azure RTOS ThreadX ed è stata oggetto di ricerche accademiche approfondite. Per altre informazioni, vedere il documento [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://ieeexplore.ieee.org/document/811269)(Pianificazione delle attività di Fixed-Priority con soglia di preemption), di Yun Wang (Concordia University) e Manas Sakslde (University of University).
+Azure RTOS ThreadX è importante per la pianificazione della soglia di priorità. Questa funzionalità è univoca per Azure RTOS ThreadX ed è stata oggetto di ricerche accademiche approfondite. Per altre informazioni, vedere il documento [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://ieeexplore.ieee.org/document/811269)(Pianificazione delle attività Fixed-Priority con soglia di preemption), di Yun Wang (Concordia University) e Manas Saksena (University of Pittsburgh).
 
-Funzionalità principali di Azure RTOS ThreadX:
+Funzionalità chiave di Azure RTOS ThreadX:
 
-* Funzionalità complete e complete per il multitasking
+* Funzionalità multitasking complete e complete
   * Thread, timer dell'applicazione, code di messaggi, semafori di conteggio, mutex, flag di eventi, blocchi e pool di memoria di byte
-* Priority-Based preemptive
+* Priority-Based pianificazione preventiva
 * Flessibilità di priorità: fino a 1024 livelli di priorità
 * Pianificazione cooperativa
-* Preemption-Threshold: univoco per Azure RTOS ThreadX, consente di ridurre i commutatori di contesto e di garantire la pianificazione (in base alla ricerca accademica)
+* Preemption-Threshold: univoco per Azure RTOS ThreadX, consente di ridurre i commutatori di contesto e di garantire la pianificazione (per ricerca accademica)
 * Protezione della memoria tramite Azure RTOS ThreadX MODULES
 * Completamente deterministico
-* Traccia eventi: acquisisce gli ultimi *n* eventi di sistema/applicazione
-* Concatenamento di eventi: registrare una funzione di callback di notifica specifica dell'applicazione per ogni Azure RTOS di comunicazione o sincronizzazione ThreadX
-* Azure RTOS ThreadX MODULES con protezione della memoria facoltativa
-* Run-Time delle prestazioni
-  * Numero di ripresi di thread
+* Traccia eventi: acquisisci gli ultimi *n eventi* di sistema/applicazione
+* Concatenamento di eventi: registrare una funzione di callback "notify" specifica dell'applicazione per ogni Azure RTOS di comunicazione o sincronizzazione ThreadX
+* Azure RTOS moduli ThreadX con protezione della memoria facoltativa
+* Run-Time metriche delle prestazioni
+  * Numero di rievazioni di thread
   * Numero di sospensioni dei thread
-  * Numero di pre-svuotazioni di thread su richiesta
-  * Numero di preventivi di interrupt di thread asincroni
-  * Numero di inversione della priorità dei thread
+  * Numero di pre-svuotari di thread richiesto
+  * Numero di pre-svuotaoni di interrupt di thread asincroni
+  * Numero di inversioni di priorità dei thread
   * Numero di richieste di thread
-* Execution Profile Kit (EPK)
+* Kit del profilo di esecuzione (EPK)
 * Separare lo stack di interrupt
-* Run-Time Stack Analysis
-* Elaborazione ottimizzata degli interrupt timer
+* Run-Time'analisi dello stack
+* Ottimizzazione dell'elaborazione degli interrupt del timer
 
 ## <a name="multicore-support-amp--smp"></a>Supporto multicore (AMP & SMP)
 
-ThreadX Azure RTOS Standard viene spesso usato in modalità Asimmetrica multielaborazione (AMP), in cui una copia separata di Azure RTOS ThreadX e l'applicazione (o Linux) viene eseguita in ogni core e comunicano tra loro tramite memoria condivisa o un meccanismo di comunicazione tra processori, ad esempio OpenAMP (Azure RTOS ThreadX supporta OpenAMP).
+ThreadX Azure RTOS standard viene spesso usato in modalità Asimmetrica multiprocessing (AMP), in cui una copia separata di Azure RTOS ThreadX e l'applicazione (o Linux) viene eseguita in ogni core e comunicano tra loro tramite memoria condivisa o un meccanismo di comunicazione tra processori come OpenAMP (Azure RTOS ThreadX supporta OpenAMP).
 
-Negli ambienti in cui il caricamento dei processori è altamente dinamico, Azure RTOS SMP (ThreadX Symmetric Multiprocessing) è disponibile per le famiglie di processori seguenti:
+Negli ambienti in cui il caricamento dei processori è altamente dinamico, Azure RTOS multiprocessing simmetrico ThreadX (SMP) è disponibile per le famiglie di processori seguenti:
 
 * Arm Cortex-Ax
 * Arm Cortex-Rx
@@ -102,7 +102,7 @@ Negli ambienti in cui il caricamento dei processori è altamente dinamico, Azure
 * Synopsys ARC HS
 * x86
 
-Azure RTOS ThreadX SMP esegue il bilanciamento del carico dinamico *tra n* processori. Consente a tutte le Azure RTOS ThreadX (code, semafori, flag di eventi, pool di memoria e così via) di essere accessibili da qualsiasi thread in qualsiasi core. Azure RTOS ThreadX SMP abilita l'API ThreadX Azure RTOS completa in tutti i core e introduce le nuove API seguenti applicabili all'operazione SMP:
+Azure RTOS ThreadX SMP esegue il bilanciamento del carico dinamico tra *n* processori. Consente a tutte Azure RTOS threadX (code, semafori, flag di eventi, pool di memoria e così via) di accedere a qualsiasi thread in qualsiasi core. Azure RTOS ThreadX SMP abilita l'API ThreadX Azure RTOS completa in tutti i core e introduce le nuove API seguenti applicabili all'operazione SMP:
 
 * `UINT tx_thread_smp_core_exclude(TX_THREAD *thread_ptr, ULONG exclusion_map);`
 * `UINT tx_thread_smp_core_exclude_get(TX_THREAD *thread_ptr, ULONG *exclusion_map_ptr);`

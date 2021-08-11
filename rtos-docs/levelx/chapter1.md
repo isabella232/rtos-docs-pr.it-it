@@ -1,30 +1,30 @@
 ---
-title: Capitolo 1-Panoramica di Azure RTO LevelX
-description: Azure RTO LevelX offre funzionalità di livellamento NAND e NOR Flash per le applicazioni incorporate.
+title: Capitolo 1 - Panoramica di Azure RTOS LevelX
+description: Azure RTOS LevelX fornisce funzionalità di livellamento dell'usura flash NAD e NOR alle applicazioni incorporate.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 045446fec74164f125bc0ad27e8b7a904be14ab2
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 73c06d48b98081291d83635e049e6cf8641714c87efe815f9399f3fbab3a6211
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822178"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790599"
 ---
-# <a name="chapter-1---overview-of-azure-rtos-levelx"></a>Capitolo 1-Panoramica di Azure RTO LevelX
+# <a name="chapter-1---overview-of-azure-rtos-levelx"></a>Capitolo 1 - Panoramica di Azure RTOS LevelX
 
-Azure RTO LevelX offre funzionalità di livellamento NAND e NOR Flash per le applicazioni incorporate. Poiché sia la memoria NAND che quella Flash possono essere cancellate solo un numero finito di volte, è fondamentale distribuire l'uso della memoria flash in modo uniforme. Questa operazione viene in genere definita "livellamento dell'utilizzo" ed è lo scopo dietro LevelX.
+Azure RTOS LevelX fornisce funzionalità di livellamento dell'usura flash NAD e NOR alle applicazioni incorporate. Poiché la memoria flash NAD e NOR può essere cancellata solo un numero finito di volte, è fondamentale distribuire uniformemente l'uso della memoria flash. Questo è in genere detto "livello di usura" ed è lo scopo alla base di LevelX.
 
-L'algoritmo che sceglie il blocco Flash da riutilizzare si basa principalmente sul conteggio delle eliminazioni, ma non interamente. Il blocco con il numero di cancellazioni più basso potrebbe non essere scelto se è presente un altro blocco con un conteggio di cancellazione in un Delta accettabile rispetto al numero minimo di cancellazioni e con un numero maggiore di mapping obsoleti. In questi casi, il blocco con il maggior numero di mapping obsoleti verrà cancellato e riutilizzato, risparmiando in questo modo il sovraccarico nello stato di movimenti di mapping validi.
+L'algoritmo che sceglie il blocco flash da riutilizzare si basa principalmente sul conteggio delle cancellazioni, ma non interamente. Il blocco con il conteggio di cancellazione più basso potrebbe non essere scelto se è presente un altro blocco con un conteggio di cancellazione all'interno di un delta accettabile dal conteggio di cancellazione minima e con un numero maggiore di mapping obsoleti. In questi casi, il blocco con il maggior numero di mapping obsoleti verrà cancellato e riutilizzato, risparmiando così un sovraccarico nello spostamento di voci di mapping valide.
 
-LevelX supporta più istanze di NAND e/o né parti, ad esempio, l'applicazione può usare istanze separate di LevelX all'interno della stessa applicazione. Ogni istanza richiede il proprio blocco di controllo fornito dall'applicazione, nonché il proprio driver Flash.
+LevelX supporta più istanze di parti NAD e/o NOR, ad esempio l'applicazione può utilizzare istanze separate di LevelX all'interno della stessa applicazione. Ogni istanza richiede il proprio blocco di controllo fornito dall'applicazione e il relativo driver flash.
 
-LevelX presenta all'utente una matrice di settori logici mappati alla memoria flash fisica all'interno di LevelX. Per migliorare le prestazioni, LevelX fornisce anche una cache dei mapping del settore logico più recenti. Le dimensioni della cache sono definite dal programmatore. Le applicazioni possono usare LevelX insieme a FileX o possono leggere/scrivere direttamente settori logici. LevelX non ha dipendenze da FileX e una dipendenza minima da ThreadX (vengono usati solo i tipi di dati ThreadX primitivi).
+LevelX presenta all'utente una matrice di settori logici mappati alla memoria flash fisica all'interno di LevelX. Per migliorare le prestazioni, LevelX fornisce anche una cache dei mapping dei settori logici più recenti. Le dimensioni di questa cache vengono definite dal programmatore. Le applicazioni possono usare LevelX in combinazione con FileX o possono leggere/scrivere direttamente settori logici. LevelX non ha alcuna dipendenza da FileX e una dipendenza molto piccola da ThreadX (vengono usati solo tipi di dati ThreadX primitivi).
 
-LevelX è progettato per la tolleranza di errore. Gli aggiornamenti flash vengono eseguiti in un processo in più passaggi che possono essere interrotti in ogni passaggio. LevelX esegue automaticamente il ripristino dello stato ottimale durante l'operazione successiva.
+LevelX è progettato per la tolleranza di errore. Gli aggiornamenti flash vengono eseguiti in un processo in più passaggi che può essere interrotto in ogni passaggio. LevelX ripristina automaticamente lo stato ottimale durante l'operazione successiva.
 
-LevelX richiede un driver Flash per l'accesso fisico alla memoria flash sottostante. I driver NAND e non simulati di esempio vengono forniti e possono essere usati come punto di partenza valido per implementare i driver LevelX effettivi. Inoltre, i requisiti dei driver sono descritti in dettaglio più avanti in questa documentazione.
+LevelX richiede un driver flash per l'accesso fisico alla memoria flash sottostante. Vengono forniti driver simulati NAD e NOR di esempio che possono essere usati come punto di partenza per l'implementazione di driver LevelX effettivi. Inoltre, i requisiti dei driver sono dettagliati più avanti in questa documentazione.
 
-I capitoli seguenti descrivono l'operazione funzionale per il supporto di NAND e non LevelX.
+I capitoli seguenti descrivono l'operazione funzionale per il supporto NAD e NOR LevelX.

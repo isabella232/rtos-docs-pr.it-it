@@ -1,23 +1,23 @@
 ---
-title: Capitolo 4-Descrizione di Azure RTO NetX Secure DTLS Services
-description: Questo capitolo contiene una descrizione di tutti i servizi DTLS di Azure RTO NetX protetti elencati in ordine alfabetico.
+title: Capitolo 4 - Descrizione dei Azure RTOS DTLS sicuri di NetX
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS NetX Secure DTLS elencati in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e795a5fa35a4590e508c7fe2eec53f5494809657
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 45966e7c8ea9be18bf294e8a7540e7226e803f29ae4f3ad3faaa29e4939c2ed8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821593"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801843"
 ---
-# <a name="chapter-4-description-of-azure-rtos-netx-secure-dtls-services"></a>Capitolo 4: Descrizione di Azure RTO NetX Secure DTLS Services
+# <a name="chapter-4-description-of-azure-rtos-netx-secure-dtls-services"></a>Capitolo 4: Descrizione dei Azure RTOS DTLS sicuri di NetX
 
-Questo capitolo contiene una descrizione di tutti i servizi DTLS protetti di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti Azure RTOS netx secure DTLS (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni API seguenti i valori in **grassetto** non sono interessati dalla macro **NX_SECURE_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla macro **NX_SECURE_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
 - [nx_secure_dtls_client_session_start](#nx_secure_dtls_client_session_start)
 - [nx_secure_dtls_packet_allocate](#nx_secure_dtls_packet_allocate)
@@ -51,7 +51,7 @@ Nella sezione "valori restituiti" nelle descrizioni API seguenti i valori in **g
 
 ## <a name="nx_secure_dtls_client_session_start"></a>nx_secure_dtls_client_session_start
 
-Avviare una sessione client NetX Secure DTLS
+Avviare una sessione client DTLS protetta da NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -68,37 +68,37 @@ UINT nx_secure_dtls_client_session_start(
 
 Questo servizio avvia una sessione client DTLS, connettendosi al server all'indirizzo IP e alla porta UDP specificati, usando il socket UDP fornito per le comunicazioni di rete.
 
-Il blocco di controllo della sessione DTLS deve essere inizializzato prima di chiamare il servizio utilizzando nx_secure_dtls_session_create. Inoltre, il client di DTLS richiede che almeno un certificato CA attendibile sia stato aggiunto alla sessione utilizzando nx_secure_dtls_session_trusted_certificate_add o che siano abilitate e configurate chiavi precondivise.
+Il blocco di controllo della sessione DTLS deve essere inizializzato prima di chiamare questo servizio usando nx_secure_dtls_session_create. Inoltre, il client DTLS richiede che almeno un certificato ca attendibile sia stato aggiunto alla sessione usando nx_secure_dtls_session_trusted_certificate_add o le chiavi precondidite siano abilitate e configurate.
 
 ### <a name="parameters"></a>Parametri
 
 - **dtls_session** Puntatore a una struttura di sessione DTLS inizializzata in precedenza.
 - **udp_socket** Socket UDP inizializzato che verrà usato per stabilire le comunicazioni di rete con il server DTLS remoto.
-- **ip_address** Puntatore alla struttura degli indirizzi IP che contiene l'indirizzo del server DTLS remoto.
+- **ip_address** Puntatore alla struttura di indirizzi IP contenente l'indirizzo del server DTLS remoto.
 - **porta** Socket UDP inizializzato che verrà usato per stabilire le comunicazioni di rete con il server DTLS remoto.
-- **WAIT_OPTION** Opzione di sospensione per il tentativo di connessione.
+- **wait_option** Opzione di sospensione per il tentativo di connessione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) assegnazione del certificato alla sessione completata.
-- **NX_NOT_CONNECTED** (0x38) non è possibile raggiungere il server con l'indirizzo e la porta specificati.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0X102) un tipo di messaggio TLS/DTLS ricevuto non è corretto.
-- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0X106) una crittografia fornita dall'host remoto non è supportata.
-- L'elaborazione del messaggio **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) durante l'handshake TLS non è riuscita.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0X108) un messaggio in arrivo non ha superato un controllo Mac hash.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) non è stato possibile inviare un socket TCP sottostante.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0X10A) un messaggio in ingresso ha un campo di lunghezza non valido.
-- **NX_SECURE_TLS_BAD_CIPHERSPEC** (0X10B) un messaggio ChangeCipherSpec in ingresso non è corretto.
-- **NX_SECURE_TLS_INVALID_SERVER_CERT** (0X10C) un certificato TLS in ingresso non è utilizzabile per identificare il server DTLS remoto.
-- **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0X10D) la crittografia a chiave pubblica fornita dall'host remoto non è supportata.
-- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0X10E) l'host remoto non ha indicato ciphersuites supportati dallo stack NETX Secure DTLS.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0X10F) un messaggio DTLS ricevuto ha una versione DTLS sconosciuta nell'intestazione.
-- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) un messaggio DTLS ricevuto ha una versione DTLS nota ma non supportata nell'intestazione.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0X111) l'allocazione di pacchetti TLS interna non è riuscita.
-- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0X112) l'host remoto ha fornito un certificato non valido.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0X114) l'host remoto ha inviato un avviso che indica un errore e termina la sessione TLS.
-- **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0X13B) una voce nella tabella ciphersuite include un puntatore a funzione null.
-- **NX_PTR_ERROR** (0x07) una sessione, un socket o un puntatore di indirizzo non valido.
+- **NX_SUCCESS** (0x00) Assegnazione del certificato alla sessione completata.
+- **NX_NOT_CONNECTED** (0x38) Il server non può essere raggiunto all'indirizzo e alla porta specificata.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) Un tipo di messaggio TLS/DTLS ricevuto non è corretto.
+- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) Una crittografia fornita dall'host remoto non è supportata.
+- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) L'elaborazione del messaggio durante l'handshake TLS non è riuscita.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un messaggio in arrivo non ha superato un controllo MAC hash.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) L'invio di un socket TCP sottostante non è riuscito.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) Un messaggio in arrivo ha un campo di lunghezza non valido.
+- **NX_SECURE_TLS_BAD_CIPHERSPEC** (0x10B) Un messaggio ChangeCipherSpec in ingresso non è corretto.
+- **NX_SECURE_TLS_INVALID_SERVER_CERT** (0x10C) Un certificato TLS in ingresso non è utilizzabile per identificare il server DTLS remoto.
+- **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0x10D) La crittografia a chiave pubblica fornita dall'host remoto non è supportata.
+- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10E) L'host remoto non ha indicato ciphersuit supportati dallo stack DTLS sicuro NetX.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Un messaggio DTLS ricevuto ha una versione DTLS sconosciuta nell'intestazione.
+- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) Un messaggio DTLS ricevuto ha una versione DTLS nota ma non supportata nell'intestazione.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Un'allocazione interna di pacchetti TLS non è riuscita.
+- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) L'host remoto ha fornito un certificato non valido.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) L'host remoto ha inviato un avviso che indica un errore e termina la sessione TLS.
+- **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0x13B) Una voce nella tabella ciphersuite ha un puntatore a funzione NULL.
+- **NX_PTR_ERROR** (0x07) Sessione, socket o puntatore indirizzo non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -207,7 +207,7 @@ NXD_ADDRESS server_ip;
 
 ## <a name="nx_secure_dtls_packet_allocate"></a>nx_secure_dtls_packet_allocate
 
-Allocare un pacchetto per una sessione DTLS sicura NetX
+Allocare un pacchetto per una sessione DTLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -222,23 +222,23 @@ UINT  nx_secure_dtls_packet_allocate(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio alloca un NX_PACKET per la sessione DTLS attiva specificata dalla NX_PACKET_POOL specificata. Questo servizio deve essere chiamato dall'applicazione per allocare i pacchetti di dati da inviare tramite una connessione DTLS. La sessione DTLS deve essere inizializzata prima di chiamare il servizio.
+Questo servizio alloca un NX_PACKET per la sessione DTLS attiva specificata dal NX_PACKET_POOL. Questo servizio deve essere chiamato dall'applicazione per allocare pacchetti di dati da inviare tramite una connessione DTLS. La sessione DTLS deve essere inizializzata prima di chiamare questo servizio.
 
-Il pacchetto allocato è stato inizializzato correttamente in modo che i dati di intestazione e piè di pagina DTLS possano essere aggiunti dopo il popolamento dei dati del pacchetto. In caso contrario, il comportamento è identico a *nx_packet_allocate*.
+Il pacchetto allocato viene inizializzato correttamente in modo che i dati di intestazione e piè di pagina DTLS possano essere aggiunti dopo che i dati del pacchetto sono stati popolati. In caso contrario, il comportamento è identico *nx_packet_allocate*.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione DTLS.
 - **pool_ptr** Puntatore a un NX_PACKET_POOL da cui allocare il pacchetto.
 - **packet_ptr** Puntatore di output al pacchetto appena allocato.
-- **WAIT_OPTION** Opzione di sospensione per l'allocazione dei pacchetti.
+- **wait_option** Opzione di sospensione per l'allocazione dei pacchetti.
 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) allocare il pacchetto correttamente.
-- L'allocazione del pacchetto sottostante **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) non è riuscita.
-- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0X101) la sessione DTLS fornita non è stata inizializzata.
+- **NX_SUCCESS** (0x00) L'allocazione dei pacchetti è riuscita.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) L'allocazione dei pacchetti sottostante non è riuscita.
+- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) La sessione DTLS fornita non è stata inizializzata.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -267,7 +267,7 @@ the variable packet_ptr.  */
 
 ## <a name="nx_secure_dtls_psk_add"></a>nx_secure_dtls_psk_add
 
-Aggiungere una chiave precondivisa a una sessione di DTLS sicura NetX
+Aggiungere una chiave precondi shared a una sessione DTLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -281,23 +281,23 @@ UINT  nx_secure_dtls_psk_add(NX_SECURE_DTLS_SESSION *session_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una chiave precondivisa (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo della sessione DTLS. Il valore PSK viene usato al posto di un certificato digitale quando si Abilita e si usa PSK ciphersuites.
+Questo servizio aggiunge una chiave precondi shared (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo sessione DTLS. La chiave PSK viene usata al posto di un certificato digitale quando le ciphersuit PSK sono abilitate e usate.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione DTLS creata in precedenza.
 - **pre_shared_key** Valore PSK effettivo.
 - **psk_length** Lunghezza del valore PSK.
-- **psk_identity** Stringa utilizzata per identificare il valore PSK.
+- **psk_identity** Stringa usata per identificare questo valore PSK.
 - **identity_length** Lunghezza dell'identità PSK.
-- **hint** Stringa utilizzata per indicare il gruppo di precondivise da scegliere in un server TLS.
-- **hint_length** Lunghezza della stringa del suggerimento.
+- **hint** Stringa usata per indicare il gruppo di psk tra cui scegliere in un server TLS.
+- **hint_length** Lunghezza della stringa di hint.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'aggiunta di PSK è stata completata **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore di sessione DTLS non valido.
-- **NX_SECURE_TLS_NO_MORE_PSK_SPACE** (0X125) non è in grado di aggiungere un'altra PSK.
+- **NX_SUCCESS** (0x00) Aggiunta corretta di PSK.
+- **NX_PTR_ERROR** (0x07) Puntatore di sessione DTLS non valido.
+- **NX_SECURE_TLS_NO_MORE_PSK_SPACE** (0x125) Impossibile aggiungere un'altra chiave PSK.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -326,7 +326,7 @@ status =  nx_secure_dtls_psk_add(&dtls_session, psk,
 
 ## <a name="nx_secure_dtls_server_create"></a>nx_secure_dtls_server_create
 
-Creare un server DTLS Secure NetX
+Creare un server NetX Secure DTLS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -349,41 +349,41 @@ UINT  nx_secure_dtls_server_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un'istanza di un server DTLS per gestire le richieste DTLS in ingresso su una determinata porta UDP. A causa del fatto che UDP è senza stato, le richieste DTLS da più client possono entrare in un'unica porta mentre altre sessioni DTLS sono attive. Il server è quindi necessario per mantenere le sessioni attive e indirizzare correttamente i messaggi in ingresso al gestore appropriato.
+Questo servizio crea un'istanza di un server DTLS per gestire le richieste DTLS in ingresso su una determinata porta UDP. A causa del fatto che UDP è senza stato, le richieste DTLS provenienti da più client possono essere inviate su una singola porta mentre altre sessioni DTLS sono attive. Il server è quindi necessario per mantenere le sessioni attive e instradare correttamente i messaggi in ingresso al gestore appropriato.
 
-Il parametro ip_ptr punta a un'istanza di NX_IP da utilizzare per il socket UDP interno associato al server DTLS (e archiviato nel blocco di controllo NX_SECURE_DTLS_SERVER). L'istanza e la porta IP vengono utilizzate per definire l'interfaccia UDP su cui viene creata un'istanza del server con il servizio nx_secure_dtls_server_start.
+Il ip_ptr punta a un'istanza NX_IP da usare per il socket UDP interno associato al server DTLS (e archiviato nel blocco NX_SECURE_DTLS_SERVER controllo). L'istanza IP e la porta vengono usate per definire l'interfaccia UDP su cui viene creata un'istanza del server con il nx_secure_dtls_server_start servizio.
 
-Il parametro buffer sessione viene usato per memorizzare i blocchi di controllo per tutte le sessioni DTLS simultanee possibili per il server DTLS. Deve essere allocato con una dimensione pari a un multiplo della dimensione della struttura del blocco di controllo NX_SECURE_DTLS_SESSION.
+Il parametro buffer di sessione viene usato per contenere i blocchi di controllo per tutte le possibili sessioni DTLS simultanee per il server DTLS. Deve essere allocato con una dimensione pari a un multiplo pari delle dimensioni della struttura NX_SECURE_DTLS_SESSION blocco di controllo.
 
-Per calcolare le dimensioni necessarie per i metadati, è possibile usare l'API nx_secure_tls_metadata_size_calculate.
+Per calcolare le dimensioni dei metadati necessarie, è possibile usare nx_secure_tls_metadata_size_calculate api.
 
-Il parametro packet_reassembly_buffer viene usato da DTLS per riassemblare i datagrammi UDP in un record DTLS completo ai fini della decrittografia e deve essere sufficientemente grande da contenere il record DTLS previsto più grande (16KB è la DTLS dimensioni massime dei record, ma molte applicazioni non inviano la quantità di dati in un singolo record).
+Il parametro packet_reassembly_buffer viene usato da DTLS per riassemblare datagrammi UDP in un record DTLS completo ai fini della decrittografia e deve essere sufficientemente grande da contenere il record DTLS più grande previsto (16 KB è la dimensione massima del record DTLS, ma molte applicazioni non inviano tale quantità di dati in un singolo record).
 
-La routine di callback connect_notify viene richiamata ogni volta che un nuovo client DTLS si connette al server. Spetta all'applicazione avviare la sessione DTLS usando il servizio *nx_secure_dtls_server_session_start*. Sebbene la sessione possa essere avviata nel callback stesso, è consigliabile usare il callback solo per notificare al thread dell'applicazione (o a un thread DTLS dedicato creato dall'applicazione) la connessione, perché il callback viene richiamato dal thread IP usato per elaborare tutte le operazioni di elaborazione di rete di livello inferiore (ad esempio UDP). Questa operazione può essere semplice quanto il salvataggio del parametro della sessione DTLS, fornito come parametro al callback, e la chiamata di nx_secure_dtls_server_session_start nell'altro thread. Il callback connect_notify in genere restituisce NX_SUCCESS.
+La connect_notify di callback viene richiamata ogni volta che un nuovo client DTLS si connette al server. L'applicazione deve quindi avviare la sessione DTLS usando il servizio *nx_secure_dtls_server_session_start*. Anche se la sessione può essere avviata nel callback stesso, è consigliabile usare il callback solo per notificare al thread dell'applicazione (o al thread DTLS dedicato creato dall'applicazione) la connessione quando il callback viene richiamato dal thread IP usato per elaborare tutte le elaborazioni di rete di livello inferiore (ad esempio UDP). Questo può essere semplice come salvare il parametro di sessione DTLS (fornito come parametro al callback) e richiamare nx_secure_dtls_server_session_start nell'altro thread. Il callback connect_notify deve in genere restituire NX_SUCCESS.
 
-La routine di callback receive_notify viene richiamata ogni volta che viene ricevuto un record DTLS che corrisponde a una sessione DTLS stabilita esistente (l'indirizzo IP e la porta dell'host remoto vengono usati per identificare una sessione esistente). Rappresenta i "dati dell'applicazione" crittografati e inviati tramite DTLS. Per recuperare i dati ricevuti, l'applicazione deve chiamare il servizio *nx_secure_dtls_session_receive* nella sessione DTLS fornita. Come per l'connect_receive callback, è consigliabile passare la sessione a un altro thread per gestire l'elaborazione del messaggio in quanto il callback viene richiamato dal thread IP. Il callback receive_notify in genere restituisce NX_SUCCESS.
+La routine di callback receive_notify viene richiamata ogni volta che viene ricevuto un record DTLS che corrisponde a una sessione DTLS esistente (l'indirizzo IP dell'host remoto e la porta vengono usati per identificare una sessione esistente). Rappresenta i "dati dell'applicazione" crittografati e inviati tramite DTLS. L'applicazione deve chiamare il *nx_secure_dtls_session_receive* nella sessione DTLS specificata per recuperare i dati ricevuti. Come per il callback connect_receive, è consigliabile passare la sessione a un altro thread per gestire l'elaborazione del messaggio quando il callback viene richiamato dal thread IP. Il callback receive_notify deve in genere restituire NX_SUCCESS.
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
-- **ip_ptr** Puntatore a un blocco di controllo NX_IP inizializzato da utilizzare come interfaccia di rete per il server DTLS.
+- **ip_ptr** Puntatore a un blocco NX_IP di controllo inizializzato da utilizzare come interfaccia di rete per il server DTLS.
 - **porta** Porta UDP locale a cui è associato il socket UDP del server DTLS.
 - **timeout** Valore di timeout da utilizzare per le operazioni di rete.
-- **session_buffer** Spazio del buffer che contiene i blocchi di controllo per tutte le istanze di NX_SECURE_DTLS_SESSION assegnati a questa istanza del server DTLS.
-- **session_buffer_size** Dimensioni del buffer della sessione. Questo determina il numero di sessioni DTLS assegnate al server DTLS.
-- **crypto_table** Puntatore a una struttura della tabella di crittografia TLS/DTLS utilizzata per tutte le operazioni di crittografia.
-- **crypto_metadata_buffer** Spazio del buffer per i calcoli delle operazioni di crittografia e le informazioni sullo stato.
-- **crypto_metadata_size** Dimensioni del buffer dei metadati.
-- **packet_reassembly_buffer** Buffer utilizzato da DTLS per riassemblare i dati UDP nei record DTLS per la decrittografia.
-- **packet_reassembly_buffer_size** Dimensioni del buffer di riassemblaggio. In genere deve essere maggiore di 16KB, ma può essere minore a seconda dell'applicazione.
+- **session_buffer** Spazio del buffer per contenere blocchi di controllo per tutte NX_SECURE_DTLS_SESSION assegnate a questa istanza del server DTLS.
+- **session_buffer_size** Dimensioni del buffer di sessione. Questo determina il numero di sessioni DTLS assegnate al server DTLS.
+- **crypto_table** Puntatore a una struttura di tabella di crittografia TLS/DTLS usata per tutte le operazioni di crittografia.
+- **crypto_metadata_buffer** Spazio del buffer per i calcoli delle operazioni di crittografia e informazioni sullo stato.
+- **crypto_metadata_size** Dimensione del buffer dei metadati.
+- **packet_reassembly_buffer** Buffer usato da DTLS per riassemblare i dati UDP in record DTLS per la decrittografia.
+- **packet_reassembly_buffer_size** Dimensioni del buffer di riassemblaggio. In genere deve essere maggiore di 16 KB, ma può essere più piccolo a seconda dell'applicazione.
 - **connect_notify** Routine di callback richiamata ogni volta che un client DTLS remoto tenta di connettersi a questo server DTLS.
-- **receive_notify** Callback richiamato ogni volta che vengono ricevuti i dati dell'applicazione su una sessione DTLS esistente.
+- **receive_notify** Callback richiamato ogni volta che i dati dell'applicazione vengono ricevuti in una sessione DTLS esistente.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la creazione del server DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non è sufficiente spazio del buffer per le sessioni, il riassemblaggio dei pacchetti o la crittografia.
+- **NX_SUCCESS** (0x00) Creazione del server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_PARAMETERS** (0x4D) Spazio del buffer insufficiente per sessioni, riassemblaggio di pacchetti o crittografia.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -548,7 +548,7 @@ UINT  nx_secure_dtls_server_delete(NX_SECURE_DTLS_SERVER *server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio consente di liberare le risorse allocate a un'istanza del server DTLS, incluso il socket UDP interno usato dal server.
+Questo servizio libera le risorse allocate a un'istanza del server DTLS, incluso il socket UDP interno usato dal server.
 
 ### <a name="parameters"></a>Parametri
 
@@ -556,9 +556,9 @@ Questo servizio consente di liberare le risorse allocate a un'istanza del server
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'eliminazione del server è riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- Il socket UDP **NX_STILL_BOUND** (0x42) è ancora associato.
+- **NX_SUCCESS** (0x00) Eliminazione del server completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_STILL_BOUND** (0x42) il socket UDP è ancora associato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -712,7 +712,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_server_local_certificate_add"></a>nx_secure_dtls_server_local_certificate_add
 
-Aggiungere un certificato di identità del server locale a un server NetX Secure DTLS
+Aggiungere un certificato di identità del server locale a un server DTLS sicuro NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -726,21 +726,21 @@ UINT  nx_secure_dtls_server_local_certificate_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un certificato di identità del server locale a un'istanza del server DTLS. Per la connessione dei client a un server DTLS è necessario almeno un certificato di identità, a meno che non venga utilizzato un meccanismo di autenticazione alternativo, ad esempio chiavi precondivise.
+Questo servizio aggiunge un certificato di identità del server locale a un'istanza del server DTLS. È necessario almeno un certificato di identità per la connessione dei client a un server DTLS, a meno che non venga usato un meccanismo di autenticazione alternativo, ad esempio chiavi precondizioni.
 
-Il parametro cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato viene facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X. 509 presente nell'archivio del server DTLS. Per ulteriori informazioni sui certificati del server X. 509, vedere la guida dell'utente di NetX Secure TLS.
+Il cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato può essere facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X.509 presente nell'archivio server DTLS. Per altre informazioni sui certificati server X.509, vedere la Guida dell'utente di NetX Secure TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
-- **certificato** di Puntatore a una struttura di certificato X. 509 inizializzata in precedenza.
+- **certificato** Puntatore a una struttura di certificato X.509 inizializzata in precedenza.
 - **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) aggiunta del certificato al server DTLS completata.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) è stato passato un ID certificato 0.
+- **NX_SUCCESS** (0x00) Aggiunta del certificato al server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_PARAMETERS** (0x4D) È stato passato un ID certificato 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -748,7 +748,7 @@ Thread
 
 ### <a name="example"></a>Esempio
 
-* Per un esempio più completo, vedere informazioni di riferimento per *nx_secure_dtls_server_create* .
+*Vedere le informazioni di *nx_secure_dtls_server_create* per un esempio più completo.
 
 ```C
 /* Our DTLS Server instance. */
@@ -816,7 +816,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_local_certificate_remove"></a>nx_secure_dtls_server_local_certificate_remove
 
-Rimuovere un certificato di identità del server locale da un server NetX Secure DTLS
+Rimuovere un certificato di identità del server locale da un server DTLS sicuro NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -831,25 +831,25 @@ UINT  nx_secure_dtls_server_local_certificate_remove(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove un certificato di identità del server locale da un'istanza del server DTLS. Per la connessione dei client a un server DTLS è necessario almeno un certificato di identità, a meno che non venga utilizzato un meccanismo di autenticazione alternativo, ad esempio chiavi precondivise.
+Questo servizio rimuove un certificato di identità del server locale da un'istanza del server DTLS. È necessario almeno un certificato di identità per la connessione dei client a un server DTLS, a meno che non venga usato un meccanismo di autenticazione alternativo, ad esempio chiavi precondizioni.
 
-Il certificato da rimuovere può essere identificato dal nome comune X. 509 o dal cert_id numerico assegnato nella chiamata a *nx_secure_dtls_server_local_certificate_add*. Il cert_id viene usato solo per identificare il certificato ed è gestito dall'applicazione. Se viene usato il nome comune anziché l'identificatore numerico del certificato, il parametro cert_id deve essere impostato su 0.
+Il certificato da rimuovere può essere identificato dal relativo nome comune X.509 o dal cert_id numerico assegnato nella chiamata *a nx_secure_dtls_server_local_certificate_add*. Il cert_id viene usato solo per identificare il certificato e viene gestito dall'applicazione. Se si usa il nome comune anziché l'identificatore di certificato numerico, il cert_id parametro deve essere impostato su 0.
 
 > [!NOTE]
-> La rimozione di un certificato durante l'elaborazione di un handshake DTLS provocherà un comportamento imprevisto. Il *nx_secure_dtls_server_stop* del servizio deve essere chiamato prima di rimuovere i certificati.
+> La rimozione di un certificato durante l'elaborazione di un handshake DTLS comporta un comportamento imprevisto. Il servizio *nx_secure_dtls_server_stop* deve essere chiamato prima di rimuovere i certificati.
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
-- **common_name** X. 509 CommonName del certificato da rimuovere. Se viene usato, passare cert_id come zero.
-- **common_name_length** Lunghezza di common_name stringa in byte.
-- **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS. Se si utilizza questa proprietà, passare NX_NULL per il parametro common_name.
+- **common_name** X.509 CommonName del certificato da rimuovere. Se viene usato, passare cert_id come zero.
+- **common_name_length** Lunghezza della common_name stringa in byte.
+- **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS. Se viene usato, passare NX_NULL per il parametro common_name.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la rimozione del certificato dal server DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0X119) non è stato trovato alcun certificato corrispondente al cert_id o common_name nel server DTLS specificato.
+- **NX_SUCCESS** (0x00) Rimozione del certificato dal server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Non è stato trovato alcun certificato corrispondente cert_id o common_name nel server DTLS specificato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -924,7 +924,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_server_notify_set"></a>nx_secure_dtls_server_notify_set
 
-Assegnare routine di callback di notifica facoltative a un server NetX Secure DTLS
+Assegnare routine di callback di notifica facoltative a un server DTLS sicuro NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -941,13 +941,13 @@ UINT  nx_secure_dtls_server_notify_set(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio può essere usato per aggiungere routine di callback di notifica facoltative a un server DTLS. Il parametro di callback può essere passato come NX_NULL se si desidera solo un callback.
+Questo servizio può essere usato per aggiungere routine di callback di notifica facoltative a un server DTLS. Entrambi i parametri di callback possono essere passati come NX_NULL se si desidera un solo callback.
 
-Il callback disconnect_notify viene richiamato quando un client remoto termina una sessione DTLS. Il dtls_session parametro è l'istanza di sessione che è stata chiusa. Il callback generalmente restituisce NX_SUCCESS.
+Il disconnect_notify callback viene richiamato quando un client remoto termina una sessione DTLS. Il dtls_session parametro è l'istanza di sessione che è stata chiusa. Il callback deve in genere restituire NX_SUCCESS.
 
-Il callback error_notify viene richiamato ogni volta che si verifica un errore o un timeout DTLS. Il parametro dtls_session è l'istanza di sessione per cui si è verificato l'errore e error_code è il codice di stato numerico per l'errore che ha causato il problema (vedere l'Appendice A)
+Il error_notify callback viene richiamato ogni volta che si verifica un errore o un timeout DTLS. Il dtls_session è l'istanza di sessione per cui si è verificato l'errore e error_code è il codice di stato numerico per l'errore che ha causato il problema (vedere Appendice A)
 
-NetX i codici di errore e di ritorno protetti per un elenco di codici di errore che possono essere restituiti. Il callback generalmente restituisce NX_SUCCESS.
+Codici di errore/restituzione sicura NetX per un elenco di codici di errore che possono essere restituiti. Il callback deve in genere restituire NX_SUCCESS.
 
 ### <a name="parameters"></a>Parametri
 
@@ -957,8 +957,8 @@ NetX i codici di errore e di ritorno protetti per un elenco di codici di errore 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) assegnazione riuscita delle routine di callback.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
+- **NX_SUCCESS** (0x00) Assegnazione riuscita delle routine di callback.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1043,7 +1043,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_server_psk_add"></a>nx_secure_dtls_server_psk_add
 
-Aggiungere una chiave precondivisa a un server DTLS sicuro NetX
+Aggiungere una chiave precondi shared a un server DTLS sicuro NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1059,25 +1059,25 @@ UINT  nx_secure_dtls_server_psk_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una chiave precondivisa (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo server DTLS. Il valore PSK viene usato al posto di un certificato digitale quando si Abilita e si usa PSK ciphersuites.
+Questo servizio aggiunge una chiave precondi shared (PSK), la relativa stringa di identità e un hint di identità a un blocco di controllo server DTLS. La chiave PSK viene usata al posto di un certificato digitale quando le ciphersuit PSK sono abilitate e usate.
 
-La PSK aggiunta viene replicata in tutte le sessioni DTLS assegnate al server DTLS (tramite il buffer della sessione specificato nella chiamata a nx_secure_dtls_server_create).
+La chiave PSK aggiunta viene replicata in tutte le sessioni DTLS assegnate al server DTLS (tramite il buffer di sessione specificato nella chiamata a nx_secure_dtls_server_create).
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
 - **pre_shared_key** Valore PSK effettivo.
 - **psk_length** Lunghezza del valore PSK.
-- **psk_identity** Stringa utilizzata per identificare il valore PSK.
+- **psk_identity** Stringa usata per identificare questo valore PSK.
 - **identity_length** Lunghezza dell'identità PSK.
-- **hint** Stringa utilizzata per indicare il gruppo di precondivise da scegliere in un server TLS.
-- **hint_length** Lunghezza della stringa del suggerimento.
+- **hint** Stringa usata per indicare il gruppo di psk tra cui scegliere in un server TLS.
+- **hint_length** Lunghezza della stringa di hint.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'aggiunta di PSK è stata completata **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) puntatore al server DTLS non valido.
-- **NX_SECURE_TLS_NO_MORE_PSK_SPACE** (0X125) non è in grado di aggiungere un'altra PSK.
+- **NX_SUCCESS** (0x00) Aggiunta corretta di PSK.
+- **NX_PTR_ERROR** (0x07) Puntatore al server DTLS non valido.
+- **NX_SECURE_TLS_NO_MORE_PSK_SPACE** (0x125) Impossibile aggiungere un'altra chiave PSK.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1104,7 +1104,7 @@ status =  nx_secure_dtls_server_psk_add(&dtls_server, psk, sizeof(psk), “psk_1
 
 ## <a name="nx_secure_dtls_server_session_send"></a>nx_secure_dtls_server_session_send
 
-Inviare dati su una sessione DTLS stabilita con un server DTLS protetto NetX
+Inviare dati tramite una sessione DTLS stabilita con un server NetX Secure DTLS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1117,20 +1117,20 @@ UINT  nx_secure_dtls_server_session_send(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto di dati su una sessione del server DTLS stabilita a un host client DTLS remoto. La sessione utilizzata viene ottenuta nella routine di callback receive_notify fornita nx_secure_dtls_session_create.
+Questo servizio invia un pacchetto di dati su una sessione del server DTLS stabilita a un host client DTLS remoto. La sessione utilizzata viene ottenuta nella routine receive_notify callback fornita a nx_secure_dtls_session_create.
 
-I dati forniti nel pacchetto, che devono essere allocati tramite *nx_secure_dtls_packet_allocate*, vengono crittografati usando le routine e i parametri crittografici della sessione DTLS e quindi inviati all'host remoto tramite la porta UDP interna del server DTLS all'indirizzo IP e alla porta del client collegato (archiviati nella sessione DTLS).
+I dati forniti nel pacchetto, che devono essere allocati tramite *nx_secure_dtls_packet_allocate ,* vengono crittografati usando le routine e i parametri di crittografia della sessione DTLS e quindi inviati all'host remoto tramite la porta UDP interna del server DTLS all'indirizzo IP e alla porta del client collegato (archiviati nella sessione DTLS).
 
 ### <a name="parameters"></a>Parametri
 
-- **session_ptr** Puntatore a un'istanza di sessione DTLS ottenuta dalla routine di callback receive_notify fornita dall'applicazione.
-- **packet_ptr** Puntatore a un'istanza di NX_PACKET allocata in precedenza e popolata con i dati dell'applicazione.
+- **session_ptr** Puntatore a un'istanza di sessione DTLS ottenuta receive_notify routine di callback fornita dall'applicazione.
+- **packet_ptr** Puntatore a un'istanza NX_PACKET allocata in precedenza e popolata con i dati dell'applicazione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la creazione del server DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) si è verificato un errore nell'operazione di invio UDP sottostante.
+- **NX_SUCCESS** (0x00) Creazione del server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Si è verificato un errore nell'operazione di invio UDP sottostante.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1283,34 +1283,34 @@ UINT  nx_secure_dtls_server_session_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia una sessione del server DTLS eseguendo l'handshake DTLS sul lato server quando un client DTLS remoto si connette al server e richiede una connessione DTLS.
+Questo servizio avvia una sessione del server DTLS eseguendo l'handshake DTLS sul lato server quando un client DTLS remoto si è connesso al server e ha richiesto una connessione DTLS.
 
-La sessione DTLS viene ottenuta nella routine di callback connect_notify fornita nx_secure_dtls_server_create.
+La sessione DTLS viene ottenuta nella routine connect_notify callback fornita a nx_secure_dtls_server_create.
 
 ### <a name="parameters"></a>Parametri
 
-- **session_ptr** Puntatore a un'istanza di sessione DTLS ottenuta da un callback del server DTLS connect_notify.
-- **WAIT_OPTION** Valore di attesa ThreadX da utilizzare per le operazioni di rete.
+- **session_ptr** Puntatore a un'istanza di sessione DTLS ottenuta da un callback del connect_notify DTLS.
+- **wait_option** Valore di attesa ThreadX da usare per le operazioni di rete.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la creazione del server DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) non è in grado di allocare un pacchetto di handshake DTLS (pool di pacchetti vuoto).
-- **NX_SECURE_TLS_INVALID_PACKET** (0X104) recevied dati che non sono record DTLS validi.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) non è stato possibile eseguire correttamente l'hashing di un record DTLS (errore di crittografia).
-- Verifica della riempimento della crittografia **NX_SECURE_TLS_PADDING_CHECK_FAILED** (0x12A) non riuscita.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0X114) recevied un avviso dall'host remoto durante l'handshake DTLS.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0X102) ha ricevuto un messaggio non riconosciuto durante l'handshake DTLS.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0X10A) recevied un record DTLS con una lunghezza non valida.
-- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0X10E) ha ricevuto un CLIENTHELLO senza DTLS supportato ciphersuites.
-- **NX_SECURE_TLS_BAD_COMPRESSION_METHOD** (0X118) recevied un ClientHello con un metodo di compressione sconosciuto.
-- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) errore di handshake generico (non specificato), in genere a causa di problemi relativi all'elaborazione delle estensioni.
-- **NX_SECURE_TLS_UNSUPPORTED_FEATURE** (0X130) una funzionalità non ancora supportata è stata richiamata durante l'handshake DTLS.
-- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) è stato rilevato un CIPHERSUITE sconosciuto (errore di crittografia interno indicato).
-- **NX_SECURE_TLS_PROTOCOL_VERSION_CHANGED** (0X12E) recevied un record DTLS con una versione di DTLS non corrispondente.
-- **NX_SECURE_TLS_FINISHED_HASH_FAILURE** (0X115) non è riuscito a convalidare l'hash di handshake DTLS, la sessione non è valida.
-- Invio di UDP interno **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) non riuscito.
+- **NX_SUCCESS** (0x00) Creazione del server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Non è stato possibile allocare un pacchetto di handshake DTLS (pool di pacchetti vuoto).
+- **NX_SECURE_TLS_INVALID_PACKET** (0x104) i dati che non erano un record DTLS valido.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Non è stato possibile eseguire correttamente l'hashing di un record DTLS (errore di crittografia).
+- **NX_SECURE_TLS_PADDING_CHECK_FAILED** controllo della 0x12A (0x12A) di crittografia.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Ha generato un avviso dall'host remoto durante l'handshake DTLS.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) Ricevuto un messaggio non riconosciuto durante l'handshake DTLS.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) È stato rigenerato un record DTLS con una lunghezza non valida.
+- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10E) Ha ricevuto un clientHello senza crittografia DTLS supportata.
+- **NX_SECURE_TLS_BAD_COMPRESSION_METHOD** (0x118) Ha riappiato un clientHello con un metodo di compressione sconosciuto.
+- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) di handshake generico (non specificato), in genere a causa di problemi con l'elaborazione dell'estensione.
+- **NX_SECURE_TLS_UNSUPPORTED_FEATURE** (0x130) Una funzionalità non ancora supportata è stata richiamata durante l'handshake DTLS.
+- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) È stato rilevato un crittografico sconosciuto (è stato indicato un errore di crittografia interno).
+- **NX_SECURE_TLS_PROTOCOL_VERSION_CHANGED** (0x12E) Ha riappiato un record DTLS con una versione DTLS non corrispondente.
+- **NX_SECURE_TLS_FINISHED_HASH_FAILURE** (0x115) Non è stato possibile convalidare l'hash dell'handshake DTLS, la sessione non è valida.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) l'invio UDP interno non è riuscito.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1476,10 +1476,10 @@ UINT  nx_secure_dtls_server_start(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio avvia un server DTLS. Al termine della chiamata, il server è attivo e inizierà a elaborare le richieste in ingresso dai client di DTLS. L'istanza del server deve essere stata configurata con l' *nx_secure_dtls_server_create* del servizio.
+Questo servizio avvia un server DTLS. Al termine della chiamata, il server è attivo e inizierà a elaborare le richieste in ingresso dai client DTLS. L'istanza del server deve essere stata configurata con il *servizio nx_secure_dtls_server_create*.
 
 > [!NOTE]
-> Questo servizio associa la porta UDP interna del server DTLS alla porta locale configurata in modo che la maggior parte dei problemi rilevati sarà eseguita con le comunicazioni UDP e la configurazione di rete.
+> Questo servizio associa la porta UDP del server DTLS interna alla porta locale configurata, quindi la maggior parte dei problemi riscontrati dovrà essere a che fare con le comunicazioni UDP e la configurazione di rete.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1487,13 +1487,13 @@ Questo servizio avvia un server DTLS. Al termine della chiamata, il server è at
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Inizio del server **NX_SUCCESS** (0x00) riuscito.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- UDP **NX_NOT_ENABLED** (0x14) non abilitato.
-- **NX_NO_FREE_PORTS** (0X45) senza porte UDP disponibili.
-- **NX_INVALID_PORT** (0x46) porta UDP non valida.
-- La porta UDP **NX_ALREADY_BOUND** (0x22) è già associata.
-- La porta UDP **NX_PORT_UNAVAILABLE** (0x23) non è disponibile per l'utilizzo.
+- **NX_SUCCESS** (0x00) Avvio del server riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_NOT_ENABLED** UDP (0x14) non abilitato.
+- **NX_NO_FREE_PORTS** (0x45) Nessuna porta UDP disponibile.
+- **NX_INVALID_PORT** (0x46) Porta UDP non valida.
+- **NX_ALREADY_BOUND** (0x22) UDP già associata.
+- **NX_PORT_UNAVAILABLE** (0x23) UDP non disponibile per l'uso.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1647,7 +1647,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_server_stop"></a>nx_secure_dtls_server_stop
 
-Arrestare un'istanza del server DTLS Active NetX Secure
+Arrestare un'istanza del server NetX Secure DTLS attiva
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1657,7 +1657,7 @@ UINT  nx_secure_dtls_server_stop(NX_SECURE_DTLS_SERVER *server_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio interrompe l'ascolto da parte di un server DTLS sulla porta UDP configure e Reimposta tutte le sessioni DTLS associate, bloccando le comunicazioni DTLS in corso.
+Questo servizio arresta l'ascolto di un server DTLS sulla porta UDP configurata e reimposta tutte le sessioni DTLS associate, interrompendo eventuali comunicazioni DTLS in corso.
 
 ### <a name="parameters"></a>Parametri
 
@@ -1665,8 +1665,8 @@ Questo servizio interrompe l'ascolto da parte di un server DTLS sulla porta UDP 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'arresto del server **NX_SUCCESS** (0x00) è riuscito.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
+- **NX_SUCCESS** (0x00) Arresto riuscito del server.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1843,21 +1843,21 @@ UINT  nx_secure_dtls_server_trusted_certificate_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una CA attendibile o un certificato CA intermedio a un'istanza del server DTLS e assegnata a tutte le sessioni del server DTLS interno. Questa operazione è necessaria solo se l'autenticazione del certificato client X. 509 è abilitata usando *nx_secure_dtls_server_x509_client_verify_configure*. Il certificato aggiunto verrà usato per verificare i certificati X. 509 client in ingresso.
+Questo servizio aggiunge un certificato CA attendibile o intermedio a un'istanza del server DTLS e assegnato a tutte le sessioni interne del server DTLS. Questa operazione è necessaria solo se l'autenticazione del certificato client X.509 è abilitata *usando nx_secure_dtls_server_x509_client_verify_configure*. Il certificato aggiunto verrà usato per verificare i certificati X.509 client in ingresso.
 
-Il parametro cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato viene facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X. 509 presente nell'archivio del server DTLS. Per ulteriori informazioni sui certificati del server X. 509, vedere la guida dell'utente di NetX Secure TLS.
+Il cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato può essere facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X.509 presente nell'archivio server DTLS. Per altre informazioni sui certificati server X.509, vedere la Guida dell'utente di NetX Secure TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
-- **certificato** di Puntatore a una struttura di certificato X. 509 inizializzata in precedenza.
+- **certificato** Puntatore a una struttura di certificato X.509 inizializzata in precedenza.
 - **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) aggiunta del certificato al server DTLS completata.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) è stato passato un ID certificato 0.
+- **NX_SUCCESS** (0x00) Aggiunta del certificato al server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_PARAMETERS** (0x4D) È stato passato un ID certificato 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -1865,7 +1865,7 @@ Thread
 
 ### <a name="example"></a>Esempio
 
-* Per un esempio più completo, vedere informazioni di riferimento per *nx_secure_dtls_server_create* .
+*Vedere le informazioni di *nx_secure_dtls_server_create* per un esempio più completo.
 
 ```C
 /* Our DTLS Server instance. */
@@ -1931,7 +1931,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_trusted_certificate_remove"></a>nx_secure_dtls_server_trusted_certificate_remove
 
-Rimuovere un certificato CA attendibile da un server NetX Secure DTLS
+Rimuovere un certificato ca attendibile da un server DTLS sicuro NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1946,26 +1946,26 @@ UINT  nx_secure_dtls_server_trusted_certificate_remove(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove un certificato CA attendibile da un'istanza del server DTLS. I certificati CA attendibili sono necessari solo per un server DTLS per cui è stata abilitata la verifica del certificato client X. 509 chiamando *nx_secure_dtls_server_x509_client_verify_configure*.
+Questo servizio rimuove un certificato ca attendibile da un'istanza del server DTLS. I certificati ca attendibili sono necessari solo per un server DTLS per cui la verifica del certificato client X.509 è stata abilitata chiamando *nx_secure_dtls_server_x509_client_verify_configure*.
 
-Il certificato da rimuovere può essere identificato dal nome comune X. 509 o dal cert_id numerico assegnato nella chiamata a *nx_secure_dtls_server_trusted_certificate_add*. Il cert_id viene usato solo per identificare il certificato ed è gestito dall'applicazione. Se viene usato il nome comune anziché l'identificatore numerico del certificato, il parametro cert_id deve essere impostato su 0.
+Il certificato da rimuovere può essere identificato dal relativo nome comune X.509 o dal cert_id numerico assegnato nella chiamata a *nx_secure_dtls_server_trusted_certificate_add*. Il cert_id viene usato solo per identificare il certificato e viene gestito dall'applicazione. Se si usa il nome comune anziché l'identificatore di certificato numerico, il cert_id parametro deve essere impostato su 0.
 
 > [!NOTE]
-> La rimozione di un certificato mentre è in corso l'elaborazione di un handshake DTLS può causare un comportamento imprevisto. Il *nx_secure_dtls_server_stop* del servizio deve essere chiamato prima di rimuovere i certificati.
+> La rimozione di un certificato durante l'elaborazione di un handshake DTLS può comportare un comportamento imprevisto. Il servizio *nx_secure_dtls_server_stop* deve essere chiamato prima di rimuovere i certificati.
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
-- **common_name** X. 509 CommonName del certificato da rimuovere. Se viene usato, passare cert_id come zero.
-- **common_name_length** Lunghezza di common_name stringa in byte.
-- **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS. Se si utilizza questa proprietà, passare NX_NULL per il parametro common_name.
+- **common_name** X.509 CommonName del certificato da rimuovere. Se viene usato, passare cert_id come zero.
+- **common_name_length** Lunghezza della common_name stringa in byte.
+- **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS. Se viene usato, passare NX_NULL per il parametro common_name.
 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la rimozione del certificato dal server DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0X119) non è stato trovato alcun certificato corrispondente al cert_id o common_name nel server DTLS specificato.
+- **NX_SUCCESS** (0x00) Rimozione del certificato dal server DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Non è stato trovato alcun certificato corrispondente cert_id o common_name nel server DTLS specificato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2042,7 +2042,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_x509_client_verify_configure"></a>nx_secure_dtls_server_x509_client_verify_configure
 
-Configurare un server NetX Secure DTLS per richiedere e verificare i certificati client
+Configurare un server DTLS sicuro NetX per richiedere e verificare i certificati client
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2056,14 +2056,14 @@ UINT nx_secure_dtls_server_x509_client_verify_configure(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio configura un server DTLS per richiedere e verificare i certificati client DTLS. Questa funzionalità facoltativa viene usata quando si desiderano certificati X. 509 per l'autenticazione client al posto di altri meccanismi, ad esempio una chiave precondivisa.
+Questo servizio configura un server DTLS per richiedere e verificare i certificati client DTLS. Questa funzionalità facoltativa viene usata quando si desiderano certificati X.509 per l'autenticazione client al posto di altri meccanismi,ad esempio una chiave precondidizione.
 
 > [!IMPORTANT]
-> *Quando un server DTLS è configurato per verificare i certificati client con questo servizio, è necessario aggiungere almeno un certificato CA attendibile al server utilizzando nx_secure_dtls_server_trusted_certificate_add o il server rifiuterà tutte le connessioni client in ingresso perché non sarà in grado di verificare i certificati client rispetto all'archivio attendibile.*
+> *Quando un server DTLS è configurato per verificare i certificati client tramite questo servizio, è necessario aggiungere almeno un certificato CA attendibile al server usando nx_secure_dtls_server_trusted_certificate_add oppure il server rifiuterà tutte le connessioni client in ingresso perché non sarà in grado di verificare i certificati client nell'archivio attendibile.*
 
-Quando si chiama questo servizio, l'istanza del server DTLS (una volta avviata) richiede i certificati client come parte dell'handshake DTLS. Supponendo che il client sia configurato correttamente con un certificato di identità (e una catena di certificati associata quando applicabile), il server DTLS richiede l'allocazione della memoria per elaborare i dati del certificato client. Questa memoria viene passata come parametro *certs_buffer* .
+Dopo aver chiamato questo servizio, l'istanza del server DTLS richiederà (una volta avviato) i certificati client come parte dell'handshake DTLS. Supponendo che il client sia configurato correttamente con un certificato di identità (e una catena di certificati associata, se applicabile), il server DTLS richiede l'allocazione della memoria per elaborare i dati del certificato client. Questa memoria viene passata come *parametro certs_buffer.*
 
-Il certs_buffer deve essere dimensionato per supportare la catena di certificati più grande prevista da un client DTLS, per *il numero di sessioni del server DTLS*. Il buffer è diviso tra le sessioni disponibili usando il parametro *certs_per_session* che rappresenta il numero massimo previsto di certificati in una catena di certificati client. Il buffer deve inoltre fornire spazio per la struttura dei dati NX_SECURE_X509_CERT utilizzata per analizzare i dati del certificato.
+Il certs_buffer deve essere ridimensionato per supportare la catena di certificati prevista più grande da un client DTLS, volte il numero di sessioni *del server DTLS.* Il buffer viene suddiviso tra le sessioni disponibili usando *il parametro certs_per_session* che rappresenta il numero massimo previsto di certificati in una catena di certificati client. Il buffer deve anche fornire spazio per la struttura NX_SECURE_X509_CERT dati utilizzata per analizzare i dati del certificato.
 
 Il calcolo delle dimensioni del buffer appropriate può essere eseguito con la formula seguente:
 
@@ -2075,22 +2075,22 @@ buffer_size = (# of DTLS sessions in server) *
 
 ```
 
-- Il numero di sessioni DTLS è determinato dalla dimensione del buffer di sessione passato in nx_secure_dtls_server_create.
-- certs_per_session deve essere impostato sul numero massimo di certificati previsto in qualsiasi catena di certificati client.
-- Le dimensioni massime del certificato previste dipendono dall'applicazione, dalle dimensioni delle chiavi e da altri fattori, ma 2 KB è in genere sufficiente.
+- Il numero di sessioni DTLS è determinato dalle dimensioni del buffer di sessione passato in nx_secure_dtls_server_create.
+- certs_per_session deve essere impostato sul numero massimo previsto di certificati in qualsiasi catena di certificati client.
+- Le dimensioni massime previste del certificato dipendono dall'applicazione, dalle dimensioni delle chiavi e da altri fattori, ma 2 KB è in genere sufficiente.
 
 ### <a name="parameters"></a>Parametri
 
 - **server_ptr** Puntatore a un'istanza del server DTLS creata in precedenza.
 - **certs_per_session** Numero di certificati da allocare a ogni sessione del server DTLS.
 - **certs_buffer** Spazio del buffer per i dati del certificato in ingresso.
-- **BUFFER_SIZE** Dimensioni del buffer del certificato.
+- **buffer_size** Dimensioni del buffer del certificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) configurazione corretta della verifica del client X. 509.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- L'archivio certificati **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non è valido (l'istanza DTLSserver non è stata initale?).
+- **NX_SUCCESS** (0x00) Configurazione corretta della verifica client X.509.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_PARAMETERS** (0x4D) Archivio certificati non valido (istanza DTLSserver non initalizzata?).
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2175,7 +2175,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_x509_client_verify_disable"></a>nx_secure_dtls_server_x509_client_verify_disable
 
-Disabilita la verifica del certificato X. 509 client per un server DTLS protetto NetX
+Disabilita la verifica del certificato X.509 client per un server NetX Secure DTLS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2186,10 +2186,10 @@ UINT nx_secure_dtls_server_x509_client_verify_disable(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita la verifica del certificato client X. 509 in un server DTLS. Il servizio non ha alcun effetto se la verifica del certificato client X. 509 non è abilitata.
+Questo servizio disabilita la verifica del certificato client X.509 in un server DTLS. Il servizio non ha alcun effetto se la verifica del certificato client X.509 non è abilitata.
 
 > [!NOTE]
-> La disabilitazione dell'autenticazione client in un'istanza del server DTLS attiva può causare un comportamento imprevedibile. Il servizio di nx_secure_dtls_server_stop deve essere chiamato prima di modificare lo stato del server.
+> La disabilitazione dell'autenticazione client in un'istanza del server DTLS attiva può comportare un comportamento imprevedibile. Il nx_secure_dtls_server_stop deve essere chiamato prima di modificare lo stato del server.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2197,8 +2197,8 @@ Questo servizio Disabilita la verifica del certificato client X. 509 in un serve
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la disabilitazione dell'autenticazione client X. 509 è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
+- **NX_SUCCESS** (0x00) Disabilitazione dell'autenticazione client X.509 completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2289,7 +2289,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_session_client_info_get"></a>nx_secure_dtls_session_client_info_get
 
-Ottenere informazioni client Remote da una sessione del server DTLS
+Ottenere informazioni sul client remoto da una sessione del server DTLS
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2303,9 +2303,9 @@ UINT  nx_secure_dtls_session_client_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce le informazioni di rete relative a un client DTLS connesso a una determinata sessione del server DTLS. Le informazioni restituite sono costituite dall'indirizzo IP e dalla porta UDP del client remoto, nonché dalla porta locale del server a cui è connesso il client.
+Questo servizio restituisce le informazioni di rete su un client DTLS connesso a una sessione specifica del server DTLS. Le informazioni restituite sono costituite dall'indirizzo IP e dalla porta UDP del client remoto, nonché dalla porta del server locale a cui è connesso il client.
 
-In generale, l'istanza della sessione DTLS sarà quella ottenuta nella chiamata di una delle routine di callback di notifica DTLS (ad esempio, il connect_notify o receive_notify i callback passati in nx_secure_dtls_server_create).
+In generale, l'istanza di sessione DTLS sarà quella ottenuta nella chiamata di una delle routine di callback di notifica DTLS(ad esempio, i callback connect_notify o receive_notify passati in nx_secure_dtls_server_create).
 
 ### <a name="parameters"></a>Parametri
 
@@ -2313,10 +2313,10 @@ In generale, l'istanza della sessione DTLS sarà quella ottenuta nella chiamata 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'eliminazione del server è riuscita **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_INVALID_SOCKET** (0X13) il socket UDP associato non è valido (sessione non inizializzata?).
-- Il socket UDP **NX_NOT_CONNECTED** (0x38) non è connesso: la connessione client è stata eliminata o non è ancora stata stabilita.
+- **NX_SUCCESS** (0x00) Eliminazione del server completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_SOCKET** (0x13) Il socket UDP associato non è valido (sessione non inizializzata?).
+- **NX_NOT_CONNECTED** (0x38) il socket UDP non è connesso: la connessione client è stata interrotta o non è ancora stata stabilita.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2485,7 +2485,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_session_create"></a>nx_secure_dtls_session_create
 
-Creare e configurare una sessione NetX Secure DTLS
+Creare e configurare una sessione DTLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2504,11 +2504,11 @@ UINT nx_secure_dtls_session_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea e configura una sessione DTLS. In genere, questa operazione verrà utilizzata per creare sessioni client DTLS mentre le sessioni del server DTLS vengono gestite con il meccanismo server DTLS (vedere *nx_secure_dtls_server_create*), ma potrebbero essere presenti istanze in cui un'applicazione deve creare una singola istanza di sessione del server DTLS autonoma, nel qual caso il servizio può essere utilizzato <sup>7</sup>.
+Questo servizio crea e configura una sessione DTLS. In genere, verrà usato per creare sessioni client DTLS poiché le sessioni del server DTLS vengono gestite con il meccanismo del server DTLS (vedere *nx_secure_dtls_server_create*), ma in alcuni casi un'applicazione deve creare una singola istanza di sessione del server DTLS autonomo, nel qual caso questo servizio può essere usato <sup>7.</sup>
 
-I parametri consentono di configurare le informazioni e l'allocazione di memoria necessarie per creare un'istanza di una sessione DTLS. Il parametro crypto_table è una tabella TLS contenente tutte le routine di crittografia necessarie per la crittografia e l'autenticazione TLS/DTLS. Il metadata_buffer viene usato per la crittografia caclulations (vedere nx_secure_tls_metadata_size_calculate nel manuale dell'utente di NetX Secure TLS) e il packet_reassembly_buffer viene usato per riassemblare i datagrammi UDP in un record DTLS completo per la decrittografia.
+I parametri configurano le informazioni e l'allocazione di memoria necessarie per creare un'istanza di una sessione DTLS. Il crypto_table è una tabella TLS contenente tutte le routine crittografiche necessarie per la crittografia e l'autenticazione TLS/DTLS. Il metadata_buffer viene usato per le caclulation di crittografia (vedere nx_secure_tls_metadata_size_calculate nella Guida utente di NetX Secure TLS) e il packet_reassembly_buffer viene usato per riassemblare i datagrammi UDP in un record DTLS completo per la decrittografia.
 
-I certs_number e remote_certificate_buffer sono necessari per i client DTLS che richiedono spazio per archiviare ed elaborare la catena di certificati del server DTLS in ingresso. Il buffer deve essere in grado di contenere le dimensioni massime previste della catena di certificati per qualsiasi server a cui si connetterà. Il buffer è diviso per il numero di certificati previsti (certs_number parametro) e deve essere sufficientemente grande da contenere una NX_SECURE_X509_CERT struttura per ogni certificato. È possibile determinare le dimensioni del buffer utilizzando la formula seguente:
+I certs_number e remote_certificate_buffer sono necessari per i client DTLS che necessitano di spazio per archiviare ed elaborare la catena di certificati del server DTLS in ingresso. Il buffer deve essere in grado di contenere le dimensioni massime previste della catena di certificati per qualsiasi server a cui si connetterà. Il buffer è suddiviso per il numero di certificati previsti (parametro certs_number) e deve essere sufficientemente grande da contenere una struttura NX_SECURE_X509_CERT per ogni certificato. Le dimensioni del buffer possono essere determinate usando la formula seguente:
 
 ```C
 remote_certificate_buffer_size = (certs_number) *
@@ -2516,28 +2516,28 @@ remote_certificate_buffer_size = (certs_number) *
 ```
 
 - certs_number è il numero massimo previsto di certificati nella catena di certificati del server
-- Le dimensioni massime del certificato dipendono dalle dimensioni delle chiavi usate e dalle informazioni del certificato, ma 2 KB è in genere sufficiente.
+- Le dimensioni massime del certificato dipendono dalle dimensioni delle chiavi usate e dalle informazioni nel certificato, ma in genere sono sufficienti 2 KB.
 
-**7** la creazione di sessioni del server DTLS con questa routine non è consigliata e presenta alcune limitazioni. Il problema principale è che la sessione non gestirà le connessioni client aggiuntive in modo normale. Poiché UDP è senza connessione, un secondo client può inviare legalmente i dati alla porta UDP del server quando una sessione DTLS precedente è ancora attiva, causando la fine della sessione del server con un errore.
+**7** La creazione di sessioni del server DTLS con questa routine non è consigliata e presenta alcune limitazioni. Il problema principale è che la sessione non gestirà correttamente altre connessioni client, poiché UDP è senza connessione, un secondo client può legalmente inviare dati alla porta UDP del server quando una sessione DTLS precedente è ancora attiva, causando la chiusura della sessione del server con un errore.
 
 ### <a name="parameters"></a>Parametri
 
 - **dtls_session** Puntatore a una struttura di sessione DTLS non inizializzata.
-- **crypto_table** Puntatore a una struttura della tabella di crittografia TLS/DTLS utilizzata per tutte le operazioni di crittografia.
-- **crypto_metadata_buffer** Spazio del buffer per i calcoli delle operazioni di crittografia e le informazioni sullo stato.
-- **crypto_metadata_size** Dimensioni del buffer dei metadati.
-- **packet_reassembly_buffer** Buffer utilizzato da DTLS per riassemblare i dati UDP nei record DTLS per la decrittografia.
-- **packet_reassembly_buffer_size** Dimensioni del buffer di riassemblaggio. In genere deve essere maggiore di 16KB, ma può essere minore a seconda dell'applicazione.
-- **certs_number** Numero massimo di certificati previsto nella catena di certificati del server remoto.
+- **crypto_table** Puntatore a una struttura di tabella di crittografia TLS/DTLS usata per tutte le operazioni di crittografia.
+- **crypto_metadata_buffer** Spazio del buffer per i calcoli delle operazioni di crittografia e informazioni sullo stato.
+- **crypto_metadata_size** Dimensione del buffer dei metadati.
+- **packet_reassembly_buffer** Buffer usato da DTLS per riassemblare i dati UDP in record DTLS per la decrittografia.
+- **packet_reassembly_buffer_size** Dimensioni del buffer di riassemblaggio. In genere deve essere maggiore di 16 KB, ma può essere più piccolo a seconda dell'applicazione.
+- **certs_number** Numero massimo previsto di certificati nella catena di certificati del server remoto.
 - **remote_certificate_buffer** Spazio del buffer per i dati del certificato in ingresso.
 - **remote_certificate_buffer_size** Dimensioni del buffer del certificato.
 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la creazione della sessione è riuscita.
-- **NX_PTR_ERROR** (0x07) la sessione o il puntatore del buffer non valido.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) non è sufficiente spazio del buffer per il riassemblaggio, i certificati o la crittografia dei pacchetti.
+- **NX_SUCCESS** (0x00) Creazione della sessione completata.
+- **NX_PTR_ERROR** (0x07) Puntatore di sessione o buffer non valido.
+- **NX_INVALID_PARAMETERS** (0x4D) Spazio del buffer insufficiente per il riassemblaggio dei pacchetti, i certificati o la crittografia.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2644,12 +2644,12 @@ NXD_ADDRESS server_ip;
 
 ### <a name="see-also"></a>Vedere anche
 
-- nx_secure_dtls_client_session_start, nx_secure_dtls_session_receive,
+- nx_secure_dtls_client_session_start,nx_secure_dtls_session_receive,
 - nx_secure_dtls_session_send
 
 ## <a name="nx_secure_dtls_session_delete"></a>nx_secure_dtls_session_delete
 
-Liberare le risorse usate da una sessione NetX Secure DTLS
+Liberare le risorse usate da una sessione DTLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2661,7 +2661,7 @@ UINT nx_secure_dtls_session_delete(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina una sessione DTLS, liberando tutte le risorse allocate al momento della creazione.
+Questo servizio elimina una sessione DTLS, liberando tutte le risorse allocate al momento della creazione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -2669,8 +2669,8 @@ Questo servizio Elimina una sessione DTLS, liberando tutte le risorse allocate a
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'eliminazione della sessione **NX_SUCCESS** (0x00) riuscita.
-- **NX_PTR_ERROR** (0x07) la sessione o il puntatore del buffer non valido.
+- **NX_SUCCESS** (0x00) Eliminazione della sessione completata.
+- **NX_PTR_ERROR** (0x07) Puntatore di sessione o buffer non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2781,7 +2781,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_end"></a>nx_secure_dtls_session_end
 
-Arrestare una sessione di DTLS sicura NetX attiva
+Arrestare una sessione DTLS protetta di NetX attiva
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2793,24 +2793,24 @@ UINT nx_secure_dtls_session_end(NX_SECURE_DTLS_SESSION *dtls_session,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio termina una sessione DTLS attiva inviando un avviso TLS/DTLS CloseNotify all'host remoto. L'indirizzo IP e la porta usati sono quelli usati nella chiamata precedente a nx_secure_dtls_session_send.
+Questo servizio termina una sessione DTLS attiva inviando un avviso CLOSENotify TLS/DTLS all'host remoto. L'indirizzo IP e la porta usati sono quelli usati nella chiamata precedente a nx_secure_dtls_session_send.
 
 ### <a name="parameters"></a>Parametri
 
 - **dtls_session** Puntatore a una struttura di sessione DTLS inizializzata in precedenza.
-- **WAIT_OPTION** Valore di attesa ThreadX da utilizzare per le operazioni di rete.
+- **wait_option** Valore di attesa ThreadX da usare per le operazioni di rete.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- L'eliminazione della sessione **NX_SUCCESS** (0x00) riuscita.
-- **NX_PTR_ERROR** (0x07) la sessione o il puntatore del buffer non valido.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) non è stato in grado di allocare i pacchetti per l'avviso CloseNotify.
-- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) errore interno probabile: la routine di crittografia non è stata riconosciuta.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) invio UDP sottostante non riuscito.
-- Errore **NX_IP_ADDRESS_ERROR** (0x21) con l'indirizzo IP dell'host remoto.
-- Il socket UDP sottostante **NX_NOT_BOUND** (0x24) non è associato a una porta.
-- **NX_INVALID_PORT** (0x46) porta UDP non valida.
-- La porta UDP **NX_PORT_UNAVAILABLE** (0x23) non è disponibile per l'utilizzo.
+- **NX_SUCCESS** (0x00) Eliminazione della sessione completata.
+- **NX_PTR_ERROR** (0x07) Puntatore di sessione o buffer non valido.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Impossibile allocare pacchetti per l'avviso CloseNotify.
+- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) Probabile errore interno: routine crittografica non riconosciuta.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) L'invio UDP sottostante non è riuscito.
+- **NX_IP_ADDRESS_ERROR** (0x21) Errore con indirizzo IP dell'host remoto.
+- **NX_NOT_BOUND** (0x24) Socket UDP sottostante non associato alla porta.
+- **NX_INVALID_PORT** (0x46) Porta UDP non valida.
+- **NX_PORT_UNAVAILABLE** (0x23) la porta UDP non è disponibile per l'uso.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2921,7 +2921,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_local_certificate_add"></a>nx_secure_dtls_session_local_certificate_add
 
-Aggiungere un certificato di identità locale a una sessione NetX Secure DTLS
+Aggiungere un certificato di identità locale a una sessione DTLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2935,21 +2935,21 @@ UINT  nx_secure_dtls_session_local_certificate_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge un certificato di identità locale a un'istanza di sessione DTLS. In generale, questo servizio verrà usato quando una sessione client di DTLS deve fornire un certificato di identità a un host server remoto. Si tratta di una configurazione facoltativa per DTLS, quindi non è in genere necessario un certificato per i client DTLS. Un certificato di identità richiede una chiave privata associata.
+Questo servizio aggiunge un certificato di identità locale a un'istanza di sessione DTLS. In generale, questo servizio verrà usato quando una sessione client DTLS deve fornire un certificato di identità a un host server remoto. Si tratta di una configurazione facoltativa per DTLS, quindi un certificato non è generalmente necessario per i client DTLS. Un certificato di identità richiede una chiave privata associata.
 
-Il parametro cert_id è un identificatore numerico diverso da zero per il certificato. Ciò consente di rimuovere facilmente il certificato o di trovarlo nell'evento in cui sono presenti più certificati di identità con lo stesso nome comune X. 509 presente nell'archivio certificati DTLS. Per ulteriori informazioni sui certificati X. 509, vedere la guida dell'utente di NetX Secure TLS.
+Il cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato può essere facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X.509 presente nell'archivio certificati DTLS. Per altre informazioni sui certificati X.509, vedere la Guida dell'utente di NetX Secure TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione DTLS creata in precedenza.
-- **certificato** di Puntatore a una struttura di certificato X. 509 inizializzata in precedenza.
+- **certificato** Puntatore a una struttura di certificato X.509 inizializzata in precedenza.
 - **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) aggiunta del certificato alla sessione DTLS completata.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) è stato passato un ID certificato 0.
+- **NX_SUCCESS** (0x00) Aggiunta del certificato alla sessione DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_PARAMETERS** (0x4D) È stato passato un ID certificato 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2957,7 +2957,7 @@ Thread
 
 ### <a name="example"></a>Esempio
 
-* Per un esempio più completo, vedere informazioni di riferimento per *nx_secure_dtls_session_create* .
+*Vedere le informazioni di *nx_secure_dtls_session_create* per un esempio più completo.
 
 ```C
 /* Our DTLS Server instance. */
@@ -3045,7 +3045,7 @@ status =  nx_secure_dtls_client_session_start(&client_dtls_session,
 
 ## <a name="nx_secure_dtls_session_local_certificate_remove"></a>nx_secure_dtls_session_local_certificate_remove
 
-Rimuovere un certificato di identità locale da una sessione NetX Secure DTLS
+Rimuovere un certificato di identità locale da una sessione DTLS protetta di NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3059,24 +3059,24 @@ UINT  nx_secure_dtls_session_local_certificate_remove(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove un certificato di identità locale da un'istanza di sessione DTLS usando un numero di ID certificato (assegnato quando il certificato è stato aggiunto con nx_secure_dtls_session_local_certificate_add) o il campo CommonName X. 509.
+Questo servizio rimuove un certificato di identità locale da un'istanza di sessione DTLS usando un numero ID certificato (assegnato quando il certificato è stato aggiunto con nx_secure_dtls_session_local_certificate_add) o il campo CommonName X.509.
 
-Se il common_name viene usato per trovare la corrispondenza con il certificato, il parametro cert_id deve essere impostato su 0. Se si utilizza cert_id, common_name deve essere passato un valore di NX_NULL.
+Se il common_name viene usato per trovare la corrispondenza con il certificato, il parametro cert_id deve essere impostato su 0. Se cert_id viene usato, common_name deve essere passato un valore di NX_NULL.
 
-Il parametro cert_id è un identificatore numerico diverso da zero per il certificato. Ciò consente di rimuovere facilmente il certificato o di trovarlo nell'evento in cui sono presenti più certificati di identità con lo stesso nome comune X. 509 presente nell'archivio certificati DTLS. Per ulteriori informazioni sui certificati X. 509, vedere la guida dell'utente di NetX Secure TLS.
+Il cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato può essere facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X.509 presente nell'archivio certificati DTLS. Per altre informazioni sui certificati X.509, vedere la Guida dell'utente di NetX Secure TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione DTLS creata in precedenza.
-- **common_name** Puntatore alla stringa comune di cui trovare la corrispondenza.
-- **common_name_length** Lunghezza della stringa di common_name.
+- **common_name** Puntatore alla stringa CommonName di cui trovare la corrispondenza.
+- **common_name_length** Lunghezza della common_name stringa.
 - **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la rimozione del certificato dalla sessione DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0X119) non è stato trovato alcun certificato corrispondente al cert_id o common_name nella sessione DTLS specificata.
+- **NX_SUCCESS** (0x00) Rimozione del certificato dalla sessione DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Non è stato trovato alcun certificato corrispondente cert_id o common_name nella sessione DTLS specificata.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3084,7 +3084,7 @@ Thread
 
 ### <a name="example"></a>Esempio
 
-* Per un esempio più completo, vedere informazioni di riferimento per *nx_secure_dtls_session_create* .
+*Vedere le informazioni di *nx_secure_dtls_session_create* per un esempio più completo.
 
 ```C
 
@@ -3178,7 +3178,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_receive"></a>nx_secure_dtls_session_receive
 
-Ricevere i dati dell'applicazione in una sessione di DTLS sicura NetX stabilita
+Ricevere i dati dell'applicazione tramite una sessione DTLS sicura NetX stabilita
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3192,28 +3192,28 @@ UINT nx_secure_dtls_session_receive(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce i dati dell'applicazione ricevuti da una sessione DTLS attiva. La sessione DTLS può essere una sessione del server DTLS (gestita da un'istanza del server DTLS) o una sessione client DTLS. Il pacchetto restituito può essere elaborato usando uno dei servizi API NX_PACKET (vedere la documentazione di NetX per altre informazioni).
+Questo servizio restituisce i dati dell'applicazione ricevuti da una sessione DTLS attiva. La sessione DTLS può essere una sessione del server DTLS (gestita da un'istanza del server DTLS) o una sessione client DTLS. Il pacchetto restituito può essere elaborato usando uno dei servizi API NX_PACKET (per altre informazioni, vedere la documentazione di NetX).
 
 ### <a name="parameters"></a>Parametri
 
 - **dtls_session** Puntatore a una struttura di sessione DTLS inizializzata in precedenza.
-- **packet_ptr_ptr** Puntatore a un puntatore NX_PACKET per il pacchetto restituito.
-- **WAIT_OPTION** Valore di attesa ThreadX da utilizzare per le operazioni di rete.
+- **packet_ptr_ptr** Puntatore a un NX_PACKET puntatore per il pacchetto restituito.
+- **wait_option** Valore di attesa ThreadX da usare per le operazioni di rete.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) ricevuta correttamente del pacchetto di dati dell'applicazione.
-- **NX_PTR_ERROR** (0x07) una sessione o un puntatore di pacchetto non valido.
-- Il protocollo UDP **NX_NOT_ENABLED** (0x14) non è abilitato.
-- Socket UDP **NX_NOT_BOUND** (0x24) non associato alla porta.
-- **NX_SECURE_TLS_INVALID_PACKET** (0X104) recevied dati che non sono record DTLS validi.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) non è stato possibile eseguire correttamente l'hashing di un record DTLS (errore di crittografia).
-- Verifica della riempimento della crittografia **NX_SECURE_TLS_PADDING_CHECK_FAILED** (0x12A) non riuscita.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0X114) recevied un avviso dall'host remoto.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE**    (0X102) ha ricevuto un messaggio non riconosciuto.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0X10A) recevied un record DTLS con una lunghezza non valida.
-- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) è stato rilevato un CIPHERSUITE sconosciuto (indica l'errore interno della crittografia).
-- **NX_SECURE_TLS_PROTOCOL_VERSION_CHANGED** (0X12E) recevied un record DTLS con una versione di DTLS non corrispondente.
+- **NX_SUCCESS** (0x00) Ricezione riuscita del pacchetto di dati dell'applicazione.
+- **NX_PTR_ERROR** (0x07) Sessione o puntatore a pacchetto non valido.
+- **NX_NOT_ENABLED** (0x14) UDP non è abilitato.
+- **NX_NOT_BOUND** socket UDP (0x24) non associato alla porta.
+- **NX_SECURE_TLS_INVALID_PACKET** (0x104) I dati che non erano un record DTLS valido.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Non è stato possibile eseguire correttamente l'hashing di un record DTLS (errore di crittografia).
+- **NX_SECURE_TLS_PADDING_CHECK_FAILED** (0x12A) Errore di controllo della spaziatura interna della crittografia.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Ha generato un avviso dall'host remoto.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE**    (0x102) Ha ricevuto un messaggio non riconosciuto.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) È stato recevied un record DTLS con una lunghezza non valida.
+- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) È stato rilevato un ciphersuite sconosciuto (indica un errore di crittografia interno).
+- **NX_SECURE_TLS_PROTOCOL_VERSION_CHANGED** (0x12E) Ha riappiato un record DTLS con una versione DTLS non corrispondente.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3321,7 +3321,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_reset"></a>nx_secure_dtls_session_reset
 
-Cancellare i dati in un'istanza di sessione NetX Secure DTLS
+Cancellare i dati in un'istanza di sessione DTLS sicura NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3331,7 +3331,7 @@ UINT nx_secure_dtls_session_reset(NX_SECURE_DTLS_SESSION *dtls_session);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Reimposta una sessione DTLS, cancellando tutti i dati di crittografia effimeri e consentendo di riutilizzare la struttura per una nuova sessione. I dati persistenti, ad esempio gli archivi certificati, vengono mantenuti in modo che non nx_secure_dtls_session_create necessario chiamare ripetutamente.
+Questo servizio reimposta una sessione DTLS, cancellando tutti i dati crittografici e consentendo di usare nuovamente la struttura per una nuova sessione. I dati persistenti, ad esempio gli archivi certificati, vengono mantenuti in modo che nx_secure_dtls_session_create non sia necessario chiamare ripetutamente.
 
 ### <a name="parameters"></a>Parametri
 
@@ -3339,8 +3339,8 @@ Questo servizio Reimposta una sessione DTLS, cancellando tutti i dati di crittog
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) reimpostazione della sessione completata.
-- **NX_PTR_ERROR** (0x07) la sessione o il puntatore del buffer non valido.
+- **NX_SUCCESS** (0x00) Reimpostazione della sessione completata.
+- **NX_PTR_ERROR** (0x07) Sessione o puntatore al buffer non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3467,22 +3467,22 @@ UINT  nx_secure_dtls_session_send(NX_SECURE_DTLS_SESSION *session_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio invia un pacchetto di dati su una sessione DTLS stabilita a un host DTLS remoto presso la porta e l'indirizzo IP specificati. La sessione utilizzata è una sessione client DTLS attiva. Si noti che l'indirizzo IP e la porta sono forniti a causa della natura senza stato di UDP, ma in genere corrispondono all'indirizzo e alla porta usati per avviare la sessione in nx_secure_dtls_session_start.
+Questo servizio invia un pacchetto di dati tramite una sessione DTLS stabilita a un host DTLS remoto all'indirizzo IP e alla porta specificata. La sessione usata è una sessione client DTLS attiva. Si noti che l'indirizzo IP e la porta vengono forniti a causa della natura senza stato di UDP, ma in genere devono corrispondere all'indirizzo e alla porta usati per avviare la sessione in nx_secure_dtls_session_start.
 
-I dati forniti nel pacchetto, che devono essere allocati tramite *nx_secure_dtls_packet_allocate*, vengono crittografati usando le routine e i parametri crittografici della sessione DTLS e quindi inviati all'host remoto tramite il socket UDP della sessione DTLS.
+I dati forniti nel pacchetto, che devono essere allocati usando *nx_secure_dtls_packet_allocate*, vengono crittografati usando le routine e i parametri di crittografia della sessione DTLS e quindi inviati all'host remoto tramite il socket UDP della sessione DTLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione client DTLS attiva.
-- **packet_ptr** Puntatore a un'istanza di NX_PACKET allocata in precedenza e popolata con i dati dell'applicazione.
-- **ip_address** Puntatore a una struttura di NXD_ADDRESS contenente l'indirizzo IP dell'host remoto.
-- **porta** Porta UDP sull'host remoto.
+- **packet_ptr** Puntatore a un'istanza NX_PACKET allocata in precedenza e popolata con i dati dell'applicazione.
+- **ip_address** Puntatore a una NXD_ADDRESS contenente l'indirizzo IP dell'host remoto.
+- **porta** Porta UDP nell'host remoto.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Il **NX_SUCCESS** (0x00) ha completato l'invio del pacchetto.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) si è verificato un errore nell'operazione di invio UDP sottostante.
+- **NX_SUCCESS** (0x00) Invio del pacchetto riuscito.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Si è verificato un errore nell'operazione di invio UDP sottostante.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3592,7 +3592,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_trusted_certificate_add"></a>nx_secure_dtls_session_trusted_certificate_add
 
-Aggiungere un certificato CA attendibile a una sessione NetX Secure DTLS
+Aggiungere un certificato CA attendibile a una sessione DTLS sicura NetX
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3606,21 +3606,21 @@ UINT  nx_secure_dtls_session_trusted_certificate_add(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio aggiunge una CA attendibile o un certificato X. 509 CA attendibile a un'istanza di sessione DTLS. Per convalidare i certificati del server remoto, un client DTLS richiede almeno un certificato attendibile, a meno che non venga usato un meccanismo di autenticazione alternativo (ad esempio, le chiavi precondivise). Un certificato attendibile non dispone in genere di una chiave privata.
+Questo servizio aggiunge un certificato X.509 CA attendibile o intermedio a un'istanza di sessione DTLS. Un client DTLS richiede almeno un certificato attendibile per convalidare i certificati del server remoto, a meno che non venga usato un meccanismo di autenticazione alternativo, ad esempio chiavi precondi condivise. Un certificato attendibile in genere non dispone di una chiave privata.
 
-Il parametro cert_id è un identificatore numerico diverso da zero per il certificato. Ciò consente di rimuovere facilmente il certificato o di trovarlo nell'evento in cui sono presenti più certificati di identità con lo stesso nome comune X. 509 presente nell'archivio certificati DTLS. Per ulteriori informazioni sui certificati X. 509, vedere la guida dell'utente di NetX Secure TLS.
+Il cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato può essere facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X.509 presente nell'archivio certificati DTLS. Per altre informazioni sui certificati X.509, vedere il Manuale dell'utente di NetX Secure TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione DTLS creata in precedenza.
-- **certificato** di Puntatore a una struttura di certificato X. 509 inizializzata in precedenza.
+- **certificato** Puntatore a una struttura di certificati X.509 inizializzata in precedenza.
 - **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) aggiunta del certificato alla sessione DTLS completata.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_INVALID_PARAMETERS** (irreversibile 0x4D) è stato passato un ID certificato 0.
+- **NX_SUCCESS** (0x00) Aggiunta del certificato alla sessione DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_INVALID_PARAMETERS** (0x4D) È stato passato un ID certificato 0.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3628,7 +3628,7 @@ Thread
 
 ### <a name="example"></a>Esempio
 
-* Per un esempio più completo, vedere informazioni di riferimento per *nx_secure_dtls_session_create* .
+*Vedere le informazioni di *nx_secure_dtls_session_create* per un esempio più completo.
 
 ```C
 /* Our DTLS Server instance. */
@@ -3714,7 +3714,7 @@ NXD_ADDRESS server_ip;
 
 ## <a name="nx_secure_dtls_session_trusted_certificate_remove"></a>nx_secure_dtls_session_trusted_certificate_remove
 
-Rimuovere un certificato CA attendibile da una sessione NetX Secure DTLS
+Rimuovere un certificato ca attendibile da una sessione DTLS sicura netx
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3728,25 +3728,25 @@ UINT  nx_secure_dtls_session_trusted_certificate_remove(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rimuove un certificato CA attendibile da un'istanza di sessione DTLS usando un numero di ID certificato (assegnato quando il certificato è stato aggiunto con nx_secure_dtls_session_trusted_certificate_add) o il campo CommonName X. 509.
+Questo servizio rimuove un certificato CA attendibile da un'istanza di sessione DTLS usando un numero di ID certificato (assegnato quando il certificato è stato aggiunto con nx_secure_dtls_session_trusted_certificate_add) o il campo CommonName X.509.
 
-Se il common_name viene usato per trovare la corrispondenza con il certificato, il parametro cert_id deve essere impostato su 0. Se si utilizza cert_id, common_name deve essere passato un valore di NX_NULL.
+Se il common_name viene usato per trovare la corrispondenza con il certificato, cert_id parametro deve essere impostato su 0. Se cert_id viene usato , common_name deve essere passato il valore NX_NULL.
 
-Il parametro cert_id è un identificatore numerico diverso da zero per il certificato. Ciò consente di rimuovere facilmente il certificato o di trovarlo nell'evento in cui sono presenti più certificati di identità con lo stesso nome comune X. 509 presente nell'archivio certificati DTLS. Per ulteriori informazioni sui certificati X. 509, vedere la guida dell'utente di NetX Secure TLS.
+Il cert_id è un identificatore numerico diverso da zero per il certificato. In questo modo il certificato può essere facilmente rimosso o trovato nel caso in cui siano presenti più certificati di identità con lo stesso nome comune X.509 presente nell'archivio certificati DTLS. Per altre informazioni sui certificati X.509, vedere il Manuale dell'utente di NetX Secure TLS.
 
 ### <a name="parameters"></a>Parametri
 
 - **session_ptr** Puntatore a un'istanza di sessione DTLS creata in precedenza.
-- **common_name** Puntatore alla stringa comune di cui trovare la corrispondenza.
-- **common_name_length** Lunghezza della stringa di common_name.
+- **common_name** Puntatore alla stringa CommonName di cui trovare una corrispondenza.
+- **common_name_length** Lunghezza della common_name stringa.
 - **cert_id** Identificatore univoco numerico diverso da zero per questo certificato in questo server DTLS.
 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS** (0x00) la rimozione del certificato dalla sessione DTLS è riuscita.
-- **NX_PTR_ERROR** puntatore non valido (0x07) passato.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0X119) non è stato trovato alcun certificato corrispondente al cert_id o common_name nella sessione DTLS specificata.
+- **NX_SUCCESS** (0x00) Rimozione del certificato dalla sessione DTLS completata.
+- **NX_PTR_ERROR** (0x07) Puntatore non valido passato.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Nessun certificato corrispondente al cert_id o common_name trovato nella sessione DTLS specificata.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3754,7 +3754,7 @@ Thread
 
 ### <a name="example"></a>Esempio
 
-* Per un esempio più completo, vedere informazioni di riferimento per *nx_secure_dtls_session_create* .
+*Vedere le informazioni di *nx_secure_dtls_session_create* per un esempio più completo.
 
 ```C
 /* Our DTLS Server instance. */

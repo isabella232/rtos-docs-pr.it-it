@@ -1,19 +1,19 @@
 ---
-title: Capitolo 4-Descrizione dei servizi host USBX
+title: Capitolo 4 - Descrizione dei servizi host USBX
 description: Informazioni sui servizi host USBX.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: d730658c07f3cd7cec8c75a47818314bdc63f35a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6cbeff83d8e3812f13aa3f8f66d4013b70490d556911939186b4b43840aac50d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104824359"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790684"
 ---
-# <a name="chapter-4---description-of-usbx-host-services"></a>Capitolo 4-Descrizione dei servizi host USBX
+# <a name="chapter-4---description-of-usbx-host-services"></a>Capitolo 4 - Descrizione dei servizi host USBX
 
 ## <a name="ux_host_stack_initialize"></a>ux_host_stack_initialize
 
@@ -29,16 +29,16 @@ UINT ux_host_stack_initialize(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione Inizializza lo stack host USB. L'area di memoria specificata verrà impostata per l'uso interno di USBX. Se viene restituito UX_SUCCESS, USBX è pronto per il controller host e la registrazione della classe.
+Questa funzione inizializza lo stack di host USB. L'area di memoria fornita verrà impostata per l'uso interno di USBX. Se UX_SUCCESS viene restituito , USBX è pronto per la registrazione del controller host e della classe.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **system_change_function** Puntatore alla routine di callback facoltativa per notificare l'applicazione delle modifiche del dispositivo.
+- **system_change_function** Puntatore alla routine di callback facoltativa per notificare all'applicazione le modifiche del dispositivo.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) inizializzazione riuscita.
-- **UX_MEMORY_INSUFFICIENT** (0X12) un'allocazione di memoria non riuscita.
+- **UX_SUCCESS** (0x00) Inizializzazione riuscita.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Allocazione di memoria non riuscita.
 
 ### <a name="example"></a>Esempio
 
@@ -53,7 +53,7 @@ status = ux_host_stack_initialize(UX_NULL);
 
 ## <a name="ux_host_stack_endpoint_transfer_abort"></a>ux_host_stack_endpoint_transfer_abort
 
-Interrompi tutte le transazioni associate a una richiesta di trasferimento per un endpoint.
+Interrompere tutte le transazioni collegate a una richiesta di trasferimento per un endpoint.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -63,16 +63,16 @@ UINT ux_host_stack_endpoint_transfer_abort(UX_ENDPOINT *endpoint);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione cancellerà tutte le transazioni attive o in sospeso per una richiesta di trasferimento specifica collegata a un endpoint. La richiesta di trasferimento ha una funzione di callback collegata, la funzione di callback verrà chiamata con lo stato UX_TRANSACTION_ABORTED.
+Questa funzione annullerà tutte le transazioni attive o in sospeso per una richiesta di trasferimento specifica collegata a un endpoint. La richiesta di trasferimento ha una funzione di callback collegata, la funzione di callback verrà chiamata con lo UX_TRANSACTION_ABORTED stato.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **endpoint** di Puntatore a un endpoint.
+- **endpoint** Puntatore a un endpoint.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) non sono presenti errori.
-- HANDLE dell'endpoint **UX_ENDPOINT_HANDLE_UNKNOWN** (0x53) non valido.
+- **UX_SUCCESS** (0x00) Nessun errore.
+- **UX_ENDPOINT_HANDLE_UNKNOWN(0x53)** Endpoint non valido.
 
 ### <a name="example"></a>Esempio
 
@@ -97,7 +97,7 @@ status = ux_host_stack_endpoint_transfer_abort
 
 ## <a name="ux_host_stack_class_get"></a>ux_host_stack_class_get
 
-Ottenere il puntatore a un contenitore della classe.
+Ottenere il puntatore a un contenitore di classi.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -109,20 +109,20 @@ UINT ux_host_stack_class_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione restituisce un puntatore al contenitore della classe. Una classe deve ottenere il relativo contenitore dallo stack USB per cercare le istanze quando una classe o un'applicazione vuole aprire un dispositivo.
+Questa funzione restituisce un puntatore al contenitore di classi. Una classe deve ottenere il relativo contenitore dallo stack USB per cercare le istanze quando una classe o un'applicazione vuole aprire un dispositivo.
 
 > [!NOTE]
-> La stringa C di class_name deve essere con terminazione NULL e la lunghezza (senza il carattere di terminazione NULL) non deve essere maggiore di UX_MAX_CLASS_NAME_LENGTH.
+> La stringa C di class_name deve avere terminazione NULL e la lunghezza (senza il carattere di terminazione NULL stesso) non deve essere maggiore di UX_MAX_CLASS_NAME_LENGTH.
 
 ### <a name="parameters"></a>Parametri
 
 - **class_name** Puntatore al nome della classe.
-- **classe** Puntatore aggiornato dalla chiamata di funzione che contiene il contenitore della classe per il nome della classe.
+- **classe** Puntatore aggiornato dalla chiamata di funzione che contiene il contenitore di classi per il nome della classe.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) nessun errore, al ritorno il campo della classe viene archiviato con il puntatore al contenitore della classe.
-- La classe **UX_HOST_CLASS_UNKNOWN** (0x59) è sconosciuta dallo stack.
+- **UX_SUCCESS** (0x00) Nessun errore, al ritorno il campo della classe viene indicato con il puntatore al contenitore di classi.
+- **UX_HOST_CLASS_UNKNOWN** classe (0x59) è sconosciuta dallo stack.
 
 ### <a name="example"></a>Esempio
 
@@ -150,25 +150,25 @@ UINT ux_host_stack_class_register(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione registra una classe USB nello stack USB. La classe deve specificare un punto di ingresso per lo stack USB per inviare comandi come il seguente.
+Questa funzione registra una classe USB nello stack USB. La classe deve specificare un punto di ingresso per lo stack USB per inviare comandi come i seguenti.
 
 - **UX_HOST_CLASS_COMMAND_QUERY**
 - **UX_HOST_CLASS_COMMAND_ACTIVATE**
 - **UX_HOST_CLASS_COMMAND_DESTROY**
 
 > [!NOTE]
-> La stringa C di *class_name* deve essere con terminazione null e la lunghezza (senza il carattere di terminazione null) non deve essere maggiore di **UX_MAX_CLASS_NAME_LENGTH**.
+> La stringa C *di class_name* deve avere terminazione NULL e la sua lunghezza (senza il carattere di terminazione NULL stesso) non deve essere maggiore **di UX_MAX_CLASS_NAME_LENGTH**.
 
 ### <a name="parameters"></a>Parametri
 
-- **class_name** Puntatore al nome della classe, le voci valide si trovano nel file ux_system_initialize. c nelle classi USB di USBX.
-- **class_entry_address** Indirizzo della funzione entry della classe.
+- **class_name** Puntatore al nome della classe. Le voci valide si trovano nel file ux_system_initialize.c nelle classi USB di USBX.
+- **class_entry_address** Indirizzo della funzione di immissione della classe.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- Classe **UX_SUCCESS** (0x00) installata correttamente.
-- **UX_MEMORY_ARRAY_FULL** (0X1a) non è più disponibile memoria per archiviare questa classe.
-- La classe host **UX_HOST_CLASS_ALREADY_INSTALLED** (0x58) è già installata.
+- **UX_SUCCESS** (0x00) è stato installato correttamente.
+- **UX_MEMORY_ARRAY_FULL** (0x1a) Memoria insufficiente per archiviare questa classe.
+- **UX_HOST_CLASS_ALREADY_INSTALLED** classe host (0x58) già installata.
 
 ### <a name="example"></a>Esempio:
 
@@ -183,7 +183,7 @@ status = ux_host_stack_class_register("ux_host_class_hub", ux_host_class_hub_ent
 
 ## <a name="ux_host_stack_class_instance_create"></a>ux_host_stack_class_instance_create
 
-Creare una nuova istanza della classe per un contenitore della classe.
+Creare una nuova istanza della classe per un contenitore di classi.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -195,16 +195,16 @@ UINT ux_host_stack_class_instance_create(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione crea una nuova istanza della classe per un contenitore della classe. L'istanza di una classe non è contenuta nel codice della classe per ridurre la complessità della classe. Ogni istanza di classe è invece collegata al contenitore della classe presente nello stack principale.
+Questa funzione crea una nuova istanza della classe per un contenitore di classi. L'istanza di una classe non è contenuta nel codice della classe per ridurre la complessità della classe. Ogni istanza della classe è invece collegata al contenitore di classi che si trova nello stack principale.
 
 ### <a name="parameters"></a>Parametri
 
-- **classe** Puntatore al contenitore della classe.
+- **classe** Puntatore al contenitore di classi.
 - **class_instance** Puntatore all'istanza della classe da creare.
 
 ### <a name="return-value"></a>Valore restituito
 
-- **UX_SUCCESS** (0x00) l'istanza della classe è stata collegata al contenitore della classe.
+- **UX_SUCCESS** (0x00) L'istanza della classe è stata associata al contenitore di classi.
 
 ### <a name="example"></a>Esempio
 
@@ -231,7 +231,7 @@ status = ux_host_stack_class_instance_create(printer -> printer_class, (VOID *)p
 
 ## <a name="ux_host_stack_class_instance_destroy"></a>ux_host_stack_class_instance_destroy
 
-Eliminare un'istanza della classe per un contenitore di classi.
+Eliminare un'istanza di classe per un contenitore di classi.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -243,17 +243,17 @@ UINT ux_host_stack_class_instance_destroy(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione Elimina un'istanza della classe per un contenitore della classe.
+Questa funzione elimina un'istanza di classe per un contenitore di classi.
 
 ### <a name="parameters"></a>Parametri
 
-- **classe** Puntatore al contenitore della classe.
-- **class_instance** Puntatore all'istanza da eliminare definitivamente.
+- **classe** Puntatore al contenitore di classi.
+- **class_instance** Puntatore all'istanza di da eliminare.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) l'istanza della classe è stata eliminata definitivamente.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5b) l'istanza della classe non è collegata al contenitore della classe.
+- **UX_SUCCESS** (0x00) L'istanza della classe è stata distrutta.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) L'istanza della classe non è associata al contenitore di classi.
 
 ### <a name="example"></a>Esempio
 
@@ -275,7 +275,7 @@ status = ux_host_stack_class_instance_destroy(printer -> printer_class, (VOID *)
 
 ## <a name="ux_host_stack_class_instance_get"></a>ux_host_stack_class_instance_get
 
-Ottenere un puntatore a un'istanza di classe per una classe specifica.
+Ottiene un puntatore all'istanza di classe per una classe specifica.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -288,19 +288,19 @@ UINT ux_host_stack_class_instance_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione restituisce un puntatore all'istanza della classe per una classe specifica. L'istanza di una classe non è contenuta nel codice della classe per ridurre la complessità della classe. Ogni istanza di classe è invece collegata al contenitore della classe. Questa funzione viene usata per cercare le istanze della classe all'interno di un contenitore di classi.
+Questa funzione restituisce un puntatore di istanza di classe per una classe specifica. L'istanza di una classe non è contenuta nel codice della classe per ridurre la complessità della classe. Ogni istanza della classe è invece associata al contenitore di classi. Questa funzione viene usata per cercare istanze di classe all'interno di un contenitore di classi.
 
 ### <a name="parameters"></a>Parametri
 
-- **classe** Puntatore al contenitore della classe.
-- **class_index** Indice che deve essere utilizzato dalla chiamata di funzione all'interno dell'elenco di classi associate al contenitore.
+- **classe** Puntatore al contenitore di classi.
+- **class_index** Indice che deve essere usato dalla chiamata di funzione all'interno dell'elenco di classi associate al contenitore.
 - **class_instance** Puntatore all'istanza di che deve essere restituita dalla chiamata di funzione.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) l'istanza della classe è stata trovata.
+- **UX_SUCCESS** (0x00) È stata trovata l'istanza della classe.
 
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) non sono presenti altre istanze di classe associate al contenitore della classe.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) Non sono presenti altre istanze di classe associate al contenitore di classi.
 
 ### <a name="example"></a>Esempio
 
@@ -339,15 +339,15 @@ Questa funzione restituisce un contenitore di configurazione basato su un handle
 
 ### <a name="parameters"></a>Parametri
 
-- **dispositivo** Puntatore al contenitore di dispositivi proprietario della configurazione richiesta.
+- **dispositivo** Puntatore al contenitore del dispositivo proprietario della configurazione richiesta.
 - **configuration_index** Indice della configurazione in cui eseguire la ricerca.
-- **configurazione** di Indirizzo del puntatore al contenitore di configurazione da restituire.
+- **configurazione** Indirizzo del puntatore al contenitore di configurazione da restituire.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) la configurazione è stata trovata.
-- **UX_DEVICE_HANDLE_UNKNOWN** (0X50) il contenitore di dispositivi non esiste.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'handle di configurazione per l'indice non esiste.
+- **UX_SUCCESS** (0x00) La configurazione è stata trovata.
+- **UX_DEVICE_HANDLE_UNKNOWN** (0x50) Il contenitore del dispositivo non esiste.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'handle di configurazione per l'indice non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -382,17 +382,17 @@ UINT ux_host_stack_device_configuration_select (UX_CONFIGURATION *configuration)
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione seleziona una configurazione specifica per un dispositivo. Quando questa configurazione è impostata sul dispositivo, per impostazione predefinita ogni interfaccia del dispositivo e l'impostazione alternativa 0 associata viene attivata sul dispositivo. Se la classe del dispositivo/interfaccia desidera modificare l'impostazione di una particolare interfaccia, è necessario eseguire una chiamata al servizio **ux_host_stack_interface_setting_select** .
+Questa funzione seleziona una configurazione specifica per un dispositivo. Quando questa configurazione è impostata sul dispositivo, per impostazione predefinita, ogni interfaccia del dispositivo e l'impostazione alternativa associata 0 vengono attivate nel dispositivo. Se la classe dispositivo/interfaccia vuole modificare l'impostazione di una particolare interfaccia, deve eseguire una chiamata ux_host_stack_interface_setting_select **servizio.**
 
 ### <a name="parameters"></a>Parametri
 
-- **configurazione** di Puntatore al contenitore di configurazione che deve essere abilitato per questo dispositivo.
+- **configurazione** Puntatore al contenitore di configurazione che deve essere abilitato per questo dispositivo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) la selezione della configurazione è stata completata correttamente.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) l'handle di configurazione non esiste.
-- **UX_OVER_CURRENT_CONDITION** (0x43) è presente una condizione Over Current sul bus per questa configurazione.
+- **UX_SUCCESS** (0x00) La selezione della configurazione è riuscita.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) L'handle di configurazione non esiste.
+- **UX_OVER_CURRENT_CONDITION** (0x43) Una condizione over current esiste nel bus per questa configurazione.
 
 ### <a name="example"></a>Esempio
 
@@ -430,17 +430,17 @@ UINT ux_host_stack_device_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione restituisce un contenitore di dispositivi in base al relativo indice. L'indice del dispositivo inizia con 0. Si noti che l'indice è un ULONG perché potrebbero essere presenti più controller e un indice byte potrebbe non essere sufficiente. L'indice del dispositivo non deve essere confuso con l'indirizzo del dispositivo specifico del bus.
+Questa funzione restituisce un contenitore di dispositivi in base al relativo indice. L'indice del dispositivo inizia con 0. Si noti che l'indice è un ULONG perché potrebbero essere disponibili diversi controller e un indice di byte potrebbe non essere sufficiente. L'indice del dispositivo non deve essere confuso con l'indirizzo del dispositivo specifico del bus.
 
 ### <a name="parameters"></a>Parametri
 
 - **device_index** Indice del dispositivo.
-- **dispositivo** Indirizzo dell'indicatore di misura per il contenitore di dispositivi da restituire.
+- **dispositivo** Indirizzo del puntatore per il contenitore del dispositivo da restituire.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il contenitore di dispositivi esiste e viene restituito
-- Dispositivo **UX_DEVICE_HANDLE_UNKNOWN** (0x50) sconosciuto
+- **UX_SUCCESS** (0x00) Il contenitore del dispositivo esiste e viene restituito
+- **UX_DEVICE_HANDLE_UNKNOWN** (0x50) Dispositivo sconosciuto
 
 ### <a name="example"></a>Esempio
 
@@ -468,19 +468,19 @@ UINT ux_host_stack_interface_endpoint_get(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione restituisce un contenitore di endpoint basato sull'handle dell'interfaccia e un indice dell'endpoint. Si presuppone che sia stata selezionata l'impostazione alternativa per l'interfaccia o che l'impostazione predefinita venga utilizzata prima degli endpoint di cui viene eseguita la ricerca.
+Questa funzione restituisce un contenitore di endpoint in base all'handle di interfaccia e a un indice dell'endpoint. Si presuppone che sia stata selezionata l'impostazione alternativa per l'interfaccia o che venga usata l'impostazione predefinita prima della ricerca degli endpoint.
 
 ### <a name="parameters"></a>Parametri
 
-- **interfaccia** di Puntatore al contenitore dell'interfaccia che contiene l'endpoint richiesto.
+- **interfaccia** Puntatore al contenitore di interfaccia che contiene l'endpoint richiesto.
 - **endpoint_index** Indice dell'endpoint in questa interfaccia.
-- **endpoint** di Indirizzo del contenitore dell'endpoint da restituire.
+- **endpoint** Indirizzo del contenitore di endpoint da restituire.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il contenitore dell'endpoint esiste e viene restituito.
-- L'interfaccia **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) specificata non esiste.
-- L'indice dell'endpoint **UX_ENDPOINT_HANDLE_UNKNOWN** (0x53) non esiste.
+- **UX_SUCCESS** (0x00) Il contenitore endpoint esiste e viene restituito.
+- **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) L'interfaccia specificata non esiste.
+- **UX_ENDPOINT_HANDLE_UNKNOWN** (0x53) Dell'endpoint non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -523,21 +523,21 @@ UINT ux_host_stack_hcd_register(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione registra un controller USB nello stack USB. Alloca principalmente la memoria utilizzata da questo controller e passa il comando di inizializzazione al controller.
+Questa funzione registra un controller USB nello stack USB. Alloca principalmente la memoria usata da questo controller e passa il comando di inizializzazione al controller.
 
 ### <a name="parameters"></a>Parametri
 
 - **hcd_name** Nome del controller host
 - **hcd_function** Funzione nel controller host responsabile dell'inizializzazione.
-- **hcd_param1** Il IO o la risorsa di memoria utilizzata da HCD.
-- **hcd_param2** IRQ utilizzato dal controller host.
+- **hcd_param1** Risorsa di I/O o di memoria usata dall'oggetto hcd.
+- **hcd_param2** IRQ usato dal controller host.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il controller è stato inizializzato correttamente.
-- **UX_MEMORY_INSUFFICIENT** (0x12) memoria insufficiente per questo controller.
-- **UX_PORT_RESET_FAILED** (0X31) la reimpostazione del controller non è riuscita.
-- **UX_CONTROLLER_INIT_FAILED** (0x32) non è stato possibile inizializzare correttamente il controller.
+- **UX_SUCCESS** (0x00) Il controller è stato inizializzato correttamente.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Memoria insufficiente per questo controller.
+- **UX_PORT_RESET_FAILED** (0x31) La reimpostazione del controller non è riuscita.
+- **UX_CONTROLLER_INIT_FAILED** (0x32) Il controller non è stato inizializzato correttamente.
 
 ### <a name="example"></a>Esempio
 
@@ -558,7 +558,7 @@ status = ux_host_stack_hcd_register("ux_hcd_controller",
 
 ## <a name="ux_host_stack_configuration_interface_get"></a>ux_host_stack_configuration_interface_get
 
-Ottenere un puntatore del contenitore di interfaccia.
+Ottenere un puntatore al contenitore di interfaccia.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -572,20 +572,20 @@ UINT ux_host_stack_configuration_interface_get (
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione restituisce un contenitore di interfaccia basato su un handle di configurazione, un indice dell'interfaccia e un indice di impostazione alternativo.
+Questa funzione restituisce un contenitore di interfaccia basato su un handle di configurazione, un indice di interfaccia e un indice di impostazione alternativo.
 
 ### <a name="parameters"></a>Parametri
 
-- **configurazione** di Puntatore al contenitore di configurazione che possiede l'interfaccia.
+- **configurazione** Puntatore al contenitore di configurazione proprietario dell'interfaccia.
 - **interface_index** Indice dell'interfaccia in cui eseguire la ricerca.
 - **alternate_setting_index** Impostazione alternativa all'interno dell'interfaccia in cui eseguire la ricerca.
-- **interfaccia** di Indirizzo del puntatore del contenitore di interfaccia da restituire.
+- **interfaccia** Indirizzo del puntatore al contenitore di interfaccia da restituire.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il contenitore dell'interfaccia per l'indice dell'interfaccia e l'impostazione alternativa è stato trovato e restituito.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0X51) la configurazione non esiste.
-- **UX_INTERFACE_HANDLE_UNKNOWN** (0X52) l'interfaccia non esiste.
+- **UX_SUCCESS** (0x00) Il contenitore di interfaccia per l'indice di interfaccia e l'impostazione alternativa sono stati trovati e restituiti.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) La configurazione non esiste.
+- **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) L'interfaccia non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -611,16 +611,16 @@ UINT ux_host_stack_interface_setting_select(UX_INTERFACE *interface);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione seleziona una specifica impostazione alternativa per un'interfaccia specificata che appartiene alla configurazione selezionata. Questa funzione viene usata per passare dall'impostazione alternativa predefinita a una nuova impostazione o per tornare all'impostazione predefinita alternativa. Quando viene selezionata una nuova impostazione alternativa, le caratteristiche precedenti dell'endpoint non sono valide e devono essere ricaricate.
+Questa funzione seleziona un'impostazione alternativa specifica per una determinata interfaccia appartenente alla configurazione selezionata. Questa funzione viene usata per passare dall'impostazione alternativa predefinita a una nuova impostazione o per tornare all'impostazione alternativa predefinita. Quando si seleziona una nuova impostazione alternativa, le caratteristiche dell'endpoint precedente non sono valide e devono essere ricaricate.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **interfaccia** di Puntatore al contenitore dell'interfaccia di cui è necessario selezionare l'impostazione alternativa.
+- **interfaccia** Puntatore al contenitore dell'interfaccia la cui impostazione alternativa deve essere selezionata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) la selezione dell'impostazione alternativa per questa interfaccia è stata completata.
-- **UX_INTERFACE_HANDLE_UNKNOWN** (0X52) l'interfaccia non esiste.
+- **UX_SUCCESS** (0x00) L'impostazione alternativa per questa interfaccia è stata selezionata correttamente.
+- **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) L'interfaccia non esiste.
 
 ### <a name="example"></a>Esempio
 
@@ -645,7 +645,7 @@ UINT ux_host_stack_transfer_request_abort(UX_TRANSFER REQUEST *transfer request)
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione interrompe una richiesta di trasferimento in sospeso inviata in precedenza. Questa funzione Annulla solo una richiesta di trasferimento specifica. La chiamata alla funzione avrà lo stato UX_TRANSFER REQUEST_STATUS_ABORT.
+Questa funzione interrompe una richiesta di trasferimento in sospeso inviata in precedenza. Questa funzione annulla solo una richiesta di trasferimento specifica. La chiamata alla funzione avrà lo stato UX_TRANSFER REQUEST_STATUS_ABORT funzione.
 
 ### <a name="parameters"></a>Parametri
 
@@ -653,7 +653,7 @@ Questa funzione interrompe una richiesta di trasferimento in sospeso inviata in 
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento USB per la richiesta di trasferimento è stato annullato.
+- **UX_SUCCESS** (0x00) Il trasferimento USB per questa richiesta di trasferimento è stato annullato.
 
 ### <a name="example"></a>Esempio
 
@@ -678,19 +678,19 @@ UINT ux_host_stack_transfer_request(UX_TRANSFER REQUEST *transfer request);
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione esegue una transazione USB. All'immissione della richiesta di trasferimento viene assegnata la pipe dell'endpoint selezionata per la transazione e i parametri associati al trasferimento (payload dei dati, lunghezza della transazione). Per la pipe di controllo, la transazione è bloccata e restituirà solo quando le tre fasi del trasferimento del controllo sono state completate o se si è verificato un errore precedente. Per le altre pipe, lo stack USB pianifica la transazione sull'USB ma non ne attende il completamento. Ogni richiesta di trasferimento per le pipe non bloccanti deve specificare un gestore routine di completamento.
+Questa funzione esegue una transazione USB. All'immissione la richiesta di trasferimento fornisce la pipe dell'endpoint selezionata per questa transazione e i parametri associati al trasferimento (payload dei dati, lunghezza della transazione). Per la pipe di controllo, la transazione viene bloccata e verrà restituita solo quando le tre fasi del trasferimento del controllo sono state completate o se si è verificato un errore precedente. Per altre pipe, lo stack USB pianifica la transazione sull'USB, ma non attende il completamento. Ogni richiesta di trasferimento per le pipe non bloccanti deve specificare un gestore di routine di completamento.
 
-Quando la chiamata di funzione restituisce, lo stato della richiesta di trasferimento deve essere esaminato in quanto contiene il risultato della transazione.
+Quando la chiamata di funzione viene restituita, lo stato della richiesta di trasferimento deve essere esaminato perché contiene il risultato della transazione.
 
 ### <a name="input-parameter"></a>Parametro di input
 
-- **transfer_request** Puntatore alla richiesta di trasferimento. La richiesta di trasferimento contiene tutte le informazioni necessarie per il trasferimento.
+- **transfer_request** Puntatore alla richiesta di trasferimento. La richiesta di trasferimento contiene tutte le informazioni necessarie necessarie per il trasferimento.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **UX_SUCCESS** (0x00) il trasferimento USB per la richiesta di trasferimento è stato pianificato correttamente. Il codice di stato della richiesta di trasferimento deve essere esaminato al completamento della richiesta di trasferimento.
-- **UX_MEMORY_INSUFFICIENT** (0x12) memoria insufficiente per allocare le risorse del controller necessarie.
-- **UX_TRANSFER_NOT_READY** (0x25) il dispositivo si trova in uno stato non valido. deve essere collegato, risolto o configurato.
+- **UX_SUCCESS** (0x00) Il trasferimento USB per questa richiesta di trasferimento è stato pianificato correttamente. Il codice di stato della richiesta di trasferimento deve essere esaminato al termine della richiesta di trasferimento.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Memoria insufficiente per allocare le risorse del controller necessarie.
+- **UX_TRANSFER_NOT_READY** (0x25) Lo stato del dispositivo non è valido. Deve essere COLLEGATO, INDIRIZZATO o CONFIGURATO.
 
 ### <a name="example"></a>Esempio:
 

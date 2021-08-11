@@ -1,35 +1,35 @@
 ---
-title: Capitolo 5-generazione di buffer di traccia
-description: Questo capitolo contiene una descrizione della creazione di un buffer di eventi TraceX di Azure RTO e descrive anche il formato sottostante del buffer.
+title: Capitolo 5- Generazione di buffer di traccia
+description: Questo capitolo contiene una descrizione su come compilare un buffer Azure RTOS eventi TraceX e descrive anche il formato sottostante del buffer.
 author: philmea
 ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: f296137d23b9f3c1c4fd115947bb50a32b768123
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7d5c90675728fc7e374d625f5a9ae27340268ca8398200c68fb7113a84aa2983
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104823426"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801785"
 ---
-# <a name="chapter-5---generating-trace-buffers"></a>Capitolo 5-generazione di buffer di traccia
+# <a name="chapter-5---generating-trace-buffers"></a>Capitolo 5- Generazione di buffer di traccia
 
-Questo capitolo contiene una descrizione della creazione di un buffer di eventi TraceX di Azure RTO e descrive anche il formato sottostante del buffer.
+Questo capitolo contiene una descrizione su come compilare un buffer Azure RTOS eventi TraceX e descrive anche il formato sottostante del buffer.
 
-## <a name="threadx-event-trace-support"></a>Supporto per la traccia eventi ThreadX
+## <a name="threadx-event-trace-support"></a>Supporto di Traccia eventi ThreadX
 
-ThreadX fornisce il supporto predefinito per la traccia degli eventi per tutti i servizi ThreadX, le modifiche allo stato del thread e gli eventi definiti dall'utente. La funzionalità di traccia degli eventi di ThreadX è progettata principalmente come strumento post-mortem per analizzare le ultime attività "n" nell'applicazione. Da queste informazioni, lo sviluppatore può individuare problemi e/o potenziali destinazioni di ottimizzazione.
+ThreadX fornisce il supporto predefinito della traccia eventi per tutti i servizi ThreadX, le modifiche dello stato dei thread e gli eventi definiti dall'utente. La funzionalità di traccia degli eventi ThreadX è progettata principalmente come strumento post-mortem per analizzare le ultime attività "n" nell'applicazione. Da queste informazioni, lo sviluppatore può individuare problemi e/o potenziali obiettivi di ottimizzazione.
 
-TraceX Visualizza graficamente il buffer di traccia eventi compilato da ThreadX. Di seguito viene descritto come compilare il buffer e viene descritto il formato sottostante del buffer.
+TraceX visualizza graficamente il buffer di traccia eventi compilato da ThreadX. Di seguito viene descritto come compilare il buffer e viene descritto il formato sottostante del buffer.
 
-## <a name="enabling-event-trace"></a>Abilitazione della traccia eventi
+## <a name="enabling-event-trace"></a>Abilitazione di Traccia eventi
 
-Per abilitare la traccia eventi, definire le costanti timestamp, compilare la libreria ThreadX con **TX_ENABLE_EVENT_TRACE** definito e abilitare la traccia chiamando la funzione **tx_trace_enable** .
+Per abilitare la traccia eventi, definire le costanti timestamp, compilare la libreria ThreadX con **TX_ENABLE_EVENT_TRACE** definito e abilitare la traccia chiamando la **funzione tx_trace_enable.**
 
-## <a name="defining-time-stamp-constants"></a>Definizione di costanti Time-Stamp
+## <a name="defining-time-stamp-constants"></a>Definizione di Time-Stamp costanti
 
-Le costanti timestamp sono progettate per fornire al controllo dello sviluppatore il timestamp usato nelle voci della traccia eventi. Di seguito sono riportate le due costanti timestamp e i relativi valori predefiniti:
+Le costanti timestamp sono progettate per fornire allo sviluppatore il controllo sul timestamp usato nelle voci di traccia degli eventi. Le due costanti timestamp e i relativi valori predefiniti sono i seguenti:
 
 ```c
 #ifndef TX_TRACE_TIME_SOURCE
@@ -40,7 +40,7 @@ Le costanti timestamp sono progettate per fornire al controllo dello sviluppator
 #endif
 ```
 
-Le costanti precedenti sono definite in **tx_port. h** e creano un timestamp "Fake" che viene semplicemente incrementato di uno per ogni evento. Di seguito è riportato un esempio di definizione di timestamp effettiva:
+Le costanti precedenti sono definite in **tx_port.h** e creano un timestamp "fittizio" che viene semplicemente incrementato di uno per ogni evento. Di seguito è riportato un esempio di una definizione timestamp effettiva:
 
 ```c
 #ifndef TX_TRACE_TIME_SOURCE
@@ -51,30 +51,30 @@ Le costanti precedenti sono definite in **tx_port. h** e creano un timestamp "Fa
 #endif
 ```
 
-Le costanti sopra indicate specificano un timer a 32 bit ottenuto leggendo l'indirizzo 0x13000004. La maggior parte dei timestamp specifici dell'applicazione devono essere impostati in modo analogo.
+Le costanti precedenti specificano un timer a 32 bit ottenuto leggendo l'indirizzo 0x13000004. La maggior parte dei timestamp specifici dell'applicazione deve essere impostata in modo simile.
 
 ## <a name="exporting-the-trace-buffer"></a>Esportazione del buffer di traccia
 
-TraceX richiede il buffer di traccia in un formato di file binario, Intel HEX o Motorola S-record nell'host. Il modo più semplice per eseguire questa operazione consiste nell'arrestare la destinazione e indicare al debugger di eseguire il dump dell'area di memoria fornita per ***tx_trace_enable*** funzione in un file nell'host.
+TraceX richiede il buffer di traccia in un formato di file binario, Intel HEX o Motorola S-Record nell'host. Il modo più semplice per eseguire questa operazione è arrestare la destinazione e indicare al debugger di eseguire il dump dell'area di memoria fornita tx_trace_enable funzione ***in*** un file nell'host.
 
 > [!WARNING]
->***Prestare attenzione a non arrestare la destinazione all'interno di un codice di raccolta della traccia. Questa operazione può causare informazioni di traccia non valide. Se il programma viene interrotto all'interno di ThreadX, è preferibile eseguire un'istruzione/routine di ogni macro di inserimento della traccia prima di eseguire il dump del buffer di traccia.***
+>***Prestare attenzione a non arrestare la destinazione all'interno di un codice di raccolta di tracce. Questa operazione può causare informazioni di traccia non valide. Se il programma viene interrotto all'interno di ThreadX, è meglio eseguire un'istruzione alla macro di inserimento della traccia prima di eseguire il dump del buffer di traccia.***
 
 > [!IMPORTANT]
-> *Nell'Appendice D viene illustrato come eseguire il dump del buffer di traccia da un'ampia gamma di strumenti di sviluppo.*
+> *L'Appendice D illustra come eseguire il dump del buffer di traccia da un'ampia gamma di strumenti di sviluppo.*
 
-## <a name="extended-event-trace-api"></a>API di traccia degli eventi estesi
+## <a name="extended-event-trace-api"></a>API traccia eventi estesi
 
-Quando ThreadX viene compilato con **TX_ENABLE_EVENT_TRACE** definito, per l'applicazione sono disponibili le nuove API di traccia eventi seguenti:
+Quando ThreadX viene compilato **TX_ENABLE_EVENT_TRACE** definito, le nuove API di traccia degli eventi seguenti sono disponibili per l'applicazione:
 
-- tx_trace_enable: *Abilita traccia eventi*
-- tx_trace_event_filter: *Filtra evento/i specificato/i*
-- tx_trace_event_unfilter: non *filtrare gli eventi specificati*
-- tx_trace_disable: *Disabilita traccia eventi*
-- tx_trace_isr_enter_insert: *Inserisci l'evento di traccia ISR*
-- tx_trace_isr_exit_insert: *Inserisci evento di traccia di uscita ISR*
-- tx_trace_buffer_full_notify: *registrare il callback dell'applicazione completo del buffer di traccia*
-- tx_trace_user_event_insert: *Inserisci evento utente*
+- tx_trace_enable: Abilitare *la traccia eventi*
+- tx_trace_event_filter: *Filtrare gli eventi specificati*
+- tx_trace_event_unfilter: Rimuovere *il filtro degli eventi specificati*
+- tx_trace_disable: *Disabilitare la traccia eventi*
+- tx_trace_isr_enter_insert: Inserire *l'evento di traccia enter ISR*
+- tx_trace_isr_exit_insert: Inserire *l'evento di traccia di uscita isr*
+- tx_trace_buffer_full_notify: *Registrare il callback completo dell'applicazione del buffer di traccia*
+- tx_trace_user_event_insert: Inserire *un evento utente*
 
 ### <a name="tx_trace_enable"></a>tx_trace_enable
 
@@ -88,23 +88,23 @@ UINT tx_trace_enable (VOID *trace_buffer_start,
 ```
 
 #### <a name="description"></a>Descrizione
-Questo servizio Abilita la traccia eventi all'interno di ThreadX. Il buffer di traccia e il numero massimo di oggetti ThreadX vengono forniti dall'applicazione.
+Questo servizio abilita la traccia degli eventi all'interno di ThreadX. Il buffer di traccia e il numero massimo di oggetti ThreadX vengono forniti dall'applicazione.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate **TX_ENABLE_EVENT_TRACE** per poter usare la traccia eventi.
 
 #### <a name="input-parameters"></a>Parametri di input
 
 - **trace_buffer_start**: puntatore all'inizio del buffer di traccia fornito dall'utente.
-- **trace_buffer_size**: numero totale di byte nella memoria per il buffer di traccia. Maggiore è il buffer di traccia, maggiore è il numero di voci che è in grado di archiviare.
-- **registry_entries**: numero di oggetti threadX dell'applicazione da tenere nel registro di traccia. Il registro di sistema viene utilizzato per correlare gli indirizzi di oggetto con i nomi degli oggetti. Questa operazione è particolarmente utile per gli strumenti di analisi della traccia GUI.
+- **trace_buffer_size**: numero totale di byte nella memoria per il buffer di traccia. Maggiore è la dimensione del buffer di traccia, maggiore sarà il numero di voci che è in grado di archiviare.
+- **registry_entries**: numero di oggetti ThreadX dell'applicazione da mantenere nel Registro di sistema di traccia. Il Registro di sistema viene usato per correlare gli indirizzi degli oggetti con i nomi degli oggetti. Ciò è estremamente utile per gli strumenti di analisi delle tracce gui.
 
 #### <a name="return-values"></a>Valori restituiti
 
-- Abilitazione della traccia eventi riuscita **TX_SUCCESS** (0x00).
-- Dimensioni del buffer di traccia **TX_SIZE_ERROR** (0x05) specificate troppo piccole. Deve essere sufficientemente grande per l'intestazione di traccia, il registro oggetti e almeno una voce di traccia.
-- La traccia eventi **TX_NOT_DONE** (0x20) è già stata abilitata.
-- Il sistema **TX_FEATURE_NOT_ENABLED** (0xFF) non è stato compilato con la traccia abilitata.
+- **TX_SUCCESS** (0x00) L'abilitazione della traccia eventi è riuscita.
+- **TX_SIZE_ERROR** (0x05) Dimensioni del buffer di traccia specificate troppo piccole. Deve essere sufficientemente grande per l'intestazione di traccia, il Registro di sistema dell'oggetto e almeno una voce di traccia.
+- **TX_NOT_DONE** (0x20) Traccia eventi era già abilitata.
+- **TX_FEATURE_NOT_ENABLED** sistema (0xFF) non è stato compilato con la traccia abilitata.
 
 #### <a name="allowed-from"></a>Consentito da
 
@@ -127,7 +127,7 @@ tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_disable, tx_trace_isr_e
 
 ### <a name="tx_trace_event_filter"></a>tx_trace_event_filter
 
-Filtra eventi specificati
+Filtrare gli eventi specificati
 
 #### <a name="prototype"></a>Prototipo
 
@@ -137,14 +137,14 @@ UINT tx_trace_event_filter (ULONG  vent_filter_bits);
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio filtra gli eventi specificati da inserire nel buffer di traccia attivo. Si noti che per impostazione predefinita nessun evento viene filtrato dopo la chiamata di *tx_trace_enable* .
+Questo servizio filtra gli eventi specificati dall'inserimento nel buffer di traccia attivo. Si noti che per impostazione predefinita non viene filtrato alcun *evento dopo tx_trace_enable* chiamata a .
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate **TX_ENABLE_EVENT_TRACE** per poter usare la traccia eventi.
 
 #### <a name="input-parameters"></a>Parametri di input
 
-- **event_filter_bits**: bit che corrispondono agli eventi da filtrare. È possibile filtrare più eventi semplicemente ORing insieme le costanti appropriate. Le costanti valide per questa variabile sono definite come segue:
+- **event_filter_bits**: bit che corrispondono agli eventi da filtrare. È possibile filtrare più eventi semplicemente o riunire le costanti appropriate. Le costanti valide per questa variabile sono definite come segue:
 
 ```c
 TX_TRACE_ALL_EVENTS                   0x000007FF
@@ -186,8 +186,8 @@ UX_TRACE_DEVICE_CLASS_EVENTS          0x40000000
 
 #### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) filtro eventi riuscito.
-- Il sistema **TX_FEATURE_NOT_ENABLED** (0xFF) non è stato compilato con la traccia abilitata.
+- **TX_SUCCESS** (0x00) Riuscito.
+- **TX_FEATURE_NOT_ENABLED** sistema (0xFF) non è stato compilato con la traccia abilitata.
 
 #### <a name="allowed-from"></a>Consentito da
 
@@ -209,7 +209,7 @@ tx_trace_enable, tx_trace_event_unfilter, tx_trace_disable, tx_trace_isr_enter_i
 
 ### <a name="tx_trace_event_unfilter"></a>tx_trace_event_unfilter
 
-Non filtrare gli eventi specificati
+Annullare il filtro degli eventi specificati
 
 #### <a name="prototype"></a>Prototipo
 
@@ -219,14 +219,14 @@ UINT tx_trace_event_unfilter (ULONG event_unfilter_bits);
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio è in grado di filtrare gli eventi specificati in modo che vengano inseriti nel buffer di traccia attivo.
+Questo servizio annulla il filtro degli eventi specificati in modo che siano inseriti nel buffer di traccia attivo.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate **TX_ENABLE_EVENT_TRACE** per poter usare la traccia eventi.
 
 #### <a name="input-parameters"></a>Parametri di input
 
-- **event_unfilter_bits**: bit che corrispondono agli eventi da defiltrare. È possibile che più eventi non vengano filtrati semplicemente o-insieme alle costanti appropriate. Le costanti valide per questa variabile sono definite come segue:
+- **event_unfilter_bits**: bit che corrispondono agli eventi da rimuovere dal filtro. Più eventi possono essere non filtrati semplicemente o unendo insieme le costanti appropriate. Le costanti valide per questa variabile sono definite come segue:
 
 ```c
 TX_TRACE_ALL_EVENTS                  0x000007FF
@@ -268,8 +268,8 @@ UX_TRACE_DEVICE_CLASS_EVENTS         0x40000000
 
 #### <a name="return-values"></a>Valori restituiti
 
-- Defiltro evento riuscito **TX_SUCCESS** (0x00).
-- Il sistema **TX_FEATURE_NOT_ENABLED** (0xFF) non è stato compilato con la traccia abilitata.
+- **TX_SUCCESS** (0x00) L'evento Successful non viene filtrato.
+- **TX_FEATURE_NOT_ENABLED** sistema (0xFF) non è stato compilato con la traccia abilitata.
 
 #### <a name="allowed-from"></a>Consentito da
 
@@ -291,7 +291,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_disable, tx_trace_isr_enter_ins
 
 ### <a name="tx_trace_disable"></a>tx_trace_disable
 
-#### <a name="disable-event-tracing"></a>Disabilita traccia eventi
+#### <a name="disable-event-tracing"></a>Disabilitare la traccia eventi
 
 #### <a name="prototype"></a>Prototipo
 
@@ -301,20 +301,20 @@ UINT tx_trace_disable (VOID);
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio Disabilita la traccia eventi all'interno di ThreadX. Questa operazione può essere utile se l'applicazione desidera bloccare il buffer di traccia dell'evento corrente ed eventualmente trasferirlo esternamente durante la fase di esecuzione. Una volta disabilitato, è possibile chiamare il **tx_trace_enable** per avviare di nuovo la traccia.
+Questo servizio disabilita la traccia degli eventi all'interno di ThreadX. Ciò può essere utile se l'applicazione vuole bloccare il buffer di traccia eventi corrente ed eventualmente trasportarlo esternamente durante la fase di esecuzione. Una volta disabilitato, il **tx_trace_enable** può essere chiamato per avviare di nuovo la traccia.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** per usare la traccia degli eventi.
 
 #### <a name="input-parameters"></a>Parametri di input
 
-Nessuna.
+Nessuno.
 
 #### <a name="return-values"></a>Valori restituiti
 
-- Disattivazione della traccia eventi riuscita **TX_SUCCESS** (0x00).
-- La traccia eventi **TX_NOT_DONE** (0x20) non è stata abilitata.
-- Il sistema **TX_FEATURE_NOT_ENABLED** (0xFF) non è stato compilato con la traccia abilitata.
+- **TX_SUCCESS** (0x00) L'analisi eventi è stata disabilitata.
+- **TX_NOT_DONE** (0x20) La traccia eventi non è stata abilitata.
+- **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con la traccia abilitata.
 
 #### <a name="allowed-from"></a>Consentito da
 
@@ -335,7 +335,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_isr_en
 
 ### <a name="tx_trace_isr_enter_insert"></a>tx_trace_isr_enter_insert
 
-#### <a name="insert-isr-enter-event"></a>Inserisci evento di immissione ISR
+#### <a name="insert-isr-enter-event"></a>Evento Enter di Inserimento ISR
 
 #### <a name="prototype"></a>Prototipo
 
@@ -345,13 +345,13 @@ VOID tx_trace_isr_enter_insert (ULONG isr_id);
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio inserisce l'evento di immissione ISR nel buffer di traccia eventi. Deve essere chiamato dall'applicazione all'inizio dell'elaborazione ISR. Il parametro fornito deve identificare l'ISR specifico per l'applicazione.
+Questo servizio inserisce l'evento enter ISR nel buffer di traccia degli eventi. Deve essere chiamato dall'applicazione all'inizio dell'elaborazione ISR. Il parametro fornito deve identificare l'ISR specifico per l'applicazione.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** per usare la traccia degli eventi.
 
 #### <a name="input-parameters"></a>Parametri di input 
-- **isr_id**: valore specifico dell'applicazione per identificare l'ISR.
+- **isr_id:** valore specifico dell'applicazione per identificare l'ISR.
 
 #### <a name="return-values"></a>Valori restituiti
 
@@ -359,7 +359,7 @@ Questo servizio inserisce l'evento di immissione ISR nel buffer di traccia event
 
 #### <a name="allowed-from"></a>Consentito da 
 
-ISRs
+ISR
 
 #### <a name="example"></a>Esempio
 
@@ -377,7 +377,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_disabl
 
 ### <a name="tx_trace_isr_exit_insert"></a>tx_trace_isr_exit_insert
 
-#### <a name="insert-isr-exit-event"></a>Inserisci evento di uscita ISR
+#### <a name="insert-isr-exit-event"></a>Insert ISR exit event (Inserisci evento di uscita ISR)
 
 #### <a name="prototype"></a>Prototipo
 
@@ -387,14 +387,14 @@ VOID tx_trace_isr_exit_insert (ULONG isr_id);
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio inserisce l'evento di immissione ISR nel buffer di traccia eventi. Deve essere chiamato dall'applicazione all'inizio dell'elaborazione ISR. Il parametro fornito dovrebbe identificare l'ISR per l'applicazione.
+Questo servizio inserisce l'evento di immissione ISR nel buffer di traccia eventi. Deve essere chiamato dall'applicazione all'inizio dell'elaborazione ISR. Il parametro fornito deve identificare l'ISR per l'applicazione.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** per usare la traccia degli eventi.
 
 #### <a name="input-parameters"></a>Parametri di input 
 
-- **isr_id**: valore specifico dell'applicazione per identificare l'ISR.
+- **isr_id:** valore specifico dell'applicazione per identificare l'ISR.
 
 #### <a name="return-values"></a>Valori restituiti
 
@@ -402,7 +402,7 @@ Questo servizio inserisce l'evento di immissione ISR nel buffer di traccia event
 
 #### <a name="allowed-from"></a>Consentito da
 
-ISRs
+ISR
 
 #### <a name="example"></a>Esempio
 
@@ -420,7 +420,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_disabl
 
 ### <a name="tx_trace_buffer_full_notify"></a>tx_trace_buffer_full_notify
 
-#### <a name="register-trace-buffer-full-application-callback"></a>Registra callback dell'applicazione completo del buffer di traccia
+#### <a name="register-trace-buffer-full-application-callback"></a>Registrare il callback completo dell'applicazione del buffer di traccia
 
 #### <a name="prototype"></a>Prototipo
 
@@ -430,14 +430,14 @@ VOID tx_trace_buffer_full_notify (VOID (*full_buffer_callback)(VOID *));
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio registra una funzione di callback dell'applicazione che viene chiamata da ThreadX quando il buffer di traccia diventa pieno. L'applicazione può quindi scegliere di disabilitare la traccia e/o possibilmente di configurare un nuovo buffer di traccia.
+Questo servizio registra una funzione di callback dell'applicazione chiamata da ThreadX quando il buffer di traccia diventa pieno. L'applicazione può quindi scegliere di disabilitare la traccia e/o eventualmente di configurare un nuovo buffer di traccia.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** per usare la traccia degli eventi.
 
 #### <a name="input-parameters"></a>Parametri di input
 
-- **full_buffer_callback**: funzione dell'applicazione da chiamare quando il buffer di traccia è pieno. Il valore NULL disabilita il callback di notifica.
+- **full_buffer_callback:** funzione dell'applicazione da chiamare quando il buffer di traccia è pieno. Il valore NULL disabilita il callback di notifica.
 
 #### <a name="return-values"></a>Valori restituiti
 
@@ -445,7 +445,7 @@ Questo servizio registra una funzione di callback dell'applicazione che viene ch
 
 #### <a name="allowed-from"></a>Consentito da
 
-ISRs
+ISR
 
 #### <a name="example"></a>Esempio
 
@@ -483,23 +483,23 @@ UINT tx_trace_user_event_insert (ULONG event_id,
 
 #### <a name="description"></a>Descrizione
 
-Questo servizio inserisce l'evento utente nel buffer di traccia. Gli ID evento utente devono essere maggiori della costante **TX_TRACE_USER_EVENT_START**, che è definita come 4096. Il numero massimo di eventi utente è definito dalla costante **TX_TRACE_USER_EVENT_END**, che è definita come 65535. Tutti gli eventi all'interno di questo intervallo sono disponibili per l'applicazione. I campi delle informazioni sono specifici dell'applicazione.
+Questo servizio inserisce l'evento utente nel buffer di traccia. Gli ID evento utente devono essere maggiori della **costante TX_TRACE_USER_EVENT_START**, che è definito come 4096. L'evento utente massimo è definito dalla costante **TX_TRACE_USER_EVENT_END**, che è definita come 65535. Tutti gli eventi all'interno di questo intervallo sono disponibili per l'applicazione. I campi di informazioni sono specifici dell'applicazione.
 
 > [!IMPORTANT]
-> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** definito per poter usare la traccia eventi.
+> La libreria ThreadX e l'applicazione devono essere compilate con **TX_ENABLE_EVENT_TRACE** per usare la traccia degli eventi.
 
 #### <a name="input-parameters"></a>Parametri di input
 
-- **event_id**: l'identificazione dell'evento specifico dell'applicazione e deve iniziare essere maggiore di **TX_TRACE_USER_EVENT_START** e minore o uguale a **TX_TRACE_USER_EVENT_END**.
-- **info_field_1**: campo delle informazioni specifiche dell'applicazione.
-- **info_field_2**: campo delle informazioni specifiche dell'applicazione.
-- **info_field_3**: campo delle informazioni specifiche dell'applicazione.
-- **info_field_4**: campo delle informazioni specifiche dell'applicazione.
+- **event_id:** identificazione dell'evento specifico dell'applicazione e deve essere maggiore di **TX_TRACE_USER_EVENT_START** e minore o uguale a **TX_TRACE_USER_EVENT_END**.
+- **info_field_1:** campo informazioni specifiche dell'applicazione.
+- **info_field_2:** campo delle informazioni specifiche dell'applicazione.
+- **info_field_3:** campo delle informazioni specifiche dell'applicazione.
+- **info_field_4:** campo informazioni specifiche dell'applicazione.
 
 #### <a name="return-values"></a>Valori restituiti
-- **TX_SUCCESS** (0x00) inserimento evento utente riuscito.
-- La traccia eventi **TX_NOT_DONE** (0x20) non è abilitata.
-- **TX_FEATURE_NOT_ENABLED** (0Xff) il sistema non è stato compilato con la traccia abilitata.
+- **TX_SUCCESS** (0x00) Inserimento dell'evento utente riuscito.
+- **TX_NOT_DONE** (0x20) La traccia eventi non è abilitata.
+- **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con la traccia abilitata.
 
 #### <a name="allowed-from"></a>Consentito da
 

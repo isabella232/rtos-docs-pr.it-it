@@ -1,75 +1,75 @@
 ---
-title: Capitolo 2-requisiti dei moduli
-description: Questo articolo descrive i requisiti per la compilazione di un modulo ThreadX.
+title: Capitolo 2 - Requisiti del modulo
+description: Questo articolo contiene una descrizione dei requisiti per la compilazione di un modulo ThreadX.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 32288d78ceffb74ab088a1d720dbac657f6d3ed4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 24b814e7c2b510093b809b70b02d9a11ed39996d114f2306e0993893799453cc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104821398"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791959"
 ---
-# <a name="chapter-2---module-requirements"></a>Capitolo 2-requisiti dei moduli
+# <a name="chapter-2---module-requirements"></a>Capitolo 2 - Requisiti del modulo
 
-Un modulo ThreadX contiene un preambolo, che definisce le caratteristiche di base del modulo. Il preambolo è seguito dall'area di istruzione del modulo. I moduli possono essere eseguiti sul posto o possono essere caricati nell'area memoria del modulo da Gestione moduli prima dell'esecuzione. L'unico requisito è che il preambolo si trovi sempre nel primo indirizzo del modulo. Nella figura 2 viene illustrato un layout di modulo di base.
+Un modulo ThreadX contiene un preambolo, che definisce le caratteristiche di base del modulo. Il preambolo è seguito dall'area di istruzioni del modulo. I moduli possono essere eseguiti sul posto o caricati nell'area di memoria del modulo da Gestione moduli prima dell'esecuzione. L'unico requisito è che il preambolo si trovi sempre al primo indirizzo del modulo. La figura 2 illustra un layout di modulo di base.
 
 | Layout del modulo |
 |:---:|
 | \[preambolo del modulo\]         |
-| \[area di istruzione del modulo\] |
+| \[area di istruzioni del modulo\] |
 | \[area RAM del modulo\]         |
 
-**Figura 2** -layout del modulo
+**Figura 2** - Layout del modulo
 
 > [!NOTE]
-> I moduli devono essere compilati con il codice indipendente dalla posizione e le opzioni del linker e del compilatore di dati appropriati. Questo consente l'esecuzione del modulo in qualsiasi area di memoria.
+> I moduli devono essere compilati con il codice indipendente dalla posizione e le opzioni del compilatore/linker di dati appropriate. Ciò consente l'esecuzione del modulo in qualsiasi area di memoria.
 
-Quando viene creato un thread del modulo, viene allocato un secondo spazio dello stack per l'uso quando il thread si trova nel kernel protetto dalla memoria. La dimensione dello spazio dello stack del kernel del thread è configurabile dall'utente usando **TXM_MODULE_KERNEL_STACK_SIZE** in **_txm_module_port. h_*_. In questo modo è possibile usare dimensioni dello stack più piccole quando si crea un thread del modulo, perché lo stack specificato dall'utente quando chiama _*_tx_thread_create_** viene usato solo nel modulo.
+Quando viene creato un thread Module, viene allocato un secondo spazio dello stack da usare quando il thread si trova nel kernel protetto dalla memoria. Le dimensioni dello spazio dello stack del kernel del thread sono configurabili dall'utente usando TXM_MODULE_KERNEL_STACK_SIZE **in** **_txm_module_port.h_*_. Ciò consente di usare dimensioni* dello stack inferiori quando si crea un thread Module, perché lo stack specificato dall'utente quando chiama _ _tx_thread_create_** viene usato solo nel modulo.
 
 > [!NOTE]
-> La parte superiore dello stack di thread del modulo contiene la struttura delle informazioni sulla voce del thread (**TXM_MODULE_THREAD_ENTRY_INFO**), quindi le dimensioni dello stack disponibili vengono ridotte in base alle dimensioni della struttura. Quando si crea un thread in un modulo, aumentare la dimensione dello stack per almeno questa dimensione della struttura.
+> La parte superiore di uno stack di thread del modulo contiene la struttura delle informazioni sulle voci di thread ( TXM_MODULE_THREAD_ENTRY_INFO ),**quindi** le dimensioni dello stack disponibili vengono ridotte delle dimensioni di questa struttura. Quando si crea un thread in un modulo, aumentarne le dimensioni dello stack almeno di queste dimensioni della struttura.
 
-I passaggi seguenti sono necessari per la creazione e la compilazione di un modulo ThreadX. ogni passaggio è descritto in dettaglio più avanti.
+I passaggi seguenti sono necessari per la creazione e la compilazione di un modulo ThreadX (ogni passaggio è descritto più dettagliatamente di seguito).
 
-1. Tutti i file C in un modulo devono #define **TXM_MODULE** prima di includere **_txm_module. h_**. Questa operazione può essere eseguita nel file di origine compilato o come parte delle impostazioni del progetto. Questa operazione esegue il mapping delle chiamate all'API ThreadX alla versione specifica del modulo dell'API che richiama la funzione Dispatch nel gestore dei moduli residenti per eseguire la chiamata alla funzione API effettiva.
-2. Ogni modulo deve avere un preambolo nel primo indirizzo dell'area di istruzioni che definisce le caratteristiche e le esigenze delle risorse del modulo.
-3. Ogni modulo deve collegare il preambolo all'inizio dell'area di istruzione del modulo.
-4. Ogni modulo deve essere collegato a una libreria di moduli (***TXM. a***), che contiene funzioni specifiche del modulo usate per interagire con threadX.
+1. Tutti i file C in un modulo devono #define **TXM_MODULE** prima di includere **_txm_module.h._** Questa operazione può essere eseguita nel file di origine da compilare o come parte delle impostazioni del progetto. In questo modo viene eseguito di nuovo il mapping delle chiamate DELL'API ThreadX alla versione specifica del modulo dell'API che richiama la funzione dispatch in Gestione moduli residente per eseguire la chiamata alla funzione API effettiva.
+2. Ogni modulo deve avere un preambolo al primo indirizzo dell'area di istruzioni che definisce le caratteristiche e le esigenze di risorse del modulo.
+3. Ogni modulo deve collegare il preambolo all'inizio dell'area di istruzioni del modulo.
+4. Ogni modulo deve essere associato a una libreria di moduli (***txm.a***), che contiene funzioni specifiche del modulo usate per interagire con ThreadX.
 
-## <a name="module-sources"></a>Origini moduli
+## <a name="module-sources"></a>Origini dei moduli
 
-I moduli ThreadX dispongono di un proprio set di file di origine progettati per essere collegati e situati direttamente con il codice sorgente del modulo. Questi file forniscono il Bridge tra il modulo separato e il gestore dei moduli residenti. I file di modulo sono i seguenti.
+I moduli ThreadX hanno un proprio set di file di origine progettati per essere collegati e posizionati direttamente con il codice sorgente del modulo. Questi file forniscono il bridge tra il modulo separato e Gestione moduli residenti. I file del modulo sono i seguenti.
 
 | File Name | Contenuto |
 |---|---|
-| **txm_module. h** | File di inclusione che definisce le informazioni sul modulo. |
-| **txm_module_port. h** | File di inclusione che definisce le informazioni sul modulo specifiche delle porte. |
-| **txm_module_user. h** | Definisce i valori e che l'utente può personalizzare. |
-| **txm_module_initialize. s [1] [3]** | Chiama funzioni intrinseche al modulo di avvio. |
-| **txm_module_preamble. \{ s/S/68\}** | File di assembly del preambolo del modulo. Questo file definisce diversi attributi specifici del modulo ed è collegato al codice dell'applicazione del modulo. |
-| **txm_module_application_request. c [1]** | La funzione di richiesta dell'applicazione del modulo Invia una richiesta specifica dell'applicazione al codice residente. |
-| **txm_module_callback_request_thread_entry. c &nbsp; [1]** | Thread di callback del modulo responsabile dell'elaborazione dei callback richiesti dal modulo, inclusi i timer e i callback di notifica. |
-| **txm_ *. c [1] [2]** | I servizi API ThreadX standard chiamano il dispatcher del kernel.
-| **txm_module_object_allocate. c [1]** | Funzione del modulo per allocare memoria per gli oggetti modulo presenti nel pool di memoria di gestione. |
-| **txm_module_object_deallocate. c [1]** | Funzione del modulo per deallocare la memoria per gli oggetti modulo presenti nel pool di memoria di gestione. |
-| **txm_module_object_pointer_get. c [1]** | Funzione module per recuperare un puntatore a un oggetto di sistema. |
-| **txm_module_object_pointer_get_extended. c [1]** | Funzione module per recuperare un puntatore a un oggetto di sistema, ovvero la lunghezza del nome. |
-| **txm_module_thread_shell_entry. c [1]** | Funzione entry thread del modulo. |
-| **txm_module_thread_system_suspend. c [1]** | Funzione del modulo per sospendere un thread. |
+| **txm_module.h** | File di inclusione che definisce le informazioni sul modulo. |
+| **txm_module_port.h** | File di inclusione che definisce le informazioni sul modulo specifiche della porta. |
+| **txm_module_user.h** | Definisce e valori che l'utente può personalizzare. |
+| **txm_module_initialize.s [1][3]** | Chiama funzioni intrinseche al modulo di avvio. |
+| **txm_module_preamble. \{ s/S/68\}** | File di assembly preambolo del modulo. Questo file definisce vari attributi specifici del modulo ed è collegato al codice dell'applicazione del modulo. |
+| **txm_module_application_request.c [1]** | La funzione di richiesta dell'applicazione modulo invia una richiesta specifica dell'applicazione al codice residente. |
+| **txm_module_callback_request_thread_entry.c &nbsp; [1]** | Thread di callback del modulo responsabile dell'elaborazione dei callback richiesti dal modulo, inclusi i timer e i callback di notifica. |
+| **txm_*.c [1][2]** | I servizi API ThreadX standard, che chiamano il dispatcher del kernel.
+| **txm_module_object_allocate.c [1]** | Funzione module per allocare memoria per gli oggetti modulo che si trovano nel pool di memoria di gestione. |
+| **txm_module_object_deallocate.c [1]** | Funzione module per deallocare la memoria per gli oggetti modulo che si trovano nel pool di memoria di gestione. |
+| **txm_module_object_pointer_get.c [1]** | Funzione Module per recuperare un puntatore a un oggetto di sistema. |
+| **txm_module_object_pointer_get_extended.c [1]** | Funzione module per recuperare un puntatore a un oggetto di sistema, sicurezza della lunghezza del nome. |
+| **txm_module_thread_shell_entry.c [1]** | Funzione di immissione del thread del modulo. |
+| **txm_module_thread_system_suspend.c [1]** | Funzione module per sospendere un thread. |
 
-**[1]** situato nella libreria **_TXM. a_**.
+**[1]** Si trova nella libreria **_txm.a_**.
 
-**[2]** questi file hanno lo stesso nome dei file dell'API threadX, con **txm_** prefisso anziché **tx_** prefisso.
+**[2]** Questi file hanno lo stesso nome dei  file dell'API ThreadX, con txm_ prefisso anziché tx_ **prefisso.**
 
-**[3]** il file **txm_module_initialize. s** è solo per le porte che usano gli strumenti ARM.
+**[3]** Il file **txm_module_initialize.s** è solo per le porte che usano gli strumenti arm.
 
 ## <a name="module-preamble"></a>Preambolo del modulo
 
-Il preambolo del modulo definisce le caratteristiche e le risorse del modulo. Le informazioni come la funzione di immissione iniziale dei thread e l'area di memoria iniziale associata al thread sono definite nel preambolo. Gli esempi relativi ai preamboli specifici della porta sono disponibili nell' [appendice](appendix.md). Nella figura 3 viene illustrato un esempio di preambolo del modulo ThreadX per una destinazione generica (le righe che iniziano con * sono valori generalmente modificati dall'applicazione):
+Il preambolo del modulo definisce le caratteristiche e le risorse del modulo. Informazioni quali la funzione iniziale di immissione del thread e l'area di memoria iniziale associata al thread sono definite nel preambolo. Gli esempi di preambolo specifici della porta sono inclusi [nell'appendice](appendix.md). La figura 3 illustra un esempio di preambolo del modulo ThreadX per una destinazione generica (le righe che iniziano con * sono valori in genere modificati dall'applicazione):
 
 ```c
     AREA Init, CODE, READONLY
@@ -131,45 +131,45 @@ __txm_module_preamble
 
 **Figura 3**
 
-Nella maggior parte dei casi, lo sviluppatore deve solo definire il thread iniziale del modulo (offset 0x1C), ID modulo (offset 0x10), priorità dei thread di avvio/arresto (offset 0x24) e dimensioni dello stack dei thread di avvio/arresto (offset 0x28). La dimostrazione precedente è configurata in modo tale che il thread iniziale del modulo sia ***demo_module_start** _, l'ID del modulo è _*_0x12345678._*_ e il thread iniziale ha una priorità pari a _*_1_*_ e una dimensione dello stack di _ *_2048_** byte.
+Nella maggior parte dei casi, lo sviluppatore deve definire solo il thread iniziale del modulo (offset 0x1C), l'ID del modulo (offset 0x10), la priorità del thread di avvio/arresto (offset 0x24) e le dimensioni dello stack del thread di avvio/arresto (offset 0x28). La dimostrazione precedente è impostata _*_in_*_ modo che il thread iniziale del modulo sia ***demo_module_start** _, l'ID modulo sia 0x12345678 e il thread iniziale abbia una priorità _*_di 1_*_ e una dimensione dello stack di _ *_2048_** byte.
 
-Alcune applicazioni possono facoltativamente definire un thread di arresto, che viene eseguito durante l'arresto del modulo da parte di gestione moduli. Inoltre, alcune applicazioni potrebbero utilizzare il campo delle proprietà del modulo, definito nel modo seguente.
+Alcune applicazioni possono facoltativamente definire un thread di arresto, che viene eseguito quando Gestione moduli arresta il modulo. Inoltre, alcune applicazioni potrebbero usare il campo Proprietà modulo, definito come segue.
 
-## <a name="module-properties-bit-map"></a>Mappa di bit delle proprietà del modulo
+## <a name="module-properties-bit-map"></a>Mapping di bit delle proprietà del modulo
 
-La tabella seguente illustra un esempio della mappa di bit Properties. Le bitmap delle proprietà specifiche delle porte sono disponibili nell' [appendice](appendix.md).
+La tabella seguente illustra un esempio della mappa dei bit delle proprietà. Le bitmap delle proprietà specifiche della porta sono presenti [nell'appendice](appendix.md).
 
 | bit | Valore | Significato |
 |---|---|---|
 | 0 | 0<br />1 | Esecuzione in modalità privilegiata<br />Esecuzione in modalità utente |
-| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (è necessario selezionare la modalità utente) |
+| 1 | 0<br />1 | Nessuna protezione MPU<br />Protezione MPU (deve essere selezionata la modalità utente) |
 | 2 | 0<br />1 | Disabilitare l'accesso alla memoria condivisa/esterna<br />Abilitare l'accesso alla memoria condivisa/esterna |
 | [23-3] | 0 | Riservato
-| [31-24] | <br />0x01<br />0x02<br />0x03 | **ID compilatore**<br />IAR<br />ARM<br />GNU |
+| [31-24] | <br />0x01<br />0x02<br />0x03 | **ID compilatore**<br />Iar<br />ARM<br />Gnu |
 
 
 ## <a name="module-linker-control-file"></a>File di controllo del linker del modulo
 
-Quando si compila un modulo, il preambolo del modulo deve essere inserito prima di qualsiasi altra sezione di codice. Un modulo deve essere compilato con il codice indipendente dalla posizione e le sezioni di dati. I file del linker di esempio specifici della porta si trovano nell' [appendice](appendix.md).
+Quando si compila un modulo, il preambolo del modulo deve essere posizionato prima di qualsiasi altra sezione di codice. Un modulo deve essere compilato con sezioni di dati e codice indipendenti dalla posizione. I file del linker di esempio specifici della porta sono disponibili [nell'appendice](appendix.md).
 
 ## <a name="module-threadx-library"></a>Libreria ThreadX del modulo
 
-Ogni modulo deve essere collegato a una speciale libreria ThreadX incentrata sul modulo. Questa libreria fornisce l'accesso ai servizi di ThreadX nel codice residente. La maggior parte degli accessi viene eseguita tramite i file ***txm_ \* . c*** . Di seguito è riportato un esempio della chiamata di accesso al modulo per la funzione API ThreadX **_tx_thread_relinquish_* _ (in _*_ \_ txm_thread_relinquish. c \* * * *).
+Ogni modulo deve essere correlato a una speciale libreria ThreadX incentrata sui moduli. Questa libreria fornisce l'accesso ai servizi ThreadX nel codice residente. La maggior parte dell'accesso viene eseguita tramite ***txm_ file con estensione \* c.*** Di seguito è riportato un esempio della chiamata di accesso al modulo per la funzione API ThreadX **_tx_thread_relinquish_* _ (in _*_ \_ txm_thread_relinquish.c \* ***).
 
 ```c
 (_txm_module_kernel_call_dispatcher)(TXM_THREAD_RELINQUISH_CALL, 0, 0, 0);
 ```
 
-In questo esempio, il puntatore a funzione fornito da Gestione moduli viene usato per chiamare la funzione di invio di gestione moduli con l'ID associato al servizio ***tx_thread_relinquish*** . Questo servizio non accetta parametri.
+In questo esempio, il puntatore a funzione fornito da Gestione moduli viene usato per chiamare la funzione dispatch di Gestione moduli con l'ID associato ***al tx_thread_relinquish*** servizio. Questo servizio non accetta parametri.
 
 ## <a name="module-example"></a>Esempio di modulo
 
-Di seguito è riportato un esempio della dimostrazione ThreadX standard sotto forma di modulo. Le differenze principali tra la dimostrazione ThreadX standard e la dimostrazione del modulo sono.
+Di seguito è riportato un esempio della dimostrazione threadX standard sotto forma di modulo. Le differenze principali tra la dimostrazione di ThreadX standard e la dimostrazione del modulo sono.
 
-1. Sostituzione di ***tx_api. h** _ con _ *_txm_module. h_**
-2. Aggiunta di **#define TXM_MODULE** prima di **_txm_module. h_**
-3. Sostituzione di ***Main** _ e _ *tx_application_define** con **_demo_module_start_**
-4. Dichiarazione di *puntatori* a oggetti threadX anziché agli oggetti stessi.
+1. Sostituzione di ***tx_api.h** _ con _ *_txm_module.h_**
+2. Aggiunta di **#define TXM_MODULE** prima di **_txm_module.h_**
+3. Sostituzione di ***main** _ e _ *tx_application_define** con **_demo_module_start_**
+4. Dichiarazione di *puntatori* a oggetti ThreadX anziché agli oggetti stessi.
 
 ```c
 /* Specify that this is a module! */
@@ -578,9 +578,9 @@ void thread_6_and_7_entry(ULONG thread_input)
 
 ## <a name="building-modules"></a>Compilazione di moduli
 
-La compilazione di un modulo dipende dalla catena di strumenti usata. Vedere l' [appendice](appendix.md) per esempi specifici delle porte. Di seguito sono riportate le attività comuni a tutte le porte.
+La compilazione di un modulo dipende dalla catena di strumenti in uso. Vedere [l'appendice](appendix.md) per esempi specifici della porta. Le attività comuni per tutte le porte includono quanto segue.
 
 - Compilazione di una libreria di moduli
 - Compilazione dell'applicazione del modulo
 
-Ogni modulo deve avere un **txm_module_preamble** (programma di installazione specifico per il modulo) e la libreria di moduli (ad esempio, **_TXM. a_**).
+Ogni modulo deve avere un txm_module_preamble **(configurazione** specifica per il modulo) e la libreria di moduli (ad **_esempio, txm.a_**).

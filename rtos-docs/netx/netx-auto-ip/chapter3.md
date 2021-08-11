@@ -1,30 +1,30 @@
 ---
-title: Capitolo 3-Descrizione dei servizi AutoIP NetX di Azure RTO
-description: Questo capitolo contiene una descrizione di tutti i servizi AutoIP di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+title: Capitolo 3 - Descrizione dei Azure RTOS NetX AutoIP
+description: Questo capitolo contiene una descrizione di tutti i Azure RTOS NetX AutoIP (elencati di seguito) in ordine alfabetico.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 22cc06c32cc9f1857b32d1d2b44a506ea1652cfd
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 15a70416f9d4d1324d930820b09366a7e7cd6f4525872472cd88edfbb25ee155
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822751"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796872"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-autoip-services"></a>Capitolo 3-Descrizione dei servizi AutoIP NetX di Azure RTO
+# <a name="chapter-3---description-of-azure-rtos-netx-autoip-services"></a>Capitolo 3 - Descrizione dei Azure RTOS NetX AutoIP
 
-Questo capitolo contiene una descrizione di tutti i servizi AutoIP di Azure RTO NetX (elencati di seguito) in ordine alfabetico.
+Questo capitolo contiene una descrizione di tutti i Azure RTOS NetX AutoIP (elencati di seguito) in ordine alfabetico.
 
-Nella sezione "valori restituiti" nelle descrizioni dell'API seguenti, i valori in **grassetto** non sono interessati dal **NX_DISABLE_ERROR_CHECKING** definire usato per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
+Nella sezione "Valori restituiti" nelle descrizioni api seguenti i valori in **GRASSETTO** non sono interessati dalla definizione **NX_DISABLE_ERROR_CHECKING** usata per disabilitare il controllo degli errori dell'API, mentre i valori non in grassetto sono completamente disabilitati.
 
-- **nx_auto_ip_create**: *creare un'istanza di AutoIP*
-- **nx_auto_ip_delete**: *eliminare l'istanza di AutoIP*
-- **nx_auto_ip_get_address**: *ottenere l'indirizzo AutoIP corrente*
-- **nx_auto_ip_set_interface**: *impostare l'interfaccia IP per la necessità di un indirizzo AutoIP*
-- **nx_auto_ip_start**: *Avvia elaborazione AutoIP*
-- **nx_auto_ip_stop**: *Arresta elaborazione AutoIP*
+- **nx_auto_ip_create:** Creare *un'istanza di AutoIP*
+- **nx_auto_ip_delete:** Eliminare *l'istanza di AutoIP*
+- **nx_auto_ip_get_address:** ottenere *l'indirizzo AutoIP corrente*
+- **nx_auto_ip_set_interface:** impostare *l'interfaccia IP che deve avere un indirizzo AutoIP*
+- **nx_auto_ip_start**: Avviare *l'elaborazione AutoIP*
+- **nx_auto_ip_stop:** *Arrestare l'elaborazione AutoIP*
 
 ## <a name="nx_auto_ip_create"></a>nx_auto_ip_create
 
@@ -42,26 +42,26 @@ UINT nx_auto_ip_create(NX_AUTO_IP *auto_ip_ptr, CHAR *name,
 
 Questo servizio crea un'istanza di AutoIP nell'istanza IP specificata.
 
-- **auto_ip_ptr**: puntatore al blocco di controllo AutoIP.
-- **nome**: nome dell'istanza di AutoIP.
-- **ip_ptr**: puntatore all'istanza IP.
-- **stack_ptr**: puntatore all'area dello stack di thread AutoIP.
+- **auto_ip_ptr:** puntatore al blocco di controllo AutoIP.
+- **name**: nome dell'istanza di AutoIP.
+- **ip_ptr:** puntatore all'istanza IP.
+- **stack_ptr:** puntatore all'area dello stack di thread AutoIP.
 - **stack_size**: dimensioni dell'area dello stack di thread AutoIP.
-- **Priority**: priorità del thread AutoIP.
+- **priority:** priorità del thread AutoIP.
 
 > [!NOTE]
-> Se si usa DHCP, il thread DHCP deve avere una priorità più elevata rispetto al thread dell'istanza IP e al thread AutoIP.
+> Se si usa DHCP, il thread DHCP deve avere una priorità più alta rispetto al thread dell'istanza IP e al thread AutoIP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) creazione AutoIP riuscita.
-- **NX_AUTO_IP_ERROR**: (0XA00) AutoIP crea errore.
-- NX_PTR_ERROR: (0x16) non valido AutoIP, ip_ptr o puntatore dello stack.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS**: (0x00) Creazione autoIP riuscita.
+- **NX_AUTO_IP_ERROR:**(0xA00) Errore di creazione AutoIP.
+- NX_PTR_ERROR: (0x16) AutoIP, ip_ptr o puntatore dello stack non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, thread
+inizializzazione, thread
 
 ### <a name="example"></a>Esempio
 
@@ -78,7 +78,7 @@ nx_auto_ip_delete, nx_auto_ip_set_interface, nx_auto_ip_get_address, nx_auto_ip_
 
 ## <a name="nx_auto_ip_delete"></a>nx_auto_ip_delete
 
-Elimina istanza AutoIP
+Eliminare un'istanza di AutoIP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -88,18 +88,18 @@ UINT nx_auto_ip_delete(NX_AUTO_IP *auto_ip_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio Elimina un'istanza di AutoIP creata in precedenza nell'istanza IP specificata.
+Questo servizio elimina un'istanza di AutoIP creata in precedenza nell'istanza IP specificata.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **auto_ip_ptr**: puntatore al blocco di controllo AutoIP.
+- **auto_ip_ptr:** puntatore al blocco di controllo AutoIP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) eliminazione AutoIP riuscita.
-- **NX_AUTO_IP_ERROR**: (0XA00) AutoIP eliminare l'errore.
+- **NX_SUCCESS:**(0x00) Eliminazione autoIP riuscita.
+- **NX_AUTO_IP_ERROR:**(0xA00) Errore di eliminazione autoIP.
 - NX_PTR_ERROR (0x16): puntatore AutoIP non valido.
-- NX_CALLER_ERROR (0x11): chiamante non valido di questo servizio.
+- NX_CALLER_ERROR (0x11): chiamante di questo servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -131,23 +131,23 @@ UINT nx_auto_ip_get_address(NX_AUTO_IP *auto_ip_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera l'indirizzo AutoIP attualmente configurato. Se non ne esiste uno, viene restituito un indirizzo IP 0.0.0.0.
+Questo servizio recupera l'indirizzo AutoIP attualmente di configurazione. Se non è presente, viene restituito un indirizzo IP 0.0.0.0.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **auto_ip_ptr**: puntatore al blocco di controllo AutoIP.
-- **local_ip_address**: destinazione per l'indirizzo IP restituito.
+- **auto_ip_ptr:** puntatore al blocco di controllo AutoIP.
+- **local_ip_address:** destinazione per l'indirizzo IP mittente.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) operazione AutoIP riuscita Get.
-- **NX_AUTO_IP_NO_LOCAL**: (0XA01) non sono presenti indirizzi AutoIP validi.
-- NX_PTR_ERROR: (0x16) puntatore AutoIP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Ottenere l'indirizzo AutoIP riuscito.
+- **NX_AUTO_IP_NO_LOCAL**: (0xA01) Nessun indirizzo AutoIP valido.
+- NX_PTR_ERROR: (0x16) Puntatore AutoIP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, timer, thread, ISRs
+Inizializzazione, timer, thread, ISR
 
 ### <a name="example"></a>Esempio
 
@@ -177,23 +177,23 @@ UINT nx_auto_ip_set_interface(NX_AUTO_IP *auto_ip_ptr,
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio imposta l'indice per l'interfaccia di rete AutoIP esegue il probe per un indirizzo IP di rete. Il valore predefinito è zero (l'interfaccia di rete primaria). Applicabile solo per i dispositivi multihomed.
+Questo servizio imposta l'indice per l'interfaccia di rete che AutoIP proberà per un indirizzo IP di rete. Il valore predefinito è zero (l'interfaccia di rete primaria). Applicabile solo per i dispositivi multihomed.
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **auto_ip_ptr**: puntatore al blocco di controllo AutoIP.
-- **interface_index**: interfaccia per verificare l'indirizzo IP
+- **auto_ip_ptr:** puntatore al blocco di controllo AutoIP.
+- **interface_index:** interfaccia per l'indirizzo IP del probe per
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) set di interfacce AutoIP riuscito
-- **NX_AUTO_IP_BAD_INTERFACE_INDEX**: (0xA02) interfaccia di rete non valida 
-- NX_PTR_ERROR: (0x16) puntatore AutoIP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Set di interfacce AutoIP riuscito
+- **NX_AUTO_IP_BAD_INTERFACE_INDEX:**(0xA02) Interfaccia di rete non valida 
+- NX_PTR_ERROR: (0x16) Puntatore AutoIP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione, timer, thread, ISRs
+Inizializzazione, timer, thread, ISR
 
 ### <a name="example"></a>Esempio
 
@@ -212,7 +212,7 @@ nx_auto_ip_create, nx_auto_ip_get_address, nx_auto_ip_delete, nx_auto_ip_start, 
 
 ## <a name="nx_auto_ip_start"></a>nx_auto_ip_start
 
-Avvia elaborazione AutoIP
+Avviare l'elaborazione AutoIP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -227,15 +227,15 @@ Questo servizio avvia il protocollo AutoIP in un'istanza di AutoIP creata in pre
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **auto_ip_ptr**: puntatore al blocco di controllo AutoIP.
-- **starting_local_address**: indirizzo iniziale AutoIP facoltativo. Il valore IP_ADDRESS (0, 0, 0, 0) specifica che deve essere derivato un indirizzo AutoIP casuale. In caso contrario, se viene specificato un indirizzo AutoIP valido, NetX AutoIP tenterà di assegnare tale indirizzo.
+- **auto_ip_ptr:** puntatore al blocco di controllo AutoIP.
+- **starting_local_address:** indirizzo iniziale autoIP facoltativo. Il valore IP_ADDRESS(0,0,0,0) specifica che deve essere derivato un indirizzo AutoIP casuale. In caso contrario, se viene specificato un indirizzo AutoIP valido, NetX AutoIP tenta di assegnarlo.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) avvio AutoIP riuscito.
-- **NX_AUTO_IP_ERROR**: (0XA00) AutoIP errore di avvio.
-- NX_PTR_ERROR: (0x16) puntatore AutoIP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS:**(0x00) Avvio automatico di AutoIP riuscito.
+- **NX_AUTO_IP_ERROR:**(0xA00) AutoIP start error (Errore di avvio di AutoIP).
+- NX_PTR_ERROR: (0x16) Puntatore AutoIP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -256,7 +256,7 @@ nx_auto_ip_create, nx_auto_ip_set_interface, nx_auto_ip_delete, nx_auto_ip_get_a
 
 ## <a name="nx_auto_ip_stop"></a>nx_auto_ip_stop
 
-Arresta elaborazione AutoIP
+Arrestare l'elaborazione di AutoIP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -270,14 +270,14 @@ Questo servizio arresta il protocollo AutoIP in un'istanza di AutoIP creata e av
 
 ### <a name="input-parameters"></a>Parametri di input
 
-- **auto_ip_ptr**: puntatore al blocco di controllo AutoIP.
+- **auto_ip_ptr:** puntatore al blocco di controllo AutoIP.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **NX_SUCCESS**: (0x00) AutoIP arrestati correttamente.
-- **NX_AUTO_IP_ERROR**: (0XA00) AutoIP errore irreversibile.
-- NX_PTR_ERROR: (0x16) puntatore AutoIP non valido.
-- NX_CALLER_ERROR: (0x11) il chiamante di questo servizio non è valido.
+- **NX_SUCCESS**: (0x00) Arresto autoIP riuscito.
+- **NX_AUTO_IP_ERROR:**(0xA00) AutoIP stop error (Errore di arresto di AutoIP).
+- NX_PTR_ERROR: (0x16) Puntatore AutoIP non valido.
+- NX_CALLER_ERROR: (0x11) Chiamante del servizio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 

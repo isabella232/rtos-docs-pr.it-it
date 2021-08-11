@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 2e9e2e0286300b3f79f7f9e6ad2d7fab96ba7337
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 62750ab4a5540b243665a7a7d9000a0d60c4435313b6de2e1579ae7f1c20fe55
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115177746"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790667"
 ---
 # <a name="chapter-5---usbx-host-classes-api"></a>Capitolo 5 - API classi host USBX
 
@@ -717,7 +717,7 @@ status = ux_host_class_cdc_acm_read(cdc_acm, data_pointer,
 
 ## <a name="ux_host_class_cdc_acm_write"></a>ux_host_class_cdc_acm_write
 
-Scrivere nell'interfaccia cdc_acm dati
+Scrivere nell'cdc_acm dati
 
 ### <a name="prototype"></a>Prototipo
 
@@ -731,11 +731,11 @@ UINT ux_host_class_cdc_acm_write(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione scrive nell'interfaccia cdc_acm. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il trasferimento è completato.
+Questa funzione scrive nell'interfaccia cdc_acm dati. La chiamata è bloccante e viene restituita solo quando si verifica un errore o quando il trasferimento è completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **cdc_acm** Puntatore all'istanza cdc_acm classe.
 - **data_pointer** Puntatore all'indirizzo del buffer del payload dei dati.
 - **requested_length** Lunghezza da inviare.
 - **actual_length** Lunghezza effettivamente inviata.
@@ -744,7 +744,7 @@ Questa funzione scrive nell'interfaccia cdc_acm. La chiamata è in blocco e rest
 
 - **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
 - **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) L'istanza cdc_acm non è valida.
-- **UX_TRANSFER_TIMEOUT** (0x5c) Timeout di trasferimento, scrittura incompleta.
+- **UX_TRANSFER_TIMEOUT** (0x5c) Timeout trasferimento, scrittura incompleta.
 
 ### <a name="example"></a>Esempio
 
@@ -761,7 +761,7 @@ status = ux_host_class_cdc_acm_write(cdc_acm, data_pointer,
 
 ## <a name="ux_host_class_cdc_acm_ioctl"></a>ux_host_class_cdc_acm_ioctl
 
-Eseguire una funzione IOCTL nell'cdc_acm.
+Eseguire una funzione IOCTL nell'cdc_acm dati.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -774,11 +774,11 @@ UINT ux_host_class_cdc_acm_ioctl(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione esegue una funzione ioctl specifica per l'cdc_acm interfaccia. La chiamata è in blocco e restituisce solo quando si verifica un errore o quando il comando viene completato.
+Questa funzione esegue una funzione ioctl specifica per l cdc_acm intervallo. La chiamata è bloccante e restituisce solo quando si verifica un errore o quando il comando viene completato.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **cdc_acm** Puntatore all'istanza cdc_acm classe.
 - **ioctl_function** funzione ioctl da eseguire. Vedere la tabella seguente per una delle funzioni ioctl consentite.
 - **parametro** Puntatore a un parametro specifico di ioctl
 
@@ -786,7 +786,7 @@ Questa funzione esegue una funzione ioctl specifica per l'cdc_acm interfaccia. L
 
 - **UX_SUCCESS** (0x00) Il trasferimento dei dati è stato completato.
 - **UX_MEMORY_INSUFFICIENT** (0x12) Memoria insufficiente.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) L'istanza di CDC-ACM è in uno stato non valido.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN(0x5b)** CDC-ACM è in uno stato non valido.
 - **UX_FUNCTION_NOT_SUPPORTED** (0x54) Funzione IOCTL sconosciuta.
 
 ### <a name="ioctl-functions"></a>Funzioni IOCTL:
@@ -825,14 +825,14 @@ UINT ux_host_class_cdc_acm_reception_start(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione fa sì che USBX letta continuamente i dati dal dispositivo in background. Al termine di ogni transazione, viene richiamato il callback specificato **in** cdc_acm_reception in modo che l'applicazione possa eseguire un'ulteriore elaborazione dei dati della transazione.
+Questa funzione fa sì che USBX letta continuamente i dati dal dispositivo in background. Al termine di ogni transazione, il callback specificato in **cdc_acm_reception** viene richiamato in modo che l'applicazione possa eseguire un'ulteriore elaborazione dei dati della transazione.
 
 > [!NOTE]
 > **ux_host_class_cdc_acm_read** non deve essere usato mentre è in uso la ricezione in background.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **cdc_acm** Puntatore all'istanza cdc_acm classe.
 - **cdc_acm_reception** Puntatore al parametro che contiene valori che definiscono il comportamento della ricezione in background. Il layout di questo parametro è il seguente:
 
 ```c
@@ -885,7 +885,7 @@ status = ux_host_class_cdc_acm_reception_start(cdc_acm_host_data, &cdc_acm_recep
 
 ## <a name="ux_host_class_cdc_acm_reception_stop"></a>ux_host_class_cdc_acm_reception_stop
 
-Arresta la ricezione in background dei pacchetti.
+Arresta la ricezione dei pacchetti in background.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -897,11 +897,11 @@ UINT ux_host_class_cdc_acm_reception_stop(
 
 ### <a name="description"></a>Descrizione
 
-Questa funzione fa sì che USBX arresti la ricezione in background avviata in precedenza **da ux_host_class_cdc_acm_reception_start**.
+Questa funzione fa sì che USBX arresti la ricezione in background avviata in precedenza **ux_host_class_cdc_acm_reception_start**.
 
 ### <a name="parameters"></a>Parametri
 
-- **cdc_acm** Puntatore all'cdc_acm di classe.
+- **cdc_acm** Puntatore all'istanza cdc_acm classe.
 - **cdc_acm_reception** Puntatore allo stesso parametro utilizzato per avviare la ricezione in background. Il layout di questo parametro è il seguente:
 
 ```c

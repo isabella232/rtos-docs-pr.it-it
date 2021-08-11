@@ -1,46 +1,46 @@
 ---
-title: Capitolo 2-installazione e uso del client DNS di Azure RTO NetX Duo
-description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client DNS di Azure RTO NetX Duo.
+title: Capitolo 2 - Installazione e uso del client DNS Azure RTOS NetX Duo
+description: Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client DNS Azure RTOS NetX Duo.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 75b85829f80462015d66e1623b880d5139349ce0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d18e6444f13f069347719901b24234aebe04cdc5cd6230212e0781a50ed245d1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104822904"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792010"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dns-client"></a>Capitolo 2-installazione e uso del client DNS di Azure RTO NetX Duo
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dns-client"></a>Capitolo 2 - Installazione e uso del client DNS Azure RTOS NetX Duo
 
-Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client DNS di Azure RTO NetX Duo.
+Questo capitolo contiene una descrizione dei vari problemi relativi all'installazione, alla configurazione e all'utilizzo del client DNS Azure RTOS NetX Duo.
 
 ## <a name="product-distribution"></a>Distribuzione del prodotto
 
 Il client DNS di NetX Duo è disponibile all'indirizzo [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Il pacchetto include due file di origine e un file PDF che contiene questo documento, come indicato di seguito:
 
-- **nxd_dns. h** File di intestazione per il client DNS NetX Duo
-- **nxd_dns. c** File di origine C per il client DNS NetX Duo
+- **nxd_dns.h** File di intestazione per il client DNS di NetX Duo
+- **nxd_dns.c** File di origine C per il client DNS NetX Duo
 - **nxd_dns.pdf** Descrizione PDF del client DNS di NetX Duo
 
 ## <a name="dns-client-installation"></a>Installazione del client DNS
 
-Per usare il client DNS NetX Duo, copiare i file di codice sorgente *nxd_dns. c* e *nxd_dns. h* nella stessa directory in cui è installato NETX Duo. Se, ad esempio, NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_dns. h* e *nxd_dns. c* devono essere copiati in questa directory.
+Per usare il client DNS di NetX Duo, copiare i file di codice sorgente *nxd_dns.c* e *nxd_dns.h* nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_dns.h* e *nxd_dns.c* devono essere copiati in questa directory.
 
 ## <a name="using-the-dns-client"></a>Uso del client DNS
 
-L'uso del client DNS di NetX Duo è facile. In pratica, il codice dell'applicazione deve includere *nxd_dns. h* dopo aver incluso *tx_api. h* e *nx_api. h*, per poter utilizzare rispettivamente threadX e NETX Duo. Una volta incluso *nxd_dns. h* , il codice dell'applicazione è in grado di eseguire le chiamate di funzione DNS specificate più avanti in questa guida. L'applicazione deve inoltre aggiungere *nxd_dns. c* al processo di compilazione. Questo file deve essere compilato in modo analogo a quello di altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il DNS di NetX Duo.
+L'uso di NetX Duo DNS Client è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nxd_dns.h* dopo aver incluso *tx_api.h* *e nx_api.h*, per poter usare rispettivamente ThreadX e NetX Duo. Dopo *nxd_dns.h,* il codice dell'applicazione è in grado di effettuare le chiamate di funzione DNS specificate più avanti in questa guida. L'applicazione deve anche *aggiungere nxd_dns.c* al processo di compilazione. Questo file deve essere compilato nello stesso modo degli altri file dell'applicazione e il relativo form oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare IL DNS di NetX Duo.
 
 > [!NOTE]
-> Poiché DNS usa i servizi UDP NetX Duo, è necessario abilitare UDP con la chiamata *nx_udp_enable* prima di usare DNS.
+> Poiché DNS usa i servizi UDP di NetX Duo, udp deve essere abilitato con nx_udp_enable *chiamata* prima di usare DNS.
 
-## <a name="small-example-system-for-netx-duo-dns-client"></a>Sistema di esempio di piccole dimensioni per il client DNS NetX Duo 
+## <a name="small-example-system-for-netx-duo-dns-client"></a>Small Example System for NetX Duo DNS Client 
 
-Il client DNS NetX Duo è compatibile con le applicazioni DNS NetX esistenti. Di seguito è riportato l'elenco dei servizi legacy e dei rispettivi equivalenti NetX Duo:
+Il client DNS di NetX Duo è compatibile con le applicazioni DNS NetX esistenti. Di seguito è riportato l'elenco dei servizi legacy e l'equivalente di NetX Duo:
 
-| Servizio API DNS NetX (solo IPv4) | Servizio API DNS NetX Duo (supporto per IPv4 e IPv6) |
+| Servizio API DNS NetX (solo IPv4) | Servizio API DNS NetX Duo (supportati IPv4 e IPv6) |
 |----------------------------------|----------------------------------------------------|
 | nx_dns_host_by_name_get          | nxd_dns_host_by_name_get                           |
 | nx_dns_host_by_address_get       | nxd_dns_host_by_address_get                        |
@@ -50,30 +50,30 @@ Il client DNS NetX Duo è compatibile con le applicazioni DNS NetX esistenti. Di
 
 Per altri dettagli, vedere la descrizione dei servizi API client DNS di NetX Duo nel capitolo 3.
 
-Nel programma dell'applicazione DNS di esempio fornito in questa sezione *nxd_dns. h* è incluso alla riga 6. NX_DNS_CLIENT_USER_CREATE_PACKET_POOL, che consente all'applicazione client DNS di creare il pool di pacchetti per il client DNS, viene dichiarata sulle righe 24-26. Questo pool di pacchetti viene utilizzato per l'allocazione di pacchetti per l'invio di messaggi DNS. Se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definito, viene creato un pool di pacchetti nella riga 78-98. Se questa opzione non è abilitata, il client DNS crea il proprio pool di pacchetti in base al payload del pacchetto e alle dimensioni del pool impostate dai parametri di configurazione in *nxd_dns. h* e descritti altrove in questo capitolo.
+Nel programma di applicazione DNS di esempio fornito in questa *sezione, nxd_dns.h* è incluso alla riga 6. NX_DNS_CLIENT_USER_CREATE_PACKET_POOL, che consente all'applicazione client DNS di creare il pool di pacchetti per il client DNS, viene dichiarato nelle righe 24-26. Questo pool di pacchetti viene usato per allocare pacchetti per l'invio di messaggi DNS. Se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL è definito, viene creato un pool di pacchetti nelle righe 78-98. Se questa opzione non è abilitata, il client DNS crea il proprio pool di pacchetti in base al payload dei pacchetti e alle dimensioni del pool impostati dai parametri di configurazione in *nxd_dns.h* e descritti altrove in questo capitolo.
 
-Viene creato un altro pool di pacchetti nella riga 100-112 per l'istanza IP del client utilizzata per le operazioni NetX Duo interne. Viene quindi creata l'istanza IP usando la chiamata *nx_ip_create* nella riga 115. È possibile che l'attività IP e il client DNS condividano lo stesso pool di pacchetti, ma poiché in genere il client DNS invia messaggi di dimensioni maggiori rispetto ai pacchetti di controllo inviati dall'attività IP, l'utilizzo di pool di pacchetti separati consente un utilizzo più efficiente della memoria.
+Un altro pool di pacchetti viene creato nelle righe 100-112 per l'istanza IP client usata per le operazioni interne di NetX Duo. Successivamente, l'istanza IP viene creata *usando nx_ip_create* chiamata alla riga 115. L'attività IP e il client DNS possono condividere lo stesso pool di pacchetti, ma poiché il client DNS in genere invia messaggi di dimensioni maggiori rispetto ai pacchetti di controllo inviati dall'attività IP, l'uso di pool di pacchetti separati rende più efficiente l'uso della memoria.
 
-ARP e UDP, usati dalle reti IPv4, sono abilitati rispettivamente nelle righe 129 e 141.
+ARP e UDP (usati dalle reti IPv4) sono abilitati rispettivamente nelle righe 129 e 141.
 
 >[!NOTE]
-> Questa demo usa il driver ' RAM ' dichiarato alla riga 44 e usato nella chiamata *nx_ip_create* . Questo driver RAM viene distribuito con il codice sorgente di NetX Duo. Per eseguire effettivamente il client DNS, l'applicazione deve fornire un driver di rete fisico effettivo per la trasmissione e la ricezione di pacchetti dal server DNS.
+> Questa demo usa il driver "ram" dichiarato alla riga 44 e usato nella *nx_ip_create* chiamata. Questo driver ram viene distribuito con il codice sorgente di NetX Duo. Per eseguire effettivamente il client DNS, l'applicazione deve fornire un driver di rete fisico effettivo per trasmettere e ricevere pacchetti dal server DNS.
 
-La funzione di immissione thread del client *thread_client_entry* è definita sotto la funzione *tx_application_define* . Inizialmente cede il controllo al sistema per consentire l'inizializzazione del thread attività IP da parte del driver di rete.
+La funzione di immissione del thread *client thread_client_entry* definita sotto la *tx_application_define* client. Inizialmente c'è il controllo al sistema per consentire l'inizializzazione del thread dell'attività IP da parte del driver di rete.
 
-Quindi crea il client DNS alla riga 257, Inizializza la cache DNS sulle righe 267-278 e imposta il pool di pacchetti creato in precedenza nell'istanza del client DNS sulle righe 281-295. Aggiunge quindi il server DNS alle righe 297-341.
+Crea quindi il client DNS nella riga 257, inizializza la cache DNS sulle righe 267-278 e imposta il pool di pacchetti creato in precedenza sull'istanza del client DNS sulle righe 281-295. Aggiunge quindi il server DNS alle righe 297-341.
 
-Il resto del programma di esempio usa i servizi client DNS per eseguire query DNS. Le ricerche degli indirizzi IP dell'host vengono eseguite sulle righe 193 e 207. La differenza tra questi due servizi, *nxd_dns_host_by_name_get* e *nx_dns_host_by_name_get*, consiste nel fatto che il primo salva i dati dell'indirizzo in un tipo di dati NXD_ADDRESS, mentre quest'ultimo salva i dati in un tipo di dati ulong. Il secondo è limitato alle reti IPv4, mentre la prima può essere usata con reti IPv6 o IPv4. Questa operazione è possibile solo se l'istanza IP è abilitata per IPv6. Per ulteriori informazioni sull'abilitazione dell'istanza IP per la rete IPv6, vedere la guida dell'utente di NetX Duo.
+Il resto del programma di esempio usa i servizi client DNS per eseguire query DNS. Le ricerche degli indirizzi IP host vengono eseguite nelle righe 193 e 207. La differenza tra questi due servizi, *nxd_dns_host_by_name_get* e *nx_dns_host_by_name_get*, è che il primo salva i dati degli indirizzi in un tipo di dati NXD_ADDRESS, mentre il secondo salva i dati in un tipo di dati ULONG. Inoltre, quest'ultimo è limitato alle reti IPv4, mentre il primo può essere usato con reti IPv6 o IPv4. Ciò è possibile solo se l'istanza IP è abilitata per IPv6. Per altre informazioni sull'abilitazione dell'istanza IP per la rete IPv6, vedere il Manuale dell'utente di NetX Duo.
 
-Un altro servizio per le ricerche di indirizzi IP host viene visualizzato alla riga 464, *nx_dns_ipv4_address_by_name_get*. Questo servizio è diverso da *nx_dns_host_by_name_get* in quanto restituisce tutti gli indirizzi IPv4 individuati per il nome di dominio e non solo il primo indirizzo ricevuto nella risposta del server DNS (o il numero di tale contenuto sarà sufficiente per il buffer fornito).
+Un altro servizio per le ricerche di indirizzi IP host viene visualizzato alla riga 464, *nx_dns_ipv4_address_by_name_get*. Questo servizio è diverso da *nx_dns_host_by_name_get* perché restituisce tutti gli indirizzi IPv4 individuati per il nome di dominio, non solo il primo indirizzo ricevuto nella risposta del server DNS.
 
-Analogamente, il servizio *nxd_dns_ipv6_address_by_name_get* , chiamato alla riga 380, restituisce tutti gli indirizzi IPv6 individuati dal client DNS, non solo il primo.
+Analogamente, il *nxd_dns_ipv6_address_by_name_get,* chiamato alla riga 380, restituisce tutti gli indirizzi IPv6 individuati dal client DNS, non solo il primo.
 
-Le ricerche inverse (nome host da indirizzo IP) vengono eseguite sulle righe 606 (*nx_dns_host_by_address_get*) e di nuovo alla riga 564 e 588 (*nxd_dns_host_by_address_get*). *nx_dns_host_by_address_get* funzionerà solo su reti IPv4, mentre *nxd_dns_host_by_address_get* funzionerà su reti IPv4 o IPv6 (ad esempio, l'istanza IP è abilitata per IPv6 e per le reti IPv4).
+Le ricerche inverse (nome host dall'indirizzo IP) vengono eseguite sulle righe 606 (*nx_dns_host_by_address_get*) e di nuovo sulle righe 564 e 588 *(nxd_dns_host_by_address_get*). *nx_dns_host_by_address_get* funzionerà solo nelle reti IPv4, mentre *nxd_dns_host_by_address_get* funzionerà su reti IPv4 o IPv6 (ad esempio, l'istanza IP è abilitata per le reti IPv6 e IPv4).
 
-Altri due servizi per le ricerche DNS, CNAME e TXT, vengono illustrati rispettivamente sulle righe 627 e 649, per individuare i dati CNAME e del nome di dominio per il nome di dominio di input. Client DNS NetX Duo come servizi simili per altri tipi di record, ad esempio MX, NS, SRV e SOA. Per una descrizione dettagliata di tutte le ricerche dei tipi di record disponibili nel client DNS NetX Duo, vedere il capitolo 3.
+Altri due servizi per le ricerche DNS, CNAME e TXT, sono illustrati rispettivamente alle righe 627 e 649 per individuare i dati CNAME e del nome di dominio per il nome di dominio di input. Client DNS NetX Duo come servizi simili per altri tipi di record, ad esempio MX, NS, SRV e SOA. Vedere il capitolo 3 per le descrizioni dettagliate di tutte le ricerche di tipi di record disponibili nel client DNS di NetX Duo.
 
-Quando il client DNS viene eliminato alla riga 846, usando il servizio *nx_dns_delete* , il pool di pacchetti per il client DNS non viene eliminato, a meno che il client DNS non abbia creato il proprio pool di pacchetti. In caso contrario, spetta all'applicazione eliminare il pool di pacchetti se non ne è stato ulteriormente utilizzato.
+Quando il client DNS viene eliminato alla riga 846, usando il servizio *nx_dns_delete,* il pool di pacchetti per il client DNS non viene eliminato a meno che il client DNS non ha creato il proprio pool di pacchetti. In caso contrario, è l'applicazione a eliminare il pool di pacchetti se non è più necessario usarlo.
 
 ```C
 /* This is a small demo of DNS Client for the high-performance NetX TCP/IP stack. */
@@ -924,36 +924,36 @@ USHORT          host_port;
 ```
 ## <a name="configuration-options"></a>Opzioni di configurazione
 
-Sono disponibili diverse opzioni di configurazione per la creazione di DNS per NetX. Queste opzioni possono essere ridefinite in *nxd_dns. h.* L'elenco seguente descrive tutti i dettagli:  
+Sono disponibili diverse opzioni di configurazione per la creazione di DNS per NetX. Queste opzioni possono essere ridefinite in *nxd_dns.h.* L'elenco seguente descrive ogni elemento in dettaglio:  
 
-- **NX_DNS_TYPE_OF_SERVICE** Tipo di servizio richiesto per le richieste UDP DNS. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per il normale servizio pacchetti IP.
+- **NX_DNS_TYPE_OF_SERVICE** Tipo di servizio necessario per le richieste UDP DNS. Per impostazione predefinita, questo valore viene definito come NX_IP_NORMAL per il normale servizio di pacchetti IP.
 
-- **NX_DNS_TIME_TO_LIVE** Specifica il numero massimo di router che un pacchetto può superare prima che venga eliminato. Il valore predefinito è 0x80.
+- **NX_DNS_TIME_TO_LIVE** Specifica il numero massimo di router che un pacchetto può passare prima di essere eliminato. Il valore predefinito è 0x80.
 
-- **NX_DNS_FRAGMENT_OPTION** Imposta la proprietà Socket per consentire o impedire la frammentazione dei pacchetti in uscita. Il valore predefinito è NX_DONT_FRAGMENT.
+- **NX_DNS_FRAGMENT_OPTION** Imposta la proprietà socket per consentire o meno la frammentazione dei pacchetti in uscita. Il valore predefinito è NX_DONT_FRAGMENT.
 
 - **NX_DNS_QUEUE_DEPTH** Imposta il numero massimo di pacchetti da archiviare nella coda di ricezione del socket. Il valore predefinito è 5.
 
-- **NX_DNS_MAX_SERVERS** Specifica il numero massimo di server DNS nell'elenco dei server client. Il valore predefinito è 5.
+- **NX_DNS_MAX_SERVERS** Specifica il numero massimo di server DNS nell'elenco server client. Il valore predefinito è 5.
 
-- **NX_DNS_MESSAGE_MAX** Dimensioni massime dei messaggi DNS per l'invio di query DNS. Il valore predefinito è 512, che corrisponde anche alla dimensione massima specificata nella sezione 2.3.4 del documento RFC 1035.
+- **NX_DNS_MESSAGE_MAX** Dimensione massima dei messaggi DNS per l'invio di query DNS. Il valore predefinito è 512, che è anche la dimensione massima specificata in RFC 1035 Section 2.3.4.
 
-- **NX_DNS_PACKET_PAYLOAD_UNALIGNED** Se non è definito, la dimensione del payload del pacchetto client che include le intestazioni Ethernet, IP (o IPv6) e UDP oltre alla dimensione massima dei messaggi DNS specificata da NX_DNS_MESSAGE_MAX. Indipendentemente dalla definizione, il payload del pacchetto è allineato a 4 byte e archiviato in NX_DNS_PACKET_PAYLOAD.
+- **NX_DNS_PACKET_PAYLOAD_UNALIGNED** Se non è definito, la dimensione del payload del pacchetto client che include le intestazioni Ethernet, IP (o IPv6) e UDP più le dimensioni massime dei messaggi DNS specificate da NX_DNS_MESSAGE_MAX. Indipendentemente dalla definizione, il payload del pacchetto è allineato a 4 byte e archiviato in NX_DNS_PACKET_PAYLOAD.
 
-- **NX_DNS_PACKET_POOL_SIZE** Dimensioni del pool di pacchetti client per l'invio di query DNS se NX_DNS_CLIENT_USER_CREATE_PACKET_POOL non è definito. Il valore predefinito è sufficientemente grande per 16 pacchetti di dimensioni del payload definiti da NX_DNS_PACKET_PAYLOAD ed è allineato a 4 byte.
+- **NX_DNS_PACKET_POOL_SIZE** Dimensioni del pool di pacchetti client per l'invio di query DNS NX_DNS_CLIENT_USER_CREATE_PACKET_POOL non è definito. Il valore predefinito è sufficientemente grande per 16 pacchetti di dimensioni del payload definite da NX_DNS_PACKET_PAYLOAD ed è allineato a 4 byte.
 
-- **NX_DNS_MAX_RETRIES** Il numero massimo di volte in cui il client DNS eseguirà una query sul server DNS corrente prima di provare un altro server o di interrompere la query DNS. Il valore predefinito è 3.
+- **NX_DNS_MAX_RETRIES** Numero massimo di volte in cui il client DNS esegue una query sul server DNS corrente prima di provare un altro server o di interrompere la query DNS. Il valore predefinito è 3.
 
-- **NX_DNS_MAX_RETRANS_TIMEOUT** Timeout di ritrasmissione massimo in una query DNS a un server DNS specifico. Il valore predefinito è 64 secondi (64 * NX_IP_PERIODIC_RATE).
+- **NX_DNS_MAX_RETRANS_TIMEOUT** Timeout massimo di ritrasmissione in una query DNS a un server DNS specifico. Il valore predefinito è 64 secondi (64 * NX_IP_PERIODIC_RATE).
 
-- **NX_DNS_IP_GATEWAY_AND_DNS_SERVER** Se definito e l'indirizzo del gateway IPv4 client è diverso da zero, il client DNS imposta il gateway IPv4 come server DNS primario del client. Il valore predefinito è Disattivata.
+- **NX_DNS_IP_GATEWAY_AND_DNS_SERVER** Se definito e l'indirizzo del gateway IPv4 del client è diverso da zero, il client DNS imposta il gateway IPv4 come server DNS primario del client. Il valore predefinito è Disattivata.
 
-- **NX_DNS_PACKET_ALLOCATE_TIMEOUT** Questa impostazione consente di impostare l'opzione timeout per l'allocazione di un pacchetto dal pool di pacchetti client DNS. Il valore predefinito è 1 secondo (1 * NX_IP_PERIODIC_RATE).
+- **NX_DNS_PACKET_ALLOCATE_TIMEOUT** In questo modo viene impostata l'opzione di timeout per l'allocazione di un pacchetto dal pool di pacchetti del client DNS. Il valore predefinito è 1 secondo (1*NX_IP_PERIODIC_RATE).
 
-- **NX_DNS_CLIENT_USER_CREATE_PACKET_POOL** Ciò consente al client DNS di consentire all'applicazione di creare e impostare il pool di pacchetti del client DNS. Per impostazione predefinita, questa opzione è disabilitata e il client DNS crea il proprio pool di pacchetti in *nx_dns_create*.
+- **NX_DNS_CLIENT_USER_CREATE_PACKET_POOL** In questo modo il client DNS può consentire all'applicazione di creare e impostare il pool di pacchetti del client DNS. Per impostazione predefinita, questa opzione è disabilitata e il client DNS crea il proprio pool di pacchetti in *nx_dns_create*.
 
-- **NX_DNS_CLIENT_CLEAR_QUEUE** Ciò consente al client DNS di cancellare i messaggi DNS precedenti dalla coda di ricezione prima di inviare una nuova query. La rimozione di questi pacchetti dalle query DNS precedenti impedisce l'overflow e l'eliminazione di pacchetti validi da parte della coda di socket client DNS.
+- **NX_DNS_CLIENT_CLEAR_QUEUE** In questo modo il client DNS può cancellare i vecchi messaggi DNS dalla coda di ricezione prima di inviare una nuova query. La rimozione di questi pacchetti dalle query DNS precedenti impedisce alla coda socket del client DNS di sovraccaricare ed eliminare pacchetti validi.
 
-- **NX_DNS_ENABLE_EXTENDED_RR_TYPES** Ciò consente al client DNS di eseguire query su tipi di record DNS aggiuntivi in, ad esempio CNAME, NS, MX, SOA, SRV e TXT.
+- **NX_DNS_ENABLE_EXTENDED_RR_TYPES** In questo modo il client DNS può eseguire query su tipi di record DNS aggiuntivi in (ad esempio CNAME, NS, MX, SOA, SRV e TXT).
 
-- **NX_DNS_CACHE_ENABLE** Ciò consente al client DNS di archiviare i record di risposta nella cache DNS.
+- **NX_DNS_CACHE_ENABLE** In questo modo il client DNS può archiviare i record di risposta nella cache DNS.
