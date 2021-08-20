@@ -127,6 +127,14 @@
           href: netx-duo-http/chapter2.md
         - name: Capitolo 3 - Descrizione dei servizi HTTP NetX
           href: netx-duo-http/chapter3.md
+    - name: Guida dell'utente di NetX Duo Iperf
+      items:
+        - name: Capitolo 1 - Introduzione a NetX Duo Iperf
+          href: netx-duo-iperf/chapter1.md
+        - name: Capitolo 2 - Installazione e uso di Azure NetX Duo Iperf
+          href: netx-duo-iperf/chapter2.md
+        - name: Capitolo 3 - Esecuzione della dimostrazione
+          href: netx-duo-iperf/chapter3.md
     - name: Guida dell'utente di NetX Duo mDNS/DNS-SD
       items:
         - name: Ch. 1 - Introduzione a NetX Duo mDNS/DNS-SD
@@ -165,7 +173,7 @@
           href: chapter3.md
         - name: Ch. 4 - Descrizione dei servizi NAT
           href: chapter4.md
-    - name: Guida per l'utente del client POP3 di NetX Duo
+    - name: Guida dell'utente del client POP3 di NetX Duo
       items:
         - name: Ch. 1 - Introduzione al client POP3 NetX Duo
           href: netx-duo-pop3-client/chapter1.md
@@ -247,7 +255,7 @@
           href: netx-secure-dtls/chapter2.md
         - name: Ch. 3 - Descrizione funzionale di NetX Secure DTLS
           href: netx-secure-dtls/chapter3.md
-        - name: Ch. 4 - Descrizione dei servizi DTLS sicuri NetX
+        - name: Ch. 4 - Descrizione dei servizi DTLS sicuri netx
           href: netx-secure-dtls/chapter4.md
         - name: App. A - Codici restituiti/di errore di NetX Secure DTLS
           href: netx-secure-dtls/appendix-a.md
@@ -271,7 +279,7 @@
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure Componenti RTOS
   items:
-    - name: Microsoft Azure Rtos
+    - name: Microsoft Azure RTOS
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml

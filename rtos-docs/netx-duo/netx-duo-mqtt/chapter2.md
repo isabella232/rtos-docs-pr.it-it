@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: faf9d84b8b2bce12a99a72198a396b121055a8eef975349f53833a180092e0a3
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 4e27a6738456a90f3d708789f51b0471868c6f9e
+ms.sourcegitcommit: 4842f4cfe9e31b3ac59059f43e598eb70faebc8f
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116797535"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122601311"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-mqtt-client"></a>Capitolo 2 - Installazione e uso di Azure RTOS client NetX Duo MQTT
 
@@ -28,11 +28,11 @@ Il client MQTT per NetX Duo è disponibile all'indirizzo [https://github.com/azu
 
 ## <a name="mqtt-client-installation"></a>Installazione del client MQTT
 
-Per usare il client MQTT per NetX Duo, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_mqtt_client.h* e *nxd_mqtt_client.c* per netX Duo MQTT Client devono essere copiati in questa directory.
+Per usare il client MQTT per NetX Duo, l'intera distribuzione indicata in precedenza deve essere copiata nella stessa directory in cui è installato NetX Duo. Ad esempio, se NetX Duo è installato nella directory "*\threadx\arm7\green*", i file *nxd_mqtt_client.h* e *nxd_mqtt_client.c* per netx Duo MQTT Client devono essere copiati in questa directory.
 
 ## <a name="using-mqtt-client"></a>Uso del client MQTT
 
-L'uso del client MQTT per NetX Duo è semplice. Fondamentalmente, il codice dell'applicazione deve includere *nxd_mqtt_client.h* dopo aver incluso *rispettivamente tx_api.h* e *nx_api.h*, per poter usare rispettivamente ThreadX e NetX Duo. Dopo aver incluso i file di intestazione del client MQTT, il codice dell'applicazione può usare i servizi MQTT descritti più avanti in questa guida. L'applicazione deve anche *includere nxd_mqtt_client.c* nel processo di compilazione. Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client NetX Duo MQTT.
+L'uso del client MQTT per NetX Duo è semplice. In pratica, il codice dell'applicazione deve includere *nxd_mqtt_client.h* dopo aver incluso *rispettivamente tx_api.h* e *nx_api.h*, per poter usare rispettivamente ThreadX e NetX Duo. Dopo aver incluso i file di intestazione del client MQTT, il codice dell'applicazione può usare i servizi MQTT descritti più avanti in questa guida. L'applicazione deve includere *anche nxd_mqtt_client.c* nel processo di compilazione. Questi file devono essere compilati nello stesso modo degli altri file dell'applicazione e il relativo modulo oggetto deve essere collegato insieme ai file dell'applicazione. Questo è tutto ciò che è necessario per usare il client NetX Duo MQTT.
 
 ## <a name="using-mqtt-client-with-netx-secure-tls"></a>Uso del client MQTT con NetX Secure TLS
 
@@ -48,8 +48,8 @@ La definizione di questo simbolo richiede l'installazione del modulo NetX Secure
 *NX_SECURE_ENABLE* non è abilitato per impostazione predefinita.**
 - **NXD_MQTT_REQUIRE_TLS**: definito, l'applicazione deve usare TLS per connettersi al broker MQTT. Questa funzionalità richiede *NX_SECURE_ENABLE* definita. Per impostazione predefinita, questo simbolo non è definito.
 - **NXD_MQTT_MAXIMUM_TRANSMIT_QUEUE_DEPTH:** definita, la profondità della coda di trasmissione MQTT è abilitata. Deve essere un numero intero positivo.
-- **NXD_MQTT_MAX_TOPIC_NAME_LENGTH:** deprecato.
-- **NXD_MQTT_MAX_MESSAGE_LENGTH:** deprecato.
+- **NXD_MQTT_MAX_TOPIC_NAME_LENGTH**: deprecato.
+- **NXD_MQTT_MAX_MESSAGE_LENGTH**: deprecato.
 - **NXD_MQTT_KEEPALIVE_TIMER_RATE**: definisce la frequenza del timer MQTT, in tick timer ThreadX. Questo timer viene usato per tenere traccia dell'ora dopo l'invio dell'ultimo messaggio di controllo MQTT e invia un messaggio PINGREQ MQTT prima della scadenza dell'ora keep-alive. Questo timer viene attivato se il client si connette al broker con un valore di timer keep-alive impostato. Il valore predefinito è TX_TIMER_TICKS_PER_SECOND, ovvero un timer di un secondo.
 - **NXD_MQTT_PING_TIMEOUT_DELAY**: definisce il tempo di attesa del client MQTT per PINGRESP dal broker dopo l'invio di MQTT PINGREQ. Se dopo questo ritardo di timeout non viene ricevuto alcun PINGRESP, il client considera il broker come non reattivo e si disconnette dal broker. Il ritardo predefinito del timeout PING TX_TIMER_TICKS_PER_SECOND, ovvero un secondo.
 - **NXD_MQTT_SOCKET_TIMEOUT**: definisce il timeout nella chiamata di disconnessione del socket TCP durante la disconnessione dal server MQTT in tick timer. Il valore predefinito è NX_WAIT_FOREVER.
