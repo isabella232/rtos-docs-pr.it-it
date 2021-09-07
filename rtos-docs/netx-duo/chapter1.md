@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c9b5e0ea82319bd369318cca753cf1db222ca29b0b4db3da150642ca007f1191
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 8f45d32afcc2edbd5b851f1b7fb03e7fa2430ebc
+ms.sourcegitcommit: 20a136b06a25e31bbde718b4d12a03ddd8db9051
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116789866"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123552365"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo"></a>Capitolo 1 - Introduzione a Azure RTOS NetX Duo
 
-Azure RTOS NetX Duo è un'implementazione ad alte prestazioni in tempo reale degli standard TCP/IP progettata esclusivamente per applicazioni Azure RTOS basate su ThreadX. Questo capitolo contiene un'introduzione a NetX Duo e una descrizione delle applicazioni e dei vantaggi. 
+Azure RTOS NetX Duo è un'implementazione in tempo reale ad alte prestazioni degli standard TCP/IP progettata esclusivamente per applicazioni Azure RTOS basate su ThreadX. Questo capitolo contiene un'introduzione a NetX Duo e una descrizione delle applicazioni e dei vantaggi. 
 
 ## <a name="netx-duo-unique-features"></a>Funzionalità univoche di NetX Duo
 
@@ -35,7 +35,7 @@ NetX Duo offre un'implementazione di TCP/IP a copia zero basata su pacchetti. Ze
 
 Con <em>la tecnologia UDP Fast Path,</em>NetX Duo offre l'elaborazione UDP più veloce possibile. Sul lato dell'invio, l'elaborazione UDP, incluso il checksum UDP facoltativo, è contenuta nel <em>**nx_udp_socket_send**</em> servizio. Non vengono effettuate chiamate di funzione aggiuntive fino a quando il pacchetto non è pronto per l'invio tramite la routine di invio IP interna di NetX Duo. Anche questa routine è semplice, ovvero l'annidamento delle chiamate di funzione è minimo, quindi il pacchetto viene inviato rapidamente al driver di rete dell'applicazione. Quando viene ricevuto il pacchetto UDP, l'elaborazione di ricezione pacchetti NetX Duo inserisce il pacchetto direttamente nella coda di ricezione del socket UDP appropriato o lo assegna al primo thread sospeso in attesa di un pacchetto di ricezione dalla coda di ricezione del socket UDP. Non sono necessari altri commutatori di contesto ThreadX.
 
-### <a name="ansi-c-source-cod"></a>Codice sorgente ANSI C
+### <a name="ansi-c-source-code"></a>Codice sorgente ANSI C
 
 NetX Duo è scritto completamente in ANSI C ed è immediatamente portabile in qualsiasi architettura del processore con un compilatore ANSI C e il supporto ThreadX. 
 
@@ -45,9 +45,9 @@ La maggior parte delle distribuzioni di NetX Duo include il codice sorgente C co
 
 La presenza del codice sorgente consente anche modifiche specifiche dell'applicazione. Anche se non è consigliabile, è utile avere la possibilità di modificare lo stack di rete, se necessario.
 
-Queste funzionalità sono particolarmente confortanti per gli sviluppatori abituati a lavorare con gli stack di rete di dominio pubblico o interno. Si prevede di avere codice sorgente e la possibilità di modificarlo. NetX Duo è il software di rete finale per tali sviluppatori.
+Queste funzionalità sono particolarmente confortanti per gli sviluppatori abituati a lavorare con stack di rete di dominio pubblico o interno. Si prevede di avere codice sorgente e la possibilità di modificarlo. NetX Duo è il software di rete finale per tali sviluppatori.
 
-### <a name="bsd-compatible-socket-api"></a>BSD-Compatible API Socket
+### <a name="bsd-compatible-socket-api"></a>BSD-Compatible'API Socket
 
 Per le applicazioni legacy, NetX Duo offre anche un'interfaccia socket compatibile con BSD che effettua chiamate all'API NetX Duo ad alte prestazioni sottostante. Ciò consente di eseguire la migrazione del codice dell'applicazione di rete esistente a NetX Duo.
 
@@ -84,7 +84,7 @@ Di seguito sono riportate le RFC correlate a IPv6 supportate da NetX Duo.
 
 Le applicazioni di rete incorporate sono applicazioni che necessitano dell'accesso alla rete ed eseguono su microprocessori nascosti all'interno di prodotti come telefoni cellulari, apparecchiature di comunicazione, motori automobilistici, stampanti laser, dispositivi medici e così via. Tali applicazioni hanno quasi sempre alcuni vincoli di memoria e prestazioni. Un'altra distinzione delle applicazioni di rete incorporate è che il software e l'hardware hanno uno scopo dedicato.
 
-Il software di rete che deve eseguire l'elaborazione entro un periodo di tempo esatto è detto  *software* di rete in tempo reale e, quando vengono imposti vincoli di tempo alle applicazioni di rete, vengono classificati come applicazioni in tempo reale. Le applicazioni di rete incorporate sono quasi sempre in tempo reale a causa dell'interazione intrinseca con il mondo esterno.
+Il software di rete che deve eseguire l'elaborazione entro un periodo di tempo esatto è detto  *software* di rete in tempo reale e quando vengono imposti vincoli di tempo alle applicazioni di rete, vengono classificati come applicazioni in tempo reale. Le applicazioni di rete incorporate sono quasi sempre in tempo reale a causa dell'interazione intrinseca con il mondo esterno.
 
 ## <a name="netx-duo-benefits"></a>Vantaggi di NetX Duo
 
@@ -148,7 +148,7 @@ In particolare, i moduli NetX Duo seguenti vengono testati con IxANVL:
 
 ### <a name="tv-certification"></a>Certificazione TÜV  
 
-NetX Duo è stato certificato da SGS-TÜV Saar per l'uso in sistemi critici per la sicurezza, in base a IEC61508 e IEC-62304. La certificazione conferma che NetX Duo può essere usato nello sviluppo di software correlato alla sicurezza per i più elevati livelli di integrità della sicurezza dei sistemi International Electrotechnical Commission (IEC) 61508 e IEC 62304, per "Sicurezza funzionale dei sistemi elettrici, elettronici e programmabili correlati alla sicurezza elettronica". SGS-TÜV Saar, costituita da una joint-venture di SGSGroup e TÜV Saarland, è diventata la principale società indipendente e accreditata per il test, il controllo, la verifica e la certificazione di software incorporato per sistemi correlati alla sicurezza in tutto il mondo. Lo standard di sicurezza industriale IEC 61508 e tutti gli standard derivati da esso, incluso IEC 62304, vengono usati per garantire la sicurezza funzionale dei dispositivi medici elettrici, elettronici e programmabili correlati alla sicurezza elettronica, sistemi di controllo dei processi, macchinari industriali e sistemi di controllo delle linee di trasporto. 
+NetX Duo è stato certificato da SGS-TÜV Saar per l'uso in sistemi critici per la sicurezza, in base a IEC61508 e IEC-62304. La certificazione conferma che NetX Duo può essere usato nello sviluppo di software correlato alla sicurezza per i più elevati livelli di integrità della sicurezza dei sistemi International Electrotechnical Commission (IEC) 61508 e IEC 62304, per "Sicurezza funzionale dei sistemi elettrici, elettronici e programmabili correlati alla sicurezza elettronica". SGS-TÜV Saar, formata da una joint-venture di SGSGroup e TÜV Saarland, è diventata la società leader indipendente e accreditata per il test, il controllo, la verifica e la certificazione di software incorporato per sistemi correlati alla sicurezza in tutto il mondo. Lo standard di sicurezza industriale IEC 61508 e tutti gli standard derivati da esso, incluso IEC 62304, vengono usati per garantire la sicurezza funzionale dei dispositivi medici elettrici, elettronici e programmabili correlati alla sicurezza elettronica, sistemi di controllo dei processi, macchinari industriali e sistemi di controllo delle linee di trasporto. 
 
 SGS-TÜV Saar ha certificato NetX Duo da usare nei sistemi automobilistici critici per la sicurezza, in base allo standard ISO 26262. NetX Duo è inoltre certificato per il livello di integrità della sicurezza del settore automobilistico (ASIL) D, che rappresenta il livello più alto di certificazione ISO 26262. 
 
@@ -157,14 +157,14 @@ Inoltre, SGS-TÜV Saar ha certificato NetX Duo per l'uso in applicazioni critich
 ![Diagramma del logo di certificazione Saar SGS-TÜV.](./media/user-guide/sgs-tuv-saar-logo.png)
 
 IEC 61508 fino a SIL 4  
-IEC 62304 fino a SW safety Class C ISO 26262 ASIL D EN 50128 SW-SIL 4
+IEC 62304 fino alla classe di sicurezza SW C ISO 26262 ASIL D EN 50128 SW-SIL 4
 
 > [!IMPORTANT]
 > *Per altre informazioni sulle versioni di NetX Duo certificate da TÜV o per la disponibilità di report di test, certificati e documentazione associata, contattare Microsoft.*
 
 ### <a name="ul-certification"></a>Certificazione UL
 
-NetX Duo è stato certificato da UL per la conformità agli standard di sicurezza UL 60730-1 Annex H, CSA E60730-1 Annex H, IEC 60730-1 Annex H, UL 60335-1 Annex R, IEC 60335-1 Annex R e UL 1998 standard di sicurezza per il software in componenti programmabili. Insieme a IEC/UL 60730-1, che ha i requisiti per "Controlli che usano software" nell'allegato H, Lo standard IEC 60335-1 descrive i requisiti per "Circuiti elettronici programmabili" nell'allegato R. IEC 60730 Annex H e IEC 60335-1 Annex R per la sicurezza dell'hardware e del software MCU usati in elettrodomestici come lavatrici, lavastoviglie, essiccatori, refrigeratori, refrigeratori e forni.
+NetX Duo è stato certificato da UL per la conformità agli standard di sicurezza UL 60730-1 Annex H, CSA E60730-1 Annex H, IEC 60730-1 Annex H, UL 60335-1 Annex R, IEC 60335-1 Annex R e UL 1998 standard di sicurezza per il software in componenti programmabili. Insieme a IEC/UL 60730-1, che ha i requisiti per "Controlli che usano software" nell'allegato H, Lo standard IEC 60335-1 descrive i requisiti per "Circuiti elettronici programmabili" nell'allegato R. IEC 60730 Annex H e IEC 60335-1 Annex R per la sicurezza dell'hardware e del software MCU usati in elettrodomestici, lavastoviglie, lavastoviglie, essiccatori, refrigeratori, refrigeratori e forni.
 
 ![Diagramma del logo di certificazione UL.](./media/user-guide/c-ru-us-logo.png)
 
