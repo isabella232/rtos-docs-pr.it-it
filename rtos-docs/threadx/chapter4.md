@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: dabc1603423d8422ed6f8f540f8a06e80d14ec0098c886ca8731ac8ce981f15d
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 42ca29b0c3c4e45330b02e0b9eb93de422c8c235
+ms.sourcegitcommit: 74d1e48424370d565617f3a1e868150ab0bdbd88
 ms.translationtype: MT
 ms.contentlocale: it-IT
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116783408"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129319224"
 ---
 # <a name="chapter-4---description-of-azure-rtos-threadx-services"></a>Capitolo 4 - Descrizione dei Azure RTOS ThreadX
 
@@ -42,7 +42,7 @@ Questo servizio alloca un blocco di memoria a dimensione fissa dal pool di memor
 - **pool_ptr** <br>Puntatore a un pool di blocchi di memoria creato in precedenza.
 - **block_ptr** <br>Puntatore a un puntatore di blocco di destinazione. Al termine dell'allocazione, l'indirizzo del blocco di memoria allocato viene inserito dove punta questo parametro.
 - **wait_option** <br>Definisce il comportamento del servizio se non sono disponibili blocchi di memoria. Le opzioni di attesa sono definite come segue:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT  restituisce immediatamente un risultato da questo servizio, indipendentemente dal fatto che sia stato eseguito correttamente o meno. *Questa è l'unica opzione* valida se il servizio viene chiamato da un non thread, ad esempio inizializzazione, timer o ISR.
+  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT  restituisce immediatamente un risultato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione* valida se il servizio viene chiamato da un non thread, ad esempio inizializzazione, timer o ISR.
   - **TX_WAIT_FOREVER** (0xFFFFFFF): se si seleziona **TX_WAIT_FOREVER,** il thread chiamante viene sospeso per un periodo illimitato fino a quando non è disponibile un blocco di memoria.
   - *Valore* di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa di un blocco di memoria.
 
@@ -129,8 +129,8 @@ Questo servizio crea un pool di blocchi di memoria a dimensione fissa. L'area di
 - **TX_SUCCESS**    (0x00) Creazione del pool di blocchi di memoria completata.
 - **TX_POOL_ERROR** (0x02) Puntatore del pool di blocchi di memoria non valido. Il puntatore è NULL o il pool è già stato creato.
 - **TX_PTR_ERROR**  (0x03) Indirizzo iniziale del pool non valido.
-- **TX_CALLER_ERROR**   (0x13) Chiamante non valido di questo servizio.
-- **TX_SIZE_ERROR** (0x05) Dimensioni del pool non valide.
+- **TX_CALLER_ERROR**   (0x13) Chiamante non valido del servizio.
+- **TX_SIZE_ERROR** (0x05) Le dimensioni del pool non sono valide.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -167,7 +167,7 @@ because of the one overhead pointer associated with each block. */
 
 ## <a name="tx_block_pool_delete"></a>tx_block_pool_delete
 
-Eliminare il pool di blocchi di memoria
+Eliminare un pool di blocchi di memoria
 
 ### <a name="prototype"></a>Prototipo
 
@@ -190,7 +190,7 @@ Questo servizio elimina il pool di memoria a blocchi specificato. Tutti i thread
 
 - **TX_SUCCESS** (0x00) Eliminazione del pool di blocchi di memoria completata.
 - **TX_POOL_ERROR** (0x02) Puntatore del pool di blocchi di memoria non valido.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -225,7 +225,7 @@ status = tx_block_pool_delete(&my_pool);
 
 ## <a name="tx_block_pool_info_get"></a>tx_block_pool_info_get
 
-Recuperare informazioni sul pool di blocchi
+Recuperare informazioni sul pool a blocchi
 
 ### <a name="prototype"></a>Prototipo
 
@@ -252,19 +252,23 @@ Questo servizio recupera informazioni sul pool di memoria a blocchi specificato.
 - **total_blocks**  Puntatore alla destinazione per il numero totale di blocchi nel pool di blocchi.
 - **first_suspended**   Puntatore alla destinazione per il puntatore al thread che si trova per primo nell'elenco di sospensione di questo pool di blocchi.
 - **suspended_count**   Puntatore alla destinazione per il numero di thread attualmente sospesi in questo pool di blocchi.
-- **next_pool** Puntatore alla destinazione per il puntatore del pool di blocchi creato successivo.
+- **next_pool** Puntatore alla destinazione per il puntatore del pool di blocchi creato successivamente.
 
 > [!NOTE]
 > *Se si specifica un TX_NULL per qualsiasi parametro, il parametro non è obbligatorio.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Recupero delle informazioni sul pool di blocchi riuscito.
-- **TX_POOL_ERROR** (0x02) Puntatore del pool di blocchi di memoria non valido.
+- **TX_SUCCESS** (0x00) Recupero delle informazioni sul pool a blocchi riuscito.
+- **TX_POOL_ERROR** (0x02) Puntatore del pool a blocchi di memoria non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -318,28 +322,32 @@ UINT tx_block_pool_performance_info_get(
 Questo servizio recupera informazioni sulle prestazioni relative al pool di blocchi di memoria specificato.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione* devono essere compilate **con TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO** per questo servizio per restituire informazioni *sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione* devono essere compilate **con** TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO per questo servizio per restituire *informazioni sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 
 - **pool_ptr**  Puntatore al pool di blocchi di memoria creato in precedenza.
-- **allocates** Puntatore alla destinazione per il numero di richieste di allocazione eseguite nel pool.
-- **rilasci**  Puntatore alla destinazione per il numero di richieste di versione eseguite nel pool.
-- **sospensioni**   Puntatore alla destinazione per il numero di sospensioni dell'allocazione di thread in questo pool.
-- **timeout**  Puntatore alla destinazione per il numero di timeout di sospensione di allocazione in questo pool.
+- **alloca** Puntatore alla destinazione per il numero di richieste di allocazione eseguite in questo pool.
+- **versioni**  Puntatore alla destinazione per il numero di richieste di versione eseguite in questo pool.
+- **sospensioni**   Puntatore alla destinazione per il numero di sospensioni di allocazione di thread in questo pool.
+- **timeout**  Puntatore alla destinazione per il numero di timeout di sospensione allocati in questo pool.
 
 >[!NOTE]
 > *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS**    (0x00) Prestazioni del pool di blocchi riuscite.
+- **TX_SUCCESS**    (0x00) Ottenere prestazioni del pool a blocchi riuscite.
 - **TX_PTR_ERROR**  (0x03) Puntatore del pool di blocchi non valido.
 - **TX_FEATURE_NOT_ENABLED**    (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -386,16 +394,16 @@ UINT tx_block_pool_performance_system_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni di tutti i pool di blocchi di memoria nell'applicazione.
+Questo servizio recupera informazioni sulle prestazioni relative a tutti i pool di blocchi di memoria nell'applicazione.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione* devono essere compilate **con TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO** per questo servizio per restituire informazioni *sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione* devono essere compilate **con** TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO per questo servizio per restituire *informazioni sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 
-- **allocates** Puntatore alla destinazione per il numero totale di richieste di allocazione eseguite in tutti i pool di blocchi.
-- **rilasci**  Puntatore alla destinazione per il numero totale di richieste di versione eseguite in tutti i pool di blocchi.
-- **sospensioni**   Puntatore alla destinazione per il numero totale di sospensioni dell'allocazione di thread in tutti i pool di blocchi.
+- **alloca** Puntatore alla destinazione per il numero totale di richieste di allocazione eseguite in tutti i pool di blocchi.
+- **versioni**  Puntatore alla destinazione per il numero totale di richieste di versione eseguite in tutti i pool di blocchi.
+- **sospensioni**   Puntatore alla destinazione per il numero totale di sospensioni di allocazione di thread in tutti i pool di blocchi.
 - **timeout**  Puntatore alla destinazione per il numero totale di timeout di sospensione di allocazione in tutti i pool di blocchi.
 
 > [!NOTE]
@@ -409,6 +417,10 @@ Questo servizio recupera informazioni sulle prestazioni di tutti i pool di blocc
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -439,7 +451,7 @@ successfully retrieved. */
 
 ## <a name="tx_block_pool_prioritize"></a>tx_block_pool_prioritize
 
-Classificare in ordine di priorità l'elenco di sospensione del pool di blocchi
+Classificare in ordine di priorità l'elenco di sospensione del pool a blocchi
 
 ### <a name="prototype"></a>Prototipo
 
@@ -449,7 +461,7 @@ UINT tx_block_pool_prioritize(TX_BLOCK_POOL *pool_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il thread con priorità più alta sospeso per un blocco di memoria in questo pool all'inizio dell'elenco di sospensioni. Tutti gli altri thread rimangono nello stesso ordine FIFO in cui sono stati sospesi.
+Questo servizio posiziona il thread con priorità più alta sospeso per un blocco di memoria in questo pool all'inizio dell'elenco di sospensione. Tutti gli altri thread rimangono nello stesso ordine FIFO in cui sono stati sospesi.
 
 ### <a name="parameters"></a>Parametri
 
@@ -457,14 +469,14 @@ Questo servizio posiziona il thread con priorità più alta sospeso per un blocc
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Il pool di blocchi ha avuto esito positivo.
+- **TX_SUCCESS** (0x00) Priorità del pool a blocchi riuscita.
 - **TX_POOL_ERROR** (0x02) Puntatore del pool di blocchi di memoria non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -500,12 +512,15 @@ Rilasciare un blocco di memoria a dimensione fissa
 
 ```c
 UINT tx_block_release(VOID *block_ptr);
-``````
+```
 
 ### <a name="description"></a>Descrizione
 
 Questo servizio rilascia un blocco allocato in precedenza al pool di memoria associato. Se sono presenti uno o più thread sospesi in attesa di blocchi di memoria da questo pool, al primo thread sospeso viene assegnato questo blocco di memoria e ripreso.
 
+>[!NOTE]
+> *L'applicazione potrebbe voler cancellare il blocco di memoria prima di rilasciarlo per evitare perdite di dati.*
+ 
 >[!IMPORTANT]
 >*L'applicazione deve impedire l'uso di un'area del blocco di memoria dopo il rilascio nel pool.*
 
@@ -581,8 +596,8 @@ Questo servizio alloca il numero specificato di byte dal pool di byte di memoria
 - **pool_ptr** <br>Puntatore a un pool di blocchi di memoria creato in precedenza.
 - **memory_ptr** <br>Puntatore a un puntatore di memoria di destinazione. Al termine dell'allocazione, viene inserito l'indirizzo dell'area di memoria allocata a cui punta questo parametro.
 - **memory_size** <br>Numero di byte richiesti.
-- **wait_option** <br>Definisce il comportamento del servizio se la memoria disponibile non è sufficiente. Le opzioni di attesa sono definite nel modo seguente:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT  restituisce un risultato immediato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato dall'inizializzazione.*
+- **wait_option** <br>Definisce il comportamento del servizio se la memoria disponibile non è sufficiente. Le opzioni di attesa sono definite come segue:
+  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT  restituisce un risultato immediato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato dall'inizializzazione.*
   - **TX_WAIT_FOREVER** 0xFFFFFFFF) - Se si seleziona **TX_WAIT_FOREVER,** il thread chiamante viene sospeso per un periodo indefinito fino a quando non è disponibile memoria sufficiente.
   - *valore* di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa della memoria.
 
@@ -661,14 +676,14 @@ Questo servizio crea un pool di byte di memoria nell'area specificata. Inizialme
 - **TX_SUCCESS** (0x00) Creazione del pool di memoria completata.
 - **TX_POOL_ERROR** (0x02) Puntatore del pool di memoria non valido. Il puntatore è NULL o il pool è già stato creato.
 - **TX_PTR_ERROR** (0x03) Indirizzo iniziale del pool non valido.
-- **TX_SIZE_ERROR** (0x05) Le dimensioni del pool non sono valide.
+- **TX_SIZE_ERROR** (0x05) Dimensioni del pool non valide.
 - **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -711,7 +726,7 @@ UINT tx_byte_pool_delete(TX_BYTE_POOL *pool_ptr);
 Questo servizio elimina il pool di byte di memoria specificato. Tutti i thread sospesi in attesa di memoria da questo pool vengono ripresi e vengono TX_DELETED **stato** restituito.
 
 > [!IMPORTANT]
-> *È responsabilità dell'applicazione gestire l'area di memoria associata al pool, disponibile al termine del servizio. Inoltre, l'applicazione deve impedire l'uso di un pool eliminato o di una memoria allocata in precedenza da esso.*
+> *È responsabilità dell'applicazione gestire l'area di memoria associata al pool, disponibile al termine del servizio. Inoltre, l'applicazione deve impedire l'uso di un pool eliminato o di una memoria allocata in precedenza.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -727,7 +742,7 @@ Questo servizio elimina il pool di byte di memoria specificato. Tutti i thread s
 
 Thread
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -782,7 +797,7 @@ Questo servizio recupera informazioni sul pool di byte di memoria specificato.
 - **frammenti** Puntatore alla destinazione per il numero totale di frammenti di memoria nel pool di byte.
 - **first_suspended** Puntatore alla destinazione per il puntatore al thread che si trova per primo nell'elenco di sospensione di questo pool di byte.
 - **suspended_count** Puntatore alla destinazione per il numero di thread attualmente sospesi in questo pool di byte.
-- **next_pool** Puntatore alla destinazione per il puntatore del successivo pool di byte creato.
+- **next_pool** Puntatore alla destinazione per il puntatore del pool di byte creato successivo.
 
 > [!NOTE]
 > *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
@@ -796,7 +811,7 @@ Questo servizio recupera informazioni sul pool di byte di memoria specificato.
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -861,26 +876,30 @@ Questo servizio recupera informazioni sulle prestazioni relative al pool di byte
 ### <a name="parameters"></a>Parametri
 
 - **pool_ptr** Puntatore al pool di byte di memoria creato in precedenza.
-- **alloca** Puntatore alla destinazione per il numero di richieste di allocazione eseguite in questo pool.
-- **versioni** Puntatore alla destinazione per il numero di richieste di versione eseguite in questo pool.
+- **allocates** Puntatore alla destinazione per il numero di richieste di allocazione eseguite nel pool.
+- **rilasci** Puntatore alla destinazione per il numero di richieste di versione eseguite nel pool.
 - **fragments_searched** Puntatore alla destinazione per il numero di frammenti di memoria interni cercati durante le richieste di allocazione nel pool.
-- **unioni** Puntatore alla destinazione per il numero di blocchi di memoria interni uniti durante le richieste di allocazione nel pool.
-- **divisioni** Puntatore alla destinazione per il numero di blocchi di memoria interni suddivisi (frammenti) creati durante le richieste di allocazione nel pool.
-- **sospensioni** Puntatore alla destinazione per il numero di sospensioni di allocazione di thread in questo pool.
-- **timeout** Puntatore alla destinazione per il numero di timeout di sospensione allocati in questo pool.
+- **unioni** Puntatore alla destinazione per il numero di blocchi di memoria interni uniti durante le richieste di allocazione in questo pool.
+- **divisioni** Puntatore alla destinazione per il numero di blocchi di memoria interni suddivisi (frammenti) creati durante le richieste di allocazione in questo pool.
+- **sospensioni** Puntatore alla destinazione per il numero di sospensioni dell'allocazione di thread in questo pool.
+- **timeout** Puntatore alla destinazione per il numero di timeout di sospensione di allocazione in questo pool.
 
 > [!NOTE]
 > *Se si specifica un TX_NULL per qualsiasi parametro, il parametro non è obbligatorio.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Ottenere le prestazioni del pool di byte con esito positivo.
-- **TX_PTR_ERROR** (0x03) Puntatore del pool di byte non valido.
+- **TX_SUCCESS** (0x00) Prestazioni del pool di byte riuscite.
+- **TX_PTR_ERROR** (0x03) Puntatore al pool di byte non valido.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -933,15 +952,15 @@ UINT tx_byte_pool_performance_system_info_get(
 ```
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni di tutti i pool di byte di memoria nel sistema.
+Questo servizio recupera informazioni sulle prestazioni relative a tutti i pool di byte di memoria nel sistema.
 
 > [!IMPORTANT]
 > *La libreria ThreadX e l'applicazione* devono essere compilate **con TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO** per questo servizio per restituire informazioni *sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 
-- **allocates** Puntatore alla destinazione per il numero di richieste di allocazione eseguite nel pool.
-- **rilasci** Puntatore alla destinazione per il numero di richieste di versione eseguite nel pool.
+- **alloca** Puntatore alla destinazione per il numero di richieste di allocazione eseguite in questo pool.
+- **versioni** Puntatore alla destinazione per il numero di richieste di versione eseguite in questo pool.
 - **fragments_searched** Puntatore alla destinazione per il numero totale di frammenti di memoria interni cercati durante le richieste di allocazione in tutti i pool di byte.
 - **unioni** Puntatore alla destinazione per il numero totale di blocchi di memoria interni uniti durante le richieste di allocazione in tutti i pool di byte.
 - **divisioni** Puntatore alla destinazione per il numero totale di blocchi di memoria interni suddivisi (frammenti) creati durante le richieste di allocazione in tutti i pool di byte.
@@ -949,16 +968,20 @@ Questo servizio recupera informazioni sulle prestazioni di tutti i pool di byte 
 - **timeout** Puntatore alla destinazione per il numero totale di timeout di sospensione di allocazione in tutti i pool di byte.
 
 > [!NOTE]
-> *Se si specifica un TX_NULL per qualsiasi parametro, il parametro non è obbligatorio.*
+> *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Prestazioni del pool di byte riuscite.
+- **TX_SUCCESS** (0x00) Ottenere le prestazioni del pool di byte con esito positivo.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
 
 ### <a name="allowed-from"></a>Consentito da
 
  Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -994,7 +1017,7 @@ successfully retrieved. */
 
 ## <a name="tx_byte_pool_prioritize"></a>tx_byte_pool_prioritize
 
-Classificare in ordine di priorità l'elenco delle sospensioni del pool di byte
+Classificare in ordine di priorità l'elenco di sospensioni del pool di byte
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1011,14 +1034,14 @@ Questo servizio posiziona il thread con priorità più alta sospeso per la memor
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Il pool di memoria ha avuto esito positivo.
+- **TX_SUCCESS** (0x00) Priorità del pool di memoria riuscita.
 - **TX_POOL_ERROR** (0x02) Puntatore del pool di memoria non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1050,7 +1073,7 @@ if there is enough memory to satisfy its request. */
 
 ## <a name="tx_byte_release"></a>tx_byte_release
 
-Rilasci byte nel pool di memoria
+Rilasciare i byte nel pool di memoria
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1060,7 +1083,10 @@ UINT tx_byte_release(VOID *memory_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio rilascia un'area di memoria allocata in precedenza al pool associato. Se uno o più thread sono sospesi in attesa di memoria da questo pool, a ogni thread sospeso viene data memoria e ripresa fino a quando la memoria non viene esaurita o finché non sono più presenti thread sospesi. Questo processo di allocazione della memoria ai thread sospesi inizia sempre con il primo thread sospeso.
+Questo servizio rilascia un'area di memoria allocata in precedenza al pool associato. Se sono presenti uno o più thread sospesi in attesa di memoria da questo pool, a ogni thread sospeso viene data memoria e ripresa fino a quando la memoria non è esaurita o fino a quando non sono presenti altri thread sospesi. Questo processo di allocazione della memoria ai thread sospesi inizia sempre con il primo thread sospeso.
+
+>[!NOTE]
+> *L'applicazione potrebbe voler cancellare l'area di memoria prima di rilasciarla per evitare perdite di dati.*
 
 > [!IMPORTANT]
 > *L'applicazione deve impedire l'uso dell'area di memoria dopo il rilascio.*
@@ -1071,7 +1097,7 @@ Questo servizio rilascia un'area di memoria allocata in precedenza al pool assoc
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Rilascio di memoria riuscito.
+- **TX_SUCCESS** (0x00) Rilascio della memoria riuscito.
 - **TX_PTR_ERROR** (0x03) Puntatore all'area di memoria non valido.
 - **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
@@ -1079,7 +1105,7 @@ Questo servizio rilascia un'area di memoria allocata in precedenza al pool assoc
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -1109,7 +1135,7 @@ memory_ptr has been returned to the pool. */
 
 ## <a name="tx_event_flags_create"></a>tx_event_flags_create
 
-Creare un gruppo di flag di eventi
+Creare un gruppo di flag di evento
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1168,7 +1194,7 @@ for get and set services. */
 
 ## <a name="tx_event_flags_delete"></a>tx_event_flags_delete
 
-Eliminare il gruppo di flag di evento
+Eliminare un gruppo di flag di eventi
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1181,15 +1207,15 @@ UINT tx_event_flags_delete(TX_EVENT_FLAGS_GROUP *group_ptr);
 Questo servizio elimina il gruppo di flag di evento specificato. Tutti i thread sospesi in attesa di eventi da questo gruppo vengono ripresi e vengono TX_DELETED stato restituito.
 
 >[!IMPORTANT]
-> *L'applicazione deve assicurarsi che un callback di notifica impostato per questo gruppo di flag di evento venga completato (o disabilitato) prima di eliminare il gruppo di flag di evento. Inoltre, l'applicazione deve impedire l'uso futuro di un gruppo di flag di eventi eliminati.*
+> *L'applicazione deve assicurarsi che un callback di notifica impostato per questo gruppo di flag di evento venga completato (o disabilitato) prima di eliminare il gruppo di flag di evento. Inoltre, l'applicazione deve impedire qualsiasi uso futuro di un gruppo di flag di eventi eliminati.*
 
 ### <a name="parameters"></a>Parametri
 
-- **group_ptr** Puntatore a un gruppo di flag di evento creato in precedenza.
+- **group_ptr** Puntatore a un gruppo di flag di eventi creato in precedenza.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Eliminazione del gruppo di flag di evento riuscita.
+- **TX_SUCCESS(0x00)** Eliminazione del gruppo di flag di evento riuscito.
 - **TX_GROUP_ERROR** (0x06) Puntatore di gruppo flag di evento non valido.
 - **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
@@ -1197,7 +1223,7 @@ Questo servizio elimina il gruppo di flag di evento specificato. Tutti i thread 
 
 Thread
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -1247,7 +1273,7 @@ Questo servizio recupera i flag di evento dal gruppo di flag di evento specifica
 
 ### <a name="parameters"></a>Parametri
 
-- **group_ptr** <br>Puntatore a un gruppo di flag di evento creato in precedenza.
+- **group_ptr** <br>Puntatore a un gruppo di flag di eventi creato in precedenza.
 - **requested_flags** <br>Variabile senza segno a 32 bit che rappresenta i flag di evento richiesti.
 - **get_option** <br>Specifica se sono necessari tutti o uno dei flag di evento richiesti. Di seguito sono riportate le selezioni valide:
 
@@ -1256,30 +1282,30 @@ Questo servizio recupera i flag di evento dal gruppo di flag di evento specifica
   - **TX_OR** (0x00)
   - **TX_OR_CLEAR** (0x01)
 
-    La TX_AND o TX_AND_CLEAR specifica che tutti i flag di evento devono essere presenti nel gruppo. La TX_OR o TX_OR_CLEAR specifica che qualsiasi flag di evento è soddisfacente. I flag di evento che soddisfano la richiesta vengono cancellati (impostati su zero) se TX_AND_CLEAR o TX_OR_CLEAR specificati.
+    La TX_AND o TX_AND_CLEAR specifica che tutti i flag di evento devono essere presenti nel gruppo. La TX_OR o TX_OR_CLEAR specifica che qualsiasi flag di evento è soddisfacente. I flag di evento che soddisfano la richiesta vengono cancellati (impostati su zero) se TX_AND_CLEAR o TX_OR_CLEAR vengono specificati.
 
 - **actual_flags_ptr** <br>Puntatore alla destinazione di in cui vengono inseriti i flag di evento recuperati. Si noti che i flag effettivi ottenuti possono contenere flag che non sono stati richiesti.
-- **wait_option**  <br>Definisce il comportamento del servizio se i flag di evento selezionati non sono impostati. Le opzioni di attesa sono definite nel modo seguente:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce un ritorno immediato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. Questa è l'unica opzione valida se il servizio viene chiamato da un non thread; ad esempio inizializzazione, timer o ISR.
-  - **TX_WAIT_FOREVER** valore di timeout (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando non sono disponibili i flag di evento.
-  - valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa dei flag dell'evento.
+- **wait_option**  <br>Definisce il comportamento del servizio se i flag di evento selezionati non sono impostati. Le opzioni di attesa sono definite come segue:
+  - **TX_NO_WAIT** (0x00000000): la selezione di TX_NO_WAIT comporta un ritorno immediato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. Questa è l'unica opzione valida se il servizio viene chiamato da un non thread. ad esempio inizializzazione, timer o ISR.
+  - **TX_WAIT_FOREVER** valore di timeout (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando non sono disponibili i flag di evento.
+  - Valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa dei flag di evento.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Ottenere i flag di evento successful.
-- **TX_DELETED** (0x01) Il gruppo Flag di evento è stato eliminato durante la sospensione del thread.
-- **TX_NO_EVENTS** (0x07) il servizio non è riuscito a ottenere gli eventi specificati entro il tempo di attesa specificato.
+- **TX_SUCCESS** (0x00) Ottenere i flag di evento Successful.
+- **TX_DELETED** gruppo flag 0x01 eventi è stato eliminato durante la sospensione del thread.
+- **TX_NO_EVENTS** (0x07) non è riuscito a ottenere gli eventi specificati entro il tempo di attesa specificato.
 - **TX_WAIT_ABORTED** sospensione (0x1A) è stata interrotta da un altro thread, timer o ISR.
 - **TX_GROUP_ERROR** (0x06) Puntatore di gruppo flag di evento non valido.
 - **TX_PTR_ERROR** (0x03) Puntatore non valido per i flag di evento effettivi.
-- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa da TX_NO_WAIT in una chiamata da un thread non thread.
-- **TX_OPTION_ERROR** (0x08) È stata specificata l'opzione get non valida.
+- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa TX_NO_WAIT in una chiamata da un nonthread.
+- **TX_OPTION_ERROR** specificata 0x08'opzione get non valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -1301,7 +1327,7 @@ status = tx_event_flags_get(&my_event_flags_group, 0x111,
 actual events obtained. */
 ```
 
-**Vedere anche**
+### <a name="see-also"></a>Vedere anche
 
 - tx_event_flags_create
 - tx_event_flags_delete
@@ -1311,11 +1337,11 @@ actual events obtained. */
 - tx_event_flags_set
 - tx_event_flags_set_notify
 
-### <a name="tx_event_flags_info_get"></a>tx_event_flags_info_get
+## <a name="tx_event_flags_info_get"></a>tx_event_flags_info_get
 
 Recuperare informazioni sul gruppo di flag di evento
 
-**Prototipo**
+### <a name="prototype"></a>Prototipo
 
 ```c
 UINT tx_event_flags_info_get(
@@ -1326,16 +1352,16 @@ UINT tx_event_flags_info_get(
     TX_EVENT_FLAGS_GROUP **next_group);
 ```
 
-**Descrizione**
+### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sul gruppo di flag di evento specificato.
+Questo servizio recupera informazioni sul gruppo di flag di eventi specificato.
 
-**Parametri**
+### <a name="parameters"></a>Parametri
 
 - **group_ptr** Puntatore a un blocco di controllo del gruppo di flag di evento.
 - **name** Puntatore alla destinazione per il puntatore al nome del gruppo di flag di evento.
-- **current_flags** Puntatore alla destinazione per i flag del set corrente nel gruppo di flag di evento.
-- **first_suspended** Puntatore alla destinazione per il puntatore al thread che si trova per primo nell'elenco di sospensioni di questo gruppo di flag di evento.
+- **current_flags** Puntatore alla destinazione per i flag impostati correnti nel gruppo di flag di eventi.
+- **first_suspended** Puntatore alla destinazione per il puntatore al thread che si trova per primo nell'elenco di sospensione di questo gruppo di flag di evento.
 - **suspended_count** Puntatore alla destinazione per il numero di thread attualmente sospesi in questo gruppo di flag di evento.
 - **next_group** Puntatore alla destinazione per il puntatore del gruppo di flag di evento creato successivo.
 
@@ -1375,7 +1401,7 @@ status = tx_event_flags_info_get(&my_event_group, &name,
 /* If status equals TX_SUCCESS, the information requested is
 valid. */
 ```
-**Vedere anche**
+### <a name="see-also"></a>Vedere anche
 
 - tx_event_flags_create
 - tx_event_flags_delete
@@ -1419,13 +1445,17 @@ Questo servizio recupera informazioni sulle prestazioni relative al gruppo di fl
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** prestazioni del gruppo di TX_SUCCESS (0x00) Riuscito.
+- **TX_SUCCESS** prestazioni del gruppo di 0x00 (0x00) Riuscito.
 - **TX_PTR_ERROR** (0x03) Puntatore di gruppo flag di evento non valido.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -1472,7 +1502,7 @@ UINT tx_event_flags_performance_system_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni di tutti i gruppi di flag di eventi nel sistema.
+Questo servizio recupera informazioni sulle prestazioni relative a tutti i gruppi di flag di evento nel sistema.
 
 > [!IMPORTANT]
 > *La libreria e l'applicazione ThreadX devono essere compilate* **con TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO** per questo servizio per restituire informazioni sulle *prestazioni.*
@@ -1489,8 +1519,16 @@ Questo servizio recupera informazioni sulle prestazioni di tutti i gruppi di fla
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Riuscito segnala le prestazioni del sistema.
+- **TX_SUCCESS** (0x00) I flag di evento Riuscito ottengono le prestazioni del sistema.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
+
+### <a name="allowed-from"></a>Consentito da
+
+Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -1544,14 +1582,18 @@ Questo servizio imposta o cancella i flag di evento in un gruppo di flag di even
   - **TX_AND** (0x02)
   - **TX_OR** (0x00)
 
-  La TX_AND specifica che i flag di evento specificati **sono E nei** flag di evento correnti nel gruppo. Questa opzione viene spesso usata per cancellare i flag di evento in un gruppo. In caso contrario, TX_OR viene specificato , i flag di evento specificati sono **OR** ed con l'evento corrente nel gruppo.
+  La TX_AND specifica che i flag di evento specificati **vengono emersi** nei flag di evento correnti nel gruppo. Questa opzione viene spesso usata per cancellare i flag di evento in un gruppo. In caso contrario, se TX_OR specificato, i flag di evento specificati sono **OR** ed con l'evento corrente nel gruppo.
 
 ### <a name="return-values"></a>Valori restituiti
-- **TX_SUCCESS** (0x00) Flag di evento Operazione riuscita impostata.
+- **TX_SUCCESS** (0x00) Flag di evento riusciti impostati.
 - **TX_GROUP_ERROR** (0x06) Puntatore non valido al gruppo di flag di evento.
 - **TX_OPTION_ERROR** (0x08) È stata specificata un'opzione set non valida.
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="allowed-from"></a>Consentito da
+
+Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -1597,14 +1639,22 @@ UINT tx_event_flags_set_notify(
 Questo servizio registra una funzione di callback di notifica che viene chiamata ogni volta che uno o più flag di evento vengono impostati nel gruppo di flag di evento specificato. L'elaborazione del callback di notifica è definita da
 
 ### <a name="parameters"></a>Parametri
-- **group_ptr** Puntatore al gruppo di flag di eventi creato in precedenza.
+- **group_ptr** Puntatore al gruppo di flag di evento creato in precedenza.
 - **events_set_notify** Puntatore alla funzione di notifica impostata dei flag di evento dell'applicazione. Se questo valore è TX_NULL, la notifica è disabilitata.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Registrazione dei flag di evento impostata completata.
+- **TX_SUCCESS** (0x00) Registrazione riuscita della notifica di impostazione dei flag di evento.
 - **TX_GROUP_ERROR** (0x06) Puntatore di gruppo flag di evento non valido.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema è stato compilato con funzionalità di notifica disabilitate.
+
+### <a name="allowed-from"></a>Consentito da
+
+Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -1647,7 +1697,7 @@ UINT tx_interrupt_control(UINT new_posture);
 Questo servizio abilita o disabilita gli interrupt come specificato dal parametro di input *new_posture*.
 
 > [!NOTE]
-> *Se questo servizio viene chiamato da un thread dell'applicazione, il postura di interrupt rimane parte del contesto del thread. Ad esempio, se il thread chiama questa routine per disabilitare gli interrupt e quindi sospende, quando viene ripreso, gli interrupt vengono nuovamente disabilitati.*
+> *Se questo servizio viene chiamato da un thread dell'applicazione, la posizione di interruzione rimane parte del contesto del thread. Ad esempio, se il thread chiama questa routine per disabilitare gli interrupt e quindi sospende, quando viene ripreso, gli interrupt vengono nuovamente disabilitati.*
 
 > [!WARNING]
 > *Questo servizio non deve essere usato per abilitare gli interrupt durante l'inizializzazione. Questa operazione potrebbe causare risultati imprevedibili.*
@@ -1657,13 +1707,13 @@ Questo servizio abilita o disabilita gli interrupt come specificato dal parametr
 - **new_posture** Questo parametro specifica se gli interrupt sono disabilitati o abilitati. I valori validi **includono TX_INT_DISABLE** e **TX_INT_ENABLE**. I valori effettivi per questi parametri sono specifici della porta. Inoltre, alcune architetture di elaborazione potrebbero supportare posture di disabilitazione di interrupt aggiuntive.
 
 ### <a name="return-values"></a>Valori restituiti
-- **postura precedente** Questo servizio restituisce la posizione di interruzione precedente al chiamante. In questo modo, gli utenti del servizio possono ripristinare il postura precedente dopo che gli interrupt sono stati disabilitati.
+- **postura precedente** Questo servizio restituisce la posizione di interruzione precedente al chiamante. In questo modo, gli utenti del servizio possono ripristinare la posizione precedente dopo che gli interrupt sono stati disabilitati.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1707,20 +1757,20 @@ Questo servizio crea un mutex per l'esclusione reciproca tra thread per la prote
 
 - **mutex_ptr** Puntatore a un blocco di controllo mutex.
 - **name_ptr** Puntatore al nome del mutex.
-- **priority_inherit** Specifica se questo mutex supporta o meno l'ereditarietà della priorità. Se questo valore è TX_INHERIT, l'ereditarietà della priorità è supportata. Tuttavia, se si TX_NO_INHERIT, l'ereditarietà della priorità non è supportata da questo mutex.
+- **priority_inherit** Specifica se questo mutex supporta o meno l'ereditarietà della priorità. Se questo valore è TX_INHERIT, l'ereditarietà della priorità è supportata. Tuttavia, se viene TX_NO_INHERIT, l'ereditarietà della priorità non è supportata da questo mutex.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Creazione mutex riuscita.
+- **TX_SUCCESS** (0x00) Creazione del mutex completata.
 - **TX_MUTEX_ERROR** (0x1C) Puntatore mutex non valido. Il puntatore è NULL o il mutex è già stato creato.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
-- **TX_INHERIT_ERROR** (0x1F) Parametro inherit di priorità non valido.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_INHERIT_ERROR** (0x1F) Parametro inherit priorità non valida.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -1751,7 +1801,7 @@ use. */
 
 ## <a name="tx_mutex_delete"></a>tx_mutex_delete
 
-Eliminare il mutex di esclusione reciproca
+Eliminare mutex di esclusione reciproca
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1772,15 +1822,15 @@ Questo servizio elimina il mutex specificato. Tutti i thread sospesi in attesa d
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Eliminazione mutex riuscita.
+- **TX_SUCCESS** (0x00) Eliminazione del mutex completata.
 - **TX_MUTEX_ERROR** (0x1C) Puntatore mutex non valido.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -1822,36 +1872,36 @@ UINT tx_mutex_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio tenta di ottenere la proprietà esclusiva del mutex specificato. Se il thread chiamante è già proprietario del mutex, viene incrementato un contatore interno e viene restituito uno stato di esito positivo.
+Questo servizio tenta di ottenere la proprietà esclusiva del mutex specificato. Se il thread chiamante è già proprietario del mutex, viene incrementato un contatore interno e viene restituito uno stato corretto.
 
-Se il mutex è di proprietà di un altro thread e questo thread ha una priorità più alta ed è stata specificata l'ereditarietà della priorità al momento della creazione del mutex, la priorità del thread con priorità inferiore verrà temporaneamente elevata a quella del thread chiamante.
+Se il mutex è di proprietà di un altro thread e questo thread ha una priorità più alta ed è stata specificata l'ereditarietà della priorità in mutex create, la priorità del thread con priorità inferiore verrà temporaneamente innalzata a quella del thread chiamante.
 
 > [!NOTE]
-> *La priorità del thread con priorità inferiore che possiede un mutex con prioritàinheritance non deve mai essere modificata da un thread esterno durante la proprietà del mutex.*
+> *La priorità del thread con priorità inferiore proprietaria di un mutex con prioritàinheritance non deve mai essere modificata da un thread esterno durante la proprietà del mutex.*
 
 ### <a name="parameters"></a>Parametri
 
 - **mutex_ptr**   <br>Puntatore a un mutex creato in precedenza.
 - **wait_option** <br>Definisce il comportamento del servizio se il mutex è già di proprietà di un altro thread. Le opzioni di attesa sono definite come segue:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce immediatamente un risultato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato dall'inizializzazione.*
-  - **TX_WAIT_FOREVER** valore di timeout (0xFFFFFFFF): se si seleziona **TX_WAIT_FOREVER,** il thread chiamante viene sospeso per un periodo illimitato fino a quando il mutex non è disponibile.
-  - Valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa del mutex.
+  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce un ritorno immediato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato dall'inizializzazione.*
+  - **TX_WAIT_FOREVER** valore di timeout (0xFFFFFFFF): se  si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando il mutex non è disponibile.
+  - valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa del mutex.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **TX_SUCCESS** (0x00) Operazione get mutex riuscita.
-- **TX_DELETED** mutex (0x01) è stato eliminato durante la sospensione del thread.
-- **TX_NOT_AVAILABLE** (0x1D) non è stato in grado di ottenere la proprietà del mutex entro il tempo di attesa specificato.
+- **TX_DELETED** (0x01) Mutex è stato eliminato durante la sospensione del thread.
+- **TX_NOT_AVAILABLE** (0x1D) Il servizio non è stato in grado di ottenere la proprietà del mutex entro il tempo di attesa specificato.
 - **TX_WAIT_ABORTED** sospensione (0x1A) è stata interrotta da un altro thread, timer o ISR.
 - **TX_MUTEX_ERROR** (0x1C) Puntatore mutex non valido.
-- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa TX_NO_WAIT in una chiamata da un non thread.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa da TX_NO_WAIT in una chiamata da un thread non.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread e timer
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -1913,18 +1963,18 @@ Questo servizio recupera informazioni dal mutex specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Recupero delle informazioni mutex riuscito.
+- **TX_SUCCESS** (0x00) Recupero delle informazioni del mutex riuscito.
 - **TX_MUTEX_ERROR** (0x1C) Puntatore mutex non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
-**Esempio**
+### <a name="example"></a>Esempio
 
 ```c
 TX_MUTEX my_mutex;
@@ -1979,30 +2029,34 @@ UINT tx_mutex_performance_info_get(
 Questo servizio recupera informazioni sulle prestazioni relative al mutex specificato.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_MUTEX_ENABLE_PERFORMANCE_INFO** _ _defined che il servizio restituirà informazioni sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_MUTEX_ENABLE_PERFORMANCE_INFO** _ _defined questo servizio restituirà informazioni sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 
-- **mutex_ptr** Puntatore a mutex creato in precedenza.
+- **mutex_ptr** Puntatore al mutex creato in precedenza.
 - **puts** Puntatore alla destinazione per il numero di richieste put eseguite su questo mutex.
-- **gets** Puntatore alla destinazione per il numero di richieste get eseguite su questo mutex.
-- **sospensioni** Puntatore alla destinazione per il numero di sospensioni del mutex di thread su questo mutex.
+- **ottiene** Puntatore alla destinazione per il numero di richieste get eseguite su questo mutex.
+- **sospensioni** Puntatore alla destinazione per il numero di sospensioni di thread mutex get su questo mutex.
 - **timeout** Puntatore alla destinazione per il numero di timeout di sospensione get mutex in questo mutex.
-- **inversioni** Puntatore alla destinazione per il numero di inversioni di priorità dei thread in questo mutex.
-- **ereditarietà** Puntatore alla destinazione per il numero di operazioni di ereditarietà della priorità dei thread in questo mutex.
+- **inversioni** Puntatore alla destinazione per il numero di inversioni di priorità del thread in questo mutex.
+- **ereditarietà** Puntatore alla destinazione per il numero di operazioni di ereditarietà della priorità del thread in questo mutex.
 
 > [!NOTE]
 > *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Ottenere prestazioni mutex riuscite.
+- **TX_SUCCESS** (0x00) Ottenere le prestazioni del mutex riuscito.
 - **TX_PTR_ERROR** (0x03) Puntatore mutex non valido.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -2052,16 +2106,16 @@ UINT tx_mutex_performance_system_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni relative a tutti i mutex nel sistema.
+Questo servizio recupera informazioni sulle prestazioni su tutti i mutex nel sistema.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione* devono essere compilate **con TX_MUTEX_ENABLE_PERFORMANCE_INFO** per questo servizio per restituire informazioni *sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione*  devono essere compilate con TX_MUTEX_ENABLE_PERFORMANCE_INFO per questo servizio per restituire *informazioni sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 
 - **puts** Puntatore alla destinazione per il numero totale di richieste put eseguite su tutti i mutex.
 - **ottiene** Puntatore alla destinazione per il numero totale di richieste get eseguite su tutti i mutex.
-- **sospensioni** Puntatore alla destinazione per il numero totale di sospensioni di thread mutex get in tutti i mutex.
+- **sospensioni** Puntatore alla destinazione per il numero totale di sospensioni get mutex di thread in tutti i mutex.
 - **timeout** Puntatore alla destinazione per il numero totale di timeout di sospensione get mutex in tutti i mutex.
 - **inversioni** Puntatore alla destinazione per il numero totale di inversioni di priorità dei thread in tutti i mutex.
 - **ereditarietà** Puntatore alla destinazione per il numero totale di operazioni di ereditarietà della priorità dei thread in tutti i mutex.
@@ -2077,6 +2131,10 @@ Questo servizio recupera informazioni sulle prestazioni relative a tutti i mutex
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -2188,13 +2246,13 @@ Questo servizio decrementa il numero di proprietà del mutex specificato. Se il 
 
 ### <a name="return-values"></a>Valori restituiti
 - **TX_SUCCESS** (0x00) Rilascio del mutex riuscito.
-- **TX_NOT_OWNED** mutex (0x1E) non è di proprietà del chiamante.
+- **TX_NOT_OWNED** (0x1E) Mutex non è di proprietà del chiamante.
 - **TX_MUTEX_ERROR** (0x1C) Puntatore non valido al mutex.
 - **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
-Inizializzazione e thread e timer
+Inizializzazione, thread e timer
 
 ### <a name="preemption-possible"></a>Possibile preemption
 
@@ -2240,26 +2298,26 @@ UINT tx_queue_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea una coda di messaggi che viene in genere usata per la comunicazione interthreading. Il numero totale di messaggi viene calcolato in base alla dimensione del messaggio specificata e al numero totale di byte nella coda.
+Questo servizio crea una coda di messaggi che viene in genere utilizzata per la comunicazione interthread. Il numero totale di messaggi viene calcolato in base alle dimensioni dei messaggi specificate e al numero totale di byte nella coda.
 
 > [!NOTE]
-> *Se il numero totale di byte specificati nell'area di memoria della coda non è divisibile in modo uniforme in base alla dimensione del messaggio specificata, i byte rimanenti nell'area di memoria non vengono utilizzati.*
+> *Se il numero totale di byte specificato nell'area di memoria della coda non è divisibile in modo uniforme per la dimensione del messaggio specificata, i byte rimanenti nell'area di memoria non vengono utilizzati.*
 
 ### <a name="parameters"></a>Parametri
 
 - **queue_ptr** Puntatore a un blocco di controllo della coda di messaggi.
 - **name_ptr** Puntatore al nome della coda di messaggi.
-- **message_size** Specifica le dimensioni di ogni messaggio nella coda. Le dimensioni dei messaggi variano da 1 parola a 32 bit a 16 parole a 32 bit. Le opzioni valide per le dimensioni dei messaggi sono valori numerici compresi tra 1 e 16 inclusi.
+- **message_size** Specifica le dimensioni di ogni messaggio nella coda. Le dimensioni dei messaggi vanno da 1 parola a 32 bit a 16 parole a 32 bit. Le opzioni valide per le dimensioni dei messaggi sono valori numerici compresi tra 1 e 16 inclusi.
 - **queue_start** Indirizzo iniziale della coda di messaggi. L'indirizzo iniziale deve essere allineato alle dimensioni del tipo di dati ULONG.
 - **queue_size** Numero totale di byte disponibili per la coda di messaggi.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Creazione della coda di messaggi completata.
+- **TX_SUCCESS** (0x00) Creazione coda di messaggi completata.
 - **TX_QUEUE_ERROR** (0x09) Puntatore alla coda di messaggi non valido. Il puntatore è NULL o la coda è già stata creata.
 - **TX_PTR_ERROR** (0x03) Indirizzo iniziale della coda di messaggi non valido.
 - **TX_SIZE_ERROR** (0x05) La dimensione della coda di messaggi non è valida.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2324,7 +2382,7 @@ Questo servizio elimina la coda di messaggi specificata. Tutti i thread sospesi 
 
 - **TX_SUCCESS** (0x00) Eliminazione della coda di messaggi completata.
 - **TX_QUEUE_ERROR** (0x09) Puntatore alla coda di messaggi non valido.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -2445,7 +2503,7 @@ Questo servizio invia un messaggio alla posizione anteriore della coda di messag
 - **queue_ptr** <br>Puntatore a un blocco di controllo della coda di messaggi.
 - **source_ptr** <br>Puntatore al messaggio.
 - **wait_option**  <br>Definisce il comportamento del servizio se la coda di messaggi è piena. Le opzioni di attesa sono definite come segue:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce immediatamente un risultato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato da un non thread; ad esempio inizializzazione, timer o ISR.*
+  - **TX_NO_WAIT** (0x00000000): la selezione di TX_NO_WAIT comporta un ritorno immediato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato da un non thread. ad esempio inizializzazione, timer o ISR.*
   - **TX_WAIT_FOREVER** (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando non è presente spazio nella coda.
   - Valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa di spazio nella coda.
 
@@ -2612,7 +2670,7 @@ Questo servizio recupera informazioni sulle prestazioni relative alla coda speci
 - **messages_received** Puntatore alla destinazione per il numero di richieste di ricezione eseguite su questa coda.
 - **empty_suspensions** Puntatore alla destinazione per il numero di sospensioni vuote della coda in questa coda.
 - **full_suspensions** Puntatore alla destinazione per il numero di sospensioni complete della coda in questa coda.
-- **full_errors** Puntatore alla destinazione per il numero di errori completi della coda nella coda.
+- **full_errors** Puntatore alla destinazione per il numero di errori completi della coda in questa coda.
 - **timeout** Puntatore alla destinazione per il numero di timeout di sospensione del thread in questa coda.
 
 > [!NOTE]
@@ -2627,6 +2685,10 @@ Questo servizio recupera informazioni sulle prestazioni relative alla coda speci
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -2664,7 +2726,7 @@ successfully retrieved. */
 
 ## <a name="tx_queue_performance_system_info_get"></a>tx_queue_performance_system_info_get
 
-Ottenere informazioni sulle prestazioni del sistema di accodamento
+Ottenere informazioni sulle prestazioni del sistema della coda
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2680,10 +2742,10 @@ UINT tx_queue_performance_system_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni di tutte le code nel sistema.
+Questo servizio recupera informazioni sulle prestazioni relative a tutte le code nel sistema.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_QUEUE_ENABLE_PERFORMANCE_INFO** _ _defined che il servizio restituirà informazioni sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_QUEUE_ENABLE_PERFORMANCE_INFO** _ _defined che questo servizio restituirà informazioni sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -2697,7 +2759,7 @@ Questo servizio recupera informazioni sulle prestazioni di tutte le code nel sis
 > [!NOTE]
 > *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
 
-**Valori restituiti**
+### <a name="return-values"></a>Valori restituiti
 
 - **TX_SUCCESS** (0x00) Ottenere le prestazioni del sistema di accodamento con esito positivo.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
@@ -2705,6 +2767,10 @@ Questo servizio recupera informazioni sulle prestazioni di tutte le code nel sis
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -2825,26 +2891,26 @@ Questo servizio recupera un messaggio dalla coda di messaggi specificata. Il mes
 
 - **queue_ptr** <br>Puntatore a una coda di messaggi creata in precedenza.
 - **destination_ptr** <br>Percorso della posizione in cui copiare il messaggio.
-- **wait_option** <br>Definisce il comportamento del servizio se la coda di messaggi è vuota. Le opzioni di attesa sono definite nel modo seguente:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce un ritorno immediato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. Questa è l'unica opzione valida se il servizio viene chiamato da un non thread; ad esempio inizializzazione, timer o ISR.
+- **wait_option** <br>Definisce il comportamento del servizio se la coda di messaggi è vuota. Le opzioni di attesa sono definite come segue:
+  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce un risultato immediato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. Questa è l'unica opzione valida se il servizio viene chiamato da un non thread; ad esempio inizializzazione, timer o ISR.
   - **TX_WAIT_FOREVER** (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando non è disponibile un messaggio.
-  - timeout value (0x00000001 through 0xFFFFFFFE) - La selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa di un messaggio.
+  - valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa di un messaggio.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **TX_SUCCESS** (0x00) Recupero del messaggio riuscito.
 - **TX_DELETED** (0x01) La coda di messaggi è stata eliminata durante la sospensione del thread.
-- **TX_QUEUE_EMPTY** (0x0A) Non è stato possibile recuperare un messaggio perché la coda era vuota per la durata del tempo di attesa specificato.
+- **TX_QUEUE_EMPTY** (0x0A) non è riuscito a recuperare un messaggio perché la coda era vuota per la durata del tempo di attesa specificato.
 - **TX_WAIT_ABORTED** sospensione (0x1A) è stata interrotta da un altro thread, timer o ISR.
-- **TX_QUEUE_ERROR** (0x09) Puntatore della coda di messaggi non valido.
+- **TX_QUEUE_ERROR** (0x09) Puntatore alla coda di messaggi non valido.
 - **TX_PTR_ERROR** (0x03) Puntatore di destinazione non valido per il messaggio.
-- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa da TX_NO_WAIT in una chiamata da un thread non thread.
+- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa TX_NO_WAIT in una chiamata da un nonthread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -2899,26 +2965,26 @@ Questo servizio invia un messaggio alla coda di messaggi specificata. Il messagg
 ### <a name="parameters"></a>Parametri
 - **queue_ptr** <br>Puntatore a una coda di messaggi creata in precedenza.
 - **source_ptr** <br>Puntatore al messaggio.
-- **wait_option** <br>Definisce il comportamento del servizio se la coda di messaggi è piena. Le opzioni di attesa sono definite nel modo seguente:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce un ritorno immediato da questo servizio, indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione* valida se il servizio viene chiamato da un non thread, ad esempio inizializzazione, timer o ISR.
-  - **TX_WAIT_FOREVER** (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo indefinito fino a quando non è presente spazio nella coda.
-  - valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da mantenere sospesi durante l'attesa dello spazio nella coda.
+- **wait_option** <br>Definisce il comportamento del servizio se la coda di messaggi è piena. Le opzioni di attesa sono definite come segue:
+  - **TX_NO_WAIT** (0x00000000): la selezione di TX_NO_WAIT comporta un ritorno immediato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione* valida se il servizio viene chiamato da un non thread, ad esempio inizializzazione, timer o ISR.
+  - **TX_WAIT_FOREVER** (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando non è presente spazio nella coda.
+  - Valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa di spazio nella coda.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **TX_SUCCESS** (0x00) Invio del messaggio riuscito.
-- **TX_DELETED** (0x01) La coda di messaggi è stata eliminata mentre il thread è stato sospeso.
-- **TX_QUEUE_FULL** servizio (0x0B) non è stato in grado di inviare un messaggio perché la coda era piena per la durata del tempo di attesa specificato.
+- **TX_DELETED** (0x01) La coda di messaggi è stata eliminata durante la sospensione del thread.
+- **TX_QUEUE_FULL** (0x0B) non è riuscito a inviare il messaggio perché la coda era piena per la durata del tempo di attesa specificato.
 - **TX_WAIT_ABORTED** sospensione (0x1A) è stata interrotta da un altro thread, timer o ISR.
-- **TX_QUEUE_ERROR** (0x09) Puntatore della coda di messaggi non valido.
+- **TX_QUEUE_ERROR** (0x09) Puntatore alla coda di messaggi non valido.
 - **TX_PTR_ERROR** (0x03) Puntatore di origine non valido per il messaggio.
-- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa da TX_NO_WAIT in una chiamata da un thread non thread.
+- **TX_WAIT_ERROR** (0x04) È stata specificata un'opzione di attesa diversa TX_NO_WAIT in una chiamata da un nonthread.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -2938,7 +3004,7 @@ status = tx_queue_send(&my_queue, my_message, TX_NO_WAIT);
 queue. */
 ```
 
-**Vedere anche**
+### <a name="see-also"></a>Vedere anche
 
 - tx_queue_create
 - tx_queue_delete
@@ -2968,7 +3034,7 @@ UINT tx_queue_send_notify(
 Questo servizio registra una funzione di callback di notifica che viene chiamata ogni volta che un messaggio viene inviato alla coda specificata. L'elaborazione del callback di notifica è definita dall'applicazione.
 
 >[!NOTE]
-> *Il callback di notifica di invio in coda dell'applicazione non è autorizzato a chiamare alcuna API ThreadX con un'opzione di sospensione.*
+> *Il callback di notifica dell'invio in coda dell'applicazione non può chiamare alcuna API ThreadX con un'opzione di sospensione.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -2984,6 +3050,10 @@ Questo servizio registra una funzione di callback di notifica che viene chiamata
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -3016,7 +3086,7 @@ void my_queue_send_notify(TX_QUEUE *queue_ptr)
 
 ## <a name="tx_semaphore_ceiling_put"></a>tx_semaphore_ceiling_put
 
-Inserire un'istanza nel conteggio del semaforo con il massimo
+Inserire un'istanza nel semaforo di conteggio con il limite massimo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3039,12 +3109,16 @@ Questo servizio inserisce un'istanza nel semaforo di conteggio specificato, che 
 
 - **TX_SUCCESS (0x00)** Creazione del limite massimo del semaforo completata.
 - **TX_CEILING_EXCEEDED** (0x21) La richiesta Put supera il limite massimo.
-- **TX_INVALID_CEILING** (0x22) È stato specificato un valore non valido pari a zero per ceiling.
+- **TX_INVALID_CEILING** (0x22) È stato specificato un valore non valido pari a zero per il limite massimo.
 - **TX_SEMAPHORE_ERROR** (0x0C) Puntatore semaforo non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+Sì
 
 ### <a name="example"></a>Esempio
 
@@ -3086,7 +3160,7 @@ UINT tx_semaphore_create(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio crea un semaforo di conteggio per la sincronizzazione tra thread. Il conteggio iniziale del semaforo viene specificato come parametro di input.
+Questo servizio crea un semaforo di conteggio per la sincronizzazione tra thread. Il conteggio del semaforo iniziale viene specificato come parametro di input.
 
 ### <a name="parameters"></a>Parametri
 
@@ -3098,7 +3172,7 @@ Questo servizio crea un semaforo di conteggio per la sincronizzazione tra thread
 
 - **TX_SUCCESS** (0x00) Creazione del semaforo completata.
 - **TX_SEMAPHORE_ERROR** (0x0C) Puntatore semaforo non valido. Il puntatore è NULL o il semaforo è già stato creato.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3161,7 +3235,7 @@ Questo servizio elimina il semaforo di conteggio specificato. Tutti i thread sos
 
 - **TX_SUCCESS** (0x00) Eliminazione del semaforo con conteggio riuscito.
 - **TX_SEMAPHORE_ERROR** (0x0C) Puntatore al semaforo di conteggio non valido.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3185,7 +3259,7 @@ status = tx_semaphore_delete(&my_semaphore);
 deleted. */
 ```
 
-**Vedere anche**
+### <a name="see-also"></a>Vedere anche
 
 - tx_semaphore_ceiling_put
 - tx_semaphore_create
@@ -3217,14 +3291,14 @@ Questo servizio recupera un'istanza (un singolo conteggio) dal semaforo di conte
 
 - **semaphore_ptr** <br>Puntatore a un semaforo di conteggio creato in precedenza.
 - **wait_option** <br>Definisce il comportamento del servizio se non sono disponibili istanze del semaforo. ad esempio il numero di semafori è zero. Le opzioni di attesa sono definite come segue:
-  - **TX_NO_WAIT** (0x00000000): la selezione TX_NO_WAIT restituisce immediatamente un risultato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato da un non thread; ad esempio inizializzazione, timer o ISR.*
+  - **TX_NO_WAIT** (0x00000000): la selezione di TX_NO_WAIT comporta un ritorno immediato da questo servizio indipendentemente dal fatto che l'operazione sia riuscita o meno. *Questa è l'unica opzione valida se il servizio viene chiamato da un non thread; ad esempio inizializzazione, timer o ISR.*
   - **TX_WAIT_FOREVER** (0xFFFFFFFF): se si seleziona TX_WAIT_FOREVER, il thread chiamante viene sospeso per un periodo illimitato fino a quando non è disponibile un'istanza del semaforo.
   - Valore di timeout (da 0x00000001 a 0xFFFFFFFE): la selezione di un valore numerico (1-0xFFFFFFFE) specifica il numero massimo di tick timer da sospendere durante l'attesa di un'istanza del semaforo.
 
 ### <a name="return-values"></a>Valori restituiti
 
 - **TX_SUCCESS** (0x00) Recupero riuscito di un'istanza del semaforo.
-- **TX_DELETED** (0x01) Semaforo di conteggio eliminato durante la sospensione del thread.
+- **TX_DELETED** semaforo di conteggio (0x01) è stato eliminato durante la sospensione del thread.
 - **TX_NO_INSTANCE** (0x0D) non è stato in grado di recuperare un'istanza del semaforo di conteggio (il conteggio dei semafori è zero entro il tempo di attesa specificato).
 - **TX_WAIT_ABORTED** sospensione (0x1A) è stata interrotta da un altro thread, timer o ISR.
 - **TX_SEMAPHORE_ERROR** (0x0C) Puntatore al semaforo di conteggio non valido.
@@ -3367,7 +3441,7 @@ Questo servizio recupera informazioni sulle prestazioni relative al semaforo spe
 > [!IMPORTANT]
 > *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_SEMAPHORE_ENABLE_PERFORMANCE_INFO** _ _defined che il servizio restituirà informazioni sulle prestazioni.*
 
-**Parametri**
+### <a name="parameters"></a>Parametri
 
 -  **semaphore_ptr** Puntatore al semaforo creato in precedenza.
 -  **puts** Puntatore alla destinazione per il numero di richieste put eseguite su questo semaforo.
@@ -3387,6 +3461,10 @@ Questo servizio recupera informazioni sulle prestazioni relative al semaforo spe
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -3458,6 +3536,10 @@ Questo servizio recupera informazioni sulle prestazioni di tutti i semafori nel 
 
 Inizializzazione, thread, timer e ISR
 
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
+
 ### <a name="example"></a>Esempio
 
 ```c
@@ -3489,7 +3571,7 @@ successfully retrieved. */
 
 ## <a name="tx_semaphore_prioritize"></a>tx_semaphore_prioritize
 
-Classificare in ordine di priorità l'elenco delle sospensioni del semaforo
+Assegnare una priorità all'elenco di sospensioni del semaforo
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3499,7 +3581,7 @@ UINT tx_semaphore_prioritize(TX_SEMAPHORE *semaphore_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio posiziona il thread con priorità più alta sospeso per un'istanza del semaforo all'inizio dell'elenco di sospensione. Tutti gli altri thread rimangono nello stesso ordine FIFO in cui sono stati sospesi.
+Questo servizio posiziona il thread con priorità più alta sospeso per un'istanza del semaforo all'inizio dell'elenco di sospensioni. Tutti gli altri thread rimangono nello stesso ordine FIFO in cui sono stati sospesi.
 
 ### <a name="parameters"></a>Parametri
 
@@ -3507,14 +3589,14 @@ Questo servizio posiziona il thread con priorità più alta sospeso per un'istan
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) La priorità del semaforo è riuscita.
+- **TX_SUCCESS** (0x00) Priorità del semaforo riuscito.
 - **TX_SEMAPHORE_ERROR** (0x0C) Puntatore al semaforo di conteggio non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -3636,6 +3718,10 @@ Questo servizio registra una funzione di callback di notifica che viene chiamata
 
 Inizializzazione, thread, timer e ISR
 
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
+
 ### <a name="example"></a>Esempio
 
 ```c
@@ -3689,39 +3775,39 @@ UINT tx_thread_create(
 
 Questo servizio crea un thread dell'applicazione che avvia l'esecuzione in corrispondenza della funzione di immissione dell'attività specificata. Lo stack, la priorità, la soglia di precedenza e la sezione temporale sono tra gli attributi specificati dai parametri di input. Inoltre, viene specificato anche lo stato di esecuzione iniziale del thread.
 
-**Parametri**
+### <a name="parameters"></a>Parametri
 
 - **thread_ptr** Puntatore a un blocco di controllo del thread.
 - **name_ptr** Puntatore al nome del thread.
-- **entry_function** Specifica la funzione C iniziale per l'esecuzione del thread. Quando un thread viene restituito da questa funzione di ingresso, viene inserito in uno *stato completato* e sospeso a tempo indeterminato.
+- **entry_function** Specifica la funzione C iniziale per l'esecuzione del thread. Quando un thread viene restituito da questa funzione di ingresso, viene inserito in uno *stato* completato e sospeso per un periodo illimitato.
 - **entry_input** Valore a 32 bit passato alla funzione di ingresso del thread quando viene eseguito per la prima volta. L'uso di questo input è determinato esclusivamente dall'applicazione.
 - **stack_start** Indirizzo iniziale dell'area di memoria dello stack.
-- **stack_size** Numero di byte nell'area di memoria dello stack. L'area dello stack del thread deve essere sufficientemente grande da gestire l'annidamento delle chiamate di funzione nel peggiore dei casi e l'utilizzo delle variabili locali.
+- **stack_size** Numero di byte nell'area della memoria dello stack. L'area dello stack del thread deve essere sufficientemente grande da gestire l'annidamento delle chiamate di funzione nel peggiore dei casi e l'utilizzo delle variabili locali.
 - **priorità** Priorità numerica del thread. I valori validi sono da 0 a (TX_MAX_PRIORITES-1), dove il valore 0 rappresenta la priorità più alta.
-- **preempt_threshold** Livello di priorità più alto (da 0 a (TX_MAX_PRIORITIES-1)) di preemption disabilitato. Solo le priorità superiori a questo livello sono autorizzate a eseguire il pre-accesso a questo thread. Questo valore deve essere minore o uguale alla priorità specificata. Un valore uguale alla priorità del thread disabilita preemption-threshold.
-- **time_slice** Numero di tick timer che questo thread può eseguire prima che altri thread pronti con la stessa priorità hanno la possibilità di essere eseguiti. Si noti che l'uso di preemption-threshold disabilita la sezione temporale. I valori di intervallo temporale validi sono compresi tra 1 e 0xFFFFFFFF (inclusi). Il valore **TX_NO_TIME_SLICE** (valore 0) disabilita la sezione temporale di questo thread.
+- **preempt_threshold** Livello di priorità massimo (da 0 a (TX_MAX_PRIORITIES-1)) di precedenza disabilitata. Solo le priorità superiori a questo livello possono essere prioritarie per questo thread. Questo valore deve essere minore o uguale alla priorità specificata. Un valore uguale alla priorità del thread disabilita la soglia di precedenza.
+- **time_slice** Numero di tick timer che questo thread può eseguire prima che ad altri thread pronti con la stessa priorità venga data la possibilità di essere eseguito. Si noti che l'uso di preemption-threshold disabilita il selicing temporale. I valori degli intervalli di tempo validi sono compresi tra 1 e 0xFFFFFFFF (inclusi). Il valore **TX_NO_TIME_SLICE** (valore 0) disabilita il selicing temporale di questo thread.
 
   > [!NOTE]
-  > *L'uso della sezione temporale comporta un leggero sovraccarico del sistema.   Poiché la sezione temporale è utile solo nei casi in cui più thread condividono la stessa priorità, ai thread con una priorità univoca non deve essere assegnato un intervallo di tempo.*
+  > *L'uso del selicing temporale comporta un leggero sovraccarico del sistema.   Poiché il sezionamento del tempo è utile solo nei casi in cui più thread condividono la stessa priorità, ai thread con una priorità univoca non deve essere assegnato un intervallo di tempo.*
 
-- **auto_start** Specifica se il thread viene avviato immediatamente o viene inserito in uno stato sospeso. Le opzioni legali **sono TX_AUTO_START** (0x01) **e TX_DONT_START** (0x00). Se TX_DONT_START specificato, l'applicazione deve chiamare in un secondo momento tx_thread_resume per consentire l'esecuzione del thread.
+- **auto_start** Specifica se il thread viene avviato immediatamente o se si trova in uno stato sospeso. Le opzioni legali **TX_AUTO_START** (0x01) e **TX_DONT_START** (0x00). Se TX_DONT_START specificato, l'applicazione deve chiamare in un secondo momento tx_thread_resume per l'esecuzione del thread.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Creazione del thread completata.
+- **TX_SUCCESS** (0x00) Creazione del thread riuscita.
 - **TX_THREAD_ERROR** (0x0E) Puntatore di controllo thread non valido. Il puntatore è NULL o il thread è già stato creato.
 - **TX_PTR_ERROR** (0x03) Indirizzo iniziale non valido del punto di ingresso o dell'area dello stack non valido, in genere NULL.
-- **TX_SIZE_ERROR** (0x05) Le dimensioni dell'area dello stack non sono valide. I thread devono avere almeno **TX_MINIMUM_STACK** byte da eseguire.
-- **TX_PRIORITY_ERROR** (0x0F) Priorità del thread non valida, ovvero un valore non compreso nell'intervallo compreso tra (da 0 a (TX_MAX_PRIORITIES-1)).
-- **TX_THRESH_ERROR** (0x18) Preemptionthreshold non valido specificato. Questo valore deve essere una priorità valida minore o uguale alla priorità iniziale del thread.
+- **TX_SIZE_ERROR** (0x05) Le dimensioni dell'area dello stack non sono valide. I thread devono avere almeno **TX_MINIMUM_STACK** byte per l'esecuzione.
+- **TX_PRIORITY_ERROR** (0x0F) Priorità thread non valida, ovvero un valore non compreso nell'intervallo da (da 0 a (TX_MAX_PRIORITIES-1)).
+- **TX_THRESH_ERROR** (0x18) Specificato valore preemptionthreshold non valido. Questo valore deve essere una priorità valida minore o uguale alla priorità iniziale del thread.
 - **TX_START_ERROR** (0x10) Selezione avvio automatico non valida.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -3810,14 +3896,14 @@ Questo servizio elimina il thread dell'applicazione specificato. Poiché il thre
 
 - **TX_SUCCESS** (0x00) Eliminazione del thread riuscita.
 - **TX_THREAD_ERROR** (0x0E) Puntatore del thread dell'applicazione non valido.
-- **TX_DELETE_ERROR** (0x11) Il thread specificato non è in stato terminato o completato.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_DELETE_ERROR** (0x11) Il thread specificato non si trova in uno stato terminato o completato.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread e timer
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -3890,6 +3976,10 @@ Questo servizio registra una funzione di callback di notifica che viene chiamata
 
 Inizializzazione, thread, timer e ISR
 
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
+
 ### <a name="example"></a>Esempio
 
 ```c
@@ -3952,9 +4042,9 @@ Questo servizio restituisce un puntatore al thread attualmente in esecuzione. Se
 
 nessuno
 
-### <a name="retuen-values"></a>Valori di nuovo
+### <a name="return-values"></a>Valori restituiti
 
-- **puntatore thread** Puntatore al thread attualmente in esecuzione. Se non è in esecuzione alcun thread, il valore restituito **viene TX_NULL**.
+- **puntatore thread** Puntatore al thread attualmente in esecuzione. Se non è in esecuzione alcun thread, il valore restituito viene **TX_NULL**.
 
 ### <a name="allowed-from"></a>Consentito da
 
@@ -3965,9 +4055,6 @@ Thread e ISR
 No
 
 ### <a name="example"></a>Esempio
-
-TX_THREAD *my_thread_ptr;
-
 ```c
 TX_THREAD *my_thread_ptr;
 
@@ -4043,24 +4130,23 @@ Questo servizio recupera informazioni sul thread specificato.
 - **run_count** Puntatore alla destinazione per il conteggio di esecuzione del thread.
 - **priorità** Puntatore alla destinazione per la priorità del thread.
 - **preemption_threshold** Puntatore alla destinazione per la soglia di preemption del thread.
-**time_slice** Puntatore alla destinazione per l'intervallo di tempo del thread.
-**next_thread** Puntatore alla destinazione per il puntatore del thread creato successivo.
-
-**suspended_thread** Puntatore alla destinazione per il puntatore al thread successivo nell'elenco di sospensione.
+- **time_slice** Puntatore alla destinazione per l'intervallo di tempo del thread.
+- **next_thread** Puntatore alla destinazione per il puntatore del thread creato successivo.
+- **suspended_thread** Puntatore alla destinazione per il puntatore al thread successivo nell'elenco di sospensione.
 
 > [!NOTE]
-> *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
+> *Se si specifica un TX_NULL per qualsiasi parametro, il parametro non è obbligatorio.*
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Recupero delle informazioni sui thread riuscito.
+- **TX_SUCCESS** (0x00) Recupero delle informazioni sul thread riuscito.
 - **TX_THREAD_ERROR** (0x0E) Puntatore di controllo thread non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 No
 
@@ -4136,20 +4222,20 @@ UINT tx_thread_performance_info_get(
 Questo servizio recupera informazioni sulle prestazioni relative al thread specificato.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_THREAD_ENABLE_PERFORMANCE_INFO** _ _defined per consentire al servizio di restituire informazioni sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_THREAD_ENABLE_PERFORMANCE_INFO** _ _defined per consentire al servizio di restituire informazioni sulle prestazioni*.
 
 ### <a name="parameters"></a>Parametri
 - **thread_ptr** Puntatore al thread creato in precedenza.
-- **ripresi** Puntatore alla destinazione per il numero di ripresi di questo thread.
+- **resumptions** Puntatore alla destinazione per il numero di ripresi di questo thread.
 - **sospensioni** Puntatore alla destinazione per il numero di sospensioni di questo thread.
 - **solicited_preemptions** Puntatore alla destinazione per il numero di preemption come risultato di una chiamata al servizio API ThreadX effettuata da questo thread.
-- **interrupt_preemptions** Puntatore alla destinazione per il numero di interruzioni del thread in seguito all'elaborazione di interrupt.
-- **priority_inversions** Puntatore alla destinazione per il numero di inversione di priorità di questo thread.
-- **time_slices** Puntatore alla destinazione per il numero di intervallo di tempo di questo thread.
+- **interrupt_preemptions** Puntatore alla destinazione per il numero di preemption di questo thread come risultato dell'elaborazione dell'interrupt.
+- **priority_inversions** Puntatore alla destinazione per il numero di inversioni di priorità di questo thread.
+- **time_slices** Puntatore alla destinazione per il numero di time slice di questo thread.
 - **relinquishes** Puntatore alla destinazione per il numero di richieste di thread eseguite da questo thread.
 - **timeout** Puntatore alla destinazione per il numero di timeout di sospensione in questo thread.
 - **wait_aborts** Puntatore alla destinazione per il numero di attese interrotte eseguite su questo thread.
-- **last_preempted_by** Puntatore alla destinazione per il puntatore del thread che ha citato per ultimo questo thread.
+- **last_preempted_by** Puntatore alla destinazione per il puntatore del thread che ha preempted per ultimo questo thread.
 
 > [!NOTE]
 > *L'TX_NULL per qualsiasi parametro indica che il parametro non è obbligatorio.*
@@ -4163,6 +4249,10 @@ Questo servizio recupera informazioni sulle prestazioni relative al thread speci
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -4236,7 +4326,7 @@ UINT tx_thread_performance_system_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni relative a tutti i thread nel sistema.
+Questo servizio recupera informazioni sulle prestazioni su tutti i thread nel sistema.
 
 *La libreria ThreadX e l'applicazione devono essere compilate con*
 
@@ -4261,12 +4351,16 @@ Questo servizio recupera informazioni sulle prestazioni relative a tutti i threa
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Ottenere prestazioni del sistema di thread riuscite.
+- **TX_SUCCESS** (0x00) Ottenere le prestazioni del sistema di thread con esito positivo.
 - **TX_FEATURE_NOT_ENABLED** (0xFF) Il sistema non è stato compilato con le informazioni sulle prestazioni abilitate.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Possibile preemption
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -4346,7 +4440,7 @@ Questo servizio modifica la soglia di priorità del thread specificato. La sogli
 
 - **TX_SUCCESS** (0x00) Modifica della soglia di preemption riuscita.
 - **TX_THREAD_ERROR** (0x0E) Puntatore del thread dell'applicazione non valido.
-- **TX_THRESH_ERROR** (0x18) La nuova soglia di precedenza specificata non è una priorità di thread valida (un valore diverso da (da 0 a (**TX_MAX_PRIORITIES**-1) o maggiore di (priorità inferiore) rispetto alla priorità del thread corrente.
+- **TX_THRESH_ERROR** (0x18) La nuova soglia di preemption specificata non è una priorità di thread valida (un valore diverso da (da 0 a (**TX_MAX_PRIORITIES**-1) o è maggiore di (priorità inferiore) rispetto alla priorità del thread corrente.
 - **TX_PTR_ERROR** (0x03) Puntatore non valido alla posizione di archiviazione precedente precedente.
 - **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
@@ -4491,7 +4585,7 @@ VOID tx_thread_relinquish(VOID);
 Questo servizio rinuncia al controllo del processore ad altri thread pronti per l'esecuzione con la stessa priorità o con priorità superiore.
 
 > [!NOTE]
-> *Oltre a rinunciare al controllo ai thread con la stessa priorità, questo servizio rinuncia anche al thread con priorità più alta impedito dall'esecuzione a causa dell'impostazione della soglia di precedenza del thread corrente.*
+> *Oltre a rinunciare al controllo ai thread con la stessa priorità, questo servizio rinuncia anche al thread con priorità più alta impedito dall'esecuzione a causa dell'impostazione preemption-threshold del thread corrente.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -4509,7 +4603,7 @@ Thread
 
 Sì
 
-### <a name="examples"></a>Esempi
+### <a name="example"></a>Esempio
 
 ```c
 ULONG run_counter_1 = 0;
@@ -4581,7 +4675,7 @@ UINT tx_thread_reset(TX_THREAD *thread_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio reimposta il thread specificato per l'esecuzione nel punto di ingresso definito durante la creazione del thread. Il thread deve essere in uno **stato TX_COMPLETED** o **TX_TERMINATED** deve essere reimpostato
+Questo servizio reimposta il thread specificato per l'esecuzione nel punto di ingresso definito al momento della creazione del thread. Il thread deve essere in uno **stato TX_COMPLETED** o **TX_TERMINATED** deve essere reimpostato
 
 > [!IMPORTANT]
 > *Il thread deve essere ripreso per poter essere eseguito di nuovo.*
@@ -4601,10 +4695,11 @@ Questo servizio reimposta il thread specificato per l'esecuzione nel punto di in
 
 Thread
 
+### <a name="preemption-possible"></a>Possibile preemption
+
+Sì
+
 ### <a name="example"></a>Esempio
-
-TX_THREAD my_thread;
-
 ```c
 TX_THREAD my_thread;
 
@@ -4647,7 +4742,7 @@ UINT tx_thread_resume(TX_THREAD *thread_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio riprende o prepara l'esecuzione di un thread precedentemente sospeso da una ***tx_thread_suspend*** chiamata. Inoltre, questo servizio riprende i thread creati senza avvio automatico.
+Questo servizio riprende o prepara l'esecuzione di un thread precedentemente sospeso da ***una*** tx_thread_suspend chiamata. Inoltre, questo servizio riprende i thread creati senza un avvio automatico.
 
 ### <a name="parameters"></a>Parametri
 
@@ -4655,16 +4750,16 @@ Questo servizio riprende o prepara l'esecuzione di un thread precedentemente sos
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Ripresa del thread con esito positivo.
-- **TX_SUSPEND_LIFTED** (0x19) La sospensione ritardata impostata in precedenza è stata revocata.
+- **TX_SUCCESS** (0x00) Ripresa del thread riuscita.
+- **TX_SUSPEND_LIFTED** (0x19) È stata revocata la sospensione ritardata impostata in precedenza.
 - **TX_THREAD_ERROR** (0x0E) Puntatore del thread dell'applicazione non valido.
-- **TX_RESUME_ERROR** (0x12) Il thread specificato non è sospeso o è stato precedentemente sospeso da un servizio diverso **_da tx_thread_suspend_**.
+- **TX_RESUME_ERROR** (0x12) Il thread specificato non è sospeso o è stato sospeso in precedenza da un servizio diverso **_da tx_thread_suspend_**.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Preemption Possible
+### <a name="preemption-possible"></a>Possibile preemption
 
 Sì
 
@@ -4780,13 +4875,13 @@ UINT tx_thread_stack_error_notify(VOID (*error_handler)(TX_THREAD *));
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio registra una funzione di callback di notifica per la gestione degli errori dello stack di thread. Quando ThreadX rileva un errore dello stack di thread durante l'esecuzione, chiamerà questa funzione di notifica per elaborare l'errore. L'elaborazione dell'errore è completamente definita dall'applicazione. È possibile sospendere il thread che viola la violazione per reimpostare l'intero sistema.
+Questo servizio registra una funzione di callback di notifica per la gestione degli errori dello stack di thread. Quando ThreadX rileva un errore dello stack di thread durante l'esecuzione, chiamerà questa funzione di notifica per elaborare l'errore. L'elaborazione dell'errore è completamente definita dall'applicazione. Possono essere eseguite qualsiasi operazione, dalla sospensione del thread che viola la violazione alla reimpostazione dell'intero sistema.
 
 > [!IMPORTANT]
-> *La libreria ThreadX deve essere compilata* con **TX_ENABLE_STACK_CHECKING** per consentire al servizio di *restituire informazioni sulle prestazioni.*
+> *La libreria ThreadX deve essere compilata con* **TX_ENABLE_STACK_CHECKING** per consentire al servizio di restituire informazioni *sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
-- **error_handler** Puntatore alla funzione di gestione degli errori dello stack dell'applicazione. Se questo valore è TX_NULL, la notifica è disabilitata.
+- **error_handler** Puntatore alla funzione di gestione degli errori dello stack dell'applicazione. Se questo valore è TX_NULL, la notifica viene disabilitata.
 
 ### <a name="return-values"></a>Valori restituiti
 
@@ -4796,6 +4891,10 @@ Questo servizio registra una funzione di callback di notifica per la gestione de
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -4846,7 +4945,7 @@ Questo servizio sospende il thread dell'applicazione specificato. Un thread può
 > [!NOTE]
 > *Se il thread specificato è già sospeso per un altro motivo, questa sospensione viene mantenuta internamente fino a quando non viene revocata la sospensione precedente. In questo caso, viene eseguita questa sospensione non condizionale del thread specificato. Altre richieste di sospensione non condizionali non hanno alcun effetto.*
 
-Dopo essere stato sospeso, il thread deve essere ripreso ***da*** tx_thread_resume eseguire di nuovo.
+Dopo essere stato sospeso, il thread deve essere ripreso ***dal*** tx_thread_resume eseguire di nuovo.
 
 ### <a name="parameters"></a>Parametri
 
@@ -4854,16 +4953,16 @@ Dopo essere stato sospeso, il thread deve essere ripreso ***da*** tx_thread_resu
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Sospensione del thread riuscita.
+- **TX_SUCCESS** (0x00) Thread completato.
 - **TX_THREAD_ERROR** (0x0E) Puntatore del thread dell'applicazione non valido.
-- **TX_SUSPEND_ERROR** (0x14) Il thread specificato è in uno stato terminato o completato.
+- **TX_SUSPEND_ERROR** (0x14) Il thread specificato si trova in uno stato terminato o completato.
 - **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -4914,25 +5013,25 @@ UINT tx_thread_terminate(TX_THREAD *thread_ptr);
 Questo servizio termina il thread dell'applicazione specificato indipendentemente dal fatto che il thread sia sospeso o meno. Un thread può chiamare questo servizio per terminare se stesso.
 
 > [!NOTE]
-> *È responsabilità dell'applicazione assicurarsi che il thread si trova in uno stato idoneo per la terminazione. Ad esempio, un thread non deve essere terminato durante l'elaborazione critica dell'applicazione o all'interno di altri componenti middleware in cui potrebbe lasciare tale elaborazione in uno stato sconosciuto.*
+> *È responsabilità dell'applicazione assicurarsi che il thread si trova in uno stato adatto per la terminazione. Ad esempio, un thread non deve essere terminato durante l'elaborazione critica dell'applicazione o all'interno di altri componenti middleware in cui potrebbe lasciare tale elaborazione in uno stato sconosciuto.*
 
 > [!IMPORTANT]
-> *Dopo essere stato terminato, il thread deve essere reimpostato per poter essere eseguito di nuovo.*
+> *Dopo essere stato terminato, il thread deve essere reimpostato per poter essere eseguito nuovamente.*
 
 ### <a name="parameters"></a>Parametri
 
 - **thread_ptr** Puntatore al thread dell'applicazione.
 
 ### <a name="return-values"></a>Valori restituiti
-- **TX_SUCCESS** (0x00) Terminazione del thread completata.
+- **TX_SUCCESS** (0x00) Terminazione del thread riuscita.
 - **TX_THREAD_ERROR** (0x0E) Puntatore del thread dell'applicazione non valido.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread e timer
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 Sì
 
@@ -4983,10 +5082,10 @@ UINT tx_thread_time_slice_change(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio modifica l'intervallo di tempo del thread dell'applicazione specificato. La selezione di un intervallo di tempo per un thread assicura che non verrà eseguito più del numero specificato di tick timer prima che altri thread con le stesse priorità o priorità superiori hanno la possibilità di essere eseguiti.
+Questo servizio modifica l'intervallo di tempo del thread dell'applicazione specificato. La selezione di un intervallo di tempo per un thread assicura che non verrà eseguito più del numero specificato di tick del timer prima che altri thread con priorità uguale o superiore hanno la possibilità di essere eseguiti.
 
 > [!NOTE]
-> *L'uso di preemption-threshold disabilita la sezione temporale per il thread specificato.*
+> *L'uso di preemption-threshold disabilita il selicing temporale per il thread specificato.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -4996,16 +5095,16 @@ Questo servizio modifica l'intervallo di tempo del thread dell'applicazione spec
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Probabilità di intervallo temporale riuscita.
+- **TX_SUCCESS** (0x00) Probabilità di intervallo di tempo riuscita.
 - **TX_THREAD_ERROR** (0x0E) Puntatore del thread dell'applicazione non valido.
-- **TX_PTR_ERROR** (0x03) Puntatore non valido alla posizione di archiviazione della sezione temporale precedente.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_PTR_ERROR** (0x03) Puntatore non valido alla posizione di archiviazione precedente dell'intervallo di tempo.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread e timer
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5051,7 +5150,7 @@ in "my_old_time_slice." */
 
 ## <a name="tx_thread_wait_abort"></a>tx_thread_wait_abort
 
-Interrompere la sospensione del thread specificato
+Interrompi sospensione del thread specificato
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5061,10 +5160,10 @@ UINT tx_thread_wait_abort(TX_THREAD *thread_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio interrompe la sospensione o qualsiasi altro oggetto sospeso del thread specificato. Se l'attesa viene interrotta, **viene restituito TX_WAIT_ABORTED** dal servizio su cui il thread era in attesa.
+Questo servizio interrompe la sospensione o qualsiasi altra sospensione dell'oggetto del thread specificato. Se l'attesa viene interrotta, **TX_WAIT_ABORTED** restituito un valore dal servizio su cui il thread era in attesa.
 
 > [!NOTE]
-> *Questo servizio non rilascia la sospensione esplicita che viene effettuata dal tx_thread_suspend servizio.*
+> *Questo servizio non rilascia la sospensione esplicita effettuata dal tx_thread_suspend servizio.*
 
 ### <a name="parameters"></a>Parametri
 
@@ -5080,7 +5179,7 @@ Questo servizio interrompe la sospensione o qualsiasi altro oggetto sospeso del 
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 Sì
 
 ### <a name="example"></a>Esempio
@@ -5131,24 +5230,24 @@ ULONG tx_time_get(VOID);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio restituisce il contenuto dell'orologio di sistema interno. Ogni volta che l'orologio di sistema interno aumenta di uno. L'orologio di sistema viene impostato su zero durante l'inizializzazione e può essere modificato in un valore specifico dal servizio ***tx_time_set***.
+Questo servizio restituisce il contenuto dell'orologio di sistema interno. Ogni timertick aumenta di uno il clock di sistema interno. L'orologio di sistema viene impostato su zero durante l'inizializzazione e può essere modificato in un valore specifico dal servizio ***tx_time_set***.
 
 > [!NOTE]
 > *L'ora effettiva che ogni timer rappresenta è specifica dell'applicazione.*
 
-**Parametri**
+### <a name="parameters"></a>Parametri
 
-Nessuno
+nessuno
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **tick dell'orologio di sistema** Valore dell'orologio di sistema interno in esecuzione gratuito.
+- **tick del clock di sistema** Valore dell'orologio di sistema interno, in esecuzione gratuita.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 No
 
 ### <a name="example"></a>Esempio
@@ -5235,7 +5334,7 @@ Questo servizio attiva il timer applicazione specificato. Le routine di scadenza
 
 - **timer_ptr** Puntatore a un timer dell'applicazione creato in precedenza.
 
-**Valori restituiti**
+### <a name="return-values"></a>Valori restituiti
 
 - **TX_SUCCESS** (0x00) Attivazione timer applicazione riuscita.
 - **TX_TIMER_ERROR** (0x15) Puntatore timer applicazione non valido.
@@ -5377,7 +5476,7 @@ Questo servizio crea un timer dell'applicazione con la funzione di scadenza spec
 - **reschedule_ticks** Specifica il numero di tick per tutte le scadenze del timer dopo il primo. Uno zero per questo parametro rende il timer un timer *unico.* In caso contrario, per i timer periodici, i valori validi sono compreso tra 1 e 0xFFFFFFFF.
 
   > [!NOTE]
-  > *Dopo la scadenza di un timer in un solo tentativo, è necessario reimpostarlo tramite tx_timer_change prima di poter essere attivato nuovamente.*
+  > *Dopo la scadenza di un timer, è necessario reimpostarlo tramite tx_timer_change prima di poterlo attivare di nuovo.*
 
 - **auto_activate** Determina se il timer viene attivato automaticamente durante la creazione. Se questo valore è **TX_AUTO_ACTIVATE** (0x01) il timer viene reso attivo. In caso contrario, **se TX_NO_ACTIVATE** (0x00) è selezionato, il timer viene creato in uno stato non attivo. In questo caso, è necessaria **_tx_timer_activate_** chiamata al servizio per ottenere il timer effettivamente avviato.
 
@@ -5385,15 +5484,15 @@ Questo servizio crea un timer dell'applicazione con la funzione di scadenza spec
 
 - **TX_SUCCESS** (0x00) Creazione timer applicazione completata.
 - **TX_TIMER_ERROR** (0x15) Puntatore timer applicazione non valido. Il puntatore è NULL o il timer è già stato creato.
-- **TX_TICK_ERROR** (0x16) Valore non valido (zero) fornito per i tick iniziali.
+- **TX_TICK_ERROR** (0x16) Valore non valido (zero) specificato per i tick iniziali.
 - **TX_ACTIVATE_ERROR** (0x17) Attivazione non valida selezionata.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione e thread
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5447,14 +5546,14 @@ Questo servizio disattiva il timer dell'applicazione specificato. Se il timer è
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Disattivazione del timer dell'applicazione completata.
-- **TX_TIMER_ERROR** (0x15) Puntatore del timer dell'applicazione non valido.
+- **TX_SUCCESS** (0x00) Disattivazione timer applicazione riuscita.
+- **TX_TIMER_ERROR** (0x15) Puntatore timer applicazione non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5494,7 +5593,7 @@ UINT tx_timer_delete(TX_TIMER *timer_ptr);
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio elimina il timer dell'applicazione specificato.
+Questo servizio elimina il timer applicazione specificato.
 
 > [!NOTE]
 > *È responsabilità dell'applicazione impedire l'uso di un timer eliminato.*
@@ -5505,15 +5604,15 @@ Questo servizio elimina il timer dell'applicazione specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Eliminazione del timer dell'applicazione completata.
-- **TX_TIMER_ERROR** (0x15) Puntatore del timer dell'applicazione non valido.
-- **TX_CALLER_ERROR** (0x13) Chiamante non valido di questo servizio.
+- **TX_SUCCESS** (0x00) Eliminazione timer applicazione riuscita.
+- **TX_TIMER_ERROR** (0x15) Puntatore timer applicazione non valido.
+- **TX_CALLER_ERROR** (0x13) Chiamante non valido del servizio.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Thread
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5559,15 +5658,15 @@ UINT tx_timer_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sul timer dell'applicazione specificato.
+Questo servizio recupera informazioni sul timer applicazione specificato.
 
 ### <a name="parameters"></a>Parametri
 
 - **timer_ptr** Puntatore a un timer dell'applicazione creato in precedenza.
 - **name** Puntatore alla destinazione per il puntatore al nome del timer.
-- **active** Puntatore alla destinazione per l'indicazione attiva del timer. Se il timer è inattivo o questo servizio viene chiamato dal timer stesso, viene restituito TX_FALSE **valore.** In caso contrario, se il timer è attivo, viene **restituito TX_TRUE** valore predefinito.
+- **active** Puntatore alla destinazione per l'indicazione attiva del timer. Se il timer è inattivo o questo servizio viene chiamato dal timer stesso, viene **restituito TX_FALSE** valore predefinito. In caso contrario, se il timer è attivo, **viene TX_TRUE** valore predefinito.
 - **remaining_ticks** Puntatore alla destinazione per il numero di tick del timer rimasti prima della scadenza del timer.
-- **reschedule_ticks** Puntatore alla destinazione per il numero di tick timer che verranno usati per ripianificare automaticamente il timer. Se il valore è zero, il timer è un'unica esecuzione e non verrà riprogrammato.
+- **reschedule_ticks** Puntatore alla destinazione per il numero di tick del timer che verranno usati per ripianificare automaticamente il timer. Se il valore è zero, il timer è un'unica schermata e non verrà ripianificato.
 - **next_timer** Puntatore alla destinazione per il puntatore del timer dell'applicazione creato successivo.
 
 > [!NOTE]
@@ -5575,14 +5674,14 @@ Questo servizio recupera informazioni sul timer dell'applicazione specificato.
 
 ### <a name="return-values"></a>Valori restituiti
 
-- **TX_SUCCESS** (0x00) Recupero delle informazioni del timer riuscito.
-- **TX_TIMER_ERROR** (0x15) Puntatore del timer dell'applicazione non valido.
+- **TX_SUCCESS** (0x00) Recupero delle informazioni sul timer riuscito.
+- **TX_TIMER_ERROR** (0x15) Puntatore timer applicazione non valido.
 
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
 
-### <a name="preemption-possible"></a>Possibile preemption
+### <a name="preemption-possible"></a>Preemption Possible
 
 No
 
@@ -5640,7 +5739,7 @@ UINT tx_timer_performance_info_get(
 Questo servizio recupera informazioni sulle prestazioni relative al timer dell'applicazione specificato.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_TIMER_ENABLE_PERFORMANCE_INFO** _ _defined che questo servizio restituirà informazioni sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione devono essere compilate con*  * **TX_TIMER_ENABLE_PERFORMANCE_INFO** _ _defined che il servizio restituirà informazioni sulle prestazioni.*
 
 ### <a name="parameters"></a>Parametri
 - **timer_ptr** Puntatore al timer creato in precedenza.
@@ -5648,7 +5747,7 @@ Questo servizio recupera informazioni sulle prestazioni relative al timer dell'a
 - **riattiva** Puntatore alla destinazione per il numero di riattivazioni automatiche eseguite su questo timer periodico.
 - **disattiva** Puntatore alla destinazione per il numero di richieste di disattivazione eseguite su questo timer.
 - **scadenze** Puntatore alla destinazione per il numero di scadenze del timer.
-- **expiration_adjusts** Puntatore alla destinazione per il numero di modifiche alla scadenza interne eseguite su questo timer. Queste modifiche vengono eseguite nell'elaborazione dell'interrupt del timer per i timer che sono maggiori delle dimensioni predefinite dell'elenco timer (per impostazione predefinita i timer con scadenze maggiori di 32 tick).
+- **expiration_adjusts** Puntatore alla destinazione per il numero di modifiche di scadenza interne eseguite su questo timer. Queste modifiche vengono eseguite nell'elaborazione dell'interrupt del timer per i timer di dimensioni superiori alle dimensioni predefinite dell'elenco dei timer (per impostazione predefinita i timer con scadenze maggiori di 32 tick).
 
 > [NOTA] *Se si specifica un TX_NULL per qualsiasi parametro, il parametro non è obbligatorio.*
 
@@ -5661,6 +5760,10 @@ Questo servizio recupera informazioni sulle prestazioni relative al timer dell'a
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
@@ -5709,18 +5812,18 @@ UINT tx_timer_performance_system_info_get(
 
 ### <a name="description"></a>Descrizione
 
-Questo servizio recupera informazioni sulle prestazioni relative a tutti i timer dell'applicazione nel sistema.
+Questo servizio recupera informazioni sulle prestazioni di tutti i timer dell'applicazione nel sistema.
 
 > [!IMPORTANT]
-> *La libreria ThreadX e l'applicazione*  devono essere compilate con TX_TIMER_ENABLE_PERFORMANCE_INFO per questo servizio per restituire *informazioni sulle prestazioni.*
+> *La libreria ThreadX e l'applicazione* devono essere compilate **con TX_TIMER_ENABLE_PERFORMANCE_INFO** per questo servizio per restituire informazioni *sulle prestazioni.*
 
-**Parametri**
+### <a name="parameters"></a>Parametri
 
 - **attiva** Puntatore alla destinazione per il numero totale di richieste di attivazione eseguite su tutti i timer.
 - **riattiva** Puntatore alla destinazione per il numero totale di riattivazioni automatiche eseguite su tutti i timer periodici.
 - **disattiva** Puntatore alla destinazione per il numero totale di richieste di disattivazione eseguite su tutti i timer.
 - **scadenze** Puntatore alla destinazione per il numero totale di scadenze in tutti i timer.
-- **expiration_adjusts** Puntatore alla destinazione per il numero totale di modifiche di scadenza interne eseguite su tutti i timer. Queste modifiche vengono eseguite nell'elaborazione dell'interrupt del timer per i timer che sono maggiori delle dimensioni predefinite dell'elenco timer (per impostazione predefinita i timer con scadenze maggiori di 32 tick).
+- **expiration_adjusts** Puntatore alla destinazione per il numero totale di modifiche di scadenza interne eseguite su tutti i timer. Queste modifiche vengono eseguite nell'elaborazione dell'interrupt del timer per i timer di dimensioni superiori alle dimensioni predefinite dell'elenco dei timer (per impostazione predefinita i timer con scadenze maggiori di 32 tick).
 
 > [!NOTE]
 > ***L'TX_NULL** per qualsiasi parametro indica che il parametro non è obbligatorio.*
@@ -5733,6 +5836,10 @@ Questo servizio recupera informazioni sulle prestazioni relative a tutti i timer
 ### <a name="allowed-from"></a>Consentito da
 
 Inizializzazione, thread, timer e ISR
+
+### <a name="preemption-possible"></a>Preemption Possible
+
+No
 
 ### <a name="example"></a>Esempio
 
